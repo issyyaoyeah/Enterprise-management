@@ -1,0 +1,1624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二章 人力资源相关经济理论 | 中南大学企业管理复试笔记</title>
+<style>
+/* ===== CSS变量：日间/夜间模式系统 ===== */
+:root {
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-header: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%);
+  --bg-nav: #1b5e20;
+  --bg-nav-hover: #2e7d32;
+  --bg-table-head: #e8f5e9;
+  --bg-table-alt: #f1f8e9;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a6a;
+  --text-nav: #ffffff;
+  --text-muted: #6b7280;
+  --border-color: #e2e8f0;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.14);
+  --highlight-yellow: #fff9c4;
+  --highlight-border: #f9a825;
+  --card-border: #e2e8f0;
+  --mindmap-bg: #f1f8e9;
+  --btn-bg: #2e7d32;
+  --btn-text: #fff;
+  --accordion-bg: #f0f4f8;
+  --tag-exam: #fff3e0;
+  --tag-exam-border: #ff9800;
+  --interview-bg: #e8f5e9;
+  --interview-border: #4caf50;
+  --highlight-blue: #e3f2fd;
+  --highlight-green: #e8f5e9;
+  --highlight-orange: #fff3e0;
+  --highlight-red: #fce4ec;
+  --code-bg: #f1f3f4;
+}
+body.dark-mode {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: #1c2333;
+  --bg-header: linear-gradient(135deg, #0a1a0a 0%, #0d1f0d 50%, #122912 100%);
+  --bg-nav: #0a1a0a;
+  --bg-nav-hover: #0d1f0d;
+  --bg-table-head: #122912;
+  --bg-table-alt: #0f1f10;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-nav: #e6edf3;
+  --text-muted: #6e7681;
+  --border-color: #30363d;
+  --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.5);
+  --highlight-yellow: #2d2a00;
+  --highlight-border: #b8860b;
+  --card-border: #30363d;
+  --mindmap-bg: #0f1f10;
+  --btn-bg: #1b4d1e;
+  --btn-text: #c9d1d9;
+  --accordion-bg: #161b22;
+  --tag-exam: #1e1500;
+  --tag-exam-border: #b8860b;
+  --interview-bg: #0f1f10;
+  --interview-border: #2e7d32;
+  --highlight-blue: #0d1f2d;
+  --highlight-green: #0f1f10;
+  --highlight-orange: #1e1500;
+  --highlight-red: #1f0a0d;
+  --code-bg: #1c2333;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  line-height: 1.75;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 顶部固定导航 ===== */
+#top-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: var(--bg-nav);
+  z-index: 1000;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+.nav-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.nav-title { color: var(--text-nav); font-size: 0.95rem; font-weight: 700; letter-spacing: 1px; }
+.nav-controls { display: flex; gap: 8px; align-items: center; }
+.nav-btn {
+  background: rgba(255,255,255,0.12); color: var(--text-nav);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 5px 12px; border-radius: 20px; cursor: pointer;
+  font-size: 0.78rem; transition: all 0.2s;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.22); }
+#search-box {
+  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+  color: var(--text-nav); padding: 5px 14px; border-radius: 20px;
+  font-size: 0.82rem; width: 200px; outline: none; transition: all 0.2s;
+}
+#search-box:focus { background: rgba(255,255,255,0.18); width: 240px; }
+#search-box::placeholder { color: rgba(255,255,255,0.5); }
+.nav-menu {
+  display: flex; overflow-x: auto; padding: 6px 16px; gap: 4px;
+  scrollbar-width: none;
+}
+.nav-menu::-webkit-scrollbar { display: none; }
+.nav-item {
+  color: rgba(255,255,255,0.75); text-decoration: none; white-space: nowrap;
+  padding: 4px 12px; border-radius: 12px; font-size: 0.78rem;
+  transition: all 0.2s; border: 1px solid transparent;
+}
+.nav-item:hover { color: #fff; background: var(--bg-nav-hover); border-color: rgba(255,255,255,0.2); }
+
+/* ===== 主内容 ===== */
+.main-container { max-width: 1200px; margin: 0 auto; padding: 100px 20px 60px; }
+
+/* ===== Hero ===== */
+.hero {
+  background: var(--bg-header);
+  border-radius: 16px; padding: 40px; margin-bottom: 28px;
+  text-align: center; color: white; box-shadow: var(--shadow);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+  animation: pulse 4s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+.hero-chapter { font-size: 0.9rem; opacity: 0.7; letter-spacing: 4px; margin-bottom: 8px; }
+.hero-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; letter-spacing: 2px; }
+.hero-subtitle { font-size: 1rem; opacity: 0.8; margin-bottom: 16px; }
+.hero-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.hero-tag {
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+  padding: 4px 14px; border-radius: 20px; font-size: 0.8rem;
+}
+.hero-meta { margin-top: 16px; font-size: 0.82rem; opacity: 0.6; }
+
+/* ===== section-box ===== */
+.section-box {
+  background: var(--bg-card); border: 1px solid var(--card-border);
+  border-radius: 14px; padding: 28px; margin-bottom: 24px;
+  box-shadow: var(--shadow); transition: all 0.3s;
+}
+.section-box:hover { box-shadow: var(--shadow-hover); }
+.section-title {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 1.25rem; font-weight: 700; color: var(--text-primary);
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--bg-table-head);
+}
+.section-icon { font-size: 1.4rem; }
+
+/* ===== 逻辑流程图 ===== */
+.logic-flow {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  padding: 16px; background: var(--mindmap-bg); border-radius: 12px;
+}
+.flow-box {
+  background: var(--bg-card); border: 2px solid var(--border-color);
+  border-radius: 10px; padding: 10px 14px; text-align: center;
+  font-size: 0.85rem; font-weight: 600; min-width: 90px;
+  transition: all 0.2s;
+}
+.flow-box.active { border-color: #2e7d32; color: #2e7d32; background: var(--highlight-green); }
+.flow-arrow { color: var(--text-muted); font-size: 1.2rem; }
+
+/* ===== 思维导图 ===== */
+.mindmap { background: var(--mindmap-bg); border-radius: 12px; padding: 24px; }
+.mm-center { text-align: center; margin-bottom: 20px; }
+.mm-core {
+  display: inline-block; background: #2e7d32; color: white;
+  padding: 12px 28px; border-radius: 30px; font-weight: 800;
+  font-size: 1.1rem; box-shadow: 0 4px 12px rgba(46,125,50,0.3);
+}
+.mm-branches { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.mm-branch {
+  background: var(--bg-card); border-radius: 10px; padding: 14px;
+  border-left: 4px solid #4caf50;
+}
+.mm-branch.b1 { border-color: #2196f3; }
+.mm-branch.b2 { border-color: #4caf50; }
+.mm-branch.b3 { border-color: #ff9800; }
+.mm-branch-title { font-weight: 700; margin-bottom: 8px; font-size: 0.9rem; }
+.mm-items { display: flex; flex-wrap: wrap; gap: 5px; }
+.mm-item {
+  background: var(--bg-primary); padding: 3px 8px;
+  border-radius: 8px; font-size: 0.76rem; color: var(--text-secondary);
+}
+
+/* ===== 知识卡片 ===== */
+.kcard {
+  background: var(--bg-card); border: 1px solid var(--card-border);
+  border-radius: 14px; margin-bottom: 20px;
+  box-shadow: var(--shadow); overflow: hidden;
+}
+.kcard-header {
+  background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%);
+  color: white; padding: 14px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.kcard-header.blue { background: linear-gradient(135deg, #1565c0 0%, #1976d2 100%); }
+.kcard-header.orange { background: linear-gradient(135deg, #e65100 0%, #f57c00 100%); }
+.kcard-header.purple { background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 100%); }
+.kcard-header.teal { background: linear-gradient(135deg, #00695c 0%, #00897b 100%); }
+.kcard-title { font-size: 1.05rem; font-weight: 700; }
+.kcard-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.kcard-badge {
+  background: rgba(255,255,255,0.2); padding: 2px 10px;
+  border-radius: 12px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.3);
+}
+.kcard-body { padding: 20px; }
+.kcard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 12px; margin-bottom: 14px; }
+.kcard-item {
+  background: var(--bg-primary); border-radius: 10px; padding: 12px 14px;
+  border-left: 3px solid #4caf50;
+}
+.kcard-item.blue-left { border-color: #1976d2; }
+.kcard-item.orange-left { border-color: #f57c00; }
+.kcard-item.purple-left { border-color: #7b1fa2; }
+.kcard-item-label {
+  font-size: 0.75rem; color: var(--text-muted); margin-bottom: 5px;
+  font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.kcard-item-content { font-size: 0.87rem; line-height: 1.65; }
+.kcard-full { background: var(--bg-primary); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+.kcard-full-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
+
+/* ===== 高亮框 ===== */
+.highlight-box {
+  background: var(--highlight-yellow); border-left: 4px solid var(--highlight-border);
+  padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0;
+  font-size: 0.87rem;
+}
+.highlight-blue {
+  background: var(--highlight-blue); border-left: 4px solid #1976d2;
+  padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 0.87rem;
+}
+.highlight-green {
+  background: var(--highlight-green); border-left: 4px solid #4caf50;
+  padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 0.87rem;
+}
+.highlight-orange {
+  background: var(--highlight-orange); border-left: 4px solid #ff9800;
+  padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 10px 0; font-size: 0.87rem;
+}
+
+/* ===== 关键词高亮 ===== */
+.highlight-keyword {
+  background: linear-gradient(135deg, #fff176, #ffee58);
+  padding: 1px 5px; border-radius: 4px;
+  font-weight: 700; color: #333;
+}
+body.dark-mode .highlight-keyword { background: #3d3000; color: #ffd54f; }
+.hl-green { color: #2e7d32; font-weight: 700; }
+.hl-blue { color: #1565c0; font-weight: 700; }
+.hl-red { color: #c62828; font-weight: 700; }
+.hl-orange { color: #e65100; font-weight: 700; }
+
+/* ===== details折叠 ===== */
+details {
+  background: var(--accordion-bg); border-radius: 10px;
+  margin-bottom: 10px; border: 1px solid var(--border-color); overflow: hidden;
+}
+summary {
+  padding: 12px 16px; cursor: pointer; font-weight: 600;
+  font-size: 0.9rem; list-style: none; display: flex; align-items: center; gap: 8px;
+  transition: background 0.2s;
+}
+summary::-webkit-details-marker { display: none; }
+summary::before { content: '▶'; font-size: 0.7rem; color: var(--text-muted); transition: transform 0.2s; }
+details[open] summary::before { transform: rotate(90deg); }
+summary:hover { background: var(--bg-primary); }
+.details-content { padding: 14px 18px; border-top: 1px solid var(--border-color); }
+
+/* ===== 表格 ===== */
+.table-wrap { overflow-x: auto; margin: 14px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+th {
+  background: var(--bg-table-head); padding: 10px 14px;
+  text-align: left; font-weight: 700; border: 1px solid var(--border-color);
+}
+td { padding: 9px 14px; border: 1px solid var(--border-color); vertical-align: top; }
+tr:nth-child(even) td { background: var(--bg-table-alt); }
+tr:hover td { background: var(--highlight-green); }
+
+/* ===== 真题标签 ===== */
+.exam-tags-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.exam-tag {
+  background: var(--tag-exam); border: 1px solid var(--tag-exam-border);
+  padding: 3px 10px; border-radius: 12px; font-size: 0.75rem;
+  color: #e65100; font-weight: 600;
+}
+body.dark-mode .exam-tag { color: #ffcc80; }
+
+/* ===== 复试回答框 ===== */
+.interview-box {
+  background: var(--interview-bg); border: 1px solid var(--interview-border);
+  border-radius: 10px; padding: 16px; margin-top: 14px;
+}
+.interview-title { font-weight: 700; color: #2e7d32; margin-bottom: 10px; font-size: 0.92rem; }
+body.dark-mode .interview-title { color: #66bb6a; }
+.interview-step {
+  display: flex; gap: 10px; margin-bottom: 7px; font-size: 0.86rem; align-items: flex-start;
+}
+.step-num {
+  background: #2e7d32; color: white; min-width: 22px; height: 22px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+}
+
+/* ===== 口诀 / 助记框 ===== */
+.mnemonic-box {
+  background: linear-gradient(135deg, #f3e5f5, #ede7f6);
+  border: 1px solid #ce93d8; border-radius: 10px; padding: 14px 18px; margin: 12px 0;
+}
+body.dark-mode .mnemonic-box { background: #1a0a2e; border-color: #7b1fa2; }
+.mnemonic-title { font-weight: 700; color: #6a1b9a; margin-bottom: 6px; font-size: 0.85rem; }
+body.dark-mode .mnemonic-title { color: #ce93d8; }
+.mnemonic-content { font-size: 1rem; font-weight: 700; letter-spacing: 1px; color: #4a148c; }
+body.dark-mode .mnemonic-content { color: #e1bee7; }
+
+/* ===== 30秒复习 ===== */
+.review-30 {
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  border: 2px solid #4caf50; border-radius: 14px; padding: 20px;
+  margin-bottom: 20px;
+}
+body.dark-mode .review-30 { background: #0a1a0a; }
+.review-30-title { font-size: 1.1rem; font-weight: 800; color: #2e7d32; margin-bottom: 12px; }
+body.dark-mode .review-30-title { color: #66bb6a; }
+.review-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 10px; }
+.review-item {
+  background: var(--bg-card); border-radius: 8px; padding: 10px 12px;
+  border-left: 3px solid #4caf50; font-size: 0.85rem;
+}
+
+/* ===== 两列布局 ===== */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+@media(max-width:680px){ .two-col{ grid-template-columns:1fr; } }
+
+/* ===== quiz自检 ===== */
+.quiz { background: var(--bg-card); border-radius: 14px; padding: 24px; margin-bottom: 24px; border: 1px solid var(--card-border); }
+.q-item { background: var(--bg-primary); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
+.q-num { font-size: 0.75rem; color: var(--text-muted); font-weight: 700; margin-bottom: 4px; }
+.q-text { font-size: 0.92rem; font-weight: 600; margin-bottom: 6px; }
+.q-exam { display: inline-block; background: var(--tag-exam); border: 1px solid var(--tag-exam-border); padding: 2px 8px; border-radius: 8px; font-size: 0.73rem; color: #e65100; margin-bottom: 5px; }
+body.dark-mode .q-exam { color: #ffcc80; }
+.q-hint { font-size: 0.82rem; color: var(--text-secondary); border-top: 1px dashed var(--border-color); padding-top: 6px; margin-top: 6px; }
+.q-hint span { font-weight: 700; color: #2e7d32; }
+body.dark-mode .q-hint span { color: #66bb6a; }
+
+/* ===== 返回顶部 ===== */
+#back-top {
+  position: fixed; bottom: 30px; right: 30px; z-index: 999;
+  background: var(--btn-bg); color: var(--btn-text);
+  width: 46px; height: 46px; border-radius: 50%; border: none;
+  cursor: pointer; font-size: 1.2rem; box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: all 0.2s; display: none; align-items: center; justify-content: center;
+}
+#back-top:hover { transform: translateY(-3px); }
+#back-top.show { display: flex; }
+
+/* ===== 搜索高亮 ===== */
+
+
+/* ===== fade-in ===== */
+.fade-in { opacity: 0; transform: translateY(16px); transition: all 0.5s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== footer ===== */
+.footer-bar {
+  text-align: center; padding: 20px; margin-top: 40px;
+  font-size: 0.8rem; color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+}
+
+/* ===== 对比表格特殊样式 ===== */
+.compare-tag { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 0.76rem; font-weight: 700; }
+.tag-green { background: #e8f5e9; color: #2e7d32; }
+.tag-blue { background: #e3f2fd; color: #1565c0; }
+.tag-orange { background: #fff3e0; color: #e65100; }
+.tag-red { background: #fce4ec; color: #c62828; }
+body.dark-mode .tag-green { background: #0a1a0a; color: #66bb6a; }
+body.dark-mode .tag-blue { background: #0d1f2d; color: #64b5f6; }
+body.dark-mode .tag-orange { background: #1e1500; color: #ffb74d; }
+body.dark-mode .tag-red { background: #1f0a0d; color: #ef9a9a; }
+
+/* ===== 重要等级星星 ===== */
+.star-rating { color: #f9a825; font-size: 0.9rem; }
+.prob-tag {
+  display: inline-block; padding: 2px 10px; border-radius: 12px;
+  font-size: 0.75rem; font-weight: 700; margin-left: 6px;
+}
+.prob-high { background: #ffcdd2; color: #c62828; }
+.prob-med { background: #fff9c4; color: #f57f17; }
+body.dark-mode .prob-high { background: #3e0000; color: #ef9a9a; }
+body.dark-mode .prob-med { background: #2d2a00; color: #fff176; }
+
+/* ===== 背诵版总结 ===== */
+.recite-box {
+  background: linear-gradient(135deg, #0d1f10, #122912);
+  color: #c8e6c9; border-radius: 14px; padding: 22px;
+  margin-bottom: 20px; font-family: 'PingFang SC', monospace;
+}
+body:not(.dark-mode) .recite-box {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+}
+.recite-title { font-size: 1rem; font-weight: 800; margin-bottom: 14px; color: #a5d6a7; }
+.recite-line { font-size: 0.9rem; margin-bottom: 6px; line-height: 1.8; }
+.recite-line strong { color: #ffcc02; }
+</style>
+
+
+<script>window._PAGE_TEXT='第二章 人力资源相关经济理论 | 中南大学企业管理复试笔记 \n \n \n \n \n \n \n 📚 中南大学企业管理学硕 · 人力资源管理笔记 \n \n \n 🌙 夜间模式 \n ⬆ 顶部 \n \n \n \n 🔗 章节逻辑 \n 🧠 思维导图 \n §1 劳动经济学 \n §1.5 工资理论 \n §2 人力资本 \n §2.3 产权特性 \n §3 委托-代理 \n 📊 对比总结 \n 🏆 历年真题 \n ⚡ 30秒复习 \n 🎤 背诵版 \n ✍ 自我检测 \n \n \n \n \n \n 第 二 章 · 人力资源管理（第3版）颜爱民 \n 人力资源相关经济理论 \n 劳动经济学 · 人力资本理论 · 委托-代理理论 \n \n 📖 教材页码: P036–066 \n ⭐ 重要等级: ★★★★★ \n 🎯 复试考察概率: ★★★★（较高） \n 📝 常考题型: 名词解释·简答·论述 \n \n 生成日期：2026-03-08 · 整合2016–2025年中南大学企业管理学硕真题 \n \n \n \n 🔗 本章与其他章节逻辑关系图 \n \n 第1章 HRM概述 \n → \n 📍第2章 经济理论基础 \n → \n 第3章 组织与HRM \n → \n 第4章 文化与HRM \n → \n 第5章 人力资源规划 \n → \n 第9章 薪酬激励设计 \n \n \n 💡 逻辑说明： 本章是全书理论基础，为后续实务章节提供经济学依据。 劳动经济学 →薪酬/招聘； 人力资本理论 →培训/绩效/人才投资； 委托-代理理论 →长期激励/股权激励/绩效契约设计。\n \n \n \n \n 🧠 章节思维导图（知识框架） \n \n \n 第二章：人力资源相关经济理论 \n \n \n \n §2.1 劳动经济学理论 \n \n 5大流派 \n 劳动力供给 \n 劳动力需求 \n 二元劳动力市场 \n 6大工资理论 \n 对HRM的贡献 \n \n \n \n §2.2 人力资本理论 \n \n 舒尔茨&贝克尔 \n 人力资本内涵 \n 排他性 \n 不可分割性 \n 所有权制约性 \n 投资收益率 \n \n \n \n §2.3 委托-代理理论 \n \n 两权分离 \n 信息不对称 \n 代理成本 \n 激励相容 \n 声誉模型 \n 棘轮效应 \n 股权激励 \n \n \n \n \n \n \n \n \n \n \n §2.1 劳动经济学理论 · Labor Economics \n 页码 P038–045 · 5大流派 · 供求弹性 · 二元市场 \n \n \n ★★★★ 重要 \n 简答 / 名词解释 \n \n \n \n \n \n \n 📖 定义（教材原句） \n 劳动经济学主要以 劳动关系及其运行规律、劳动力市场运行和结果、劳动力资源投入与产出 以及与劳动相关的问题作为研究对象。概括地讲，就是以 劳动力市场现象及劳动力市场运行规律 为主要研究内容。 \n \n \n 🎒 小学生版理解 \n 就像研究"工人市场"的学问——为什么有人工资高有人工资低？为什么找工作有时候容易有时候难？工厂为什么要雇用工人？工会有什么用？这些问题都是劳动经济学研究的。 \n \n \n \n \n 🏫 五大流派对比（超高频考点） \n \n \n \n \n 流派 代表人物 核心观点 关键词 \n \n \n \n 古典学派 \n 亚当·斯密、李嘉图 \n 市场竞争决定工资，劳动供求均衡决定价格，工资差异源于职业性质不同 \n 竞争、供求、均衡 \n \n \n 制度学派 \n 埃里（奠基人） \n 侧重历史和制度分析，工会等社会组织影响劳动力市场；不做模型/数量分析 \n 工会、制度、历史 \n \n \n 凯恩斯学派 \n 凯恩斯 \n 有效需求不足→失业；政府干预实现充分就业；拓展至政策层面 \n 政府干预、充分就业 \n \n \n 新古典学派 \n 马歇尔、庇古、道格拉斯 \n 当代主流 ；竞争市场供求均衡；边际生产力决定工资；刘易斯研究工会 \n 边际生产力、主流 \n \n \n 新制度学派 \n 帕尔勒、多林格尔 威廉姆森 \n 二元劳动力市场；内部劳动力市场；有限理性+竞争效率，对HRM政策指导最强 \n 二元市场、内部市场 \n \n \n \n \n \n 🧠 助记口诀（流派） \n 古（古典）制（制度）凯（凯恩斯）新古（新古典）新制（新制度）——"古制凯·新古新制" \n \n \n \n \n \n 📈 劳动力供给的四种弹性类型 \n \n \n \n 类型 特征 典型情景 \n \n 无限弹性 某工资水平下供给无穷多 发展中国家农村剩余劳动力（刘易斯模型） \n 正弹性 工资↑→供给↑ 一般劳动力市场正常状态 \n 无弹性 工资变化不影响供给量 短期内高技能人才极度稀缺时 \n 逆变弹性 工资过高→供给反而减少（向后弯曲） 收入效应>替代效应 ，偏好闲暇，"躺平"现象 \n \n \n \n \n 📌 核心原理： "向后弯曲的劳动力供给曲线"——当工资高到足够满足物质需求时， 收入效应 大于 替代效应 ，人们会选择更多闲暇，减少劳动供给。\n \n \n \n \n \n 🏭 分割的二元劳动力市场理论（重点） \n \n \n \n 📖 提出者 \n 1971年 多林格尔(Doeringer) 和 帕尔勒(Piore) 提出，将劳动力市场划分为 主要市场 和 次要市场 \n \n \n 🏗 1954年先驱 \n 克拉克·科尔 《劳动力市场的分割》首提"内部劳动力市场"和"外部劳动力市场"概念 \n \n \n \n \n 对比维度 主要劳动力市场（Primary） 次要劳动力市场（Secondary） \n \n 工资水平 高 低 \n 工作条件 好 差 \n 就业稳定性 稳定，有保障 变化大，随意解雇 \n 晋升机会 多，有路径 少 \n 工资决定 由 职位本身 决定（管理规则） 由劳动力 供求 决定 \n 中国案例 国有企业正式员工、世界500强员工 劳务派遣制员工、临时工 \n \n \n \n \n 🇨🇳 中国现实： 劳务派遣公司和派遣制员工是二元市场分割的典型体现——正式工与派遣工同工不同酬，派遣工缺乏 身份认同 和 心理契约 ，是企业HRM的重要挑战。\n \n \n \n \n \n 🏭 企业/生活案例： 宇航公司的吉姆·史密斯案例——公司资助员工获得MBA学位，但员工却因看不到晋升机会而跳槽。这说明仅靠教育投资不够，还必须有配套的 内部晋升通道 （内部劳动力市场机制），否则培训投资流失，形成"为竞争对手培训"的困境。\n \n \n \n 【2016笔试·论述】企业战略与人力资源战略的匹配 \n 【2018笔试·PESTEL分析·劳动力市场相关】 \n 【2022复试面试·资源基础观(RBV)·劳动力市场】 \n \n \n \n 🎤 复试回答模板：劳动经济学对HRM的贡献 \n 1 定义： 劳动经济学以劳动力市场现象及运行规律为研究对象，从宏观和微观两个维度研究劳动力供求、工资决定等问题。 \n 2 核心贡献： ① 工资决策依据（效率工资、市场均衡）→薪酬设计；② 培训成本收益分析→人才开发决策；③ 二元劳动力市场→内部晋升政策；④ 供求弹性→人员配置优化。 \n 3 举例： 福特1914年"5美元一天"的效率工资实践，使生产率大幅提升，离职率大幅下降——这是效率工资理论的最早实践。 \n 4 总结： 劳动经济理论为HRM提供了工资决定、人才配置、培训投资的理论框架，是连接经济学与管理实践的桥梁。 \n \n \n \n \n \n \n \n §2.1.5 六大工资理论（超高频！） \n 页码 P044–046 · 名词解释 / 简答必考点 \n \n \n ★★★★★ 必背 \n 名词解释 / 简答 \n \n \n \n \n \n \n # 理论名称 代表人物 核心观点（一句话） 与HRM的联系 \n \n \n \n 1 \n 早期工资理论 （生存工资论） \n 配第、杜尔阁、斯密、李嘉图 \n 工资=维持工人最低生活资料价值；竞争决定工资高低 \n 最低工资立法依据；薪酬底线设定 \n \n \n 2 \n 边际生产力工资理论 \n 克拉克 \n 工资由劳动的 边际生产力 决定；同质劳动者边际产出即工资标准 \n 绩效薪酬的理论基础（产出导向） \n \n \n 3 \n 均衡工资理论 \n 马歇尔 \n 工资=劳动 供给价格 （生活成本）与 需求价格 （边际生产力）均衡 \n 薪酬市场调查、外部竞争力分析 \n \n \n 4 \n 劳资谈判工资理论 （集体交涉理论） \n 韦伯、庇古、希克斯 \n 工资取决于 劳资双方力量对比 和集体谈判；存在"强制性比较"效应 \n 工会谈判、薪酬公平感；集体劳动合同 \n \n \n 5 \n 效率工资理论 （重点） \n 20世纪70年代末提出 \n 工资↑→ 工作效率↑ →单位有效劳动成本反而下降；假设：①工人默认偷懒②监督有成本③生产率取决于工资率 \n 解释高薪留才；福特5美元案例；高薪+低离职率策略 \n \n \n 6 \n 分享经济理论 \n 威茨曼（1984） \n 用"分享制"替代固定工资制；工资与 企业利润/收入挂钩 （分享基金） \n 利润分享计划、股权激励、员工持股（ESOP） \n \n \n \n \n \n 🧠 助记口诀（6大工资理论） \n 早（早期）边（边际）均（均衡）谈（谈判）效（效率）分（分享）——"早边均·谈效分" \n \n \n 📌 效率工资理论 3 大假设（必背）： \n ①在没有物质激励的条件下，工人是 偷懒 的； \n ②信息不对称的劳动关系中，有效监督工人的偷懒行为需要 成本 ； \n ③工人的劳动生产率 取决于工资率 。 \n 历史案例：1914年1月12日，亨利·福特宣布日薪5美元（当时最低工资2美元），8小时工作制，结果生产率大幅提升、辞职与解雇大量减少。\n \n \n 【2020笔试·薪酬结构设计原则·效率工资相关】 \n 【2025笔试·薪酬激励设计要点】 \n 【2023复试·新生代员工激励·效率工资视角】 \n \n \n 📊 易混淆：效率工资 vs 绩效薪酬 \n \n \n \n 维度 效率工资（Efficiency Wage） 绩效薪酬（Merit Pay） \n \n 核心逻辑 高工资→提升生产率（因果方向：工资→效率） 高绩效→高薪酬（因果方向：绩效→薪酬） \n 主动方 雇主主动支付高于市场的工资 员工先表现，再按结果获酬 \n 信息需求 不需要精确测量个人绩效 必须精确衡量个人绩效 \n 应用场景 难以监控、团队工作、知识工作 销售、可量化生产工作 \n \n \n \n \n \n \n \n \n \n \n \n §2.2 人力资本理论 · Human Capital Theory \n 页码 P046–057 · 舒尔茨 · 贝克尔 · 人力资本内涵 \n \n \n ★★★★★ 核心重点 \n 名词解释 / 论述 \n \n \n \n \n \n 📖 人力资本定义（舒尔茨·教材主流观点） \n 人力资本与物质资本一样，是 体现在劳动者身上 ，通过对人的投资形成的，并由劳动者的 健康、体力、知识、经验和技能 所构成的资本存量。 \n \n \n 🎒 小学生版 \n 就像给机器投钱可以提升机器产能，给人投资（读书、培训、锻炼）也能提升人的"生产力"。这种投资在人身上形成的能力就是"人力资本"——是活的、会增值的资本。 \n \n \n \n \n 🕰 人力资本理论发展历程（三阶段） \n \n \n \n 阶段 时期 代表人物/事件 主要贡献 \n \n \n 第一阶段 早期萌芽 \n 经济学诞生初期 \n 威廉·配第、亚当·斯密、约翰·穆勒、马歇尔 \n 斯密：教育培训是固定资本投资；马歇尔：" 所有资本中最有价值的是对人本身的投资 "；费雪1906年首提人力资本概念 \n \n \n 第二阶段 现代理论确立 \n 20世纪50-60年代 \n 舒尔茨（1960） ；贝克尔（1964）；明塞（Mincer） \n 舒尔茨1960年《人力资本投资》演讲→ 现代人力资本理论诞生标志 ；贝克尔《人力资本》→理论最终确立；建立在职培训微观模型 \n \n \n 第三阶段 深化发展 \n 20世纪80年代后 \n 罗莫（Romer 1986）；卢卡斯（Lucas 1988） \n 内生性经济增长理论；人力资本是最重要内生变量；知识经济时代的理论基石 \n \n \n \n \n \n 🧠 助记 \n 舒尔茨1960年演讲→诞生；贝克尔1964年著作→确立；罗莫卢卡斯80年代→内生增长 \n \n \n \n \n \n 🔑 人力资本概念的三个重要含义（必背） \n \n \n 教材原文三点含义 \n \n \n 含义① ：人力资本 不是指人本身 ，而是指人所拥有的知识、技术、能力和健康等 质量因素 \n \n \n 含义② ：人力资本是一种 具有经济价值的生产能力 （≠装饰品，能产出经济效益）\n \n \n 含义③ ：人力资本 非与生俱来 ，而是靠后天 投入成本 而获得（先天差异属"级差地租"）\n \n \n \n \n \n \n \n 🏢 企业案例：华为"全球人才储备"战略 ——华为每年在全球顶尖高校招募应届博士生，投入大量资金进行内部培训（相当于舒尔茨的人力资本投资理论）。华为的核心竞争力正是其知识型员工积累的人力资本存量，而非厂房设备等物质资本。\n \n \n 【2017笔试·胜任力模型·人力资本视角】 \n 【2022笔试·资源基础观(RBV)·人力资本是稀缺资源】 \n 【2024复试面试·人才盘点与继任计划·人力资本积累】 \n \n \n 🎤 复试回答模板：人力资本理论 \n 1 定义： 人力资本是体现在劳动者身上，通过投资形成的，由健康、体力、知识、经验、技能构成的资本存量（舒尔茨定义）。 \n 2 诞生标志： 1960年舒尔茨在美国经济学会年会上发表《人力资本投资》演讲；贝克尔1964年《人力资本》最终确立理论体系。 \n 3 核心命题： 人力资本投资收益率高于物质资本；教育培训是人力资本形成的主要途径；普通培训与专用培训成本分担不同。 \n 4 HRM意义： 企业培训体系设计、薪酬激励结构、人才招募与保留政策均建立在人力资本理论基础上。 \n \n \n \n \n \n \n \n §2.2.3 人力资本产权特性（经典考点） \n 页码 P053–057 · 三大特性 · 与激励设计密切相关 \n \n \n ★★★★ 重要 \n 名词解释 / 简答 \n \n \n \n \n 📌 教材核心概念： 人力资本产权是 市场交易过程中人力资本所有权及其派生的使用权、支配权和收益权等一系列权利的总称 ，是制约人力行使这些权利的规则。 所有权永远归属于人力资本承载者本身 ，其他权利可以分离。\n \n \n \n ① 排他性（Exclusivity） \n 人力资本 天然归其承载者所有 ，任何主体无法获得所有权。即使企业获得使用权，所有权仍属个人。 🌰 如：你的技能是你的，公司只是"租用"了你的技能，买不走。 \n \n \n ② 不可分割性（Indivisibility） \n 人力资本产权 不能像物质资本那样分割转让 。市场交易中，人力资本所有者让渡的只是 使用权 ，所有权无法让渡，也无法分割。 🌰 如：你可以受雇于公司，但你的知识不能"卖"给公司。 \n \n \n ③ 所有权对派生的制约性 \n 所有者让渡使用权后，若契约 不完备或不公平 ，所有者会：① 偷懒 （契约未明确责任或缺乏监督）② 隐藏人力资本 （觉得不公平时）。 所有权是终极控制权。 \n \n \n \n \n 产权维度 物质资本 人力资本 \n \n 所有权归属 可以转让（卖出去） 永远属于载体个人 ，不可转让 \n 使用权 可以租借 可以让渡（雇佣合同） \n 可分割性 可以部分出售 不可分割 \n 控制能力 物理控制即可 需要激励机制（因为所有者能"偷懒"） \n \n \n \n \n 🎯 管理启示： 人力资本产权的排他性和不可分割性决定了 激励机制设计的重要性 。企业不能"买断"员工的人力资本，只能通过合理的薪酬、晋升、认可等机制吸引员工愿意充分发挥其人力资本——这正是现代HRM的核心任务。\n \n \n 【2019复试面试·核心竞争力·人力资本不可复制性】 \n 【2023复试·动态能力·人力资本积累】 \n \n \n \n \n \n \n \n §2.3 委托-代理理论 · Principal-Agent Theory \n 页码 P057–066 · 两权分离 · 信息不对称 · 激励机制设计 \n \n \n ★★★★★ 核心重点 \n 名词解释 / 论述 / 案例 \n \n \n \n \n \n \n 📖 委托-代理关系定义（罗斯 Ross,1973） \n "如果 当事人双方 ，其中代理人一方 代表委托人一方的利益行使某些决策权 ，则代理关系就随之产生了。" 起源：1932年 伯利(Berle) 和 米恩斯(Means) 提出两权分离问题（"伯利—米恩斯之谜"） \n \n \n 🎒 小学生版 \n 股东（老板）把公司交给经理（员工）打理，但经理有自己的小算盘：他可能多花费公司的钱、不拼命工作，因为亏了也是老板的损失。这种"老板不在，员工偷懒"的问题就是委托-代理问题。 \n \n \n \n \n ⚡ 委托-代理问题产生的两大根源 \n \n \n \n ① 利益不对称 \n 委托人（股东）→追求 公司利益最大化 \n 代理人（经理）→追求 个人收入最大化 、权利扩大、舒适工作条件 \n 当利益相悖时，代理人可能侵占委托人利益→产生 代理问题 \n \n \n ② 信息不对称 \n 代理人拥有 信息优势 （努力程度、才能等委托人难以观察） \n 事前： 逆向选择 （选了能力差的代理人） \n 事后： 道德风险 （代理人"磨洋工"）\n \n \n \n 📌 代理成本 ：委托人为防止代理人损害利益而付出的监督成本、激励成本和代理人不当行为造成的损失之和。\n \n \n \n \n \n 🔬 委托-代理理论的重要拓展（考研必知） \n \n \n \n 拓展方向 核心内容 关键词 \n \n \n 声誉模型 （法玛 Fama,1980） \n 在竞争经理人市场中，即使没有显性激励合同，经理也会积极工作——因为努力可以改进在经理市场的声誉，提高未来收入。 "时间"可以解决代理问题。 \n 声誉效应、隐性激励、经理市场 \n \n \n 棘轮效应 （威茨曼1980） \n 当年业绩越好→下年标准越高→代理人意识到"努力=提高标准=被鞭打快牛"→故意控制表现。中国俗称" 鞭打快牛 "。 \n 动态激励、标准上调、反向激励 \n \n \n 多任务模型 （霍姆斯特姆 1991） \n 当代理人从事多项工作时，对某项可量化工作的激励可能挤压不可量化工作的努力→建议 固定工资 而非纯激励工资 \n 多维度任务、可观测性差异 \n \n \n 打破预算平衡 （霍姆斯特姆1982） \n 团队工作中存在"搭便车"（Free-rider）问题，引入索取剩余的委托人可以"打破预算平衡"、用团队惩罚/激励消除搭便车 \n 搭便车、团队激励、剩余索取 \n \n \n \n \n \n \n \n \n 🇨🇳 委托-代理理论与中国国企改革 + 股权激励 \n \n \n 国企应用逻辑： \n 政府=委托人；国有企业经营者=代理人 \n 信息不对称→"事前机会主义"（逆向选择）+ "事后机会主义"（道德风险） \n 最优策略：将代理人转换为 利益共同体 （股权激励、利润分享）\n \n \n 股权激励（教材原句）： "通过股权激励，委托人将代理人转变成 合伙者 ，从而使得其利益趋于一致，来有效解决效用函数不一致的问题。" \n → 这是委托-代理理论在HRM中最重要的实践形式\n \n \n \n 🎯 对HRM的核心指导 \n 设计长期激励机制（股权、期权）；绩效考核与利益分配挂钩；减少信息不对称（透明化考核）；声誉机制+经理人市场 \n \n \n 🏢 现实案例 \n 华为：全员持股计划（TUP）；阿里巴巴：长期股权激励；国有企业混合所有制改革中引入管理层持股 \n \n \n \n \n \n 【2016笔试·企业战略与HRM匹配·激励机制】 \n 【2019复试·绩效管理与薪酬挂钩·代理理论视角】 \n 【2021复试·人才盘点·长期激励设计】 \n \n \n 🎤 复试回答模板：委托-代理理论 \n 1 定义： 委托-代理关系是当事人双方中，代理人代表委托人利益行使决策权的契约关系。起源于伯利-米恩斯的两权分离研究（1932）。 \n 2 核心问题： 利益不对称（目标不一致）+ 信息不对称（道德风险+逆向选择）→代理成本产生。 \n 3 解决思路： ①显性激励机制（绩效薪酬与结果挂钩）②隐性激励（声誉机制+经理人市场）③股权激励（将代理人变合伙人）④完善契约（减少道德风险）。 \n 4 总结： 委托-代理理论为企业家及经营者激励机制设计（尤其是长期激励）提供了理论基础，与人力资本理论共同构成现代HRM激励设计的核心理论支柱。 \n \n 📌 延伸问题：棘轮效应如何影响激励机制？ \n \n 棘轮效应指：当年高业绩→次年标准提高→代理人为避免"自我加压"而故意压低表现（"鞭打快牛"）。 \n 对策：①长期合同+历史平均基准而非年度最高业绩作为标准；②明确约定标准调整幅度；③声誉机制+市场竞争替代棘轮激励。\n \n \n \n \n \n \n \n 📊 三大理论对比总结表 \n \n \n \n 维度 劳动经济学理论 人力资本理论 委托-代理理论 \n \n \n \n 核心问题 \n 劳动力市场如何运作？工资如何决定？ \n 为什么要对人投资？投资收益如何？ \n 两权分离下，如何激励代理人？ \n \n \n 分析层次 \n 宏观（市场层面）+ 微观（个体供求） \n 宏观（经济增长）+ 微观（个人收入） \n 微观（企业内部组织层面） \n \n \n 关键人物 \n 亚当·斯密、马歇尔、凯恩斯、威茨曼 \n 舒尔茨（诞生）、贝克尔（确立） \n 伯利&米恩斯（起源）、罗斯（定义）、法玛（声誉） \n \n \n 对HRM贡献 \n 薪酬设计、人员配置、招聘规模、培训经济分析 \n 培训体系建设、人才投资决策、职业发展规划 \n 长期激励设计、股权激励、绩效契约、减少信息不对称 \n \n \n 核心概念 \n 效率工资、二元市场、向后弯曲的供给曲线 \n 人力资本存量、排他性/不可分割性/所有权制约性 \n 逆向选择、道德风险、代理成本、棘轮效应、声誉模型 \n \n \n 历年真题频次 \n ⭐⭐⭐⭐（中高频） \n ⭐⭐⭐⭐⭐（超高频） \n ⭐⭐⭐⭐（高频） \n \n \n \n \n \n 🔄 三大理论的联系 \n \n 劳动经济学 解释劳动力市场 外部环境 \n + \n 人力资本理论 解释为什么要投资人 产权决定激励必要性 \n + \n 委托-代理理论 解释如何设计激励 机制（内部组织） \n → \n 现代HRM实践 薪酬/培训/绩效 激励机制设计 \n \n \n \n \n \n 🏆 历年真题汇总（2016–2025） \n \n \n \n 年份 题目类型 涉及知识点 第二章相关内容 \n \n \n \n 2016 \n 论述 \n 企业战略与人力资源战略的匹配关系 \n 人力资本理论：企业战略需要匹配相应的人力资本投资策略 \n \n \n 2017 \n 简答 \n 胜任力模型构建流程 \n 人力资本产权特性：能力是个人人力资本的核心构成 \n \n \n 2019 \n 复试面试 \n 绩效管理与薪酬挂钩 \n 委托-代理理论：显性激励机制（绩效薪酬设计） \n \n \n 2020 \n 简答 \n 薪酬结构设计原则 \n 效率工资理论、劳资谈判理论、分享经济理论 \n \n \n 2021 \n 复试面试 \n 人才盘点与继任计划 \n 人力资本存量盘点；内部劳动力市场晋升机制 \n \n \n 2022 \n 简答 \n 资源基础观（RBV） \n 人力资本理论：人力资本是稀缺、难以模仿的战略资源 \n \n \n 2023 \n 复试面试 \n 动态能力理论 \n 人力资本积累与更新是动态能力的重要基础 \n \n \n 2024 \n 简答 \n HRBP角色与能力要求 \n 委托-代理：HRBP作为人力资源内部服务代理人的角色设计 \n \n \n 2025 \n 简答 \n 薪酬激励设计要点（固定+浮动+长期） \n 委托-代理理论（长期激励）+ 效率工资理论 + 分享经济理论 \n \n \n \n \n \n 🎯 核心规律： 第二章虽是理论基础章，但 每年笔试都有2–3道题涉及本章 ，尤其是 人力资本理论 （必考）和 委托-代理理论 （高频）。薪酬设计类题目几乎必然要用到本章理论作为论述依据。\n \n \n \n \n ⚡ 30秒复习模块（超简版） \n \n \n 劳动经济学5派： 古典→制度→凯恩斯→新古典（主流）→新制度\n \n \n 工资理论6种： 早期/边际/均衡/谈判/ 效率 /分享\n \n \n 二元市场： 主要（高薪稳定）vs 次要（低薪不稳），派遣工问题\n \n \n 人力资本诞生： 舒尔茨1960年演讲；贝克尔1964年确立\n \n \n 人力资本内涵： 不是人本身，是质量因素；有经济价值；后天获得\n \n \n 人力资本产权3特性： 排他性 / 不可分割性 / 所有权制约派生权\n \n \n 委托-代理2不对称： 利益不对称 + 信息不对称（道德风险+逆向选择）\n \n \n 委托-代理拓展： 声誉模型 / 棘轮效应 / 多任务模型 / 打破预算平衡\n \n \n 委托-代理应用： 股权激励=将代理人变合伙人，解决利益不一致\n \n \n 效率工资案例： 福特1914年·5美元·生产率↑·离职↓\n \n \n \n \n \n 🎤 背诵版总结（复试口述版） \n 第二章核心： 三大经济理论——劳动经济学、人力资本、委托代理 \n 劳动经济学： 五大学派·古制凯新古新制；工资理论·早边均谈效分；效率工资：高薪→高效，福特5美元；二元市场：主次两分，派遣工问题 \n 人力资本： 1960年舒尔茨演讲→诞生；1964年贝克尔著作→确立；内涵=质量因素+有价值+后天习得；产权三特性=排他+不可分割+所有权制约 \n 委托代理： 两权分离→伯利米恩斯1932；两大不对称：利益+信息（逆选择+道德风险）；代理成本；解决：声誉模型·棘轮效应·多任务·股权激励 \n 三论关系： 劳动经济学→外部市场参照；人力资本→投资决策依据；委托代理→内部激励设计；三者共同→现代HRM理论基础 \n 必背教材原句： 马歇尔："所有资本中最有价值的是对人本身的投资。"；罗斯定义代理关系；人力资本产权：所有权永远属于载体个人；效率工资三假设：偷懒·成本·工资决定生产率 \n \n \n \n 🧩 本章知识终极串联（逻辑关系图） \n \n \n 为什么需要经济学理论？ \n \n \n \n 劳动经济学 \n \n 解答"市场层面"问题 ↓ 劳动力价格/供求 ↓ 薪酬设计外部参照 \n \n \n \n 人力资本理论 \n \n 解答"为何投资人"问题 ↓ 人力资本收益率高于物质资本 ↓ 培训/开发决策依据 \n \n \n \n 委托-代理理论 \n \n 解答"如何激励"问题 ↓ 信息不对称→激励机制设计 ↓ 绩效/股权激励实践 \n \n \n \n \n \n 共同构成现代人力资源管理的经济学理论基础\n \n \n \n \n \n \n ✍ 课后自我检测 \n 建议合书作答，再对照参考要点 \n \n Q·01 — 名词解释 \n 什么是效率工资理论？其三大假设是什么？ \n 答题要点： 定义（工资↑→效率↑→有效劳动成本↓）→三假设（①偷懒②监督有成本③生产率取决于工资率）→案例（福特5美元）→HRM意义（高薪留才策略） \n \n \n Q·02 — 名词解释 \n 什么是二元劳动力市场理论？主要市场与次要市场有何区别？ \n 答题要点： 提出者（多林格尔&帕尔勒1971）→定义（劳动力市场分割为主次两部分）→主要市场（高薪稳定晋升）vs次要市场（低薪不稳定）→中国现实（劳务派遣）→HRM启示 \n \n \n Q·03 — 简答 \n 简述人力资本产权的三个特性，并说明其对HRM的意义。 \n 答题要点： ①排他性（天然属个人，不可被剥夺）→②不可分割性（只能让渡使用权，不能转让所有权）→③所有权制约性（不完备契约→偷懒/隐藏能力）→意义：激励机制设计的必要性 \n \n \n Q·04 — 简答 \n 2020年真题改编 \n 简述薪酬设计的主要经济学理论依据，结合本章三大理论分析。 \n 答题框架： ①劳动经济学→工资理论6种（尤其效率工资、均衡工资）提供外部参照；②人力资本理论→人力资本产权排他性决定激励必要性；③委托-代理理论→显性激励（绩效薪酬）+隐性激励（声誉）+长期激励（股权）三维设计 \n \n \n Q·05 — 论述 \n 2025年真题改编 \n 论述：如何从委托-代理理论视角设计"固定+浮动+长期"的薪酬激励体系？ \n 答题框架： ①委托-代理问题根源（利益+信息不对称）→②固定薪酬（基本保障，风险承担）→③浮动薪酬（显性激励，短期绩效挂钩，克服道德风险）→④长期激励（股权激励=将代理人变合伙人）→⑤防棘轮效应（长期合同，合理基准设定）→⑥声誉机制（经理市场对隐性激励的补充） \n \n \n Q·06 — 对比 \n 比较人力资本理论与委托-代理理论在HRM中的应用差异。 \n 关键对比： 人力资本理论→关注"投资角度"，解释企业为何要培训员工（收益率）、职业发展设计；委托代理理论→关注"激励角度"，解释企业如何让员工愿意为组织目标努力。前者是培训/开发的理论基础，后者是绩效/薪酬设计的理论基础。二者互补。 \n \n \n \n \n ↑ \n \n \n 📚 中南大学企业管理学硕复试笔记 · 第二章 人力资源相关经济理论 · P036–066 · 基于颜爱民《人力资源管理（第3版）》 · 2016–2025真题整合版 · 生成日期：2026-03-08';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ===== 顶部固定导航 ===== -->
+<nav id="top-nav">
+  <div class="nav-header">
+    <span class="nav-title">📚 中南大学企业管理学硕 · 人力资源管理笔记</span>
+    <div class="nav-controls">
+      
+      <button class="nav-btn" onclick="toggleDark()">🌙 夜间模式</button>
+      <button class="nav-btn" id="back-top-nav" onclick="scrollToTop()">⬆ 顶部</button>
+    </div>
+  </div>
+  <div class="nav-menu">
+    <a class="nav-item" href="#sec-logic">🔗 章节逻辑</a>
+    <a class="nav-item" href="#sec-mindmap">🧠 思维导图</a>
+    <a class="nav-item" href="#kp-labor">§1 劳动经济学</a>
+    <a class="nav-item" href="#kp-wage">§1.5 工资理论</a>
+    <a class="nav-item" href="#kp-human-capital">§2 人力资本</a>
+    <a class="nav-item" href="#kp-property">§2.3 产权特性</a>
+    <a class="nav-item" href="#kp-agent">§3 委托-代理</a>
+    <a class="nav-item" href="#sec-compare">📊 对比总结</a>
+    <a class="nav-item" href="#sec-exam">🏆 历年真题</a>
+    <a class="nav-item" href="#sec-30sec">⚡ 30秒复习</a>
+    <a class="nav-item" href="#sec-recite">🎤 背诵版</a>
+    <a class="nav-item" href="#sec-quiz">✍ 自我检测</a>
+  </div>
+</nav>
+
+<div class="main-container">
+
+<!-- ===== Hero 标题区 ===== -->
+<div class="hero fade-in">
+  <div class="hero-chapter">第 二 章 · 人力资源管理（第3版）颜爱民</div>
+  <div class="hero-title">人力资源相关经济理论</div>
+  <div class="hero-subtitle">劳动经济学 · 人力资本理论 · 委托-代理理论</div>
+  <div class="hero-tags">
+    <span class="hero-tag">📖 教材页码: P036–066</span>
+    <span class="hero-tag">⭐ 重要等级: ★★★★★</span>
+    <span class="hero-tag">🎯 复试考察概率: ★★★★（较高）</span>
+    <span class="hero-tag">📝 常考题型: 名词解释·简答·论述</span>
+  </div>
+  <div class="hero-meta">生成日期：2026-03-08 · 整合2016–2025年中南大学企业管理学硕真题</div>
+</div>
+
+<!-- ===== §0 本章逻辑结构 ===== -->
+<div id="sec-logic" class="section-box fade-in">
+  <div class="section-title"><div class="section-icon">🔗</div>本章与其他章节逻辑关系图</div>
+  <div class="logic-flow">
+    <div class="flow-box">第1章<br><small>HRM概述</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box active">📍第2章<br><small>经济理论基础</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">第3章<br><small>组织与HRM</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">第4章<br><small>文化与HRM</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">第5章<br><small>人力资源规划</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">第9章<br><small>薪酬激励设计</small></div>
+  </div>
+  <div style="margin-top:14px;padding:12px 16px;background:var(--accordion-bg);border-radius:8px;font-size:0.85rem;color:var(--text-secondary);">
+    💡 <strong>逻辑说明：</strong>本章是全书理论基础，为后续实务章节提供经济学依据。<span class="highlight-keyword">劳动经济学</span>→薪酬/招聘；<span class="highlight-keyword">人力资本理论</span>→培训/绩效/人才投资；<span class="highlight-keyword">委托-代理理论</span>→长期激励/股权激励/绩效契约设计。
+  </div>
+</div>
+
+<!-- ===== §0 思维导图 ===== -->
+<div id="sec-mindmap" class="section-box fade-in">
+  <div class="section-title"><div class="section-icon">🧠</div>章节思维导图（知识框架）</div>
+  <div class="mindmap">
+    <div class="mm-center">
+      <div class="mm-core">第二章：人力资源相关经济理论</div>
+    </div>
+    <div class="mm-branches">
+      <div class="mm-branch b1">
+        <div class="mm-branch-title">§2.1 劳动经济学理论</div>
+        <div class="mm-items">
+          <span class="mm-item">5大流派</span>
+          <span class="mm-item">劳动力供给</span>
+          <span class="mm-item">劳动力需求</span>
+          <span class="mm-item">二元劳动力市场</span>
+          <span class="mm-item">6大工资理论</span>
+          <span class="mm-item">对HRM的贡献</span>
+        </div>
+      </div>
+      <div class="mm-branch b2">
+        <div class="mm-branch-title">§2.2 人力资本理论</div>
+        <div class="mm-items">
+          <span class="mm-item">舒尔茨&贝克尔</span>
+          <span class="mm-item">人力资本内涵</span>
+          <span class="mm-item">排他性</span>
+          <span class="mm-item">不可分割性</span>
+          <span class="mm-item">所有权制约性</span>
+          <span class="mm-item">投资收益率</span>
+        </div>
+      </div>
+      <div class="mm-branch b3">
+        <div class="mm-branch-title">§2.3 委托-代理理论</div>
+        <div class="mm-items">
+          <span class="mm-item">两权分离</span>
+          <span class="mm-item">信息不对称</span>
+          <span class="mm-item">代理成本</span>
+          <span class="mm-item">激励相容</span>
+          <span class="mm-item">声誉模型</span>
+          <span class="mm-item">棘轮效应</span>
+          <span class="mm-item">股权激励</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================================
+     知识点卡片区
+     =================================================================== -->
+
+<!-- ===== KP1: 劳动经济学理论概述 ===== -->
+<div id="kp-labor" class="kcard fade-in">
+  <div class="kcard-header blue">
+    <div>
+      <div class="kcard-title">§2.1 劳动经济学理论 · Labor Economics</div>
+      <div style="font-size:0.8rem;opacity:0.85;margin-top:4px;">页码 P038–045 · 5大流派 · 供求弹性 · 二元市场</div>
+    </div>
+    <div class="kcard-meta">
+      <span class="kcard-badge">★★★★ 重要</span>
+      <span class="kcard-badge">简答 / 名词解释</span>
+    </div>
+  </div>
+  <div class="kcard-body">
+
+    <!-- 核心定义 -->
+    <div class="kcard-grid">
+      <div class="kcard-item blue-left">
+        <div class="kcard-item-label">📖 定义（教材原句）</div>
+        <div class="kcard-item-content">劳动经济学主要以<strong>劳动关系及其运行规律、劳动力市场运行和结果、劳动力资源投入与产出</strong>以及与劳动相关的问题作为研究对象。概括地讲，就是以<strong>劳动力市场现象及劳动力市场运行规律</strong>为主要研究内容。</div>
+      </div>
+      <div class="kcard-item blue-left">
+        <div class="kcard-item-label">🎒 小学生版理解</div>
+        <div class="kcard-item-content">就像研究"工人市场"的学问——为什么有人工资高有人工资低？为什么找工作有时候容易有时候难？工厂为什么要雇用工人？工会有什么用？这些问题都是劳动经济学研究的。</div>
+      </div>
+    </div>
+
+    <!-- 5大流派对比 -->
+    <details open>
+      <summary>🏫 五大流派对比（超高频考点）</summary>
+      <div class="details-content">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>流派</th><th>代表人物</th><th>核心观点</th><th>关键词</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="compare-tag tag-blue">古典学派</span></td>
+                <td>亚当·斯密、李嘉图</td>
+                <td>市场竞争决定工资，劳动供求均衡决定价格，工资差异源于职业性质不同</td>
+                <td>竞争、供求、均衡</td>
+              </tr>
+              <tr>
+                <td><span class="compare-tag tag-green">制度学派</span></td>
+                <td>埃里（奠基人）</td>
+                <td>侧重历史和制度分析，工会等社会组织影响劳动力市场；不做模型/数量分析</td>
+                <td>工会、制度、历史</td>
+              </tr>
+              <tr>
+                <td><span class="compare-tag tag-orange">凯恩斯学派</span></td>
+                <td>凯恩斯</td>
+                <td>有效需求不足→失业；政府干预实现充分就业；拓展至政策层面</td>
+                <td>政府干预、充分就业</td>
+              </tr>
+              <tr>
+                <td><span class="compare-tag tag-red">新古典学派</span></td>
+                <td>马歇尔、庇古、道格拉斯</td>
+                <td><strong>当代主流</strong>；竞争市场供求均衡；边际生产力决定工资；刘易斯研究工会</td>
+                <td>边际生产力、主流</td>
+              </tr>
+              <tr>
+                <td><span class="compare-tag tag-blue">新制度学派</span></td>
+                <td>帕尔勒、多林格尔<br>威廉姆森</td>
+                <td>二元劳动力市场；内部劳动力市场；有限理性+竞争效率，对HRM政策指导最强</td>
+                <td>二元市场、内部市场</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mnemonic-box">
+          <div class="mnemonic-title">🧠 助记口诀（流派）</div>
+          <div class="mnemonic-content">古（古典）制（制度）凯（凯恩斯）新古（新古典）新制（新制度）——"古制凯·新古新制"</div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 劳动力供给弹性 -->
+    <details>
+      <summary>📈 劳动力供给的四种弹性类型</summary>
+      <div class="details-content">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>类型</th><th>特征</th><th>典型情景</th></tr></thead>
+            <tbody>
+              <tr><td><strong>无限弹性</strong></td><td>某工资水平下供给无穷多</td><td>发展中国家农村剩余劳动力（刘易斯模型）</td></tr>
+              <tr><td><strong>正弹性</strong></td><td>工资↑→供给↑</td><td>一般劳动力市场正常状态</td></tr>
+              <tr><td><strong>无弹性</strong></td><td>工资变化不影响供给量</td><td>短期内高技能人才极度稀缺时</td></tr>
+              <tr><td><span class="hl-red">逆变弹性</span></td><td>工资过高→供给反而减少（向后弯曲）</td><td><strong>收入效应>替代效应</strong>，偏好闲暇，"躺平"现象</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="highlight-box">
+          📌 <strong>核心原理：</strong>"向后弯曲的劳动力供给曲线"——当工资高到足够满足物质需求时，<span class="highlight-keyword">收入效应</span>大于<span class="highlight-keyword">替代效应</span>，人们会选择更多闲暇，减少劳动供给。
+        </div>
+      </div>
+    </details>
+
+    <!-- 二元劳动力市场 -->
+    <details>
+      <summary>🏭 分割的二元劳动力市场理论（重点）</summary>
+      <div class="details-content">
+        <div class="kcard-grid">
+          <div class="kcard-item">
+            <div class="kcard-item-label">📖 提出者</div>
+            <div class="kcard-item-content">1971年 <strong>多林格尔(Doeringer)</strong> 和 <strong>帕尔勒(Piore)</strong> 提出，将劳动力市场划分为<strong>主要市场</strong>和<strong>次要市场</strong></div>
+          </div>
+          <div class="kcard-item">
+            <div class="kcard-item-label">🏗 1954年先驱</div>
+            <div class="kcard-item-content"><strong>克拉克·科尔</strong>《劳动力市场的分割》首提"内部劳动力市场"和"外部劳动力市场"概念</div>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>对比维度</th><th>主要劳动力市场（Primary）</th><th>次要劳动力市场（Secondary）</th></tr></thead>
+            <tbody>
+              <tr><td>工资水平</td><td class="hl-green">高</td><td class="hl-red">低</td></tr>
+              <tr><td>工作条件</td><td class="hl-green">好</td><td class="hl-red">差</td></tr>
+              <tr><td>就业稳定性</td><td class="hl-green">稳定，有保障</td><td class="hl-red">变化大，随意解雇</td></tr>
+              <tr><td>晋升机会</td><td class="hl-green">多，有路径</td><td class="hl-red">少</td></tr>
+              <tr><td>工资决定</td><td>由<strong>职位本身</strong>决定（管理规则）</td><td>由劳动力<strong>供求</strong>决定</td></tr>
+              <tr><td>中国案例</td><td>国有企业正式员工、世界500强员工</td><td>劳务派遣制员工、临时工</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="highlight-orange">
+          🇨🇳 <strong>中国现实：</strong>劳务派遣公司和派遣制员工是二元市场分割的典型体现——正式工与派遣工同工不同酬，派遣工缺乏<strong>身份认同</strong>和<strong>心理契约</strong>，是企业HRM的重要挑战。
+        </div>
+      </div>
+    </details>
+
+    <!-- 案例 -->
+    <div class="highlight-green">
+      🏭 <strong>企业/生活案例：</strong>宇航公司的吉姆·史密斯案例——公司资助员工获得MBA学位，但员工却因看不到晋升机会而跳槽。这说明仅靠教育投资不够，还必须有配套的<strong>内部晋升通道</strong>（内部劳动力市场机制），否则培训投资流失，形成"为竞争对手培训"的困境。
+    </div>
+
+    <!-- 真题标签 -->
+    <div class="exam-tags-row">
+      <span class="exam-tag">【2016笔试·论述】企业战略与人力资源战略的匹配</span>
+      <span class="exam-tag">【2018笔试·PESTEL分析·劳动力市场相关】</span>
+      <span class="exam-tag">【2022复试面试·资源基础观(RBV)·劳动力市场】</span>
+    </div>
+
+    <!-- 复试回答模板 -->
+    <div class="interview-box">
+      <div class="interview-title">🎤 复试回答模板：劳动经济学对HRM的贡献</div>
+      <div class="interview-step"><span class="step-num">1</span><span><strong>定义：</strong>劳动经济学以劳动力市场现象及运行规律为研究对象，从宏观和微观两个维度研究劳动力供求、工资决定等问题。</span></div>
+      <div class="interview-step"><span class="step-num">2</span><span><strong>核心贡献：</strong>① 工资决策依据（效率工资、市场均衡）→薪酬设计；② 培训成本收益分析→人才开发决策；③ 二元劳动力市场→内部晋升政策；④ 供求弹性→人员配置优化。</span></div>
+      <div class="interview-step"><span class="step-num">3</span><span><strong>举例：</strong>福特1914年"5美元一天"的效率工资实践，使生产率大幅提升，离职率大幅下降——这是效率工资理论的最早实践。</span></div>
+      <div class="interview-step"><span class="step-num">4</span><span><strong>总结：</strong>劳动经济理论为HRM提供了工资决定、人才配置、培训投资的理论框架，是连接经济学与管理实践的桥梁。</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== KP2: 工资理论 ===== -->
+<div id="kp-wage" class="kcard fade-in">
+  <div class="kcard-header teal">
+    <div>
+      <div class="kcard-title">§2.1.5 六大工资理论（超高频！）</div>
+      <div style="font-size:0.8rem;opacity:0.85;margin-top:4px;">页码 P044–046 · 名词解释 / 简答必考点</div>
+    </div>
+    <div class="kcard-meta">
+      <span class="kcard-badge">★★★★★ 必背</span>
+      <span class="kcard-badge">名词解释 / 简答</span>
+    </div>
+  </div>
+  <div class="kcard-body">
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>#</th><th>理论名称</th><th>代表人物</th><th>核心观点（一句话）</th><th>与HRM的联系</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>早期工资理论</strong><br>（生存工资论）</td>
+            <td>配第、杜尔阁、斯密、李嘉图</td>
+            <td>工资=维持工人最低生活资料价值；竞争决定工资高低</td>
+            <td>最低工资立法依据；薪酬底线设定</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>边际生产力工资理论</strong></td>
+            <td>克拉克</td>
+            <td>工资由劳动的<span class="hl-blue">边际生产力</span>决定；同质劳动者边际产出即工资标准</td>
+            <td>绩效薪酬的理论基础（产出导向）</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>均衡工资理论</strong></td>
+            <td>马歇尔</td>
+            <td>工资=劳动<span class="hl-blue">供给价格</span>（生活成本）与<span class="hl-blue">需求价格</span>（边际生产力）均衡</td>
+            <td>薪酬市场调查、外部竞争力分析</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>劳资谈判工资理论</strong><br>（集体交涉理论）</td>
+            <td>韦伯、庇古、希克斯</td>
+            <td>工资取决于<span class="hl-blue">劳资双方力量对比</span>和集体谈判；存在"强制性比较"效应</td>
+            <td>工会谈判、薪酬公平感；集体劳动合同</td>
+          </tr>
+          <tr style="background: var(--highlight-yellow);">
+            <td>5</td>
+            <td><span class="hl-red">效率工资理论</span>（重点）</td>
+            <td>20世纪70年代末提出</td>
+            <td>工资↑→<span class="hl-red">工作效率↑</span>→单位有效劳动成本反而下降；假设：①工人默认偷懒②监督有成本③生产率取决于工资率</td>
+            <td>解释高薪留才；福特5美元案例；高薪+低离职率策略</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>分享经济理论</strong></td>
+            <td>威茨曼（1984）</td>
+            <td>用"分享制"替代固定工资制；工资与<span class="hl-blue">企业利润/收入挂钩</span>（分享基金）</td>
+            <td>利润分享计划、股权激励、员工持股（ESOP）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mnemonic-box">
+      <div class="mnemonic-title">🧠 助记口诀（6大工资理论）</div>
+      <div class="mnemonic-content">早（早期）边（边际）均（均衡）谈（谈判）效（效率）分（分享）——"早边均·谈效分"</div>
+    </div>
+
+    <div class="highlight-box">
+      📌 <strong>效率工资理论 3 大假设（必背）：</strong><br>
+      ①在没有物质激励的条件下，工人是<span class="highlight-keyword">偷懒</span>的；<br>
+      ②信息不对称的劳动关系中，有效监督工人的偷懒行为需要<span class="highlight-keyword">成本</span>；<br>
+      ③工人的劳动生产率<span class="highlight-keyword">取决于工资率</span>。<br>
+      历史案例：1914年1月12日，亨利·福特宣布日薪5美元（当时最低工资2美元），8小时工作制，结果生产率大幅提升、辞职与解雇大量减少。
+    </div>
+
+    <div class="exam-tags-row">
+      <span class="exam-tag">【2020笔试·薪酬结构设计原则·效率工资相关】</span>
+      <span class="exam-tag">【2025笔试·薪酬激励设计要点】</span>
+      <span class="exam-tag">【2023复试·新生代员工激励·效率工资视角】</span>
+    </div>
+
+    <details>
+      <summary>📊 易混淆：效率工资 vs 绩效薪酬</summary>
+      <div class="details-content">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>维度</th><th>效率工资（Efficiency Wage）</th><th>绩效薪酬（Merit Pay）</th></tr></thead>
+            <tbody>
+              <tr><td>核心逻辑</td><td>高工资→提升生产率（因果方向：工资→效率）</td><td>高绩效→高薪酬（因果方向：绩效→薪酬）</td></tr>
+              <tr><td>主动方</td><td>雇主主动支付高于市场的工资</td><td>员工先表现，再按结果获酬</td></tr>
+              <tr><td>信息需求</td><td>不需要精确测量个人绩效</td><td>必须精确衡量个人绩效</td></tr>
+              <tr><td>应用场景</td><td>难以监控、团队工作、知识工作</td><td>销售、可量化生产工作</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+  </div>
+</div>
+
+<!-- ===== KP3: 人力资本理论 ===== -->
+<div id="kp-human-capital" class="kcard fade-in">
+  <div class="kcard-header">
+    <div>
+      <div class="kcard-title">§2.2 人力资本理论 · Human Capital Theory</div>
+      <div style="font-size:0.8rem;opacity:0.85;margin-top:4px;">页码 P046–057 · 舒尔茨 · 贝克尔 · 人力资本内涵</div>
+    </div>
+    <div class="kcard-meta">
+      <span class="kcard-badge">★★★★★ 核心重点</span>
+      <span class="kcard-badge">名词解释 / 论述</span>
+    </div>
+  </div>
+  <div class="kcard-body">
+
+    <div class="kcard-grid">
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 人力资本定义（舒尔茨·教材主流观点）</div>
+        <div class="kcard-item-content">人力资本与物质资本一样，是<strong>体现在劳动者身上</strong>，通过对人的投资形成的，并由劳动者的<strong>健康、体力、知识、经验和技能</strong>所构成的资本存量。</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🎒 小学生版</div>
+        <div class="kcard-item-content">就像给机器投钱可以提升机器产能，给人投资（读书、培训、锻炼）也能提升人的"生产力"。这种投资在人身上形成的能力就是"人力资本"——是活的、会增值的资本。</div>
+      </div>
+    </div>
+
+    <!-- 发展历程时间线 -->
+    <details open>
+      <summary>🕰 人力资本理论发展历程（三阶段）</summary>
+      <div class="details-content">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>阶段</th><th>时期</th><th>代表人物/事件</th><th>主要贡献</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>第一阶段</strong><br>早期萌芽</td>
+                <td>经济学诞生初期</td>
+                <td>威廉·配第、亚当·斯密、约翰·穆勒、马歇尔</td>
+                <td>斯密：教育培训是固定资本投资；马歇尔："<span class="highlight-keyword">所有资本中最有价值的是对人本身的投资</span>"；费雪1906年首提人力资本概念</td>
+              </tr>
+              <tr style="background:var(--highlight-yellow);">
+                <td><strong>第二阶段</strong><br><span class="hl-red">现代理论确立</span></td>
+                <td>20世纪50-60年代</td>
+                <td><span class="hl-red">舒尔茨（1960）</span>；贝克尔（1964）；明塞（Mincer）</td>
+                <td>舒尔茨1960年《人力资本投资》演讲→<strong>现代人力资本理论诞生标志</strong>；贝克尔《人力资本》→理论最终确立；建立在职培训微观模型</td>
+              </tr>
+              <tr>
+                <td><strong>第三阶段</strong><br>深化发展</td>
+                <td>20世纪80年代后</td>
+                <td>罗莫（Romer 1986）；卢卡斯（Lucas 1988）</td>
+                <td>内生性经济增长理论；人力资本是最重要内生变量；知识经济时代的理论基石</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mnemonic-box">
+          <div class="mnemonic-title">🧠 助记</div>
+          <div class="mnemonic-content">舒尔茨1960年演讲→诞生；贝克尔1964年著作→确立；罗莫卢卡斯80年代→内生增长</div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 人力资本内涵三点 -->
+    <details>
+      <summary>🔑 人力资本概念的三个重要含义（必背）</summary>
+      <div class="details-content">
+        <div class="kcard-full">
+          <div class="kcard-full-label">教材原文三点含义</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;">
+            <div class="highlight-blue">
+              <strong>含义①</strong>：人力资本<span class="highlight-keyword">不是指人本身</span>，而是指人所拥有的知识、技术、能力和健康等<strong>质量因素</strong>
+            </div>
+            <div class="highlight-green">
+              <strong>含义②</strong>：人力资本是一种<span class="highlight-keyword">具有经济价值的生产能力</span>（≠装饰品，能产出经济效益）
+            </div>
+            <div class="highlight-orange">
+              <strong>含义③</strong>：人力资本<span class="highlight-keyword">非与生俱来</span>，而是靠后天<strong>投入成本</strong>而获得（先天差异属"级差地租"）
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- 企业案例 -->
+    <div class="highlight-green">
+      🏢 <strong>企业案例：华为"全球人才储备"战略</strong> ——华为每年在全球顶尖高校招募应届博士生，投入大量资金进行内部培训（相当于舒尔茨的人力资本投资理论）。华为的核心竞争力正是其知识型员工积累的人力资本存量，而非厂房设备等物质资本。
+    </div>
+
+    <div class="exam-tags-row">
+      <span class="exam-tag">【2017笔试·胜任力模型·人力资本视角】</span>
+      <span class="exam-tag">【2022笔试·资源基础观(RBV)·人力资本是稀缺资源】</span>
+      <span class="exam-tag">【2024复试面试·人才盘点与继任计划·人力资本积累】</span>
+    </div>
+
+    <div class="interview-box">
+      <div class="interview-title">🎤 复试回答模板：人力资本理论</div>
+      <div class="interview-step"><span class="step-num">1</span><span><strong>定义：</strong>人力资本是体现在劳动者身上，通过投资形成的，由健康、体力、知识、经验、技能构成的资本存量（舒尔茨定义）。</span></div>
+      <div class="interview-step"><span class="step-num">2</span><span><strong>诞生标志：</strong>1960年舒尔茨在美国经济学会年会上发表《人力资本投资》演讲；贝克尔1964年《人力资本》最终确立理论体系。</span></div>
+      <div class="interview-step"><span class="step-num">3</span><span><strong>核心命题：</strong>人力资本投资收益率高于物质资本；教育培训是人力资本形成的主要途径；普通培训与专用培训成本分担不同。</span></div>
+      <div class="interview-step"><span class="step-num">4</span><span><strong>HRM意义：</strong>企业培训体系设计、薪酬激励结构、人才招募与保留政策均建立在人力资本理论基础上。</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== KP4: 人力资本产权特性 ===== -->
+<div id="kp-property" class="kcard fade-in">
+  <div class="kcard-header orange">
+    <div>
+      <div class="kcard-title">§2.2.3 人力资本产权特性（经典考点）</div>
+      <div style="font-size:0.8rem;opacity:0.85;margin-top:4px;">页码 P053–057 · 三大特性 · 与激励设计密切相关</div>
+    </div>
+    <div class="kcard-meta">
+      <span class="kcard-badge">★★★★ 重要</span>
+      <span class="kcard-badge">名词解释 / 简答</span>
+    </div>
+  </div>
+  <div class="kcard-body">
+
+    <div class="highlight-box">
+      📌 <strong>教材核心概念：</strong>人力资本产权是<strong>市场交易过程中人力资本所有权及其派生的使用权、支配权和收益权等一系列权利的总称</strong>，是制约人力行使这些权利的规则。<strong>所有权永远归属于人力资本承载者本身</strong>，其他权利可以分离。
+    </div>
+
+    <div class="kcard-grid">
+      <div class="kcard-item orange-left">
+        <div class="kcard-item-label">① 排他性（Exclusivity）</div>
+        <div class="kcard-item-content">人力资本<strong>天然归其承载者所有</strong>，任何主体无法获得所有权。即使企业获得使用权，所有权仍属个人。<br><br>🌰 <em>如：你的技能是你的，公司只是"租用"了你的技能，买不走。</em></div>
+      </div>
+      <div class="kcard-item orange-left">
+        <div class="kcard-item-label">② 不可分割性（Indivisibility）</div>
+        <div class="kcard-item-content">人力资本产权<strong>不能像物质资本那样分割转让</strong>。市场交易中，人力资本所有者让渡的只是<strong>使用权</strong>，所有权无法让渡，也无法分割。<br><br>🌰 <em>如：你可以受雇于公司，但你的知识不能"卖"给公司。</em></div>
+      </div>
+      <div class="kcard-item orange-left">
+        <div class="kcard-item-label">③ 所有权对派生的制约性</div>
+        <div class="kcard-item-content">所有者让渡使用权后，若契约<strong>不完备或不公平</strong>，所有者会：①<strong>偷懒</strong>（契约未明确责任或缺乏监督）②<strong>隐藏人力资本</strong>（觉得不公平时）。<br><br>所有权是终极控制权。</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>产权维度</th><th>物质资本</th><th>人力资本</th></tr></thead>
+        <tbody>
+          <tr><td>所有权归属</td><td>可以转让（卖出去）</td><td><span class="hl-red">永远属于载体个人</span>，不可转让</td></tr>
+          <tr><td>使用权</td><td>可以租借</td><td>可以让渡（雇佣合同）</td></tr>
+          <tr><td>可分割性</td><td>可以部分出售</td><td><span class="hl-red">不可分割</span></td></tr>
+          <tr><td>控制能力</td><td>物理控制即可</td><td>需要激励机制（因为所有者能"偷懒"）</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-orange">
+      🎯 <strong>管理启示：</strong>人力资本产权的排他性和不可分割性决定了<strong>激励机制设计的重要性</strong>。企业不能"买断"员工的人力资本，只能通过合理的薪酬、晋升、认可等机制吸引员工愿意充分发挥其人力资本——这正是现代HRM的核心任务。
+    </div>
+
+    <div class="exam-tags-row">
+      <span class="exam-tag">【2019复试面试·核心竞争力·人力资本不可复制性】</span>
+      <span class="exam-tag">【2023复试·动态能力·人力资本积累】</span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== KP5: 委托-代理理论 ===== -->
+<div id="kp-agent" class="kcard fade-in">
+  <div class="kcard-header purple">
+    <div>
+      <div class="kcard-title">§2.3 委托-代理理论 · Principal-Agent Theory</div>
+      <div style="font-size:0.8rem;opacity:0.85;margin-top:4px;">页码 P057–066 · 两权分离 · 信息不对称 · 激励机制设计</div>
+    </div>
+    <div class="kcard-meta">
+      <span class="kcard-badge">★★★★★ 核心重点</span>
+      <span class="kcard-badge">名词解释 / 论述 / 案例</span>
+    </div>
+  </div>
+  <div class="kcard-body">
+
+    <!-- 核心概念 -->
+    <div class="kcard-grid">
+      <div class="kcard-item purple-left">
+        <div class="kcard-item-label">📖 委托-代理关系定义（罗斯 Ross,1973）</div>
+        <div class="kcard-item-content">"如果<strong>当事人双方</strong>，其中代理人一方<strong>代表委托人一方的利益行使某些决策权</strong>，则代理关系就随之产生了。"<br><br>起源：1932年 <strong>伯利(Berle)</strong>和<strong>米恩斯(Means)</strong>提出两权分离问题（"伯利—米恩斯之谜"）</div>
+      </div>
+      <div class="kcard-item purple-left">
+        <div class="kcard-item-label">🎒 小学生版</div>
+        <div class="kcard-item-content">股东（老板）把公司交给经理（员工）打理，但经理有自己的小算盘：他可能多花费公司的钱、不拼命工作，因为亏了也是老板的损失。这种"老板不在，员工偷懒"的问题就是委托-代理问题。</div>
+      </div>
+    </div>
+
+    <!-- 两大不对称 -->
+    <details open>
+      <summary>⚡ 委托-代理问题产生的两大根源</summary>
+      <div class="details-content">
+        <div class="two-col">
+          <div class="highlight-orange">
+            <strong>① 利益不对称</strong><br>
+            委托人（股东）→追求<span class="highlight-keyword">公司利益最大化</span><br>
+            代理人（经理）→追求<span class="highlight-keyword">个人收入最大化</span>、权利扩大、舒适工作条件<br><br>
+            当利益相悖时，代理人可能侵占委托人利益→产生<strong>代理问题</strong>
+          </div>
+          <div class="highlight-blue">
+            <strong>② 信息不对称</strong><br>
+            代理人拥有<span class="highlight-keyword">信息优势</span>（努力程度、才能等委托人难以观察）<br>
+            事前：<strong>逆向选择</strong>（选了能力差的代理人）<br>
+            事后：<strong>道德风险</strong>（代理人"磨洋工"）
+          </div>
+        </div>
+        <div class="highlight-box">
+          📌 <strong>代理成本</strong>：委托人为防止代理人损害利益而付出的监督成本、激励成本和代理人不当行为造成的损失之和。
+        </div>
+      </div>
+    </details>
+
+    <!-- 理论拓展 -->
+    <details>
+      <summary>🔬 委托-代理理论的重要拓展（考研必知）</summary>
+      <div class="details-content">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>拓展方向</th><th>核心内容</th><th>关键词</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>声誉模型</strong><br>（法玛 Fama,1980）</td>
+                <td>在竞争经理人市场中，即使没有显性激励合同，经理也会积极工作——因为努力可以改进在经理市场的声誉，提高未来收入。<strong>"时间"可以解决代理问题。</strong></td>
+                <td>声誉效应、隐性激励、经理市场</td>
+              </tr>
+              <tr>
+                <td><span class="hl-red">棘轮效应</span><br>（威茨曼1980）</td>
+                <td>当年业绩越好→下年标准越高→代理人意识到"努力=提高标准=被鞭打快牛"→故意控制表现。中国俗称"<span class="highlight-keyword">鞭打快牛</span>"。</td>
+                <td>动态激励、标准上调、反向激励</td>
+              </tr>
+              <tr>
+                <td><strong>多任务模型</strong><br>（霍姆斯特姆 1991）</td>
+                <td>当代理人从事多项工作时，对某项可量化工作的激励可能挤压不可量化工作的努力→建议<strong>固定工资</strong>而非纯激励工资</td>
+                <td>多维度任务、可观测性差异</td>
+              </tr>
+              <tr>
+                <td><strong>打破预算平衡</strong><br>（霍姆斯特姆1982）</td>
+                <td>团队工作中存在"搭便车"（Free-rider）问题，引入索取剩余的委托人可以"打破预算平衡"、用团队惩罚/激励消除搭便车</td>
+                <td>搭便车、团队激励、剩余索取</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <!-- 应用：股权激励 -->
+    <details>
+      <summary>🇨🇳 委托-代理理论与中国国企改革 + 股权激励</summary>
+      <div class="details-content">
+        <div class="highlight-green">
+          <strong>国企应用逻辑：</strong><br>
+          政府=委托人；国有企业经营者=代理人<br>
+          信息不对称→"事前机会主义"（逆向选择）+ "事后机会主义"（道德风险）<br>
+          最优策略：将代理人转换为<strong>利益共同体</strong>（股权激励、利润分享）
+        </div>
+        <div class="highlight-orange">
+          <strong>股权激励（教材原句）：</strong>"通过股权激励，委托人将代理人转变成<span class="highlight-keyword">合伙者</span>，从而使得其利益趋于一致，来有效解决效用函数不一致的问题。"<br>
+          → 这是委托-代理理论在HRM中最重要的实践形式
+        </div>
+        <div class="two-col" style="margin-top:10px;">
+          <div class="kcard-item purple-left">
+            <div class="kcard-item-label">🎯 对HRM的核心指导</div>
+            <div class="kcard-item-content">设计长期激励机制（股权、期权）；绩效考核与利益分配挂钩；减少信息不对称（透明化考核）；声誉机制+经理人市场</div>
+          </div>
+          <div class="kcard-item purple-left">
+            <div class="kcard-item-label">🏢 现实案例</div>
+            <div class="kcard-item-content">华为：全员持股计划（TUP）；阿里巴巴：长期股权激励；国有企业混合所有制改革中引入管理层持股</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-tags-row">
+      <span class="exam-tag">【2016笔试·企业战略与HRM匹配·激励机制】</span>
+      <span class="exam-tag">【2019复试·绩效管理与薪酬挂钩·代理理论视角】</span>
+      <span class="exam-tag">【2021复试·人才盘点·长期激励设计】</span>
+    </div>
+
+    <div class="interview-box">
+      <div class="interview-title">🎤 复试回答模板：委托-代理理论</div>
+      <div class="interview-step"><span class="step-num">1</span><span><strong>定义：</strong>委托-代理关系是当事人双方中，代理人代表委托人利益行使决策权的契约关系。起源于伯利-米恩斯的两权分离研究（1932）。</span></div>
+      <div class="interview-step"><span class="step-num">2</span><span><strong>核心问题：</strong>利益不对称（目标不一致）+ 信息不对称（道德风险+逆向选择）→代理成本产生。</span></div>
+      <div class="interview-step"><span class="step-num">3</span><span><strong>解决思路：</strong>①显性激励机制（绩效薪酬与结果挂钩）②隐性激励（声誉机制+经理人市场）③股权激励（将代理人变合伙人）④完善契约（减少道德风险）。</span></div>
+      <div class="interview-step"><span class="step-num">4</span><span><strong>总结：</strong>委托-代理理论为企业家及经营者激励机制设计（尤其是长期激励）提供了理论基础，与人力资本理论共同构成现代HRM激励设计的核心理论支柱。</span></div>
+      <details>
+        <summary>📌 延伸问题：棘轮效应如何影响激励机制？</summary>
+        <div class="details-content" style="font-size:0.87rem;padding-top:8px;">
+          棘轮效应指：当年高业绩→次年标准提高→代理人为避免"自我加压"而故意压低表现（"鞭打快牛"）。<br>
+          对策：①长期合同+历史平均基准而非年度最高业绩作为标准；②明确约定标准调整幅度；③声誉机制+市场竞争替代棘轮激励。
+        </div>
+      </details>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================================================================
+     对比总结表
+     =================================================================== -->
+<div id="sec-compare" class="section-box fade-in">
+  <div class="section-title"><div class="section-icon">📊</div>三大理论对比总结表</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>维度</th><th>劳动经济学理论</th><th>人力资本理论</th><th>委托-代理理论</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>核心问题</strong></td>
+          <td>劳动力市场如何运作？工资如何决定？</td>
+          <td>为什么要对人投资？投资收益如何？</td>
+          <td>两权分离下，如何激励代理人？</td>
+        </tr>
+        <tr>
+          <td><strong>分析层次</strong></td>
+          <td>宏观（市场层面）+ 微观（个体供求）</td>
+          <td>宏观（经济增长）+ 微观（个人收入）</td>
+          <td>微观（企业内部组织层面）</td>
+        </tr>
+        <tr>
+          <td><strong>关键人物</strong></td>
+          <td>亚当·斯密、马歇尔、凯恩斯、威茨曼</td>
+          <td>舒尔茨（诞生）、贝克尔（确立）</td>
+          <td>伯利&米恩斯（起源）、罗斯（定义）、法玛（声誉）</td>
+        </tr>
+        <tr>
+          <td><strong>对HRM贡献</strong></td>
+          <td>薪酬设计、人员配置、招聘规模、培训经济分析</td>
+          <td>培训体系建设、人才投资决策、职业发展规划</td>
+          <td>长期激励设计、股权激励、绩效契约、减少信息不对称</td>
+        </tr>
+        <tr>
+          <td><strong>核心概念</strong></td>
+          <td>效率工资、二元市场、向后弯曲的供给曲线</td>
+          <td>人力资本存量、排他性/不可分割性/所有权制约性</td>
+          <td>逆向选择、道德风险、代理成本、棘轮效应、声誉模型</td>
+        </tr>
+        <tr>
+          <td><strong>历年真题频次</strong></td>
+          <td>⭐⭐⭐⭐（中高频）</td>
+          <td>⭐⭐⭐⭐⭐（超高频）</td>
+          <td>⭐⭐⭐⭐（高频）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:18px;">
+    <div class="section-title" style="font-size:1rem;margin-bottom:12px;"><div class="section-icon">🔄</div>三大理论的联系</div>
+    <div class="logic-flow">
+      <div class="flow-box" style="min-width:130px;text-align:center;">劳动经济学<br><small>解释劳动力市场<br>外部环境</small></div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-box" style="min-width:130px;text-align:center;">人力资本理论<br><small>解释为什么要投资人<br>产权决定激励必要性</small></div>
+      <div class="flow-arrow">+</div>
+      <div class="flow-box" style="min-width:130px;text-align:center;">委托-代理理论<br><small>解释如何设计激励<br>机制（内部组织）</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box active" style="min-width:130px;text-align:center;">现代HRM实践<br><small>薪酬/培训/绩效<br>激励机制设计</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================================
+     历年真题汇总
+     =================================================================== -->
+<div id="sec-exam" class="section-box fade-in">
+  <div class="section-title"><div class="section-icon">🏆</div>历年真题汇总（2016–2025）</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>年份</th><th>题目类型</th><th>涉及知识点</th><th>第二章相关内容</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>2016</strong></td>
+          <td>论述</td>
+          <td>企业战略与人力资源战略的匹配关系</td>
+          <td>人力资本理论：企业战略需要匹配相应的人力资本投资策略</td>
+        </tr>
+        <tr>
+          <td><strong>2017</strong></td>
+          <td>简答</td>
+          <td>胜任力模型构建流程</td>
+          <td>人力资本产权特性：能力是个人人力资本的核心构成</td>
+        </tr>
+        <tr>
+          <td><strong>2019</strong></td>
+          <td>复试面试</td>
+          <td>绩效管理与薪酬挂钩</td>
+          <td>委托-代理理论：显性激励机制（绩效薪酬设计）</td>
+        </tr>
+        <tr>
+          <td><strong>2020</strong></td>
+          <td>简答</td>
+          <td>薪酬结构设计原则</td>
+          <td>效率工资理论、劳资谈判理论、分享经济理论</td>
+        </tr>
+        <tr>
+          <td><strong>2021</strong></td>
+          <td>复试面试</td>
+          <td>人才盘点与继任计划</td>
+          <td>人力资本存量盘点；内部劳动力市场晋升机制</td>
+        </tr>
+        <tr>
+          <td><strong>2022</strong></td>
+          <td>简答</td>
+          <td>资源基础观（RBV）</td>
+          <td>人力资本理论：人力资本是稀缺、难以模仿的战略资源</td>
+        </tr>
+        <tr>
+          <td><strong>2023</strong></td>
+          <td>复试面试</td>
+          <td>动态能力理论</td>
+          <td>人力资本积累与更新是动态能力的重要基础</td>
+        </tr>
+        <tr>
+          <td><strong>2024</strong></td>
+          <td>简答</td>
+          <td>HRBP角色与能力要求</td>
+          <td>委托-代理：HRBP作为人力资源内部服务代理人的角色设计</td>
+        </tr>
+        <tr>
+          <td><strong>2025</strong></td>
+          <td>简答</td>
+          <td>薪酬激励设计要点（固定+浮动+长期）</td>
+          <td>委托-代理理论（长期激励）+ 效率工资理论 + 分享经济理论</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="highlight-orange" style="margin-top:14px;">
+    🎯 <strong>核心规律：</strong>第二章虽是理论基础章，但<strong>每年笔试都有2–3道题涉及本章</strong>，尤其是<span class="highlight-keyword">人力资本理论</span>（必考）和<span class="highlight-keyword">委托-代理理论</span>（高频）。薪酬设计类题目几乎必然要用到本章理论作为论述依据。
+  </div>
+</div>
+
+<!-- ===================================================================
+     30秒复习
+     =================================================================== -->
+<div id="sec-30sec" class="review-30 fade-in">
+  <div class="review-30-title">⚡ 30秒复习模块（超简版）</div>
+  <div class="review-items">
+    <div class="review-item">
+      <strong>劳动经济学5派：</strong>古典→制度→凯恩斯→新古典（主流）→新制度
+    </div>
+    <div class="review-item">
+      <strong>工资理论6种：</strong>早期/边际/均衡/谈判/<span class="hl-red">效率</span>/分享
+    </div>
+    <div class="review-item">
+      <strong>二元市场：</strong>主要（高薪稳定）vs 次要（低薪不稳），派遣工问题
+    </div>
+    <div class="review-item">
+      <strong>人力资本诞生：</strong>舒尔茨1960年演讲；贝克尔1964年确立
+    </div>
+    <div class="review-item">
+      <strong>人力资本内涵：</strong>不是人本身，是质量因素；有经济价值；后天获得
+    </div>
+    <div class="review-item">
+      <strong>人力资本产权3特性：</strong>排他性 / 不可分割性 / 所有权制约派生权
+    </div>
+    <div class="review-item">
+      <strong>委托-代理2不对称：</strong>利益不对称 + 信息不对称（道德风险+逆向选择）
+    </div>
+    <div class="review-item">
+      <strong>委托-代理拓展：</strong>声誉模型 / <span class="hl-red">棘轮效应</span> / 多任务模型 / 打破预算平衡
+    </div>
+    <div class="review-item">
+      <strong>委托-代理应用：</strong>股权激励=将代理人变合伙人，解决利益不一致
+    </div>
+    <div class="review-item">
+      <strong>效率工资案例：</strong>福特1914年·5美元·生产率↑·离职↓
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================================
+     背诵版总结
+     =================================================================== -->
+<div id="sec-recite" class="recite-box fade-in">
+  <div class="recite-title">🎤 背诵版总结（复试口述版）</div>
+  <div class="recite-line"><strong>第二章核心：</strong>三大经济理论——劳动经济学、人力资本、委托代理</div>
+  <div class="recite-line"><strong>劳动经济学：</strong>五大学派·古制凯新古新制；工资理论·早边均谈效分；效率工资：高薪→高效，福特5美元；二元市场：主次两分，派遣工问题</div>
+  <div class="recite-line"><strong>人力资本：</strong>1960年舒尔茨演讲→诞生；1964年贝克尔著作→确立；内涵=质量因素+有价值+后天习得；产权三特性=排他+不可分割+所有权制约</div>
+  <div class="recite-line"><strong>委托代理：</strong>两权分离→伯利米恩斯1932；两大不对称：利益+信息（逆选择+道德风险）；代理成本；解决：声誉模型·棘轮效应·多任务·股权激励</div>
+  <div class="recite-line"><strong>三论关系：</strong>劳动经济学→外部市场参照；人力资本→投资决策依据；委托代理→内部激励设计；三者共同→现代HRM理论基础</div>
+  <div class="recite-line"><strong>必背教材原句：</strong>马歇尔："所有资本中最有价值的是对人本身的投资。"；罗斯定义代理关系；人力资本产权：所有权永远属于载体个人；效率工资三假设：偷懒·成本·工资决定生产率</div>
+</div>
+
+<!-- ===================================================================
+     章节终极串联（逻辑流程图）
+     =================================================================== -->
+<div class="section-box fade-in">
+  <div class="section-title"><div class="section-icon">🧩</div>本章知识终极串联（逻辑关系图）</div>
+  <div style="background:var(--mindmap-bg);border-radius:12px;padding:20px;">
+    <div style="text-align:center;margin-bottom:16px;">
+      <span style="background:#2e7d32;color:white;padding:8px 20px;border-radius:20px;font-weight:800;">为什么需要经济学理论？</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;text-align:center;">
+      <div>
+        <div style="background:#1565c0;color:white;padding:10px;border-radius:10px;font-weight:700;margin-bottom:8px;">劳动经济学</div>
+        <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">
+          解答"市场层面"问题<br>↓<br>劳动力价格/供求<br>↓<br><strong>薪酬设计外部参照</strong>
+        </div>
+      </div>
+      <div>
+        <div style="background:#e65100;color:white;padding:10px;border-radius:10px;font-weight:700;margin-bottom:8px;">人力资本理论</div>
+        <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">
+          解答"为何投资人"问题<br>↓<br>人力资本收益率高于物质资本<br>↓<br><strong>培训/开发决策依据</strong>
+        </div>
+      </div>
+      <div>
+        <div style="background:#6a1b9a;color:white;padding:10px;border-radius:10px;font-weight:700;margin-bottom:8px;">委托-代理理论</div>
+        <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">
+          解答"如何激励"问题<br>↓<br>信息不对称→激励机制设计<br>↓<br><strong>绩效/股权激励实践</strong>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:16px;">
+      <div style="background:#2e7d32;color:white;padding:10px 24px;border-radius:20px;font-weight:700;display:inline-block;">
+        共同构成现代人力资源管理的经济学理论基础
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================================================
+     自我检测
+     =================================================================== -->
+<div id="sec-quiz" class="quiz fade-in">
+  <div class="section-title" style="border-bottom:none;padding-bottom:0;"><div class="section-icon">✍</div>课后自我检测</div>
+  <p style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:16px;">建议合书作答，再对照参考要点</p>
+
+  <div class="q-item">
+    <div class="q-num">Q·01 — 名词解释</div>
+    <div class="q-text">什么是效率工资理论？其三大假设是什么？</div>
+    <div class="q-hint"><span>答题要点：</span>定义（工资↑→效率↑→有效劳动成本↓）→三假设（①偷懒②监督有成本③生产率取决于工资率）→案例（福特5美元）→HRM意义（高薪留才策略）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·02 — 名词解释</div>
+    <div class="q-text">什么是二元劳动力市场理论？主要市场与次要市场有何区别？</div>
+    <div class="q-hint"><span>答题要点：</span>提出者（多林格尔&帕尔勒1971）→定义（劳动力市场分割为主次两部分）→主要市场（高薪稳定晋升）vs次要市场（低薪不稳定）→中国现实（劳务派遣）→HRM启示</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·03 — 简答</div>
+    <div class="q-text">简述人力资本产权的三个特性，并说明其对HRM的意义。</div>
+    <div class="q-hint"><span>答题要点：</span>①排他性（天然属个人，不可被剥夺）→②不可分割性（只能让渡使用权，不能转让所有权）→③所有权制约性（不完备契约→偷懒/隐藏能力）→意义：激励机制设计的必要性</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·04 — 简答</div>
+    <div class="q-exam">2020年真题改编</div>
+    <div class="q-text">简述薪酬设计的主要经济学理论依据，结合本章三大理论分析。</div>
+    <div class="q-hint"><span>答题框架：</span>①劳动经济学→工资理论6种（尤其效率工资、均衡工资）提供外部参照；②人力资本理论→人力资本产权排他性决定激励必要性；③委托-代理理论→显性激励（绩效薪酬）+隐性激励（声誉）+长期激励（股权）三维设计</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·05 — 论述</div>
+    <div class="q-exam">2025年真题改编</div>
+    <div class="q-text">论述：如何从委托-代理理论视角设计"固定+浮动+长期"的薪酬激励体系？</div>
+    <div class="q-hint"><span>答题框架：</span>①委托-代理问题根源（利益+信息不对称）→②固定薪酬（基本保障，风险承担）→③浮动薪酬（显性激励，短期绩效挂钩，克服道德风险）→④长期激励（股权激励=将代理人变合伙人）→⑤防棘轮效应（长期合同，合理基准设定）→⑥声誉机制（经理市场对隐性激励的补充）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·06 — 对比</div>
+    <div class="q-text">比较人力资本理论与委托-代理理论在HRM中的应用差异。</div>
+    <div class="q-hint"><span>关键对比：</span>人力资本理论→关注"投资角度"，解释企业为何要培训员工（收益率）、职业发展设计；委托代理理论→关注"激励角度"，解释企业如何让员工愿意为组织目标努力。前者是培训/开发的理论基础，后者是绩效/薪酬设计的理论基础。二者互补。</div>
+  </div>
+</div>
+
+</div><!-- end .main-container -->
+
+<!-- 返回顶部按钮 -->
+<button id="back-top" onclick="scrollToTop()">↑</button>
+
+<!-- ===== 页脚 ===== -->
+<div class="footer-bar">
+  📚 中南大学企业管理学硕复试笔记 · 第二章 人力资源相关经济理论 · P036–066 · 基于颜爱民《人力资源管理（第3版）》 · 2016–2025真题整合版 · 生成日期：2026-03-08
+</div>
+
+<!-- ===== JavaScript ===== -->
+<script>
+// 夜间模式
+function toggleDark(){
+  document.body.classList.toggle('dark-mode');
+  const btn = document.querySelector('.nav-btn');
+  const isDark = document.body.classList.contains('dark-mode');
+  // Find the night mode button (first nav-btn)
+  const btns = document.querySelectorAll('.nav-btn');
+  btns[0].textContent = isDark ? '☀️ 日间模式' : '🌙 夜间模式';
+  localStorage.setItem('darkMode', isDark);
+}
+
+// 初始化夜间模式
+if(localStorage.getItem('darkMode') === 'true'){
+  document.body.classList.add('dark-mode');
+  const btns = document.querySelectorAll('.nav-btn');
+  if(btns[0]) btns[0].textContent = '☀️ 日间模式';
+}
+
+// 返回顶部
+function scrollToTop(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 返回顶部按钮显示逻辑
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 400){ backTop.classList.add('show'); }
+  else { backTop.classList.remove('show'); }
+});
+
+
+function highlightInElement(el, regex){
+  if(!el) return;
+  el.childNodes.forEach(node=>{
+    if(node.nodeType === 3){ // text node
+      if(regex.test(node.textContent)){
+        const span = document.createElement('span');
+        span.innerHTML = node.textContent.replace(regex, '<span class="search-highlight">$1</span>');
+        node.parentNode.replaceChild(span, node);
+      }
+    } else if(node.nodeType === 1 && !['SCRIPT','STYLE','INPUT'].includes(node.tagName)){
+      highlightInElement(node, regex);
+    }
+  });
+}
+
+// IntersectionObserver for fade-in
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.05 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

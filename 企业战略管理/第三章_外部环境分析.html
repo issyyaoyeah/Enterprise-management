@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第三章 外部环境分析 | 中南大学企业管理复试笔记</title>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --secondary: #7c3aed;
+    --accent: #059669;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --teal: #0891b2;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+    --nav-height: 60px;
+  }
+  .dark-mode {
+    --bg: #0f172a;
+    --card-bg: #1e293b;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border: #334155;
+    --shadow: 0 2px 12px rgba(0,0,0,0.3);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.25);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    transition: background 0.3s, color 0.3s;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ===== TOP NAV ===== */
+  #topnav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--nav-height);
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    z-index: 10000;
+    display: flex; align-items: center; padding: 0 16px;
+    box-shadow: 0 2px 20px rgba(37,99,235,0.4);
+    gap: 12px;
+  }
+  .nav-brand { font-size: 0.95rem; font-weight: 700; white-space: nowrap; flex-shrink: 0; }
+  .nav-divider { color: rgba(255,255,255,0.3); flex-shrink: 0; }
+  .nav-links {
+    display: flex; gap: 2px; flex-wrap: nowrap; overflow-x: auto;
+    scrollbar-width: none; flex: 1;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.82); text-decoration: none;
+    padding: 4px 9px; border-radius: 6px; font-size: 0.77rem;
+    transition: background 0.2s; white-space: nowrap; flex-shrink: 0;
+  }
+  .nav-links a:hover { background: rgba(255,255,255,0.22); color: white; }
+  .nav-sub-links {
+    display: flex; gap: 2px; flex-wrap: nowrap; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-sub-links::-webkit-scrollbar { display: none; }
+  .nav-sub-links a {
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    padding: 3px 8px; border-radius: 5px; font-size: 0.72rem;
+    transition: background 0.2s; white-space: nowrap;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .nav-sub-links a:hover { background: rgba(255,255,255,0.18); color: white; }
+  .nav-controls { display: flex; gap: 6px; margin-left: auto; flex-shrink: 0; }
+  .btn-icon {
+    background: rgba(255,255,255,0.15); border: none; color: white;
+    padding: 5px 11px; border-radius: 8px; cursor: pointer; font-size: 0.78rem;
+    transition: background 0.2s; white-space: nowrap;
+  }
+  .btn-icon:hover { background: rgba(255,255,255,0.3); }
+
+  /* ===== MAIN ===== */
+  main {
+    max-width: 1100px; margin: 0 auto;
+    padding: calc(var(--nav-height) + 20px) 20px 100px;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #7c3aed 100%);
+    border-radius: 20px; padding: 36px; color: white; margin-bottom: 30px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '🌍'; font-size: 110px; position: absolute;
+    right: 28px; top: 50%; transform: translateY(-50%); opacity: 0.12;
+  }
+  .hero h1 { font-size: 1.9rem; font-weight: 900; margin-bottom: 8px; }
+  .hero p { opacity: 0.9; font-size: 0.95rem; margin-bottom: 14px; }
+  .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag {
+    padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+    background: rgba(255,255,255,0.2); color: white;
+  }
+  .gen-date { font-size: 0.75rem; opacity: 0.7; margin-top: 10px; }
+
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    font-size: 1.4rem; font-weight: 800; color: var(--primary);
+    border-left: 5px solid var(--primary); padding-left: 14px;
+    margin: 40px 0 18px;
+  }
+  .section-title.green { color: var(--accent); border-color: var(--accent); }
+  .section-title.orange { color: var(--warning); border-color: var(--warning); }
+  .section-title.purple { color: var(--secondary); border-color: var(--secondary); }
+  .section-title.teal { color: var(--teal); border-color: var(--teal); }
+  .section-title.red { color: var(--danger); border-color: var(--danger); }
+
+  /* Sub-section label */
+  .sub-section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--primary-light), #f0f9ff);
+    border: 1.5px solid var(--primary); border-radius: 10px;
+    padding: 6px 14px; margin: 28px 0 14px;
+    font-weight: 700; font-size: 0.9rem; color: var(--primary);
+  }
+  .dark-mode .sub-section-label { background: #1e3a8a22; }
+
+  /* ===== CARDS ===== */
+  .card {
+    background: var(--card-bg); border-radius: 16px; padding: 22px;
+    box-shadow: var(--shadow); margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .card.blue-card { border-left: 5px solid #2563eb; }
+  .card.purple-card { border-left: 5px solid #7c3aed; }
+  .card.green-card { border-left: 5px solid #059669; }
+  .card.orange-card { border-left: 5px solid #d97706; }
+  .card.teal-card { border-left: 5px solid #0891b2; }
+  .card.red-card { border-left: 5px solid #dc2626; }
+
+  /* ===== KP CARD (collapsible knowledge point) ===== */
+  .kp-card {
+    background: var(--card-bg); border-radius: 16px;
+    border: 1px solid var(--border); margin-bottom: 22px;
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .kp-header {
+    padding: 16px 20px; cursor: pointer;
+    display: flex; align-items: center; gap: 12px;
+    background: linear-gradient(135deg, var(--primary-light), white);
+    transition: background 0.2s; list-style: none;
+  }
+  .dark-mode .kp-header { background: linear-gradient(135deg, #1e3a8a22, #1e293b); }
+  .kp-header:hover { background: #dbeafe; }
+  .dark-mode .kp-header:hover { background: #1e3a8a33; }
+  .kp-num {
+    background: var(--primary); color: white; width: 32px; height: 32px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.88rem; flex-shrink: 0;
+  }
+  .kp-title-wrap { flex: 1; }
+  .kp-name { font-weight: 700; font-size: 1.02rem; color: var(--text); }
+  .kp-badges { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { padding: 2px 8px; border-radius: 12px; font-size: 0.73rem; font-weight: 600; }
+  .badge-star { background: #fef3c7; color: #92400e; }
+  .badge-prob { background: #dcfce7; color: #166534; }
+  .badge-type { background: #ede9fe; color: #5b21b6; }
+  .badge-year { background: #fee2e2; color: #991b1b; }
+  .kp-arrow { color: var(--text-muted); transition: transform 0.3s; font-size: 1.1rem; }
+  details[open] .kp-arrow { transform: rotate(180deg); }
+  .kp-content { padding: 0 20px 20px; }
+
+  /* ===== INFO GRIDS ===== */
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+  .info-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 12px 0; }
+  .info-item {
+    background: var(--bg); border-radius: 10px; padding: 11px 13px;
+    border: 1px solid var(--border);
+  }
+  .info-label { font-size: 0.73rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 4px; }
+  .info-value { font-size: 0.88rem; color: var(--text); }
+
+  /* ===== HIGHLIGHT BOXES ===== */
+  .hl-box { border-radius: 10px; padding: 13px 15px; margin: 10px 0; font-size: 0.88rem; }
+  .hl-blue { background: #dbeafe; border-left: 4px solid #2563eb; color: #1e3a8a; }
+  .hl-green { background: #dcfce7; border-left: 4px solid #059669; color: #14532d; }
+  .hl-orange { background: #fef3c7; border-left: 4px solid #d97706; color: #78350f; }
+  .hl-purple { background: #ede9fe; border-left: 4px solid #7c3aed; color: #3b0764; }
+  .hl-red { background: #fee2e2; border-left: 4px solid #dc2626; color: #7f1d1d; }
+  .hl-teal { background: #e0f2fe; border-left: 4px solid #0891b2; color: #075985; }
+  .dark-mode .hl-blue { background: #1e3a8a33; color: #93c5fd; }
+  .dark-mode .hl-green { background: #14532d33; color: #86efac; }
+  .dark-mode .hl-orange { background: #78350f33; color: #fcd34d; }
+  .dark-mode .hl-purple { background: #3b076433; color: #c4b5fd; }
+  .dark-mode .hl-red { background: #7f1d1d33; color: #fca5a5; }
+  .dark-mode .hl-teal { background: #07598533; color: #7dd3fc; }
+
+  /* ===== KEYWORD HIGHLIGHTS ===== */
+  .kw { background: #fef08a; color: #713f12; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+  .dark-mode .kw { background: #713f1260; color: #fef08a; }
+  .kw-red { background: #fee2e2; color: #991b1b; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+  .kw-blue { background: #dbeafe; color: #1e3a8a; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+  .kw-green { background: #dcfce7; color: #14532d; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+  .kw-purple { background: #ede9fe; color: #3b0764; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+  .kw-teal { background: #e0f2fe; color: #075985; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+  .dark-mode .kw-blue { background: #1e3a8a44; color: #93c5fd; }
+  .dark-mode .kw-green { background: #14532d44; color: #86efac; }
+
+  /* ===== TABLES ===== */
+  .table-wrap { overflow-x: auto; margin: 14px 0; border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+  th {
+    background: linear-gradient(135deg, var(--primary), #3b82f6);
+    color: white; padding: 9px 13px; text-align: left; font-weight: 700;
+  }
+  td { padding: 8px 13px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--bg); }
+  tr:hover td { background: var(--primary-light); }
+  .dark-mode tr:hover td { background: #1e3a8a22; }
+  .dark-mode th { background: linear-gradient(135deg, #1e3a8a, #2563eb); }
+
+  /* ===== FIVE FORCES VISUAL ===== */
+  .five-forces-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+    grid-template-areas: ". top ." "left center right" ". bottom .";
+    margin: 14px 0;
+  }
+  .ff-box { padding: 13px; border-radius: 12px; text-align: center; font-weight: 700; font-size: 0.85rem; }
+  .ff-top { grid-area: top; background: #fee2e2; color: #991b1b; }
+  .ff-left { grid-area: left; background: #dbeafe; color: #1e40af; }
+  .ff-center { grid-area: center; background: linear-gradient(135deg, #1e3a8a, #2563eb); color: white; font-size: 0.9rem; }
+  .ff-right { grid-area: right; background: #dcfce7; color: #166534; }
+  .ff-bottom { grid-area: bottom; background: #fef3c7; color: #92400e; }
+  .dark-mode .ff-top { background: #7f1d1d44; }
+  .dark-mode .ff-left { background: #1e3a8a44; }
+  .dark-mode .ff-right { background: #14532d44; }
+  .dark-mode .ff-bottom { background: #78350f44; }
+
+  /* ===== PESTEL GRID ===== */
+  .pestel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0; }
+  .pestel-item { border-radius: 12px; padding: 14px; text-align: center; }
+  .pestel-letter { font-size: 1.7rem; font-weight: 900; margin-bottom: 3px; }
+  .pestel-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 6px; }
+  .pestel-content { font-size: 0.78rem; opacity: 0.85; }
+
+  /* ===== LIFE CYCLE STAGES ===== */
+  .lifecycle-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 14px 0; }
+  .lc-stage { border-radius: 12px; padding: 14px; text-align: center; }
+  .lc-stage-num { font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+  .lc-stage-name { font-weight: 700; font-size: 0.88rem; margin-bottom: 6px; }
+  .lc-stage-desc { font-size: 0.77rem; opacity: 0.88; }
+
+  /* ===== TEMPLATE BOX ===== */
+  .template-box {
+    border: 2px dashed var(--primary); border-radius: 12px;
+    padding: 14px; margin: 10px 0; background: var(--primary-light);
+  }
+  .dark-mode .template-box { background: #1e3a8a22; }
+  .template-box h4 { color: var(--primary); font-weight: 800; margin-bottom: 8px; font-size: 0.92rem; }
+  .template-step {
+    background: white; border-radius: 8px; padding: 7px 11px;
+    margin: 5px 0; font-size: 0.86rem; display: flex; align-items: flex-start; gap: 8px;
+  }
+  .dark-mode .template-step { background: #1e293b; }
+  .step-num {
+    background: var(--primary); color: white; width: 20px; height: 20px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* ===== QUICK REVIEW ===== */
+  .quick-review {
+    background: linear-gradient(135deg, #059669, #10b981);
+    border-radius: 16px; padding: 22px; color: white; margin: 18px 0;
+  }
+  .quick-review h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; }
+  .qr-item { display: flex; align-items: flex-start; gap: 10px; margin: 7px 0; font-size: 0.88rem; }
+  .qr-bullet { background: rgba(255,255,255,0.28); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.72rem; }
+
+  /* ===== RECITATION BOX ===== */
+  .recite-box {
+    background: linear-gradient(135deg, #7c3aed, #9333ea);
+    border-radius: 16px; padding: 22px; color: white; margin: 18px 0;
+  }
+  .recite-box h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 12px; }
+  .recite-item { background: rgba(255,255,255,0.14); border-radius: 10px; padding: 9px 13px; margin: 7px 0; font-size: 0.86rem; }
+
+  /* ===== EXAM ITEMS ===== */
+  .exam-box {
+    background: var(--card-bg); border-radius: 12px; padding: 14px;
+    border: 1px solid var(--border); margin: 8px 0;
+  }
+  .exam-year { font-size: 0.73rem; font-weight: 700; color: var(--danger); margin-bottom: 3px; }
+  .exam-q { font-size: 0.88rem; color: var(--text); }
+  .exam-type-badge {
+    display: inline-block; padding: 2px 7px; border-radius: 5px; font-size: 0.7rem;
+    font-weight: 700; margin-right: 5px;
+  }
+  .et-simplify { background: #dbeafe; color: #1e40af; }
+  .et-essay { background: #ede9fe; color: #5b21b6; }
+  .et-case { background: #dcfce7; color: #166534; }
+
+  /* ===== ORIGINAL TEXT BOX ===== */
+  .original-text {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid var(--primary);
+    border-radius: 8px; padding: 12px 14px; margin: 10px 0;
+    font-size: 0.86rem; color: var(--text-muted); font-style: italic;
+  }
+  .dark-mode .original-text { background: #1e293b; }
+
+  /* ===== COMPARE CARD ===== */
+  .compare-card { background: var(--card-bg); border-radius: 16px; padding: 22px; margin-bottom: 18px; box-shadow: var(--shadow); }
+  .compare-card h3 { font-weight: 800; color: var(--secondary); margin-bottom: 12px; font-size: 1.0rem; }
+
+  /* ===== LOGIC FLOW ===== */
+  .logic-flow-wrap {
+    background: var(--card-bg); border-radius: 16px; padding: 22px;
+    box-shadow: var(--shadow); margin-bottom: 20px; overflow-x: auto;
+  }
+  .flow-container {
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px; flex-wrap: wrap; padding: 8px;
+  }
+  .flow-box {
+    background: var(--primary); color: white; padding: 9px 14px;
+    border-radius: 10px; font-weight: 700; font-size: 0.82rem; text-align: center;
+    min-width: 80px;
+  }
+  .flow-box.green { background: var(--accent); }
+  .flow-box.purple { background: var(--secondary); }
+  .flow-box.orange { background: var(--warning); }
+  .flow-box.teal { background: var(--teal); }
+  .flow-box.current { background: linear-gradient(135deg, #d97706, #f59e0b); box-shadow: 0 4px 14px rgba(245,158,11,0.4); }
+  .flow-arrow { color: var(--text-muted); font-size: 1.2rem; }
+
+  /* ===== TREE MINDMAP ===== */
+  .tree { padding: 8px; }
+  .tree-root {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white; padding: 11px 18px; border-radius: 12px;
+    font-weight: 800; font-size: 0.95rem; text-align: center; margin-bottom: 18px;
+  }
+  .tree-level1 { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 8px 0; }
+  .tree-node1 {
+    background: #ede9fe; color: #3b0764; padding: 7px 14px; border-radius: 9px;
+    font-weight: 700; font-size: 0.86rem; cursor: pointer;
+  }
+  .dark-mode .tree-node1 { background: #3b076433; color: #c4b5fd; }
+  .tree-level2 { display: flex; gap: 7px; flex-wrap: wrap; margin: 7px 0 7px 18px; }
+  .tree-node2 {
+    background: #dbeafe; color: #1e3a8a; padding: 5px 10px; border-radius: 7px;
+    font-size: 0.79rem;
+  }
+  .dark-mode .tree-node2 { background: #1e3a8a33; color: #93c5fd; }
+
+  /* ===== CHECK ITEM ===== */
+  .check-item {
+    background: var(--bg); border-radius: 10px; padding: 11px 14px;
+    margin: 7px 0; border: 1px solid var(--border); font-size: 0.88rem;
+    display: flex; align-items: flex-start; gap: 10px; cursor: pointer;
+  }
+  .check-item:hover { border-color: var(--primary); }
+  .check-q { flex: 1; }
+  .check-tag { font-size: 0.73rem; color: var(--text-muted); margin-top: 3px; }
+
+  /* ===== BACK TO TOP ===== */
+  #back-top {
+    position: fixed; bottom: 100px; right: 22px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white; width: 46px; height: 46px; border-radius: 50%;
+    border: none; font-size: 1.1rem; cursor: pointer;
+    box-shadow: 0 4px 18px rgba(37,99,235,0.38);
+    display: none; align-items: center; justify-content: center;
+    transition: transform 0.2s; z-index: 998;
+  }
+  #back-top:hover { transform: scale(1.1); }
+  #back-top.visible { display: flex; }
+
+  /* ===== STARS ===== */
+  .stars { color: #f59e0b; }
+
+  /* ===== PROB BAR ===== */
+  .prob-bar { background: #e2e8f0; height: 5px; border-radius: 3px; margin: 3px 0; overflow: hidden; }
+  .prob-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #059669, #10b981); }
+
+  /* ===== CONNECTOR ===== */
+  .connector { text-align: center; color: var(--text-muted); font-size: 1.4rem; margin: -2px 0; }
+
+  /* ===== ULTIMATE FLOW ===== */
+  .uf-row {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--bg); border-radius: 10px; padding: 11px 14px;
+    margin: 8px 0; border: 1px solid var(--border);
+  }
+  .uf-box {
+    background: var(--primary); color: white; border-radius: 8px;
+    padding: 7px 12px; font-size: 0.82rem; font-weight: 700;
+    min-width: 120px; text-align: center; flex-shrink: 0;
+  }
+  .uf-arrow { color: var(--text-muted); font-size: 1.1rem; flex-shrink: 0; margin-top: 6px; }
+  .uf-desc { font-size: 0.86rem; color: var(--text); }
+  .uf-box.green { background: var(--accent); }
+  .uf-box.purple { background: var(--secondary); }
+  .uf-box.orange { background: var(--warning); }
+  .uf-box.teal { background: var(--teal); }
+  .uf-box.red { background: var(--danger); }
+
+  /* ===== INTERVIEW BOX ===== */
+  .interview-box {
+    border: 2px solid var(--teal); border-radius: 12px;
+    padding: 14px; margin: 12px 0; background: #f0fdff;
+  }
+  .dark-mode .interview-box { background: #07598522; border-color: #0891b2; }
+  .interview-box h4 { color: var(--teal); font-weight: 800; margin-bottom: 8px; font-size: 0.9rem; }
+  .int-step {
+    display: flex; gap: 9px; margin: 6px 0; font-size: 0.85rem;
+    align-items: flex-start;
+  }
+  .int-num {
+    background: var(--teal); color: white; width: 20px; height: 20px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* ===== EXTENSION Q ===== */
+  details.ext-q { margin: 10px 0; }
+  details.ext-q summary {
+    cursor: pointer; color: var(--secondary); font-weight: 700; font-size: 0.86rem;
+    padding: 7px 12px; background: #ede9fe; border-radius: 8px; list-style: none;
+  }
+  .dark-mode details.ext-q summary { background: #3b076433; }
+  details.ext-q[open] summary { border-radius: 8px 8px 0 0; }
+  .ext-q-content {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 0 0 8px 8px; padding: 10px 14px; font-size: 0.84rem;
+  }
+
+  /* ===== CHAPTER RELATION ===== */
+  .ch-relation {
+    display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0;
+  }
+  .ch-rel-item {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 9px;
+    padding: 8px 13px; font-size: 0.82rem;
+  }
+  .ch-rel-item strong { color: var(--primary); }
+  .ch-rel-item.active { background: var(--primary-light); border-color: var(--primary); }
+  .dark-mode .ch-rel-item.active { background: #1e3a8a33; }
+
+  /* ===== SCROLLABLE PILL SEARCH ===== */
+  #search-trigger{position:fixed;bottom:136px;right:22px;z-index:9998;width:44px;height:44px;
+    border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+    cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+    display:flex;align-items:center;justify-content:center;}
+  #search-trigger:hover{background:#334155;transform:scale(1.08);}
+  #search-pill{position:fixed;bottom:136px;right:18px;z-index:9999;display:none;align-items:center;
+    gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+    padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+    font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+  #search-pill.active{display:flex;}
+  #search-trigger.hidden{display:none;}
+  #sp-icon{font-size:16px;flex-shrink:0;}
+  #sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+    font-size:14px;font-family:inherit;min-width:0;}
+  #sp-input::placeholder{color:rgba(248,250,252,.4);}
+  #sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+    font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+  #search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+    color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+    flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+  #search-pill button:hover{background:rgba(255,255,255,.25);}
+  mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+  mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+
+  @media (max-width: 768px) {
+    .info-grid, .info-grid-3 { grid-template-columns: 1fr; }
+    .pestel-grid { grid-template-columns: 1fr 1fr; }
+    .lifecycle-grid { grid-template-columns: 1fr 1fr; }
+    .five-forces-grid { grid-template-columns: 1fr; grid-template-areas: "top" "left" "center" "right" "bottom"; }
+    .nav-links { display: none; }
+    .nav-sub-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOP NAV ===== -->
+<nav id="topnav">
+  <div class="nav-brand">📚 第三章 外部环境分析</div>
+  <div class="nav-divider">|</div>
+  <div class="nav-links">
+    <a href="#sec-logic">逻辑图</a>
+    <a href="#sec-mindmap">思维导图</a>
+    <a href="#sec-3-1">3.1概述</a>
+    <a href="#sec-3-2">3.2宏观</a>
+    <a href="#sec-3-3">3.3市场</a>
+    <a href="#sec-3-4">3.4行业</a>
+    <a href="#sec-3-5">3.5竞争合作</a>
+    <a href="#sec-3-6">3.6关键成功</a>
+    <a href="#sec-compare">对比表</a>
+    <a href="#sec-exam">真题</a>
+    <a href="#sec-ultimate">串联</a>
+    <a href="#sec-30s">30秒</a>
+    <a href="#sec-recite">背诵</a>
+    <a href="#sec-test">自测</a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-icon" onclick="toggleDark()">🌙 夜间</button>
+  </div>
+</nav>
+
+<!-- ===== SEARCH PILL ===== -->
+<button id="search-trigger" title="搜索 (F3)">🔍</button>
+<div id="search-pill">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="输入关键词…" autocomplete="off">
+  <span id="sp-count">—</span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<main>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <h1>⚡ 第三章 外部环境分析</h1>
+  <p>《企业战略管理》第2版 · 蓝海林 | 中南大学企业管理学硕复试核心章节</p>
+  <div class="hero-tags">
+    <span class="tag">📄 教材 P61–P95</span>
+    <span class="tag">⭐ 重要等级 ★★★★★</span>
+    <span class="tag">🎯 考察概率 极高</span>
+    <span class="tag">📝 六节完整版</span>
+    <span class="tag">🔥 PESTEL · 五力 · 战略群组 · KSF</span>
+    <span class="tag">📅 2016–2025真题覆盖</span>
+  </div>
+  <div class="gen-date">生成日期：2026-03-14</div>
+</div>
+
+<!-- ===== SECTION: LOGIC STRUCTURE ===== -->
+<div id="sec-logic"></div>
+<h2 class="section-title">🗺️ 本章逻辑结构</h2>
+<div class="logic-flow-wrap">
+  <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">本章在战略管理中的位置：环境分析 → 战略制定 → 战略实施 → 战略控制</p>
+  <div class="flow-container">
+    <div class="flow-box">第1章<br><small>战略概述</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">第2章<br><small>战略管理过程</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box current">📍第3章<br><small>外部环境分析</small></div>
+    <div class="flow-arrow">+</div>
+    <div class="flow-box teal">第4章<br><small>内部环境分析</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box green">第5章<br><small>SWOT·战略问题</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box purple">第6-9章<br><small>战略选择与实施</small></div>
+  </div>
+  <div class="hl-box hl-blue" style="margin-top:14px;">
+    <strong>💡 章内分析层次：</strong>宏观环境（PESTEL）→ 市场环境（顾客需求/商业模式）→ 行业环境（波特五力/产业生命周期）→ 竞争与合作环境（战略群组）→ 关键成功因素（KSF）<br>
+    <strong>输出：</strong>机会（O）和威胁（T），与第四章输出的S/W共同进入SWOT分析。
+  </div>
+</div>
+
+<!-- ===== CHAPTER STRUCTURE OVERVIEW TABLE ===== -->
+<div class="card blue-card">
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>小节</th>
+        <th>分析层次</th>
+        <th>主要工具/框架</th>
+        <th>核心内容</th>
+        <th>分析目的</th>
+        <th>常考题型</th>
+      </tr></thead>
+      <tbody>
+      <tr>
+        <td><strong>3.1</strong> 外部环境概述</td>
+        <td>总体</td>
+        <td>三层次框架</td>
+        <td>构成、特点、影响方式</td>
+        <td>理解分析框架</td>
+        <td>简答</td>
+      </tr>
+      <tr>
+        <td><strong>3.2</strong> 宏观环境分析</td>
+        <td>宏观（一般环境）</td>
+        <td><span class="kw">PESTEL分析</span></td>
+        <td>六维度+分析步骤</td>
+        <td>识别机会与威胁</td>
+        <td>简答/论述</td>
+      </tr>
+      <tr>
+        <td><strong>3.3</strong> 市场环境分析</td>
+        <td>市场（顾客层）</td>
+        <td>顾客需求分析/商业模式</td>
+        <td>顾客需求五层次、商业模式</td>
+        <td>明确目标市场定位</td>
+        <td>案例/论述</td>
+      </tr>
+      <tr>
+        <td><strong>3.4</strong> 行业环境分析</td>
+        <td>行业（产业层）</td>
+        <td><span class="kw">波特五力模型</span>+<span class="kw">产业生命周期</span></td>
+        <td>行业边界、生命周期、五力</td>
+        <td>评估行业吸引力</td>
+        <td>名词解释/简答/案例</td>
+      </tr>
+      <tr>
+        <td><strong>3.5</strong> 竞争与合作环境</td>
+        <td>竞争（微观层）</td>
+        <td><span class="kw">战略群组</span>/竞争对手分析</td>
+        <td>战略群识别、竞争对手分析</td>
+        <td>确定直接竞争对手</td>
+        <td>简答/案例</td>
+      </tr>
+      <tr>
+        <td><strong>3.6</strong> 行业关键成功因素</td>
+        <td>综合</td>
+        <td><span class="kw">KSF分析</span></td>
+        <td>KSF识别三问题法</td>
+        <td>确定核心专长建立方向</td>
+        <td>简答/案例</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== MINDMAP ===== -->
+<div id="sec-mindmap"></div>
+<h2 class="section-title">🧠 章节思维导图（知识框架）</h2>
+<div class="logic-flow-wrap">
+  <div class="tree">
+    <div class="tree-root">第三章：外部环境分析（6节完整版）</div>
+    <div style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-bottom:10px;">点击各节标题可跳转对应区域</div>
+    <div class="tree-level1">
+      <a href="#sec-3-1" style="text-decoration:none"><div class="tree-node1">§1 外部环境概述<br><small style="font-weight:400">三层次 · 影响方式</small></div></a>
+      <a href="#sec-3-2" style="text-decoration:none"><div class="tree-node1">§2 宏观环境<br><small style="font-weight:400">PESTEL六维度</small></div></a>
+      <a href="#sec-3-3" style="text-decoration:none"><div class="tree-node1">§3 市场环境<br><small style="font-weight:400">顾客需求·商业模式</small></div></a>
+      <a href="#sec-3-4" style="text-decoration:none"><div class="tree-node1">§4 行业环境<br><small style="font-weight:400">五力·生命周期</small></div></a>
+      <a href="#sec-3-5" style="text-decoration:none"><div class="tree-node1">§5 竞争合作环境<br><small style="font-weight:400">战略群组</small></div></a>
+      <a href="#sec-3-6" style="text-decoration:none"><div class="tree-node1">§6 关键成功因素<br><small style="font-weight:400">KSF识别</small></div></a>
+    </div>
+    <div style="margin-top:14px;">
+      <div style="font-size:0.8rem;font-weight:700;color:var(--text-muted);margin-bottom:8px;">§2 宏观环境细分：</div>
+      <div class="tree-level2">
+        <div class="tree-node2">政治(P)</div>
+        <div class="tree-node2">经济(E)</div>
+        <div class="tree-node2">社会(S)</div>
+        <div class="tree-node2">技术(T)</div>
+        <div class="tree-node2">人口</div>
+        <div class="tree-node2">自然</div>
+        <div class="tree-node2">分析步骤4步</div>
+      </div>
+      <div style="font-size:0.8rem;font-weight:700;color:var(--text-muted);margin:10px 0 8px;">§4 行业环境细分：</div>
+      <div class="tree-level2">
+        <div class="tree-node2">行业边界</div>
+        <div class="tree-node2">萌芽/成长/成熟/衰退</div>
+        <div class="tree-node2">现有竞争者</div>
+        <div class="tree-node2">新进入者/进入壁垒</div>
+        <div class="tree-node2">替代品</div>
+        <div class="tree-node2">购买者</div>
+        <div class="tree-node2">供应商</div>
+      </div>
+      <div style="font-size:0.8rem;font-weight:700;color:var(--text-muted);margin:10px 0 8px;">§5 竞争合作细分：</div>
+      <div class="tree-level2">
+        <div class="tree-node2">战略群组识别</div>
+        <div class="tree-node2">移动壁垒</div>
+        <div class="tree-node2">竞争对手分析</div>
+        <div class="tree-node2">竞争假设分析</div>
+        <div class="tree-node2">合作环境分析</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     §1  外部环境概述
+═══════════════════════════════════════════ -->
+<div id="sec-3-1"></div>
+<h2 class="section-title">📋 3.1 外部环境的影响和构成（§1）</h2>
+
+<div class="kp-card">
+  <details>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">1</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 外部环境的三层次构成</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★</span>
+            <span class="badge badge-prob">🎯 较高概率</span>
+            <span class="badge badge-type">简答 | 论述</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">📖 页码</div><div class="info-value">P63–67（教材3.1节）</div></div>
+        <div class="info-item"><div class="info-label">📝 核心概念</div><div class="info-value">外部环境三层次 + 两种影响方式</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>层次</th><th>名称</th><th>主要内容</th><th>分析工具</th></tr></thead>
+          <tbody>
+            <tr><td><strong>第一层次</strong></td><td><span class="kw">宏观环境</span>（一般环境）</td><td>政治与法律、经济、社会文化、技术、人口、自然六类因素</td><td>PESTEL分析</td></tr>
+            <tr><td><strong>第二层次</strong></td><td><span class="kw">市场与行业环境</span></td><td>顾客需求、消费方式、市场结构、商业模式 + 供应商/购买者/进入者/替代品/竞争者</td><td>五力模型 + 市场分析</td></tr>
+            <tr><td><strong>第三层次</strong></td><td><span class="kw">竞争与合作环境</span></td><td>竞争者的战略、行为、优劣势；合作伙伴的选择与关系</td><td>战略群组分析</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hl-box hl-blue">
+        <strong>📖 教材核心：外部环境的两种影响方式</strong><br>
+        ① <span class="kw">直接方式</span>：三个层次的因素直接影响企业战略行为<br>
+        ② <span class="kw">间接方式</span>：宏观环境变化 → 导致市场和行业环境变化 → 再导致竞争与合作环境变化 → 最终影响企业战略行为（层层传导）
+      </div>
+
+      <div class="hl-box hl-green">
+        <strong>🧒 小学生版：</strong>就像天气预报一样。<br>
+        ①大环境（全国下雨）→ ②行业环境（街上都是打伞的）→ ③竞争对手（卖伞的店都开门了）→ 影响你（你该不该开雨伞店？）
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>💡 助记口诀：</strong><span class="kw">"宏市竞"三层次</span>——宏（宏观/一般）市（市场行业）竞（竞争合作），从外到内，层层聚焦。
+      </div>
+
+      <div class="original-text">
+        📖 教材原句："外部环境通过两种方式影响企业战略行为：一是直接方式，即企业外部环境三层次上的因素都可以直接影响企业的战略行为；二是间接方式，即宏观环境的变化首先会导致和决定市场和行业环境的变化……"（P66）
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     §2  宏观环境分析 PESTEL
+═══════════════════════════════════════════ -->
+<div id="sec-3-2"></div>
+<h2 class="section-title">🌍 3.2 宏观环境分析（§2 · PESTEL）</h2>
+
+<!-- KP: PESTEL Framework -->
+<div class="kp-card">
+  <details open>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">2</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 PESTEL分析框架（六维度）</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★★</span>
+            <span class="badge badge-prob">🎯 极高概率</span>
+            <span class="badge badge-type">简答 | 论述</span>
+            <span class="badge badge-year">【2018笔试】【2023面试】</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">📖 页码</div><div class="info-value">P68–73（教材第2节）</div></div>
+        <div class="info-item"><div class="info-label">📝 专有名词</div><div class="info-value">宏观环境六大类因素的分析框架</div></div>
+      </div>
+
+      <div class="hl-box hl-blue">
+        <strong>教材定义：</strong>宏观环境是指可以广泛影响特定空间范围内所有市场、行业和企业战略行为的各种外部因素。<br>
+        <strong>三大特点：</strong><span class="kw-blue">先动性</span>（变化先于行业）、<span class="kw-blue">广泛性</span>（影响所有企业）、<span class="kw-blue">复杂性</span>（因素相互影响）
+      </div>
+
+      <!-- PESTEL VISUAL -->
+      <div class="pestel-grid">
+        <div class="pestel-item" style="background:#fee2e2">
+          <div class="pestel-letter" style="color:#dc2626">P</div>
+          <div class="pestel-name" style="color:#991b1b">政治与法律环境</div>
+          <div class="pestel-content" style="color:#7f1d1d">政治制度、外交政策、经济政策<br>税法、劳动法、反垄断法、知识产权法</div>
+        </div>
+        <div class="pestel-item" style="background:#fef3c7">
+          <div class="pestel-letter" style="color:#d97706">E</div>
+          <div class="pestel-name" style="color:#92400e">经济环境</div>
+          <div class="pestel-content" style="color:#78350f">经济体制/结构、国民经济增长<br>财政/货币政策、国际经济形势</div>
+        </div>
+        <div class="pestel-item" style="background:#dcfce7">
+          <div class="pestel-letter" style="color:#059669">S</div>
+          <div class="pestel-name" style="color:#14532d">社会文化环境</div>
+          <div class="pestel-content" style="color:#166534">宗教信仰、社会价值观<br>文化传统与风俗习惯</div>
+        </div>
+        <div class="pestel-item" style="background:#dbeafe">
+          <div class="pestel-letter" style="color:#2563eb">T</div>
+          <div class="pestel-name" style="color:#1e3a8a">技术环境</div>
+          <div class="pestel-content" style="color:#1e40af">技术进步整体水平、政府创新战略<br>技术创新体系、对技术保护政策</div>
+        </div>
+        <div class="pestel-item" style="background:#ede9fe">
+          <div class="pestel-letter" style="color:#7c3aed">人口</div>
+          <div class="pestel-name" style="color:#3b0764">人口环境</div>
+          <div class="pestel-content" style="color:#4c1d95">人口数量、年龄结构<br>地区分布、人口预期变化趋势</div>
+        </div>
+        <div class="pestel-item" style="background:#fce7f3">
+          <div class="pestel-letter" style="color:#9d174d">自然</div>
+          <div class="pestel-name" style="color:#831843">自然环境</div>
+          <div class="pestel-content" style="color:#9d174d">资源储量与开发条件<br>环保要求、自然灾害影响</div>
+        </div>
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>⚠️ 注意：</strong>本教材的宏观环境框架与PESTEL略有不同，是<strong>六类：政治与法律 + 经济 + 社会文化 + 技术 + 人口 + 自然</strong>，而非标准的"政治+经济+社会+技术+生态+法律"。考试时按<strong>教材表述</strong>作答！
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th>主要内容（教材细化）</th><th>对企业战略的影响</th><th>近年热点</th></tr></thead>
+          <tbody>
+            <tr><td><span class="kw-red">政治与法律</span></td><td>政治制度、外交政策、国防政策、经济政策；税法、劳动保护法、环境保护法、反垄断法</td><td>决定行业进入壁垒、运营约束，具有<strong>强制性、直接性</strong></td><td>中美贸易摩擦、国内产业政策</td></tr>
+            <tr><td><span class="kw-red">经济</span></td><td>经济体制/结构/产业结构；GDP增长、通胀、资本市场；财政政策、货币政策、贸易政策</td><td>影响需求规模和企业盈利空间</td><td>供给侧改革、消费降级趋势</td></tr>
+            <tr><td><span class="kw-red">社会文化</span></td><td>宗教信仰、价值观念、文化传统与风俗习惯</td><td>决定目标市场和产品定位</td><td>银发经济、Z世代消费</td></tr>
+            <tr><td><span class="kw-red">技术</span></td><td>国家技术进步整体水平、政府技术战略、技术创新体系、技术保护政策</td><td>可消除市场边界、缩短产品生命周期、创造新商业模式</td><td>大模型AI、数字化转型</td></tr>
+            <tr><td><span class="kw-red">人口</span></td><td>人口数量、年龄结构、地区分布、未来趋势</td><td>决定劳动力供给和市场需求基础</td><td>老龄化、出生率下降</td></tr>
+            <tr><td><span class="kw-red">自然</span></td><td>资源储量与开发条件、环境保护要求</td><td>影响运营成本和合法性</td><td>双碳目标、ESG</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hl-box hl-green">
+        <strong>🧒 小学生版：</strong>就像开奶茶店前要看：政策（允不允许开）、经济（大家有没有钱喝）、文化（年轻人喜不喜欢）、技术（有没有好机器）、人口（附近有多少潜在顾客）、自然（要不要考虑环保问题）。
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>💡 助记口诀：</strong><span class="kw">"政经社技人自"</span>——教材六因素助记。
+      </div>
+
+      <div class="interview-box">
+        <h4>🎤 复试回答模板（宏观环境/PESTEL简答）</h4>
+        <div class="int-step"><div class="int-num">1</div><div><strong>定义：</strong>宏观环境是指广泛影响所有市场、行业和企业战略行为的外部因素，具有先动性、广泛性和复杂性三大特点。</div></div>
+        <div class="int-step"><div class="int-num">2</div><div><strong>六类内容：</strong>政治与法律（制度、政策）、经济（GDP、通胀、财政政策）、社会文化（价值观、风俗）、技术（技术进步水平）、人口（数量、结构）、自然（资源、环保）。</div></div>
+        <div class="int-step"><div class="int-num">3</div><div><strong>举例：</strong>以新能源汽车为例，双碳目标（政治+自然）+电池技术突破（技术）+环保意识崛起（社会文化）共同构成战略机会。</div></div>
+        <div class="int-step"><div class="int-num">4</div><div><strong>总结：</strong>通过宏观环境分析，识别企业面临的机会与威胁，为战略制定提供依据。</div></div>
+      </div>
+
+      <details class="ext-q">
+        <summary>💡 复试延伸问题（老师可能追问）</summary>
+        <div class="ext-q-content">
+          <p>① 宏观环境和行业环境对企业战略影响有什么区别？<br>→ 宏观环境是"大背景"，所有企业都受影响；行业环境是"竞争结构"，只影响本行业企业。</p>
+          <p>② 宏观环境分析应该遵循什么步骤？<br>→ ①发现主要因素→②确定关键因素→③预测变化趋势→④判断对战略的影响（4步法）</p>
+          <p>③ AI技术发展属于哪个维度？如何影响企业战略？<br>→ 技术维度，可缩短产品生命周期、改变行业竞争结构、创造颠覆性商业模式。</p>
+        </div>
+      </details>
+
+      <div class="original-text">📖 教材原句："技术进步速度的加快有可能消除市场和行业的边界，缩短产品生命周期，创造新的产品、顾客和市场需求……未来的市场争夺将是技术制高点的争夺。"（P70）</div>
+    </div>
+  </details>
+</div>
+
+<!-- KP: 宏观环境分析四步骤 -->
+<div class="kp-card">
+  <details>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">2.1</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 宏观环境分析的四步骤（重点！）</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★</span>
+            <span class="badge badge-prob">🎯 较高概率</span>
+            <span class="badge badge-type">简答</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="info-item" style="margin-bottom:12px;"><div class="info-label">📖 页码</div><div class="info-value">P73–74（教材第2节末尾）</div></div>
+
+      <div class="template-box">
+        <h4>🔢 四步骤（教材原序）</h4>
+        <div class="template-step"><div class="step-num">1</div><div><strong>发现主要宏观环境因素：</strong>通过历史分析法（过去影响战略的因素）+ 重大事件分析法确定影响未来战略选择的主要因素</div></div>
+        <div class="template-step"><div class="step-num">2</div><div><strong>确定关键因素：</strong>对主要因素进行深入研究，赋予权重，将权重高的因素确定为关键因素</div></div>
+        <div class="template-step"><div class="step-num">3</div><div><strong>预测关键因素的变化趋势：</strong>运用定量和定性方法，对关键因素的变化方向和程度进行预测</div></div>
+        <div class="template-step"><div class="step-num">4</div><div><strong>判断影响：</strong>判断关键因素变化趋势对企业战略选择的影响，确认哪些是机会，哪些是威胁；结合关键因素权重进一步确认机会与威胁的优先级</div></div>
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>💡 助记口诀：</strong><span class="kw">"发确预判"</span>——发现→确定→预测→判断
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     §3  市场环境分析（教材独特安排）
+═══════════════════════════════════════════ -->
+<div id="sec-3-3"></div>
+<h2 class="section-title green">🛒 3.3 市场环境分析（§3 · 本教材独特节）</h2>
+
+<div class="hl-box hl-green" style="margin-bottom:16px;">
+  <strong>⚠️ 注意：</strong>这是本教材<strong>独特安排</strong>的节（其他教材没有），教材特意在宏观环境分析和行业环境分析之间插入市场环境分析。<strong>原因：</strong>①确认顾客需求变化 ②在宏观环境基础上重新定义行业边界。<strong>考点：</strong>顾客需求五层次 + 商业模式三阶段。
+</div>
+
+<!-- KP: 顾客需求五层次 -->
+<div class="kp-card">
+  <details>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">3</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 顾客需求分析与五层次</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★</span>
+            <span class="badge badge-prob">🎯 较高概率</span>
+            <span class="badge badge-type">案例 | 论述</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">📖 页码</div><div class="info-value">P74–77（教材第3节）</div></div>
+        <div class="info-item"><div class="info-label">📝 核心概念</div><div class="info-value">顾客需求五层次 + 市场环境分析的目的</div></div>
+      </div>
+
+      <div class="hl-box hl-green">
+        <strong>市场环境分析的双重目的：</strong><br>
+        ① 确认<span class="kw">顾客需求和消费方式</span>的变化，为市场定位和经营方式选择提供依据<br>
+        ② 在宏观环境分析基础上，<span class="kw">重新定义行业边界</span>，为行业环境分析确定适当前提
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>层次</th><th>名称</th><th>说明</th><th>案例</th></tr></thead>
+          <tbody>
+            <tr><td><strong>①</strong></td><td><span class="kw-green">明确表述的需求</span></td><td>顾客能清楚说出的需求</td><td>要一辆价格不高的汽车</td></tr>
+            <tr><td><strong>②</strong></td><td><span class="kw-green">真实需求</span></td><td>需求背后真实的目的</td><td>想要低运营成本（省油，而非低价格）</td></tr>
+            <tr><td><strong>③</strong></td><td><span class="kw-green">未被满足的需求</span></td><td>顾客希望但没有说出的需求</td><td>希望汽车经销商也处理旧车</td></tr>
+            <tr><td><strong>④</strong></td><td><span class="kw-green">愉悦需求</span></td><td>超出预期、带来愉悦的附加需求</td><td>赠送GPS导航系统</td></tr>
+            <tr><td><strong>⑤</strong></td><td><span class="kw-green">秘密需求</span></td><td>顾客不好意思说出的深层需求</td><td>希望车能彰显成功人士形象</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hl-box hl-blue">
+        <strong>市场需求三大变化趋势（教材）：</strong><br>
+        ① 需求的<span class="kw-blue">多样化</span>，导致产品多样化、个性化<br>
+        ② 需求重点从产品转向<span class="kw-blue">服务</span><br>
+        ③ 需求越来越包含对<span class="kw-blue">社会价值</span>的追求（节约能源、环境保护等社会责任）
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>🧒 小学生版：</strong>顾客买奶茶，明说要"一杯奶茶"（①），真实是想"解渴"（②），没说但希望店里有座位（③），收到一张优惠券很惊喜（④），内心觉得喝这家网红奶茶很有面子（⑤）。
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- KP: 商业模式分析 -->
+<div class="kp-card">
+  <details>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">3.1</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 商业模式分析（价值发现·匹配·获取）</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★</span>
+            <span class="badge badge-prob">🎯 一般概率</span>
+            <span class="badge badge-type">简答 | 案例</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="hl-box hl-green">
+        <strong>商业模式三阶段（教材）：</strong><br>
+        <span class="kw-green">价值发现</span>（发现顾客未被满足的需求）→ <span class="kw-green">价值匹配</span>（将产品/服务与顾客需求匹配）→ <span class="kw-green">价值获取</span>（实现盈利的方式）<br><br>
+        <strong>强调：</strong>三个阶段缺一不可，企业应沿着这个逻辑分析宏观环境和行业结构变化对商业模式的影响。
+      </div>
+
+      <div class="hl-box hl-blue">
+        <strong>行业边界的重要性：</strong>行业边界是指同类或有密切替代关系的企业群集合的边界。行业边界具有<span class="kw-blue">动态性</span>和<span class="kw-blue">模糊性</span>特点。<br>
+        在宏观环境（尤其是技术变化）影响下，行业边界越来越模糊，企业需要<strong>重新定义自己所处的行业</strong>。<br>
+        <strong>案例：</strong>美的集团根据未来技术趋势，实施"双智战略"，提出成为"全球化科技产业集团"——突破了传统家电行业边界。
+      </div>
+
+      <div class="interview-box">
+        <h4>🎤 复试回答模板（市场环境分析）</h4>
+        <div class="int-step"><div class="int-num">1</div><div><strong>意义：</strong>市场环境分析承接宏观环境，聚焦顾客需求变化和行业边界重定义，是行业环境分析的前提。</div></div>
+        <div class="int-step"><div class="int-num">2</div><div><strong>核心内容：</strong>①分析顾客需求的五个层次；②把握需求多样化/服务化/社会价值化三大趋势；③结合宏观趋势重新定义行业边界。</div></div>
+        <div class="int-step"><div class="int-num">3</div><div><strong>与商业模式关联：</strong>有效的市场环境分析支撑商业模式的价值发现→价值匹配→价值获取三个阶段。</div></div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     §4  行业环境分析
+═══════════════════════════════════════════ -->
+<div id="sec-3-4"></div>
+<h2 class="section-title orange">🏭 3.4 行业环境分析（§4 · 波特五力 + 产业生命周期）</h2>
+
+<!-- KP: 产业生命周期 -->
+<div class="kp-card">
+  <details>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">4</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 行业边界与产业生命周期</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★</span>
+            <span class="badge badge-prob">🎯 较高概率</span>
+            <span class="badge badge-type">名词解释 | 简答</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">📖 页码</div><div class="info-value">P78–82（教材第4节）</div></div>
+        <div class="info-item"><div class="info-label">📝 专有名词</div><div class="info-value">产业生命周期四阶段 + 每阶段关键成功因素</div></div>
+      </div>
+
+      <div class="lifecycle-grid">
+        <div class="lc-stage" style="background:#fee2e2">
+          <div class="lc-stage-num" style="color:#dc2626">①</div>
+          <div class="lc-stage-name" style="color:#991b1b">萌芽阶段</div>
+          <div class="lc-stage-desc" style="color:#7f1d1d">产品需完善<br>顾客未接受<br>规模经济难实现<br><strong>KSF：技术研发+商业模式</strong></div>
+        </div>
+        <div class="lc-stage" style="background:#fef3c7">
+          <div class="lc-stage-num" style="color:#d97706">②</div>
+          <div class="lc-stage-name" style="color:#92400e">成长阶段</div>
+          <div class="lc-stage-desc" style="color:#78350f">需求快速增长<br>产品标准化<br>行业整合开始<br><strong>KSF：品牌建设+市场份额</strong></div>
+        </div>
+        <div class="lc-stage" style="background:#dcfce7">
+          <div class="lc-stage-num" style="color:#059669">③</div>
+          <div class="lc-stage-name" style="color:#14532d">成熟阶段</div>
+          <div class="lc-stage-desc" style="color:#166534">增长放缓<br>竞争激烈<br>价格压力大<br><strong>KSF：成本控制+客户忠诚</strong></div>
+        </div>
+        <div class="lc-stage" style="background:#f3f4f6">
+          <div class="lc-stage-num" style="color:#6b7280">④</div>
+          <div class="lc-stage-name" style="color:#374151">衰退阶段</div>
+          <div class="lc-stage-desc" style="color:#6b7280">需求下降<br>企业退出<br>整合或转型<br><strong>KSF：选择退出 or 集中聚焦</strong></div>
+        </div>
+      </div>
+
+      <div class="hl-box hl-blue">
+        <strong>行业边界的特点：</strong><br>
+        ① <span class="kw-blue">动态性</span>：随环境变化而变化<br>
+        ② <span class="kw-blue">模糊性</span>：技术和消费方式变化使行业边界模糊化<br>
+        <strong>意义：</strong>在进行波特五力分析前，必须先明确行业边界！
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>🧒 小学生版（产业生命周期）：</strong>就像一个奶茶品牌的成长故事：①刚出来，大家不了解（萌芽）→ ②爆红，排队买（成长）→ ③到处都是类似品牌，竞争激烈（成熟）→ ④大家喝腻了（衰退）。每个阶段要做的事不同！
+      </div>
+
+      <div class="interview-box">
+        <h4>🎤 复试回答模板（产业生命周期）</h4>
+        <div class="int-step"><div class="int-num">1</div><div><strong>定义：</strong>行业如同人一样，有萌芽、成长、成熟、衰退四个生命周期阶段。</div></div>
+        <div class="int-step"><div class="int-num">2</div><div><strong>各阶段特点+KSF：</strong>萌芽（技术研发/商业模式）→成长（品牌/市场份额）→成熟（成本/客户忠诚）→衰退（退出/聚焦）。</div></div>
+        <div class="int-step"><div class="int-num">3</div><div><strong>战略意义：</strong>企业应根据所在阶段制定差异化战略，在成熟阶段更需要发挥竞争优势巩固市场地位。</div></div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- KP: 波特五力 -->
+<div class="kp-card">
+  <details open>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">4.1</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 波特五力模型（Porter's Five Forces）⭐核心必背</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★★</span>
+            <span class="badge badge-prob">🎯 极高概率（几乎每年必考）</span>
+            <span class="badge badge-type">名词解释 | 简答 | 案例</span>
+            <span class="badge badge-year">【2016笔试】【2019面试】【2023面试】</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">📖 页码</div><div class="info-value">P83–87（教材第4节）</div></div>
+        <div class="info-item"><div class="info-label">📝 专有名词</div><div class="info-value">五种竞争力量 → 决定行业盈利潜力</div></div>
+      </div>
+
+      <div class="hl-box hl-blue">
+        <strong>📖 教材定义：</strong>迈克尔·波特（哈佛商学院）提出。企业盈利水平高低取决于行业平均收益率高低；行业平均收益率取决于行业竞争强度；行业竞争强度取决于行业竞争结构；行业竞争结构取决于<strong>五种力量</strong>。
+      </div>
+
+      <!-- 五力可视化 -->
+      <div class="five-forces-grid">
+        <div class="ff-box ff-top">
+          ↑ <strong>潜在进入者的威胁</strong><br>
+          <small>（进入壁垒越高→威胁越低）</small>
+        </div>
+        <div class="ff-box ff-left">
+          ← <strong>供应商</strong><br>讨价还价权力<br>
+          <small>（供应商集中→权力大）</small>
+        </div>
+        <div class="ff-box ff-center">
+          🏆 <strong>行业内部竞争</strong><br>
+          现有竞争者的竞争强度<br>
+          <small>（核心力量）</small>
+        </div>
+        <div class="ff-box ff-right">
+          <strong>顾客</strong> →<br>讨价还价权力<br>
+          <small>（买方集中→权力大）</small>
+        </div>
+        <div class="ff-box ff-bottom">
+          ↓ <strong>替代品的威胁</strong><br>
+          <small>（替代品越多→威胁越高）</small>
+        </div>
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>🎯 核心逻辑：</strong>五种力量越强 → 行业竞争越激烈 → 行业整体盈利能力越低 → 战略挑战越大。企业战略的目的就是找到能减弱这五种力量影响的竞争定位。
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>力量</th><th>增强该力量的条件</th><th>减弱该力量的条件</th><th>企业战略应对</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="kw-red">① 现有竞争者竞争强度</span></td>
+              <td>竞争者多且势均力敌；增长缓慢；产品同质化；退出壁垒高</td>
+              <td>行业高速增长；差异化明显；高集中度</td>
+              <td>差异化定位；建立品牌忠诚；避免价格战</td>
+            </tr>
+            <tr>
+              <td><span class="kw-red">② 潜在进入者威胁</span></td>
+              <td>进入壁垒低；资本要求低；技术壁垒低；品牌效应弱</td>
+              <td>高规模经济；高转换成本；品牌忠诚；政策壁垒</td>
+              <td>构建规模优势；加强品牌建设；专利保护</td>
+            </tr>
+            <tr>
+              <td><span class="kw-red">③ 替代品威胁</span></td>
+              <td>替代品价格低、功能相似；买方转换成本低</td>
+              <td>替代品性价比低；消费者习惯难改</td>
+              <td>持续创新；提升独特价值；增加转换成本</td>
+            </tr>
+            <tr>
+              <td><span class="kw-red">④ 购买者议价能力</span></td>
+              <td>买方集中度高；采购量大；产品标准化；向后整合能力强</td>
+              <td>买方分散；高转换成本；产品差异化</td>
+              <td>差异化；开发多元买方渠道；品牌建设</td>
+            </tr>
+            <tr>
+              <td><span class="kw-red">⑤ 供应商议价能力</span></td>
+              <td>供应商集中；无替代品；供应品差异化；向前整合威胁</td>
+              <td>供应商多且分散；标准化产品；买方是重要客户</td>
+              <td>多元化供应商；向后整合；自主研发关键材料</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hl-box hl-green">
+        <strong>🧒 小学生版：</strong>你开奶茶店。①同行竞争——附近有多少家奶茶店？②新对手——别人开店容不容易？③替代品——顾客会不会改喝咖啡？④顾客谈价——顾客能否强迫你打折？⑤供应商——原料供货商能不能涨价？这五个问题决定你能不能赚钱！
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>💡 助记口诀：</strong><span class="kw">"现新替购供"</span>——现（现有竞争者）新（新进入者）替（替代品）购（购买者）供（供应商）
+      </div>
+
+      <div class="interview-box">
+        <h4>🎤 复试回答模板（波特五力）</h4>
+        <div class="int-step"><div class="int-num">1</div><div><strong>定义：</strong>波特五力模型是迈克尔·波特提出的行业竞争结构分析框架，通过五种竞争力量评估行业整体盈利潜力。</div></div>
+        <div class="int-step"><div class="int-num">2</div><div><strong>五力：</strong>①行业内现有竞争者的竞争强度；②潜在进入者的威胁（与进入壁垒相关）；③替代品的威胁；④购买者的议价能力；⑤供应商的议价能力。</div></div>
+        <div class="int-step"><div class="int-num">3</div><div><strong>核心逻辑：</strong>五种力量越强，行业竞争越激烈，行业整体盈利能力越低。</div></div>
+        <div class="int-step"><div class="int-num">4</div><div><strong>案例：</strong>中国航空业——①三大航激烈竞争；②进入壁垒高，威胁低；③高铁是最强替代品；④OTA改变购买者格局；⑤波音/空客双寡头议价极强。</div></div>
+        <div class="int-step"><div class="int-num">5</div><div><strong>总结：</strong>五力模型为企业业务层战略（成本领先/差异化）选择提供依据，帮助企业识别行业的战略定位机会。</div></div>
+      </div>
+
+      <details class="ext-q">
+        <summary>💡 复试延伸问题（老师可能追问）</summary>
+        <div class="ext-q-content">
+          <p>① 五力模型有什么局限性？<br>→ 静态分析，不能捕捉动态竞争；忽视互补者的力量；适合结构相对稳定的行业。</p>
+          <p>② 行业竞争结构是否会变化？什么因素导致变化？<br>→ 会变化。宏观环境变化（技术进步、法规变化）会导致五力结构发生变化。</p>
+          <p>③ 五力模型与PESTEL如何配合使用？<br>→ PESTEL扫描宏观趋势（如AI、ESG） → 判断这些趋势会如何改变五力结构 → 识别行业机会和威胁。</p>
+        </div>
+      </details>
+
+      <div class="original-text">📖 教材原句："如果这五种力量都强，那么这个行业盈利潜力就低。反之，则这个行业的盈利潜力就大。"（P84）</div>
+    </div>
+  </details>
+</div>
+
+<!-- KP: 进入壁垒 -->
+<div class="kp-card">
+  <details>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">4.2</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 进入壁垒（Entry Barriers）——高频考点！</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★★</span>
+            <span class="badge badge-prob">🎯 极高概率</span>
+            <span class="badge badge-type">名词解释 | 简答</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="hl-box hl-blue">
+        <strong>📖 定义：</strong><span class="kw">进入壁垒</span>（Entry Barriers）是指阻碍新竞争者进入某一行业的各种因素，这些因素使现有企业相对于潜在进入者具有成本或其他方面的优势。
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>壁垒类型</th><th>核心说明</th><th>典型案例</th></tr></thead>
+          <tbody>
+            <tr><td>① <span class="kw-blue">规模经济</span></td><td>新进入者难以立即达到现有企业规模，成本劣势明显</td><td>汽车制造业、钢铁业</td></tr>
+            <tr><td>② <span class="kw-blue">资本需求</span></td><td>某些行业需要巨额资本投入，形成天然壁垒</td><td>航空业、芯片制造</td></tr>
+            <tr><td>③ <span class="kw-blue">转换成本</span></td><td>买方从一个供应商转换到另一个供应商的成本</td><td>企业IT系统迁移</td></tr>
+            <tr><td>④ <span class="kw-blue">品牌忠诚度</span></td><td>现有企业强大的品牌认知度让新进入者难以竞争</td><td>可口可乐、华为</td></tr>
+            <tr><td>⑤ <span class="kw-blue">政策壁垒</span></td><td>政府规制、特许经营权、行政审批等</td><td>银行业、电力行业</td></tr>
+            <tr><td>⑥ <span class="kw-blue">经验曲线效应</span></td><td>现有企业积累经验使单位成本持续下降（每累计产量翻倍，成本下降10~30%）</td><td>半导体制造业</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>💡 助记口诀：</strong><span class="kw">"规资转品政经"</span>——规（规模经济）资（资本需求）转（转换成本）品（品牌）政（政策）经（经验曲线）
+      </div>
+    </div>
+  </details>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     §5  竞争与合作环境分析（战略群组）
+═══════════════════════════════════════════ -->
+<div id="sec-3-4b"></div><!-- anchor for nav compat -->
+<div id="sec-3-5"></div>
+<h2 class="section-title purple">⚔️ 3.5 竞争与合作环境分析（§5 · 战略群组）</h2>
+
+<!-- KP: 战略群组 -->
+<div class="kp-card">
+  <details open>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">5</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 战略群组（Strategic Groups）</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★</span>
+            <span class="badge badge-prob">🎯 较高概率</span>
+            <span class="badge badge-type">名词解释 | 简答</span>
+            <span class="badge badge-year">【高频面试题】</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">📖 页码</div><div class="info-value">P87–90（教材第5节）</div></div>
+        <div class="info-item"><div class="info-label">📝 专有名词</div><div class="info-value">战略群（Strategic Group）= 相似战略企业集合</div></div>
+      </div>
+
+      <div class="hl-box hl-purple">
+        <strong>📖 教材定义：</strong>在同一行业内，采用相似战略、拥有相似资源和能力的企业集合，称为<span class="kw">战略群</span>（Strategic Group）。同一战略群内的企业互为直接竞争对手。
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>战略群组分析的价值</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td><span class="kw-purple">① 识别直接竞争对手</span></td><td>同一战略群内的企业互为最直接竞争对手（而不是行业内所有企业）</td></tr>
+            <tr><td><span class="kw-purple">② 发现战略空白机会</span></td><td>战略群组图上的空白地带可能是未开发的细分市场</td></tr>
+            <tr><td><span class="kw-purple">③ 分析移动壁垒</span></td><td>评估从一个战略群移动到另一个战略群的难度和成本</td></tr>
+            <tr><td><span class="kw-purple">④ 预测竞争对手行为</span></td><td>同一群组内企业对外部变化的反应往往相似，便于预测</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hl-box hl-blue">
+        <strong>🔍 如何识别战略群组：</strong><br>
+        ① 选取两个关键战略维度（如：价格/质量、规模/地域覆盖）<br>
+        ② 以两个维度为坐标轴，绘制战略群组图<br>
+        ③ 将位置相近的企业归为同一战略群
+      </div>
+
+      <div class="hl-box hl-green">
+        <strong>🏢 案例：中国汽车行业战略群组</strong><br>
+        群组1：<span class="kw-green">豪华车群组</span>——奔驰/宝马/奥迪（高价格+高质量+高品牌溢价）<br>
+        群组2：<span class="kw-green">合资中高端群组</span>——丰田/大众/本田（中高价+合资品质）<br>
+        群组3：<span class="kw-green">自主品牌群组</span>——比亚迪/吉利/长城（中低价+国产）<br>
+        群组4：<span class="kw-green">微型车群组</span>——五菱（低价+高性价比）<br>
+        → 比亚迪的直接竞争对手是吉利、长城，而非宝马！
+      </div>
+
+      <div class="hl-box hl-red">
+        <strong>📌 重要概念：移动壁垒（Mobility Barriers）</strong><br>
+        阻止企业从一个战略群移动到另一个战略群的因素。<br>
+        例如：五菱想进入豪华车市场，需要品牌积累、技术研发、豪华制造能力，这些就是<span class="kw-red">移动壁垒</span>。<br>
+        移动壁垒与进入壁垒相似，但适用于行业内部群组间的转移。
+      </div>
+
+      <div class="hl-box hl-orange">
+        <strong>🧒 小学生版：</strong>把手机市场比作学校。苹果、华为顶配款是"学霸群"；小米、OPPO中端是"中等生群"；各种山寨廉价机是"差生群"。同一群里的学生（企业）才是真正的同桌竞争对手！要从差生群升到学霸群，需要克服很多障碍——这就是移动壁垒。
+      </div>
+
+      <div class="interview-box">
+        <h4>🎤 复试回答模板（战略群组）</h4>
+        <div class="int-step"><div class="int-num">1</div><div><strong>定义：</strong>战略群是同一行业内采用相似战略的企业集合，同一群内企业互为直接竞争对手。</div></div>
+        <div class="int-step"><div class="int-num">2</div><div><strong>识别方法：</strong>选取两个关键战略维度，绘制战略群组图，将位置相近的企业归组。</div></div>
+        <div class="int-step"><div class="int-num">3</div><div><strong>战略意义：</strong>①识别直接竞争对手；②发现战略空白机会；③分析移动壁垒；④预测竞争行为。</div></div>
+        <div class="int-step"><div class="int-num">4</div><div><strong>举例：</strong>以乳品行业为例，伊利/蒙牛属高端全国性群组，光明属中端区域性群组，直接竞争对手不同。</div></div>
+      </div>
+
+      <details class="ext-q">
+        <summary>💡 复试延伸问题</summary>
+        <div class="ext-q-content">
+          <p>① 战略群组分析与五力模型有什么关系？<br>→ 五力分析整个行业，战略群组聚焦行业内子集；先五力了解行业，再战略群组定位直接对手。</p>
+          <p>② 什么情况下企业应考虑跨越战略群？<br>→ 当移动壁垒较低、目标群组盈利能力明显更高，且自身资源能力足以支撑时。</p>
+        </div>
+      </details>
+    </div>
+  </details>
+</div>
+
+<!-- KP: 竞争对手分析 -->
+<div class="kp-card">
+  <details>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">5.1</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 竞争对手分析框架（四维度）</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★</span>
+            <span class="badge badge-prob">🎯 较高概率</span>
+            <span class="badge badge-type">简答 | 案例</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="info-item" style="margin-bottom:12px;"><div class="info-label">📖 页码</div><div class="info-value">P90–92（教材第5节）</div></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th>分析内容</th><th>战略意义</th></tr></thead>
+          <tbody>
+            <tr><td>① <span class="kw-blue">未来目标</span></td><td>竞争对手的短期和长期战略目标是什么？</td><td>揭示竞争对手的战略意图和进攻意愿</td></tr>
+            <tr><td>② <span class="kw-blue">现行战略</span></td><td>竞争对手目前采用何种战略（成本领先/差异化/聚焦）？</td><td>了解竞争对手的战略定位和竞争方式</td></tr>
+            <tr><td>③ <span class="kw-blue">战略假设</span></td><td>竞争对手对行业和自身的基本假设是什么？</td><td>判断假设是否符合现实，找出破解机会</td></tr>
+            <tr><td>④ <span class="kw-blue">能力</span></td><td>竞争对手的资源和能力优劣势如何？</td><td>了解竞争对手实力上限和薄弱环节</td></tr>
+            <tr><td>⑤ <span class="kw-blue">反应模式</span></td><td>综合前四点→预测竞争对手会如何反应我方战略行动</td><td>制定针对性战略，把握竞争主动权</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hl-box hl-purple">
+        <strong>📌 竞争假设分析（教材强调）：</strong><br>
+        任何战略都建立在对外部环境、市场、行业变化趋势的<strong>假设</strong>基础上。<br>
+        如果竞争对手的战略假设<strong>违背外部环境变化趋势</strong>，就会给本企业带来战胜对手的重大机会！<br>
+        <span class="kw-purple">→ 分析竞争对手的战略假设，是识别竞争机会的关键工具。</span>
+      </div>
+
+      <div class="hl-box hl-blue">
+        <strong>合作环境分析（教材强调）：</strong><br>
+        在全球化背景下，<strong>竞争</strong>与<strong>合作</strong>同样重要。企业战略管理者必须：<br>
+        ① 准确识别合作对象（供应商、渠道、联盟伙伴）<br>
+        ② 理解合作者对环境变化的反应<br>
+        ③ 了解合作者的需要和价值取向，实现合作共赢
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     §6  行业关键成功因素
+═══════════════════════════════════════════ -->
+<div id="sec-3-6"></div>
+<h2 class="section-title teal">🔑 3.6 行业关键成功因素（§6 · KSF）</h2>
+
+<div class="kp-card">
+  <details open>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">6</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 行业关键成功因素（Key Success Factors）</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★★</span>
+            <span class="badge badge-prob">🎯 较高概率</span>
+            <span class="badge badge-type">名词解释 | 简答 | 案例</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="info-grid">
+        <div class="info-item"><div class="info-label">📖 页码</div><div class="info-value">P92–95（教材第6节）</div></div>
+        <div class="info-item"><div class="info-label">📝 专有名词</div><div class="info-value">KSF = 行业中获胜的主要因素 = 建立核心专长的领域</div></div>
+      </div>
+
+      <div class="hl-box hl-teal">
+        <strong>📖 教材定义：</strong><span class="kw">行业关键成功因素</span>（KSF）就是促使行业中的企业在市场竞争中获胜的主要因素，也是价值创造的关键环节和企业应该建立核心专长的领域。
+      </div>
+
+      <div class="hl-box hl-blue">
+        <strong>两个重要性质：</strong><br>
+        ① <span class="kw-blue">非普适性</span>：KSF不是一成不变的，不是放之四海皆准的。即使同一行业，目标市场/定位/商业模式不同，KSF也不同。<br>
+        ② <span class="kw-blue">动态性</span>：宏观、市场、行业环境变化会导致KSF发生变化（如格力电器发现质量可靠性是KSF，是朱江洪从顾客投诉中发现的）。
+      </div>
+
+      <div class="template-box">
+        <h4>🔢 识别KSF的三个问题（教材核心）</h4>
+        <div class="template-step"><div class="step-num">1</div><div><strong>顾客视角：</strong>购买者是根据什么来选择产品品牌的？哪些产品特征是重要的？</div></div>
+        <div class="template-step"><div class="step-num">2</div><div><strong>竞争视角：</strong>已知竞争对手特点和战略，企业需要具备什么资源和竞争能力才能在竞争中获胜？</div></div>
+        <div class="template-step"><div class="step-num">3</div><div><strong>劣势视角：</strong>哪些缺点最能导致一个企业产生明显的竞争劣势？（反向推导KSF）</div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>产业生命周期阶段</th><th>典型关键成功因素（KSF）</th><th>案例</th></tr></thead>
+          <tbody>
+            <tr><td>萌芽阶段</td><td><span class="kw-teal">技术研发</span> + 商业模式设计</td><td>早期AI大模型：技术突破能力</td></tr>
+            <tr><td>成长阶段</td><td><span class="kw-teal">品牌建设</span> + 市场份额扩张</td><td>新能源汽车：品牌认知+渠道扩张</td></tr>
+            <tr><td>成熟阶段</td><td><span class="kw-teal">成本控制</span> + 客户忠诚度</td><td>空调行业：制造效率+售后服务</td></tr>
+            <tr><td>衰退阶段</td><td><span class="kw-teal">聚焦特定细分</span>或退出</td><td>传统胶卷：柯达的失败教训</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="hl-box hl-green">
+        <strong>🧒 小学生版：</strong>KSF就是"制胜秘诀"。开奶茶店要赢：①顾客为什么选你（甜度刚好？排队短？）→ ②竞争对手有什么你要具备什么 → ③什么弱点会让你输（原料贵？服务差？）。找到这三个答案就找到了关键成功因素！
+      </div>
+
+      <div class="hl-box hl-purple">
+        <strong>🔗 KSF与核心专长的关系（超级重要！）：</strong><br>
+        KSF是外部环境分析的<strong>最终输出</strong>，也是第四章内部环境分析（核心专长分析）的<strong>起点</strong>。<br>
+        企业战略应该围绕KSF建立核心专长 → KSF是连接外部机会和内部能力的关键桥梁。<br>
+        <span class="kw-purple">→ 这是为什么KSF是外部分析的最后一节！它直接指向内部分析（第四章）和战略选择（第五章）。</span>
+      </div>
+
+      <div class="interview-box">
+        <h4>🎤 复试回答模板（行业KSF）</h4>
+        <div class="int-step"><div class="int-num">1</div><div><strong>定义：</strong>行业关键成功因素是促使行业企业获胜的主要因素，也是价值创造的关键环节和建立核心专长的领域。</div></div>
+        <div class="int-step"><div class="int-num">2</div><div><strong>特性：</strong>非普适性（目标市场不同，KSF不同）和动态性（环境变化导致KSF变化）。</div></div>
+        <div class="int-step"><div class="int-num">3</div><div><strong>识别方法：</strong>通过三个问题识别——①顾客选择标准；②竞争获胜所需能力；③导致劣势的主要缺点。</div></div>
+        <div class="int-step"><div class="int-num">4</div><div><strong>与核心专长的关系：</strong>KSF是外部分析输出，指明企业应在哪些领域建立核心专长，连接外部机会和内部能力。</div></div>
+        <div class="int-step"><div class="int-num">5</div><div><strong>举例：</strong>格力电器发现家用空调行业的KSF是产品可靠性（而非低价），于是集中资源狠抓质量，建立竞争优势。</div></div>
+      </div>
+
+      <div class="original-text">📖 教材原句："一个行业的关键成功因素就是促使行业中的企业在市场竞争中获胜的主要因素，也是价值创造的关键环节和企业应该建立核心专长的领域。"（P92）</div>
+    </div>
+  </details>
+</div>
+
+<!-- ===== 战略要素评价法 ===== -->
+<div class="kp-card">
+  <details>
+    <summary style="list-style:none">
+      <div class="kp-header">
+        <div class="kp-num">补充</div>
+        <div class="kp-title-wrap">
+          <div class="kp-name">📌 战略要素评价法（EFE矩阵）</div>
+          <div class="kp-badges">
+            <span class="badge badge-star">⭐ 重要性 ★★★★</span>
+            <span class="badge badge-prob">🎯 较高概率</span>
+            <span class="badge badge-type">简答 | 计算</span>
+          </div>
+        </div>
+        <span class="kp-arrow">▼</span>
+      </div>
+    </summary>
+    <div class="kp-content">
+      <div class="hl-box hl-blue">
+        <strong>📖 定义：</strong><span class="kw">战略要素评价法</span>是对企业外部（或内部）环境的主要机会与威胁（优势与劣势）进行全面综合评价的方法，通过加权评分量化环境状况。
+      </div>
+
+      <div class="template-box">
+        <h4>🔢 操作步骤（5步）</h4>
+        <div class="template-step"><div class="step-num">1</div><div>列出5–20个关键外部因素（机会与威胁）</div></div>
+        <div class="template-step"><div class="step-num">2</div><div>为每个因素赋予<strong>权重</strong>（0.0–1.0），所有权重之和 = 1.0</div></div>
+        <div class="template-step"><div class="step-num">3</div><div>为每个因素打<strong>分数（1–4分）</strong>：4=强势回应；3=一般回应；2=回应较差；1=回应很差</div></div>
+        <div class="template-step"><div class="step-num">4</div><div>计算<strong>加权得分</strong>（权重 × 分数）</div></div>
+        <div class="template-step"><div class="step-num">5</div><div>汇总所有加权得分：<span class="kw">&gt;2.5分 = 外部环境较好；&lt;2.5分 = 外部环境较差</span></div></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>关键外部因素</th><th>权重</th><th>评分</th><th>加权分</th></tr></thead>
+          <tbody>
+            <tr><td>数字化转型机会（O）</td><td>0.15</td><td>4</td><td>0.60</td></tr>
+            <tr><td>ESG监管趋严（T）</td><td>0.12</td><td>2</td><td>0.24</td></tr>
+            <tr><td>市场需求增长（O）</td><td>0.10</td><td>3</td><td>0.30</td></tr>
+            <tr><td>国际化机会（O）</td><td>0.10</td><td>3</td><td>0.30</td></tr>
+            <tr><td>竞争者激增（T）</td><td>0.08</td><td>2</td><td>0.16</td></tr>
+            <tr><td style="text-align:right"><strong>（其他因素省略）→ 总计</strong></td><td>1.0</td><td>—</td><td><strong>2.72（&gt;2.5，外部环境较好）</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="original-text">📖 教材原句："如果企业外部环境分析的总加权分值低于2.5分，那么就表明这个企业的外部环境比较差；如果总加权分值高于2.5分，那么就表明这个企业的外部环境比较好。"</div>
+    </div>
+  </details>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     对比总结表
+═══════════════════════════════════════════ -->
+<div id="sec-compare"></div>
+<h2 class="section-title red">📊 易混概念对比总结</h2>
+
+<div class="compare-card">
+  <h3>🆚 PESTEL分析 vs 波特五力模型</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>对比维度</th><th>PESTEL分析</th><th>波特五力模型</th></tr></thead>
+      <tbody>
+        <tr><td>分析层次</td><td><span class="kw-blue">宏观环境</span>（一般环境）</td><td><span class="kw-red">行业环境</span>（产业结构）</td></tr>
+        <tr><td>分析对象</td><td>社会大环境六类因素</td><td>行业内五种竞争力量</td></tr>
+        <tr><td>分析目的</td><td>识别宏观机会与威胁</td><td>评估行业吸引力/盈利潜力</td></tr>
+        <tr><td>提出者</td><td>多位学者（PEST→PESTEL逐步扩展）</td><td>迈克尔·波特（1979年）</td></tr>
+        <tr><td>关联SWOT</td><td>主要提供O/T（宏观层面）</td><td>主要提供O/T（行业层面）</td></tr>
+        <tr><td>适用阶段</td><td>战略分析的起点（最宏观）</td><td>在PESTEL基础上深入行业</td></tr>
+        <tr><td>时间导向</td><td>关注趋势变化（先动性）</td><td>关注当前竞争结构</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="compare-card">
+  <h3>🆚 战略群组 vs 行业（五力）分析</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>维度</th><th>战略群组分析</th><th>行业（五力）分析</th></tr></thead>
+      <tbody>
+        <tr><td>关注范围</td><td>行业内部的子集/群组</td><td>整个行业</td></tr>
+        <tr><td>竞争对手</td><td>同群组内为<strong>直接</strong>竞争对手</td><td>行业内所有现有企业</td></tr>
+        <tr><td>分析粒度</td><td>细（企业层面）</td><td>粗（行业层面）</td></tr>
+        <tr><td>战略意义</td><td>识别直接对手、发现市场空白、分析移动壁垒</td><td>评估行业整体盈利潜力</td></tr>
+        <tr><td>使用时机</td><td>先做行业分析后做群组分析</td><td>了解行业大背景</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="compare-card">
+  <h3>🆚 KSF vs 核心专长（连接内外部分析的桥梁）</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>维度</th><th>关键成功因素（KSF）</th><th>核心专长（Core Competence）</th></tr></thead>
+      <tbody>
+        <tr><td>视角</td><td><strong>外部</strong>（行业和市场视角）</td><td><strong>内部</strong>（企业资源能力视角）</td></tr>
+        <tr><td>定义</td><td>行业中企业获胜的主要因素</td><td>企业具有独特且难以模仿的能力</td></tr>
+        <tr><td>所在章节</td><td>第三章（外部分析最后）</td><td>第四章（内部分析核心）</td></tr>
+        <tr><td>关系</td><td>KSF指明应在<strong>哪里</strong>建立核心专长</td><td>核心专长是在KSF领域建立的能力优势</td></tr>
+        <tr><td>动态性</td><td>随行业环境变化而变化</td><td>相对稳定但需持续强化</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="compare-card">
+  <h3>🆚 进入壁垒 vs 移动壁垒</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>概念</th><th>进入壁垒（Entry Barriers）</th><th>移动壁垒（Mobility Barriers）</th></tr></thead>
+      <tbody>
+        <tr><td>含义</td><td>阻碍<strong>行业外</strong>企业进入该行业的因素</td><td>阻碍企业在<strong>行业内</strong>从一个战略群移到另一个战略群的因素</td></tr>
+        <tr><td>分析框架</td><td>波特五力（新进入者威胁）</td><td>战略群组分析</td></tr>
+        <tr><td>举例</td><td>汽车行业巨额资本需求阻止外行业进入</td><td>五菱从微型车群移入豪华车群的品牌/技术壁垒</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     历年真题汇总
+═══════════════════════════════════════════ -->
+<div id="sec-exam"></div>
+<h2 class="section-title">🔥 历年真题汇总（2016–2025）</h2>
+
+<div class="card blue-card">
+  <div class="exam-box">
+    <div class="exam-year">【2016年笔试】<span class="exam-type-badge et-simplify">简答+应用</span></div>
+    <div class="exam-q">简述波特五力模型及其在制造业中的应用<br><small style="color:var(--text-muted)">→ 考点：五力定义+增强条件+行业整体影响+案例；页码P83–87</small></div>
+  </div>
+  <div class="exam-box">
+    <div class="exam-year">【2018年笔试】<span class="exam-type-badge et-simplify">简答</span></div>
+    <div class="exam-q">简述PESTEL分析框架（六个维度及主要内容）<br><small style="color:var(--text-muted)">→ 考点：教材六类（注意是政治与法律+经济+社会文化+技术+人口+自然，非标准PESTEL）；页码P68–73</small></div>
+  </div>
+  <div class="exam-box">
+    <div class="exam-year">【2017年笔试】<span class="exam-type-badge et-simplify">简答</span></div>
+    <div class="exam-q">简述SWOT分析步骤与应用（外部环境分析是SWOT的前提）<br><small style="color:var(--text-muted)">→ 考点：SWOT矩阵四组合+战略问题确认；与第五章联动</small></div>
+  </div>
+  <div class="exam-box">
+    <div class="exam-year">【2019年面试】<span class="exam-type-badge et-essay">论述</span></div>
+    <div class="exam-q">论述大数据对企业战略决策的影响<br><small style="color:var(--text-muted)">→ 考点：外部环境动态化（技术因素）+ 行业竞争结构变化；结合PESTEL中技术维度展开</small></div>
+  </div>
+  <div class="exam-box">
+    <div class="exam-year">【2021年笔试】<span class="exam-type-badge et-essay">论述</span></div>
+    <div class="exam-q">论述ESG对企业战略与价值的影响<br><small style="color:var(--text-muted)">→ 考点：PESTEL中自然+法律维度；行业竞争结构变化；企业战略转型</small></div>
+  </div>
+  <div class="exam-box">
+    <div class="exam-year">【2024年笔试】<span class="exam-type-badge et-essay">论述</span></div>
+    <div class="exam-q">论述AI对企业管理与战略的变革<br><small style="color:var(--text-muted)">→ 考点：PESTEL中技术维度+行业竞争结构变化；战略群组重构</small></div>
+  </div>
+  <div class="exam-box">
+    <div class="exam-year">【2025年笔试】<span class="exam-type-badge et-case">案例</span></div>
+    <div class="exam-q">某企业数字化转型失败，分析战略与人力问题<br><small style="color:var(--text-muted)">→ 考点：需先做外部环境分析（行业环境+技术趋势）判断转型时机，再结合内部资源能力分析</small></div>
+  </div>
+  <div class="hl-box hl-orange" style="margin-top:16px;">
+    <strong>🎯 出题规律总结：</strong><br>
+    ① 波特五力模型几乎每年都考（简答/案例/面试）<br>
+    ② PESTEL是标准简答题（列六维度+案例）<br>
+    ③ 近年题目趋向结合时事热点（AI/ESG/数字化）<br>
+    ④ 战略群组和KSF多在面试中考察<br>
+    ⑤ 市场环境分析（§3）相对较少单独考，但案例分析中常用
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     终极串联
+═══════════════════════════════════════════ -->
+<div id="sec-ultimate"></div>
+<h2 class="section-title">🔗 本章终极串联（完整分析路径）</h2>
+
+<div class="card blue-card">
+  <div class="uf-row">
+    <div class="uf-box">① 明确目的</div>
+    <div class="uf-arrow">→</div>
+    <div class="uf-desc">为战略制定服务：识别企业外部的<strong>机会（O）</strong>和<strong>威胁（T）</strong></div>
+  </div>
+  <div class="uf-row">
+    <div class="uf-box green">② PESTEL</div>
+    <div class="uf-arrow">→</div>
+    <div class="uf-desc">宏观扫描：政治/经济/社会文化/技术/人口/自然六类因素，识别大趋势中的机会和威胁（如双碳、AI、老龄化）</div>
+  </div>
+  <div class="uf-row">
+    <div class="uf-box orange">③ 市场分析</div>
+    <div class="uf-arrow">→</div>
+    <div class="uf-desc">确认顾客需求变化趋势（五层次）、商业模式设计，并<strong>重新定义行业边界</strong>（为五力分析确定范围）</div>
+  </div>
+  <div class="uf-row">
+    <div class="uf-box orange">④ 产业生命周期</div>
+    <div class="uf-arrow">→</div>
+    <div class="uf-desc">判断行业所处阶段（萌芽/成长/成熟/衰退），了解本阶段的KSF特征和竞争特点</div>
+  </div>
+  <div class="uf-row">
+    <div class="uf-box red">⑤ 波特五力</div>
+    <div class="uf-arrow">→</div>
+    <div class="uf-desc">深度分析行业竞争结构：五种力量 → 评估行业整体盈利潜力和竞争激烈程度</div>
+  </div>
+  <div class="uf-row">
+    <div class="uf-box purple">⑥ 战略群组</div>
+    <div class="uf-arrow">→</div>
+    <div class="uf-desc">在行业内细分：确定直接竞争对手，发现战略空白，分析移动壁垒，预测竞争行为</div>
+  </div>
+  <div class="uf-row">
+    <div class="uf-box teal">⑦ KSF识别</div>
+    <div class="uf-arrow">→</div>
+    <div class="uf-desc">综合前述分析：用三问题法识别本行业关键成功因素，这也是应该建立核心专长的领域</div>
+  </div>
+  <div class="uf-row" style="border-color:var(--primary);">
+    <div class="uf-box" style="background:linear-gradient(135deg,#059669,#10b981);">⑧ 输出O/T</div>
+    <div class="uf-arrow">→</div>
+    <div class="uf-desc">完整的<strong>机会（O）清单</strong>和<strong>威胁（T）清单</strong> → 与第四章输出的S/W结合 → 第五章SWOT分析 → 战略问题确认 → 第六章战略选择</div>
+  </div>
+
+  <div class="hl-box hl-blue" style="margin-top:14px;">
+    <strong>本章与其他章节关系：</strong>
+    <div class="ch-relation">
+      <div class="ch-rel-item"><strong>第1章</strong> 战略管理概述 → 框架基础</div>
+      <div class="ch-rel-item"><strong>第2章</strong> 战略管理过程 → 环境分析是第一步</div>
+      <div class="ch-rel-item active"><strong>📍第3章</strong> 外部环境分析 → 输出：O/T</div>
+      <div class="ch-rel-item"><strong>第4章</strong> 内部环境分析 → 输出：S/W</div>
+      <div class="ch-rel-item"><strong>第5章</strong> 战略问题确认 → SWOT整合</div>
+      <div class="ch-rel-item"><strong>第6章</strong> 业务层战略 → 五力→竞争定位依据</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     30秒极速复习
+═══════════════════════════════════════════ -->
+<div id="sec-30s"></div>
+<h2 class="section-title green">⚡ 30秒极速复习模块</h2>
+
+<div class="quick-review">
+  <h3>🚀 30秒核心记忆点</h3>
+  <div class="qr-item"><div class="qr-bullet">1</div><div><strong>外部环境三层次：</strong>宏观（PESTEL）→ 市场行业（五力+生命周期）→ 竞争合作（战略群组）</div></div>
+  <div class="qr-item"><div class="qr-bullet">2</div><div><strong>宏观环境六类：</strong>政治与法律 · 经济 · 社会文化 · 技术 · 人口 · 自然（助记：政经社技人自）</div></div>
+  <div class="qr-item"><div class="qr-bullet">3</div><div><strong>宏观环境分析四步：</strong>发现→确定→预测→判断（助记：发确预判）</div></div>
+  <div class="qr-item"><div class="qr-bullet">4</div><div><strong>产业生命周期四阶段：</strong>萌芽（技研）→ 成长（品牌）→ 成熟（成本）→ 衰退（聚焦/退出）</div></div>
+  <div class="qr-item"><div class="qr-bullet">5</div><div><strong>波特五力：</strong>现有竞争者 · 新进入者 · 替代品 · 购买者 · 供应商（助记：现新替购供）</div></div>
+  <div class="qr-item"><div class="qr-bullet">6</div><div><strong>进入壁垒六类：</strong>规模经济 · 资本需求 · 转换成本 · 品牌忠诚 · 政策壁垒 · 经验曲线（规资转品政经）</div></div>
+  <div class="qr-item"><div class="qr-bullet">7</div><div><strong>战略群组：</strong>同行业相似战略企业集合；移动壁垒是群组间的障碍；帮助识别直接竞争对手</div></div>
+  <div class="qr-item"><div class="qr-bullet">8</div><div><strong>KSF三问题：</strong>顾客选择标准？竞争获胜所需能力？哪些缺点最致命？</div></div>
+  <div class="qr-item"><div class="qr-bullet">9</div><div><strong>战略要素评价法：</strong>加权打分→总分&gt;2.5外部环境好，&lt;2.5外部环境差</div></div>
+  <div class="qr-item"><div class="qr-bullet">10</div><div><strong>输出：</strong>O（机会）+ T（威胁）→ 与内部S/W结合 → SWOT → 战略选择</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     背诵版总结
+═══════════════════════════════════════════ -->
+<div id="sec-recite"></div>
+<h2 class="section-title purple">🎤 背诵版总结（复试口述版）</h2>
+
+<div class="recite-box">
+  <h3>📣 背诵要点（逐段口述）</h3>
+
+  <div class="recite-item">
+    <strong>【外部环境三层次——口述版】</strong><br>
+    企业外部环境可以分为三个层次：第一层次是宏观环境，包括政治与法律、经济、社会文化、技术、人口、自然六类因素；第二层次是市场与行业环境，包括顾客需求、行业竞争结构等；第三层次是竞争与合作环境，主要关注直接竞争对手和合作伙伴。三个层次之间存在间接影响链——宏观环境变化导致市场行业环境变化，再影响竞争合作环境。
+  </div>
+
+  <div class="recite-item">
+    <strong>【PESTEL/宏观环境——口述版】</strong><br>
+    宏观环境分析的主要内容包括六类因素：政治与法律环境（政治制度、法律法规）；经济环境（GDP增长、通胀、财政货币政策）；社会文化环境（价值观、文化传统）；技术环境（技术进步水平、政府创新战略）；人口环境（数量、结构、分布）；自然环境（资源储量、环保要求）。宏观环境具有先动性、广泛性和复杂性三大特点。分析步骤为：发现主要因素→确定关键因素→预测变化趋势→判断对战略的影响。
+  </div>
+
+  <div class="recite-item">
+    <strong>【波特五力——口述版】</strong><br>
+    波特五力模型由迈克尔·波特提出，用于分析行业竞争结构，五种力量为：一是行业内现有竞争者的竞争强度；二是潜在进入者的威胁，与进入壁垒高低密切相关；三是替代品的威胁；四是购买者的议价能力；五是供应商的议价能力。五种力量越强，行业竞争越激烈，盈利能力越低。企业通过战略定位来应对这五种力量。
+  </div>
+
+  <div class="recite-item">
+    <strong>【战略群组——口述版】</strong><br>
+    战略群是指同一行业内采用相似战略、拥有相似资源能力的企业集合。同一战略群内的企业互为直接竞争对手。识别方法是选取两个关键战略维度绘制战略群组图。战略群组分析的意义在于：第一，识别直接竞争对手；第二，发现战略空白机会；第三，分析移动壁垒，即从一个群移动到另一个群的障碍。
+  </div>
+
+  <div class="recite-item">
+    <strong>【KSF关键成功因素——口述版】</strong><br>
+    行业关键成功因素（KSF）是促使行业企业在市场竞争中获胜的主要因素，也是价值创造的关键环节和企业应该建立核心专长的领域。KSF具有非普适性和动态性，不同企业目标市场不同，KSF也不同；环境变化会导致KSF变化。识别KSF的三个问题是：顾客选择产品的标准是什么？竞争获胜需要什么能力？哪些缺点最能导致竞争劣势？KSF是外部分析与内部分析（核心专长）的重要桥梁。
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     自我检测
+═══════════════════════════════════════════ -->
+<div id="sec-test"></div>
+<h2 class="section-title">✅ 课后自我检测</h2>
+
+<div class="card blue-card">
+  <p style="font-size:0.88rem;font-weight:700;color:var(--text-muted);margin-bottom:12px;">📚 教材课后思考题（P95）</p>
+
+  <div class="check-item"><span style="color:var(--primary)">□</span><div class="check-q">1. 外部环境由哪些内容构成？它们之间的关系是怎样的？<div class="check-tag">💡 提示：三层次（宏观/市场行业/竞争合作）+ 两种影响方式（直接+间接传导）</div></div></div>
+  <div class="check-item"><span style="color:var(--primary)">□</span><div class="check-q">2. 宏观环境分析的步骤是什么？<div class="check-tag">💡 提示：发现主要因素→确定关键因素→预测变化趋势→判断影响（四步）</div></div></div>
+  <div class="check-item"><span style="color:var(--primary)">□</span><div class="check-q">3. 什么是竞争结构分析模型（波特五力）？分析时应注意什么问题？<div class="check-tag">💡 提示：五力定义 + 五力相互影响需同时考虑 + 行业竞争结构不是固定不变的</div></div></div>
+  <div class="check-item"><span style="color:var(--primary)">□</span><div class="check-q">4. 什么是战略群？<div class="check-tag">💡 提示：定义+识别方法+移动壁垒+战略意义（四方面）</div></div></div>
+  <div class="check-item"><span style="color:var(--primary)">□</span><div class="check-q">5. 竞争对手与合作环境分析的内容和目的是什么？<div class="check-tag">💡 提示：竞争（未来目标/现行战略/假设/能力/反应模式）+ 合作（识别对象/理解反应/合作共赢）</div></div></div>
+  <div class="check-item"><span style="color:var(--primary)">□</span><div class="check-q">6. 如何确定行业的关键成功因素（KSF）？<div class="check-tag">💡 提示：三问题法（顾客/竞争/劣势）+ 非普适性 + 动态性 + 与核心专长的关系</div></div></div>
+
+  <p style="font-size:0.88rem;font-weight:700;color:var(--text-muted);margin:20px 0 12px;">📝 历年真题练习</p>
+
+  <div class="check-item"><span style="color:var(--danger)">▶</span><div class="check-q"><span style="font-weight:700">【2016笔试原题】</span> 简述波特五力模型的五种竞争力量及其对行业盈利能力的影响。（约200字）<div class="check-tag">参考答案要点：五力定义→增强条件→行业整体盈利影响→应对战略</div></div></div>
+  <div class="check-item"><span style="color:var(--danger)">▶</span><div class="check-q"><span style="font-weight:700">【2018笔试原题】</span> 简述企业宏观环境分析框架的主要内容。（列六类并说明）<div class="check-tag">参考答案要点：六类（注意教材用"政治与法律+经济+社会文化+技术+人口+自然"）+每类2-3个具体内容</div></div></div>
+  <div class="check-item"><span style="color:var(--warning)">★</span><div class="check-q"><span style="font-weight:700">【预测题·2026高概率】</span> 论述AI技术发展对企业外部环境的影响，并结合相关分析工具进行说明。<div class="check-tag">建议答题结构：PESTEL（技术维度）+ 行业竞争结构变化（五力）+ 战略群组重构 + KSF变化 + 企业应对策略</div></div></div>
+  <div class="check-item"><span style="color:var(--warning)">★</span><div class="check-q"><span style="font-weight:700">【预测题·案例】</span> 用波特五力模型分析中国新能源汽车行业的竞争结构，并提出战略建议。<div class="check-tag">参考：①激烈竞争（特斯拉/比亚迪等）②新进入者较强（互联网企业跨界）③替代品弱 ④购买者议价上升 ⑤供应商（锂矿）议价强 → 建议：差异化/聚焦/垂直整合</div></div></div>
+  <div class="check-item"><span style="color:var(--warning)">★</span><div class="check-q"><span style="font-weight:700">【预测题·综合】</span> 某传统零售企业面临电商冲击，请综合运用本章知识分析其外部环境，并提出战略建议。<div class="check-tag">建议：PESTEL（技术+经济）→ 行业生命周期判断 → 五力分析（替代品最强）→ 战略群组（确定直接竞争对手）→ KSF识别（供应链效率+数字化能力）→ SWOT整合</div></div></div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div style="text-align:center;padding:30px 0;color:var(--text-muted);font-size:0.82rem;border-top:1px solid var(--border);margin-top:40px;">
+  <p>第三章 外部环境分析 | 中南大学企业管理学硕复试笔记</p>
+  <p>生成日期：2026-03-14 | 依据教材：《企业战略管理》第2版（蓝海林等著）</p>
+  <p style="margin-top:6px;">六节完整版：§1外部环境概述 · §2宏观PESTEL · §3市场环境 · §4行业环境 · §5竞争合作 · §6关键成功因素</p>
+</div>
+
+</main>
+
+<script>
+// ===== DARK MODE =====
+function toggleDark(){
+  document.body.classList.toggle('dark-mode');
+  localStorage.setItem('ch3_dark', document.body.classList.contains('dark-mode'));
+}
+(function(){
+  if(localStorage.getItem('ch3_dark')==='true') document.body.classList.add('dark-mode');
+})();
+
+// ===== BACK TO TOP =====
+window.addEventListener('scroll',()=>{
+  document.getElementById('back-top').classList.toggle('visible', window.scrollY>400);
+});
+
+// ===== SEARCH PILL =====
+(function(){
+  const trigger=document.getElementById('search-trigger');
+  const pill=document.getElementById('search-pill');
+  const inp=document.getElementById('sp-input');
+  const countEl=document.getElementById('sp-count');
+  const btnPrev=document.getElementById('sp-prev');
+  const btnNext=document.getElementById('sp-next');
+  const btnClose=document.getElementById('sp-close');
+
+  let marks=[], cur=-1;
+
+  function openPill(){
+    pill.classList.add('active');
+    trigger.classList.add('hidden');
+    inp.focus();
+  }
+  function closePill(){
+    pill.classList.remove('active');
+    trigger.classList.remove('hidden');
+    clearMarks();
+    inp.value='';
+    countEl.textContent='—';
+  }
+  function clearMarks(){
+    marks.forEach(m=>{
+      const parent=m.parentNode;
+      if(parent){ parent.replaceChild(document.createTextNode(m.textContent), m); parent.normalize(); }
+    });
+    marks=[];cur=-1;
+  }
+  function doSearch(){
+    clearMarks();
+    const q=inp.value.trim();
+    if(!q){countEl.textContent='—';return;}
+    const walker=document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes=[];
+    let n;
+    while((n=walker.nextNode())){
+      if(['SCRIPT','STYLE','MARK','INPUT'].includes(n.parentElement.tagName)) continue;
+      if(n.textContent.includes(q)) nodes.push(n);
+    }
+    nodes.forEach(node=>{
+      const frag=document.createDocumentFragment();
+      const parts=node.textContent.split(q);
+      parts.forEach((p,i)=>{
+        frag.appendChild(document.createTextNode(p));
+        if(i<parts.length-1){
+          const m=document.createElement('mark');
+          m.className='sp-hl';
+          m.textContent=q;
+          frag.appendChild(m);
+          marks.push(m);
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+    countEl.textContent=marks.length>0?`1 / ${marks.length}`:'无结果';
+    if(marks.length>0){cur=0;jumpTo(0);}
+  }
+  function jumpTo(i){
+    marks.forEach(m=>m.classList.remove('sp-cur'));
+    if(i<0||i>=marks.length) return;
+    cur=i;
+    marks[i].classList.add('sp-cur');
+    marks[i].scrollIntoView({behavior:'smooth',block:'center'});
+    countEl.textContent=`${i+1} / ${marks.length}`;
+  }
+
+  trigger.addEventListener('click', openPill);
+  btnClose.addEventListener('click', closePill);
+  btnNext.addEventListener('click',()=>jumpTo((cur+1)%marks.length));
+  btnPrev.addEventListener('click',()=>jumpTo((cur-1+marks.length)%marks.length));
+  inp.addEventListener('input', doSearch);
+  document.addEventListener('keydown',e=>{
+    if(e.key==='F3'){e.preventDefault(); if(pill.classList.contains('active')){ e.shiftKey?jumpTo((cur-1+marks.length)%marks.length):jumpTo((cur+1)%marks.length); }else{ openPill(); }}
+    if(e.key==='Escape'&&pill.classList.contains('active')) closePill();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《企业战略管理》全书理论框架与章节联系 · 中南大学企业管理复试</title>
+<style>
+/* ═══════════════════════════════════════
+   CSS变量系统 & 主题
+═══════════════════════════════════════ */
+:root {
+  --bg: #f5f6fa;
+  --bg-card: #ffffff;
+  --bg-header: #1e3a5f;
+  --bg-nav: #1e3a5f;
+  --bg-nav-hover: #2d5a8e;
+  --text-primary: #1a1f2e;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-nav: #e8edf5;
+  --border: #e2e8f0;
+  --border-card: #d0dae8;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.10);
+  --accent-blue: #2563eb;
+  --accent-teal: #0891b2;
+  --accent-green: #059669;
+  --accent-amber: #d97706;
+  --accent-rose: #e11d48;
+  --accent-purple: #7c3aed;
+  --accent-indigo: #4f46e5;
+  --accent-orange: #ea580c;
+  --highlight-bg: #fef3c7;
+  --highlight-border: #f59e0b;
+  --code-bg: #f1f5f9;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font-main: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+body.dark {
+  --bg: #0f172a;
+  --bg-card: #1e293b;
+  --bg-header: #0f172a;
+  --bg-nav: #0f172a;
+  --bg-nav-hover: #1e3a5f;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: #334155;
+  --border-card: #2d3748;
+  --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.5);
+  --highlight-bg: #451a03;
+  --highlight-border: #92400e;
+  --code-bg: #0f172a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ═══ 顶部导航 ═══ */
+.top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--bg-nav);
+  color: var(--text-nav);
+  z-index: 1000;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+}
+
+.nav-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.nav-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.nav-subtitle {
+  font-size: 0.78rem;
+  opacity: 0.7;
+}
+
+.nav-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-ctrl {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: var(--font-main);
+}
+.btn-ctrl:hover { background: rgba(255,255,255,0.22); }
+
+.nav-links {
+  display: flex;
+  padding: 8px 16px;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.nav-link {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 0.78rem;
+  padding: 4px 12px;
+  border-radius: 16px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-link:hover, .nav-link.active {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+}
+
+/* ═══ 悬浮搜索药丸 ═══ */
+#search-pill {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #1e293b;
+  color: #f1f5f9;
+  border-radius: 999px;
+  padding: 10px 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  font-size: 0.88rem;
+  font-family: var(--font-main);
+  min-width: 260px;
+  max-width: 380px;
+  transition: box-shadow 0.2s;
+  user-select: none;
+}
+body.dark #search-pill { background: #0f172a; box-shadow: 0 4px 24px rgba(0,0,0,0.6); }
+#search-pill input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f1f5f9;
+  font-size: 0.88rem;
+  font-family: var(--font-main);
+  min-width: 80px;
+}
+#search-pill input::placeholder { color: rgba(241,245,249,0.45); }
+#search-pill .sp-count {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  min-width: 42px;
+  text-align: center;
+}
+#search-pill .sp-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+  line-height: 1;
+}
+#search-pill .sp-btn:hover { color: #f97316; background: rgba(249,115,22,0.12); }
+#search-pill .sp-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.15); margin: 0 2px; }
+
+/* ═══ 主内容区 ═══ */
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 180px 20px 60px;
+}
+
+/* ═══ Hero区 ═══ */
+.hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #0891b2 100%);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  color: #fff;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 3px 14px;
+  font-size: 0.8rem;
+  margin-bottom: 14px;
+}
+.hero h1 { font-size: 1.9rem; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
+.hero p { opacity: 0.85; font-size: 0.95rem; max-width: 640px; }
+.hero-meta {
+  margin-top: 18px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.hero-meta-item {
+  background: rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 6px 16px;
+  font-size: 0.83rem;
+}
+
+/* ═══ 章节卡片 ═══ */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  margin-top: 36px;
+}
+.section-title h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.section-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+.icon-blue { background: #dbeafe; }
+.icon-teal { background: #cffafe; }
+.icon-green { background: #d1fae5; }
+.icon-amber { background: #fef3c7; }
+.icon-rose { background: #ffe4e6; }
+.icon-purple { background: #ede9fe; }
+
+/* ═══ 全书逻辑流程图 ═══ */
+.book-flow {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  margin-bottom: 28px;
+  border: 1px solid var(--border-card);
+}
+
+.flow-phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin: 20px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+}
+
+.flow-phase {
+  padding: 18px 14px;
+  text-align: center;
+  border-right: 2px solid var(--border);
+  position: relative;
+}
+.flow-phase:last-child { border-right: none; }
+
+.phase-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.phase-label.p1 { background: #3b82f6; }
+.phase-label.p2 { background: #0891b2; }
+.phase-label.p3 { background: #059669; }
+.phase-label.p4 { background: #7c3aed; }
+
+.phase-chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.phase-chapter {
+  background: var(--bg);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.phase-chapter:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+  background: #eff6ff;
+}
+.phase-chapter strong { display: block; color: var(--text-primary); }
+
+.phase-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+/* ═══ 章节联系矩阵 ═══ */
+.relation-grid {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-card);
+  margin-bottom: 28px;
+}
+
+table.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+table.matrix th, table.matrix td {
+  border: 1px solid var(--border);
+  padding: 9px 12px;
+  text-align: left;
+}
+table.matrix th {
+  background: var(--bg-header);
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+table.matrix td:first-child {
+  font-weight: 700;
+  white-space: nowrap;
+  background: var(--code-bg);
+}
+table.matrix tr:hover td { background: #f0f7ff; }
+body.dark table.matrix tr:hover td { background: #1e3a5f; }
+
+/* ═══ 章节详情卡片 ═══ */
+.chapter-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 768px) {
+  .chapter-cards { grid-template-columns: 1fr; }
+  .flow-phases { grid-template-columns: 1fr 1fr; }
+}
+
+.chapter-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-card);
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.chapter-card:hover {
+  box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
+}
+
+.cc-header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.cc-num {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+.n1 { background: linear-gradient(135deg,#3b82f6,#1d4ed8); }
+.n2 { background: linear-gradient(135deg,#0891b2,#0e7490); }
+.n3 { background: linear-gradient(135deg,#059669,#047857); }
+.n4 { background: linear-gradient(135deg,#f59e0b,#d97706); }
+.n5 { background: linear-gradient(135deg,#ef4444,#dc2626); }
+.n6 { background: linear-gradient(135deg,#8b5cf6,#7c3aed); }
+.n7 { background: linear-gradient(135deg,#ec4899,#db2777); }
+.n8 { background: linear-gradient(135deg,#14b8a6,#0d9488); }
+.n9 { background: linear-gradient(135deg,#f97316,#ea580c); }
+.n10 { background: linear-gradient(135deg,#06b6d4,#0891b2); }
+.n11 { background: linear-gradient(135deg,#6366f1,#4f46e5); }
+
+.cc-meta { flex: 1; }
+.cc-chapter-name {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+.cc-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.cc-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.badge {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 12px;
+  font-size: 0.73rem;
+  font-weight: 600;
+}
+.badge-phase { background: #dbeafe; color: #1d4ed8; }
+.badge-imp { background: #fef3c7; color: #92400e; }
+.badge-prob { background: #d1fae5; color: #065f46; }
+
+.cc-body { padding: 16px 20px; }
+.cc-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
+  margin-top: 14px;
+}
+.cc-section-title:first-child { margin-top: 0; }
+
+.core-question {
+  background: var(--highlight-bg);
+  border-left: 3px solid var(--highlight-border);
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.87rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.key-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.key-points li {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.key-points li::before {
+  content: '▸';
+  color: var(--accent-blue);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.tool-tag {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 10px;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+.tool-tag.highlight { background: #eff6ff; border-color: #bfdbfe; color: #1d4ed8; font-weight: 600; }
+
+.connections {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+}
+.conn-item {
+  font-size: 0.81rem;
+  color: var(--text-secondary);
+  background: var(--code-bg);
+  border-radius: 6px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+}
+.conn-item strong { color: var(--text-primary); }
+
+.exam-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.exam-tag {
+  display: inline-block;
+  padding: 2px 9px;
+  border-radius: 10px;
+  font-size: 0.73rem;
+  font-weight: 600;
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+/* ═══ 全书逻辑串联 ═══ */
+.logic-chain {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-card);
+  margin-bottom: 28px;
+}
+
+.chain-flow {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 20px 0;
+  overflow-x: auto;
+}
+
+.chain-node {
+  min-width: 120px;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 12px;
+  text-align: center;
+  flex: 1;
+  transition: border-color 0.2s, background 0.2s;
+}
+.chain-node:hover { border-color: var(--accent-blue); background: #eff6ff; }
+
+.chain-node-num {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.chain-node-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.chain-node-desc {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.chain-arrow {
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  color: var(--accent-blue);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ═══ 核心概念网络 ═══ */
+.concept-net {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-card);
+  margin-bottom: 28px;
+}
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+@media (max-width: 768px) { .concept-grid { grid-template-columns: 1fr 1fr; } }
+
+.concept-item {
+  border-radius: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+}
+.concept-item-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.concept-item-chapters {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.concept-item-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+.ci-blue { background: #eff6ff; border-color: #bfdbfe; }
+.ci-teal { background: #f0fdfa; border-color: #99f6e4; }
+.ci-green { background: #f0fdf4; border-color: #bbf7d0; }
+.ci-amber { background: #fffbeb; border-color: #fde68a; }
+.ci-rose { background: #fff1f2; border-color: #fecdd3; }
+.ci-purple { background: #f5f3ff; border-color: #ddd6fe; }
+
+/* ═══ 思维导图 SVG区 ═══ */
+.mindmap-wrap {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-card);
+  margin-bottom: 28px;
+  overflow-x: auto;
+}
+
+/* ═══ 高频考点汇总 ═══ */
+.exam-summary {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-card);
+  margin-bottom: 28px;
+}
+
+table.exam-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-top: 12px;
+}
+table.exam-table th {
+  background: var(--bg-header);
+  color: #fff;
+  padding: 9px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+table.exam-table td {
+  border: 1px solid var(--border);
+  padding: 9px 12px;
+  vertical-align: top;
+}
+table.exam-table tr:nth-child(even) td { background: var(--code-bg); }
+table.exam-table tr:hover td { background: #eff6ff; }
+body.dark table.exam-table tr:hover td { background: #1e3a5f; }
+
+.star { color: #f59e0b; }
+
+/* ═══ 30秒复习模块 ═══ */
+.quick-review {
+  background: linear-gradient(135deg, #1e3a5f, #2563eb);
+  border-radius: var(--radius);
+  padding: 28px;
+  color: #fff;
+  margin-bottom: 28px;
+}
+.quick-review h2 { margin-bottom: 16px; }
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+@media (max-width: 600px) { .qr-grid { grid-template-columns: 1fr; } }
+
+.qr-item {
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.qr-num {
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0.6;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.qr-text {
+  font-size: 0.87rem;
+  line-height: 1.5;
+}
+.qr-text mark {
+  background: rgba(251,191,36,0.3);
+  color: #fde68a;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* ═══ 折叠块 ═══ */
+details {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+summary {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: var(--code-bg);
+  color: var(--text-primary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+summary::before { content: '▶'; font-size: 0.7rem; color: var(--accent-blue); transition: transform 0.2s; }
+details[open] summary::before { transform: rotate(90deg); }
+summary:hover { background: #e8f0fe; }
+body.dark summary:hover { background: #1e3a5f; }
+.details-body { padding: 16px; font-size: 0.88rem; line-height: 1.8; color: var(--text-secondary); }
+
+/* ═══ 返回顶部 & 高亮 ═══ */
+#back-top {
+  position: fixed;
+  bottom: 28px; right: 24px;
+  background: var(--accent-blue);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 46px; height: 46px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+  z-index: 999;
+  display: none;
+  transition: transform 0.2s;
+}
+#back-top:hover { transform: translateY(-3px); }
+
+.search-highlight { background: #fef08a; border-radius: 2px; padding: 1px 0; }
+.search-highlight.current { background: #f97316; color: #fff; border-radius: 2px; padding: 1px 0; }
+body.dark .search-highlight { background: #713f12; color: #fef9c3; }
+body.dark .search-highlight.current { background: #f97316; color: #fff; }
+
+/* ═══ 页脚 ═══ */
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+/* ═══ 入场动画 ═══ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* 划分线 */
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+</style>
+</head>
+
+<body id="top">
+
+<!-- ═══════════════════════════════
+     顶部固定导航
+═══════════════════════════════ -->
+<nav class="top-nav">
+  <div class="nav-top-bar">
+    <div>
+      <div class="nav-title">📚 《企业战略管理》全书理论框架</div>
+      <div class="nav-subtitle">蓝海林 第2版 · 中南大学企业管理学硕复试 · 生成日期：2026-03-13</div>
+    </div>
+    <div class="nav-controls">
+      <button class="btn-ctrl" onclick="toggleDark()">🌙 夜间模式</button>
+      <button class="btn-ctrl" onclick="scrollToTop()">⬆ 顶部</button>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" href="#sec-overview">📖 全书概述</a>
+    <a class="nav-link" href="#sec-flow">🔄 逻辑主线</a>
+    <a class="nav-link" href="#sec-chapters">📑 各章详析</a>
+    <a class="nav-link" href="#sec-relations">🔗 章节联系</a>
+    <a class="nav-link" href="#sec-concepts">💡 核心概念</a>
+    <a class="nav-link" href="#sec-mindmap">🧠 思维导图</a>
+    <a class="nav-link" href="#sec-exam">📝 考点汇总</a>
+    <a class="nav-link" href="#sec-quick">⚡ 30秒复习</a>
+  </div>
+</nav>
+
+<!-- ═══ 悬浮搜索药丸 ═══ -->
+<div id="search-pill">
+  <span style="font-size:1rem;opacity:0.7">🔍</span>
+  <input type="text" id="searchInput" placeholder="搜索关键词…" oninput="doSearch()">
+  <span class="sp-count" id="searchCount"></span>
+  <div class="sp-divider"></div>
+  <button class="sp-btn" id="sp-prev" title="上一个 (Shift+F3)" onclick="navigateMatch(-1)">↑</button>
+  <button class="sp-btn" id="sp-next" title="下一个 (F3)" onclick="navigateMatch(1)">↓</button>
+  <button class="sp-btn" title="关闭" onclick="clearSearch()">✕</button>
+</div>
+
+<!-- ═══════════════════════════════
+     主内容
+═══════════════════════════════ -->
+<div class="main">
+
+<!-- Hero -->
+<div class="hero fade-in">
+  <div class="hero-badge">中南大学 · 企业管理学硕 · 120202 · 复试笔记</div>
+  <h1>《企业战略管理》全书理论框架<br>与章节内在逻辑联系</h1>
+  <p>基于蓝海林《企业战略管理》第2版，整合2016–2025年中南大学复试真题，系统梳理11章知识体系、逻辑关系与高频考点，助力复试高分。</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">📖 共11章 · 354页</div>
+    <div class="hero-meta-item">🎯 4大阶段 · 1条主线</div>
+    <div class="hero-meta-item">📝 真题整合 2016–2025</div>
+    <div class="hero-meta-item">📅 生成日期：2026-03-13</div>
+  </div>
+</div>
+
+<!-- ═══ 一、全书概述 ═══ -->
+<div id="sec-overview" class="section-title fade-in">
+  <div class="section-icon icon-blue">📖</div>
+  <h2>一、全书核心逻辑：一条主线贯穿始终</h2>
+</div>
+
+<div class="book-flow fade-in">
+  <p style="font-size:0.95rem; color:var(--text-secondary); margin-bottom:16px;">
+    《企业战略管理》全书用<strong style="color:var(--accent-blue)">「如何让企业持续获得高于行业平均水平的收益」</strong>这一核心问题，将11章内容串联成一个完整的管理科学体系。教材逻辑遵循"<strong>分析→制定→实施→控制</strong>"的战略管理闭环。
+  </p>
+
+  <div style="background:#eff6ff; border-radius:10px; padding:14px 20px; border-left:4px solid #2563eb; margin-bottom:20px;">
+    <strong>🎯 全书核心命题（蓝海林教授的核心观点）：</strong><br>
+    企业战略管理的根本目标是：在正确分析内外部环境的基础上，围绕企业的<span style="color:#e11d48;font-weight:700">战略承诺</span>，选择合适的<span style="color:#7c3aed;font-weight:700">战略定位</span>，构建不可模仿的<span style="color:#059669;font-weight:700">核心专长</span>，并通过有效的<span style="color:#d97706;font-weight:700">战略实施与控制</span>，实现企业的长期持续竞争优势。
+  </div>
+
+  <div class="flow-phases">
+    <div class="flow-phase" style="background:linear-gradient(135deg,#eff6ff,#dbeafe);">
+      <div class="phase-label p1">第一阶段</div>
+      <div class="phase-title">战略分析</div>
+      <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">「知己知彼」</p>
+      <div class="phase-chapters">
+        <div class="phase-chapter" onclick="location.href='#ch1'"><strong>第1章</strong> 战略管理概述</div>
+        <div class="phase-chapter" onclick="location.href='#ch2'"><strong>第2章</strong> 战略分析框架</div>
+        <div class="phase-chapter" onclick="location.href='#ch3'"><strong>第3章</strong> 外部环境分析</div>
+        <div class="phase-chapter" onclick="location.href='#ch4'"><strong>第4章</strong> 内部环境分析</div>
+      </div>
+    </div>
+    <div class="flow-phase" style="background:linear-gradient(135deg,#f0fdfa,#ccfbf1);">
+      <div class="phase-label p2">第二阶段</div>
+      <div class="phase-title">战略制定</div>
+      <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">「谋定而后动」</p>
+      <div class="phase-chapters">
+        <div class="phase-chapter" onclick="location.href='#ch5'"><strong>第5章</strong> 战略问题确认</div>
+        <div class="phase-chapter" onclick="location.href='#ch6'"><strong>第6章</strong> 业务层战略</div>
+        <div class="phase-chapter" onclick="location.href='#ch7'"><strong>第7章</strong> 公司层战略</div>
+        <div class="phase-chapter" onclick="location.href='#ch8'"><strong>第8章</strong> 国际化战略</div>
+      </div>
+    </div>
+    <div class="flow-phase" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7);">
+      <div class="phase-label p3">第三阶段</div>
+      <div class="phase-title">战略实施</div>
+      <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">「知行合一」</p>
+      <div class="phase-chapters">
+        <div class="phase-chapter" onclick="location.href='#ch9'"><strong>第9章</strong> 组织结构设计</div>
+        <div class="phase-chapter" onclick="location.href='#ch10'"><strong>第10章</strong> 人力资源战略</div>
+      </div>
+    </div>
+    <div class="flow-phase" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe);">
+      <div class="phase-label p4">第四阶段</div>
+      <div class="phase-title">战略控制</div>
+      <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:10px;">「动态循环」</p>
+      <div class="phase-chapters">
+        <div class="phase-chapter" onclick="location.href='#ch11'"><strong>第11章</strong> 管理控制系统</div>
+      </div>
+    </div>
+  </div>
+
+  <details>
+    <summary>💡 通俗类比：把战略管理想象成「开饭店」</summary>
+    <div class="details-body">
+      <ul style="margin-left:16px; line-height:2.2;">
+        <li><strong>战略分析（第1-4章）</strong>＝ 开店前调研：看看周边有什么竞争对手（外部环境），盘点自己有多少钱、厨师多好、品牌怎样（内部环境）</li>
+        <li><strong>战略制定（第5-8章）</strong>＝ 决定开什么饭店：是开一家精品川菜馆（业务层战略）？还是开连锁品牌（公司层战略）？要不要出海开分店（国际化战略）？</li>
+        <li><strong>战略实施（第9-10章）</strong>＝ 真正开始装修、招人、培训：怎么组织团队（组织结构）、怎么培训厨师（人力资源战略）</li>
+        <li><strong>战略控制（第11章）</strong>＝ 开业后每周检查：营业额达标了吗？顾客满意吗？哪里出问题要赶快调整</li>
+      </ul>
+    </div>
+  </details>
+</div>
+
+<!-- ═══ 二、全书逻辑主线 ═══ -->
+<div id="sec-flow" class="section-title fade-in">
+  <div class="section-icon icon-teal">🔄</div>
+  <h2>二、全书逻辑主线流程图</h2>
+</div>
+
+<div class="logic-chain fade-in">
+  <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:8px;">以下展示11章的逻辑递进关系，每个节点之间存在<strong>前提→输出</strong>的因果关系：</p>
+
+  <div class="chain-flow">
+    <div class="chain-node" style="border-color:#3b82f6;">
+      <div class="chain-node-num">第1章</div>
+      <div class="chain-node-title">战略管理<br>什么是战略？</div>
+      <div class="chain-node-desc">建立概念框架，明确战略管理的定义、层次与过程</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-node" style="border-color:#0891b2;">
+      <div class="chain-node-num">第2章</div>
+      <div class="chain-node-title">战略分析<br>如何分析？</div>
+      <div class="chain-node-desc">介绍战略分析的整体框架工具（环境分析体系）</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-node" style="border-color:#059669;">
+      <div class="chain-node-num">第3章</div>
+      <div class="chain-node-title">外部分析<br>机会与威胁</div>
+      <div class="chain-node-desc">PEST、波特五力、战略群分析</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-node" style="border-color:#f59e0b;">
+      <div class="chain-node-num">第4章</div>
+      <div class="chain-node-title">内部分析<br>优势与劣势</div>
+      <div class="chain-node-desc">资源、能力、价值链、核心专长（VRIN）</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-node" style="border-color:#ef4444;">
+      <div class="chain-node-num">第5章</div>
+      <div class="chain-node-title">战略问题<br>SWOT综合</div>
+      <div class="chain-node-desc">确认战略问题，确定战略方向与基本战略</div>
+    </div>
+  </div>
+
+  <div style="text-align:center; color:var(--accent-blue); font-size:1.5rem; margin:8px 0;">↓</div>
+
+  <div class="chain-flow">
+    <div class="chain-node" style="border-color:#8b5cf6;">
+      <div class="chain-node-num">第6章</div>
+      <div class="chain-node-title">业务层战略<br>如何竞争？</div>
+      <div class="chain-node-desc">成本领先、差异化、聚焦、整合战略；动态竞争</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-node" style="border-color:#ec4899;">
+      <div class="chain-node-num">第7章</div>
+      <div class="chain-node-title">公司层战略<br>做多大范围？</div>
+      <div class="chain-node-desc">多元化、并购、战略联盟、垂直整合</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-node" style="border-color:#14b8a6;">
+      <div class="chain-node-num">第8章</div>
+      <div class="chain-node-title">国际化战略<br>走向哪里？</div>
+      <div class="chain-node-desc">全球化战略、跨国战略、多国战略、本土化</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-node" style="border-color:#f97316;">
+      <div class="chain-node-num">第9章</div>
+      <div class="chain-node-title">组织结构<br>怎么搭架子？</div>
+      <div class="chain-node-desc">结构追随战略；五种结构类型匹配</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-node" style="border-color:#06b6d4;">
+      <div class="chain-node-num">第10章</div>
+      <div class="chain-node-title">人力资源<br>怎么用人？</div>
+      <div class="chain-node-desc">SHRM；人力资源与战略匹配；IE-LR矩阵</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-node" style="border-color:#6366f1;">
+      <div class="chain-node-num">第11章</div>
+      <div class="chain-node-title">管理控制<br>怎么保障？</div>
+      <div class="chain-node-desc">领导力、文化、战略控制、平衡计分卡（BSC）</div>
+    </div>
+  </div>
+
+  <div style="margin-top:16px; padding:14px; background:var(--highlight-bg); border-radius:8px; border:1px solid var(--highlight-border); font-size:0.87rem;">
+    <strong>🔁 闭环逻辑：</strong>第11章的战略控制结果，通过反馈机制，重新驱动第1-5章的战略分析与问题确认，形成<strong>「分析→制定→实施→控制→再分析」</strong>的动态战略管理闭环。
+  </div>
+</div>
+
+<!-- ═══ 三、各章详细解析 ═══ -->
+<div id="sec-chapters" class="section-title fade-in">
+  <div class="section-icon icon-green">📑</div>
+  <h2>三、各章核心内容详析</h2>
+</div>
+
+<div class="chapter-cards">
+
+<!-- 第1章 -->
+<div class="chapter-card fade-in" id="ch1">
+  <div class="cc-header">
+    <div class="cc-num n1">1</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第一章 · 战略与战略管理</div>
+      <div class="cc-subtitle">本书的"元章节" — 定义战略管理的基础</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略分析阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-prob">考察概率：高</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">什么是战略？什么是战略管理？企业为什么要进行战略管理？战略管理包含哪些阶段？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li>战略的定义：一系列综合的、协调的<strong>承诺和行动</strong>，旨在开发核心专长并获得竞争优势</li>
+      <li>战略的层次：公司层战略 → 业务层战略 → 职能层战略（三层次）</li>
+      <li>战略管理过程：分析→制定→实施→控制（四阶段闭环）</li>
+      <li>战略管理者：董事会、高层管理团队（TMT）、中层管理者</li>
+      <li>战略意图与战略使命的区别</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">战略管理过程模型</span>
+      <span class="tool-tag">战略层次框架</span>
+      <span class="tool-tag">TMT概念</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">→ <strong>第2-4章</strong>：为战略分析阶段提供理论依据</div>
+      <div class="conn-item">→ <strong>第11章</strong>：闭环中的控制阶段呼应第1章的管理过程</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">战略管理的阶段</span>
+      <span class="exam-tag">战略层次</span>
+      <span class="exam-tag">TMT角色</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第2章 -->
+<div class="chapter-card fade-in" id="ch2">
+  <div class="cc-header">
+    <div class="cc-num n2">2</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第二章 · 战略分析</div>
+      <div class="cc-subtitle">搭建分析框架 — 宏观分析工具的总纲</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略分析阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-prob">考察概率：高</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">战略分析应该分析什么？从哪几个维度分析企业所处的环境和自身条件？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li>战略分析的内容：外部环境分析（宏观+行业）+ 内部环境分析</li>
+      <li>战略分析的目的：识别机会与威胁、发现优势与劣势</li>
+      <li>战略分析与战略制定的关系：分析是制定的前提与输入</li>
+      <li>战略态势分析（SWOT模型的理论基础）</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">SWOT分析框架（引入）</span>
+      <span class="tool-tag">环境扫描模型</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">→ <strong>第3章</strong>：具体展开外部环境分析工具</div>
+      <div class="conn-item">→ <strong>第4章</strong>：具体展开内部环境分析工具</div>
+      <div class="conn-item">→ <strong>第5章</strong>：SWOT综合分析，确认战略问题</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">战略分析的内容与目的</span>
+      <span class="exam-tag">SWOT基础</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第3章 -->
+<div class="chapter-card fade-in" id="ch3">
+  <div class="cc-header">
+    <div class="cc-num n3">3</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第三章 · 外部环境分析</div>
+      <div class="cc-subtitle">知彼 — 识别行业中的机会与威胁</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略分析阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">考察概率：极高（必考）</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">企业外部环境有哪些影响因素？行业的竞争结构如何分析？哪些机会值得把握、哪些威胁需要规避？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li><strong>PEST分析</strong>：政治、经济、社会、技术（宏观环境四维度）</li>
+      <li><strong>波特五力模型</strong>：现有竞争者、潜在进入者、替代品、供方讨价能力、买方讨价能力</li>
+      <li><strong>战略群分析</strong>：同一行业内战略相似的企业群体，战略群之间的移动壁垒</li>
+      <li>行业生命周期：引入期→成长期→成熟期→衰退期（各阶段竞争特征）</li>
+      <li>竞争对手分析：目标、假设、战略、能力的四维分析</li>
+      <li>关键成功因素（KSF）识别</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">PEST分析</span>
+      <span class="tool-tag highlight">波特五力模型</span>
+      <span class="tool-tag highlight">战略群分析</span>
+      <span class="tool-tag">行业生命周期</span>
+      <span class="tool-tag">竞争对手分析框架</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">→ <strong>第4章</strong>：外部分析(OT) + 内部分析(SW) = SWOT</div>
+      <div class="conn-item">→ <strong>第6章</strong>：行业结构分析是选择竞争战略的基础</div>
+      <div class="conn-item">→ <strong>第7章</strong>：行业吸引力影响多元化方向选择</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">【高频】波特五力</span>
+      <span class="exam-tag">【高频】PEST</span>
+      <span class="exam-tag">战略群</span>
+      <span class="exam-tag">行业生命周期</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第4章 -->
+<div class="chapter-card fade-in" id="ch4">
+  <div class="cc-header">
+    <div class="cc-num n4">4</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第四章 · 内部环境分析</div>
+      <div class="cc-subtitle">知己 — 发掘企业的核心专长与竞争优势</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略分析阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">考察概率：极高（必考）</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">企业内部有哪些资源和能力？如何识别真正难以模仿的核心专长？价值链如何帮助发现竞争优势？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li>企业历史分析：四步骤（阶段划分→分析→关键事件→价值观总结）</li>
+      <li><strong>企业资源三分法</strong>：人力资源 + 有形资源 + 无形资源；自有资源 vs 可利用资源</li>
+      <li><strong>企业能力四分法</strong>：管理能力 + 经营能力 + 整合能力 + 动态能力；四大特性</li>
+      <li><strong>价值链分析</strong>：基本活动（5）+ 支持活动（4）；价值链连接</li>
+      <li><strong>核心专长（VRIN标准）</strong>：有价值、稀缺、难以模仿、不可替代；核心专长 vs 核心竞争力</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">VRIN核心专长模型</span>
+      <span class="tool-tag highlight">价值链分析（Porter）</span>
+      <span class="tool-tag">资源三分法</span>
+      <span class="tool-tag">能力四分法</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">→ <strong>第5章</strong>：SW（优劣势）部分来自本章；SWOT核心输入</div>
+      <div class="conn-item">→ <strong>第6章</strong>：核心专长是差异化战略和成本领先战略的基础</div>
+      <div class="conn-item">→ <strong>第9-11章</strong>：实施阶段的组织结构和控制系统支持核心专长</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">【高频】核心专长VRIN</span>
+      <span class="exam-tag">【高频】价值链</span>
+      <span class="exam-tag">资源分类</span>
+      <span class="exam-tag">动态能力</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第5章 -->
+<div class="chapter-card fade-in" id="ch5">
+  <div class="cc-header">
+    <div class="cc-num n5">5</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第五章 · 战略问题的确认与基本战略选择</div>
+      <div class="cc-subtitle">分析→制定的桥梁 — SWOT综合与战略方向确定</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略制定阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">考察概率：极高</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">完成内外部分析后，如何从SWOT中识别企业真正面临的战略问题？战略承诺、战略使命、战略目标如何确定？选择哪个基本战略方向？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li><strong>战略问题确认</strong>：通过SWOT比对确认；重大性、长期性、根本性三原则</li>
+      <li><strong>战略承诺</strong>：企业对特定业务的坚定投入（蓝海林核心概念）；承诺坚定</li>
+      <li><strong>战略使命</strong>：企业宗旨与社会责任；经营理念</li>
+      <li><strong>战略目标</strong>：战略意图（远期）+ 中期战略目标 + 短期战略目标</li>
+      <li><strong>基本战略方向</strong>：以行业×市场分类（集中/行业多元化/市场多元化/双多元化）</li>
+      <li><strong>发展态势战略</strong>：防御型、增长型、收缩型、稳定型（混合型）</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">SWOT矩阵（核心应用）</span>
+      <span class="tool-tag highlight">战略方向四象限</span>
+      <span class="tool-tag">发展态势四类型</span>
+      <span class="tool-tag">战略承诺框架</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">← <strong>第3-4章</strong>：SWOT的输入材料（OT来自外部，SW来自内部）</div>
+      <div class="conn-item">→ <strong>第6章</strong>：业务层战略方向由本章基本战略决定</div>
+      <div class="conn-item">→ <strong>第7章</strong>：多元化方向在本章已初步确定</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">【高频】SWOT应用分析</span>
+      <span class="exam-tag">战略承诺</span>
+      <span class="exam-tag">战略使命</span>
+      <span class="exam-tag">发展态势</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第6章 -->
+<div class="chapter-card fade-in" id="ch6">
+  <div class="cc-header">
+    <div class="cc-num n6">6</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第六章 · 业务层战略</div>
+      <div class="cc-subtitle">如何在单一业务中建立竞争优势（竞争战略核心）</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略制定阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">考察概率：极高（必考）</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">企业应该选择成本领先、差异化还是聚焦战略？整合战略是否可行？在动态竞争环境下如何进行竞争互动决策？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li><strong>成本领先战略</strong>：以最低成本供应无差别产品；规模经济、学习曲线、严格成本管控；风险</li>
+      <li><strong>差异化战略</strong>：提供独特价值使顾客溢价购买；有意义的差异、可持续的差异；风险</li>
+      <li><strong>聚焦战略</strong>：成本聚焦 + 差异化聚焦；服务特定细分市场；风险</li>
+      <li><strong>整合战略</strong>：同时实现低成本与差异化（高难度，需强核心专长）；"伊甸园"概念</li>
+      <li><strong>动态竞争战略</strong>：进攻与反击决策模型（陈明哲）；先动优势；速度与创新</li>
+      <li>顾客价值：谁是顾客、为什么买、如何服务三维度</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">波特三种基本战略</span>
+      <span class="tool-tag highlight">整合战略矩阵（伊甸园）</span>
+      <span class="tool-tag highlight">动态竞争进攻反击模型</span>
+      <span class="tool-tag">成本/差异优势对比</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">← <strong>第4章</strong>：核心专长（VRIN）决定能选哪种竞争战略</div>
+      <div class="conn-item">← <strong>第3章</strong>：五力分析揭示行业竞争结构，指导战略选择</div>
+      <div class="conn-item">→ <strong>第9章</strong>：不同业务层战略需要不同组织结构匹配</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">【必考】三种基本战略对比</span>
+      <span class="exam-tag">整合战略</span>
+      <span class="exam-tag">动态竞争</span>
+      <span class="exam-tag">差异化案例</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第7章 -->
+<div class="chapter-card fade-in" id="ch7">
+  <div class="cc-header">
+    <div class="cc-num n7">7</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第七章 · 公司层战略</div>
+      <div class="cc-subtitle">多业务企业如何管理业务组合、扩大经营范围</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略制定阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">考察概率：极高（必考）</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">企业应该进入哪些行业？多元化有何价值？并购和战略联盟哪个更好？垂直整合有哪些利弊？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li><strong>多元化战略</strong>：相关多元化（价值链+核心专长共享）vs 非相关多元化（现金流+风险分散）；多元化折价问题</li>
+      <li><strong>并购战略</strong>：横向整合 vs 纵向整合；并购动机（规模/市场/能力）；并购失败原因</li>
+      <li><strong>战略联盟</strong>：优势（灵活、风险共担）vs 劣势（关系不稳定、能力泄露）；联盟类型</li>
+      <li><strong>垂直整合</strong>：前向整合 vs 后向整合；整合程度；外包决策</li>
+      <li>多元化与业绩的关系：倒U形曲线（适度多元化最优）</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">多元化分类框架</span>
+      <span class="tool-tag highlight">BCG矩阵（组合管理）</span>
+      <span class="tool-tag">并购分析框架</span>
+      <span class="tool-tag">战略联盟类型图</span>
+      <span class="tool-tag">垂直整合决策</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">← <strong>第5章</strong>：基本战略选择决定多元化方向</div>
+      <div class="conn-item">← <strong>第4章</strong>：核心专长范围决定相关多元化边界</div>
+      <div class="conn-item">→ <strong>第8章</strong>：市场多元化 = 国际化战略</div>
+      <div class="conn-item">→ <strong>第9章</strong>：多元化程度影响事业部制或矩阵制选择</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">【高频】多元化类型</span>
+      <span class="exam-tag">并购失败原因</span>
+      <span class="exam-tag">战略联盟</span>
+      <span class="exam-tag">垂直整合</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第8章 -->
+<div class="chapter-card fade-in" id="ch8">
+  <div class="cc-header">
+    <div class="cc-num n8">8</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第八章 · 国际化战略</div>
+      <div class="cc-subtitle">走向全球市场 — 全球整合与本地响应的平衡</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略制定阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-prob">考察概率：较高</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">企业为什么要国际化？选择哪种国际化战略类型？全球整合与本地响应如何平衡？进入国际市场有哪些方式？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li><strong>国际化动机</strong>：市场扩张、资源获取、规模经济、知识学习</li>
+      <li><strong>四种国际化战略</strong>：全球战略（高整合/低响应）、多国战略（低整合/高响应）、跨国战略（高整合/高响应）、国际战略（低整合/低响应）</li>
+      <li><strong>市场进入模式</strong>：出口、许可、战略联盟、直接投资（FDI）；风险与控制权对比</li>
+      <li>钻石模型（波特）：国家竞争优势的四个维度</li>
+      <li>国际化中的风险：政治风险、货币风险、文化风险</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">全球整合/本地响应矩阵（I-R矩阵）</span>
+      <span class="tool-tag">波特钻石模型</span>
+      <span class="tool-tag">市场进入方式对比</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">← <strong>第7章</strong>：国际化是公司层战略的市场多元化维度</div>
+      <div class="conn-item">← <strong>第3章</strong>：全球宏观环境分析（PEST扩展至全球）</div>
+      <div class="conn-item">→ <strong>第9章</strong>：跨国战略需要全球矩阵结构</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">四种国际化战略类型</span>
+      <span class="exam-tag">I-R矩阵</span>
+      <span class="exam-tag">市场进入模式</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第9章 -->
+<div class="chapter-card fade-in" id="ch9">
+  <div class="cc-header">
+    <div class="cc-num n9">9</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第九章 · 组织结构与战略实施</div>
+      <div class="cc-subtitle">结构追随战略 — 为战略选择正确的组织架构</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略实施阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">考察概率：极高</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">钱德勒命题是什么？不同战略需要什么组织结构？五种结构的优缺点分别是什么？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li><strong>钱德勒命题</strong>："结构追随战略"（Structure Follows Strategy）— 组织结构必须随战略变化而调整</li>
+      <li><strong>五种组织结构</strong>：简单结构（创业期）→ 职能制（U型，成本领先）→ 事业部制（M型，多元化）→ 矩阵制（跨职能）→ 网络组织（数字化）</li>
+      <li>战略与结构匹配原则：成本领先→职能制；差异化→事业部或矩阵；跨国战略→全球矩阵</li>
+      <li>集权 vs 分权的取舍；正式化程度</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">钱德勒命题</span>
+      <span class="tool-tag highlight">五种结构类型比较矩阵</span>
+      <span class="tool-tag">战略-结构匹配图</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">← <strong>第6-8章</strong>：业务层/公司层/国际化战略是选择结构的依据</div>
+      <div class="conn-item">→ <strong>第11章</strong>：组织结构支撑战略控制系统的设计</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">【高频】钱德勒命题</span>
+      <span class="exam-tag">五种结构类型</span>
+      <span class="exam-tag">结构-战略匹配</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第10章 -->
+<div class="chapter-card fade-in" id="ch10">
+  <div class="cc-header">
+    <div class="cc-num n10">10</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第十章 · 人力资源战略</div>
+      <div class="cc-subtitle">人力资本与战略实施 — 战略性人力资源管理</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略实施阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-prob">考察概率：高</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">如何让人力资源战略与企业战略相匹配？SHRM是什么？如何在不同战略情境下配置人力资源？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li><strong>战略性人力资源管理（SHRM）</strong>：HR与战略的垂直匹配（战略匹配）+ HR体系内部的水平匹配（内部一致性）</li>
+      <li><strong>IE-LR矩阵</strong>：内部发展vs外部获取 × 低关联vs高关联 → 四种人力资源战略</li>
+      <li>人力资源实践与战略匹配：成本领先→高效/低成本HR；差异化→创新/高绩效HR</li>
+      <li>人力资本的价值性与独特性：形成战略性人力资源的条件</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">SHRM框架</span>
+      <span class="tool-tag highlight">IE-LR矩阵</span>
+      <span class="tool-tag">HR-战略匹配表</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">← <strong>第6章</strong>：业务层战略类型决定HR战略类型</div>
+      <div class="conn-item">← <strong>第4章</strong>：人力资源是内部环境分析的首要维度</div>
+      <div class="conn-item">→ <strong>第11章</strong>：人力资本是战略领导力的基础</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">SHRM</span>
+      <span class="exam-tag">IE-LR矩阵</span>
+      <span class="exam-tag">HR-战略匹配</span>
+    </div>
+  </div>
+</div>
+
+<!-- 第11章 -->
+<div class="chapter-card fade-in" id="ch11">
+  <div class="cc-header">
+    <div class="cc-num n11">11</div>
+    <div class="cc-meta">
+      <div class="cc-chapter-name">第十一章 · 战略实施的管理与控制</div>
+      <div class="cc-subtitle">收尾与闭环 — 领导力、文化与战略控制系统</div>
+      <div class="cc-badges">
+        <span class="badge badge-phase">战略控制阶段</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">考察概率：极高（必考）</span>
+      </div>
+    </div>
+  </div>
+  <div class="cc-body">
+    <div class="cc-section-title">🎯 本章解决的核心问题</div>
+    <div class="core-question">战略实施的四大保障机制是什么？什么样的领导力支撑战略执行？企业文化如何影响战略实施？如何建立有效的战略控制系统？</div>
+
+    <div class="cc-section-title">🔑 核心知识点</div>
+    <ul class="key-points">
+      <li><strong>战略领导力六大职责</strong>：定方向、核心能力、文化建设、道德行为、控制系统、人力资本</li>
+      <li><strong>企业文化沙因三层次</strong>：人工制品→倡导价值观→基本假设；五大功能（导向/凝聚/激励/约束/辐射）</li>
+      <li><strong>四种战略控制类型</strong>：前提控制、战略监控、特别预警、实施控制（斯曾德尔&霍弗）</li>
+      <li><strong>平衡计分卡（BSC）</strong>：财务+客户+内部流程+学习成长四维度；因果链；四对"平衡"</li>
+      <li>三种控制机制：财务控制、战略控制、行为控制</li>
+    </ul>
+
+    <div class="cc-section-title">🛠️ 核心工具/模型</div>
+    <div class="tools-row">
+      <span class="tool-tag highlight">平衡计分卡BSC</span>
+      <span class="tool-tag highlight">沙因文化三层次</span>
+      <span class="tool-tag highlight">四种战略控制类型</span>
+      <span class="tool-tag">领导力六职责</span>
+    </div>
+
+    <div class="cc-section-title">🔗 与其他章节的联系</div>
+    <div class="connections">
+      <div class="conn-item">← <strong>第1-5章</strong>：战略控制检验战略分析假设是否仍然成立</div>
+      <div class="conn-item">← <strong>第9章</strong>：组织结构是战略控制的硬件基础</div>
+      <div class="conn-item">→ <strong>全书</strong>：控制结果反馈→启动新一轮战略分析（闭环）</div>
+    </div>
+
+    <div class="cc-section-title">📝 历年真题考察</div>
+    <div class="exam-tags">
+      <span class="exam-tag">【必考】BSC平衡计分卡</span>
+      <span class="exam-tag">【必考】文化三层次</span>
+      <span class="exam-tag">四种控制类型</span>
+      <span class="exam-tag">战略领导力</span>
+    </div>
+  </div>
+</div>
+
+</div><!-- end chapter-cards -->
+
+<!-- ═══ 四、章节联系矩阵 ═══ -->
+<div id="sec-relations" class="section-title fade-in">
+  <div class="section-icon icon-amber">🔗</div>
+  <h2>四、章节内在联系分析矩阵</h2>
+</div>
+
+<div class="relation-grid fade-in">
+  <p style="font-size:0.87rem; color:var(--text-secondary); margin-bottom:12px;">下表展示各章之间的主要知识联系，★表示强关联，○表示中等关联，·表示弱关联：</p>
+  <div style="overflow-x:auto;">
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>章节</th>
+        <th>第1章<br>战略概述</th>
+        <th>第2章<br>战略分析</th>
+        <th>第3章<br>外部环境</th>
+        <th>第4章<br>内部环境</th>
+        <th>第5章<br>SWOT确认</th>
+        <th>第6章<br>业务层</th>
+        <th>第7章<br>公司层</th>
+        <th>第8章<br>国际化</th>
+        <th>第9章<br>组织结构</th>
+        <th>第10章<br>人力资源</th>
+        <th>第11章<br>管理控制</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>第1章 战略概述</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+      </tr>
+      <tr>
+        <td>第2章 战略分析框架</td>
+        <td style="text-align:center">★</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+      </tr>
+      <tr>
+        <td>第3章 外部环境分析</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">★</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">○</td>
+      </tr>
+      <tr>
+        <td>第4章 内部环境分析</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">○</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+      </tr>
+      <tr>
+        <td>第5章 战略问题确认</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+      </tr>
+      <tr>
+        <td>第6章 业务层战略</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">○</td>
+      </tr>
+      <tr>
+        <td>第7章 公司层战略</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">○</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">○</td>
+      </tr>
+      <tr>
+        <td>第8章 国际化战略</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">★</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+      </tr>
+      <tr>
+        <td>第9章 组织结构</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+      </tr>
+      <tr>
+        <td>第10章 人力资源</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+        <td style="text-align:center">★</td>
+      </tr>
+      <tr>
+        <td>第11章 管理控制</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">○</td>
+        <td style="text-align:center">·</td>
+        <td style="text-align:center">★</td>
+        <td style="text-align:center">★</td>
+        <td style="background:#dbeafe;text-align:center">—</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div style="margin-top:16px; font-size:0.82rem; color:var(--text-muted);">
+    图例：★ 强关联（核心知识直接衔接）　○ 中等关联（存在逻辑依赖）　· 弱关联（间接影响）
+  </div>
+
+  <hr class="divider">
+
+  <details>
+    <summary>📌 最重要的5条跨章联系（复试必知）</summary>
+    <div class="details-body">
+      <ol style="margin-left:16px; line-height:2.4;">
+        <li><strong>第3章(波特五力) + 第4章(VRIN) → 第5章(SWOT)</strong>：这是全书最核心的分析链。外部机会威胁 × 内部优势劣势 → 确认战略问题。</li>
+        <li><strong>第4章(核心专长) → 第6章(竞争战略)</strong>：企业的核心专长（有价值、稀缺、难模仿、不可替代）决定企业能选哪种竞争战略。没有成本方面的专长就不能选成本领先，没有创新专长就不能选差异化。</li>
+        <li><strong>第6-8章(战略选择) → 第9章(结构匹配)</strong>：钱德勒命题的核心应用。成本领先→职能制；多元化→事业部制；跨国→全球矩阵制。</li>
+        <li><strong>第11章 → 第1-5章（反馈闭环）</strong>：战略控制（前提控制/监控）的结果，驱动下一轮战略分析，是战略管理动态性的体现。</li>
+        <li><strong>第4章(人力资源) + 第10章(SHRM) + 第11章(人才培育)</strong>：人力资源贯穿内部分析、战略实施和控制三个阶段，体现SHRM的战略地位。</li>
+      </ol>
+    </div>
+  </details>
+</div>
+
+<!-- ═══ 五、核心概念网络 ═══ -->
+<div id="sec-concepts" class="section-title fade-in">
+  <div class="section-icon icon-purple">💡</div>
+  <h2>五、全书核心概念贯穿网络</h2>
+</div>
+
+<div class="concept-net fade-in">
+  <p style="font-size:0.87rem; color:var(--text-secondary); margin-bottom:4px;">以下12个核心概念贯穿全书多个章节，是复试考察的最高频目标：</p>
+
+  <div class="concept-grid">
+    <div class="concept-item ci-blue">
+      <div class="concept-item-title">🎯 核心专长（Core Competence）</div>
+      <div class="concept-item-chapters">第4章（定义）→ 第5章（判断）→ 第6章（应用）→ 第7章（边界）→ 第11章（维护）</div>
+      <div class="concept-item-desc">VRIN标准：有价值·稀缺·难以模仿·不可替代。全书最核心的竞争优势来源概念。</div>
+    </div>
+    <div class="concept-item ci-teal">
+      <div class="concept-item-title">📊 SWOT分析</div>
+      <div class="concept-item-chapters">第3章(OT输入) + 第4章(SW输入) → 第5章(综合应用)</div>
+      <div class="concept-item-desc">战略分析阶段的综合工具。OT来自外部，SW来自内部，SWOT比对确认战略问题。</div>
+    </div>
+    <div class="concept-item ci-green">
+      <div class="concept-item-title">📋 战略承诺（Strategic Commitment）</div>
+      <div class="concept-item-chapters">第5章（核心定义）→ 贯穿第6-11章所有实施阶段</div>
+      <div class="concept-item-desc">蓝海林教授强调的核心理念：对特定业务的坚定投入，"做专才能做长"。</div>
+    </div>
+    <div class="concept-item ci-amber">
+      <div class="concept-item-title">⚡ 波特五力模型</div>
+      <div class="concept-item-chapters">第3章（外部分析主工具）→ 第6章（竞争战略选择依据）</div>
+      <div class="concept-item-desc">五种竞争力量决定行业平均盈利水平，是选择战略定位的核心分析工具。</div>
+    </div>
+    <div class="concept-item ci-rose">
+      <div class="concept-item-title">🏗️ 结构追随战略（钱德勒命题）</div>
+      <div class="concept-item-chapters">第9章（核心定义）→ 第11章（组织-战略匹配控制）</div>
+      <div class="concept-item-desc">战略变化要求组织结构同步调整。五种结构类型与战略阶段的匹配规律。</div>
+    </div>
+    <div class="concept-item ci-purple">
+      <div class="concept-item-title">📈 平衡计分卡（BSC）</div>
+      <div class="concept-item-chapters">第11章（核心内容）← 第6章财务指标 ← 第10章学习成长</div>
+      <div class="concept-item-desc">四维度：财务→客户→内部流程→学习成长。因果链条，克服财务指标短视问题。</div>
+    </div>
+    <div class="concept-item ci-blue">
+      <div class="concept-item-title">🌐 价值链分析（Porter）</div>
+      <div class="concept-item-chapters">第4章（内部分析工具）→ 第6章（核心专长识别）→ 第7章（垂直整合依据）</div>
+      <div class="concept-item-desc">基本活动(5) + 支持活动(4)。识别价值创造来源，找到核心专长所在的环节。</div>
+    </div>
+    <div class="concept-item ci-teal">
+      <div class="concept-item-title">🏢 企业文化（三层次模型）</div>
+      <div class="concept-item-chapters">第4章（历史分析中形成）→ 第11章（战略实施软件系统）</div>
+      <div class="concept-item-desc">沙因三层次：人工制品→倡导价值观→基本假设。文化是战略实施的"软性控制"。</div>
+    </div>
+    <div class="concept-item ci-green">
+      <div class="concept-item-title">📊 多元化战略</div>
+      <div class="concept-item-chapters">第5章（方向选择）→ 第7章（核心内容）→ 第9章（结构匹配）</div>
+      <div class="concept-item-desc">相关多元化(核心专长共享) vs 非相关多元化(风险分散)。多元化折价问题。</div>
+    </div>
+    <div class="concept-item ci-amber">
+      <div class="concept-item-title">👥 战略性人力资源管理（SHRM）</div>
+      <div class="concept-item-chapters">第4章（人力资源分析）→ 第10章（核心内容）→ 第11章（人才培育）</div>
+      <div class="concept-item-desc">HR与战略垂直匹配 + HR体系水平一致性。IE-LR矩阵四种配置模式。</div>
+    </div>
+    <div class="concept-item ci-rose">
+      <div class="concept-item-title">🔄 动态竞争战略</div>
+      <div class="concept-item-chapters">第3章（竞争环境分析）→ 第6章（核心内容）</div>
+      <div class="concept-item-desc">陈明哲进攻反击模型。先动优势的临时性。速度与创新替代规模成为优势来源。</div>
+    </div>
+    <div class="concept-item ci-purple">
+      <div class="concept-item-title">🌍 整合战略（Integration Strategy）</div>
+      <div class="concept-item-chapters">第6章（业务层整合）→ 第7章（垂直整合）→ 第8章（跨国整合）</div>
+      <div class="concept-item-desc">同时实现低成本与差异化的"伊甸园"战略。需强大核心专长支撑，是本书的高阶概念。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 六、全书思维导图 ═══ -->
+<div id="sec-mindmap" class="section-title fade-in">
+  <div class="section-icon icon-rose">🧠</div>
+  <h2>六、全书思维导图（结构树）</h2>
+</div>
+
+<div class="mindmap-wrap fade-in">
+  <pre style="font-family:var(--font-main); font-size:0.83rem; color:var(--text-primary); line-height:2; overflow-x:auto;">
+《企业战略管理》（蓝海林 第2版）
+│
+├── 【第一阶段】战略分析 —— 「知己知彼，百战不殆」
+│   ├── 第1章 战略与战略管理
+│   │   ├── 战略的定义与层次（公司层/业务层/职能层）
+│   │   ├── 战略管理过程（分析→制定→实施→控制）
+│   │   └── 战略管理者（董事会/TMT/中层管理者）
+│   │
+│   ├── 第2章 战略分析框架
+│   │   ├── 外部环境分析体系
+│   │   └── 内部环境分析体系
+│   │
+│   ├── 第3章 外部环境分析 ── PEST + 波特五力 + 战略群
+│   │   ├── 宏观环境：PEST（政治/经济/社会/技术）
+│   │   ├── 行业环境：波特五力模型
+│   │   │   ├── 现有竞争者的竞争强度
+│   │   │   ├── 潜在进入者威胁
+│   │   │   ├── 替代品威胁
+│   │   │   ├── 供应商讨价还价能力
+│   │   │   └── 购买者讨价还价能力
+│   │   ├── 竞争环境：战略群分析（移动壁垒）
+│   │   └── 行业生命周期（引入/成长/成熟/衰退）
+│   │
+│   └── 第4章 内部环境分析 ── 资源 + 能力 + 价值链 + 核心专长
+│       ├── §1 企业历史分析（四步骤）
+│       ├── §2 企业资源分析（人力/有形/无形；自有/可利用）
+│       ├── §3 企业能力分析（管理/经营/整合/动态；四特性）
+│       ├── §4 价值链分析（基本活动×5 + 支持活动×4）
+│       └── §5 核心专长（VRIN：有价值/稀缺/难模仿/不可替代）
+│
+├── 【第二阶段】战略制定 —— 「谋定而后动」
+│   ├── 第5章 战略问题确认与基本战略选择
+│   │   ├── 战略问题确认（SWOT比对；重大/长期/根本性）
+│   │   ├── 战略使命（宗旨/经营理念/价值观）
+│   │   ├── 战略承诺（"做专才能做长"）★蓝海林核心理念
+│   │   ├── 战略目标（意图/中期/短期）
+│   │   └── 基本战略方向（行业×市场四象限；发展态势四类型）
+│   │
+│   ├── 第6章 业务层战略（竞争战略）
+│   │   ├── 成本领先战略（规模经济/学习曲线/严格成本管控）
+│   │   ├── 差异化战略（独特价值/溢价/有意义且可持续）
+│   │   ├── 聚焦战略（成本聚焦/差异化聚焦）
+│   │   ├── 整合战略（"伊甸园"；高差异+低成本）
+│   │   └── 动态竞争战略（陈明哲模型；进攻与反击）
+│   │
+│   ├── 第7章 公司层战略
+│   │   ├── 多元化战略（相关 vs 非相关；多元化折价）
+│   │   ├── 垂直整合（前向/后向；外包决策）
+│   │   ├── 并购战略（动机/流程/失败原因）
+│   │   └── 战略联盟（类型/优劣势/稳定性）
+│   │
+│   └── 第8章 国际化战略
+│       ├── 国际化动机（市场/资源/规模/知识）
+│       ├── 四种国际化战略（I-R矩阵）
+│       │   ├── 全球战略（高整合/低响应）
+│       │   ├── 多国战略（低整合/高响应）
+│       │   ├── 跨国战略（高整合/高响应）★最复杂
+│       │   └── 国际战略（低整合/低响应）
+│       └── 市场进入模式（出口/许可/联盟/FDI）
+│
+├── 【第三阶段】战略实施 —— 「知行合一，落地有声」
+│   ├── 第9章 组织结构与战略实施
+│   │   ├── 钱德勒命题："结构追随战略"
+│   │   └── 五种组织结构类型
+│   │       ├── 简单结构（创业期/单一产品）
+│   │       ├── 职能制U型（成本领先/规模扩张）
+│   │       ├── 事业部制M型（多元化/多业务）
+│   │       ├── 矩阵制（跨职能项目/差异化）
+│   │       └── 网络组织（数字化/动态环境）
+│   │
+│   └── 第10章 人力资源战略
+│       ├── SHRM（战略性人力资源管理）
+│       │   ├── 垂直匹配（HR战略↔企业战略）
+│       │   └── 水平匹配（HR各模块内部一致性）
+│       └── IE-LR矩阵（内外部×相关非相关→四种HR战略）
+│
+└── 【第四阶段】战略控制 —— 「动态循环，持续改进」
+    └── 第11章 战略实施的管理与控制
+        ├── 战略领导力六大职责
+        ├── 企业文化（沙因三层次；五大功能）
+        ├── 四种战略控制类型（前提/监控/预警/实施）
+        ├── 三种控制机制（财务/战略/行为）
+        └── 平衡计分卡BSC（四维度；因果链）
+            ├── 财务维度（股东视角）
+            ├── 客户维度（市场视角）
+            ├── 内部流程维度（运营视角）
+            └── 学习成长维度（能力基础）
+  </pre>
+</div>
+
+<!-- ═══ 七、高频考点汇总 ═══ -->
+<div id="sec-exam" class="section-title fade-in">
+  <div class="section-icon icon-blue">📝</div>
+  <h2>七、高频考点汇总（2016–2025真题分析）</h2>
+</div>
+
+<div class="exam-summary fade-in">
+  <p style="font-size:0.87rem; color:var(--text-secondary); margin-bottom:12px;">基于2016–2025年中南大学企业管理复试真题统计，以下为出现频率最高的核心考点：</p>
+
+  <table class="exam-table">
+    <thead>
+      <tr>
+        <th>排名</th>
+        <th>章节</th>
+        <th>考点</th>
+        <th>常见题型</th>
+        <th>重要度</th>
+        <th>复习建议</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>01</strong></td>
+        <td>第3章</td>
+        <td>波特五力模型</td>
+        <td>名词解释、论述、案例</td>
+        <td><span class="star">⭐⭐⭐⭐⭐</span></td>
+        <td>必须精通五力的名称、内涵和分析方法；能结合实际案例分析</td>
+      </tr>
+      <tr>
+        <td><strong>02</strong></td>
+        <td>第4章</td>
+        <td>核心专长（VRIN）</td>
+        <td>名词解释、简答、论述</td>
+        <td><span class="star">⭐⭐⭐⭐⭐</span></td>
+        <td>深度理解四标准；能与核心竞争力对比；结合案例说明</td>
+      </tr>
+      <tr>
+        <td><strong>03</strong></td>
+        <td>第11章</td>
+        <td>平衡计分卡（BSC）</td>
+        <td>名词解释、简答、案例</td>
+        <td><span class="star">⭐⭐⭐⭐⭐</span></td>
+        <td>掌握四维度和因果链；理解"平衡"的四层含义</td>
+      </tr>
+      <tr>
+        <td><strong>04</strong></td>
+        <td>第5章</td>
+        <td>SWOT分析与战略选择</td>
+        <td>案例分析、论述</td>
+        <td><span class="star">⭐⭐⭐⭐⭐</span></td>
+        <td>能运用SWOT对企业案例进行完整分析；会提出战略建议</td>
+      </tr>
+      <tr>
+        <td><strong>05</strong></td>
+        <td>第6章</td>
+        <td>三种基本竞争战略</td>
+        <td>简答、论述、对比</td>
+        <td><span class="star">⭐⭐⭐⭐⭐</span></td>
+        <td>成本领先/差异化/聚焦三种战略的定义、条件、风险必背</td>
+      </tr>
+      <tr>
+        <td><strong>06</strong></td>
+        <td>第4章</td>
+        <td>价值链分析</td>
+        <td>名词解释、简答</td>
+        <td><span class="star">⭐⭐⭐⭐⭐</span></td>
+        <td>掌握基本活动5+支持活动4；能结合案例分析价值创造环节</td>
+      </tr>
+      <tr>
+        <td><strong>07</strong></td>
+        <td>第9章</td>
+        <td>钱德勒命题与组织结构</td>
+        <td>名词解释、简答、论述</td>
+        <td><span class="star">⭐⭐⭐⭐</span></td>
+        <td>五种结构类型的对比；结构与战略匹配的分析逻辑</td>
+      </tr>
+      <tr>
+        <td><strong>08</strong></td>
+        <td>第11章</td>
+        <td>企业文化三层次（沙因）</td>
+        <td>名词解释、简答、面试</td>
+        <td><span class="star">⭐⭐⭐⭐</span></td>
+        <td>三层次内容；五大功能；文化对战略实施的双面性</td>
+      </tr>
+      <tr>
+        <td><strong>09</strong></td>
+        <td>第7章</td>
+        <td>多元化战略类型</td>
+        <td>简答、论述</td>
+        <td><span class="star">⭐⭐⭐⭐</span></td>
+        <td>相关vs非相关；多元化折价；多元化与业绩倒U关系</td>
+      </tr>
+      <tr>
+        <td><strong>10</strong></td>
+        <td>第5章</td>
+        <td>战略承诺</td>
+        <td>名词解释、面试问答</td>
+        <td><span class="star">⭐⭐⭐⭐</span></td>
+        <td>蓝海林核心概念；"做专才能做长"；承诺坚定的含义</td>
+      </tr>
+      <tr>
+        <td><strong>11</strong></td>
+        <td>第6章</td>
+        <td>整合战略（伊甸园）</td>
+        <td>简答、案例分析</td>
+        <td><span class="star">⭐⭐⭐⭐</span></td>
+        <td>整合战略的含义；实现条件；伊甸园图示的含义</td>
+      </tr>
+      <tr>
+        <td><strong>12</strong></td>
+        <td>第11章</td>
+        <td>四种战略控制类型</td>
+        <td>简答、名词解释</td>
+        <td><span class="star">⭐⭐⭐</span></td>
+        <td>前提/监控/预警/实施四类型；控制时机与对象</td>
+      </tr>
+      <tr>
+        <td><strong>13</strong></td>
+        <td>第3章</td>
+        <td>战略群分析</td>
+        <td>名词解释、案例</td>
+        <td><span class="star">⭐⭐⭐</span></td>
+        <td>战略群定义；移动壁垒；战略群图绘制</td>
+      </tr>
+      <tr>
+        <td><strong>14</strong></td>
+        <td>第8章</td>
+        <td>四种国际化战略（I-R矩阵）</td>
+        <td>简答、案例</td>
+        <td><span class="star">⭐⭐⭐</span></td>
+        <td>全球/多国/跨国/国际四种战略；适用情境</td>
+      </tr>
+      <tr>
+        <td><strong>15</strong></td>
+        <td>第10章</td>
+        <td>SHRM与IE-LR矩阵</td>
+        <td>简答、论述</td>
+        <td><span class="star">⭐⭐⭐</span></td>
+        <td>战略性人力资源管理含义；四种HR战略类型</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:20px;">
+    <details>
+      <summary>📊 2026年命题预测（基于近三年趋势）</summary>
+      <div class="details-body">
+        <table style="width:100%; border-collapse:collapse; font-size:0.83rem; margin-top:8px;">
+          <thead>
+            <tr style="background:var(--bg-header); color:#fff;">
+              <th style="padding:8px; text-align:left;">预测题目</th>
+              <th style="padding:8px; text-align:left;">题型</th>
+              <th style="padding:8px; text-align:left;">核心知识点</th>
+              <th style="padding:8px; text-align:left;">概率</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="border:1px solid var(--border); padding:8px;">结合某企业案例运用SWOT分析并提出战略建议</td><td style="border:1px solid var(--border); padding:8px;">案例论述</td><td style="border:1px solid var(--border); padding:8px;">第3-5章综合</td><td style="border:1px solid var(--border); padding:8px;">★★★★★</td></tr>
+            <tr><td style="border:1px solid var(--border); padding:8px;">什么是核心专长？如何用VRIN标准判断？</td><td style="border:1px solid var(--border); padding:8px;">名词解释+简答</td><td style="border:1px solid var(--border); padding:8px;">第4章</td><td style="border:1px solid var(--border); padding:8px;">★★★★★</td></tr>
+            <tr><td style="border:1px solid var(--border); padding:8px;">简述平衡计分卡的四维度及其内在逻辑关系</td><td style="border:1px solid var(--border); padding:8px;">简答</td><td style="border:1px solid var(--border); padding:8px;">第11章</td><td style="border:1px solid var(--border); padding:8px;">★★★★★</td></tr>
+            <tr><td style="border:1px solid var(--border); padding:8px;">比较成本领先战略与差异化战略的优劣及适用情境</td><td style="border:1px solid var(--border); padding:8px;">对比论述</td><td style="border:1px solid var(--border); padding:8px;">第6章</td><td style="border:1px solid var(--border); padding:8px;">★★★★</td></tr>
+            <tr><td style="border:1px solid var(--border); padding:8px;">钱德勒命题的内容及其对企业管理的启示</td><td style="border:1px solid var(--border); padding:8px;">名词解释+论述</td><td style="border:1px solid var(--border); padding:8px;">第9章</td><td style="border:1px solid var(--border); padding:8px;">★★★★</td></tr>
+            <tr><td style="border:1px solid var(--border); padding:8px;">分析某知名企业国际化战略失败的原因</td><td style="border:1px solid var(--border); padding:8px;">案例分析</td><td style="border:1px solid var(--border); padding:8px;">第8章</td><td style="border:1px solid var(--border); padding:8px;">★★★</td></tr>
+            <tr><td style="border:1px solid var(--border); padding:8px;">AI技术对企业战略管理模式的影响（新题型）</td><td style="border:1px solid var(--border); padding:8px;">论述</td><td style="border:1px solid var(--border); padding:8px;">第3章+动态能力</td><td style="border:1px solid var(--border); padding:8px;">★★★</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ═══ 八、30秒极速复习 ═══ -->
+<div id="sec-quick" class="section-title fade-in">
+  <div class="section-icon icon-rose">⚡</div>
+  <h2>八、30秒极速复习：全书精华口诀</h2>
+</div>
+
+<div class="quick-review fade-in">
+  <h2 style="color:#fff; margin-bottom:16px;">⚡ 全书11章 · 极速记忆模块</h2>
+  <div class="qr-grid">
+    <div class="qr-item">
+      <div class="qr-num">第1章</div>
+      <div class="qr-text">战略 = <mark>承诺与行动</mark>；管理过程 = <mark>分析→制定→实施→控制</mark>；层次 = 公司/业务/职能</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第2章</div>
+      <div class="qr-text">战略分析 = 外部(OT) + 内部(SW)；共同输入<mark>SWOT</mark>；目的：识别机会、规避威胁、发挥优势、克服劣势</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第3章</div>
+      <div class="qr-text"><mark>PEST</mark>（宏观）+ <mark>波特五力</mark>（行业）+ <mark>战略群</mark>（竞争）；识别机会与威胁</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第4章</div>
+      <div class="qr-text">资源（人/有形/无形）→ 能力（管/经/整/动）→ 价值链（5+4）→ <mark>核心专长VRIN</mark>：有稀难替</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第5章</div>
+      <div class="qr-text">SWOT综合确认战略问题 → 战略使命 → <mark>战略承诺</mark> → 战略目标 → 基本战略方向（行业×市场）</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第6章</div>
+      <div class="qr-text">业务层 = <mark>成本领先/差异化/聚焦/整合</mark>（波特）；动态竞争：进攻→反击→速度+创新</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第7章</div>
+      <div class="qr-text">公司层 = <mark>多元化</mark>（相关/非相关）+ <mark>垂直整合</mark>（前向/后向）+ <mark>并购</mark>+ <mark>战略联盟</mark></div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第8章</div>
+      <div class="qr-text">国际化：<mark>I-R矩阵</mark> → 全球/多国/跨国/国际四种战略；进入模式：出口→许可→联盟→FDI</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第9章</div>
+      <div class="qr-text"><mark>钱德勒：结构追随战略</mark>；五种结构：简单→职能→事业部→矩阵→网络（规模+多元化驱动演变）</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第10章</div>
+      <div class="qr-text"><mark>SHRM</mark>：垂直匹配（HR↔战略）+ 水平匹配（HR内部）；<mark>IE-LR矩阵</mark>→ 四种HR战略</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">第11章</div>
+      <div class="qr-text">实施保障 = 领导力（6职责）+ 文化（<mark>沙因3层次</mark>）+ 四种控制 + <mark>BSC四维度</mark>（财务→客户→流程→学习）</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-num">全书一句话</div>
+      <div class="qr-text">分析（知己知彼）→ 制定（谋定后动）→ 实施（结构·人力）→ 控制（BSC·文化）→ 反馈（闭环）</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 复试口述背诵版 ═══ -->
+<div class="logic-chain fade-in" style="margin-top:28px;">
+  <h2 style="font-size:1.2rem; font-weight:700; margin-bottom:12px;">🎤 复试口述版：全书一分钟串讲（背诵模板）</h2>
+
+  <div style="background:var(--highlight-bg); border:1px solid var(--highlight-border); border-radius:10px; padding:20px; font-size:0.9rem; line-height:2;">
+    <p>《企业战略管理》全书围绕一个核心问题展开：<strong>企业如何持续获得高于行业平均水平的收益</strong>。</p>
+    <br>
+    <p><strong>全书分为四个阶段：</strong></p>
+    <br>
+    <p><strong>第一，战略分析阶段（第1-4章）</strong>，回答"我们在哪里、我们有什么"。首先用PEST和波特五力分析外部机会与威胁，再用资源、能力、价值链和VRIN标准发现内部优势与劣势，重点是识别企业的<strong>核心专长</strong>——那些有价值、稀缺、难以模仿、不可替代的竞争优势。</p>
+    <br>
+    <p><strong>第二，战略制定阶段（第5-8章）</strong>，回答"我们去哪里、如何去"。通过SWOT综合分析确认战略问题，在战略承诺的引导下确定战略方向；然后在业务层选择成本领先、差异化或整合战略；在公司层决定多元化方向；在国际层决定是全球战略还是跨国战略。</p>
+    <br>
+    <p><strong>第三，战略实施阶段（第9-10章）</strong>，回答"怎么落地"。遵循钱德勒命题"结构追随战略"，用匹配的组织结构（简单、职能、事业部、矩阵或网络）和SHRM战略性人力资源管理来支撑战略执行。</p>
+    <br>
+    <p><strong>第四，战略控制阶段（第11章）</strong>，回答"如何保障"。通过战略领导力、企业文化（沙因三层次）、四种战略控制类型，以及平衡计分卡（BSC）的财务、客户、内部流程、学习成长四维度，形成系统的战略控制机制。</p>
+    <br>
+    <p>最终，控制阶段的反馈驱动新一轮战略分析，形成<strong>「分析→制定→实施→控制→再分析」</strong>的动态闭环，体现了战略管理的本质——<em>一个持续学习、动态调整的管理过程</em>。</p>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<!-- 返回顶部按钮 -->
+<button id="back-top" onclick="scrollToTop()">↑</button>
+
+<!-- 页脚 -->
+<div class="footer">
+  📚 中南大学企业管理学硕（120202）复试笔记 · 《企业战略管理》第2版（蓝海林著）全书理论框架与章节联系<br>
+  生成日期：2026-03-13 · 整合2016–2025年复试真题 · 仅供复试备考参考使用
+</div>
+
+<!-- ═══ JavaScript ═══ -->
+<script>
+// 夜间模式
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  const btn = document.querySelector('.btn-ctrl');
+  if(btn) btn.textContent = document.body.classList.contains('dark') ? '☀️ 日间模式' : '🌙 夜间模式';
+  localStorage.setItem('csu_fw_dark', document.body.classList.contains('dark') ? '1' : '0');
+}
+
+// 返回顶部
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 返回顶部按钮显示
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('back-top');
+  if(btn) btn.style.display = window.scrollY > 400 ? 'block' : 'none';
+});
+
+// ═══ 悬浮搜索药丸功能 ═══
+let matchEls = [];
+let currentMatch = -1;
+
+function doSearch() {
+  const q = document.getElementById('searchInput').value.trim();
+  const countEl = document.getElementById('searchCount');
+
+  // 清除旧高亮
+  document.querySelectorAll('.search-highlight').forEach(el => {
+    const parent = el.parentNode;
+    if (parent) {
+      parent.replaceChild(document.createTextNode(el.textContent), el);
+      parent.normalize();
+    }
+  });
+  matchEls = [];
+  currentMatch = -1;
+
+  if (!q || q.length < 1) {
+    countEl.textContent = '';
+    return;
+  }
+
+  const content = document.querySelector('.main');
+  if (!content) return;
+
+  const walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null, false);
+  const nodesToReplace = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (node.nodeValue.includes(q) && node.parentElement &&
+        !['SCRIPT','STYLE','INPUT','TEXTAREA'].includes(node.parentElement.tagName)) {
+      nodesToReplace.push(node);
+    }
+  }
+
+  nodesToReplace.forEach(node => {
+    const escaped = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const parts = node.nodeValue.split(new RegExp('(' + escaped + ')', 'g'));
+    if (parts.length > 1) {
+      const frag = document.createDocumentFragment();
+      parts.forEach(part => {
+        if (part === q) {
+          const span = document.createElement('span');
+          span.className = 'search-highlight';
+          span.textContent = part;
+          frag.appendChild(span);
+          matchEls.push(span);
+        } else {
+          frag.appendChild(document.createTextNode(part));
+        }
+      });
+      node.parentElement.replaceChild(frag, node);
+    }
+  });
+
+  const total = matchEls.length;
+  if (total === 0) {
+    countEl.textContent = '未找到';
+    return;
+  }
+  currentMatch = 0;
+  highlightCurrent();
+  updateCount();
+}
+
+function highlightCurrent() {
+  matchEls.forEach((el, i) => {
+    el.classList.toggle('current', i === currentMatch);
+  });
+  if (matchEls[currentMatch]) {
+    matchEls[currentMatch].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+function updateCount() {
+  const countEl = document.getElementById('searchCount');
+  if (matchEls.length === 0) { countEl.textContent = '未找到'; return; }
+  countEl.textContent = matchEls.length + ' / ' + matchEls.length;
+  countEl.textContent = (currentMatch + 1) + ' / ' + matchEls.length;
+}
+
+function navigateMatch(dir) {
+  if (matchEls.length === 0) return;
+  currentMatch = (currentMatch + dir + matchEls.length) % matchEls.length;
+  highlightCurrent();
+  updateCount();
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value = '';
+  doSearch();
+  document.getElementById('searchCount').textContent = '';
+}
+
+// 键盘 F3 / Shift+F3
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'F3') {
+    e.preventDefault();
+    if (e.shiftKey) navigateMatch(-1);
+    else navigateMatch(1);
+  }
+});
+
+// 入场动画
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.05 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// 读取深色模式设置
+(function() {
+  if(localStorage.getItem('csu_fw_dark') === '1') {
+    document.body.classList.add('dark');
+    const btn = document.querySelector('.btn-ctrl');
+    if(btn) btn.textContent = '☀️ 日间模式';
+  }
+})();
+</script>
+
+</body>
+</html>

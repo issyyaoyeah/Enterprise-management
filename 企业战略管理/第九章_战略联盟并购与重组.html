@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第九章 · 战略联盟、并购与重组</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1033;
+    --bg: #f3f0ff;
+    --bg2: #e8e2ff;
+    --accent:  #6d28d9;
+    --accent2: #f59e0b;
+    --accent3: #0ea5e9;
+    --accent4: #059669;
+    --accent5: #dc2626;
+    --gold: #d97706;
+    --card-bg: #ffffff;
+    --border: #c4b5fd;
+    --tier1: #6d28d9;
+    --tier2: #f59e0b;
+    --tier3: #0ea5e9;
+    --shadow: 0 4px 20px rgba(26,16,51,0.10);
+  }
+
+  /* ── DARK MODE ── */
+  body.dark {
+    --ink: #e8e0ff;
+    --bg: #13102a;
+    --bg2: #1e1840;
+    --card-bg: #1a1640;
+    --border: #3d3270;
+    --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  body.dark .hero { background: linear-gradient(135deg, #0d0a1f 0%, #1f1060 50%, #4c1d95 100%); }
+  body.dark .toc { background: #0d0a1f; }
+  body.dark .case-banner { background: linear-gradient(135deg, #0d0a1f, #1f1060); }
+  body.dark .chain { background: linear-gradient(135deg, #0d0a1f 0%, #1f1060 100%); }
+  body.dark .kcard-header { background: linear-gradient(to right, #1e1840, #1a1640); }
+  body.dark .ctable th { background: #1a1033; }
+  body.dark .ctable tr:nth-child(even) td { background: #1e1840; }
+  body.dark .ctable td { border-color: #3d3270; color: #c4b5fd; }
+  body.dark .block-analogy { background: #2d2010; }
+  body.dark .block-definition { background: #0c2240; }
+  body.dark .block-memory { background: #0c2a1e; }
+  body.dark .block-exam { background: #1e1040; }
+  body.dark .block-tip { background: #2d0a0a; }
+  body.dark .logic-map { background: #1a1640; border-color: #3d3270; }
+  body.dark .flow-step { background: #1e1840; border-color: #3d3270; color: #c4b5fd; }
+  body.dark .quiz { background: #1a1640; border-color: #3d3270; }
+  body.dark .q-item { background: #211d4a; border-color: #3d3270; }
+  body.dark .kw  { background: rgba(109,40,217,.25); color: #c4b5fd; }
+  body.dark .kw2 { background: rgba(14,165,233,.2); color: #7dd3fc; }
+  body.dark .kw3 { background: rgba(245,158,11,.2); color: #fcd34d; }
+  body.dark .footer-bar { background: #0d0a1f; }
+  body.dark .section-title h2 { color: #c4b5fd; }
+  body.dark .kcard-title { color: #e8e0ff; }
+  body.dark .q-text { color: #e8e0ff; }
+  body.dark .lm-node { background: #1e1840; border-color: #3d3270; color: #c4b5fd; }
+  body.dark .lm-node.green { background: #0c2a1e; border-color: #059669; }
+  body.dark .lm-node.blue { background: #0c2240; border-color: #0ea5e9; }
+  body.dark .lm-node.yellow { background: #2d2010; border-color: #d97706; }
+  body.dark .lm-node.red { background: #2d0a0a; border-color: #dc2626; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 0 0 80px;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ── STICKY NAV BAR ── */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  .toc-label { font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-right: 6px; white-space: nowrap; }
+  .sticky-nav a {
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 3px 12px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 12px;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .sticky-nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+  /* search bar in nav */
+  .search-box {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .search-box input {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 18px;
+    padding: 4px 14px;
+    color: #fff;
+    font-size: 12px;
+    width: 160px;
+    outline: none;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .search-box input::placeholder { color: rgba(255,255,255,.4); }
+  .search-box input:focus { border-color: #c4b5fd; background: rgba(255,255,255,.15); }
+  .search-count { font-size: 11px; color: rgba(255,255,255,.5); }
+  .highlight-match { background: #fde047; color: #1a1033; border-radius: 2px; padding: 0 1px; }
+
+  /* dark mode btn */
+  .dark-btn {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 20px;
+    color: #fff;
+    font-size: 13px;
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: all .2s;
+    margin-left: 6px;
+  }
+  .dark-btn:hover { background: rgba(255,255,255,.2); }
+
+  /* back to top */
+  #back-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(109,40,217,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: all .2s;
+  }
+  #back-top:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(109,40,217,0.5); }
+  #back-top.visible { display: flex; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1a1033 0%, #2d1b69 50%, #6d28d9 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(60deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 22px);
+  }
+  .hero-day {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: #c4b5fd; }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,.75);
+    max-width: 760px;
+    line-height: 1.7;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 24px;
+  }
+  .hero-tag {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,.9);
+  }
+
+  /* ── CASE BANNER ── */
+  .case-banner {
+    margin: 40px 40px 0;
+    background: linear-gradient(135deg, #1a1033, #2d1b69);
+    border-radius: 16px;
+    padding: 30px 36px;
+    color: #fff;
+    border-left: 6px solid var(--gold);
+  }
+  .case-banner .case-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 3px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .case-banner h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 12px; }
+  .case-banner p { font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.8; }
+  .case-key { margin-top: 14px; font-size: 13px; color: var(--gold); font-weight: 500; }
+
+  /* ── MAIN LAYOUT ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── SECTION HEADING ── */
+  .section-title {
+    display: flex; align-items: center; gap: 14px;
+    margin: 50px 0 24px;
+  }
+  .section-title .sec-num {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+  }
+  .section-title h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .section-title .page-ref {
+    font-size: 12px; color: #999;
+    font-family: 'JetBrains Mono', monospace;
+    margin-left: auto;
+  }
+
+  /* ── KNOWLEDGE CARD ── */
+  .kcard {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow .2s;
+  }
+  .kcard:hover { box-shadow: 0 8px 32px rgba(109,40,217,.15); }
+
+  .kcard-header {
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 16px;
+    background: linear-gradient(to right, #f5f0ff, #fff);
+  }
+  .kcard-num {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 600;
+    padding: 4px 10px; border-radius: 6px;
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .kcard-title-wrap { flex: 1; }
+  .kcard-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .kcard-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* badges */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; border-radius: 12px;
+    font-size: 11.5px; font-weight: 500;
+  }
+  .badge-tier1 { background: #f3e8ff; color: var(--tier1); border: 1px solid #c4b5fd; }
+  .badge-tier2 { background: #fef3e2; color: var(--tier2); border: 1px solid #fcd98a; }
+  .badge-tier3 { background: #e0f2fe; color: var(--tier3); border: 1px solid #7dd3fc; }
+  .badge-page  { background: #d1fae5; color: var(--accent4); border: 1px solid #6ee7b7; }
+  .badge-exam  { background: #fff1f2; color: var(--accent5); border: 1px solid #fecaca; }
+  .badge-year  { background: #fffbeb; color: var(--gold);    border: 1px solid #fde68a; }
+
+  .kcard-body { padding: 24px 28px; }
+
+  /* details/summary folding */
+  .foldable summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+    padding: 8px 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+  }
+  .foldable summary::before {
+    content: '▶';
+    font-size: 11px;
+    transition: transform 0.2s;
+  }
+  .foldable[open] summary::before { transform: rotate(90deg); }
+  .foldable summary::-webkit-details-marker { display: none; }
+  .foldable .fold-body { padding: 12px 0 4px; }
+
+  /* blocks inside cards */
+  .block {
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    border-radius: 10px;
+  }
+  .block:last-child { margin-bottom: 0; }
+  .block-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .block-label::before { content: ''; display: block; width: 18px; height: 2px; }
+
+  .block-analogy  { background: #fefce8; }
+  .block-analogy .block-label { color: var(--gold); }
+  .block-analogy .block-label::before { background: var(--gold); }
+
+  .block-definition { background: #e0f2fe; }
+  .block-definition .block-label { color: var(--accent3); }
+  .block-definition .block-label::before { background: var(--accent3); }
+
+  .block-memory { background: #f0fdf4; }
+  .block-memory .block-label { color: var(--accent4); }
+  .block-memory .block-label::before { background: var(--accent4); }
+
+  .block-exam { background: #f3e8ff; }
+  .block-exam .block-label { color: var(--accent); }
+  .block-exam .block-label::before { background: var(--accent); }
+
+  .block-tip { background: #fff1f2; }
+  .block-tip .block-label { color: var(--accent5); }
+  .block-tip .block-label::before { background: var(--accent5); }
+
+  .block-interview { background: #fef9c3; border-left: 4px solid #facc15; }
+  .block-interview .block-label { color: #b45309; }
+  .block-interview .block-label::before { background: #b45309; }
+
+  /* quote */
+  .quote {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+    line-height: 1.9;
+    margin: 12px 0;
+    position: relative;
+  }
+  .quote::before { content: '"'; font-size: 60px; color: rgba(255,255,255,.1); position: absolute; top: -6px; left: 12px; font-family: serif; line-height: 1; }
+  .quote p { position: relative; z-index: 1; }
+  .quote mark { background: #c4b5fd; color: var(--ink); padding: 0 3px; border-radius: 3px; }
+
+  /* comparison table */
+  .ctable { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  .ctable th { background: var(--accent); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+  .ctable td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ctable tr:nth-child(even) td { background: var(--bg2); }
+  .ctable tr:last-child td { border-bottom: none; }
+  .ctable th:first-child { border-radius: 8px 0 0 0; }
+  .ctable th:last-child  { border-radius: 0 8px 0 0; }
+
+  /* list */
+  .kl { padding-left: 20px; }
+  .kl li { margin-bottom: 6px; }
+  .kl li::marker { color: var(--accent); }
+
+  /* keyword */
+  .kw  { background: rgba(109,40,217,.12); color: var(--accent); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw2 { background: rgba(14,165,233,.12); color: var(--accent3); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw3 { background: rgba(245,158,11,.15); color: var(--gold); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw4 { background: rgba(5,150,105,.12); color: var(--accent4); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+
+  /* flow diagram */
+  .flow {
+    display: flex; align-items: stretch; gap: 0;
+    flex-wrap: wrap; margin: 14px 0;
+  }
+  .flow-step {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    flex: 1; min-width: 130px;
+    text-align: center; font-size: 13px;
+  }
+  .flow-arrow {
+    display: flex; align-items: center;
+    color: var(--accent); font-size: 20px;
+    padding: 0 6px; flex-shrink: 0;
+  }
+  .flow-step .fs-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); margin-bottom: 4px; }
+  .flow-step .fs-title { font-weight: 700; font-size: 14px; color: var(--ink); }
+  .flow-step .fs-body { font-size: 12px; color: #666; margin-top: 4px; }
+
+  /* ── LOGIC MAP ── */
+  .logic-map {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 30px 0;
+    box-shadow: var(--shadow);
+  }
+  .logic-map h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px; margin-bottom: 20px;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logic-map h3::before { content: '🗺️'; }
+  .lm-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .lm-node {
+    background: var(--bg2);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    flex: 1; min-width: 150px;
+    font-size: 13px;
+  }
+  .lm-node.green  { border-color: var(--accent4); background: #d1fae5; }
+  .lm-node.blue   { border-color: var(--accent3); background: #e0f2fe; }
+  .lm-node.yellow { border-color: var(--gold); background: #fef9e7; }
+  .lm-node.red    { border-color: var(--accent5); background: #fff1f2; }
+  .lm-node.purple { border-color: var(--accent); background: #f3e8ff; }
+  .lm-node .ln-title { font-weight: 700; margin-bottom: 4px; }
+
+  /* mindmap grid */
+  .mindmap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .mm-node {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+  .mm-node:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .mm-node.center {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+    grid-column: 1 / -1;
+  }
+  .mm-node .mn-title { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+  .mm-node .mn-items { list-style: none; padding: 0; }
+  .mm-node .mn-items li { padding: 2px 0; font-size: 12.5px; }
+  .mm-node .mn-items li::before { content: '·'; color: var(--accent); margin-right: 4px; }
+
+  /* ── CHAIN REVIEW ── */
+  .chain {
+    background: linear-gradient(135deg, #1a1033 0%, #2d1b69 100%);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 50px 0 30px;
+    color: #fff;
+  }
+  .chain h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 900;
+    margin-bottom: 6px;
+  }
+  .chain .chain-sub { color: rgba(255,255,255,.55); font-size: 13px; margin-bottom: 28px; }
+  .chain-flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
+  .chain-step {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 12px;
+    padding: 18px 20px;
+    flex: 1; min-width: 160px;
+    position: relative;
+  }
+  .chain-arrow {
+    display: flex; align-items: center;
+    color: rgba(255,255,255,.3); font-size: 22px;
+    padding: 0 6px; flex-shrink: 0;
+  }
+  .chain-step .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #c4b5fd; letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .chain-step .step-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .chain-step .step-body { font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.7; }
+  .chain-summary {
+    margin-top: 24px;
+    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 13.5px;
+    color: rgba(255,255,255,.85);
+    line-height: 1.9;
+    border-left: 4px solid #c4b5fd;
+  }
+
+  /* 30-second review */
+  .quick30 {
+    background: linear-gradient(135deg, #1a1033, #0f172a);
+    color: #fff;
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin: 30px 0;
+  }
+  .quick30 h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px; font-weight: 700;
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .quick30 .q30-sub { color: rgba(255,255,255,.5); font-size: 12.5px; margin-bottom: 20px; }
+  .q30-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .q30-item {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .q30-item .q30-title { color: #c4b5fd; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+
+  /* recite box */
+  .recite-box {
+    background: var(--card-bg);
+    border: 3px solid var(--accent);
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin: 30px 0;
+  }
+  .recite-box h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .recite-box .r-sub { color: #888; font-size: 12.5px; margin-bottom: 20px; }
+  .recite-item {
+    background: var(--bg2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    font-size: 13.5px;
+    line-height: 1.9;
+    border-left: 4px solid var(--accent);
+  }
+  .recite-item .ri-title { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+
+  /* ── QUIZ ── */
+  .quiz {
+    background: var(--bg2);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 40px;
+    margin: 0 0 40px;
+  }
+  .quiz h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .quiz-sub { color: #888; font-size: 13px; margin-bottom: 24px; }
+  .q-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+  }
+  .q-item:last-child { margin-bottom: 0; }
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--accent); letter-spacing: 2px;
+    margin-bottom: 6px; font-weight: 600;
+  }
+  .q-text { font-weight: 500; color: var(--ink); margin-bottom: 10px; font-size: 14.5px; }
+  .q-hint {
+    font-size: 12.5px; color: #777;
+    border-top: 1px solid var(--border);
+    padding-top: 10px; margin-top: 10px;
+  }
+  .q-hint span { color: var(--accent); font-weight: 600; }
+  .q-exam { font-size: 12px; color: var(--accent5); background: #fff1f2; border-radius: 6px; padding: 2px 8px; display: inline-block; margin-bottom: 8px; }
+
+  /* ── FOOTER ── */
+  .footer-bar {
+    background: var(--ink); color: rgba(255,255,255,.4);
+    text-align: center; padding: 20px;
+    font-size: 12px; margin-top: 60px;
+  }
+
+  /* divider */
+  .divider { border: none; border-top: 2px dashed var(--border); margin: 30px 0; }
+
+  /* risk matrix */
+  .risk-matrix {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    grid-template-rows: 30px 1fr 1fr;
+    gap: 3px;
+    margin: 12px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 13px;
+  }
+  .rm-corner { background: transparent; }
+  .rm-head   { background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px; padding: 6px; }
+  .rm-label  { background: #2d1b69; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px; }
+  .rm-cell   { padding: 14px; border-radius: 6px; text-align: center; }
+  .rm-g  { background: #d1fae5; color: #065f46; }
+  .rm-y  { background: #fef3c7; color: #92400e; }
+  .rm-r  { background: #fee2e2; color: #991b1b; }
+  .rm-b  { background: #dbeafe; color: #1e40af; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  @media(max-width: 760px) {
+    .hero { padding: 40px 20px; }
+    .hero h1 { font-size: 28px; }
+    .main { padding: 0 20px; }
+    .sticky-nav { padding: 10px 16px; }
+    .case-banner { margin: 20px 16px 0; padding: 20px; }
+    .chain { padding: 24px 20px; }
+    .quiz { padding: 24px 20px; }
+    .kcard-body { padding: 18px 16px; }
+    .kcard-header { padding: 16px 18px; }
+    .quick30 { padding: 24px 20px; }
+    .recite-box { padding: 24px 20px; }
+    .search-box { display: none; }
+  }
+</style>
+
+
+<script>window._PAGE_TEXT='第九章 · 战略联盟、并购与重组 \n \n \n \n \n \n \n 目录 \n 🗺逻辑图 \n 📖导入案例 \n §1 战略联盟 \n §2 企业并购 \n §3 战略重组 \n 📊对比总结 \n 🎯历年真题 \n 🔗串联复习 \n ⚡30秒 \n 📝背诵版 \n ✅自测 \n \n \n \n \n 🌙 夜间 \n \n \n ↑ \n \n \n 第九章 · 企业战略管理 \n 战略联盟、 并购 与重组 \n 企业扩张的三大路径：当独自成长太慢、内部资源不足，企业该如何借助外部力量实现战略目标？战略联盟、并购与重组——这是企业走向更大舞台的"三把钥匙"。本章是中南大学历年复试高频考点。 \n \n 📍 教材 P237–300（约） \n 🔥 2018·2019·2023·2024 高频考点 \n ✍️ 简答 · 论述 · 案例 \n 🤝 战略联盟动机与治理 \n 🏢 并购整合难题 \n ♻️ 重组两条路径 \n \n \n \n \n 📖 导入案例 · 教材经典 \n 腾讯与京东的战略联盟 vs 阿里并购银泰 \n 腾讯以微信入口+流量支持入股京东，京东以品牌商品+自营物流互补——双方不合并，通过 战略联盟 各取所需，保持独立运营，共同对抗阿里生态系。而阿里则不同，先后并购银泰商业（60.5亿元）、苏宁（283亿元），将零售网络纳入阿里生态，走的是 并购整合 路线。两种路径各有逻辑：联盟灵活、成本低、退出容易；并购控制强、整合深、但失败风险高。 \n 💡 核心问题：企业应该选择联盟、并购还是重组？取决于 战略意图、资源互补程度、整合难度和市场环境 四个维度。 \n \n \n \n \n \n 本章与其他章节的逻辑关系 \n \n \n 关联章节 关联逻辑 \n 第七章 公司层战略 第七章提出多元化的"方式"中包含 并购 和 战略联盟 ，第九章深度展开这两种方式的理论与实践，是第七章§6.3的深化 \n 第六章 业务层战略 竞争优势不足时，联盟或并购竞争者是业务层战略的延伸手段（如差异化×并购形成规模效应） \n 第八章 国际化战略 国际化进入模式包含合资（联盟的一种）、直接并购；跨国联盟是国际化的重要路径 \n 第十章 战略实施 并购后的整合（PMI）和联盟的治理结构，都是战略实施的重点课题 \n 资源基础观（RBV） 联盟/并购的核心逻辑是"获取/共享稀缺资源"，重组的逻辑是"处置冗余资源"——都以RBV为理论基础 \n \n \n \n 📌 本章各节内部逻辑 \n \n \n §1 \n 战略联盟 \n 定义·特征 动机·类型 风险·治理·成功因素 \n \n → \n \n §2 \n 企业并购 \n 概念·类型 动机·过程 整合·失败原因 \n \n → \n \n §3 \n 战略重组 \n 概念·原因 业务重组 组织重组 \n \n → \n \n 综合 \n 三种路径比较 \n 适用场景 优劣对比 选择逻辑 \n \n \n 逻辑主线：企业扩张三种外部路径 → 各自的动机/类型/过程/失败原因 → 三种路径的选择逻辑 \n \n 🧠 章节思维导图（知识框架） \n \n 第九章：战略联盟、并购与重组 \n \n §1 战略联盟 \n \n 定义与特征（4大特征） \n 类型（股权/非股权/合资） \n 动机（6大动机） \n 风险（机会主义/知识泄漏） \n 治理机制（契约/股权/关系） \n 成功因素（信任/互补/目标一致） \n \n \n \n §2 企业并购 \n \n 横向/纵向/混合并购 \n 并购动机（7大动机） \n 并购过程（4阶段） \n 整合（PMI） \n 并购失败原因（5大原因） \n 杠杆收购（LBO） \n \n \n \n §3 战略重组 \n \n 概念与触发条件 \n 业务重组（剥离/分拆/关闭） \n 组织重组（结构/机制/文化） \n 财务重组 \n 重组后评估 \n \n \n \n 三路径对比选择 \n \n 联盟 vs 并购 vs 重组 \n 控制权程度对比 \n 风险成本对比 \n 适用场景决策树 \n \n \n \n \n \n \n § 01 \n 战略联盟 \n P237–260（约） \n \n \n \n \n 9.1.1 \n \n 战略联盟的概念与四大特征 \n \n ⭐⭐⭐⭐⭐ 核心必背 \n P237-239 \n 名词解释·简答 \n 【2018面试】【2023笔试】 \n \n \n \n \n \n 📖 专有名词定义（教材） \n 战略联盟 （strategic alliance）是指两个或两个以上的企业为了实现特定的战略目标，在 保持各自独立性 的前提下，通过 共同投资、共享资源、共担风险 等方式进行的一种 介于纯市场交易和兼并之间 的合作安排。 \n \n \n 🍰 小学生版通俗解释 \n 两个小朋友参加科学展览，一个擅长做实验，一个擅长写报告。他们不是一个人，但同意合作：各出各的力，共享奖品，万一项目失败也一起承担。这就是战略联盟——既不是朋友也不是一家人，但为了共同目标暂时"抱团"。 \n \n 战略联盟的四大核心特征： \n \n \n 特征 \n 核心内涵 \n 区别于并购 \n \n \n ① 保持独立性 \n 各成员企业 法律地位独立 ，有各自的所有权和控制权 \n 并购后被并购方丧失独立性 \n \n \n ② 互利互补性 \n 各方贡献互补性资源（技术+渠道、资金+品牌等），创造 单独无法实现 的价值 \n 并购更强调主并方主导 \n \n \n ③ 共担风险 \n 共同面对不确定性，分散单个企业的风险暴露 \n 并购由主并方独自承担整合风险 \n \n \n ④ 战略导向性 \n 以长期战略目标为导向，而非短期交易安排；影响各方核心竞争优势 \n 一般采购属于交易，不是战略联盟 \n \n \n \n 🧠 助记口诀 \n 「独（立）互（补）共（担）战（略）」 ——四字口诀，每字对应一个特征。联盟不是婚姻（并购），是"搭伙过日子"。\n \n \n 💬 复试回答模板 \n \n \n 🎤 复试口答框架 \n 定义→ 战略联盟是两个或以上企业在保持独立性前提下，为实现战略目标进行的资源共享、风险共担的合作安排，介于市场交易和兼并之间。 \n 核心内容→ 它有四大特征：独立性、互补性、风险共担、战略导向。 \n 举例→ 腾讯与京东的联盟：腾讯提供微信入口流量，京东提供商品和物流能力，双方各保独立上市地位，但共享用户资源。 \n 总结→ 战略联盟是比并购更灵活、成本更低、退出更容易的合作方式，但控制权弱于并购。 \n \n \n 🔥 老师可能追问 \n \n 战略联盟与合作合同有何区别？（合同是短期交易；联盟是战略导向的长期合作） \n 为什么有些战略联盟最终以并购告终？（随着信任积累和资源深度整合，并购成为更有效率的选择） \n 战略联盟和合资企业是什么关系？（合资企业是股权型联盟的一种具体形式） \n \n \n \n \n \n \n \n \n \n 9.1.2 \n \n 战略联盟的主要类型 \n \n ⭐⭐⭐⭐ 较高概率 \n P239-243 \n 简答·名词解释 \n \n \n \n \n \n \n 联盟类型 \n 主要形式 \n 控制程度 \n 典型案例 \n \n \n 股权联盟 （equity alliance） \n 合资企业（joint venture） 股权交叉持股 \n ⭐⭐⭐⭐ 较高 \n 宝马与华晨合资 BMW 华晨；上汽大众 \n \n \n 非股权联盟 （non-equity alliance） \n 许可协议、分销协议 供应协议、研发合作 \n ⭐⭐ 较低 \n 微软与诺基亚手机软件合作（pre-merger） \n \n \n 合资企业 （joint venture） \n 双方各出资，成立 新的独立法人实体 \n ⭐⭐⭐⭐⭐ 最高（独立法人） \n 上汽通用（双方各50%）；腾讯×京东股权合作 \n \n \n \n 🍰 三种联盟比喻 \n \n 非股权联盟 = 两家餐厅签了合同：A餐厅用B餐厅的食材，双方各自经营，互不持股，签约就行。 \n 股权联盟 = A餐厅买了B餐厅的股份，成为股东，有监督权，但不合并经营。 \n 合资企业 = A和B各出一部分钱，开了一家新餐厅C，C是独立的新公司，A和B共同管理。 \n \n \n 按合作领域分类： \n \n \n 🔬 研发联盟 \n 共同开发新技术、新产品，分摊R&D成本和风险（如制药企业联合研发新药）\n \n \n 📦 营销/分销联盟 \n 共享销售渠道或品牌（如航空公司代码共享）\n \n \n 🏭 生产联盟 \n 共享生产设施，降低制造成本（如汽车企业共用底盘平台）\n \n \n 🌐 多功能联盟 \n 涵盖研发+生产+营销的全面联盟（如Boeing与日本重工联合制造787）\n \n \n \n 📊 管理学联系：联盟类型与交易成本理论 \n \n \n 理论联系 \n 根据 交易成本理论 （Williamson），当市场交易成本高（如资产专用性高、信息不对称严重）但内部化成本也高时，联盟是介于市场和层级之间的"混合治理"形式。合资企业的治理成本最高但控制力最强，适用于合作内容涉及高度专用性投资的场景。\n \n \n \n \n \n \n \n \n 9.1.3 \n \n 形成战略联盟的六大动机 \n \n ⭐⭐⭐⭐⭐ 高概率考点 \n P243-248 \n 简答·论述 \n 【2023笔试·简答】【2018面试·高频】 \n \n \n \n \n \n 📖 教材六大动机 \n \n \n \n # \n 动机 \n 核心逻辑 \n 案例 \n \n \n ① \n 进入新市场/新行业 \n 通过联盟快速进入合作方熟悉的市场，规避政策壁垒，降低进入风险 \n 外资车企在华合资（绕开市场准入限制） \n \n \n ② \n 获取互补性资源和能力 \n 互补资源联合利用，弥补自身战略短板（"你有技术我有渠道"） \n 腾讯(流量)×京东(商品物流)；小米×美的(智能制造) \n \n \n ③ \n 分担风险与成本 \n 高风险、高投入项目（如研发）由多方分担，降低单企业风险敞口 \n 空客飞机各国分工制造；制药联合研发 \n \n \n ④ \n 加快产品和技术开发速度 \n 集合多方技术能力，压缩研发周期，在动态竞争中抢占时间优势 \n 5G技术标准联盟（华为+高通+爱立信联合推进） \n \n \n ⑤ \n 建立行业标准 \n 主导标准联盟，将己方技术确立为行业标准，构建生态壁垒 \n VHS vs Betamax 录像带标准之争；USB标准联盟 \n \n \n ⑥ \n 学习与技术转让 \n 通过合作学习合作方的知识和能力（有时是"学习赛跑"，谁学得快谁先获益） \n 早期中外合资汽车——中方学习制造工艺 \n \n \n \n 🧠 六大动机助记口诀 \n 「进（入市场）获（互补资源）分（担风险）加（快研发）建（立标准）学（习技术）」 \n 简化记忆： 进获分加建学 ——六个字，考试写全六条！\n \n \n 🎤 复试延伸问题 \n \n \n 老师可能追问 \n \n 动机①和②有何不同？ ——①侧重地理/政策壁垒（外部门槛），②侧重资源互补（内部缺口） \n 动机⑥中"学习赛跑"是什么意思？ ——合作双方都试图从对方学到技术，谁学得快、学得多，谁的谈判地位就更强，联盟可能因此瓦解（如日本车企在美联盟案例） \n 以上哪些动机最可能导致联盟失败？ ——⑥（学习竞争导致机会主义）和⑤（一方确立标准后不再需要另一方） \n \n \n \n \n \n \n \n \n \n 9.1.4 \n \n 战略联盟的风险与失败原因 \n \n ⭐⭐⭐⭐ 较高概率 \n P248-253 \n 简答·论述 \n 【2018面试】 \n \n \n \n \n 战略联盟的主要风险： \n \n \n 风险类型 \n 具体表现 \n 防范措施 \n \n \n ① 机会主义行为风险 \n 合作方"搭便车"，不履行约定义务；虚报成本、隐瞒信息；不公平分配收益 \n 建立监督机制；股权联盟比契约联盟更能约束机会主义 \n \n \n ② 知识和技术泄漏风险 \n 核心技术在合作中被学习复制，形成未来的竞争对手（"教会徒弟饿死师傅"） \n 界定知识边界；申请专利；避免核心技术外漏 \n \n \n ③ 目标冲突风险 \n 双方战略意图不一致，长期目标产生分歧，导致联盟解散 \n 事前充分沟通战略目标；建立退出机制 \n \n \n ④ 文化冲突风险 \n 管理理念、决策风格、企业文化差异导致合作效率低下，甚至矛盾激化 \n 文化尽调；设立跨文化协调团队 \n \n \n ⑤ 依赖风险 \n 过度依赖合作方资源，削弱自身能力建设，形成战略依赖 \n 保持核心能力自主；联盟只作补充而非替代 \n \n \n \n 🔥 重要：联盟失败的根本原因 \n 教材核心观点：战略联盟失败率高（有研究表明超过50%的战略联盟在5年内终止）， 根本原因在于两点 ：\n \n 双方战略目标不再一致 （各自战略调整导致合作价值消失） \n 信任基础缺失 （机会主义行为破坏合作关系） \n \n \n \n 🍰 生活案例——大学室友合租做生意 \n 四个室友合开一家奶茶店（联盟）。开始大家都很积极，但渐渐出现问题：A不守时（机会主义）→ B偷学了配方想自己开（技术泄漏）→ C想改方向做咖啡（目标冲突）→ D嫌A太懒总吵架（文化冲突）。最终联盟解散，四人各散。这就是战略联盟风险的生活版。\n \n \n \n \n \n \n 9.1.5 \n \n 战略联盟的治理机制与成功因素 \n \n ⭐⭐⭐⭐ 复试高频 \n P253-258 \n 简答·论述 \n 【2023笔试·简述战略联盟动机与治理】 \n \n \n \n \n 战略联盟的三种治理机制： \n \n \n 治理机制 \n 核心手段 \n 适用场景 \n 优缺点 \n \n \n ① 契约型治理 \n 书面合同规定各方权利义务、知识产权、收益分配、退出条款 \n 合作内容可以明确界定的短期/中期联盟 \n ✅ 清晰明确 ❌ 合同不完全性，难以覆盖所有情况 \n \n \n ② 股权型治理 \n 相互持股或合资，用资本捆绑约束机会主义行为 \n 高度依赖、长期深度合作的联盟 \n ✅ 利益绑定，约束机会主义 ❌ 退出成本高，灵活性低 \n \n \n ③ 关系型治理 \n 基于信任、声誉和关系积累的非正式机制 \n 高度信任、重复博弈的长期合作伙伴 \n ✅ 成本低，灵活高效 ❌ 依赖个人关系，不可持续 \n \n \n \n 战略联盟成功的关键因素： \n \n \n 🤝 相互信任 \n 信任是联盟运作的基础润滑剂；声誉机制使各方保持诚信行为 \n \n \n 🔄 资源互补 \n 双方资源高度互补（而非雷同）才能创造1+1>2的协同价值 \n \n \n 🎯 目标一致 \n 共同战略目标和近期利益诉求一致，减少冲突 \n \n \n 📋 治理结构完善 \n 清晰的决策机制、信息共享规范和争议解决机制 \n \n \n \n 🧠 成功因素助记 \n 「信（任）补（互补）同（目标一致）治（治理）」 ——四字成功密码\n \n \n 📝 2023年笔试真题 · 简答 \n 题目： 简述战略联盟的动机与治理。 \n 答题框架（4分钟口述版）： \n \n ① 先定义战略联盟概念（1句话） \n ② 六大动机（进获分加建学，各1-2句） \n ③ 三种治理机制（契约/股权/关系） \n ④ 总结：治理选择取决于合作深度、风险程度和信任基础 \n \n \n \n \n \n \n § 02 \n 企业并购（M&A） \n P260–285（约） \n \n \n \n \n 9.2.1 \n \n 并购的概念与三种类型 \n \n ⭐⭐⭐⭐⭐ 核心必背 \n P260-263 \n 名词解释·简答·论述 \n 【2019面试】【2024考点】 \n \n \n \n \n \n 📖 专有名词定义（教材） \n 企业并购 （M&A: Mergers and Acquisitions）是指企业通过 兼并或收购 其他企业全部或部分产权，以实现快速扩张、获取资源或增强竞争优势的战略行为。 \n \n 兼并 （merger）：两家企业合并为一家，被兼并方法律实体消灭（A+B=A） \n 收购 （acquisition）：一方购买另一方全部或控制性股权，被收购方法律实体可保留（A买入B的控股权） \n \n \n 三种并购类型（必背）： \n \n \n 并购类型 \n 定义 \n 战略目的 \n 典型案例 \n \n \n 横向并购 （horizontal） \n 并购 同行业同层次 的竞争对手 \n 扩大市场份额；实现规模经济；消灭竞争对手 \n 腾讯收购搜狗；滴滴合并优步中国；字节跳动收购Musical.ly \n \n \n 纵向并购 （vertical） \n 并购 产业链上下游 的供应商或客户 \n 控制供应链；降低交易成本；提高进入壁垒 \n 苹果收购芯片设计公司；钢铁企业收购矿山；星巴克收购咖啡农场 \n \n \n 混合并购 （conglomerate） \n 并购 不相关行业 企业 \n 多元化布局；利用内部资本市场；分散风险 \n 阿里收购恒生电子；中信集团跨行业投资布局 \n \n \n \n 🍰 小学生版比喻 \n \n 横向并购 ：村里最大的包子铺把隔壁竞争对手的包子铺买了下来，市场份额翻倍。 \n 纵向并购 ：包子铺老板买下了给他供面粉的面粉厂（后向）和分销包子的外卖平台（前向）。 \n 混合并购 ：包子铺老板突然买了一家书店——完全不同行业，用的是卖包子赚的钱进行多元化。 \n \n \n \n 🧠 三类并购助记 \n 「横（同行）纵（上下游）混（不相关）」 ——并购方向对应多元化战略中的"相关/不相关"逻辑，横纵=相关，混=不相关\n \n \n 📊 对比：并购类型 vs 多元化战略类型（跨章联系） \n \n \n \n 多元化战略（第七章） \n 对应并购类型（第九章） \n 共同逻辑 \n \n \n 纵向一体化 \n 纵向并购 \n 控制上下游价值链，降低交易成本 \n \n \n 共享型相关多元化 \n 横向并购（同行业） \n 共享资源能力，获取规模/范围经济 \n \n \n 不相关多元化 \n 混合并购 \n 财务多元化，分散风险 \n \n \n ⚡ 考试提示：第七章讲"什么时候用并购方式"，第九章讲"并购怎么分类、有哪些风险"——两章逻辑高度互补。 \n \n \n \n \n \n \n \n 9.2.2 \n \n 企业并购的七大动机 \n \n ⭐⭐⭐⭐⭐ 高频必背 \n P264-269 \n 简答·论述·案例 \n 【2019面试·并购人力整合】【2024真题·新能源并购】 \n \n \n \n \n \n \n # \n 并购动机 \n 核心逻辑 \n 案例 \n \n \n ① \n 获取市场力量 \n 增大市场份额，提高定价权；消灭竞争者，影响市场竞争格局 \n 可口可乐欲收购汇源果汁（被商务部否决，即获取市场力量太强） \n \n \n ② \n 克服进入壁垒 \n 绕过行业壁垒（品牌/技术/渠道），快速进入新领域；比新建更快 \n 字节跳动收购Pico进入VR；腾讯入股拼多多 \n \n \n ③ \n 降低开发新产品的风险和成本 \n 直接购买已有产品/技术，比内部研发更快速、风险更低 \n Facebook收购Instagram（已成熟产品）；微软收购GitHub \n \n \n ④ \n 增加多元化程度 \n 以并购方式实现多元化扩张，进入新领域（对应混合并购） \n 阿里并购银泰（进入实体零售）；腾讯布局医疗 \n \n \n ⑤ \n 重塑竞争范围 \n 通过并购调整竞争焦点，从产品竞争转向平台/生态竞争 \n 美团并购摩拜（构建本地生活生态） \n \n \n ⑥ \n 利用学习提高能力 \n 通过并购获取被并购方的知识、技术和人才，提升核心能力 \n 联想收购IBM PC部门（获取国际品牌与技术）；吉利收购沃尔沃 \n \n \n ⑦ \n 税收和财务优势 \n 利用被并购企业的亏损抵扣税收；改善债务结构；激活沉睡资产 \n 收购连年亏损企业，利用税盾效应；杠杆收购（LBO）中的财务套利 \n \n \n \n 🧠 七大动机助记口诀 \n 「获（市场力量）克（进入壁垒）降（开发风险）增（多元化）重（竞争范围）学（习能力）税（收优势）」 \n 简化： 获克降增重学税 ——7字口诀，一字对应一个动机\n \n \n 💬 复试口答示范：为什么企业选择并购而不是内部新建？ \n \n \n 🎤 回答模板 \n 企业选择并购而非内部新建，主要有以下优势： \n \n 速度快 ——并购可以立即获得现成的产品、技术、品牌和市场，节省新建所需的时间（进入新市场的速度是关键竞争因素） \n 壁垒低 ——绕过行业进入壁垒，省去从零建立供应链和渠道的困难 \n 风险相对分散 ——购买已验证的商业模式比从零研发风险更小 \n \n 但并购也有劣势： 整合难度高、溢价成本大、文化冲突明显，因此并购不一定优于新建，需要视具体情况而定。 \n \n \n \n \n \n \n \n \n 9.2.3 \n \n 企业并购的过程（四阶段模型） \n \n ⭐⭐⭐ 一般 \n P269-275 \n 简答·案例 \n \n \n \n \n \n \n 阶段一 \n 并购战略制定 \n 确定并购目标类型（横/纵/混合）；确定目标企业的标准；评估自身资源和能力 \n \n → \n \n 阶段二 \n 目标企业搜索与评估 \n 锁定目标企业；开展 尽职调查 （财务/法律/运营）；评估 协同效应 和整合可行性 \n \n → \n \n 阶段三 \n 并购谈判与交易 \n 确定收购价格（含 并购溢价 ）；谈判条款；监管审批（反垄断审查）；完成交易 \n \n → \n \n 阶段四 \n 并购后整合（PMI） \n 战略整合；组织结构整合；文化整合；人员整合—— 最难、最关键的阶段 \n \n \n \n 📖 重要概念：杠杆收购（LBO） \n 杠杆收购 （Leveraged Buyout，LBO）是指收购方以 目标企业的资产为抵押 ，大量举债（通常债务占比70-90%）融资收购目标企业，并在收购后用目标企业的现金流偿还债务的并购形式。 \n 特点： 高杠杆、高风险、高收益 。典型案例：KKR收购RJR Nabisco（1989年，史上最大LBO之一）；私募基金主导的企业并购重组。 \n \n \n 📋 并购中的人力资源整合（2019年考点） \n \n \n 📝 2019年面试考点：并购中的人力整合 \n \n \n 整合维度 \n 核心挑战 \n 应对策略 \n \n \n 组织结构整合 \n 两家企业的部门重叠，如何精简合并 \n 明确整合目标，保留核心职能，逐步推进 \n \n \n 文化整合 \n 企业文化差异导致内耗（"文化碰撞"） \n 文化诊断→文化对话→建立共同价值观 \n \n \n 关键人才保留 \n 并购后核心人才流失（最大损失） \n 并购前签署留任协议；设置激励留住计划 \n \n \n 薪酬福利整合 \n 两套薪酬体系同时运行，内部公平性问题 \n 分阶段过渡，建立统一的薪酬带宽 \n \n \n \n \n \n \n \n \n \n \n 9.2.4 \n \n 并购失败的五大原因（重点！） \n \n ⭐⭐⭐⭐⭐ 高频必背 \n P275-282 \n 简答·论述·案例分析 \n 【2024案例·新能源并购风险】 \n \n \n \n \n \n ⚠️ 统计数据 \n 研究表明，全球 超过50%的并购 未能实现预期的协同效应，约 70%的并购 被认为是"破坏价值"的。并购失败是企业战略管理的核心命题之一。\n \n \n \n # \n 失败原因 \n 详细分析 \n 典型案例 \n \n \n ① \n 支付过高溢价 \n 竞争性收购中"赢家诅咒"——赢得并购战的往往出价过高，协同效应无法弥补溢价成本。并购后大量商誉计提减值。 \n 中国化工并购先正达（430亿美元，大幅溢价）；滴滴收购优步中国后的高整合成本 \n \n \n ② \n 整合困难 （PMI失败） \n 两家企业的组织架构、IT系统、流程、文化无法有效整合，导致效率损失反超协同收益 \n AOL-时代华纳合并（最著名的失败并购之一）；戴姆勒并购克莱斯勒 \n \n \n ③ \n 文化冲突 \n 文化差异产生"身份认同"冲突，导致关键人才大量流失，协同机制失效 \n 惠普收购康柏——文化碰撞严重；明基收购西门子手机——文化不融合 \n \n \n ④ \n 协同效应被高估 \n 并购前尽职调查不足，对协同效应（成本节约+收入增长）过度乐观，实际兑现大打折扣 \n 联想收购Motorola移动——手机业务协同难以兑现 \n \n \n ⑤ \n 核心高管和人才流失 \n 被收购企业的优秀管理层和技术人员在并购完成后离职，导致被并购企业价值迅速流失 \n 多数互联网并购后创始人离职，团队流失 \n \n \n \n 🧠 五大失败原因助记 \n 「价（溢价过高）整（整合困难）文（文化冲突）高（协同高估）人（人才流失）」 \n 口诀： 价整文高人 ——并购失败五字诀\n \n \n 🍰 婚姻类比——并购=闪婚 \n 并购就像闪婚：花了很多彩礼钱（溢价）→ 婚后发现对方习惯太不一样（文化冲突）→ 家务怎么分工谁也说不清（整合困难）→ 当初以为省钱结果开销更大（协同高估）→ 对方带来的能人干将都辞职了（人才流失）。闪婚不一定失败，但风险确实很高。\n \n \n 🎤 复试口答：如何提高并购成功率？ \n \n \n 复试延伸回答 \n \n 并购前 ：严格尽职调查（财务、法律、文化、人才），不要被目标企业"营销"；对协同效应保持保守估算 \n 定价时 ：设定溢价上限，防止"竞标狂热"导致出价失控 \n 整合期 ：设立专职PMI团队；制定100天整合计划；优先稳定关键人才；尊重被收购企业文化 \n 长期看 ：建立清晰的整合里程碑和KPI，定期评估并购后实际价值创造 \n \n \n \n \n \n \n \n \n § 03 \n 战略重组 \n P285–300（约） \n \n \n \n \n 9.3.1 \n \n 战略重组的概念与触发条件 \n \n ⭐⭐⭐⭐ 较高概率 \n P285-288 \n 名词解释·简答 \n \n \n \n \n \n 📖 专有名词定义（教材） \n 战略重组 （strategic restructuring）是指企业在战略上对其 业务组合、资产结构或组织形式 进行根本性调整，以恢复竞争活力、提升价值创造能力的战略行动。 \n 重组与并购的关系： 并购是向外扩张 （增加）， 重组是向内优化 （调整/收缩），两者都是改变企业边界的战略工具。 \n \n 战略重组的主要触发条件： \n \n \n ⚠️ 过度多元化 \n 多元化扩张过度，管理失控，代理成本飙升，需要"归核化"，砍掉非核心业务 \n \n \n 📉 业绩大幅下滑 \n 核心业务竞争力下降，财务陷入困难，被迫通过重组扭转颓势 \n \n \n 🌊 外部环境剧变 \n 行业颠覆性变化（如数字化、政策调整），原有组合不再适应新环境 \n \n \n 🔄 战略转型需要 \n 主动调整战略方向（如从制造到服务），需要剥离旧业务、聚焦新赛道 \n \n \n \n 🍰 小学生版 \n 一个学生加入了太多课外兴趣班（钢琴、画画、游泳、英语……），结果每门课成绩都很差，还累得要死。重组就是：停掉不重要的课，把时间和精力集中到最重要的几门上——"有所不为，才能有所为"。\n \n \n \n \n \n \n 9.3.2 \n \n 重组的两条路径：业务重组 vs 组织重组 \n \n ⭐⭐⭐⭐⭐ 核心必背 \n P288-294 \n 简答·论述 \n 【与第七章§2.2高度关联】 \n \n \n \n \n \n 📖 教材核心框架（第七章已铺垫，第九章深化） \n 重组的两条路径来源于对公司层战略的两种理论视角：当行业组合战略与组合管理模式不匹配时： \n \n \n \n 理论基础 \n 重组类型 \n 调整什么 \n 稳定什么 \n 具体手段 \n \n \n 资源基础观（RBV） \n 业务重组 （portfolio restructuring） \n 调整 行业组合战略 （进入或退出某些行业） \n 稳定组合管理模式 \n 资产剥离、业务出售、分拆上市（spin-off）、关闭亏损业务 \n \n \n 市场基础观（I/O） \n 组织重组 （organizational restructuring） \n 调整 组合管理模式 （结构调整、机制调整、文化改变） \n 稳定行业组合战略 \n 裁员、扁平化、流程再造（BPR）、改变激励机制 \n \n \n 业务重组的三种具体方式： \n \n \n 方式 \n 定义 \n 案例 \n \n \n 资产剥离 （divestiture） \n 将某事业部或业务单元以现金方式出售给外部买家，彻底退出某一行业 \n 联想出售手机业务给富士康；GE出售金融业务 \n \n \n 分拆 （spin-off） \n 将某子业务拆分为独立上市公司，母公司股东同比例持有新公司股份 \n PayPal从eBay分拆；阿里巴巴将蚂蚁集团分拆 \n \n \n 关闭/清算 （liquidation） \n 停止某业务运营，出售资产偿还债务；最彻底的退出方式 \n 乐视电视业务关闭；部分传统零售关店 \n \n \n 组织重组的三个维度： \n \n \n 🏗 结构调整 \n 组织层级扁平化、事业部合并、业务单元重组、增减管理层级 \n \n \n ⚙️ 机制调整 \n 调整激励机制（KPI→OKR）、控制机制（财务→战略控制）、集权分权关系 \n \n \n 🌱 文化变革 \n 改变企业价值观、行为规范和管理风格，是最难的重组维度（文化变革周期最长） \n \n \n \n 🧠 两条路径助记（与第七章联用） \n \n 业务重组 = 换业务（RBV：我的能力不变，换个行业去发挥） \n 组织重组 = 换管法（I/O：行业不变，改变我的管理方式） \n \n 类比： 业务重组=换岗位，组织重组=换工作方式 \n \n \n 📝 复试考察重点 \n 第七章§2.2与第九章§3.2高度重叠，考试可能出现："结合资源基础观和市场基础观，分析企业战略重组的两种路径"——此类题目需要跨章节整合回答。 \n 答题框架： ① 先说明两种理论视角的核心区别 → ② 分别说明两种重组路径的核心逻辑和手段 → ③ 举案例各一个 → ④ 总结：选择哪种路径取决于问题根源（资源错配还是管理失当） \n \n \n \n \n \n \n 9.3.3 \n \n 财务重组与杠杆收购（LBO） \n \n ⭐⭐⭐ 一般 \n P294-300 \n 名词解释·理解 \n \n \n \n \n \n 📖 财务重组 \n 财务重组 是指通过调整企业的资产结构、债务结构和股权结构，以改善企业财务状况、降低财务风险、提升企业价值的战略行为。 \n \n \n \n 财务重组类型 \n 核心操作 \n 目的 \n \n \n 债务重组 \n 债务展期、债转股、债务减免谈判 \n 降低短期偿债压力，避免破产 \n \n \n 股权重组 \n 股权转让、增发、回购、MBO（管理层收购） \n 优化股权结构，引入战略股东，激励管理层 \n \n \n 资产重组 \n 剥离低效资产，注入优质资产，资产置换 \n 净化资产负债表，聚焦核心资产 \n \n \n \n 📖 杠杆收购（LBO）再解析 \n 管理层收购 （Management Buyout， MBO ）：企业管理层借助外部资金，以杠杆方式收购本企业的控股权，成为企业的实际控制人。 \n 特点：解决委托代理问题（管理层既是代理人又成为所有人）；高度激励效果；但债务负担重，存在"掏空"企业风险。 \n \n \n \n \n \n 📊 \n 三种路径对比总结（易混概念） \n 综合对比 \n \n \n \n \n 综合 \n \n 战略联盟 vs 并购 vs 重组：三路径全面对比 \n \n ⭐⭐⭐⭐⭐ 复试核心比较题 \n 论述·比较分析 \n \n \n \n \n \n \n 比较维度 \n 🤝 战略联盟 \n 🏢 企业并购 \n ♻️ 战略重组 \n \n \n 战略方向 \n 外部合作扩张（横向协同） \n 外部兼并扩张（控制获取） \n 内部调整收缩（价值聚焦） \n \n \n 控制权 \n 各方保持独立，控制权有限 \n 主并方获得目标企业控制权 \n 调整内部业务/组织控制逻辑 \n \n \n 资金投入 \n 低（非股权联盟）到中（合资） \n 高（并购溢价+整合成本） \n 中（重组成本+机会成本） \n \n \n 风险程度 \n 中（机会主义/知识泄漏） \n 高（整合失败/溢价风险） \n 中（内部阻力/变革风险） \n \n \n 灵活性 \n ⭐⭐⭐⭐⭐ 高（退出容易） \n ⭐⭐ 低（退出成本高） \n ⭐⭐⭐ 中 \n \n \n 速度 \n 快（不需要整合） \n 中（谈判+整合周期长） \n 慢（内部变革阻力大） \n \n \n 适用场景 \n 技术/市场互补；政策限制；高度不确定市场 \n 快速进入成熟市场；消灭竞争对手；获取稀缺技术/品牌 \n 过度多元化；业绩下滑；战略转型；外部环境剧变 \n \n \n 理论基础 \n 交易成本理论；资源基础观 \n 市场力量理论；协同效应理论 \n 资源基础观（业务重组）；市场基础观（组织重组） \n \n \n 典型失败风险 \n 机会主义；目标冲突；知识泄漏 \n 溢价过高；整合失败；文化冲突 \n 变革阻力；归核过度；短期动荡 \n \n \n \n 🧠 三路径选择决策树口诀 \n \n 需要 资源互补但又不想被绑死 → 联盟（灵活第一） \n 需要 快速获得控制权，有足够资金 → 并购（速度+控制） \n 需要 内部优化、归核聚焦 → 重组（向内聚焦） \n \n \n \n 🎤 复试论述题答题示范：比较三种战略路径 \n \n \n 论述题标准答题框架 \n 第一段（总起）： 企业在面临外部扩张或内部调整需求时，有三种主要战略路径：战略联盟、企业并购和战略重组。三者各有优劣，适用场景不同，企业应根据战略意图、资源禀赋和环境条件合理选择。 \n 第二段（战略联盟）： 联盟的核心优势是灵活性高、退出成本低、资金投入少，适合需要资源互补但又存在高度不确定性的场景……风险在于机会主义和知识泄漏…… \n 第三段（企业并购）： 并购的核心优势是获得完全控制权，能快速进入市场……风险在于溢价过高和整合困难…… \n 第四段（战略重组）： 重组是向内优化，适合过度多元化或业绩下滑的企业……分业务重组（换业务）和组织重组（换管法）…… \n 第五段（总结）： 三种路径并非互斥，企业可以组合运用（如先联盟→再并购；或并购后发现不合适→重组剥离）。选择逻辑取决于战略目标的紧迫性、控制权需求和风险承受能力。 \n \n \n \n \n \n \n \n 🎯 \n 历年真题汇总 · 2016–2025 \n 中南大学企业管理学硕复试 \n \n \n \n 真题 \n \n 本章历年考察记录与解题策略 \n \n ⭐⭐⭐⭐⭐ 复试必读 \n 2016–2025 真题整合 \n \n \n \n \n \n \n 年份 \n 题目 \n 题型 \n 本章对应知识点 \n 难度 \n \n \n 2018 \n （面试）战略联盟的风险与管控 \n 口头表达 \n §1.4 联盟风险；§1.5 治理机制 \n ⭐⭐⭐ \n \n \n 2019 \n （面试）并购中的人力整合 \n 口头表达 \n §2.3 并购过程中的HR整合 \n ⭐⭐⭐ \n \n \n 2023 \n （笔试）简述战略联盟动机与治理 \n 简答题 \n §1.3 六大动机；§1.5 三种治理机制 \n ⭐⭐⭐⭐ \n \n \n 2024 \n （案例）新能源企业国际化战略与风险管控 \n 案例分析 \n §2 并购动机与风险（跨国并购场景） \n ⭐⭐⭐⭐⭐ \n \n \n 历年面试 \n 如何评价某企业的并购决策（案例式） \n 口头分析 \n §2.2 并购动机；§2.4 失败原因 \n ⭐⭐⭐⭐ \n \n \n 预测2025+ \n 企业数字化转型中的战略联盟选择 \n 论述/案例 \n §1 联盟动机与类型（数字化生态联盟） \n ⭐⭐⭐⭐ \n \n \n \n 教材重要原句汇总（建议默写）： \n \n ① "战略联盟是指两个或两个以上的企业为了实现特定的战略目标，在保持各自独立性的前提下，通过共同投资、共享资源、共担风险等方式进行的 介于纯市场交易和兼并之间 的合作安排。" \n \n \n ② "并购活动之所以失败，原因之一在于 被高估的协同效应 ——企业在并购前对成本节约和收入增长的预期往往过于乐观，而整合的实际难度则常常被低估。" \n \n \n ③ "战略重组的两条路径分别基于不同的理论视角：基于 资源基础观 的业务重组稳定管理模式而调整行业组合；基于 市场基础观 的组织重组稳定行业组合而调整管理模式（包括结构、机制和文化）。" \n \n \n \n \n \n 🔗 本章终极串联复习 \n 将本章所有知识点贯穿成一条逻辑链，理解而非死记硬背 \n \n \n STEP 01 \n 为什么需要外部路径？ \n 内部成长（新建）太慢、资源不足→企业需要借助外部力量→三条路径：联盟、并购、重组（含退出） \n \n › \n \n STEP 02 \n 什么时候选联盟？ \n 需要互补资源但不愿放弃独立性；市场不确定性高；政策限制并购；优先选联盟（灵活退出） \n \n › \n \n STEP 03 \n 什么时候选并购？ \n 需要完全控制；快速进入；有足够资金和整合能力；关键是防止溢价过高和整合失败 \n \n › \n \n STEP 04 \n 什么时候选重组？ \n 过度扩张→归核化；业绩下滑→聚焦；RBV→业务重组（换业务）；I/O→组织重组（换管法） \n \n › \n \n STEP 05 \n 三路径的共同逻辑 \n 本质都是调整企业边界（扩大或收缩）；都要解决"价值创造>成本"的核心命题；都以战略目标为起点 \n \n \n \n 一句话总结： 企业扩张有三把钥匙—— 战略联盟 （借力灵活合作）、 企业并购 （快速获控资源）、 战略重组 （向内归核聚焦）；三者各有适用场景，选择标准是：战略目标的紧迫性、对控制权的需求程度和自身的整合能力。理解第九章的核心，就是理解"企业边界的动态调整"。\n \n \n \n \n \n 跨章 \n \n 第九章与全书的逻辑关系 \n \n ⭐⭐⭐⭐ 复试综合理解 \n \n \n \n \n \n 第九章联盟/并购/重组（企业边界动态调整） \n \n ← 第七章输入 \n \n 多元化"方式"中提到联盟和并购 \n 重组两路径（RBV/I/O）在第七章已铺垫 \n 第九章是第七章方式论的深化展开 \n \n \n \n ← 第八章联动 \n \n 国际化进入方式=合资（联盟）+并购 \n 跨国联盟是国际化的重要路径 \n 跨国并购有额外的文化和政治风险 \n \n \n \n → 第十章延伸 \n \n 并购后整合（PMI）是战略实施的核心 \n 联盟治理机制是战略实施的重要内容 \n 组织重组对战略实施结构设计有影响 \n \n \n \n 理论基础 \n \n 交易成本理论→联盟 vs 内部化决策 \n 资源基础观→并购获取稀缺资源 \n 代理理论→MBO解决委托代理问题 \n 协同效应理论→并购价值创造逻辑 \n \n \n \n \n \n \n \n ⚡ 30秒复习模块 \n 考前最后冲刺——扫一遍，核心点全到位 \n \n \n 战略联盟定义 \n 两企业以上 · 保持独立性 · 共享资源/风险 · 介于市场与兼并之间\n \n \n 联盟四大特征 \n 独（立）互（补）共（担风险）战（略导向）\n \n \n 联盟六大动机 \n 进获分加建学（进入市场/获互补/分风险/加速研发/建标准/学技术）\n \n \n 联盟三种治理 \n 契约型 · 股权型 · 关系型（股权型约束最强但最不灵活）\n \n \n 并购三种类型 \n 横（同行）纵（上下游）混（不相关）\n \n \n 并购七大动机 \n 获克降增重学税（获市场力/克壁垒/降风险/增多元/重竞争/学能力/税优势）\n \n \n 并购失败五原因 \n 价整文高人（溢价高/整合难/文化冲/协同高估/人才流失）\n \n \n 重组两条路径 \n RBV→业务重组（换业务）| I/O→组织重组（换管法：结构/机制/文化）\n \n \n 三路径选择逻辑 \n 灵活互补→联盟 | 快速控制→并购 | 归核聚焦→重组\n \n \n LBO/MBO定义 \n LBO=杠杆收购（以目标资产抵押举债）| MBO=管理层收购（解决代理问题）\n \n \n \n \n \n 📝 背诵版总结（复试口述版） \n 以下每段可作为复试口答的核心段落，建议熟读后用自己的话表达 \n \n 1. 战略联盟（一段话版） \n 战略联盟是两个或两个以上企业，在保持各自独立性的前提下，为实现特定战略目标而进行的资源共享、风险共担的合作安排。其四大特征是：独立性、互补性、风险共担和战略导向性。形成战略联盟的动机有六类：进入新市场、获取互补资源、分担风险与成本、加快研发速度、建立行业标准、学习技术能力。治理上有契约型、股权型和关系型三种机制，其中股权型约束力最强，关系型成本最低。联盟成功的关键在于相互信任、资源互补、目标一致和完善的治理结构。\n \n \n 2. 企业并购（一段话版） \n 企业并购分为横向（同行）、纵向（上下游）和混合（不相关）三类。并购动机包括：获取市场力量、克服进入壁垒、降低开发风险、增加多元化程度、重塑竞争范围、学习提升能力和获取税收优势。并购过程包含战略制定、目标搜索评估、谈判交易、并购后整合四个阶段，其中后整合（PMI）是最难也最关键的。并购失败的五大原因是：支付过高溢价、整合困难、文化冲突、协同效应被高估、关键人才流失。\n \n \n 3. 战略重组（一段话版） \n 战略重组是企业对业务组合、资产结构或组织形式进行根本性调整的战略行动，主要在过度多元化、业绩下滑或外部环境剧变时触发。重组有两条路径：基于资源基础观的业务重组（稳定管理模式，调整行业组合，手段包括资产剥离、分拆、关闭）；基于市场基础观的组织重组（稳定行业组合，调整管理模式，涵盖结构调整、机制调整和文化变革）。此外还有财务重组，包括债务重组、股权重组和资产重组，管理层收购（MBO）是其中解决委托代理问题的典型工具。\n \n \n 4. 三路径对比（口述比较版） \n 三种路径各有适用场景：当需要资源互补但又不愿丧失独立性时，选择战略联盟（灵活、低成本、易退出）；当需要快速获得控制权，有足够资金和整合能力时，选择并购（速度快、控制强，但风险高）；当企业过度扩张需要归核聚焦时，选择重组（向内调整、价值聚焦）。三种路径并非互斥，企业可以组合运用，核心是以战略目标为出发点，匹配自身资源能力和风险承受能力。\n \n \n \n \n 📝 课后自我检验 \n 完成以下题目验证掌握程度，建议先合书作答，再展开参考答案 \n \n Q · 01 — 名词解释 \n 什么是战略联盟？请说明其核心特征（4点）。 \n 参考答案要点： 两个或以上企业·保持独立性·共享资源风险·介于市场与兼并之间 → 四特征：独立性/互补性/风险共担/战略导向性 \n \n \n Q · 02 — 简答 \n 【2023笔试真题】 \n 简述战略联盟的动机与治理机制。 \n 关键词： 六大动机（进获分加建学）→ 三种治理（契约型/股权型/关系型）→ 成功因素（信任/互补/目标/治理） \n \n \n Q · 03 — 简答 \n 战略联盟有哪几种主要类型？股权联盟与非股权联盟有何区别？ \n 关键词： 非股权（许可/供应/研发协议）vs 股权（相互持股）vs 合资企业（新法人）→ 区别在于控制程度和资本绑定程度 \n \n \n Q · 04 — 名词解释 \n 什么是横向并购、纵向并购和混合并购？各适用于什么战略目的？ \n 关键词： 横（同行·规模/消灭竞争）/ 纵（上下游·控制供应链）/ 混（不相关·多元化/分散风险） \n \n \n Q · 05 — 简答 \n 【2019面试考点】 \n 企业并购后整合（PMI）中，人力资源整合的主要挑战是什么？ \n 关键词： 组织结构整合 / 文化整合（最难）/ 关键人才保留 / 薪酬体系统一 → 人才流失是并购失败的重要原因 \n \n \n Q · 06 — 论述题 \n 为什么大量企业并购会失败？请从五个维度分析并购失败的原因，并提出提高并购成功率的建议。 \n 答题框架： 价整文高人（溢价过高/整合困难/文化冲突/协同效应被高估/人才流失）→ 各维度详述 → 建议：严格尽调/保守溢价/专职PMI/文化尊重/关键人才留任计划 \n \n \n Q · 07 — 比较分析 \n 战略联盟与企业并购有何本质区别？企业在什么情况下应优先选择联盟而非并购？ \n 区别核心： 独立性保留/控制权程度/资金投入/退出难度 → 优选联盟条件：不确定性高/政策限制/资金不足/资源互补为主/不需要完全控制 \n \n \n Q · 08 — 重组专题 \n 企业进行战略重组有哪两条路径？各基于什么理论视角？请举例说明。 \n 关键： RBV→业务重组（换业务：剥离/分拆/关闭）→案例：联想剥离手机业务；I/O→组织重组（换管法：结构/机制/文化）→案例：GE扁平化改造 \n \n \n Q · 09 — 综合论述 \n 【预测2025复试高频题】 \n 某新能源汽车企业计划进入欧洲市场，分析其应选择战略联盟、并购还是重组路径，并说明理由。 \n 分析框架： 考察进入欧洲的壁垒（政策/文化/渠道）→ 如有本地合作伙伴且不确定性高→联盟（合资/研发联盟）；如需快速获得品牌/技术且资金充足→并购欧洲车企；如自身过度扩张需要聚焦→先重组再进入。结合案例：吉利收购沃尔沃（并购）vs 比亚迪与欧洲经销商合作（联盟） \n \n \n Q · 10 — 名词解释 \n 什么是杠杆收购（LBO）和管理层收购（MBO）？两者有何区别？ \n 关键词： LBO=以目标资产抵押举债完成并购（高杠杆高风险）；MBO=管理层收购本企业（解决委托代理问题）→ 区别：MBO是LBO的特殊形式（收购方是管理层本人） \n \n \n \n \n 📚 中南大学企业管理学硕复试笔记 · 第九章 战略联盟、并购与重组 · 基于蓝海林《企业战略管理》第2版 · 2016–2025真题整合版';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ═══ STICKY NAV ═══ -->
+<nav class="sticky-nav" id="top">
+  <span class="toc-label">目录</span>
+  <a href="#map">🗺逻辑图</a>
+  <a href="#intro">📖导入案例</a>
+  <a href="#s1">§1 战略联盟</a>
+  <a href="#s2">§2 企业并购</a>
+  <a href="#s3">§3 战略重组</a>
+  <a href="#compare">📊对比总结</a>
+  <a href="#exam">🎯历年真题</a>
+  <a href="#chain">🔗串联复习</a>
+  <a href="#quick30">⚡30秒</a>
+  <a href="#recite">📝背诵版</a>
+  <a href="#quiz">✅自测</a>
+  <div class="search-box">
+    
+    <span class="search-count" id="searchCount"></span>
+  </div>
+  <button class="dark-btn" onclick="toggleDark()">🌙 夜间</button>
+</nav>
+
+<!-- 返回顶部 -->
+<button id="back-top" onclick="scrollToTop()" title="返回顶部">↑</button>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-day">第九章 · 企业战略管理</div>
+  <h1>战略联盟、<span>并购</span>与重组</h1>
+  <p class="hero-sub">企业扩张的三大路径：当独自成长太慢、内部资源不足，企业该如何借助外部力量实现战略目标？战略联盟、并购与重组——这是企业走向更大舞台的"三把钥匙"。本章是中南大学历年复试高频考点。</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📍 教材 P237–300（约）</span>
+    <span class="hero-tag">🔥 2018·2019·2023·2024 高频考点</span>
+    <span class="hero-tag">✍️ 简答 · 论述 · 案例</span>
+    <span class="hero-tag">🤝 战略联盟动机与治理</span>
+    <span class="hero-tag">🏢 并购整合难题</span>
+    <span class="hero-tag">♻️ 重组两条路径</span>
+  </div>
+</div>
+
+<!-- ═══ CASE BANNER ═══ -->
+<div class="case-banner" id="intro">
+  <div class="case-label">📖 导入案例 · 教材经典</div>
+  <h3>腾讯与京东的战略联盟 vs 阿里并购银泰</h3>
+  <p>腾讯以微信入口+流量支持入股京东，京东以品牌商品+自营物流互补——双方不合并，通过<strong>战略联盟</strong>各取所需，保持独立运营，共同对抗阿里生态系。而阿里则不同，先后并购银泰商业（60.5亿元）、苏宁（283亿元），将零售网络纳入阿里生态，走的是<strong>并购整合</strong>路线。两种路径各有逻辑：联盟灵活、成本低、退出容易；并购控制强、整合深、但失败风险高。</p>
+  <p class="case-key">💡 核心问题：企业应该选择联盟、并购还是重组？取决于<strong>战略意图、资源互补程度、整合难度和市场环境</strong>四个维度。</p>
+</div>
+
+<!-- ═══ 主体 ═══ -->
+<div class="main">
+
+<!-- ════════════ 逻辑关系图 ════════════ -->
+<div class="logic-map" id="map">
+  <h3>本章与其他章节的逻辑关系</h3>
+  <div style="overflow-x:auto">
+  <table class="ctable" style="font-size:13px;">
+    <tr><th>关联章节</th><th>关联逻辑</th></tr>
+    <tr><td><strong>第七章 公司层战略</strong></td><td>第七章提出多元化的"方式"中包含<span class="kw">并购</span>和<span class="kw2">战略联盟</span>，第九章深度展开这两种方式的理论与实践，是第七章§6.3的深化</td></tr>
+    <tr><td><strong>第六章 业务层战略</strong></td><td>竞争优势不足时，联盟或并购竞争者是业务层战略的延伸手段（如差异化×并购形成规模效应）</td></tr>
+    <tr><td><strong>第八章 国际化战略</strong></td><td>国际化进入模式包含合资（联盟的一种）、直接并购；跨国联盟是国际化的重要路径</td></tr>
+    <tr><td><strong>第十章 战略实施</strong></td><td>并购后的整合（PMI）和联盟的治理结构，都是战略实施的重点课题</td></tr>
+    <tr><td><strong>资源基础观（RBV）</strong></td><td>联盟/并购的核心逻辑是"获取/共享稀缺资源"，重组的逻辑是"处置冗余资源"——都以RBV为理论基础</td></tr>
+  </table>
+  </div>
+
+  <div style="height:16px"></div>
+  <h3 style="font-size:16px; margin-bottom:14px;">📌 本章各节内部逻辑</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="fs-num">§1</div>
+      <div class="fs-title">战略联盟</div>
+      <div class="fs-body">定义·特征<br>动机·类型<br>风险·治理·成功因素</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§2</div>
+      <div class="fs-title">企业并购</div>
+      <div class="fs-body">概念·类型<br>动机·过程<br>整合·失败原因</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§3</div>
+      <div class="fs-title">战略重组</div>
+      <div class="fs-body">概念·原因<br>业务重组<br>组织重组</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">综合</div>
+      <div class="fs-title">三种路径比较</div>
+      <div class="fs-body">适用场景<br>优劣对比<br>选择逻辑</div>
+    </div>
+  </div>
+  <p style="font-size:13px; color:#777; margin-top:10px;">逻辑主线：企业扩张三种外部路径 → <strong>各自的动机/类型/过程/失败原因</strong> → <strong>三种路径的选择逻辑</strong></p>
+
+  <div style="height:20px"></div>
+  <h3 style="font-size:16px; margin-bottom:14px;">🧠 章节思维导图（知识框架）</h3>
+  <div class="mindmap">
+    <div class="mm-node center">第九章：战略联盟、并购与重组</div>
+    <div class="mm-node" style="border-color:#6d28d9">
+      <div class="mn-title">§1 战略联盟</div>
+      <ul class="mn-items">
+        <li>定义与特征（4大特征）</li>
+        <li>类型（股权/非股权/合资）</li>
+        <li>动机（6大动机）</li>
+        <li>风险（机会主义/知识泄漏）</li>
+        <li>治理机制（契约/股权/关系）</li>
+        <li>成功因素（信任/互补/目标一致）</li>
+      </ul>
+    </div>
+    <div class="mm-node" style="border-color:#0ea5e9">
+      <div class="mn-title" style="color:#0ea5e9">§2 企业并购</div>
+      <ul class="mn-items">
+        <li>横向/纵向/混合并购</li>
+        <li>并购动机（7大动机）</li>
+        <li>并购过程（4阶段）</li>
+        <li>整合（PMI）</li>
+        <li>并购失败原因（5大原因）</li>
+        <li>杠杆收购（LBO）</li>
+      </ul>
+    </div>
+    <div class="mm-node" style="border-color:#059669">
+      <div class="mn-title" style="color:#059669">§3 战略重组</div>
+      <ul class="mn-items">
+        <li>概念与触发条件</li>
+        <li>业务重组（剥离/分拆/关闭）</li>
+        <li>组织重组（结构/机制/文化）</li>
+        <li>财务重组</li>
+        <li>重组后评估</li>
+      </ul>
+    </div>
+    <div class="mm-node" style="border-color:#f59e0b">
+      <div class="mn-title" style="color:#d97706">三路径对比选择</div>
+      <ul class="mn-items">
+        <li>联盟 vs 并购 vs 重组</li>
+        <li>控制权程度对比</li>
+        <li>风险成本对比</li>
+        <li>适用场景决策树</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     §1 战略联盟
+     ════════════════════════════════ -->
+<div class="section-title" id="s1">
+  <span class="sec-num">§ 01</span>
+  <h2>战略联盟</h2>
+  <span class="page-ref">P237–260（约）</span>
+</div>
+
+<!-- 9.1.1 战略联盟的概念与特征 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.1.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略联盟的概念与四大特征</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心必背</span>
+        <span class="badge badge-page">P237-239</span>
+        <span class="badge badge-exam">名词解释·简答</span>
+        <span class="badge badge-year">【2018面试】【2023笔试】</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 专有名词定义（教材）</div>
+      <p><span class="kw">战略联盟</span>（strategic alliance）是指两个或两个以上的企业为了实现特定的战略目标，在<strong>保持各自独立性</strong>的前提下，通过<strong>共同投资、共享资源、共担风险</strong>等方式进行的一种<strong>介于纯市场交易和兼并之间</strong>的合作安排。</p>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版通俗解释</div>
+      <p>两个小朋友参加科学展览，一个擅长做实验，一个擅长写报告。他们不是一个人，但同意合作：各出各的力，共享奖品，万一项目失败也一起承担。这就是战略联盟——既不是朋友也不是一家人，但为了共同目标暂时"抱团"。</p>
+    </div>
+
+    <strong>战略联盟的四大核心特征：</strong>
+    <table class="ctable" style="margin-top:10px">
+      <tr>
+        <th>特征</th>
+        <th>核心内涵</th>
+        <th>区别于并购</th>
+      </tr>
+      <tr>
+        <td>① <span class="kw">保持独立性</span></td>
+        <td>各成员企业<strong>法律地位独立</strong>，有各自的所有权和控制权</td>
+        <td>并购后被并购方丧失独立性</td>
+      </tr>
+      <tr>
+        <td>② <span class="kw">互利互补性</span></td>
+        <td>各方贡献互补性资源（技术+渠道、资金+品牌等），创造<strong>单独无法实现</strong>的价值</td>
+        <td>并购更强调主并方主导</td>
+      </tr>
+      <tr>
+        <td>③ <span class="kw">共担风险</span></td>
+        <td>共同面对不确定性，分散单个企业的风险暴露</td>
+        <td>并购由主并方独自承担整合风险</td>
+      </tr>
+      <tr>
+        <td>④ <span class="kw">战略导向性</span></td>
+        <td>以长期战略目标为导向，而非短期交易安排；影响各方核心竞争优势</td>
+        <td>一般采购属于交易，不是战略联盟</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>「独（立）互（补）共（担）战（略）」</strong>——四字口诀，每字对应一个特征。联盟不是婚姻（并购），是"搭伙过日子"。
+    </div>
+
+    <details class="foldable">
+      <summary>💬 复试回答模板</summary>
+      <div class="fold-body">
+        <div class="block block-interview">
+          <div class="block-label">🎤 复试口答框架</div>
+          <p><strong>定义→</strong> 战略联盟是两个或以上企业在保持独立性前提下，为实现战略目标进行的资源共享、风险共担的合作安排，介于市场交易和兼并之间。</p>
+          <p style="margin-top:6px"><strong>核心内容→</strong> 它有四大特征：独立性、互补性、风险共担、战略导向。</p>
+          <p style="margin-top:6px"><strong>举例→</strong> 腾讯与京东的联盟：腾讯提供微信入口流量，京东提供商品和物流能力，双方各保独立上市地位，但共享用户资源。</p>
+          <p style="margin-top:6px"><strong>总结→</strong> 战略联盟是比并购更灵活、成本更低、退出更容易的合作方式，但控制权弱于并购。</p>
+        </div>
+        <div class="block block-exam">
+          <div class="block-label">🔥 老师可能追问</div>
+          <ul class="kl" style="font-size:13.5px">
+            <li>战略联盟与合作合同有何区别？（合同是短期交易；联盟是战略导向的长期合作）</li>
+            <li>为什么有些战略联盟最终以并购告终？（随着信任积累和资源深度整合，并购成为更有效率的选择）</li>
+            <li>战略联盟和合资企业是什么关系？（合资企业是股权型联盟的一种具体形式）</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- 9.1.2 战略联盟的类型 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.1.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略联盟的主要类型</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 较高概率</span>
+        <span class="badge badge-page">P239-243</span>
+        <span class="badge badge-exam">简答·名词解释</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>联盟类型</th>
+        <th>主要形式</th>
+        <th>控制程度</th>
+        <th>典型案例</th>
+      </tr>
+      <tr>
+        <td><span class="kw">股权联盟</span>（equity alliance）</td>
+        <td>合资企业（joint venture）<br>股权交叉持股</td>
+        <td>⭐⭐⭐⭐ 较高</td>
+        <td>宝马与华晨合资 BMW 华晨；上汽大众</td>
+      </tr>
+      <tr>
+        <td><span class="kw2">非股权联盟</span>（non-equity alliance）</td>
+        <td>许可协议、分销协议<br>供应协议、研发合作</td>
+        <td>⭐⭐ 较低</td>
+        <td>微软与诺基亚手机软件合作（pre-merger）</td>
+      </tr>
+      <tr>
+        <td><span class="kw3">合资企业</span>（joint venture）</td>
+        <td>双方各出资，成立<strong>新的独立法人实体</strong></td>
+        <td>⭐⭐⭐⭐⭐ 最高（独立法人）</td>
+        <td>上汽通用（双方各50%）；腾讯×京东股权合作</td>
+      </tr>
+    </table>
+
+    <div class="block block-analogy">
+      <div class="block-label">🍰 三种联盟比喻</div>
+      <ul class="kl" style="font-size:13.5px">
+        <li><strong>非股权联盟</strong> = 两家餐厅签了合同：A餐厅用B餐厅的食材，双方各自经营，互不持股，签约就行。</li>
+        <li><strong>股权联盟</strong> = A餐厅买了B餐厅的股份，成为股东，有监督权，但不合并经营。</li>
+        <li><strong>合资企业</strong> = A和B各出一部分钱，开了一家新餐厅C，C是独立的新公司，A和B共同管理。</li>
+      </ul>
+    </div>
+
+    <strong>按合作领域分类：</strong>
+    <div class="lm-row" style="margin-top:10px">
+      <div class="lm-node purple">
+        <div class="ln-title">🔬 研发联盟</div>
+        共同开发新技术、新产品，分摊R&D成本和风险（如制药企业联合研发新药）
+      </div>
+      <div class="lm-node blue">
+        <div class="ln-title">📦 营销/分销联盟</div>
+        共享销售渠道或品牌（如航空公司代码共享）
+      </div>
+      <div class="lm-node green">
+        <div class="ln-title">🏭 生产联盟</div>
+        共享生产设施，降低制造成本（如汽车企业共用底盘平台）
+      </div>
+      <div class="lm-node yellow">
+        <div class="ln-title">🌐 多功能联盟</div>
+        涵盖研发+生产+营销的全面联盟（如Boeing与日本重工联合制造787）
+      </div>
+    </div>
+
+    <details class="foldable">
+      <summary>📊 管理学联系：联盟类型与交易成本理论</summary>
+      <div class="fold-body">
+        <div class="block block-definition">
+          <div class="block-label">理论联系</div>
+          根据<span class="kw">交易成本理论</span>（Williamson），当市场交易成本高（如资产专用性高、信息不对称严重）但内部化成本也高时，联盟是介于市场和层级之间的"混合治理"形式。合资企业的治理成本最高但控制力最强，适用于合作内容涉及高度专用性投资的场景。
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- 9.1.3 战略联盟的动机 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.1.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">形成战略联盟的六大动机</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高概率考点</span>
+        <span class="badge badge-page">P243-248</span>
+        <span class="badge badge-exam">简答·论述</span>
+        <span class="badge badge-year">【2023笔试·简答】【2018面试·高频】</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材六大动机</div>
+    </div>
+    <table class="ctable">
+      <tr>
+        <th>#</th>
+        <th>动机</th>
+        <th>核心逻辑</th>
+        <th>案例</th>
+      </tr>
+      <tr>
+        <td>①</td>
+        <td><span class="kw">进入新市场/新行业</span></td>
+        <td>通过联盟快速进入合作方熟悉的市场，规避政策壁垒，降低进入风险</td>
+        <td>外资车企在华合资（绕开市场准入限制）</td>
+      </tr>
+      <tr>
+        <td>②</td>
+        <td><span class="kw2">获取互补性资源和能力</span></td>
+        <td>互补资源联合利用，弥补自身战略短板（"你有技术我有渠道"）</td>
+        <td>腾讯(流量)×京东(商品物流)；小米×美的(智能制造)</td>
+      </tr>
+      <tr>
+        <td>③</td>
+        <td><span class="kw">分担风险与成本</span></td>
+        <td>高风险、高投入项目（如研发）由多方分担，降低单企业风险敞口</td>
+        <td>空客飞机各国分工制造；制药联合研发</td>
+      </tr>
+      <tr>
+        <td>④</td>
+        <td><span class="kw3">加快产品和技术开发速度</span></td>
+        <td>集合多方技术能力，压缩研发周期，在动态竞争中抢占时间优势</td>
+        <td>5G技术标准联盟（华为+高通+爱立信联合推进）</td>
+      </tr>
+      <tr>
+        <td>⑤</td>
+        <td><span class="kw">建立行业标准</span></td>
+        <td>主导标准联盟，将己方技术确立为行业标准，构建生态壁垒</td>
+        <td>VHS vs Betamax 录像带标准之争；USB标准联盟</td>
+      </tr>
+      <tr>
+        <td>⑥</td>
+        <td><span class="kw2">学习与技术转让</span></td>
+        <td>通过合作学习合作方的知识和能力（有时是"学习赛跑"，谁学得快谁先获益）</td>
+        <td>早期中外合资汽车——中方学习制造工艺</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 六大动机助记口诀</div>
+      <strong>「进（入市场）获（互补资源）分（担风险）加（快研发）建（立标准）学（习技术）」</strong><br>
+      简化记忆：<strong>进获分加建学</strong>——六个字，考试写全六条！
+    </div>
+
+    <details class="foldable">
+      <summary>🎤 复试延伸问题</summary>
+      <div class="fold-body">
+        <div class="block block-interview">
+          <div class="block-label">老师可能追问</div>
+          <ul class="kl" style="font-size:13.5px">
+            <li><strong>动机①和②有何不同？</strong>——①侧重地理/政策壁垒（外部门槛），②侧重资源互补（内部缺口）</li>
+            <li><strong>动机⑥中"学习赛跑"是什么意思？</strong>——合作双方都试图从对方学到技术，谁学得快、学得多，谁的谈判地位就更强，联盟可能因此瓦解（如日本车企在美联盟案例）</li>
+            <li><strong>以上哪些动机最可能导致联盟失败？</strong>——⑥（学习竞争导致机会主义）和⑤（一方确立标准后不再需要另一方）</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- 9.1.4 战略联盟的风险 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.1.4</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略联盟的风险与失败原因</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 较高概率</span>
+        <span class="badge badge-page">P248-253</span>
+        <span class="badge badge-exam">简答·论述</span>
+        <span class="badge badge-year">【2018面试】</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <strong>战略联盟的主要风险：</strong>
+    <table class="ctable" style="margin-top:10px">
+      <tr>
+        <th>风险类型</th>
+        <th>具体表现</th>
+        <th>防范措施</th>
+      </tr>
+      <tr>
+        <td>① <span class="kw">机会主义行为风险</span></td>
+        <td>合作方"搭便车"，不履行约定义务；虚报成本、隐瞒信息；不公平分配收益</td>
+        <td>建立监督机制；股权联盟比契约联盟更能约束机会主义</td>
+      </tr>
+      <tr>
+        <td>② <span class="kw2">知识和技术泄漏风险</span></td>
+        <td>核心技术在合作中被学习复制，形成未来的竞争对手（"教会徒弟饿死师傅"）</td>
+        <td>界定知识边界；申请专利；避免核心技术外漏</td>
+      </tr>
+      <tr>
+        <td>③ <span class="kw">目标冲突风险</span></td>
+        <td>双方战略意图不一致，长期目标产生分歧，导致联盟解散</td>
+        <td>事前充分沟通战略目标；建立退出机制</td>
+      </tr>
+      <tr>
+        <td>④ <span class="kw3">文化冲突风险</span></td>
+        <td>管理理念、决策风格、企业文化差异导致合作效率低下，甚至矛盾激化</td>
+        <td>文化尽调；设立跨文化协调团队</td>
+      </tr>
+      <tr>
+        <td>⑤ <span class="kw">依赖风险</span></td>
+        <td>过度依赖合作方资源，削弱自身能力建设，形成战略依赖</td>
+        <td>保持核心能力自主；联盟只作补充而非替代</td>
+      </tr>
+    </table>
+
+    <div class="block block-tip">
+      <div class="block-label">🔥 重要：联盟失败的根本原因</div>
+      教材核心观点：战略联盟失败率高（有研究表明超过50%的战略联盟在5年内终止），<strong>根本原因在于两点</strong>：
+      <ul class="kl" style="margin-top:8px; font-size:13.5px">
+        <li><strong>双方战略目标不再一致</strong>（各自战略调整导致合作价值消失）</li>
+        <li><strong>信任基础缺失</strong>（机会主义行为破坏合作关系）</li>
+      </ul>
+    </div>
+
+    <div class="block block-analogy">
+      <div class="block-label">🍰 生活案例——大学室友合租做生意</div>
+      四个室友合开一家奶茶店（联盟）。开始大家都很积极，但渐渐出现问题：A不守时（机会主义）→ B偷学了配方想自己开（技术泄漏）→ C想改方向做咖啡（目标冲突）→ D嫌A太懒总吵架（文化冲突）。最终联盟解散，四人各散。这就是战略联盟风险的生活版。
+    </div>
+  </div>
+</div>
+
+<!-- 9.1.5 战略联盟的治理机制 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.1.5</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略联盟的治理机制与成功因素</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 复试高频</span>
+        <span class="badge badge-page">P253-258</span>
+        <span class="badge badge-exam">简答·论述</span>
+        <span class="badge badge-year">【2023笔试·简述战略联盟动机与治理】</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <strong>战略联盟的三种治理机制：</strong>
+    <table class="ctable" style="margin-top:10px">
+      <tr>
+        <th>治理机制</th>
+        <th>核心手段</th>
+        <th>适用场景</th>
+        <th>优缺点</th>
+      </tr>
+      <tr>
+        <td>① <span class="kw">契约型治理</span></td>
+        <td>书面合同规定各方权利义务、知识产权、收益分配、退出条款</td>
+        <td>合作内容可以明确界定的短期/中期联盟</td>
+        <td>✅ 清晰明确<br>❌ 合同不完全性，难以覆盖所有情况</td>
+      </tr>
+      <tr>
+        <td>② <span class="kw2">股权型治理</span></td>
+        <td>相互持股或合资，用资本捆绑约束机会主义行为</td>
+        <td>高度依赖、长期深度合作的联盟</td>
+        <td>✅ 利益绑定，约束机会主义<br>❌ 退出成本高，灵活性低</td>
+      </tr>
+      <tr>
+        <td>③ <span class="kw3">关系型治理</span></td>
+        <td>基于信任、声誉和关系积累的非正式机制</td>
+        <td>高度信任、重复博弈的长期合作伙伴</td>
+        <td>✅ 成本低，灵活高效<br>❌ 依赖个人关系，不可持续</td>
+      </tr>
+    </table>
+
+    <hr class="divider">
+    <strong>战略联盟成功的关键因素：</strong>
+    <div class="lm-row" style="margin-top:10px">
+      <div class="lm-node purple">
+        <div class="ln-title">🤝 相互信任</div>
+        <p style="font-size:12.5px">信任是联盟运作的基础润滑剂；声誉机制使各方保持诚信行为</p>
+      </div>
+      <div class="lm-node blue">
+        <div class="ln-title">🔄 资源互补</div>
+        <p style="font-size:12.5px">双方资源高度互补（而非雷同）才能创造1+1>2的协同价值</p>
+      </div>
+      <div class="lm-node green">
+        <div class="ln-title">🎯 目标一致</div>
+        <p style="font-size:12.5px">共同战略目标和近期利益诉求一致，减少冲突</p>
+      </div>
+      <div class="lm-node yellow">
+        <div class="ln-title">📋 治理结构完善</div>
+        <p style="font-size:12.5px">清晰的决策机制、信息共享规范和争议解决机制</p>
+      </div>
+    </div>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 成功因素助记</div>
+      <strong>「信（任）补（互补）同（目标一致）治（治理）」</strong> ——四字成功密码
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">📝 2023年笔试真题 · 简答</div>
+      <strong>题目：</strong>简述战略联盟的动机与治理。<br>
+      <strong>答题框架（4分钟口述版）：</strong>
+      <ul class="kl" style="margin-top:8px; font-size:13.5px">
+        <li>① 先定义战略联盟概念（1句话）</li>
+        <li>② 六大动机（进获分加建学，各1-2句）</li>
+        <li>③ 三种治理机制（契约/股权/关系）</li>
+        <li>④ 总结：治理选择取决于合作深度、风险程度和信任基础</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     §2 企业并购
+     ════════════════════════════════ -->
+<div class="section-title" id="s2">
+  <span class="sec-num">§ 02</span>
+  <h2>企业并购（M&A）</h2>
+  <span class="page-ref">P260–285（约）</span>
+</div>
+
+<!-- 9.2.1 并购的概念与类型 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.2.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">并购的概念与三种类型</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心必背</span>
+        <span class="badge badge-page">P260-263</span>
+        <span class="badge badge-exam">名词解释·简答·论述</span>
+        <span class="badge badge-year">【2019面试】【2024考点】</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 专有名词定义（教材）</div>
+      <p><span class="kw">企业并购</span>（M&A: Mergers and Acquisitions）是指企业通过<strong>兼并或收购</strong>其他企业全部或部分产权，以实现快速扩张、获取资源或增强竞争优势的战略行为。</p>
+      <ul class="kl" style="margin-top:8px; font-size:13.5px">
+        <li><span class="kw">兼并</span>（merger）：两家企业合并为一家，被兼并方法律实体消灭（A+B=A）</li>
+        <li><span class="kw2">收购</span>（acquisition）：一方购买另一方全部或控制性股权，被收购方法律实体可保留（A买入B的控股权）</li>
+      </ul>
+    </div>
+
+    <strong>三种并购类型（必背）：</strong>
+    <table class="ctable" style="margin-top:10px">
+      <tr>
+        <th>并购类型</th>
+        <th>定义</th>
+        <th>战略目的</th>
+        <th>典型案例</th>
+      </tr>
+      <tr>
+        <td><span class="kw">横向并购</span><br>（horizontal）</td>
+        <td>并购<strong>同行业同层次</strong>的竞争对手</td>
+        <td>扩大市场份额；实现规模经济；消灭竞争对手</td>
+        <td>腾讯收购搜狗；滴滴合并优步中国；字节跳动收购Musical.ly</td>
+      </tr>
+      <tr>
+        <td><span class="kw2">纵向并购</span><br>（vertical）</td>
+        <td>并购<strong>产业链上下游</strong>的供应商或客户</td>
+        <td>控制供应链；降低交易成本；提高进入壁垒</td>
+        <td>苹果收购芯片设计公司；钢铁企业收购矿山；星巴克收购咖啡农场</td>
+      </tr>
+      <tr>
+        <td><span class="kw3">混合并购</span><br>（conglomerate）</td>
+        <td>并购<strong>不相关行业</strong>企业</td>
+        <td>多元化布局；利用内部资本市场；分散风险</td>
+        <td>阿里收购恒生电子；中信集团跨行业投资布局</td>
+      </tr>
+    </table>
+
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版比喻</div>
+      <ul class="kl" style="font-size:13.5px">
+        <li><strong>横向并购</strong>：村里最大的包子铺把隔壁竞争对手的包子铺买了下来，市场份额翻倍。</li>
+        <li><strong>纵向并购</strong>：包子铺老板买下了给他供面粉的面粉厂（后向）和分销包子的外卖平台（前向）。</li>
+        <li><strong>混合并购</strong>：包子铺老板突然买了一家书店——完全不同行业，用的是卖包子赚的钱进行多元化。</li>
+      </ul>
+    </div>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 三类并购助记</div>
+      <strong>「横（同行）纵（上下游）混（不相关）」</strong>——并购方向对应多元化战略中的"相关/不相关"逻辑，横纵=相关，混=不相关
+    </div>
+
+    <details class="foldable">
+      <summary>📊 对比：并购类型 vs 多元化战略类型（跨章联系）</summary>
+      <div class="fold-body">
+        <table class="ctable">
+          <tr>
+            <th>多元化战略（第七章）</th>
+            <th>对应并购类型（第九章）</th>
+            <th>共同逻辑</th>
+          </tr>
+          <tr>
+            <td>纵向一体化</td>
+            <td>纵向并购</td>
+            <td>控制上下游价值链，降低交易成本</td>
+          </tr>
+          <tr>
+            <td>共享型相关多元化</td>
+            <td>横向并购（同行业）</td>
+            <td>共享资源能力，获取规模/范围经济</td>
+          </tr>
+          <tr>
+            <td>不相关多元化</td>
+            <td>混合并购</td>
+            <td>财务多元化，分散风险</td>
+          </tr>
+        </table>
+        <p style="font-size:13px; color:#666; margin-top:8px;">⚡ 考试提示：第七章讲"什么时候用并购方式"，第九章讲"并购怎么分类、有哪些风险"——两章逻辑高度互补。</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- 9.2.2 并购的动机 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.2.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">企业并购的七大动机</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高频必背</span>
+        <span class="badge badge-page">P264-269</span>
+        <span class="badge badge-exam">简答·论述·案例</span>
+        <span class="badge badge-year">【2019面试·并购人力整合】【2024真题·新能源并购】</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>#</th>
+        <th>并购动机</th>
+        <th>核心逻辑</th>
+        <th>案例</th>
+      </tr>
+      <tr>
+        <td>①</td>
+        <td><span class="kw">获取市场力量</span></td>
+        <td>增大市场份额，提高定价权；消灭竞争者，影响市场竞争格局</td>
+        <td>可口可乐欲收购汇源果汁（被商务部否决，即获取市场力量太强）</td>
+      </tr>
+      <tr>
+        <td>②</td>
+        <td><span class="kw2">克服进入壁垒</span></td>
+        <td>绕过行业壁垒（品牌/技术/渠道），快速进入新领域；比新建更快</td>
+        <td>字节跳动收购Pico进入VR；腾讯入股拼多多</td>
+      </tr>
+      <tr>
+        <td>③</td>
+        <td><span class="kw">降低开发新产品的风险和成本</span></td>
+        <td>直接购买已有产品/技术，比内部研发更快速、风险更低</td>
+        <td>Facebook收购Instagram（已成熟产品）；微软收购GitHub</td>
+      </tr>
+      <tr>
+        <td>④</td>
+        <td><span class="kw3">增加多元化程度</span></td>
+        <td>以并购方式实现多元化扩张，进入新领域（对应混合并购）</td>
+        <td>阿里并购银泰（进入实体零售）；腾讯布局医疗</td>
+      </tr>
+      <tr>
+        <td>⑤</td>
+        <td><span class="kw">重塑竞争范围</span></td>
+        <td>通过并购调整竞争焦点，从产品竞争转向平台/生态竞争</td>
+        <td>美团并购摩拜（构建本地生活生态）</td>
+      </tr>
+      <tr>
+        <td>⑥</td>
+        <td><span class="kw2">利用学习提高能力</span></td>
+        <td>通过并购获取被并购方的知识、技术和人才，提升核心能力</td>
+        <td>联想收购IBM PC部门（获取国际品牌与技术）；吉利收购沃尔沃</td>
+      </tr>
+      <tr>
+        <td>⑦</td>
+        <td><span class="kw">税收和财务优势</span></td>
+        <td>利用被并购企业的亏损抵扣税收；改善债务结构；激活沉睡资产</td>
+        <td>收购连年亏损企业，利用税盾效应；杠杆收购（LBO）中的财务套利</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 七大动机助记口诀</div>
+      <strong>「获（市场力量）克（进入壁垒）降（开发风险）增（多元化）重（竞争范围）学（习能力）税（收优势）」</strong><br>
+      简化：<strong>获克降增重学税</strong>——7字口诀，一字对应一个动机
+    </div>
+
+    <details class="foldable">
+      <summary>💬 复试口答示范：为什么企业选择并购而不是内部新建？</summary>
+      <div class="fold-body">
+        <div class="block block-interview">
+          <div class="block-label">🎤 回答模板</div>
+          <p>企业选择并购而非内部新建，主要有以下优势：</p>
+          <ul class="kl" style="margin-top:6px; font-size:13.5px">
+            <li><strong>速度快</strong>——并购可以立即获得现成的产品、技术、品牌和市场，节省新建所需的时间（进入新市场的速度是关键竞争因素）</li>
+            <li><strong>壁垒低</strong>——绕过行业进入壁垒，省去从零建立供应链和渠道的困难</li>
+            <li><strong>风险相对分散</strong>——购买已验证的商业模式比从零研发风险更小</li>
+          </ul>
+          <p style="margin-top:8px"><strong>但并购也有劣势：</strong>整合难度高、溢价成本大、文化冲突明显，因此并购不一定优于新建，需要视具体情况而定。</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- 9.2.3 并购过程 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.2.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">企业并购的过程（四阶段模型）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 一般</span>
+        <span class="badge badge-page">P269-275</span>
+        <span class="badge badge-exam">简答·案例</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="flow">
+      <div class="flow-step">
+        <div class="fs-num">阶段一</div>
+        <div class="fs-title">并购战略制定</div>
+        <div class="fs-body">确定并购目标类型（横/纵/混合）；确定目标企业的标准；评估自身资源和能力</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="fs-num">阶段二</div>
+        <div class="fs-title">目标企业搜索与评估</div>
+        <div class="fs-body">锁定目标企业；开展<strong>尽职调查</strong>（财务/法律/运营）；评估<strong>协同效应</strong>和整合可行性</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="fs-num">阶段三</div>
+        <div class="fs-title">并购谈判与交易</div>
+        <div class="fs-body">确定收购价格（含<strong>并购溢价</strong>）；谈判条款；监管审批（反垄断审查）；完成交易</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="fs-num">阶段四</div>
+        <div class="fs-title">并购后整合（PMI）</div>
+        <div class="fs-body">战略整合；组织结构整合；文化整合；人员整合——<strong>最难、最关键的阶段</strong></div>
+      </div>
+    </div>
+
+    <div class="block block-definition">
+      <div class="block-label">📖 重要概念：杠杆收购（LBO）</div>
+      <p><span class="kw">杠杆收购</span>（Leveraged Buyout，LBO）是指收购方以<strong>目标企业的资产为抵押</strong>，大量举债（通常债务占比70-90%）融资收购目标企业，并在收购后用目标企业的现金流偿还债务的并购形式。</p>
+      <p style="margin-top:6px">特点：<strong>高杠杆、高风险、高收益</strong>。典型案例：KKR收购RJR Nabisco（1989年，史上最大LBO之一）；私募基金主导的企业并购重组。</p>
+    </div>
+
+    <details class="foldable">
+      <summary>📋 并购中的人力资源整合（2019年考点）</summary>
+      <div class="fold-body">
+        <div class="block block-exam">
+          <div class="block-label">📝 2019年面试考点：并购中的人力整合</div>
+          <table class="ctable">
+            <tr>
+              <th>整合维度</th>
+              <th>核心挑战</th>
+              <th>应对策略</th>
+            </tr>
+            <tr>
+              <td><span class="kw">组织结构整合</span></td>
+              <td>两家企业的部门重叠，如何精简合并</td>
+              <td>明确整合目标，保留核心职能，逐步推进</td>
+            </tr>
+            <tr>
+              <td><span class="kw2">文化整合</span></td>
+              <td>企业文化差异导致内耗（"文化碰撞"）</td>
+              <td>文化诊断→文化对话→建立共同价值观</td>
+            </tr>
+            <tr>
+              <td><span class="kw">关键人才保留</span></td>
+              <td>并购后核心人才流失（最大损失）</td>
+              <td>并购前签署留任协议；设置激励留住计划</td>
+            </tr>
+            <tr>
+              <td><span class="kw3">薪酬福利整合</span></td>
+              <td>两套薪酬体系同时运行，内部公平性问题</td>
+              <td>分阶段过渡，建立统一的薪酬带宽</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- 9.2.4 并购失败原因 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.2.4</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">并购失败的五大原因（重点！）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高频必背</span>
+        <span class="badge badge-page">P275-282</span>
+        <span class="badge badge-exam">简答·论述·案例分析</span>
+        <span class="badge badge-year">【2024案例·新能源并购风险】</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 统计数据</div>
+      研究表明，全球<strong>超过50%的并购</strong>未能实现预期的协同效应，约<strong>70%的并购</strong>被认为是"破坏价值"的。并购失败是企业战略管理的核心命题之一。
+    </div>
+
+    <table class="ctable">
+      <tr>
+        <th>#</th>
+        <th>失败原因</th>
+        <th>详细分析</th>
+        <th>典型案例</th>
+      </tr>
+      <tr>
+        <td>①</td>
+        <td><span class="kw">支付过高溢价</span></td>
+        <td>竞争性收购中"赢家诅咒"——赢得并购战的往往出价过高，协同效应无法弥补溢价成本。并购后大量商誉计提减值。</td>
+        <td>中国化工并购先正达（430亿美元，大幅溢价）；滴滴收购优步中国后的高整合成本</td>
+      </tr>
+      <tr>
+        <td>②</td>
+        <td><span class="kw2">整合困难</span>（PMI失败）</td>
+        <td>两家企业的组织架构、IT系统、流程、文化无法有效整合，导致效率损失反超协同收益</td>
+        <td>AOL-时代华纳合并（最著名的失败并购之一）；戴姆勒并购克莱斯勒</td>
+      </tr>
+      <tr>
+        <td>③</td>
+        <td><span class="kw">文化冲突</span></td>
+        <td>文化差异产生"身份认同"冲突，导致关键人才大量流失，协同机制失效</td>
+        <td>惠普收购康柏——文化碰撞严重；明基收购西门子手机——文化不融合</td>
+      </tr>
+      <tr>
+        <td>④</td>
+        <td><span class="kw3">协同效应被高估</span></td>
+        <td>并购前尽职调查不足，对协同效应（成本节约+收入增长）过度乐观，实际兑现大打折扣</td>
+        <td>联想收购Motorola移动——手机业务协同难以兑现</td>
+      </tr>
+      <tr>
+        <td>⑤</td>
+        <td><span class="kw">核心高管和人才流失</span></td>
+        <td>被收购企业的优秀管理层和技术人员在并购完成后离职，导致被并购企业价值迅速流失</td>
+        <td>多数互联网并购后创始人离职，团队流失</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 五大失败原因助记</div>
+      <strong>「价（溢价过高）整（整合困难）文（文化冲突）高（协同高估）人（人才流失）」</strong><br>
+      口诀：<strong>价整文高人</strong>——并购失败五字诀
+    </div>
+
+    <div class="block block-analogy">
+      <div class="block-label">🍰 婚姻类比——并购=闪婚</div>
+      并购就像闪婚：花了很多彩礼钱（溢价）→ 婚后发现对方习惯太不一样（文化冲突）→ 家务怎么分工谁也说不清（整合困难）→ 当初以为省钱结果开销更大（协同高估）→ 对方带来的能人干将都辞职了（人才流失）。闪婚不一定失败，但风险确实很高。
+    </div>
+
+    <details class="foldable">
+      <summary>🎤 复试口答：如何提高并购成功率？</summary>
+      <div class="fold-body">
+        <div class="block block-interview">
+          <div class="block-label">复试延伸回答</div>
+          <ul class="kl" style="font-size:13.5px">
+            <li><strong>并购前</strong>：严格尽职调查（财务、法律、文化、人才），不要被目标企业"营销"；对协同效应保持保守估算</li>
+            <li><strong>定价时</strong>：设定溢价上限，防止"竞标狂热"导致出价失控</li>
+            <li><strong>整合期</strong>：设立专职PMI团队；制定100天整合计划；优先稳定关键人才；尊重被收购企业文化</li>
+            <li><strong>长期看</strong>：建立清晰的整合里程碑和KPI，定期评估并购后实际价值创造</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     §3 战略重组
+     ════════════════════════════════ -->
+<div class="section-title" id="s3">
+  <span class="sec-num">§ 03</span>
+  <h2>战略重组</h2>
+  <span class="page-ref">P285–300（约）</span>
+</div>
+
+<!-- 9.3.1 战略重组的概念与触发条件 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.3.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略重组的概念与触发条件</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 较高概率</span>
+        <span class="badge badge-page">P285-288</span>
+        <span class="badge badge-exam">名词解释·简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 专有名词定义（教材）</div>
+      <p><span class="kw">战略重组</span>（strategic restructuring）是指企业在战略上对其<strong>业务组合、资产结构或组织形式</strong>进行根本性调整，以恢复竞争活力、提升价值创造能力的战略行动。</p>
+      <p style="margin-top:8px">重组与并购的关系：<strong>并购是向外扩张</strong>（增加），<strong>重组是向内优化</strong>（调整/收缩），两者都是改变企业边界的战略工具。</p>
+    </div>
+
+    <strong>战略重组的主要触发条件：</strong>
+    <div class="lm-row" style="margin-top:10px">
+      <div class="lm-node red">
+        <div class="ln-title">⚠️ 过度多元化</div>
+        <p style="font-size:12.5px">多元化扩张过度，管理失控，代理成本飙升，需要"归核化"，砍掉非核心业务</p>
+      </div>
+      <div class="lm-node yellow">
+        <div class="ln-title">📉 业绩大幅下滑</div>
+        <p style="font-size:12.5px">核心业务竞争力下降，财务陷入困难，被迫通过重组扭转颓势</p>
+      </div>
+      <div class="lm-node blue">
+        <div class="ln-title">🌊 外部环境剧变</div>
+        <p style="font-size:12.5px">行业颠覆性变化（如数字化、政策调整），原有组合不再适应新环境</p>
+      </div>
+      <div class="lm-node green">
+        <div class="ln-title">🔄 战略转型需要</div>
+        <p style="font-size:12.5px">主动调整战略方向（如从制造到服务），需要剥离旧业务、聚焦新赛道</p>
+      </div>
+    </div>
+
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版</div>
+      一个学生加入了太多课外兴趣班（钢琴、画画、游泳、英语……），结果每门课成绩都很差，还累得要死。重组就是：停掉不重要的课，把时间和精力集中到最重要的几门上——"有所不为，才能有所为"。
+    </div>
+  </div>
+</div>
+
+<!-- 9.3.2 两种重组路径 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.3.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">重组的两条路径：业务重组 vs 组织重组</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心必背</span>
+        <span class="badge badge-page">P288-294</span>
+        <span class="badge badge-exam">简答·论述</span>
+        <span class="badge badge-year">【与第七章§2.2高度关联】</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材核心框架（第七章已铺垫，第九章深化）</div>
+      <p>重组的两条路径来源于对公司层战略的两种理论视角：当行业组合战略与组合管理模式不匹配时：</p>
+    </div>
+
+    <table class="ctable" style="margin-top:10px">
+      <tr>
+        <th>理论基础</th>
+        <th>重组类型</th>
+        <th>调整什么</th>
+        <th>稳定什么</th>
+        <th>具体手段</th>
+      </tr>
+      <tr>
+        <td><span class="kw">资源基础观（RBV）</span></td>
+        <td><span class="kw">业务重组</span>（portfolio restructuring）</td>
+        <td>调整<strong>行业组合战略</strong>（进入或退出某些行业）</td>
+        <td>稳定组合管理模式</td>
+        <td>资产剥离、业务出售、分拆上市（spin-off）、关闭亏损业务</td>
+      </tr>
+      <tr>
+        <td><span class="kw2">市场基础观（I/O）</span></td>
+        <td><span class="kw2">组织重组</span>（organizational restructuring）</td>
+        <td>调整<strong>组合管理模式</strong>（结构调整、机制调整、文化改变）</td>
+        <td>稳定行业组合战略</td>
+        <td>裁员、扁平化、流程再造（BPR）、改变激励机制</td>
+      </tr>
+    </table>
+
+    <strong>业务重组的三种具体方式：</strong>
+    <table class="ctable" style="margin-top:10px">
+      <tr>
+        <th>方式</th>
+        <th>定义</th>
+        <th>案例</th>
+      </tr>
+      <tr>
+        <td><span class="kw">资产剥离</span>（divestiture）</td>
+        <td>将某事业部或业务单元以现金方式出售给外部买家，彻底退出某一行业</td>
+        <td>联想出售手机业务给富士康；GE出售金融业务</td>
+      </tr>
+      <tr>
+        <td><span class="kw2">分拆</span>（spin-off）</td>
+        <td>将某子业务拆分为独立上市公司，母公司股东同比例持有新公司股份</td>
+        <td>PayPal从eBay分拆；阿里巴巴将蚂蚁集团分拆</td>
+      </tr>
+      <tr>
+        <td><span class="kw3">关闭/清算</span>（liquidation）</td>
+        <td>停止某业务运营，出售资产偿还债务；最彻底的退出方式</td>
+        <td>乐视电视业务关闭；部分传统零售关店</td>
+      </tr>
+    </table>
+
+    <strong>组织重组的三个维度：</strong>
+    <div class="lm-row" style="margin-top:10px">
+      <div class="lm-node purple">
+        <div class="ln-title">🏗 结构调整</div>
+        <p style="font-size:12.5px">组织层级扁平化、事业部合并、业务单元重组、增减管理层级</p>
+      </div>
+      <div class="lm-node blue">
+        <div class="ln-title">⚙️ 机制调整</div>
+        <p style="font-size:12.5px">调整激励机制（KPI→OKR）、控制机制（财务→战略控制）、集权分权关系</p>
+      </div>
+      <div class="lm-node green">
+        <div class="ln-title">🌱 文化变革</div>
+        <p style="font-size:12.5px">改变企业价值观、行为规范和管理风格，是最难的重组维度（文化变革周期最长）</p>
+      </div>
+    </div>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 两条路径助记（与第七章联用）</div>
+      <ul class="kl" style="font-size:13.5px">
+        <li><strong>业务重组</strong> = 换业务（RBV：我的能力不变，换个行业去发挥）</li>
+        <li><strong>组织重组</strong> = 换管法（I/O：行业不变，改变我的管理方式）</li>
+      </ul>
+      类比：<strong>业务重组=换岗位，组织重组=换工作方式</strong>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">📝 复试考察重点</div>
+      <p>第七章§2.2与第九章§3.2高度重叠，考试可能出现："结合资源基础观和市场基础观，分析企业战略重组的两种路径"——此类题目需要跨章节整合回答。</p>
+      <p style="margin-top:6px"><strong>答题框架：</strong>① 先说明两种理论视角的核心区别 → ② 分别说明两种重组路径的核心逻辑和手段 → ③ 举案例各一个 → ④ 总结：选择哪种路径取决于问题根源（资源错配还是管理失当）</p>
+    </div>
+  </div>
+</div>
+
+<!-- 9.3.3 财务重组 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">9.3.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">财务重组与杠杆收购（LBO）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 一般</span>
+        <span class="badge badge-page">P294-300</span>
+        <span class="badge badge-exam">名词解释·理解</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 财务重组</div>
+      <p><span class="kw">财务重组</span>是指通过调整企业的资产结构、债务结构和股权结构，以改善企业财务状况、降低财务风险、提升企业价值的战略行为。</p>
+    </div>
+
+    <table class="ctable">
+      <tr>
+        <th>财务重组类型</th>
+        <th>核心操作</th>
+        <th>目的</th>
+      </tr>
+      <tr>
+        <td><span class="kw">债务重组</span></td>
+        <td>债务展期、债转股、债务减免谈判</td>
+        <td>降低短期偿债压力，避免破产</td>
+      </tr>
+      <tr>
+        <td><span class="kw2">股权重组</span></td>
+        <td>股权转让、增发、回购、MBO（管理层收购）</td>
+        <td>优化股权结构，引入战略股东，激励管理层</td>
+      </tr>
+      <tr>
+        <td><span class="kw3">资产重组</span></td>
+        <td>剥离低效资产，注入优质资产，资产置换</td>
+        <td>净化资产负债表，聚焦核心资产</td>
+      </tr>
+    </table>
+
+    <div class="block block-definition">
+      <div class="block-label">📖 杠杆收购（LBO）再解析</div>
+      <p><span class="kw">管理层收购</span>（Management Buyout，<strong>MBO</strong>）：企业管理层借助外部资金，以杠杆方式收购本企业的控股权，成为企业的实际控制人。</p>
+      <p style="margin-top:6px">特点：解决委托代理问题（管理层既是代理人又成为所有人）；高度激励效果；但债务负担重，存在"掏空"企业风险。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     对比总结
+     ════════════════════════════════ -->
+<div class="section-title" id="compare">
+  <span class="sec-num">📊</span>
+  <h2>三种路径对比总结（易混概念）</h2>
+  <span class="page-ref">综合对比</span>
+</div>
+
+<!-- 三路径大比较 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">综合</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略联盟 vs 并购 vs 重组：三路径全面对比</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 复试核心比较题</span>
+        <span class="badge badge-exam">论述·比较分析</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>比较维度</th>
+        <th style="background:#6d28d9">🤝 战略联盟</th>
+        <th style="background:#0ea5e9">🏢 企业并购</th>
+        <th style="background:#059669">♻️ 战略重组</th>
+      </tr>
+      <tr>
+        <td><strong>战略方向</strong></td>
+        <td>外部合作扩张（横向协同）</td>
+        <td>外部兼并扩张（控制获取）</td>
+        <td>内部调整收缩（价值聚焦）</td>
+      </tr>
+      <tr>
+        <td><strong>控制权</strong></td>
+        <td>各方保持独立，控制权有限</td>
+        <td>主并方获得目标企业控制权</td>
+        <td>调整内部业务/组织控制逻辑</td>
+      </tr>
+      <tr>
+        <td><strong>资金投入</strong></td>
+        <td>低（非股权联盟）到中（合资）</td>
+        <td>高（并购溢价+整合成本）</td>
+        <td>中（重组成本+机会成本）</td>
+      </tr>
+      <tr>
+        <td><strong>风险程度</strong></td>
+        <td>中（机会主义/知识泄漏）</td>
+        <td>高（整合失败/溢价风险）</td>
+        <td>中（内部阻力/变革风险）</td>
+      </tr>
+      <tr>
+        <td><strong>灵活性</strong></td>
+        <td>⭐⭐⭐⭐⭐ 高（退出容易）</td>
+        <td>⭐⭐ 低（退出成本高）</td>
+        <td>⭐⭐⭐ 中</td>
+      </tr>
+      <tr>
+        <td><strong>速度</strong></td>
+        <td>快（不需要整合）</td>
+        <td>中（谈判+整合周期长）</td>
+        <td>慢（内部变革阻力大）</td>
+      </tr>
+      <tr>
+        <td><strong>适用场景</strong></td>
+        <td>技术/市场互补；政策限制；高度不确定市场</td>
+        <td>快速进入成熟市场；消灭竞争对手；获取稀缺技术/品牌</td>
+        <td>过度多元化；业绩下滑；战略转型；外部环境剧变</td>
+      </tr>
+      <tr>
+        <td><strong>理论基础</strong></td>
+        <td>交易成本理论；资源基础观</td>
+        <td>市场力量理论；协同效应理论</td>
+        <td>资源基础观（业务重组）；市场基础观（组织重组）</td>
+      </tr>
+      <tr>
+        <td><strong>典型失败风险</strong></td>
+        <td>机会主义；目标冲突；知识泄漏</td>
+        <td>溢价过高；整合失败；文化冲突</td>
+        <td>变革阻力；归核过度；短期动荡</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 三路径选择决策树口诀</div>
+      <ul class="kl" style="font-size:13.5px">
+        <li>需要<strong>资源互补但又不想被绑死</strong> → 联盟（灵活第一）</li>
+        <li>需要<strong>快速获得控制权，有足够资金</strong> → 并购（速度+控制）</li>
+        <li>需要<strong>内部优化、归核聚焦</strong> → 重组（向内聚焦）</li>
+      </ul>
+    </div>
+
+    <details class="foldable">
+      <summary>🎤 复试论述题答题示范：比较三种战略路径</summary>
+      <div class="fold-body">
+        <div class="block block-interview">
+          <div class="block-label">论述题标准答题框架</div>
+          <p><strong>第一段（总起）：</strong>企业在面临外部扩张或内部调整需求时，有三种主要战略路径：战略联盟、企业并购和战略重组。三者各有优劣，适用场景不同，企业应根据战略意图、资源禀赋和环境条件合理选择。</p>
+          <p style="margin-top:8px"><strong>第二段（战略联盟）：</strong>联盟的核心优势是灵活性高、退出成本低、资金投入少，适合需要资源互补但又存在高度不确定性的场景……风险在于机会主义和知识泄漏……</p>
+          <p style="margin-top:8px"><strong>第三段（企业并购）：</strong>并购的核心优势是获得完全控制权，能快速进入市场……风险在于溢价过高和整合困难……</p>
+          <p style="margin-top:8px"><strong>第四段（战略重组）：</strong>重组是向内优化，适合过度多元化或业绩下滑的企业……分业务重组（换业务）和组织重组（换管法）……</p>
+          <p style="margin-top:8px"><strong>第五段（总结）：</strong>三种路径并非互斥，企业可以组合运用（如先联盟→再并购；或并购后发现不合适→重组剥离）。选择逻辑取决于战略目标的紧迫性、控制权需求和风险承受能力。</p>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     历年真题汇总
+     ════════════════════════════════ -->
+<div class="section-title" id="exam">
+  <span class="sec-num">🎯</span>
+  <h2>历年真题汇总 · 2016–2025</h2>
+  <span class="page-ref">中南大学企业管理学硕复试</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">真题</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">本章历年考察记录与解题策略</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 复试必读</span>
+        <span class="badge badge-year">2016–2025 真题整合</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>年份</th>
+        <th>题目</th>
+        <th>题型</th>
+        <th>本章对应知识点</th>
+        <th>难度</th>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2018</span></td>
+        <td>（面试）战略联盟的风险与管控</td>
+        <td>口头表达</td>
+        <td>§1.4 联盟风险；§1.5 治理机制</td>
+        <td>⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2019</span></td>
+        <td>（面试）并购中的人力整合</td>
+        <td>口头表达</td>
+        <td>§2.3 并购过程中的HR整合</td>
+        <td>⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2023</span></td>
+        <td>（笔试）简述战略联盟动机与治理</td>
+        <td>简答题</td>
+        <td>§1.3 六大动机；§1.5 三种治理机制</td>
+        <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2024</span></td>
+        <td>（案例）新能源企业国际化战略与风险管控</td>
+        <td>案例分析</td>
+        <td>§2 并购动机与风险（跨国并购场景）</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">历年面试</span></td>
+        <td>如何评价某企业的并购决策（案例式）</td>
+        <td>口头分析</td>
+        <td>§2.2 并购动机；§2.4 失败原因</td>
+        <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">预测2025+</span></td>
+        <td>企业数字化转型中的战略联盟选择</td>
+        <td>论述/案例</td>
+        <td>§1 联盟动机与类型（数字化生态联盟）</td>
+        <td>⭐⭐⭐⭐</td>
+      </tr>
+    </table>
+
+    <hr class="divider">
+    <strong>教材重要原句汇总（建议默写）：</strong>
+    <div class="quote" style="margin-top:10px">
+      <p>① "战略联盟是指两个或两个以上的企业为了实现特定的战略目标，在保持各自独立性的前提下，通过共同投资、共享资源、共担风险等方式进行的<mark>介于纯市场交易和兼并之间</mark>的合作安排。"</p>
+    </div>
+    <div class="quote" style="margin-top:10px">
+      <p>② "并购活动之所以失败，原因之一在于<mark>被高估的协同效应</mark>——企业在并购前对成本节约和收入增长的预期往往过于乐观，而整合的实际难度则常常被低估。"</p>
+    </div>
+    <div class="quote" style="margin-top:10px">
+      <p>③ "战略重组的两条路径分别基于不同的理论视角：基于<mark>资源基础观</mark>的业务重组稳定管理模式而调整行业组合；基于<mark>市场基础观</mark>的组织重组稳定行业组合而调整管理模式（包括结构、机制和文化）。"</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     终极串联复习
+     ════════════════════════════════ -->
+<div class="chain" id="chain">
+  <h2>🔗 本章终极串联复习</h2>
+  <p class="chain-sub">将本章所有知识点贯穿成一条逻辑链，理解而非死记硬背</p>
+  <div class="chain-flow">
+    <div class="chain-step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">为什么需要外部路径？</div>
+      <div class="step-body">内部成长（新建）太慢、资源不足→企业需要借助外部力量→三条路径：联盟、并购、重组（含退出）</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-title">什么时候选联盟？</div>
+      <div class="step-body">需要互补资源但不愿放弃独立性；市场不确定性高；政策限制并购；优先选联盟（灵活退出）</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-title">什么时候选并购？</div>
+      <div class="step-body">需要完全控制；快速进入；有足够资金和整合能力；关键是防止溢价过高和整合失败</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 04</div>
+      <div class="step-title">什么时候选重组？</div>
+      <div class="step-body">过度扩张→归核化；业绩下滑→聚焦；RBV→业务重组（换业务）；I/O→组织重组（换管法）</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 05</div>
+      <div class="step-title">三路径的共同逻辑</div>
+      <div class="step-body">本质都是调整企业边界（扩大或收缩）；都要解决"价值创造>成本"的核心命题；都以战略目标为起点</div>
+    </div>
+  </div>
+  <div class="chain-summary">
+    <strong>一句话总结：</strong>企业扩张有三把钥匙——<mark style="background:#c4b5fd; color:#1a1033; padding:0 4px; border-radius:3px">战略联盟</mark>（借力灵活合作）、<mark style="background:#7dd3fc; color:#1a1033; padding:0 4px; border-radius:3px">企业并购</mark>（快速获控资源）、<mark style="background:#6ee7b7; color:#1a1033; padding:0 4px; border-radius:3px">战略重组</mark>（向内归核聚焦）；三者各有适用场景，选择标准是：战略目标的紧迫性、对控制权的需求程度和自身的整合能力。理解第九章的核心，就是理解"企业边界的动态调整"。
+  </div>
+</div>
+
+<!-- 与其他章节终极联系 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">跨章</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">第九章与全书的逻辑关系</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 复试综合理解</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="mindmap" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+      <div class="mm-node center">第九章联盟/并购/重组（企业边界动态调整）</div>
+      <div class="mm-node" style="border-color:#6d28d9">
+        <div class="mn-title">← 第七章输入</div>
+        <ul class="mn-items">
+          <li>多元化"方式"中提到联盟和并购</li>
+          <li>重组两路径（RBV/I/O）在第七章已铺垫</li>
+          <li>第九章是第七章方式论的深化展开</li>
+        </ul>
+      </div>
+      <div class="mm-node" style="border-color:#0ea5e9">
+        <div class="mn-title">← 第八章联动</div>
+        <ul class="mn-items">
+          <li>国际化进入方式=合资（联盟）+并购</li>
+          <li>跨国联盟是国际化的重要路径</li>
+          <li>跨国并购有额外的文化和政治风险</li>
+        </ul>
+      </div>
+      <div class="mm-node" style="border-color:#059669">
+        <div class="mn-title">→ 第十章延伸</div>
+        <ul class="mn-items">
+          <li>并购后整合（PMI）是战略实施的核心</li>
+          <li>联盟治理机制是战略实施的重要内容</li>
+          <li>组织重组对战略实施结构设计有影响</li>
+        </ul>
+      </div>
+      <div class="mm-node" style="border-color:#f59e0b">
+        <div class="mn-title">理论基础</div>
+        <ul class="mn-items">
+          <li>交易成本理论→联盟 vs 内部化决策</li>
+          <li>资源基础观→并购获取稀缺资源</li>
+          <li>代理理论→MBO解决委托代理问题</li>
+          <li>协同效应理论→并购价值创造逻辑</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     30秒速记模块
+     ════════════════════════════════ -->
+<div class="quick30" id="quick30">
+  <h2>⚡ 30秒复习模块</h2>
+  <p class="q30-sub">考前最后冲刺——扫一遍，核心点全到位</p>
+  <div class="q30-grid">
+    <div class="q30-item">
+      <div class="q30-title">战略联盟定义</div>
+      两企业以上 · 保持独立性 · 共享资源/风险 · 介于市场与兼并之间
+    </div>
+    <div class="q30-item">
+      <div class="q30-title">联盟四大特征</div>
+      独（立）互（补）共（担风险）战（略导向）
+    </div>
+    <div class="q30-item">
+      <div class="q30-title">联盟六大动机</div>
+      进获分加建学（进入市场/获互补/分风险/加速研发/建标准/学技术）
+    </div>
+    <div class="q30-item">
+      <div class="q30-title">联盟三种治理</div>
+      契约型 · 股权型 · 关系型（股权型约束最强但最不灵活）
+    </div>
+    <div class="q30-item">
+      <div class="q30-title">并购三种类型</div>
+      横（同行）纵（上下游）混（不相关）
+    </div>
+    <div class="q30-item">
+      <div class="q30-title">并购七大动机</div>
+      获克降增重学税（获市场力/克壁垒/降风险/增多元/重竞争/学能力/税优势）
+    </div>
+    <div class="q30-item">
+      <div class="q30-title">并购失败五原因</div>
+      价整文高人（溢价高/整合难/文化冲/协同高估/人才流失）
+    </div>
+    <div class="q30-item">
+      <div class="q30-title">重组两条路径</div>
+      RBV→业务重组（换业务）| I/O→组织重组（换管法：结构/机制/文化）
+    </div>
+    <div class="q30-item">
+      <div class="q30-title">三路径选择逻辑</div>
+      灵活互补→联盟 | 快速控制→并购 | 归核聚焦→重组
+    </div>
+    <div class="q30-item">
+      <div class="q30-title">LBO/MBO定义</div>
+      LBO=杠杆收购（以目标资产抵押举债）| MBO=管理层收购（解决代理问题）
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     背诵版总结
+     ════════════════════════════════ -->
+<div class="recite-box" id="recite">
+  <h2>📝 背诵版总结（复试口述版）</h2>
+  <p class="r-sub">以下每段可作为复试口答的核心段落，建议熟读后用自己的话表达</p>
+
+  <div class="recite-item">
+    <div class="ri-title">1. 战略联盟（一段话版）</div>
+    战略联盟是两个或两个以上企业，在保持各自独立性的前提下，为实现特定战略目标而进行的资源共享、风险共担的合作安排。其四大特征是：独立性、互补性、风险共担和战略导向性。形成战略联盟的动机有六类：进入新市场、获取互补资源、分担风险与成本、加快研发速度、建立行业标准、学习技术能力。治理上有契约型、股权型和关系型三种机制，其中股权型约束力最强，关系型成本最低。联盟成功的关键在于相互信任、资源互补、目标一致和完善的治理结构。
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-title">2. 企业并购（一段话版）</div>
+    企业并购分为横向（同行）、纵向（上下游）和混合（不相关）三类。并购动机包括：获取市场力量、克服进入壁垒、降低开发风险、增加多元化程度、重塑竞争范围、学习提升能力和获取税收优势。并购过程包含战略制定、目标搜索评估、谈判交易、并购后整合四个阶段，其中后整合（PMI）是最难也最关键的。并购失败的五大原因是：支付过高溢价、整合困难、文化冲突、协同效应被高估、关键人才流失。
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-title">3. 战略重组（一段话版）</div>
+    战略重组是企业对业务组合、资产结构或组织形式进行根本性调整的战略行动，主要在过度多元化、业绩下滑或外部环境剧变时触发。重组有两条路径：基于资源基础观的业务重组（稳定管理模式，调整行业组合，手段包括资产剥离、分拆、关闭）；基于市场基础观的组织重组（稳定行业组合，调整管理模式，涵盖结构调整、机制调整和文化变革）。此外还有财务重组，包括债务重组、股权重组和资产重组，管理层收购（MBO）是其中解决委托代理问题的典型工具。
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-title">4. 三路径对比（口述比较版）</div>
+    三种路径各有适用场景：当需要资源互补但又不愿丧失独立性时，选择战略联盟（灵活、低成本、易退出）；当需要快速获得控制权，有足够资金和整合能力时，选择并购（速度快、控制强，但风险高）；当企业过度扩张需要归核聚焦时，选择重组（向内调整、价值聚焦）。三种路径并非互斥，企业可以组合运用，核心是以战略目标为出发点，匹配自身资源能力和风险承受能力。
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     自我检验
+     ════════════════════════════════ -->
+<div class="quiz" id="quiz">
+  <h2>📝 课后自我检验</h2>
+  <p class="quiz-sub">完成以下题目验证掌握程度，建议先合书作答，再展开参考答案</p>
+
+  <div class="q-item">
+    <div class="q-num">Q · 01 — 名词解释</div>
+    <div class="q-text">什么是战略联盟？请说明其核心特征（4点）。</div>
+    <div class="q-hint"><span>参考答案要点：</span>两个或以上企业·保持独立性·共享资源风险·介于市场与兼并之间 → 四特征：独立性/互补性/风险共担/战略导向性</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 02 — 简答</div>
+    <div class="q-exam">【2023笔试真题】</div>
+    <div class="q-text">简述战略联盟的动机与治理机制。</div>
+    <div class="q-hint"><span>关键词：</span>六大动机（进获分加建学）→ 三种治理（契约型/股权型/关系型）→ 成功因素（信任/互补/目标/治理）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 03 — 简答</div>
+    <div class="q-text">战略联盟有哪几种主要类型？股权联盟与非股权联盟有何区别？</div>
+    <div class="q-hint"><span>关键词：</span>非股权（许可/供应/研发协议）vs 股权（相互持股）vs 合资企业（新法人）→ 区别在于控制程度和资本绑定程度</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 04 — 名词解释</div>
+    <div class="q-text">什么是横向并购、纵向并购和混合并购？各适用于什么战略目的？</div>
+    <div class="q-hint"><span>关键词：</span>横（同行·规模/消灭竞争）/ 纵（上下游·控制供应链）/ 混（不相关·多元化/分散风险）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 05 — 简答</div>
+    <div class="q-exam">【2019面试考点】</div>
+    <div class="q-text">企业并购后整合（PMI）中，人力资源整合的主要挑战是什么？</div>
+    <div class="q-hint"><span>关键词：</span>组织结构整合 / 文化整合（最难）/ 关键人才保留 / 薪酬体系统一 → 人才流失是并购失败的重要原因</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 06 — 论述题</div>
+    <div class="q-text">为什么大量企业并购会失败？请从五个维度分析并购失败的原因，并提出提高并购成功率的建议。</div>
+    <div class="q-hint"><span>答题框架：</span>价整文高人（溢价过高/整合困难/文化冲突/协同效应被高估/人才流失）→ 各维度详述 → 建议：严格尽调/保守溢价/专职PMI/文化尊重/关键人才留任计划</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 07 — 比较分析</div>
+    <div class="q-text">战略联盟与企业并购有何本质区别？企业在什么情况下应优先选择联盟而非并购？</div>
+    <div class="q-hint"><span>区别核心：</span>独立性保留/控制权程度/资金投入/退出难度 → 优选联盟条件：不确定性高/政策限制/资金不足/资源互补为主/不需要完全控制</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 08 — 重组专题</div>
+    <div class="q-text">企业进行战略重组有哪两条路径？各基于什么理论视角？请举例说明。</div>
+    <div class="q-hint"><span>关键：</span>RBV→业务重组（换业务：剥离/分拆/关闭）→案例：联想剥离手机业务；I/O→组织重组（换管法：结构/机制/文化）→案例：GE扁平化改造</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 09 — 综合论述</div>
+    <div class="q-exam">【预测2025复试高频题】</div>
+    <div class="q-text">某新能源汽车企业计划进入欧洲市场，分析其应选择战略联盟、并购还是重组路径，并说明理由。</div>
+    <div class="q-hint"><span>分析框架：</span>考察进入欧洲的壁垒（政策/文化/渠道）→ 如有本地合作伙伴且不确定性高→联盟（合资/研发联盟）；如需快速获得品牌/技术且资金充足→并购欧洲车企；如自身过度扩张需要聚焦→先重组再进入。结合案例：吉利收购沃尔沃（并购）vs 比亚迪与欧洲经销商合作（联盟）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 10 — 名词解释</div>
+    <div class="q-text">什么是杠杆收购（LBO）和管理层收购（MBO）？两者有何区别？</div>
+    <div class="q-hint"><span>关键词：</span>LBO=以目标资产抵押举债完成并购（高杠杆高风险）；MBO=管理层收购本企业（解决委托代理问题）→ 区别：MBO是LBO的特殊形式（收购方是管理层本人）</div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<div class="footer-bar">
+  📚 中南大学企业管理学硕复试笔记 · 第九章 战略联盟、并购与重组 · 基于蓝海林《企业战略管理》第2版 · 2016–2025真题整合版
+</div>
+
+<!-- ═══ JavaScript ═══ -->
+<script>
+  // 夜间模式
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+    const btn = document.querySelector('.dark-btn');
+    btn.textContent = document.body.classList.contains('dark') ? '☀️ 白天' : '🌙 夜间';
+    localStorage.setItem('ch9_dark', document.body.classList.contains('dark'));
+  }
+  // 恢复夜间模式
+  if (localStorage.getItem('ch9_dark') === 'true') {
+    document.body.classList.add('dark');
+    document.querySelector('.dark-btn').textContent = '☀️ 白天';
+  }
+
+  // 返回顶部
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('visible', window.scrollY > 400);
+  });
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // 全文搜索 + 高亮
+  let searchMarks = [];
+  let currentIdx = -1;
+
+
+  // Enter键跳转到下一个匹配
+  
+      searchMarks[currentIdx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+</script>
+
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

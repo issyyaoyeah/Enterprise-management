@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人力资源管理 · 自我检测题合集 | 中南大学企业管理复试</title>
+<style>
+:root{--bg:#f8f7f4;--bg2:#ffffff;--bg3:#f0ede8;--card:#ffffff;--border:#e0dbd4;--text:#1a1714;--text2:#4a4541;--text3:#7a7470;--accent:#2563eb;--green:#15803d;--green-bg:#f0fdf4;--green-border:#bbf7d0;--orange:#c2410c;--orange-bg:#fff7ed;--orange-border:#fed7aa;--purple:#7c3aed;--purple-bg:#faf5ff;--purple-border:#e9d5ff;--yellow:#92400e;--yellow-bg:#fffbeb;--yellow-border:#fde68a;--shadow:0 1px 3px rgba(0,0,0,.07),0 4px 12px rgba(0,0,0,.05)}
+body.dark{--bg:#0f0e0c;--bg2:#1a1916;--bg3:#242220;--card:#1e1c1a;--border:#2e2c28;--text:#f0ede8;--text2:#c0bdb8;--text3:#807d78;--accent:#60a5fa;--green:#4ade80;--green-bg:#052e16;--green-border:#14532d;--orange:#fb923c;--orange-bg:#431407;--orange-border:#7c2d12;--purple:#c084fc;--purple-bg:#2e1065;--purple-border:#4c1d95;--yellow:#fbbf24;--yellow-bg:#451a03;--yellow-border:#78350f;--shadow:0 1px 3px rgba(0,0,0,.3),0 4px 12px rgba(0,0,0,.2)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:14px;font-variant-numeric:tabular-nums}
+.prog{position:fixed;top:56px;left:0;z-index:99;height:2px;background:var(--accent);width:0%;transition:width .1s}
+.hdr{position:sticky;top:0;z-index:100;background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16px;display:flex;align-items:center;gap:10px;height:56px;box-shadow:var(--shadow)}
+.hdr h1{font-size:14px;font-weight:700;color:var(--text);flex:1;white-space:nowrap}
+.hdr h1 span{color:var(--accent)}
+.nav-chs{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none}
+.nav-chs::-webkit-scrollbar{display:none}
+.nb{padding:3px 8px;border-radius:20px;font-size:11.5px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;white-space:nowrap;transition:all .15s;font-family:inherit}
+.nb:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.dbtn{padding:5px 10px;border-radius:20px;font-size:12px;border:1px solid var(--border);background:var(--bg3);color:var(--text2);cursor:pointer;font-family:inherit;transition:all .15s}
+.hero{background:linear-gradient(135deg,#1e40af 0%,#3730a3 50%,#5b21b6 100%);color:#fff;text-align:center;padding:36px 24px 32px}
+.hero h2{font-size:20px;font-weight:800;margin-bottom:8px}
+.hero p{font-size:13px;opacity:.85;max-width:600px;margin:0 auto 18px}
+.hero-meta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px 12px;font-size:11.5px}
+.stats{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.si{text-align:center}.sn{font-size:18px;font-weight:800;color:var(--accent)}.sl{font-size:11px;color:var(--text3)}
+main{max-width:900px;margin:0 auto;padding:24px 16px 80px}
+.vtabs{max-width:900px;margin:0 auto;padding:16px 16px 0;display:flex;gap:6px}
+.vt{padding:7px 18px;border-radius:8px 8px 0 0;border:1px solid var(--border);border-bottom:none;font-size:12.5px;font-weight:600;cursor:pointer;background:var(--bg3);color:var(--text2);transition:all .15s;font-family:inherit}
+.vt.active{background:var(--card);color:var(--accent);border-bottom:1px solid var(--card);margin-bottom:-1px;z-index:1}
+.tc{display:none}.tc.active{display:block}
+.cb{margin-bottom:40px;scroll-margin-top:66px}
+.cht{display:flex;align-items:center;gap:10px;padding:12px 18px;border-radius:12px 12px 0 0;background:linear-gradient(90deg,var(--accent) 0%,var(--purple) 100%);color:#fff}
+.chn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.chname{font-size:15px;font-weight:700}.chmeta{font-size:11.5px;opacity:.8;margin-top:1px}
+.chcount{margin-left:auto;background:rgba(255,255,255,.2);padding:2px 10px;border-radius:12px;font-size:11.5px}
+.chbody{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:6px 0}
+.tsh{padding:10px 18px 6px;display:flex;align-items:center;gap:8px}
+.tbg{padding:2px 9px;border-radius:6px;font-size:10.5px;font-weight:700}
+.tbt{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+.tbe{background:var(--orange-bg);color:var(--orange);border:1px solid var(--orange-border)}
+.tbp{background:var(--green-bg);color:var(--green);border:1px solid var(--green-border)}
+.q{margin:4px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:box-shadow .15s}
+.q:hover{box-shadow:var(--shadow)}
+.qh{display:flex;align-items:flex-start;gap:10px;padding:11px 14px;cursor:pointer;user-select:none}
+.qsn{width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;flex-shrink:0;margin-top:1px}
+.qt{flex:1;font-size:13px;color:var(--text);font-weight:500;line-height:1.6}
+.qb{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
+.badge{font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600}
+.by{background:var(--yellow-bg);color:var(--yellow);border:1px solid var(--yellow-border)}
+.bt{background:var(--purple-bg);color:var(--purple);border:1px solid var(--purple-border)}
+.qtg{font-size:16px;color:var(--text3);transition:transform .2s;flex-shrink:0;margin-top:2px}
+.ap{display:none;border-top:1px solid var(--border);padding:12px 14px;background:var(--bg2)}
+.ap.open{display:block}
+.al{font-size:10.5px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:7px}
+.ac{font-size:12.5px;color:var(--text2);line-height:1.8}
+.ac p{margin-bottom:5px}.ac strong{color:var(--text)}
+.cs{max-width:900px;margin:0 auto;padding:0 16px 80px}
+.ctitle{font-size:17px;font-weight:800;color:var(--text);padding:18px 0 10px;border-bottom:2px solid var(--accent);margin-bottom:18px}
+.cblk{margin-bottom:28px}
+.cchl{font-size:12.5px;font-weight:700;color:var(--accent);padding:7px 12px;background:var(--bg3);border-radius:8px;margin-bottom:8px}
+.cq{display:flex;gap:8px;padding:8px 12px;border:1px solid var(--border);border-radius:8px;margin-bottom:5px;background:var(--card)}
+.cqn{font-size:10.5px;font-weight:800;color:var(--accent);min-width:36px;padding-top:1px}
+.cqt{font-size:12.5px;color:var(--text2);line-height:1.6;flex:1}
+footer{text-align:center;padding:20px;font-size:11.5px;color:var(--text3);border-top:1px solid var(--border)}
+#btt{position:fixed;bottom:84px;right:18px;z-index:90;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:0 2px 8px rgba(0,0,0,.2);display:none;align-items:center;justify-content:center;transition:transform .15s;font-family:inherit}
+#btt:hover{transform:translateY(-3px)}
+#btt.show{display:flex}
+#strig{position:fixed;bottom:32px;right:18px;z-index:90;width:40px;height:40px;border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:17px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:background .15s}
+#strig:hover{background:#334155}
+#spill{position:fixed;bottom:32px;right:14px;z-index:91;display:none;align-items:center;gap:5px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;padding:7px 12px 7px 10px;box-shadow:0 6px 20px rgba(0,0,0,.4);font-size:13.5px;min-width:290px;max-width:420px;font-family:"Microsoft YaHei",sans-serif}
+#spin{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;font-size:13.5px;font-family:inherit;min-width:0}
+#spin::placeholder{color:rgba(248,250,252,.4)}
+#scnt{color:#94a3b8;font-size:11.5px;white-space:nowrap;flex-shrink:0;min-width:55px;text-align:center}
+#spill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#f8fafc;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:inherit}
+#spill button:hover{background:rgba(255,255,255,.22)}
+mark.sh{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px}
+mark.sh.sc{background:#f97316;color:#fff;outline:2px solid #fb923c}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<header class="hdr">
+  <h1>📚 《人力资源管理》<span>自我检测题合集</span></h1>
+  <nav class="nav-chs">
+    <button class="nb" onclick="goC(1)">第1章</button><button class="nb" onclick="goC(2)">第2章</button><button class="nb" onclick="goC(3)">第3章</button><button class="nb" onclick="goC(4)">第4章</button><button class="nb" onclick="goC(5)">第5章</button><button class="nb" onclick="goC(6)">第6章</button><button class="nb" onclick="goC(7)">第7章</button><button class="nb" onclick="goC(8)">第8章</button><button class="nb" onclick="goC(9)">第9章</button><button class="nb" onclick="goC(10)">第10章</button><button class="nb" onclick="goC(11)">第11章</button><button class="nb" onclick="goC(12)">第12章</button><button class="nb" onclick="goC(13)">第13章</button><button class="nb" onclick="goC(14)">第14章</button>
+  </nav>
+  <button class="dbtn" onclick="dark()" id="dbtn">🌙</button>
+</header>
+<div class="hero">
+  <h2>人力资源管理（第3版）· 自我检测题合集</h2>
+  <p>颜爱民著 · 北京大学出版社 · 中南大学企业管理学硕（120202）复试备考专用</p>
+  <div class="hero-meta">
+    <span class="htag">📖 第1–14章全覆盖</span>
+    <span class="htag">🎯 整合2016–2025真题</span>
+    <span class="htag">🔮 含2026预测题</span>
+    <span class="htag">📅 生成日期：2026-03-14</span>
+  </div>
+</div>
+<div class="stats">
+  <div class="si"><div class="sn">14</div><div class="sl">章节</div></div>
+  <div class="si"><div class="sn">115+</div><div class="sl">题目总计</div></div>
+  <div class="si"><div class="sn">3类</div><div class="sl">教材/真题/预测</div></div>
+  <div class="si"><div class="sn">3月27日</div><div class="sl">笔试倒计时</div></div>
+</div>
+<div class="vtabs">
+  <button class="vt active" onclick="stab('ch')">📖 按章节版</button>
+  <button class="vt" onclick="stab('cn')">🔢 连续编号版</button>
+</div>
+<div class="tc active" id="tc-ch"><main>
+
+<!-- helper macro as shell function: write question -->
+<!-- CH1 -->
+<div class="cb" id="ch1">
+<div class="cht"><div class="chn">1</div><div><div class="chname">人力资源管理概述</div><div class="chmeta">P003–P035 · 定义·特征·渊源·演变·发展趋势</div></div><div class="chcount">9题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材思考题</span></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">什么是人力资源？它具有哪些主要特征（五大特征）？<div class="qb"><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p><strong>人力资源</strong>是指具有劳动能力（体力和脑力）、能够从事生产活动的劳动人口的总和。</p><p><strong>五大特征（口诀"生再能两社"）：</strong>①生物性（有生命的活资源）；②再生性（可再生，受意识支配）；③能动性（生产力中最活跃的因素）；④两重性（既是投资主体又是投资目标）；⑤社会性（人的本质是一切社会关系的总和——马克思）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">人力资源管理的定义是什么？它具有哪些主要特征（六大特征）？<div class="qb"><span class="badge bt">名词解释</span><span class="badge by">2016·2022高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p><strong>定义（教材原句P015）：</strong>人力资源管理就是组织为了实现其目标而<strong>获取、配置、开发和使用</strong>人力资源的各项活动。</p><p><strong>六大特征（口诀"系时联二文创"）：</strong>①系统性；②时代性；③联动性；④二重性（科学性+艺术性）；⑤文化亲缘性（最具文化特色，照搬会失败）；⑥创新性。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">简述西方人力资源管理的主要渊源（四大渊源）<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①<strong>科学管理（泰勒1911）</strong>：最早HR职能部门、绩效考核雏形；②<strong>霍桑实验（梅奥1924-1932）</strong>："社会人"理论，社会心理因素>经济因素；③<strong>工业心理学（孟斯特伯格1912）</strong>：奠定行为科学基础；④<strong>激励理论（马斯洛等）</strong>：揭示行为内在机理。彼得·德鲁克1946年系统提出"人力资源"概念。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">人事管理与人力资源管理有何本质区别？<div class="qb"><span class="badge bt">对比论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点（斯托瑞1992年分析，六维度）</div><div class="ac"><p>①人的观念：PM视人为成本，HRM视人为战略资源；②时间取向：PM短期操作性，HRM长期战略性；③决策层次：PM执行层，HRM战略层；④负责主体：PM专职人事部门，HRM全体管理者+HR部门；⑤员工关系：PM对立，HRM合作伙伴；⑥培训观念：PM培训是成本，HRM培训是投资。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbe">历年真题</span></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">【2016/2017/2022复试】简述HRM六大特征，重点解释"文化亲缘性"<div class="qb"><span class="badge by">2016·2017·2022</span><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>（见题2）重点："人力资源管理最具文化亲缘性，同时也最具创新难度。"（教材P013）人的思想受文化传统制约，不同文化背景下HRM差异巨大。案例：日本终身雇用制是儒家文化产物，直接移植美国则失败。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">【2019/2021复试】论述中国人力资源管理的主要特征<div class="qb"><span class="badge by">2019·2021</span><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①政府主导，劳动力市场有待完善；②制度管理向柔性管理过渡；③以能力为导向替代以工作为导向；④培训开发成为热点；⑤文化与HRM协同（儒家文化影响深远）。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbp">预测题</span></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">【预测】人力资源管理的发展趋势？结合数字化背景分析。<div class="qb"><span class="badge bt">论述</span><span class="badge by">★★★★★</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>教材六大趋势：①职能层次提升（战略化）；②范围全球化；③从个人到团队管理；④知识型员工/人才管理；⑤信息化（e-HRM）；⑥循证HRM。结合数字化：AI辅助招聘、大数据人才分析、HRBP模式兴起、数字化学习平台、远程工作重塑劳动关系。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【预测】什么是HRBP三支柱模型（HRBP/COE/SSC）？<div class="qb"><span class="badge bt">名词解释</span><span class="badge by">★★★★</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>大卫·尤里奇提出：①<strong>HRBP（Business Partner）</strong>：嵌入业务部门，将HR理念转化为业务解决方案；②<strong>COE（Center of Excellence）</strong>：专家中心，设计HR专业政策和工具；③<strong>SSC（Shared Service Center）</strong>：共享服务中心，处理标准化HR事务。意义：将HR从行政事务升级为战略伙伴。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">9</div><div class="qt">【预测】为什么说人力资源是企业"最特殊的资产"？（德鲁克观点）<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①人力资源具有能动性，能主动思考创造；②人力资本所有权永远归承载者，企业无法占有；③人力资源是所有生产要素的结合者（联动性）；④人才流失不可复制，有路径依赖；⑤知识型员工价值远超有形资产（微软2001年案例：人力资本价值2960亿 vs 固定+品牌资本600亿）。</p></div></div></div>
+
+</div></div><!-- end ch1 -->
+
+<!-- CH2 -->
+<div class="cb" id="ch2">
+<div class="cht"><div class="chn">2</div><div><div class="chname">人力资源相关经济理论</div><div class="chmeta">P036–066 · 劳动经济学·人力资本·委托-代理理论</div></div><div class="chcount">8题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材思考题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">劳动经济学五大流派各自的核心主张？对HRM有何贡献？<div class="qb"><span class="badge bt">简答</span><span class="badge by">超高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>口诀"古制凯·新古新制"：①<strong>古典学派</strong>（斯密/李嘉图）：市场竞争决定工资；②<strong>制度学派</strong>（埃里）：工会等社会组织影响市场；③<strong>凯恩斯学派</strong>：有效需求不足→失业，政府干预；④<strong>新古典学派</strong>（马歇尔，当代主流）：边际生产力决定工资；⑤<strong>新制度学派</strong>（多林格尔等）：二元劳动力市场、内部劳动力市场，对HRM政策指导最强。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">简述六大工资理论，并说明效率工资理论的三大假设。<div class="qb"><span class="badge bt">简答/名词解释</span><span class="badge by">2020·2025</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>口诀"早边均·谈效分"：①早期工资论；②边际生产力工资理论（克拉克）；③均衡工资理论（马歇尔）；④劳资谈判理论；⑤<strong>效率工资理论</strong>（高薪→效率提升→单位有效成本反而下降）；⑥分享经济理论（威茨曼1984）。效率工资三假设：①无激励则工人偷懒；②有效监督需成本；③劳动生产率取决于工资率。经典案例：1914年福特"5美元一天"。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">什么是人力资本？人力资本理论的创立有何意义？（舒尔茨·贝克尔）<div class="qb"><span class="badge bt">名词解释/论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p><strong>定义（舒尔茨）：</strong>体现在劳动者身上，通过投资形成的，由劳动者的健康、体力、知识、经验和技能所构成的资本存量。诞生标志：1960年舒尔茨《人力资本投资》演讲；1964年贝克尔《人力资本》最终确立。三含义：①不是指人本身而是质量因素；②具有经济价值的生产能力；③靠后天投入获得。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">什么是委托-代理理论？代理成本的产生原因是什么？如何设计激励相容机制？<div class="qb"><span class="badge bt">名词解释/论述</span><span class="badge by">高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>委托-代理理论源自两权分离：所有者（委托人）与经营者（代理人）因信息不对称产生利益冲突。代理成本 = 监督成本+担保成本+剩余损失。激励相容：设计激励机制使代理人利益最大化的行为恰好符合委托人目标。主要手段：股权激励（最优方案）、声誉模型（Fama）、棘轮效应管理。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbe">历年真题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">【2018笔试·PESTEL】劳动力市场因素如何影响企业人力资源战略决策？<div class="qb"><span class="badge by">2018笔试</span><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>PESTEL中L因素：①供给弹性（老龄化→人力短缺）；②工资水平（最低工资法→成本压力）；③二元市场（正式vs灵活用工选择）；④技能结构变化（数字化带来新岗位需求）。对HRM战略影响：招聘策略、薪酬定价、培训投资。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">【2022复试·RBV】为什么说人力资源可以成为企业持续竞争优势的来源？<div class="qb"><span class="badge by">2022复试</span><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点（VRIN四条件）</div><div class="ac"><p>①价值性（V）：优秀员工降低成本推动创新；②稀缺性（R）：高素质人才服从正态分布，顶尖人才永远稀缺；③难以模仿（I）：路径依赖+因果模糊（黑箱效应）；④难以替代（N）：人的学习能力使价值可迁移。微软2001：人力资本价值2960亿美元。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbp">预测题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">【预测】人力资本产权的三大特性是什么？对薪酬激励设计有何启示？<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>三特性：①排他性（所有权永归承载者）；②不可分割性（与人身不可分离）；③所有权制约性（可"用脚投票"）。薪酬启示：提供市场竞争力薪酬；长期激励（股权）绑定人才；提供成长空间；公平感知管理。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【预测】分割的二元劳动力市场理论对我国劳务派遣问题有何解释意义？<div class="qb"><span class="badge bt">论述/案例</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>多林格尔和帕尔勒（1971）：主要市场（高薪/稳定/有晋升通道）vs次要市场（低薪/不稳定/随意解雇）。正式员工=主要市场；派遣制员工=次要市场→同工不同酬，缺乏身份认同和心理契约。对策：建立内部晋升通道；关注心理契约管理；完善集体谈判。</p></div></div></div>
+</div></div>
+
+<!-- CH3 -->
+<div class="cb" id="ch3">
+<div class="cht"><div class="chn">3</div><div><div class="chname">组织与人力资源管理</div><div class="chmeta">P069–P130 · 人性理论·个体特征·群体行为·组织结构</div></div><div class="chcount">8题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材思考题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">西方人性假设经历了哪四个阶段？各阶段对应的HRM方式有何不同？<div class="qb"><span class="badge bt">简答/论述</span><span class="badge by">高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①<strong>经济人（X理论）</strong>：泰勒/麦格雷戈—严格控制奖惩分明；②<strong>社会人</strong>：梅奥/霍桑—关注人际关系；③<strong>自动人/自我实现人（Y理论）</strong>：马斯洛/阿吉里斯—工作丰富化、赋权；④<strong>复杂人（超Y理论）</strong>：薛恩—权变管理、个性化激励。教材立场：人性可塑论——"管理不仅是对人性的适应过程，而且是对人性的塑造过程。"</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">中国传统人性论（性善论/性恶论/可塑论）与西方人性假设的对应关系？<div class="qb"><span class="badge bt">对比/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①<strong>性善论（孟子）</strong>→类似Y理论：仁政式管理；②<strong>性恶论（荀子）</strong>→类似X理论：严格制度管理；③<strong>可塑论（张载/理学）</strong>→类似复杂人：人性可善可恶，关键在塑造——教材推崇此观点。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">什么是胜任力（Competency）？胜任力模型的三层次？如何构建？<div class="qb"><span class="badge bt">名词解释/简答</span><span class="badge by">历年高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p><strong>定义（Spencer夫妇）：</strong>能将某一工作中有卓越成就者与表现平平者区分开来的个人潜在特征。三层次（口诀"必差战"）：①必要胜任力（可培训）；②差异胜任力（区分优秀与一般，难培训）；③战略胜任力（企业核心竞争力）。构建六步：确定效标→选取效标样本→收集数据（BEI）→分析数据（胜任力词典）→建立模型→验证模型。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">什么是心理契约？心理契约违背对员工行为有何影响？<div class="qb"><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p><strong>定义（卢梭1989）：</strong>员工与雇主之间关于双方相互期望和义务的一套内隐的、非正式的、未书面化的主观信念体系。两类型：交易型（短期经济交换）vs关系型（长期情感投入）。违背后果：降低工作投入；减少组织公民行为；增加离职意向；信任崩塌。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbe">历年真题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">【历年真题】简述胜任力模型的构建流程（6步骤）<div class="qb"><span class="badge by">历年考查</span><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①确定效标（绩效衡量标准）→②选取效标样本（优秀+普通绩效组各一组）→③收集数据（BEI行为事件访谈/问卷/专家小组）→④分析数据（建立胜任力词典）→⑤建立模型（确定胜任力项目和层次）→⑥验证模型（新样本验证有效性）。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbp">预测题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">【预测】工作压力倒U型曲线理论的内容及对员工管理的启示<div class="qb"><span class="badge bt">简答</span><span class="badge by">★★★</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>工作压力与绩效之间存在倒U型关系（叶克斯-多德森定律）：压力过低→动力不足；压力适中→绩效最高；压力过高→焦虑崩溃。启示：设置适度挑战性目标（SMART原则）；识别员工压力状态适时调整；提供充足资源支持；关注员工心理健康（EAP员工援助计划）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">【预测】比较机械式与有机式组织结构，说明各自适用的HRM策略<div class="qb"><span class="badge bt">对比/论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p><strong>机械式（官僚结构）：</strong>高度分工/规章严格/集权→适用稳定环境→HRM：制度管理/绩效标准化/技能为主胜任力；<strong>有机式（柔性结构）：</strong>分权/灵活/横向沟通→适用动态环境→HRM：赋权授权/团队激励/强调创新胜任力。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【预测】知觉偏差有哪些类型？如何在招聘与绩效评估中减少知觉偏差？<div class="qb"><span class="badge bt">简答/案例</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>五类：①晕轮效应（以偏概全）；②首因效应（第一印象）；③近因效应；④投射效应；⑤刻板印象。减少措施：①建立结构化面试（标准问题+评分）；②使用客观测评工具（PAQ/心理测试）；③培训面试官识别偏差；④360度评价分散偏差；⑤绩效使用BARS行为锚定法。</p></div></div></div>
+</div></div>
+
+<!-- CH4 -->
+<div class="cb" id="ch4">
+<div class="cht"><div class="chn">4</div><div><div class="chname">文化与人力资源管理</div><div class="chmeta">P099–P121 · 文化内涵·作用机理·儒道法兵·转型期特征</div></div><div class="chcount">9题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材课后自我检验</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">请给出"文化"的广义和狭义定义，本书采用哪种定义及原因。<div class="qb"><span class="badge bt">名词解释</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">参考答案要点</div><div class="ac"><p>广义：人类创造的物质文明和精神文明的总和。<strong>狭义（本书采用）：</strong>群体成员共同认同和拥有的整套思想理念、信仰、风俗习惯、价值观取向和行为模式。原因：便于分析文化对人行为的影响，避免过于宽泛。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">简述霍尔文化冰山模型，并说明对企业文化建设的启示。<div class="qb"><span class="badge bt">简答</span><span class="badge by">高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">参考答案要点</div><div class="ac"><p>公开文化（水面以上，可见：语言/风俗/制度，约10%）；隐蔽文化（水面以下，不可见：价值观/信念/思维方式/基本假设，约90%，最难改变）。启示：企业文化建设不能只做"面子工程"，必须触及深层价值观和基本假设，才能真正影响员工行为。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">比较分析法律、道德和文化对人的行为约束方式有何异同。<div class="qb"><span class="badge bt">对比</span><span class="badge by">2018改编·面试高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">参考答案要点</div><div class="ac"><p>①法律（刚）：有明确边界，惩罚性，依靠国家强制力；②道德（中）：舆论约束，义务性，依靠社会认同；③文化（柔）：无界限，超越法律，心灵调控，最广泛最深远。厉以宁："道德是最古老的调节方式。"文化超越法律的功能在于其无限延展性和心灵深处的调控作用。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">简述儒家"仁义礼智信"五常在现代人力资源管理中的体现与应用。<div class="qb"><span class="badge bt">简答</span><span class="badge by">面试高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">参考答案要点</div><div class="ac"><p>①仁→以人为本/员工关怀；②义→见利思义/企业社会责任；③礼→制度规范/组织秩序；④智→知人善任/胜任力模型；⑤信→心理契约/诚信文化降低交易成本。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">简述道家"无为而治"思想及其在现代企业管理中的应用。<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">参考答案要点</div><div class="ac"><p>无为≠消极不作为，而是遵循规律、顺势而为、减少人为干预。松下幸之助"顺应自然法则"体现此思想。现代应用：充分授权/文化软管理/自组织团队/工作特征模型（赋予工作自主性）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">简述《孙子兵法》中的三大用人原则及其对现代HRM的启示。<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">参考答案要点</div><div class="ac"><p>①修道保法（视卒如爱子→以人为本）；②求之于势不责于人（因势利导/用人之长/岗位匹配）；③令之以文齐之以武（激励与约束并举·文化+制度）。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbp">预测题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">【2025年改编·案例】数字化转型失败，员工抵制变革——结合文化理论分析原因并提出HRM建议<div class="qb"><span class="badge bt">案例论述</span><span class="badge by">★★★★★</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">分析框架</div><div class="ac"><p>原因：①文化运行惯性（冰山模型：触及隐蔽文化）；②文化对行为影响的非理性；③转型期文化障碍（工业经济文化惯性）。建议：①儒家"信"（透明沟通建立信任）；②道家"顺势"（渐进式变革非强推）；③法家"赏罚"（激励先行，正强化推进）；④领导以身作则（"仁"，树立数字化转型榜样）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">论述中国转型时期文化的特殊性及其对人力资源管理的主要影响。<div class="qb"><span class="badge bt">论述</span><span class="badge by">★★★★</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题结构</div><div class="ac"><p>①三种经济模式并存→组合文化特征·非均衡；②三大HRM特征：价值多元化（激励难度增加）/文化障碍/结构性矛盾（简单劳力过剩+高技人才短缺）；③必须构建本土化HRM，不能照搬西方。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">9</div><div class="qt">【预测】文化与HRM的关系？为什么"研究我国HRM不能脱离我国的文化背景"？<div class="qb"><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">关键论点</div><div class="ac"><p>①文化是HRM的底层背景，决定激励方式/组织设计/领导风格的适用性；②文化情景性→西方HRM模型移植困难（中国集体主义 vs 美国个人主义）；③三种文化并存→HRM独特挑战；④必须构建本土化HRM：以儒道法兵传统文化为资源，结合现代管理科学。</p></div></div></div>
+</div></div>
+
+<!-- CH5 -->
+<div class="cb" id="ch5">
+<div class="cht"><div class="chn">5</div><div><div class="chname">人力资源规划</div><div class="chmeta">P125–155 · 战略作用·供需预测·供需平衡·HRMIS</div></div><div class="chcount">8题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材思考题 / 自我检测</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">什么是人力资源规划（广义）？<div class="qb"><span class="badge bt">名词解释</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">教材原句</div><div class="ac"><p>企业根据自身的发展战略、目标及内外环境的变化，预测未来企业任务及环境对企业人力资源的要求，以确保企业在<strong>恰当的时间、恰当的岗位</strong>上获得需要的人才的过程。必背原句："人力资源规划正是架设在更广泛的企业战略与具体人力资源活动之间的一座桥梁。"</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">简述人力资源规划的战略作用（五个层面）<div class="qb"><span class="badge bt">简答</span><span class="badge by">2019·2023</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点（口诀"环企部量动"）</div><div class="ac"><p>①环境层面：直接影响生产安全、劳动法规，间接影响财务指标；②企业层面：影响企业结构、文化、利润，HR经理是业务伙伴；③HR管理部门层面：将整体目标转化为部门具体活动目标；④人力资源数量层面：做供需预测，实现适宜人员在适宜岗位；⑤具体HR活动层面：落地为特定HR管理实践。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">简述德尔菲法的基本内容与适用场景<div class="qb"><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>德尔菲法（专家预测法）由美国兰德公司40年代末发展，要求相关领域专家<strong>匿名</strong>预测，多轮反馈最终达成一致意见。适用场景：技术型企业的长期预测；没有历史数据的企业；需把握技术趋势的预测。优：避免权威效应、集思广益；缺：耗时，有主观性。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">简述马尔科夫转移矩阵法的原理与步骤<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>根据历史资料计算不同职类/职层员工流动的平均概率，建立人员变动矩阵。步骤：①计算各职类间流动概率（含留任/晋升/降职/离职）→②建立转移概率矩阵→③期初各类人员数量×相应概率→④纵向相加得期末净供给量。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">当企业出现人力资源过剩时，应采取哪些调整措施？结合案例说明<div class="qb"><span class="badge bt">论述/案例</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>速度快影响大：①永久性裁减；②关闭不盈利分厂；③鼓励提前退休。速度慢影响小：④对富余员工实施培训；⑤减少工作时间/两人分担一岗；⑥冻结招聘（最温和）。案例：高点汽车经销公司销售下降30%，采用"关闭3处展示厅+冻结招聘+鼓励提前退休"组合策略。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">HRP与企业生命周期的关系是什么？<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①婴儿期：质量>数量；②成长期：数量>质量，大量扩充；③竞争淘汰期：聚焦关键部门，严格控制人工成本；④成熟期：质量与数量并重，控制风险；⑤衰退期：合理减员，保留核心骨干。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">什么是HRMIS？其主要作用是什么？<div class="qb"><span class="badge bt">名词解释</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>人力资源管理信息系统是MIS的子系统，将信息技术与HR管理技术结合，实现人力资源信息化管理。三大作用：①提高工作效率（使HR从行政事务中解脱）；②增强员工公平感与认同感；③支撑HR战略规划（数据集中管理与共享）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【预测】数字化背景下，企业人力资源规划面临哪些新挑战与机遇？<div class="qb"><span class="badge bt">论述</span><span class="badge by">★★★★</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题框架</div><div class="ac"><p>挑战：①人才需求快速变化；②自动化导致结构性失衡；③远程办公改变供给格局；④数据隐私和安全要求提高。机遇：①大数据/AI使预测精准化；②HRMIS实现实时人才盘点；③人才画像技术提升招聘效率；④HRBP模式使HR与业务战略深度融合。</p></div></div></div>
+</div></div>
+
+<!-- CH6 -->
+<div class="cb" id="ch6">
+<div class="cht"><div class="chn">6</div><div><div class="chname">工作分析</div><div class="chmeta">P160–198 · 6W1H框架·分析方法·工作说明书·工作设计</div></div><div class="chcount">9题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材课后自我检测</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">什么是工作分析？其主要成果是什么？（6W1H框架）<div class="qb"><span class="badge bt">名词解释</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>对组织中各类工作进行系统分析和研究，以确定每一种工作的内容、职责与权限、工作条件和任职资格，并形成工作说明书的过程。内容框架6W1H：What/Who/Where/When/Why/For Whom/How。两大成果：①工作描述（针对岗位本身）；②工作规范（针对任职者资格）→合并为工作说明书。必背原句："工作分析是组织人力资源规划和其他一切人力资源管理活动的基础。"（P162）</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">简述工作分析的主要作用（至少5点）<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点（口诀"规招绩薪培汇目价"）</div><div class="ac"><p>①为HR规划提供依据；②为招聘选拔提供任职标准；③为绩效管理提供评估标准；④为薪酬管理提供岗位价值基础；⑤为培训开发确定需求；⑥明确汇报关系；⑦明确设岗目的；⑧体现公平性原则。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">比较工作描述与工作规范的区别，二者如何构成工作说明书。<div class="qb"><span class="badge bt">对比题</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>工作描述：针对岗位本身，描述工作内容/职责权限/工作条件和环境；工作规范：针对任职者，包括所需知识/技能/能力/教育背景/经验。两者合并即形成工作说明书，是工作分析最重要的成果文件。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">比较工作扩大化与工作丰富化的区别，分别举例说明。<div class="qb"><span class="badge bt">对比题</span><span class="badge by">历年高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>工作扩大化（横向）：增加同级别同类型的工作任务数量，增加多样性，不改变权责层级；赫茨伯格分析属保健因素。例：工人从装配一个零件到同时装配三个。工作丰富化（纵向）：增加工作自主权/责任感/成就感，赋予更多决策权；属激励因素。例：程序员不仅写代码，还负责需求分析和项目管理。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">简述工作分析的流程（4个阶段）及各阶段的主要任务。<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①前期准备：明确目的/培训人员/制定时间计划；②调查阶段：现场观察+访谈+问卷；③分析汇总：整理归纳核实数据，起草工作说明书；④完成阶段：起草→对比→修正→合并→评述，形成最终工作说明书。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">什么是工作规范？它与工作描述有何区别？<div class="qb"><span class="badge bt">名词解释</span><span class="badge by">2023真题</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>工作规范是关于任职者资格的文件，包括完成工作所需的知识/技能/能力/教育背景/工作经验等。区别：工作描述关注岗位本身（做什么/在哪做/怎么做），工作规范关注任职者（需要什么人）。两者合并=工作说明书。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">什么是PAQ（职位分析问卷法）？其优点和局限性是什么？<div class="qb"><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>PAQ（Position Analysis Questionnaire）由麦考密克等1972年开发，含194个问题，分6个维度，13个总体维度。优：通用性强，适合划分工作族和确定薪酬，计算机评分便捷；缺：复杂难填，工作特征被抽象化，不适用于高度专业化岗位。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【2025预测】数字化时代，工作分析面临哪些新挑战？如何进行"动态工作分析"？<div class="qb"><span class="badge bt">论述</span><span class="badge by">★★★★★</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题框架</div><div class="ac"><p>①传统工作分析局限（静态、定期更新滞后）→②数字化挑战（岗位内容快速变化/远程工作/平台经济岗位边界模糊）→③动态工作分析应对（持续监测/敏捷更新/大数据分析/胜任力模型替代传统岗位描述）→④结合HRBP实践。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">9</div><div class="qt">【教材原案例】T公司招聘维修工程师失败的根本原因及改进方案<div class="qb"><span class="badge bt">案例分析</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题框架</div><div class="ac"><p>根本原因：没有进行工作分析，广告条件（学历/工龄/英语）与岗位实际需求（核心技能）脱节。改进：①先做工作分析（观察法+访谈法）→②撰写工作描述（核心职责）+工作规范（具体技能要求）→③依据工作说明书设计招聘广告和笔试/操作题。</p></div></div></div>
+</div></div>
+
+<!-- CH7 -->
+<div class="cb" id="ch7">
+<div class="cht"><div class="chn">7</div><div><div class="chname">员工招聘</div><div class="chmeta">P199–235 · 招聘概述·渠道选择·选拔录用·评价中心</div></div><div class="chcount">6题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材课后题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">对应聘者进行初步筛选的方法有哪些？各有何特点？<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①简历筛选：低成本快速，但主观性强；②求职申请表：标准化便于比较，但可造假；③初步面试（电话/视频）：可评估沟通能力；④背景调查（初步）：核实基本信息。筛选标准来源于工作规范（任职资格）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">试比较招聘的内部来源和外部来源的优、缺点。<div class="qb"><span class="badge bt">对比题</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>内部来源（晋升/轮换/公告）：优—激励现有员工/了解深度高/成本低/适应期短；缺—近亲繁殖/阻碍新鲜血液/引起内部竞争。外部来源（校园/猎头/网络/人才市场）：优—带来新思路/人员选择面广；缺—成本高/了解有限/适应期长。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">简述面试的基本步骤及技巧。<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>步骤：①做好面试前准备（工作说明书+问题清单）→②建立良好氛围（开场暖场）→③提问与聆听→④记录与评估→⑤结束（说明后续流程）。关键技巧：使用行为描述面试（BDI）+"STAR"法（情境/任务/行动/结果）评估实际能力；结构化面试降低主观偏差。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbe">历年真题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">【2021笔试】简述招聘渠道选择与效果评估（主要渠道类型及评估指标）<div class="qb"><span class="badge by">2021笔试</span><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>主要渠道：校园招聘/猎头/网络招聘（社交/垂直/综合）/人才市场/内部招聘。效果评估三维度：①数量评估（应聘者数量/合格率）；②质量评估（试用期合格率/绩效表现）；③成本评估（单位雇佣成本=招聘总成本/录用总人数）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">【2016复试面试】如何在招聘中识别高潜力人才？<div class="qb"><span class="badge by">2016复试</span><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>识别维度：①学习能力（遇新问题快速掌握）；②领导力潜能（影响他人/协调资源）；③成就动机（内在驱动力）；④适应变化能力（适应性绩效）；⑤情绪智力（EQ）。工具：评价中心（AC）+无领导小组讨论（LGD）+行为描述面试（BDI）+心理测评。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbp">预测题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">【预测★★★★★】什么是评价中心？LGD（无领导小组讨论）有何特点？可以评价哪些维度？<div class="qb"><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>评价中心（AC）：综合运用多种模拟性评价技术，由多位受过专门训练的评价者对被评者在特定情景中的行为表现进行系统评价的方法。LGD特点：无指定组长，围绕特定问题自由讨论，通过观察参与者行为评价能力。可评价维度：沟通表达/逻辑思维/领导力/合作能力/问题解决/影响力。优：情境模拟真实，预测效度高，难造假；缺：成本高，耗时。</p></div></div></div>
+</div></div>
+
+<!-- CH8 -->
+<div class="cb" id="ch8">
+<div class="cht"><div class="chn">8</div><div><div class="chname">绩效管理</div><div class="chmeta">P238–P270 · 绩效概念·管理过程·评价方法·KPI/BSC·反馈</div></div><div class="chcount">7题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材课后自我检测</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">【教材习题1·2023笔试】绩效管理与绩效评价有何不同？<div class="qb"><span class="badge by">2023笔试</span><span class="badge bt">名词解释/对比</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>绩效评价：衡量和评价员工工作绩效的过程（绩效管理的一个环节，偏向过去）。绩效管理：管理者确保员工活动和结果与组织目标一致的完整循环过程（计划→实施→评价→反馈四阶段，具有战略意义，目的是改进绩效而非评价本身）。常见误区：①把绩效管理等同于绩效评价；②只重结果不管过程；③反馈不及时；④评价标准不清晰，存在晕轮误差等主观偏差。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">【教材习题4】如何使绩效反馈更有效？（7条建议）<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①做好面谈前准备；②反馈要经常性（不要等年终）；③鼓励员工先自我评价；④鼓励员工积极参与；⑤多肯定慎批评（以正强化为主）；⑥重点放在解决问题而非追责；⑦制定具体改善目标并规定检查时间。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">【教材习题5】如何减少绩效评价者误差？<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>三种方法：①让评价者充分认识可能产生的误差类型（晕轮/分布/近期效应/个人偏见）；②选择合适的评价方法（强制分布法克服分布误差，关键事件法克服近期效应）；③对评价者进行专门培训。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbe">历年真题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">【2016·高频】简述平衡计分卡（BSC）的四个维度及其因果逻辑关系。<div class="qb"><span class="badge by">2016·高频</span><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>四维度（卡普兰&诺顿）：①财务（盈利能力/股东价值）；②顾客（满意度/市场份额）；③内部流程（关键业务流程效率）；④学习与成长（员工能力/信息系统/组织文化）。因果链：<strong>学习与成长→内部流程→顾客→财务</strong>（从基础到最终产出）。四大平衡：财务与非财务/短期与长期/外部与内部/滞后与先行指标。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">【2018/2019笔试】绩效计划制订应遵循什么原则？（SMART原则）<div class="qb"><span class="badge by">2018·2019笔试</span><span class="badge bt">名词解释</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>SMART五要素：S（Specific具体）/M（Measurable可衡量）/A（Attainable可达成）/R（Relevant相关）/T（Time bound有时限）。关键观点：绩效计划的制订过程比其结果还要重要，不能将目标强加给下属，应通过沟通增强员工认同感。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbp">预测题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">【预测】请简述BARS行为锚定等级评价法的开发步骤及优缺点。<div class="qb"><span class="badge bt">名词解释/简答</span><span class="badge by">★★★★</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>五步骤：①获取关键事件（收集好/差绩效典型事例）→②确定绩效要素→③重新分配关键事件（验证有效性）→④等级评定（按绩效水平排序）→⑤完成评价表。优：标准明确具体/降低评价者偏差/员工参与度高/反馈有针对性。缺：开发耗时成本高，不适用于高度复杂的管理岗位。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">【预测综合★★★★★】绩效管理中常见的"评价者误差"有哪几类？各举一例，并说明克服方法。<div class="qb"><span class="badge bt">简答/案例</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①晕轮误差（以某突出特征以偏概全）→克服：BARS法；②分布误差（宽松/苛刻/居中倾向）→克服：强制分布法；③近期效应误差（只记近期表现忘全年）→克服：关键事件法全年记录；④个人偏见误差（个人喜好偏向特定群体）→克服：360度评价分散偏差。</p></div></div></div>
+</div></div>
+
+<!-- CH9 -->
+<div class="cb" id="ch9">
+<div class="cht"><div class="chn">9</div><div><div class="chname">薪酬</div><div class="chmeta">P273–319 · 薪酬体系·战略薪酬·岗位评估·可变薪酬·福利</div></div><div class="chcount">8题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材思考题 / 自我检测（含真题+预测题）</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">请解释"岗位评估"的概念，并说明其三大特点。<div class="qb"><span class="badge bt">名词解释</span><span class="badge by">高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>岗位评估是在工作分析基础上，以岗位工作内容和对组织的价值贡献为依据，对岗位责任大小/工作强度/任职条件等特性进行评价，确定岗位间相对价值的过程。三大特点：①对岗不对人；②按标准量化；③先分类再分级。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">请简述薪酬激励设计要点（固定薪酬/浮动薪酬/长期激励三维度）<div class="qb"><span class="badge bt">简答</span><span class="badge by">2025真题近似</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①固定薪酬（基本工资+津贴+福利）：保障功能，使员工产生安全感，但比例过高会削弱激励；②浮动薪酬（奖金）：激励功能，与绩效挂钩，职级越高浮动比例越大；③长期激励（股票/期权/延期支付）：引导关注企业长远利益，吸引留住激励效果均最佳。最佳组合是"平衡结构"。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">传统薪酬体系与战略性薪酬管理有何区别？（7维度）<div class="qb"><span class="badge bt">对比/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>七维度：①内部一致性→外部市场敏感性；②年度定期加薪→绩效可变薪酬；③既得权利→风险分担伙伴；④固定工作→弹性贡献机会；⑤垂直晋升→鼓励横向流动；⑥工作保障→强调就业能力；⑦个人贡献→重视团队贡献。战略性薪酬核心：支撑企业战略，对绩效产生关键影响。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">海氏评价系统的三个付酬因素？三种岗位类型如何影响权重分配？<div class="qb"><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>三因素：①技能水平（Know-How）；②解决问题的能力（Problem Solving，百分比）；③承担的职务责任（Accountability）。三种岗位：①上山型（责任>技能）→40%/60%，典型：总裁/销售经理；②平路型（责任=技能）→50%/50%，典型：会计/HR；③下山型（技能>责任）→60%/40%，典型：科研开发。总分=A×(1+B)×K₁+C×K₂。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">【教材案例】白秦铭案例：固定工资制让优秀销售员流失的原因及改进方案<div class="qb"><span class="badge bt">案例分析</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>流失原因：①违反激励性原则（"大锅饭"压制高绩效积极性）；②违反认可性原则（内在薪酬缺失）；③违反公平性原则（内部公平性不足）。改进：①设计"基本工资+提成"结构；②建立销售绩效排名公示和荣誉表彰；③设计分层分类激励方案。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">年薪制的概念及其结构设计应遵循哪些原则？<div class="qb"><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>年薪制以年度为考核周期，根据经营者经营业绩、难度与风险合理确定其年度收入，是高激励与高风险并存的回报机制（不是高薪制）。五原则：①报酬与绩效挂钩；②固定+风险收入结合（以风险为主）；③长期+短期业绩奖励结合；④体现收入层级；⑤直接+间接确定结合。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">请解释"弹性福利计划"的概念及其优缺点。<div class="qb"><span class="badge bt">名词解释</span><span class="badge by">预测题</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>又称"自助餐式福利计划"，允许员工在企业提供的福利菜单中根据个人需要自主选择福利组合。优：满足个性化需求/有助控制成本/吸引不同类型员工。缺：员工可能选择不实用项目；工会可能反对；行政作业繁杂；实施初期成本不减反增。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【预测★★★★★】结合新生代员工特征，如何优化薪酬激励设计？<div class="qb"><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>新生代（95后/00后）：重视意义/成长/灵活，物质满足后对内在薪酬更敏感。优化：①强化内在薪酬（挑战性工作/成长机会）；②弹性福利（自主选择）；③即时激励（缩短奖金周期，增加月度/季度奖金）；④非物质认可（公开表彰/荣誉体系）；⑤平衡薪酬结构（避免过度高弹性导致不安全感）。</p></div></div></div>
+</div></div>
+
+<!-- CH10 -->
+<div class="cb" id="ch10">
+<div class="cht"><div class="chn">10</div><div><div class="chname">人力资源开发与培训</div><div class="chmeta">P324–380 · 开发内涵·培训需求分析·培训评估·职业生涯规划</div></div><div class="chcount">8题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材课后自我检验</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">什么是人力资源开发？它与员工培训有何区别？<div class="qb"><span class="badge bt">名词解释</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>定义（教材原句）：贯穿于个人、家庭、组织及社会系统的，围绕社会成员的<strong>劳动技能、生理素质、心智水平、道德修养</strong>等素质，为实现个人理想、组织目标和社会进步所采取的，包括学习、教育、规划和配置等手段在内的所有措施。区别：开发是总概念（包含培训）；开发长期全面，培训聚焦特定技能短期目标；开发涵盖学习/教育/规划/配置，培训只是其中之一。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">什么是职业锚？沙因将职业锚分为哪几种类型？有何管理意义？<div class="qb"><span class="badge bt">名词解释/简答</span><span class="badge by">高频</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>定义（沙因）：一个人无论如何都不愿意放弃的价值观、动机和才干，是职业选择时真正不可放弃的核心价值取向，在实际工作经历中逐渐形成。八类型（口诀"技管安创自服挑生"）：技术/职能型/管理型/安全稳定型/创业型/自主独立型/服务奉献型/纯挑战型/生活方式型。意义：差异化激励；双通道晋升（技术+管理序列）；职业路径匹配。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">简述员工培训需求分析的三个层次及其主要内容。<div class="qb"><span class="badge bt">简答</span><span class="badge by">2022真题</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①<strong>组织分析</strong>：分析战略目标/组织气候/可用资源，确定哪些部门需要培训；②<strong>任务分析</strong>：分析岗位KSA要求（工作说明书/胜任力模型），确定培训内容；③<strong>人员分析</strong>：识别绩效差距，确定谁需要培训什么（绩效测评+能力差距分析）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">简述柯克帕特里克培训评估四层次模型，并说明各层次之间的关系。<div class="qb"><span class="badge bt">简答</span><span class="badge by">必考</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>四层次：①反应层（满意度/问卷）→②学习层（KSA获得/笔试/技能演示）→③行为层（岗位行为变化/3个月后360度观察）→④结果层（组织绩效提升/ROI/数据对比）。关系：递进因果（满意→学会→改变行为→产出）；难度和成本递增，价值也递增；大多数企业只评估到L1-L2，真正有价值的是L3-L4。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">简述霍兰德职业性向理论的六种类型，并说明职业性向与职业锚的区别。<div class="qb"><span class="badge bt">名词解释/对比</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>六类型（RIASEC）：R实际型/I研究型/A艺术型/S社会型/E企业型/C传统型（常规型）。区别：性向=兴趣能力倾向（霍兰德），先天性格与早期经历形成，指引职业方向；锚=核心不可放弃价值观（沙因），从实际工作经历中发现，固定职业核心价值。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">比较在职培训（OJT）与脱产培训的优缺点，各适用于哪些场景？<div class="qb"><span class="badge bt">对比分析</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>OJT在职培训：优—针对性强/低成本/不中断工作/即学即用；缺—系统性差/受工作环境限制→适合操作技能/岗位特定技能。脱产培训：优—系统深入/专业化/视野广；缺—成本高/中断工作→适合知识类培训/管理能力培养/系统性理论学习。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">【2026预测★★★★★】数字化转型背景下，企业如何构建有效的员工培训体系？请结合三个环节论述。<div class="qb"><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题框架</div><div class="ac"><p>①需求分析——数字化对组织战略/岗位KSA/人员能力的新要求（三层次分析）→②培训方法——线上+线下混合（e-Learning/虚拟现实/微学习/行动学习）→③培训评估——数字化评估（数据驱动/实时追踪/ROI量化）→构建"数字化学习型组织"，实现持续学习与业务驱动。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【案例分析】某企业销售团队业绩持续下滑，决定开展培训。如何进行需求分析/选择方法/评估效果？<div class="qb"><span class="badge bt">案例分析</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">参考框架</div><div class="ac"><p>①需求分析（组织层：下滑是否是培训能解决的？→任务层：销售岗位需哪些KSA？→人员层：具体谁的哪方面不足？）→②方法选择（产品知识：讲授+案例；销售技巧：角色扮演+导师制；态度动机：激励性培训）→③评估（L1满意度→L2笔试+技能演示→L3主管3个月后观察→L4业绩数据对比）。</p></div></div></div>
+</div></div>
+
+<!-- CH11 -->
+<div class="cb" id="ch11">
+<div class="cht"><div class="chn">11</div><div><div class="chname">激励</div><div class="chmeta">P354–421 · 激励概述·四类激励理论·激励体系·股权激励</div></div><div class="chcount">10题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">课后自我检测（含历年真题）</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">什么是激励？请结合颜爱民教材给出准确定义。<div class="qb"><span class="badge bt">名词解释</span><span class="badge by">高频必考</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">教材原定义（P354）</div><div class="ac"><p>激励（Motivating）就是为了特定目的而去影响人们的内在需要或动机，从而强化、引导或改变人们行为的反复过程。四要素：①目的性；②通过影响需要/动机改变行为；③持续反复；④方式多样性（口诀"目需持多"）。必背："激励是企业管理永恒的主题，更是人力资源管理的核心内容。"</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">【2016·2019·2021·2023复试】简述马斯洛需要层次理论，并说明其对HRM的启示。<div class="qb"><span class="badge by">2016·2019·2021·2023</span><span class="badge bt">名词解释/论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>五层次（口诀"生安爱尊实"）：生理→安全→爱与归属感→尊重→自我实现。核心：低层满足后追求高层；只有未满足的需要才激励。HRM启示：差异化激励（低层侧重薪酬福利，高层侧重晋升授权）；动态调整激励策略。局限：未得实证支持；ERG理论修正：允许多层次并存，有受挫回归机制。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">【2017·2020·2022·2025】什么是赫茨伯格双因素理论？激励因素与保健因素的本质区别？<div class="qb"><span class="badge by">2017·2020·2022·2025</span><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点（核心必背）</div><div class="ac"><p>激励因素（工作本身：成就感/认可/晋升/责任/成长）→有则产生满意感；保健因素（工作环境：薪酬/人际/公司政策/监督）→无则产生强烈不满。关键结论（必背）："满意的对立面是'没有满意'而非不满意；不满意的对立面是'没有不满意'而非满意。"口诀："激励在内容，保健在环境"。HRM应用：涨薪只能消除不满，工作丰富化才能真正激励。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">【2018·2021真题】简述弗鲁姆期望理论，说明三种关系对管理实践的意义。<div class="qb"><span class="badge by">2018·2021</span><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>公式：<strong>激励力（M）= 期望值（E）× 效价（V）</strong>。三种关系：①努力→绩效（E-P）：提供充足资源和培训；②绩效→奖励（P-O）：建立明确绩效考核与奖惩连接；③奖励→个人目标（O-V）：差异化奖励满足不同需求。三链条任何一环断裂，激励效果归零。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">【2019·2022真题】简述亚当斯公平理论，员工感知不公平时会采取哪些行为？<div class="qb"><span class="badge by">2019·2022</span><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>公式：Qp/Ip = Qx/Ix（自己产出/投入 对比 他人产出/投入）。三维公平：内部/外部/自我公平。不公平时的行为：①减少自身投入（消极怠工）；②增加产出要求（争取加薪）；③重新认知比较对象；④寻找另一份工作（跳槽）；⑤改变比较标准（说服自己）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">【2017·2020真题】强化理论有哪四种强化类型？各在管理中如何运用？<div class="qb"><span class="badge by">2017·2020</span><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点（口诀"正负罚忽"）</div><div class="ac"><p>①正强化：对期望行为给奖励（奖金/表扬/晋升）；②负强化：撤销不利刺激以增加期望行为；③惩罚：对不期望行为施以不利结果（警告/降级）；④忽视（消退）：不响应使不期望行为自然消退。管理要点：以正强化为主；惩罚只能抑制不能消除行为。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">【2024真题改编】比较马斯洛需要层次理论与阿尔德弗ERG理论。<div class="qb"><span class="badge by">2024真题</span><span class="badge bt">对比分析</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>ERG三类：E（生存=生理+安全）/R（关系=社交+尊重外在）/G（成长=尊重内在+自我实现）。ERG对马斯洛三大修正：①允许同时追求多层次；②受挫回归机制（高层受挫退回低层，马斯洛无此机制）；③更灵活贴近实际，有实证支持。马斯洛5层严格递进/无实证；ERG 3类灵活并存/有实证。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【2021·2023真题】论述波特-劳勒综合激励模型及其在HRM体系设计中的价值。<div class="qb"><span class="badge by">2021·2023</span><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>模型结构：激励力→努力→绩效（受能力+角色认知影响）→奖励（外在+内在）→公平感→满足感→反馈→下次激励。三大创新：①整合期望+公平+强化理论；②"绩效导致满足"而非"满足导致绩效"；③内在+外在双轨激励。HRM应用：清晰绩效→奖励连接；公平感知管理；内在激励设计（工作丰富化）；培训提升努力→绩效转化率。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">9</div><div class="qt">【2019·2025真题类型·案例】某科技公司高级工程师薪酬高于市场，仍不断跳槽。运用激励理论分析原因并提出改进建议。<div class="qb"><span class="badge by">2019·2025类型</span><span class="badge bt">案例论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题框架</div><div class="ac"><p>原因：①双因素理论：高薪=保健因素，只能消除不满；成就感/挑战性（激励因素）未满足；②马斯洛：需求已到尊重/自我实现层；③期望理论：P-O或O-V关系断裂。改进：①工作丰富化与授权（挑战性项目/更大自主权）；②双通道晋升（技术+管理序列）；③长期激励（股权期权）；④定期绩效反馈与职业规划辅导。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">10</div><div class="qt">【2026预测★★★★★】什么是股权激励？主要类型/机制设计六要素，能否解决委托-代理问题？<div class="qb"><span class="badge bt">名词解释/论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>定义：通过给予经理人/员工股权，使其分享企业剩余价值，将代理人与所有者利益捆绑的长期激励机制。起源：1952年美国辉瑞制药。六类型：激励性股票期权/员工股票购买计划/非法定股票期权/虚拟股票（有分红）/股票增值权（无分红）/业绩股票。机制设计六要素：①激励对象；②购股规定；③售股规定；④权利义务；⑤股权管理；⑥操作方式。辩证：✅关注长期股价，减少利益背离；⚠️局限：股价受市场因素影响，代理人仍可能短期行为。</p></div></div></div>
+</div></div>
+
+<!-- CH12 -->
+<div class="cb" id="ch12">
+<div class="cht"><div class="chn">12</div><div><div class="chname">劳动关系</div><div class="chmeta">P384–420 · 劳动关系理论·调整机制·劳动合同·集体谈判</div></div><div class="chcount">9题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">教材课后习题（P.418）</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">什么是劳动关系？其构成要素是什么？<div class="qb"><span class="badge bt">名词解释</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>企业所有者、经营管理者、普通职工及其工会之间在生产经营活动中形成的<strong>权责利关系</strong>。三要素：主体（狭义：员工+工会/管理方+雇主协会；广义加政府）；内容（权利与义务）；客体（劳动时间/报酬/安全等，不含人格人身）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">劳动关系的表现形式有哪些？<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>两种：①合作（被迫合作+满足需求合作）；②冲突（根本根源四个：异化的合法化/客观利益差异/权力等级制度/合同执行分歧，口诀"异利权合"）。分明显冲突和潜在冲突。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">以各方力量对比分类，劳动关系可分为哪几个类型？<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>三类：①均衡型（双方力量相差不大，相互制衡）；②倾斜型（一方支配另一方，完全市场下雇主处优势）；③政府主导型（政府是控制主要力量，典型：新加坡、计划经济国家）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">西方国家劳动关系的理论观点是什么？（五大学派）<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点（口诀"新保→管理→正多→自由→激进"）</div><div class="ac"><p>①新保守派（市场机制，工会负面）；②管理主义学派（HRM替代工会，霍桑实验）；③正统多元学派（工会+集体谈判维权）；④自由改革主义学派（战略选择理论）；⑤激进派（劳资利益完全对立）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">劳动关系调整有哪些方法？<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>五种：①法律调整（劳动法/劳动合同法）；②劳动合同管理（订立/变更/解除）；③三方协商（政府+工会+雇主组织）；④劳动争议处理（调解→仲裁→诉讼）；⑤集体谈判。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">劳动合同订立、解除及变更的含义？<div class="qb"><span class="badge bt">名词解释</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>订立：书面形式，协商一致，双方签字/盖章各执一份，原则：平等自愿协商一致合法。解除：依法提前终止，有条件限制，用人单位单方解除权受限。变更：在有效期内对部分内容进行修改/补充/删减，须协商一致+书面+合法。试用期：最长6个月，工资不低于合同约定的80%，不合格可解除无须经济补偿。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">简述三方协商的重要性。<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>三方协商（政府+雇主组织+工会）的重要性：①宏观调控劳动关系的核心制度；②三大职能（磋商咨询/谈判/协调仲裁）；③九项内容（口诀"就薪安息保训合民争"）；④基于六大原则（合法/参与/平等/合作/兼顾/维护稳定）；⑤促进劳资关系和谐稳定，维护社会公共利益。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbp">预测题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【预测案例★★★★★】某制造企业快速扩张中出现大规模劳动争议——原因分析与改善建议<div class="qb"><span class="badge bt">案例论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题框架</div><div class="ac"><p>原因：①快速扩张→资方处主导地位（倾斜型劳动关系）；②劳动合同管理不规范；③缺乏三方协商机制；④工会作用弱化。建议：①完善法律合规（严格执行《劳动合同法》）；②建立集体谈判制度；③完善争议处理（内部调解委员会）；④树立以人为本企业文化；⑤加强企业社会责任。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">9</div><div class="qt">【预测论述★★★★★】数字化/AI时代，平台经济下新型劳动关系面临哪些挑战？如何完善调整机制？<div class="qb"><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>挑战：①从属关系模糊（灵活就业者与平台既有雇佣特征又有独立承包特征）；②劳动关系认定困难；③集体谈判缺失（劳动者分散无法有效组建工会）；④风险转移（平台将经营风险转嫁给劳动者）。完善机制：①推进立法创新（扩展劳动者认定标准）；②完善社会保险（适应灵活就业）；③创新集体谈判（行业层面集体谈判制度）；④强化政府监管。</p></div></div></div>
+</div></div>
+
+<!-- CH13 -->
+<div class="cb" id="ch13">
+<div class="cht"><div class="chn">13</div><div><div class="chname">战略人力资源管理</div><div class="chmeta">P423–451 · SHRM含义·理论基础·HR战略·HR外包·并购</div></div><div class="chcount">8题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">课后自我检验</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">什么是战略人力资源管理（SHRM）？其含义包含哪五大共识？<div class="qb"><span class="badge bt">名词解释/简答</span><span class="badge by">必考</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">教材原句+五共识</div><div class="ac"><p>定义（教材原句P425）：将人力资源管理与企业战略相结合的一种管理思想，通过与组织战略目标一致的人力资源管理来获得竞争优势，且这种竞争优势是不易被竞争对手模仿的、相对持久的。五共识：①HRM与企业战略结合；②强调HR在获取竞争优势中的重要性；③HRM与企业高绩效目标的直接关系；④通过HR战略有效整合内外部HR；⑤通过组织学习提高HR对环境的适应性。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">SHRM与传统HRM的本质区别是什么？（四大特征对比）<div class="qb"><span class="badge bt">对比/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①人的重要性：传统HRM视人为成本，SHRM视人为战略性资源；②参与决策：传统执行决策，SHRM直接参与组织决策制定；③直线功能：传统以人事行政为主，SHRM强化直线管理功能；④角色转变：传统被动响应型，SHRM积极制定者与执行人。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">以环境为基础的战略HRM中，纵向匹配与横向匹配分别指什么？<div class="qb"><span class="badge bt">名词解释/对比</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>纵向匹配（垂直一致）：HR战略↔企业战略↔组织结构文化↔HR各职能，形成上下贯通的战略链。横向匹配（水平一致）：HR各职能之间（招聘/培训/绩效/薪酬）相互协调，避免各自为政，形成协同的HR系统。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">【2019·高频必考】资源基础论（RBV）与VRIN四条件，为什么人力资源满足VRIN？<div class="qb"><span class="badge by">2019·高频必考</span><span class="badge bt">名词解释/论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>资源基础论（Barney1991）：企业是资源集合体，资源异质性是竞争优势根本来源。VRIN四条件：V（价值性）/R（稀缺性）/I（难以模仿）/N（难以替代）。人力资源满足VRIN：①价值性（员工创造价值）；②稀缺性（高素质人才正态分布，顶尖人才永远稀缺）；③难以模仿（路径依赖+因果模糊=黑箱效应）；④难以替代（人的学习能力使价值可迁移）。</p></div></div></div>
+
+<div class="tsh"><span class="tbg tbp">预测题</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">人力资源战略选择的三种思路（最佳实践法/最佳适配法/整合法）有何区别？<div class="qb"><span class="badge bt">对比/简答</span><span class="badge by">★★★★</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①最佳实践法：存在一套普遍最优的HR管理实践（16种），采用即获高绩效；优：简单易用；缺：机械匹配，忽视企业差异。②最佳适配法：HR战略必须与企业整体战略相匹配，没有普适方法；优：因企制宜；缺：难以操作。③整合法：同时考虑外部环境与内部资源，兼顾纵向和横向匹配，最全面。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">【预测★★★★】什么是HR外包？四种类型是什么？决定外包时应考虑哪些因素？<div class="qb"><span class="badge bt">名词解释/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>HR外包是将某些HR职能委托给外部专业机构完成的管理模式。四类型：①整合型外包（全部HR功能）；②职能型外包（特定职能如薪酬/培训）；③阶段型外包（特定阶段如招聘季）；④事务型外包（标准化事务如社保缴纳）。考虑因素：战略重要性（核心能力不外包）/成本效益/专业能力/风险控制/保密性。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">【预测★★★】企业并购过程中，人力资源管理需要处理哪些核心问题？<div class="qb"><span class="badge bt">简答/论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①文化整合（"文化冲突"是并购失败主因之一）；②人员安置与裁员（依法操作，维护士气）；③薪酬体系整合（统一或过渡性双轨）；④关键人才保留（并购后人才流失风险大）；⑤组织结构整合（消除冗余，合并职能部门）；⑥员工心理契约重建（变更后新劳动合同）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【预测★★★★★】以华为"以奋斗者为本"为例，分析其HR战略如何支撑企业竞争战略？<div class="qb"><span class="badge bt">案例分析</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">分析框架</div><div class="ac"><p>①企业战略：技术创新+全球化扩张；②HR战略"以奋斗者为本"；③支撑路径：招聘（全球顶尖高校校招）→绩效（末位淘汰+高强度考核，形成路径依赖）→薪酬（高薪+股权，解决委托代理）→培训（华为大学系统培养）→文化（狼性+奋斗者文化）；④纵向匹配（HR战略支撑企业战略）+横向匹配（各HR职能协同）实现SHRM。</p></div></div></div>
+</div></div>
+
+<!-- CH14 -->
+<div class="cb" id="ch14">
+<div class="cht"><div class="chn">14</div><div><div class="chname">国际人力资源管理</div><div class="chmeta">P452–478 · 摩尔根模型·IHRM复杂性·HHP模式·外派管理</div></div><div class="chcount">8题</div></div>
+<div class="chbody">
+<div class="tsh"><span class="tbg tbt">课后自我检验</span></div>
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">1</div><div class="qt">什么是国际人力资源管理？摩尔根模型包含哪三个维度？<div class="qb"><span class="badge bt">名词解释</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>国际人力资源管理是随企业国际化而导致的HRM国际化，指跨国企业在不同国家/地区的人力资源获取、分配和使用活动。摩尔根三维度：①HRM活动（获取/分配/使用）；②三类国家（东道国/母国/第三国）；③三类员工（东道国员工/母国外派员工/第三国员工）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">2</div><div class="qt">国际HRM与国内HRM的差别主要表现在哪两方面？<div class="qb"><span class="badge bt">对比/简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①管理的复杂性（5方面：跨越国界/全球招聘难度增加/文化冲突/沟通障碍/关注外派家庭个人生活）；②人才本土化的客观必要性（3原因：增加东道国信任/降低薪酬成本/熟悉本地市场）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">3</div><div class="qt">【面试高频】比较日本、美国、中国HRM模式（HHP模式），说明各自适用情境。<div class="qb"><span class="badge bt">论述</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题框架</div><div class="ac"><p>①HHP概念：Husband（丈夫）-Housewife（主妇）-Parent（家长）；②日本主妇型：精细/周到/完美/短见→适用：制造业大生产；③美国丈夫型：理性/开拓/创新/远见→适用：知识经济/全球化；④中国家长制：粗放/感性/机会主义→适用：中小企业/家族企业；⑤结论：综合整合+管理创新，不能照搬任一国模式。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">4</div><div class="qt">【2026预测】试述跨国企业选聘外派人员的5大标准<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①专业技术和管理能力（基础）；②文化适应能力（核心，外派失败主因）；③外语能力；④家庭因素（配偶支持/子女教育——外派失败第二大原因）；⑤国外工作经历（最佳预测指标，有过跨文化经历者成功率更高）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">5</div><div class="qt">试述外派人员培训的主要内容（三大类）<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①东道国介绍培训（语言培训+文化意识培训，外派前必做）；②持续性开发培训（技能扩展+职业生涯规划，任职期间）；③回返性调整培训和工作安置准备培训（消除逆文化休克，归国前）。背景数据：外派失败率25%-50%，发展中国家可高达70%，文化适应问题是主因。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">6</div><div class="qt">与一般绩效管理相比，跨国企业绩效管理具有哪4大特点？<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>①个人+团队+公司目标密切结合（不仅为薪酬晋升）；②突出战略方向与业绩的统一；③持续不断的绩效沟通贯穿全程；④重视绩效诊断与辅导（而非单纯评价）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">7</div><div class="qt">外派人员的薪酬由哪几部分构成？基本薪酬有哪两种确定方式？<div class="qb"><span class="badge bt">简答</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">答题要点</div><div class="ac"><p>四部分：基本薪酬+津贴（住房/生活/教育/安全）+奖金（任职/期满/探亲/艰苦）+福利。两种方式：①按母国标准（优：消除公平感；缺：管理复杂）；②按东道国标准（优：有助融合；缺：员工都想去高薪国）。</p></div></div></div>
+
+<div class="q"><div class="qh" onclick="tq(this)"><div class="qsn">8</div><div class="qt">【2024真题改编·案例】TCL集团在国际化进程中如何应对人力资源管理挑战？结合本章理论分析<div class="qb"><span class="badge by">2024改编</span><span class="badge bt">案例分析</span></div></div><div class="qtg">›</div></div>
+<div class="ap"><div class="al">分析框架</div><div class="ac"><p>①IHRM复杂性识别（文化差异+跨国沟通）→②HRM模式选择（因地制宜，结合HHP不照搬）→③选聘（综合素质+国际背景+跨文化适应能力）→④培训（国际化培训+国外交流任职）→⑤绩效（本土化考核标准+全球统一战略框架）→⑥薪酬（综合母国/东道国标准，体现公平感）→关键：兼收并蓄，克服文化差异。</p></div></div></div>
+</div></div>
+
+</main></div><!-- /tc-ch -->
+<!-- CONTINUOUS NUMBER TAB -->
+<div class="tc" id="tc-cn">
+<div class="cs">
+<div class="ctitle">🔢 全书连续编号版 · 自我检测题汇总（共115题）</div>
+
+<div class="cblk"><div class="cchl">第1章 · 人力资源管理概述（P003–P035）</div>
+<div class="cq"><div class="cqn">Q001</div><div class="cqt">什么是人力资源？它具有哪些主要特征（五大特征）？</div></div>
+<div class="cq"><div class="cqn">Q002</div><div class="cqt">人力资源管理的定义是什么？它具有哪些主要特征？</div></div>
+<div class="cq"><div class="cqn">Q003</div><div class="cqt">简述西方人力资源管理的主要渊源（四大渊源）</div></div>
+<div class="cq"><div class="cqn">Q004</div><div class="cqt">人事管理与人力资源管理有何本质区别？</div></div>
+<div class="cq"><div class="cqn">Q005</div><div class="cqt">【2016/2017/2022复试】简述HRM六大特征，重点解释"文化亲缘性"</div></div>
+<div class="cq"><div class="cqn">Q006</div><div class="cqt">【2019/2021复试】论述中国人力资源管理的主要特征</div></div>
+<div class="cq"><div class="cqn">Q007</div><div class="cqt">人力资源管理的发展趋势有哪些？结合数字化背景分析。</div></div>
+<div class="cq"><div class="cqn">Q008</div><div class="cqt">什么是HRBP三支柱模型（HRBP/COE/SSC）？其内容与意义是什么？</div></div>
+<div class="cq"><div class="cqn">Q009</div><div class="cqt">为什么说人力资源是企业"最特殊的资产"？（德鲁克观点）</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第2章 · 人力资源相关经济理论（P036–066）</div>
+<div class="cq"><div class="cqn">Q010</div><div class="cqt">劳动经济学五大流派各自的核心主张？对HRM有何贡献？</div></div>
+<div class="cq"><div class="cqn">Q011</div><div class="cqt">简述六大工资理论，并说明效率工资理论的三大假设。</div></div>
+<div class="cq"><div class="cqn">Q012</div><div class="cqt">什么是人力资本？人力资本理论的创立有何意义？（舒尔茨·贝克尔）</div></div>
+<div class="cq"><div class="cqn">Q013</div><div class="cqt">什么是委托-代理理论？代理成本的产生原因？如何设计激励相容机制？</div></div>
+<div class="cq"><div class="cqn">Q014</div><div class="cqt">【2018笔试·PESTEL】劳动力市场因素如何影响企业人力资源战略决策？</div></div>
+<div class="cq"><div class="cqn">Q015</div><div class="cqt">【2022复试·RBV】为什么说人力资源可以成为企业持续竞争优势的来源？</div></div>
+<div class="cq"><div class="cqn">Q016</div><div class="cqt">人力资本产权的三大特性是什么？对薪酬激励设计有何启示？</div></div>
+<div class="cq"><div class="cqn">Q017</div><div class="cqt">分割的二元劳动力市场理论对我国劳务派遣问题有何解释意义？</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第3章 · 组织与人力资源管理（P069–P130）</div>
+<div class="cq"><div class="cqn">Q018</div><div class="cqt">西方人性假设经历了哪四个阶段？各对应的HRM方式有何不同？</div></div>
+<div class="cq"><div class="cqn">Q019</div><div class="cqt">中国传统人性论（性善论/性恶论/可塑论）与西方人性假设的对应关系？</div></div>
+<div class="cq"><div class="cqn">Q020</div><div class="cqt">什么是胜任力（Competency）？胜任力模型的三层次？如何构建？</div></div>
+<div class="cq"><div class="cqn">Q021</div><div class="cqt">什么是心理契约？心理契约违背对员工行为有何影响？</div></div>
+<div class="cq"><div class="cqn">Q022</div><div class="cqt">【历年真题】简述胜任力模型的构建流程（6步骤）</div></div>
+<div class="cq"><div class="cqn">Q023</div><div class="cqt">工作压力倒U型曲线理论的内容及其对员工管理的启示</div></div>
+<div class="cq"><div class="cqn">Q024</div><div class="cqt">比较机械式与有机式组织结构，说明各自适用的HRM策略</div></div>
+<div class="cq"><div class="cqn">Q025</div><div class="cqt">知觉偏差有哪些类型？如何在招聘与绩效评估中减少知觉偏差？</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第4章 · 文化与人力资源管理（P099–P121）</div>
+<div class="cq"><div class="cqn">Q026</div><div class="cqt">请给出"文化"的广义和狭义定义，本书采用哪种定义及原因。</div></div>
+<div class="cq"><div class="cqn">Q027</div><div class="cqt">简述霍尔文化冰山模型，并说明对企业文化建设的启示。</div></div>
+<div class="cq"><div class="cqn">Q028</div><div class="cqt">比较分析法律、道德和文化对人的行为约束方式有何异同。</div></div>
+<div class="cq"><div class="cqn">Q029</div><div class="cqt">简述儒家"仁义礼智信"五常在现代HRM中的体现与应用。</div></div>
+<div class="cq"><div class="cqn">Q030</div><div class="cqt">简述道家"无为而治"思想及其在现代企业管理中的应用。</div></div>
+<div class="cq"><div class="cqn">Q031</div><div class="cqt">简述《孙子兵法》三大用人原则及其对现代HRM的启示。</div></div>
+<div class="cq"><div class="cqn">Q032</div><div class="cqt">【2025改编·案例★★★★★】数字化转型失败：结合文化理论分析原因并提出HRM建议。</div></div>
+<div class="cq"><div class="cqn">Q033</div><div class="cqt">论述中国转型时期文化的特殊性及其对人力资源管理的主要影响。</div></div>
+<div class="cq"><div class="cqn">Q034</div><div class="cqt">文化与HRM关系及"研究我国HRM不能脱离我国文化背景"的原因。</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第5章 · 人力资源规划（P125–155）</div>
+<div class="cq"><div class="cqn">Q035</div><div class="cqt">什么是人力资源规划（广义）？</div></div>
+<div class="cq"><div class="cqn">Q036</div><div class="cqt">【2019·2023】简述人力资源规划的战略作用（五个层面）</div></div>
+<div class="cq"><div class="cqn">Q037</div><div class="cqt">简述德尔菲法的基本内容与适用场景</div></div>
+<div class="cq"><div class="cqn">Q038</div><div class="cqt">简述马尔科夫转移矩阵法的原理与步骤</div></div>
+<div class="cq"><div class="cqn">Q039</div><div class="cqt">当企业出现人力资源过剩时，应采取哪些调整措施？结合案例说明。</div></div>
+<div class="cq"><div class="cqn">Q040</div><div class="cqt">HRP与企业生命周期的关系是什么？</div></div>
+<div class="cq"><div class="cqn">Q041</div><div class="cqt">什么是HRMIS？其主要作用是什么？</div></div>
+<div class="cq"><div class="cqn">Q042</div><div class="cqt">【预测★★★★】数字化背景下，企业人力资源规划面临哪些新挑战与机遇？</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第6章 · 工作分析（P160–198）</div>
+<div class="cq"><div class="cqn">Q043</div><div class="cqt">什么是工作分析？其主要成果是什么？（6W1H框架）</div></div>
+<div class="cq"><div class="cqn">Q044</div><div class="cqt">简述工作分析的主要作用（至少5点）</div></div>
+<div class="cq"><div class="cqn">Q045</div><div class="cqt">比较工作描述与工作规范的区别，二者如何构成工作说明书。</div></div>
+<div class="cq"><div class="cqn">Q046</div><div class="cqt">【历年高频】比较工作扩大化与工作丰富化的区别，分别举例说明。</div></div>
+<div class="cq"><div class="cqn">Q047</div><div class="cqt">简述工作分析的流程（4个阶段）及各阶段的主要任务。</div></div>
+<div class="cq"><div class="cqn">Q048</div><div class="cqt">【2023真题】什么是工作规范？它与工作描述有何区别？</div></div>
+<div class="cq"><div class="cqn">Q049</div><div class="cqt">什么是PAQ（职位分析问卷法）？其优点和局限性是什么？</div></div>
+<div class="cq"><div class="cqn">Q050</div><div class="cqt">【2025预测★★★★★】数字化时代，工作分析面临哪些新挑战？如何进行"动态工作分析"？</div></div>
+<div class="cq"><div class="cqn">Q051</div><div class="cqt">【教材案例】T公司招聘维修工程师失败的根本原因及改进方案</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第7章 · 员工招聘（P199–235）</div>
+<div class="cq"><div class="cqn">Q052</div><div class="cqt">对应聘者进行初步筛选的方法有哪些？各有何特点？</div></div>
+<div class="cq"><div class="cqn">Q053</div><div class="cqt">试比较招聘的内部来源和外部来源的优、缺点。</div></div>
+<div class="cq"><div class="cqn">Q054</div><div class="cqt">简述面试的基本步骤及技巧。</div></div>
+<div class="cq"><div class="cqn">Q055</div><div class="cqt">【2021笔试】简述招聘渠道选择与效果评估（主要渠道类型及评估指标）</div></div>
+<div class="cq"><div class="cqn">Q056</div><div class="cqt">【2016复试面试】如何在招聘中识别高潜力人才？</div></div>
+<div class="cq"><div class="cqn">Q057</div><div class="cqt">【预测★★★★★】什么是评价中心？LGD有何特点？可以评价哪些维度？</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第8章 · 绩效管理（P238–P270）</div>
+<div class="cq"><div class="cqn">Q058</div><div class="cqt">【2023笔试】绩效管理与绩效评价有何不同？</div></div>
+<div class="cq"><div class="cqn">Q059</div><div class="cqt">如何使绩效反馈更有效？（7条建议）</div></div>
+<div class="cq"><div class="cqn">Q060</div><div class="cqt">如何减少绩效评价者误差？</div></div>
+<div class="cq"><div class="cqn">Q061</div><div class="cqt">【2016·高频】简述平衡计分卡（BSC）的四个维度及其因果逻辑关系。</div></div>
+<div class="cq"><div class="cqn">Q062</div><div class="cqt">【2018/2019笔试】绩效计划制订应遵循什么原则？（SMART原则）</div></div>
+<div class="cq"><div class="cqn">Q063</div><div class="cqt">【预测★★★★】请简述BARS行为锚定等级评价法的开发步骤及优缺点。</div></div>
+<div class="cq"><div class="cqn">Q064</div><div class="cqt">【预测★★★★★综合】绩效管理中常见"评价者误差"有哪几类？各举一例，说明克服方法。</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第9章 · 薪酬（P273–319）</div>
+<div class="cq"><div class="cqn">Q065</div><div class="cqt">请解释"岗位评估"的概念，并说明其三大特点。</div></div>
+<div class="cq"><div class="cqn">Q066</div><div class="cqt">【2025真题近似】请简述薪酬激励设计要点（固定薪酬/浮动薪酬/长期激励）</div></div>
+<div class="cq"><div class="cqn">Q067</div><div class="cqt">传统薪酬体系与战略性薪酬管理有何区别？</div></div>
+<div class="cq"><div class="cqn">Q068</div><div class="cqt">海氏评价系统的三个付酬因素及三种岗位类型如何影响权重分配？</div></div>
+<div class="cq"><div class="cqn">Q069</div><div class="cqt">【教材案例】白秦铭案例：固定工资制让优秀销售员流失的原因及改进方案</div></div>
+<div class="cq"><div class="cqn">Q070</div><div class="cqt">年薪制的概念及其结构设计应遵循哪些原则？</div></div>
+<div class="cq"><div class="cqn">Q071</div><div class="cqt">请解释"弹性福利计划"的概念及其优缺点。</div></div>
+<div class="cq"><div class="cqn">Q072</div><div class="cqt">【预测★★★★★】结合新生代员工特征，如何优化薪酬激励设计？</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第10章 · 人力资源开发与培训（P324–380）</div>
+<div class="cq"><div class="cqn">Q073</div><div class="cqt">什么是人力资源开发？它与员工培训有何区别？</div></div>
+<div class="cq"><div class="cqn">Q074</div><div class="cqt">什么是职业锚？沙因将职业锚分为哪几种类型？有何管理意义？</div></div>
+<div class="cq"><div class="cqn">Q075</div><div class="cqt">【2022真题】简述员工培训需求分析的三个层次及其主要内容。</div></div>
+<div class="cq"><div class="cqn">Q076</div><div class="cqt">简述柯克帕特里克培训评估四层次模型，并说明各层次之间的关系。</div></div>
+<div class="cq"><div class="cqn">Q077</div><div class="cqt">简述霍兰德职业性向理论的六种类型，并说明职业性向与职业锚的区别。</div></div>
+<div class="cq"><div class="cqn">Q078</div><div class="cqt">比较在职培训（OJT）与脱产培训的优缺点，各适用于哪些场景？</div></div>
+<div class="cq"><div class="cqn">Q079</div><div class="cqt">【2026预测★★★★★】数字化转型背景下，企业如何构建有效的员工培训体系？</div></div>
+<div class="cq"><div class="cqn">Q080</div><div class="cqt">【案例分析】销售团队业绩下滑培训介入：需求分析/方法选择/效果评估</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第11章 · 激励（P354–421）</div>
+<div class="cq"><div class="cqn">Q081</div><div class="cqt">什么是激励？请结合颜爱民教材给出准确定义。</div></div>
+<div class="cq"><div class="cqn">Q082</div><div class="cqt">【2016·2019·2021·2023】简述马斯洛需要层次理论及对HRM的启示。</div></div>
+<div class="cq"><div class="cqn">Q083</div><div class="cqt">【2017·2020·2022·2025】什么是赫茨伯格双因素理论？激励/保健因素本质区别？</div></div>
+<div class="cq"><div class="cqn">Q084</div><div class="cqt">【2018·2021】简述弗鲁姆期望理论，三种关系对管理实践的意义。</div></div>
+<div class="cq"><div class="cqn">Q085</div><div class="cqt">【2019·2022】简述亚当斯公平理论，员工感知不公平时采取哪些行为？</div></div>
+<div class="cq"><div class="cqn">Q086</div><div class="cqt">【2017·2020】强化理论的四种强化类型及在管理中如何运用？</div></div>
+<div class="cq"><div class="cqn">Q087</div><div class="cqt">【2024改编】比较马斯洛需要层次理论与阿尔德弗ERG理论。</div></div>
+<div class="cq"><div class="cqn">Q088</div><div class="cqt">【2021·2023】论述波特-劳勒综合激励模型及其在HRM体系设计中的价值。</div></div>
+<div class="cq"><div class="cqn">Q089</div><div class="cqt">【2019·2025类型·案例】高级工程师高薪仍跳槽——激励理论分析与改进建议。</div></div>
+<div class="cq"><div class="cqn">Q090</div><div class="cqt">【2026预测★★★★★】股权激励的定义/主要类型/机制设计六要素/能否解决委托-代理？</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第12章 · 劳动关系（P384–420）</div>
+<div class="cq"><div class="cqn">Q091</div><div class="cqt">什么是劳动关系？其构成要素是什么？</div></div>
+<div class="cq"><div class="cqn">Q092</div><div class="cqt">劳动关系的表现形式（合作与冲突）有哪些？</div></div>
+<div class="cq"><div class="cqn">Q093</div><div class="cqt">以各方力量对比分类，劳动关系可分为哪几个类型？</div></div>
+<div class="cq"><div class="cqn">Q094</div><div class="cqt">西方国家劳动关系的五大理论学派是什么？</div></div>
+<div class="cq"><div class="cqn">Q095</div><div class="cqt">劳动关系调整有哪些方法？</div></div>
+<div class="cq"><div class="cqn">Q096</div><div class="cqt">劳动合同订立、解除及变更的含义？</div></div>
+<div class="cq"><div class="cqn">Q097</div><div class="cqt">简述三方协商的重要性。</div></div>
+<div class="cq"><div class="cqn">Q098</div><div class="cqt">【预测案例★★★★★】某制造企业快速扩张出现大规模劳动争议——原因分析与改善建议。</div></div>
+<div class="cq"><div class="cqn">Q099</div><div class="cqt">【预测★★★★★】数字化/AI时代，平台经济下新型劳动关系面临哪些挑战？如何完善？</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第13章 · 战略人力资源管理（P423–451）</div>
+<div class="cq"><div class="cqn">Q100</div><div class="cqt">什么是战略人力资源管理（SHRM）？其含义包含哪五大共识？</div></div>
+<div class="cq"><div class="cqn">Q101</div><div class="cqt">SHRM与传统HRM的本质区别是什么？（四大特征对比）</div></div>
+<div class="cq"><div class="cqn">Q102</div><div class="cqt">以环境为基础的战略HRM中，纵向匹配与横向匹配分别指什么？</div></div>
+<div class="cq"><div class="cqn">Q103</div><div class="cqt">【2019·高频必考】资源基础论（RBV）与VRIN四条件，为什么人力资源满足VRIN？</div></div>
+<div class="cq"><div class="cqn">Q104</div><div class="cqt">人力资源战略选择的三种思路（最佳实践法/最佳适配法/整合法）有何区别？</div></div>
+<div class="cq"><div class="cqn">Q105</div><div class="cqt">【预测★★★★】什么是HR外包？四种类型是什么？决定外包时应考虑哪些因素？</div></div>
+<div class="cq"><div class="cqn">Q106</div><div class="cqt">企业并购过程中，人力资源管理需要处理哪些核心问题？</div></div>
+<div class="cq"><div class="cqn">Q107</div><div class="cqt">【预测★★★★★】以华为"以奋斗者为本"为例，分析HR战略如何支撑企业竞争战略。</div></div>
+</div>
+
+<div class="cblk"><div class="cchl">第14章 · 国际人力资源管理（P452–478）</div>
+<div class="cq"><div class="cqn">Q108</div><div class="cqt">什么是国际人力资源管理？摩尔根模型包含哪三个维度？</div></div>
+<div class="cq"><div class="cqn">Q109</div><div class="cqt">国际HRM与国内HRM的差别主要表现在哪两方面？</div></div>
+<div class="cq"><div class="cqn">Q110</div><div class="cqt">【面试高频】比较日本、美国、中国HRM模式（HHP模式），说明各自适用情境。</div></div>
+<div class="cq"><div class="cqn">Q111</div><div class="cqt">【2026预测】跨国企业选聘外派人员的5大标准是什么？</div></div>
+<div class="cq"><div class="cqn">Q112</div><div class="cqt">试述外派人员培训的主要内容（三大类）</div></div>
+<div class="cq"><div class="cqn">Q113</div><div class="cqt">与一般绩效管理相比，跨国企业绩效管理具有哪4大特点？</div></div>
+<div class="cq"><div class="cqn">Q114</div><div class="cqt">外派人员的薪酬由哪几部分构成？基本薪酬有哪两种确定方式？</div></div>
+<div class="cq"><div class="cqn">Q115</div><div class="cqt">【2024真题改编·案例】TCL集团国际化进程中如何应对人力资源管理挑战？</div></div>
+</div>
+
+</div><!-- /cs -->
+</div><!-- /tc-cn -->
+
+<footer>
+  <p>《人力资源管理（第3版）》颜爱民著 · 北京大学出版社 · 中南大学企业管理学硕（120202）复试备考专用</p>
+  <p style="margin-top:5px">生成日期：2026-03-14 · 第1–14章全覆盖 · 115题 · 整合2016–2025年中南大学企业管理复试真题</p>
+  <p style="margin-top:3px;font-size:11px">📅 笔试时间：2026年3月27日 14:30–16:30 · 面试：3月28日 · 加油！</p>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button id="strig" onclick="oS()" title="搜索 (F3)">🔍</button>
+<div id="spill">
+  <span style="font-size:15px;flex-shrink:0">🔍</span>
+  <input id="spin" placeholder="搜索题目关键词..." oninput="dS(this.value)" onkeydown="sK(event)">
+  <span id="scnt"></span>
+  <button onclick="nS(-1)">↑</button>
+  <button onclick="nS(1)">↓</button>
+  <button onclick="cS()">✕</button>
+</div>
+
+<script>
+// Dark mode
+function dark(){document.body.classList.toggle('dark');document.getElementById('dbtn').textContent=document.body.classList.contains('dark')?'☀️':'🌙';try{localStorage.setItem('hq',document.body.classList.contains('dark')?'1':'0')}catch(e){}}
+try{if(localStorage.getItem('hq')==='1'){document.body.classList.add('dark');document.getElementById('dbtn').textContent='☀️'}}catch(e){}
+
+// Tabs
+function stab(t){document.querySelectorAll('.tc').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.vt').forEach(x=>x.classList.remove('active'));document.getElementById('tc-'+t).classList.add('active');document.querySelectorAll('.vt')[t==='ch'?0:1].classList.add('active')}
+
+// Question toggle
+function tq(h){const p=h.nextElementSibling;const t=h.querySelector('.qtg');const o=p.classList.contains('open');p.classList.toggle('open',!o);t.style.transform=o?'':'rotate(90deg)'}
+
+// Go to chapter
+function goC(n){stab('ch');setTimeout(()=>{const el=document.getElementById('ch'+n);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})},50)}
+
+// Back to top + progress
+window.addEventListener('scroll',()=>{document.getElementById('btt').classList.toggle('show',scrollY>300);const d=document.documentElement;document.getElementById('prog').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%'});
+
+// Search
+let marks=[],cur=0;
+function oS(){document.getElementById('spill').style.display='flex';document.getElementById('strig').style.display='none';document.getElementById('spin').focus()}
+function cS(){clrHL();document.getElementById('spill').style.display='none';document.getElementById('strig').style.display='flex';document.getElementById('spin').value='';document.getElementById('scnt').textContent='';marks=[];cur=0}
+function sK(e){if(e.key==='Escape')cS();if(e.key==='Enter'){e.preventDefault();nS(e.shiftKey?-1:1)}}
+document.addEventListener('keydown',e=>{if(e.key==='F3'){e.preventDefault();const p=document.getElementById('spill');if(!p.style.display||p.style.display==='none')oS();else nS(e.shiftKey?-1:1)}});
+function clrHL(){document.querySelectorAll('mark.sh').forEach(m=>{const p=m.parentNode;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize()});marks=[]}
+function dS(q){clrHL();cur=0;q=q.trim();if(!q){document.getElementById('scnt').textContent='';return}
+  document.querySelectorAll('.ap').forEach(p=>{p.classList.add('open')});document.querySelectorAll('.qtg').forEach(t=>{t.style.transform='rotate(90deg)'});
+  const rx=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');
+  const root=document.querySelector('.tc.active')||document.body;
+  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+  const nodes=[];let nd;while((nd=walker.nextNode())){if(nd.nodeValue.match(rx)&&!['SCRIPT','STYLE'].includes(nd.parentNode.tagName))nodes.push(nd)}
+  nodes.forEach(tn=>{const f=document.createDocumentFragment();let l=0,m;rx.lastIndex=0;const txt=tn.nodeValue;while((m=rx.exec(txt))!==null){f.appendChild(document.createTextNode(txt.slice(l,m.index)));const mk=document.createElement('mark');mk.className='sh';mk.textContent=m[0];f.appendChild(mk);marks.push(mk);l=m.index+m[0].length}f.appendChild(document.createTextNode(txt.slice(l)));tn.parentNode.replaceChild(f,tn)});
+  upd();if(marks.length)hlCur()}
+function hlCur(){marks.forEach((m,i)=>m.classList.toggle('sc',i===cur));if(marks[cur])marks[cur].scrollIntoView({behavior:'smooth',block:'center'})}
+function nS(d){if(!marks.length)return;cur=(cur+d+marks.length)%marks.length;hlCur();upd()}
+function upd(){const c=document.getElementById('scnt');c.textContent=marks.length===0?'无结果':(cur+1)+' / '+marks.length}
+</script>
+</body>
+</html>

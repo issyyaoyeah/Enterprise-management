@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业战略管理 · 通用答题模板 · 中南大学复试专用</title>
+<style>
+/* ===== CSS Variables ===== */
+:root {
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --surface2: #f0f4ff;
+  --ink: #1a1d2e;
+  --ink2: #3d4066;
+  --muted: #7a7f9a;
+  --border: #e2e5f1;
+  --accent1: #4f46e5;   /* 靛紫 - 主色 */
+  --accent2: #0ea5e9;   /* 天蓝 */
+  --accent3: #10b981;   /* 翠绿 */
+  --accent4: #f59e0b;   /* 琥珀 */
+  --accent5: #ef4444;   /* 警红 */
+  --accent6: #8b5cf6;   /* 紫色 */
+  --accent7: #ec4899;   /* 粉红 */
+  --nav-h: 112px;
+  --radius: 12px;
+  --shadow: 0 2px 16px rgba(79,70,229,0.08);
+  font-variant-numeric: tabular-nums;
+}
+
+.dark-mode {
+  --bg: #0f1117;
+  --surface: #1a1d2e;
+  --surface2: #1e2236;
+  --ink: #e8eaf6;
+  --ink2: #b0b8d8;
+  --muted: #6b7280;
+  --border: #2a2f4a;
+  --shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.75;
+  transition: background .3s, color .3s;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #7c3aed 100%);
+  padding: 60px 40px 50px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-badge { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); margin-bottom: 12px; }
+.hero h1 { font-size: 32px; font-weight: 900; margin-bottom: 10px; letter-spacing: -0.5px; }
+.hero h1 span { color: #a5f3fc; }
+.hero-sub { font-size: 14px; color: rgba(255,255,255,.75); max-width: 680px; margin: 0 auto 20px; line-height: 1.8; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.htag { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: rgba(255,255,255,.9); }
+.hero-date { position: absolute; top: 16px; right: 20px; font-size: 11px; color: rgba(255,255,255,.4); }
+
+/* ===== NAV ===== */
+#nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(79,70,229,.08);
+  transition: background .3s;
+}
+.nav-top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.nav-title { font-size: 14px; font-weight: 700; color: var(--accent1); }
+.nav-controls { display: flex; gap: 8px; align-items: center; }
+.nav-controls input {
+  padding: 5px 14px; border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg); color: var(--ink);
+  font-size: 13px; width: 200px;
+  transition: border-color .2s;
+}
+.nav-controls input:focus { outline: none; border-color: var(--accent1); }
+.nbtn {
+  padding: 5px 14px; border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface2); color: var(--ink2);
+  font-size: 12px; cursor: pointer;
+  transition: all .2s;
+}
+.nbtn:hover { background: var(--accent1); color: #fff; border-color: var(--accent1); }
+.nav-links { display: flex; overflow-x: auto; gap: 4px; padding: 8px 16px; scrollbar-width: none; }
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  white-space: nowrap; padding: 4px 14px;
+  border-radius: 20px; font-size: 12px; font-weight: 600;
+  color: var(--ink2); text-decoration: none;
+  transition: all .2s;
+}
+.nav-links a:hover { background: var(--accent1); color: #fff; }
+
+/* ===== MAIN ===== */
+.main { max-width: 1100px; margin: 0 auto; padding: 32px 20px 60px; }
+
+/* ===== SECTION HEADER ===== */
+.sec-hdr {
+  display: flex; align-items: center; gap: 12px;
+  margin: 36px 0 16px;
+}
+.sec-hdr-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.sec-hdr h2 { font-size: 20px; font-weight: 800; color: var(--ink); }
+.sec-hdr p { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+/* ===== OVERVIEW GRID ===== */
+.overview-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 14px; margin-bottom: 24px;
+}
+.ov-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 18px 20px;
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--c);
+  transition: transform .2s;
+}
+.ov-card:hover { transform: translateY(-2px); }
+.ov-num { font-size: 28px; font-weight: 900; color: var(--c); font-variant-numeric: tabular-nums; }
+.ov-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ===== TEMPLATE CARD ===== */
+.tpl-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); margin-bottom: 24px;
+  box-shadow: var(--shadow); overflow: hidden;
+  transition: box-shadow .2s;
+}
+.tpl-card:hover { box-shadow: 0 4px 24px rgba(79,70,229,.14); }
+.tpl-header {
+  padding: 18px 24px;
+  display: flex; align-items: flex-start; gap: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.tpl-num {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--c); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.tpl-title-wrap { flex: 1; }
+.tpl-type { font-size: 11px; letter-spacing: 1.5px; color: var(--c); font-weight: 700; margin-bottom: 4px; }
+.tpl-title { font-size: 18px; font-weight: 800; color: var(--ink); }
+.tpl-desc { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.6; }
+.tpl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag {
+  padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 600;
+  background: var(--surface2); color: var(--c);
+  border: 1px solid var(--c);
+}
+.tpl-body { padding: 20px 24px; }
+
+/* ===== TEMPLATE STRUCTURE ===== */
+.tpl-scope {
+  background: var(--surface2); border-radius: 10px;
+  padding: 14px 18px; margin-bottom: 16px;
+  border-left: 4px solid var(--c);
+}
+.tpl-scope-title { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 1px; margin-bottom: 8px; }
+.tpl-scope-items { display: flex; flex-wrap: wrap; gap: 6px; }
+.scope-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 3px 10px; font-size: 12px; color: var(--ink2);
+}
+
+/* ===== STEPS ===== */
+.steps { counter-reset: step; }
+.step {
+  display: flex; gap: 14px; margin-bottom: 14px;
+  padding: 14px 18px;
+  background: var(--surface2); border-radius: 10px;
+  border: 1px solid var(--border);
+  transition: border-color .2s;
+}
+.step:hover { border-color: var(--c); }
+.step-num {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--c); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.step-content { flex: 1; }
+.step-label { font-size: 13px; font-weight: 700; color: var(--ink); }
+.step-detail { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.6; }
+.step-eg { font-size: 12px; color: var(--accent3); margin-top: 4px; font-style: italic; }
+
+/* ===== EXAMPLE BOX ===== */
+.eg-box {
+  background: linear-gradient(135deg, rgba(79,70,229,.05), rgba(16,185,129,.05));
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 16px 18px; margin-top: 14px;
+}
+.eg-box-title { font-size: 11px; font-weight: 700; color: var(--accent1); letter-spacing: 1px; margin-bottom: 8px; }
+.eg-box-content { font-size: 13px; color: var(--ink2); line-height: 1.8; }
+.eg-box-content strong { color: var(--c); }
+
+/* ===== TEMPLATE CHAIN (linear flow) ===== */
+.tpl-chain {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 6px; padding: 16px;
+  background: var(--surface2); border-radius: 10px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.chain-box {
+  background: var(--surface); border: 2px solid var(--c);
+  border-radius: 8px; padding: 6px 14px;
+  font-size: 13px; font-weight: 700; color: var(--ink);
+  white-space: nowrap;
+}
+.chain-arr { color: var(--c); font-size: 18px; font-weight: 700; }
+
+/* ===== TIP BOX ===== */
+.tip-box {
+  border-radius: 10px; padding: 14px 18px; margin-top: 14px;
+  font-size: 13px; line-height: 1.8;
+}
+.tip-box.tip-warn { background: #fef3c7; border: 1px solid #fcd34d; color: #92400e; }
+.tip-box.tip-info { background: #dbeafe; border: 1px solid #93c5fd; color: #1e40af; }
+.tip-box.tip-ok   { background: #d1fae5; border: 1px solid #6ee7b7; color: #065f46; }
+.tip-box strong { display: block; margin-bottom: 4px; }
+.dark-mode .tip-box.tip-warn { background: rgba(245,158,11,.12); color: #fcd34d; border-color: rgba(245,158,11,.3); }
+.dark-mode .tip-box.tip-info { background: rgba(14,165,233,.12); color: #7dd3fc; border-color: rgba(14,165,233,.3); }
+.dark-mode .tip-box.tip-ok   { background: rgba(16,185,129,.12); color: #6ee7b7; border-color: rgba(16,185,129,.3); }
+
+/* ===== COMPARE TABLE ===== */
+.ctable { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ctable th { background: var(--c); color: #fff; padding: 10px 14px; text-align: left; }
+.ctable td { padding: 9px 14px; border-bottom: 1px solid var(--border); color: var(--ink2); vertical-align: top; }
+.ctable tr:nth-child(even) td { background: var(--surface2); }
+.dark-mode .ctable tr:nth-child(even) td { background: rgba(255,255,255,.03); }
+
+/* ===== QUICK REVIEW ===== */
+.quick-box {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
+  border-radius: var(--radius); padding: 28px 32px; margin: 32px 0;
+  color: #fff;
+}
+.quick-box h3 { font-size: 17px; font-weight: 800; margin-bottom: 16px; }
+.quick-row { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
+.qr-label {
+  background: rgba(255,255,255,.2); border-radius: 6px;
+  padding: 2px 10px; font-size: 11px; font-weight: 700;
+  white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+}
+.qr-text { font-size: 13px; color: rgba(255,255,255,.88); line-height: 1.7; }
+.qr-text mark { background: #fbbf24; color: #1a1a1a; padding: 0 3px; border-radius: 3px; }
+
+/* ===== EXAM YEAR BADGES ===== */
+.year-badge {
+  display: inline-block; padding: 2px 10px;
+  border-radius: 12px; font-size: 11px; font-weight: 700;
+  background: var(--accent1); color: #fff;
+  margin: 2px;
+}
+
+/* ===== ACCORDION ===== */
+details { margin-bottom: 10px; }
+details summary {
+  cursor: pointer; padding: 12px 18px;
+  background: var(--surface2); border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 13px; font-weight: 600; color: var(--ink);
+  list-style: none; user-select: none;
+  transition: background .2s;
+}
+details summary:hover { background: var(--surface); border-color: var(--c); }
+details summary::before { content: '▶ '; color: var(--c); font-size: 11px; }
+details[open] summary::before { content: '▼ '; }
+details .det-body {
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: none; border-radius: 0 0 10px 10px;
+  font-size: 13px; color: var(--ink2); line-height: 1.8;
+}
+
+/* ===== BACK TO TOP ===== */
+#btt {
+  position: fixed; bottom: 28px; right: 24px; z-index: 999;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent1); color: #fff; border: none;
+  font-size: 20px; cursor: pointer; box-shadow: 0 4px 16px rgba(79,70,229,.35);
+  display: none; transition: all .2s;
+}
+#btt:hover { transform: scale(1.1); }
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center; padding: 24px;
+  font-size: 12px; color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 48px;
+}
+
+/* ===== HIGHLIGHT (search) ===== */
+mark.hl { background: #fde68a; color: #92400e; border-radius: 3px; padding: 0 2px; }
+.dark-mode mark.hl { background: #b45309; color: #fef3c7; }
+.hidden-by-search { display: none !important; }
+
+/* ===== DIVIDER ===== */
+.divider { border: none; border-top: 2px dashed var(--border); margin: 32px 0; }
+
+/* Colors per template */
+.c1 { --c: #4f46e5; }
+.c2 { --c: #0ea5e9; }
+.c3 { --c: #10b981; }
+.c4 { --c: #f59e0b; }
+.c5 { --c: #ef4444; }
+.c6 { --c: #8b5cf6; }
+.c7 { --c: #ec4899; }
+.c8 { --c: #0d9488; }
+
+@media (max-width: 700px) {
+  .hero h1 { font-size: 24px; }
+  .hero { padding: 40px 20px 36px; }
+  .main { padding: 20px 14px; }
+  .tpl-header { flex-direction: column; }
+  .tpl-chain { flex-direction: column; align-items: flex-start; }
+  .chain-arr { transform: rotate(90deg); }
+  .nav-controls input { width: 130px; }
+}
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body id="top">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-date">生成日期：2026-03-10</div>
+  <div class="hero-badge">中南大学 · 企业管理学硕复试专用</div>
+  <h1>企业战略管理<br><span>通用答题模板大全</span></h1>
+  <p class="hero-sub">基于2016–2025中南大学复试真题系统归纳，覆盖笔试全题型（简答·论述·案例）+ 面试口述，8大模板一网打尽。跨考生专用：每个模板均配有通俗解读、逐步拆解和真题示范。</p>
+  <div class="hero-tags">
+    <span class="htag">📅 2016–2025真题归纳</span>
+    <span class="htag">🎯 8大通用模板</span>
+    <span class="htag">✍️ 简答·论述·案例·面试</span>
+    <span class="htag">🧩 逐步拆解</span>
+    <span class="htag">💡 跨考生友好</span>
+    <span class="htag">📚 蓝海林教材适配</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<div id="nav">
+  <div class="nav-top">
+    <div class="nav-title">📝 企业战略管理答题模板</div>
+    <div class="nav-controls">
+      
+      <button class="nbtn" onclick="toggleDark()">🌙 夜间</button>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#overview">📊 总览</a>
+    <a href="#t1">①名词解释</a>
+    <a href="#t2">②分析工具</a>
+    <a href="#t3">③战略类型</a>
+    <a href="#t4">④理论框架</a>
+    <a href="#t5">⑤影响关系论述</a>
+    <a href="#t6">⑥战略匹配论述</a>
+    <a href="#t7">⑦案例分析</a>
+    <a href="#t8">⑧面试口述</a>
+    <a href="#quick">⚡快速复习</a>
+    <a href="#matrix">📋题型矩阵</a>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ===== 总览 ===== -->
+<div id="overview">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#eef2ff;">📊</div>
+    <div>
+      <h2>答题模板总览</h2>
+      <p>从2016–2025年真题中识别出的企业战略管理核心题型及对应模板</p>
+    </div>
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card" style="--c:#4f46e5">
+      <div class="ov-num">8</div>
+      <div class="ov-label">通用答题模板</div>
+    </div>
+    <div class="ov-card" style="--c:#0ea5e9">
+      <div class="ov-num">50+</div>
+      <div class="ov-label">对应知识点</div>
+    </div>
+    <div class="ov-card" style="--c:#10b981">
+      <div class="ov-num">10</div>
+      <div class="ov-label">年份真题覆盖</div>
+    </div>
+    <div class="ov-card" style="--c:#f59e0b">
+      <div class="ov-num">4</div>
+      <div class="ov-label">笔试题型</div>
+    </div>
+  </div>
+
+  <!-- 题型分布表 -->
+  <div class="tpl-card c1" style="--c:#4f46e5">
+    <div class="tpl-header">
+      <div class="tpl-num">📋</div>
+      <div class="tpl-title-wrap">
+        <div class="tpl-type">2016–2025 真题题型分布</div>
+        <div class="tpl-title">战略管理题型分布与频率</div>
+        <div class="tpl-desc">笔试题型：简答(50%) / 论述(30%) / 案例(20%)；面试：概念解释+热点分析</div>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <table class="ctable">
+        <tr>
+          <th>题型</th>
+          <th>出现频率</th>
+          <th>代表真题（战略部分）</th>
+          <th>对应模板</th>
+        </tr>
+        <tr>
+          <td><strong>简答题</strong><br>（简述XXX）</td>
+          <td>⭐⭐⭐⭐⭐ 每年必考</td>
+          <td>简述波特五力模型（2016）<br>简述差异化战略适用条件（2016）<br>简述波士顿矩阵（2019）<br>简述战略联盟动机（2023）</td>
+          <td>模板①②③④</td>
+        </tr>
+        <tr>
+          <td><strong>论述题</strong><br>（论述XXX的影响/关系）</td>
+          <td>⭐⭐⭐⭐⭐ 每年必考</td>
+          <td>论述企业文化对战略实施的作用（2018）<br>论述ESG对企业战略与价值的影响（2021）<br>论述AI对企业管理与战略的变革（2024）</td>
+          <td>模板⑤⑥</td>
+        </tr>
+        <tr>
+          <td><strong>案例分析题</strong><br>（案例：某企业XXX）</td>
+          <td>⭐⭐⭐⭐ 每年必考</td>
+          <td>某制造企业多元化失败（2016）<br>传统零售转型新零售（2018）<br>数字化转型失败（2025）</td>
+          <td>模板⑦</td>
+        </tr>
+        <tr>
+          <td><strong>面试口述题</strong><br>（如何看待/谈谈你对…）</td>
+          <td>⭐⭐⭐⭐ 面试必考</td>
+          <td>如何看待核心竞争力（2016）<br>企业生命周期各阶段战略（2017）<br>平台型企业战略（2021）</td>
+          <td>模板⑧</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 模板①：名词解释 ===== -->
+<div id="t1">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#eef2ff; color:#4f46e5; font-size:20px; font-weight:900;">①</div>
+    <div>
+      <h2>模板① · 名词解释 / 概念界定题</h2>
+      <p>面试提问 "XXX是什么？" / 笔试名词解释</p>
+    </div>
+  </div>
+
+  <div class="tpl-card c1">
+    <div class="tpl-header">
+      <div class="tpl-num" style="background:#4f46e5; font-size:14px;">名词</div>
+      <div class="tpl-title-wrap">
+        <div class="tpl-type">TEMPLATE 01 · 名词解释</div>
+        <div class="tpl-title">概念定义型答题模板</div>
+        <div class="tpl-desc">适用于面试"XX是什么"类提问，以及笔试名词解释题。核心要求：定义准确、有内涵、有外延、有价值。</div>
+        <div class="tpl-tags">
+          <span class="tag">核心竞争力</span>
+          <span class="tag">战略联盟</span>
+          <span class="tag">蓝海战略</span>
+          <span class="tag">资源基础观</span>
+          <span class="tag">动态能力</span>
+          <span class="tag">价值链</span>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <!-- 结构链 -->
+      <div class="tpl-scope">
+        <div class="tpl-scope-title">📐 答题结构（5步法）</div>
+      </div>
+      <div class="tpl-chain">
+        <div class="chain-box">① 提出者/背景</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">② 核心定义</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">③ 主要内容/构成</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">④ 关键特征</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑤ 管理意义</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">①</div>
+          <div class="step-content">
+            <div class="step-label">提出者 / 理论背景（1–2句）</div>
+            <div class="step-detail">交代是谁提出的、在什么背景下提出的，给定义"立住脚"。<br>口诀：<strong>谁·何时·什么背景</strong></div>
+            <div class="step-eg">例："波特五力模型由哈佛大学迈克尔·波特于1979年提出，用于分析行业竞争结构。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">②</div>
+          <div class="step-content">
+            <div class="step-label">核心定义（1–2句，必须用教材原句或近似表达）</div>
+            <div class="step-detail">这是最重要的一步，<strong>必须精准</strong>。用"XXX是指……的一种框架/战略/方法"句式。</div>
+            <div class="step-eg">例："核心竞争力是指能够给企业带来关键竞争优势，且满足有价值、稀缺、难以模仿、不可替代四个标准的资源或能力的有机整合。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">③</div>
+          <div class="step-content">
+            <div class="step-label">主要内容 / 构成要素（列点，2–5点）</div>
+            <div class="step-detail">拆解定义的"子模块"，每点1–2句话。可用"第一……第二……"格式。</div>
+            <div class="step-eg">例："波特五力包括：① 现有竞争者威胁 ② 潜在进入者威胁 ③ 替代品威胁 ④ 买方议价能力 ⑤ 供方议价能力"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">④</div>
+          <div class="step-content">
+            <div class="step-label">关键特征 / 区别于其他概念之处</div>
+            <div class="step-detail">回答"它的特点是什么？它和XXX有什么不同？"用于防止概念混淆。</div>
+            <div class="step-eg">例："蓝海战略与红海战略的核心区别在于：前者通过价值创新跳出竞争，后者在现有市场存量中竞争。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑤</div>
+          <div class="step-content">
+            <div class="step-label">管理意义 / 对企业战略决策的价值（1–2句，画龙点睛）</div>
+            <div class="step-detail">总结"为什么企业/管理者需要用这个概念/工具"，展现对知识的深度理解。</div>
+            <div class="step-eg">例："理解核心竞争力有助于企业在战略选择时做到'有所为、有所不为'，聚焦资源发展长期竞争优势。"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eg-box">
+        <div class="eg-box-title">📄 真题示范：【2023面试】"请解释动态能力理论"</div>
+        <div class="eg-box-content">
+          <strong>①提出背景：</strong>动态能力理论由蒂斯等学者于1997年提出，用于解释在快速变化环境中企业如何保持持续竞争优势。<br><br>
+          <strong>②核心定义：</strong>动态能力是指企业整合、构建和重构内外部能力以应对快速变化环境的能力，强调能力本身的可更新性。<br><br>
+          <strong>③主要内容：</strong>包括感知能力（发现市场机会）、抓取能力（调动资源把握机会）和重构能力（持续更新资源配置）三个维度。<br><br>
+          <strong>④关键特征：</strong>与静态的"核心能力"不同，动态能力强调"变化"——不仅要有能力，还要有更新和重构能力的能力。<br><br>
+          <strong>⑤管理意义：</strong>对数字化时代的企业尤为重要——技术变革速度加快，企业必须具备不断学习和转型的动态能力，才能在颠覆性变化中生存。
+        </div>
+      </div>
+
+      <div class="tip-box tip-warn">
+        <strong>⚠️ 常见失误</strong>
+        只背定义，忘记说"意义"，显得死板。面试时加一个生活化比喻可以大大加分。<br>
+        例：动态能力就像人的"学习能力"，不是学到什么技能，而是能不断更新技能的元能力。
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 模板②：分析工具类简答 ===== -->
+<div id="t2">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#e0f2fe; color:#0ea5e9; font-size:20px; font-weight:900;">②</div>
+    <div>
+      <h2>模板② · 分析工具类简答题</h2>
+      <p>"简述XX模型/框架的内容与应用"——出现频率最高的题型</p>
+    </div>
+  </div>
+
+  <div class="tpl-card c2">
+    <div class="tpl-header">
+      <div class="tpl-num" style="background:#0ea5e9; font-size:14px;">工具</div>
+      <div class="tpl-title-wrap">
+        <div class="tpl-type">TEMPLATE 02 · 分析工具简答</div>
+        <div class="tpl-title">分析框架 / 工具模型答题模板</div>
+        <div class="tpl-desc">适用于"简述波特五力" / "简述SWOT分析" / "简述PESTEL框架" / "简述价值链分析"等题目。</div>
+        <div class="tpl-tags">
+          <span class="tag">波特五力（2016）</span>
+          <span class="tag">SWOT（2017）</span>
+          <span class="tag">PESTEL（2018）</span>
+          <span class="tag">波士顿矩阵（2019）</span>
+          <span class="tag">价值链（2020）</span>
+          <span class="tag">平衡计分卡（2016）</span>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <div class="tpl-chain">
+        <div class="chain-box">① 工具定位</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">② 核心构成</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">③ 各要素解析</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">④ 使用步骤</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑤ 局限性</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑥ 实践应用</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">①</div>
+          <div class="step-content">
+            <div class="step-label">工具定位：这个工具用来分析什么？解决什么问题？</div>
+            <div class="step-detail">一句话说清楚：这是一个"分析XX环境/资源/战略"的工具，目的是帮助企业"做出XX决策"。</div>
+            <div class="step-eg">例："PESTEL是分析企业宏观外部环境的框架，帮助企业识别来自各领域的机会与威胁。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">②</div>
+          <div class="step-content">
+            <div class="step-label">核心构成：包含哪几个维度/要素？（罗列，给出英文缩写）</div>
+            <div class="step-detail">这是得分核心，<strong>必须准确列出所有要素</strong>，不遗漏。</div>
+            <div class="step-eg">例："PESTEL包含6个维度：Political（政治）/ Economic（经济）/ Social（社会）/ Technological（技术）/ Environmental（环境）/ Legal（法律）"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">③</div>
+          <div class="step-content">
+            <div class="step-label">各要素简要解析（每个要素1–2句）</div>
+            <div class="step-detail">逐一解释每个要素的含义和企业关注的内容，可以举小例子辅助。</div>
+            <div class="step-eg">例："技术因素包括技术创新速度、研发投入、数字化程度等，例如人工智能的发展对制造业自动化战略具有深远影响。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">④</div>
+          <div class="step-content">
+            <div class="step-label">如何使用（操作步骤）—— 加分项</div>
+            <div class="step-detail">简述如何在实际中运用这个工具，体现"能用"而不只是"会背"。</div>
+            <div class="step-eg">例："运用SWOT时，先分别列出内部优势(S)/劣势(W)和外部机会(O)/威胁(T)，再进行SO/ST/WO/WT四类战略组合。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑤</div>
+          <div class="step-content">
+            <div class="step-label">局限性（批判性思维，展示深度）</div>
+            <div class="step-detail">指出这个工具的不足，体现批判性思维，面试加分项。</div>
+            <div class="step-eg">例："SWOT的局限在于：分析结果过于主观，缺乏量化标准；四象限平等罗列，难以判断各因素的相对重要性。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑥</div>
+          <div class="step-content">
+            <div class="step-label">实践应用举例（结合真题场景）</div>
+            <div class="step-detail">结合题目要求的行业/场景举例，如"在制造业中……"</div>
+            <div class="step-eg">例："以新能源汽车行业为例，运用波特五力可以发现：传统车企进入威胁弱，但替代品（氢能源）威胁中等，买方议价能力在补贴退潮后增强。"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 工具速查表 -->
+      <div style="margin-top:20px;">
+        <div class="tpl-scope">
+          <div class="tpl-scope-title">🗂️ 高频分析工具要素速查</div>
+        </div>
+        <table class="ctable">
+          <tr>
+            <th>工具</th>
+            <th>核心要素（必背）</th>
+            <th>考察年份</th>
+          </tr>
+          <tr>
+            <td><strong>波特五力</strong></td>
+            <td>现有竞争者 / 潜在进入者 / 替代品 / 买方议价 / 供方议价</td>
+            <td><span class="year-badge">2016</span></td>
+          </tr>
+          <tr>
+            <td><strong>SWOT</strong></td>
+            <td>优势S / 劣势W / 机会O / 威胁T → SO/ST/WO/WT四类战略</td>
+            <td><span class="year-badge">2017</span></td>
+          </tr>
+          <tr>
+            <td><strong>PESTEL</strong></td>
+            <td>政治P / 经济E / 社会S / 技术T / 环境E / 法律L</td>
+            <td><span class="year-badge">2018</span></td>
+          </tr>
+          <tr>
+            <td><strong>波士顿矩阵</strong></td>
+            <td>明星（高市场增长率，高市占率）/ 金牛 / 问题 / 瘦狗</td>
+            <td><span class="year-badge">2019</span></td>
+          </tr>
+          <tr>
+            <td><strong>价值链</strong></td>
+            <td>基本活动（进料→生产→出库→营销→服务）+ 辅助活动（基础设施/人力/技术/采购）</td>
+            <td><span class="year-badge">2020</span></td>
+          </tr>
+          <tr>
+            <td><strong>平衡计分卡</strong></td>
+            <td>财务维度 / 客户维度 / 内部流程维度 / 学习与成长维度（因果链：学习→流程→客户→财务）</td>
+            <td><span class="year-badge">2016</span></td>
+          </tr>
+          <tr>
+            <td><strong>战略钟模型</strong></td>
+            <td>价格轴 vs 附加值轴 → 8种战略路径（低价·差异化·聚焦·混合等）</td>
+            <td><span class="year-badge">2021</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 模板③：战略类型简答 ===== -->
+<div id="t3">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#d1fae5; color:#10b981; font-size:20px; font-weight:900;">③</div>
+    <div>
+      <h2>模板③ · 战略类型简答题</h2>
+      <p>"简述XX战略的适用条件、特点与风险"</p>
+    </div>
+  </div>
+
+  <div class="tpl-card c3">
+    <div class="tpl-header">
+      <div class="tpl-num" style="background:#10b981; font-size:14px;">战略</div>
+      <div class="tpl-title-wrap">
+        <div class="tpl-type">TEMPLATE 03 · 战略类型简答</div>
+        <div class="tpl-title">战略选择类型答题模板</div>
+        <div class="tpl-desc">适用于"简述差异化战略" / "简述多元化战略" / "简述国际化战略" / "简述成本领先战略"等题目。</div>
+        <div class="tpl-tags">
+          <span class="tag">差异化战略（2016）</span>
+          <span class="tag">成本领先战略（2019）</span>
+          <span class="tag">蓝海战略（2017/2022）</span>
+          <span class="tag">多元化战略（2021）</span>
+          <span class="tag">国际化战略（2020）</span>
+          <span class="tag">纵向一体化（2018）</span>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <div class="tpl-chain">
+        <div class="chain-box">① 战略定义</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">② 战略目标</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">③ 适用条件</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">④ 实现路径</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑤ 主要风险</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑥ 代表案例</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">①</div>
+          <div class="step-content">
+            <div class="step-label">战略定义：这个战略是什么？</div>
+            <div class="step-detail">一句话精准定义，答出核心逻辑（靠什么赢？赢的是什么？）</div>
+            <div class="step-eg">例："差异化战略是指企业通过提供独特的产品或服务，在行业内建立与众不同的定位，从而获取超额利润的竞争战略。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">②</div>
+          <div class="step-content">
+            <div class="step-label">战略目标：想实现什么？（1句话）</div>
+            <div class="step-detail">区分成本领先（降成本取量）、差异化（溢价取利）、集中化（聚焦细分市场），点明根本目的。</div>
+            <div class="step-eg">例："差异化战略的目标是通过顾客感知的独特价值，实现产品溢价，降低价格竞争压力。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">③</div>
+          <div class="step-content">
+            <div class="step-label">适用条件（⭐⭐⭐必答，2–4个条件）</div>
+            <div class="step-detail">这是简答题中极高频的考点！需要说明在什么<strong>市场条件/企业条件</strong>下才适合用此战略。</div>
+            <div class="step-eg">例："差异化战略适用条件：① 顾客对产品特性有多样化需求 ② 行业技术变化快，先动优势显著 ③ 企业具备较强的技术研发或品牌营销能力 ④ 价格竞争已导致行业整体利润率下降"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">④</div>
+          <div class="step-content">
+            <div class="step-label">实现路径（企业如何落地这个战略）</div>
+            <div class="step-detail">指出企业具体通过什么手段实现该战略，可从产品/技术/营销/组织几个维度说。</div>
+            <div class="step-eg">例："成本领先战略的实现路径：① 规模经济（扩大产量摊薄固定成本）② 经验曲线效应 ③ 严格成本控制与精益管理 ④ 简化产品设计降低制造复杂性"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑤</div>
+          <div class="step-content">
+            <div class="step-label">主要风险（⭐⭐⭐必答）</div>
+            <div class="step-detail">每种战略都有固有风险，务必指出，体现辩证思维。</div>
+            <div class="step-eg">例："差异化战略的风险：① 模仿风险：竞争者复制差异化特征 ② 价值漂移：顾客差异化偏好改变 ③ 成本过高：差异化成本超过顾客溢价意愿"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑥</div>
+          <div class="step-content">
+            <div class="step-label">代表案例（面试加分，笔试可选）</div>
+            <div class="step-detail">举一个家喻户晓的企业案例，一句话即可。</div>
+            <div class="step-eg">例："苹果公司长期坚持差异化战略，通过产品设计与生态系统构建，实现了手机行业最高的利润率。"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 战略速查表 -->
+      <div style="margin-top:20px;">
+        <div class="tpl-scope">
+          <div class="tpl-scope-title">⚡ 三大业务层战略对比速查</div>
+        </div>
+        <table class="ctable">
+          <tr>
+            <th>维度</th>
+            <th>成本领先战略</th>
+            <th>差异化战略</th>
+            <th>集中化战略</th>
+          </tr>
+          <tr>
+            <td><strong>核心逻辑</strong></td>
+            <td>比对手成本更低</td>
+            <td>比对手产品更独特</td>
+            <td>专注细分市场</td>
+          </tr>
+          <tr>
+            <td><strong>适用条件</strong></td>
+            <td>价格敏感市场；标准化产品；规模经济明显</td>
+            <td>顾客需求多样化；品牌/技术壁垒高</td>
+            <td>细分市场规模适中；大企业无暇顾及</td>
+          </tr>
+          <tr>
+            <td><strong>主要风险</strong></td>
+            <td>技术变革改变成本结构；竞争者模仿</td>
+            <td>模仿风险；差异化被价格差距抵消</td>
+            <td>大企业跟进聚焦；细分市场消失</td>
+          </tr>
+          <tr>
+            <td><strong>典型案例</strong></td>
+            <td>小米（低价高配）、沃尔玛</td>
+            <td>苹果、华为（高端线）</td>
+            <td>蔡司（精密光学）、兰博基尼</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 模板④：理论框架类简答 ===== -->
+<div id="t4">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#fef3c7; color:#f59e0b; font-size:20px; font-weight:900;">④</div>
+    <div>
+      <h2>模板④ · 理论框架类简答题</h2>
+      <p>"简述资源基础观/动态能力/战略联盟等理论"</p>
+    </div>
+  </div>
+
+  <div class="tpl-card c4">
+    <div class="tpl-header">
+      <div class="tpl-num" style="background:#f59e0b; font-size:14px;">理论</div>
+      <div class="tpl-title-wrap">
+        <div class="tpl-type">TEMPLATE 04 · 理论框架简答</div>
+        <div class="tpl-title">管理理论 / 战略框架答题模板</div>
+        <div class="tpl-desc">适用于"简述资源基础观" / "简述动态能力理论" / "简述战略联盟的动机与治理"等理论性题目。</div>
+        <div class="tpl-tags">
+          <span class="tag">资源基础观（2022）</span>
+          <span class="tag">动态能力（2023）</span>
+          <span class="tag">战略联盟（2023）</span>
+          <span class="tag">战略钟（2021）</span>
+          <span class="tag">蓝海战略六原则（2022）</span>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <div class="tpl-chain">
+        <div class="chain-box">① 理论渊源</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">② 核心主张</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">③ 关键假设/前提</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">④ 主要内容</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑤ 战略指导意义</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑥ 局限与批判</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">①</div>
+          <div class="step-content">
+            <div class="step-label">理论渊源：谁提出，什么时候，为解决什么问题</div>
+            <div class="step-eg">例："资源基础观（RBV）由彭罗斯奠定基础，巴尼于1991年系统化，旨在从企业内部资源视角解释竞争优势的来源，是对波特产业分析框架的补充。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">②</div>
+          <div class="step-content">
+            <div class="step-label">核心主张（这个理论最核心的观点是什么，1–2句）</div>
+            <div class="step-eg">例："RBV认为，持续竞争优势来源于企业所拥有的具有价值性(Valuable)、稀缺性(Rare)、难以模仿性(Inimitable)、不可替代性(Non-substitutable)的战略性资源——即VRIN框架。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">③</div>
+          <div class="step-content">
+            <div class="step-label">关键假设/前提（这个理论成立的前提条件）</div>
+            <div class="step-eg">例："RBV的前提假设：① 同行业企业的资源是异质的（各不相同）② 资源具有不完全流动性（不能随意被买走）"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">④</div>
+          <div class="step-content">
+            <div class="step-label">主要内容（逐点展开，2–4点，这是得分核心）</div>
+            <div class="step-eg">例："战略联盟主要内容：① 类型（合同型/股权型/合资企业）② 形成动机（资源互补/进入壁垒/风险分担/学习效应）③ 治理机制（关系治理/契约治理）④ 主要风险（机会主义/核心技术外泄）"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑤</div>
+          <div class="step-content">
+            <div class="step-label">战略指导意义（对企业战略决策有什么启示）</div>
+            <div class="step-eg">例："RBV对企业的战略指导在于：战略制定应从'我有什么资源能力'出发，而非仅从市场机会出发；应优先投资于难以模仿的无形资源（品牌、知识、关系）。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑥</div>
+          <div class="step-content">
+            <div class="step-label">局限与批判（体现批判性思维）</div>
+            <div class="step-eg">例："RBV的局限：过于静态，难以解释动态环境下企业如何持续更新资源；对资源的界定模糊（什么才算稀缺资源），因此动态能力理论是其重要补充。"</div>
+          </div>
+        </div>
+      </div>
+      <div class="tip-box tip-ok">
+        <strong>💡 答题得分技巧</strong>
+        理论题最容易拿高分的方式是：在说完理论内容后，主动联系"与本理论相关/相对的另一理论"，体现知识体系的连贯性。<br>
+        例："RBV强调内部资源，与波特的外部产业分析互补；动态能力理论是RBV在动态环境下的延伸。"
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 模板⑤：影响关系论述题 ===== -->
+<div id="t5">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#fce7f3; color:#ec4899; font-size:20px; font-weight:900;">⑤</div>
+    <div>
+      <h2>模板⑤ · "影响关系"论述题</h2>
+      <p>"论述XXX对企业战略/管理的影响" —— 每年必考论述题型</p>
+    </div>
+  </div>
+
+  <div class="tpl-card c7">
+    <div class="tpl-header">
+      <div class="tpl-num" style="background:#ec4899; font-size:14px;">论述</div>
+      <div class="tpl-title-wrap">
+        <div class="tpl-type">TEMPLATE 05 · 影响关系论述</div>
+        <div class="tpl-title">"XXX对YYY的影响"论述题模板</div>
+        <div class="tpl-desc">高频"论述"题型。近年考察：企业文化对战略实施的作用（2018）、ESG对企业战略的影响（2021）、AI对企业管理的变革（2024）、数字化转型中的战略与人力协同（2022）。</div>
+        <div class="tpl-tags">
+          <span class="tag">企业文化→战略实施（2018）</span>
+          <span class="tag">大数据→战略决策（2019）</span>
+          <span class="tag">ESG→企业战略（2021）</span>
+          <span class="tag">数字化→战略与人力（2022）</span>
+          <span class="tag">AI→企业管理（2024）</span>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <div class="tpl-chain">
+        <div class="chain-box">① 背景/趋势说明</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">② 概念界定</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">③ 影响机制（3–4个维度）</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">④ 企业应对策略</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑤ 总结升华</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">①</div>
+          <div class="step-content">
+            <div class="step-label">背景/趋势说明（2–3句，引出话题的重要性）</div>
+            <div class="step-detail">交代为什么这个"影响因素"值得关注，体现时代背景感。</div>
+            <div class="step-eg">例（AI题）："当前人工智能技术的快速发展正在深刻改变各行各业的竞争规则，对企业的战略制定、组织结构和人才管理带来全面冲击。探讨AI对企业管理与战略的变革，具有重要的理论与实践意义。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">②</div>
+          <div class="step-content">
+            <div class="step-label">核心概念界定（被影响方 + 影响方各简述1句）</div>
+            <div class="step-detail">简明定义题目中的两个核心概念，展示理论基础。</div>
+            <div class="step-eg">例："企业文化是指企业成员在长期实践中形成的共同价值观念、行为准则和思维方式的总和；战略实施是将战略计划转化为具体行动的过程。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">③</div>
+          <div class="step-content">
+            <div class="step-label">影响机制：分3–4个维度，逐点展开（⭐⭐⭐得分核心）</div>
+            <div class="step-detail">这是论述题的主体部分，需要<strong>层次清晰</strong>。每个维度：影响点名称 → 逻辑说明 → 举例。<br>常用维度框架：战略层面 / 组织层面 / 人力层面 / 运营层面</div>
+            <div class="step-eg">例（企业文化→战略实施）：<br>
+              "① 导向功能：优秀的企业文化为员工提供共同的行动指南，引导全员朝战略目标努力（如华为'以奋斗者为本'文化推动高强度执行）<br>
+              ② 凝聚功能：共同价值观降低内部协调成本，减少战略执行阻力<br>
+              ③ 激励功能：文化认同产生内在驱动力，使员工主动投入战略实施<br>
+              ④ 约束功能：文化规范替代部分正式制度，降低监督成本"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">④</div>
+          <div class="step-content">
+            <div class="step-label">企业应对策略（有针对性的建议，2–3条）</div>
+            <div class="step-detail">体现"学以致用"，提出具体的管理应对措施，让答题更有价值感。</div>
+            <div class="step-eg">例（AI题）："企业应对AI变革的战略建议：① 将AI能力纳入核心战略资源，系统规划AI应用路径 ② 重构组织结构，推进AI驱动的流程再造 ③ 建立人机协作的新型人才体系，重视AI伦理治理"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑤</div>
+          <div class="step-content">
+            <div class="step-label">总结升华（2–3句，观点明确，有高度）</div>
+            <div class="step-detail">综合评价，指出未来方向或更宏观的启示。</div>
+            <div class="step-eg">例："综上，企业文化是战略实施的'软实力'，与组织结构、资源配置共同构成战略实施的四驾马车。塑造与战略高度匹配的企业文化，是实现战略落地的关键也是最具可持续性的竞争壁垒。"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box tip-info">
+        <strong>📐 论述题字数参考</strong>
+        笔试论述题：建议400–600字，分3–4个核心论点。<br>
+        面试口述版：建议1.5–2分钟，说清3个核心影响维度 + 1个案例举例即可，不用面面俱到。
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 模板⑥：战略匹配/关系类论述题 ===== -->
+<div id="t6">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#ede9fe; color:#8b5cf6; font-size:20px; font-weight:900;">⑥</div>
+    <div>
+      <h2>模板⑥ · "战略匹配/协同关系"论述题</h2>
+      <p>"论述XXX与YYY的匹配/协同关系"</p>
+    </div>
+  </div>
+
+  <div class="tpl-card c6">
+    <div class="tpl-header">
+      <div class="tpl-num" style="background:#8b5cf6; font-size:14px;">匹配</div>
+      <div class="tpl-title-wrap">
+        <div class="tpl-type">TEMPLATE 06 · 匹配协同论述</div>
+        <div class="tpl-title">"战略与XXX的匹配/协同"论述题模板</div>
+        <div class="tpl-desc">适用于论述"战略与组织结构匹配""战略与企业文化的关系""战略与人力资源的匹配"等关系型、整合型论述题。</div>
+        <div class="tpl-tags">
+          <span class="tag">战略与人力资源匹配（2016）</span>
+          <span class="tag">数字化战略与组织协同（2022）</span>
+          <span class="tag">战略与企业文化（2018）</span>
+          <span class="tag">战略与组织结构（结构追随战略）</span>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <div class="tpl-chain">
+        <div class="chain-box">① 定义两个对象</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">② 匹配关系的重要性</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">③ 不匹配的危害</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">④ 如何实现匹配（具体路径）</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑤ 动态调整机制</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑥ 总结</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">①</div>
+          <div class="step-content">
+            <div class="step-label">分别简述两个对象的定义和作用</div>
+            <div class="step-eg">例："企业战略是企业为实现长期目标而制定的全局性行动方案；人力资源战略是围绕企业整体战略对人力资源获取、配置和开发进行系统规划的管理方针。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">②</div>
+          <div class="step-content">
+            <div class="step-label">两者匹配的必要性（为什么必须匹配？）</div>
+            <div class="step-detail">引用"钱德勒命题"或相关理论：战略决定结构，结构为战略服务。</div>
+            <div class="step-eg">例："钱德勒提出'结构追随战略'，即组织结构必须随战略变化而调整。同理，人力战略若不配套企业战略，将导致人才供应断层，战略无法落地。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">③</div>
+          <div class="step-content">
+            <div class="step-label">不匹配的典型危害（反面论证）</div>
+            <div class="step-eg">例："若多元化战略与职能制组织结构不匹配，将导致部门本位主义严重、跨业务协调困难；若国际化战略下仍沿用本土化人力管理，将导致海外团队激励失效。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">④</div>
+          <div class="step-content">
+            <div class="step-label">实现匹配的具体路径（3–4条，核心得分点）</div>
+            <div class="step-eg">例（战略与人力资源匹配路径）：<br>
+              "① 战略分解：将企业战略目标分解为人力资源需求（数量、质量、结构）<br>
+              ② 人才配置：根据不同战略阶段调整关键岗位配置（成长期重研发，成熟期重运营）<br>
+              ③ 激励机制：差异化战略匹配创新激励，成本领先战略匹配效率激励<br>
+              ④ 文化塑造：强化与战略方向一致的价值观和行为规范"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑤</div>
+          <div class="step-content">
+            <div class="step-label">动态调整机制（匹配是动态的，非一次性）</div>
+            <div class="step-eg">例："战略与人力资源的匹配需要持续评估和调整。随着外部环境变化（如数字化浪潮），企业战略调整，人力结构需同步更新——这要求建立战略-人力的定期审视机制。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑥</div>
+          <div class="step-content">
+            <div class="step-label">总结：从战略实施整体框架升华</div>
+            <div class="step-eg">例："战略成功落地，有赖于战略、结构、文化、人力四者的整体协同（'战略钻石'模型）。单独优化任一要素而忽略系统匹配，往往导致战略执行'一步错、步步错'。"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 模板⑦：案例分析题 ===== -->
+<div id="t7">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#fee2e2; color:#ef4444; font-size:20px; font-weight:900;">⑦</div>
+    <div>
+      <h2>模板⑦ · 案例分析题</h2>
+      <p>"案例：某企业XXX，请分析其战略问题与改进建议"</p>
+    </div>
+  </div>
+
+  <div class="tpl-card c5">
+    <div class="tpl-header">
+      <div class="tpl-num" style="background:#ef4444; font-size:14px;">案例</div>
+      <div class="tpl-title-wrap">
+        <div class="tpl-type">TEMPLATE 07 · 案例分析</div>
+        <div class="tpl-title">战略管理案例分析答题模板</div>
+        <div class="tpl-desc">每年笔试必考一道案例分析题，综合考察战略分析能力。题目通常给出企业背景+问题情景，要求分析战略失误/提出建议。</div>
+        <div class="tpl-tags">
+          <span class="tag">多元化扩张失败（2016）</span>
+          <span class="tag">互联网跨界竞争（2017）</span>
+          <span class="tag">传统零售转型（2018）</span>
+          <span class="tag">共享经济（2019）</span>
+          <span class="tag">碳中和转型（2021）</span>
+          <span class="tag">数字化转型失败（2025）</span>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <div class="tpl-chain">
+        <div class="chain-box">① 提炼核心问题</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">② 环境分析</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">③ 战略诊断</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">④ 根本原因分析</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑤ 战略建议</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑥ 实施保障</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">①</div>
+          <div class="step-content">
+            <div class="step-label">提炼核心战略问题（审题！先读懂案例再答）</div>
+            <div class="step-detail">用1–2句话概括：该企业面临的核心战略困境是什么？属于哪类战略问题？</div>
+            <div class="step-eg">例："案例中该制造企业面临的核心战略问题是：多元化扩张过度，主业资源被稀释，新进入业务缺乏核心专长支撑，导致整体战略失焦。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">②</div>
+          <div class="step-content">
+            <div class="step-label">外部环境简要分析（PESTEL/五力，选最相关的2–3点）</div>
+            <div class="step-detail">不必每个要素都分析，挑与案例最相关的2–3个维度，点明机会与威胁。</div>
+            <div class="step-eg">例："从外部环境看：（技术）数字化转型加速重构制造业价值链；（竞争）跨界竞争者进入加剧市场压力；（政策）ESG监管收紧增加传统制造成本。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">③</div>
+          <div class="step-content">
+            <div class="step-label">战略层面诊断（⭐⭐⭐最重要，用教材框架分析）</div>
+            <div class="step-detail">从以下角度选最相关的3–4个维度分析，每个维度点出教材概念：<br>
+            <strong>战略选择层面</strong>（多元化/差异化/成本领先是否合适？）<br>
+            <strong>组织结构层面</strong>（结构与战略是否匹配？）<br>
+            <strong>资源能力层面</strong>（有无核心专长？资源配置是否合理？）<br>
+            <strong>战略实施层面</strong>（文化/领导力/控制系统是否支撑战略？）</div>
+            <div class="step-eg">例："战略诊断：① 战略选择失误：在主业核心专长尚未巩固的情况下快速多元化，违反了'资源基础观'中先建立核心专长再扩张的原则；② 组织结构滞后：职能制结构无法有效支撑多业务协同；③ 战略控制缺失：未建立多元化业务的里程碑控制机制。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">④</div>
+          <div class="step-content">
+            <div class="step-label">根本原因分析（从战略管理全过程视角，找到失败的深层原因）</div>
+            <div class="step-eg">例："根本原因：① 战略分析不足：未深入评估新进入业务的行业吸引力和自身能力匹配度；② 战略实施失控：缺乏有效的战略监控机制，未能及时发现偏差；③ 领导力缺位：战略领导者未能有效整合各业务单元资源，协调跨部门矛盾。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑤</div>
+          <div class="step-content">
+            <div class="step-label">战略建议（可行且具体，2–4条）</div>
+            <div class="step-detail">建议要有针对性，针对前面诊断出的问题逐一对应，体现"问题-建议"的逻辑一致性。</div>
+            <div class="step-eg">例："建议：① 聚焦主业：退出缺乏核心专长支撑的非相关多元化业务，集中资源强化主业核心竞争力；② 战略重组：建立与多元化战略相匹配的事业部制结构；③ 文化变革：从规模扩张型文化转向创新精益型文化；④ 建立战略控制：引入平衡计分卡，分解战略目标并定期回顾。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑥</div>
+          <div class="step-content">
+            <div class="step-label">实施保障（简要说明战略落地需要什么支撑）</div>
+            <div class="step-eg">例："战略转型的实施保障：需要战略领导者的强力推动（领导力），匹配的人才队伍调整（人力资源），以及系统性的战略控制机制（平衡计分卡+里程碑控制）。"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eg-box">
+        <div class="eg-box-title">📄 2025真题示范：某企业数字化转型失败案例分析框架</div>
+        <div class="eg-box-content">
+          <strong>核心问题：</strong>数字化转型中战略规划与组织执行脱节，导致技术投入无法转化为业务价值。<br><br>
+          <strong>环境分析：</strong>技术层面数字化浪潮不可逆；竞争层面数字原生企业的颠覆性竞争加剧。<br><br>
+          <strong>战略诊断：</strong>① 战略层面：数字化战略缺乏清晰的价值主张，停留于技术引进而非战略重塑；② 结构层面：传统部门制阻碍跨部门数据流通；③ 文化层面：官僚文化抵制变革；④ 控制层面：缺乏数字化转型的专项绩效评估体系。<br><br>
+          <strong>建议：</strong>① 明确数字化转型的战略目标（效率提升vs商业模式创新）；② 构建跨职能数字化转型团队；③ 塑造"拥抱变化"的创新文化；④ 建立数字化转型专项KPI与定期复盘机制。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 模板⑧：面试口述题 ===== -->
+<div id="t8">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#ccfbf1; color:#0d9488; font-size:20px; font-weight:900;">⑧</div>
+    <div>
+      <h2>模板⑧ · 面试口述题</h2>
+      <p>"请谈谈你对XX的理解" / "你如何看待XX"</p>
+    </div>
+  </div>
+
+  <div class="tpl-card c8">
+    <div class="tpl-header">
+      <div class="tpl-num" style="background:#0d9488; font-size:14px;">面试</div>
+      <div class="tpl-title-wrap">
+        <div class="tpl-type">TEMPLATE 08 · 面试口述</div>
+        <div class="tpl-title">复试面试专业问题口述模板</div>
+        <div class="tpl-desc">面试专业问答（70分），时间约1–2分钟/题。关键：逻辑清晰 + 有观点 + 会举例 + 联系热点。</div>
+        <div class="tpl-tags">
+          <span class="tag">核心竞争力（2016面试）</span>
+          <span class="tag">企业生命周期战略（2017面试）</span>
+          <span class="tag">战略联盟（2018面试）</span>
+          <span class="tag">平台型企业战略（2021面试）</span>
+          <span class="tag">数智化战略（2025面试）</span>
+        </div>
+      </div>
+    </div>
+    <div class="tpl-body">
+      <div class="tpl-chain">
+        <div class="chain-box">① 给出明确观点</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">② 概念界定</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">③ 核心内容（2–3点）</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">④ 举一个案例</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑤ 结合热点/现实升华</div>
+        <div class="chain-arr">→</div>
+        <div class="chain-box">⑥ 收尾总结</div>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">①</div>
+          <div class="step-content">
+            <div class="step-label">先给明确观点（不要绕弯子，直接亮出立场）</div>
+            <div class="step-detail">面试官最不喜欢"听了半天不知道你在说啥"，开篇第一句就要表明立场。</div>
+            <div class="step-eg">例："关于核心竞争力，我认为它是企业可持续竞争优势最根本的来源，也是企业战略选择的首要出发点。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">②</div>
+          <div class="step-content">
+            <div class="step-label">快速给出核心定义（教材版，30秒以内）</div>
+            <div class="step-eg">例："核心竞争力，从教材角度，是指能给企业带来持续竞争优势、且满足有价值、稀缺、难以模仿和不可替代这四个标准的资源能力的有机整合。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">③</div>
+          <div class="step-content">
+            <div class="step-label">核心内容/逻辑（2–3个要点，有序呈现）</div>
+            <div class="step-detail">用"第一……第二……第三……"清晰展开，让面试官感到你有逻辑、有条理。</div>
+            <div class="step-eg">例："理解核心竞争力，我认为有三个层面最重要：第一，识别——用VRIN框架判断企业哪些资源能力是真正的核心专长；第二，建立——通过长期投资和学习积累形成；第三，运用——确保战略选择向核心专长集中，而非盲目多元化。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">④</div>
+          <div class="step-content">
+            <div class="step-label">举一个具体案例（鲜活，熟悉的企业）</div>
+            <div class="step-detail">面试时举案例能快速证明你"不只会背书"，有实际感知。选你最熟悉的一个企业。</div>
+            <div class="step-eg">例："以华为为例，其核心竞争力在于多年积累的通信技术研发能力和完整的底层技术体系。面对美国制裁，正是这种难以模仿的核心专长使其能够研发自己的芯片和操作系统，而不是依赖外部供应链。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑤</div>
+          <div class="step-content">
+            <div class="step-label">结合时代热点/学术前沿（加分项，体现知识视野）</div>
+            <div class="step-eg">例："在当前数字化时代，核心竞争力的内涵正在扩展——传统资源型核心竞争力（设备、土地）重要性下降，数据能力、算法能力、生态整合能力等新型核心竞争力正在崛起。企业需要用动态能力理论视角持续更新核心竞争力。"</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">⑥</div>
+          <div class="step-content">
+            <div class="step-label">收尾（干净利落，一句话总结）</div>
+            <div class="step-eg">例："总体而言，核心竞争力是企业战略的'压舱石'，识别、建立和持续强化核心竞争力，是企业在不确定环境中保持长期生命力的根本之道。"</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 面试热点题备考 -->
+      <div style="margin-top:20px;">
+        <div class="tpl-scope">
+          <div class="tpl-scope-title">🔥 2026复试面试高预测题 & 应答方向</div>
+        </div>
+        <table class="ctable">
+          <tr>
+            <th>预测题</th>
+            <th>核心答点</th>
+            <th>关键词</th>
+          </tr>
+          <tr>
+            <td>谈谈AI对企业战略的影响</td>
+            <td>战略制定智能化 / 组织结构重塑 / 新型核心竞争力 / 人机协作</td>
+            <td>动态能力 / 数字化战略 / 组织敏捷</td>
+          </tr>
+          <tr>
+            <td>如何看待企业的数字化转型</td>
+            <td>战略转型 vs 技术升级 / 价值链重构 / 组织与文化障碍 / 典型失败案例</td>
+            <td>战略匹配 / 价值链 / 动态能力</td>
+          </tr>
+          <tr>
+            <td>谈谈企业可持续发展战略</td>
+            <td>ESG框架 / 绿色战略 / 利益相关者理论 / 共享价值创造</td>
+            <td>ESG / 战略承诺 / 价值创新</td>
+          </tr>
+          <tr>
+            <td>如何理解"战略与执行的鸿沟"</td>
+            <td>战略制定vs实施的本质差异 / 组织结构/文化障碍 / 平衡计分卡 / 战略控制</td>
+            <td>战略实施 / 结构追随战略 / BSC</td>
+          </tr>
+          <tr>
+            <td>谈谈你对平台经济战略的理解</td>
+            <td>双边市场 / 网络效应 / 生态战略 / 价值共创 / 治理机制</td>
+            <td>商业模式 / 战略联盟 / 核心专长</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="tip-box tip-warn">
+        <strong>⚠️ 面试三大禁忌</strong>
+        ❌ 只背定义，没有观点——显得机械，无法展现思维深度<br>
+        ❌ 举例不熟悉的案例——被追问时容易露馅<br>
+        ❌ 回答时不停说"就是说……就是说……"——影响流畅感
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 快速复习模块 ===== -->
+<div id="quick">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#fef9c3; color:#ca8a04; font-size:20px;">⚡</div>
+    <div><h2>⚡ 30秒快速复习 · 8大模板口诀</h2></div>
+  </div>
+  <div class="quick-box">
+    <h3>📌 8大答题模板 · 结构口诀速记</h3>
+    <div class="quick-row">
+      <div class="qr-label">模板①</div>
+      <div class="qr-text"><mark>名词解释</mark>：提出者 → 核心定义 → 主要内容 → 关键特征 → 管理意义<br>口诀：<strong>"谁·定义·内容·特点·价值"</strong></div>
+    </div>
+    <div class="quick-row">
+      <div class="qr-label">模板②</div>
+      <div class="qr-text"><mark>分析工具</mark>：工具定位 → 要素列举 → 逐一解析 → 使用步骤 → 局限 → 应用<br>口诀：<strong>"干什么·有什么·各是啥·咋用·缺点·案例"</strong></div>
+    </div>
+    <div class="quick-row">
+      <div class="qr-label">模板③</div>
+      <div class="qr-text"><mark>战略类型</mark>：定义 → 战略目标 → 适用条件 → 实现路径 → 主要风险 → 案例<br>口诀：<strong>"是什么·目的·何时用·怎么做·有何险·谁在用"</strong></div>
+    </div>
+    <div class="quick-row">
+      <div class="qr-label">模板④</div>
+      <div class="qr-text"><mark>理论框架</mark>：渊源 → 核心主张 → 关键假设 → 主要内容 → 战略意义 → 局限<br>口诀：<strong>"从哪来·说啥·前提·内容·有啥用·有何局限"</strong></div>
+    </div>
+    <div class="quick-row">
+      <div class="qr-label">模板⑤</div>
+      <div class="qr-text"><mark>影响关系论述</mark>：背景 → 概念 → 影响机制(3–4点) → 应对策略 → 总结升华<br>口诀：<strong>"为啥重要·概念·怎么影响·企业咋办·总结高度"</strong></div>
+    </div>
+    <div class="quick-row">
+      <div class="qr-label">模板⑥</div>
+      <div class="qr-text"><mark>匹配关系论述</mark>：定义两对象 → 匹配必要性 → 不匹配危害 → 匹配路径 → 动态调整 → 总结<br>口诀：<strong>"两是啥·为啥匹配·不配咋了·怎配·持续更新·总结"</strong></div>
+    </div>
+    <div class="quick-row">
+      <div class="qr-label">模板⑦</div>
+      <div class="qr-text"><mark>案例分析</mark>：提炼问题 → 环境分析 → 战略诊断 → 根本原因 → 战略建议 → 实施保障<br>口诀：<strong>"问题是啥·外部咋样·哪里出错·根子在哪·怎么改·如何落地"</strong></div>
+    </div>
+    <div class="quick-row">
+      <div class="qr-label">模板⑧</div>
+      <div class="qr-text"><mark>面试口述</mark>：亮观点 → 定义 → 核心内容(2–3点) → 案例 → 联系热点 → 总结<br>口诀：<strong>"先亮牌·定义·三点论·举例子·接热点·收尾"</strong></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ===== 题型-模板对应矩阵 ===== -->
+<div id="matrix">
+  <div class="sec-hdr">
+    <div class="sec-hdr-icon" style="background:#f0f9ff; color:#0369a1; font-size:18px;">📋</div>
+    <div>
+      <h2>题型 × 知识点 × 模板 完整对应矩阵</h2>
+      <p>备考时快速查找：看到什么题，用哪个模板</p>
+    </div>
+  </div>
+  <div class="tpl-card c2" style="--c:#0ea5e9">
+    <div class="tpl-body" style="padding:0;">
+      <table class="ctable">
+        <tr>
+          <th>题目关键词</th>
+          <th>题型</th>
+          <th>用哪个模板</th>
+          <th>真题年份</th>
+          <th>重要度</th>
+        </tr>
+        <tr>
+          <td>"简述波特五力…在XX行业的应用"</td>
+          <td>简答</td>
+          <td>模板②（分析工具）</td>
+          <td><span class="year-badge">2016</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述差异化/成本领先/集中化战略的适用条件与风险"</td>
+          <td>简答</td>
+          <td>模板③（战略类型）</td>
+          <td><span class="year-badge">2016</span><span class="year-badge">2019</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述SWOT分析的步骤与局限"</td>
+          <td>简答</td>
+          <td>模板②（分析工具）</td>
+          <td><span class="year-badge">2017</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述蓝海战略与红海战略的区别"</td>
+          <td>简答</td>
+          <td>模板③+模板①（战略+概念对比）</td>
+          <td><span class="year-badge">2017</span><span class="year-badge">2022</span></td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述PESTEL分析框架"</td>
+          <td>简答</td>
+          <td>模板②（分析工具）</td>
+          <td><span class="year-badge">2018</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"论述企业文化对战略实施的作用"</td>
+          <td>论述</td>
+          <td>模板⑤（影响关系）</td>
+          <td><span class="year-badge">2018</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述波士顿矩阵各象限战略"</td>
+          <td>简答</td>
+          <td>模板②（分析工具）</td>
+          <td><span class="year-badge">2019</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"论述大数据/数字化/AI对企业战略决策的影响"</td>
+          <td>论述</td>
+          <td>模板⑤（影响关系）</td>
+          <td><span class="year-badge">2019</span><span class="year-badge">2022</span><span class="year-badge">2024</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述国际化战略类型（全球化/多国化/跨国化）"</td>
+          <td>简答</td>
+          <td>模板③（战略类型）</td>
+          <td><span class="year-badge">2020</span></td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述多元化战略的类型与风险"</td>
+          <td>简答</td>
+          <td>模板③（战略类型）</td>
+          <td><span class="year-badge">2021</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"论述ESG对企业战略与价值的影响"</td>
+          <td>论述</td>
+          <td>模板⑤（影响关系）</td>
+          <td><span class="year-badge">2021</span></td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述资源基础观（RBV）"</td>
+          <td>简答</td>
+          <td>模板④（理论框架）</td>
+          <td><span class="year-badge">2022</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述动态能力理论"</td>
+          <td>简答</td>
+          <td>模板④（理论框架）</td>
+          <td><span class="year-badge">2023</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述战略联盟的动机与治理"</td>
+          <td>简答</td>
+          <td>模板③+模板①（战略类型+概念）</td>
+          <td><span class="year-badge">2023</span></td>
+          <td>⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"简述战略管理过程（分析-制定-实施-控制）"</td>
+          <td>简答</td>
+          <td>模板④（理论框架）</td>
+          <td><span class="year-badge">2025</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"案例：某企业数字化转型失败"</td>
+          <td>案例分析</td>
+          <td>模板⑦（案例分析）</td>
+          <td><span class="year-badge">2025</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>"论述企业战略与人力资源战略的匹配关系"</td>
+          <td>论述</td>
+          <td>模板⑥（匹配关系）</td>
+          <td><span class="year-badge">2016</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+        <tr>
+          <td>面试："如何看待核心竞争力"</td>
+          <td>面试口述</td>
+          <td>模板⑧（面试口述）</td>
+          <td><span class="year-badge">2016面试</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<!-- FOOTER -->
+<div class="footer">
+  📚 中南大学企业管理学硕复试 · 企业战略管理通用答题模板<br>
+  基于蓝海林《企业战略管理（第2版）》· 2016–2025历年真题归纳整理<br>
+  生成日期：2026-03-10
+</div>
+
+<!-- Back to top -->
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ===== Dark Mode =====
+function toggleDark() {
+  document.body.classList.toggle('dark-mode');
+  const btn = document.querySelector('.nbtn[onclick="toggleDark()"]');
+  if (document.body.classList.contains('dark-mode')) {
+    if(btn) btn.textContent = '☀️ 日间';
+    try { localStorage.setItem('dm','1'); } catch(e){}
+  } else {
+    if(btn) btn.textContent = '🌙 夜间';
+    try { localStorage.setItem('dm','0'); } catch(e){}
+  }
+}
+try {
+  if(localStorage.getItem('dm') === '1') {
+    document.body.classList.add('dark-mode');
+    const btn = document.querySelector('.nbtn[onclick="toggleDark()"]');
+    if(btn) btn.textContent = '☀️ 日间';
+  }
+} catch(e){}
+
+// ===== Back to Top =====
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  btt.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  btt.style.alignItems = 'center'; btt.style.justifyContent = 'center';
+});
+
+// ===== Search =====
+function doSearch(kw) {
+  kw = kw.trim().toLowerCase();
+  // clear old marks
+  document.querySelectorAll('mark.hl').forEach(m => {
+    m.outerHTML = m.textContent;
+  });
+  if (!kw) return;
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while(walker.nextNode()) {
+    const n = walker.currentNode;
+    if(['SCRIPT','STYLE','INPUT'].includes(n.parentNode.tagName)) continue;
+    if(n.textContent.toLowerCase().includes(kw)) nodes.push(n);
+  }
+  nodes.forEach(n => {
+    const re = new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'), 'gi');
+    const frag = document.createDocumentFragment();
+    const parts = n.textContent.split(re);
+    const matches = n.textContent.match(re) || [];
+    parts.forEach((p, i) => {
+      frag.appendChild(document.createTextNode(p));
+      if(matches[i]) {
+        const mark = document.createElement('mark');
+        mark.className = 'hl'; mark.textContent = matches[i];
+        frag.appendChild(mark);
+      }
+    });
+    n.parentNode.replaceChild(frag, n);
+  });
+}
+</script>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

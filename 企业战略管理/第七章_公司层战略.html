@@ -1,0 +1,2162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第七章 公司层战略 · 中南大学企业管理学硕复试笔记</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   CSS 变量 & Dark Mode
+═══════════════════════════════════════════════ */
+:root {
+  --ink: #0f1f2e;
+  --ink2: #2d4a3e;
+  --bg: #f0f7f4;
+  --bg2: #e1f0ea;
+  --bg3: #ffffff;
+  --accent: #0e7c6a;
+  --accent2: #f59e0b;
+  --accent3: #3b82f6;
+  --accent4: #7c3aed;
+  --accent5: #dc2626;
+  --gold: #d97706;
+  --card-bg: #ffffff;
+  --border: #b7ddd0;
+  --tier1: #0e7c6a;
+  --shadow: 0 4px 20px rgba(15,31,46,0.10);
+  --nav-bg: #0f1f2e;
+  --nav-text: rgba(255,255,255,0.85);
+  --hero-bg: linear-gradient(135deg,#0f1f2e 0%,#0a3d2b 50%,#0e7c6a 100%);
+  --quote-bg: #f0fdf8;
+  --quote-border: #0e7c6a;
+  --mindmap-bg: #f8fffe;
+  --table-head: #0e7c6a;
+  --table-even: #f0fdf8;
+  --tag-bg: rgba(14,124,106,0.12);
+  --tag-text: #0e7c6a;
+}
+
+body.dark-mode {
+  --ink: #e2ede9;
+  --ink2: #a8c9be;
+  --bg: #0d1f1a;
+  --bg2: #122920;
+  --bg3: #1a2e27;
+  --card-bg: #1a2e27;
+  --border: #2a4a3e;
+  --nav-bg: #091510;
+  --nav-text: rgba(255,255,255,0.85);
+  --quote-bg: #122920;
+  --quote-border: #0e9e88;
+  --mindmap-bg: #122920;
+  --table-head: #0a5e50;
+  --table-even: #122920;
+  --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  --tag-bg: rgba(14,158,136,0.18);
+  --tag-text: #4ecdb8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  transition: background .3s, color .3s;
+}
+
+/* ═══ FIXED NAV ═══ */
+.fixed-nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: var(--nav-bg);
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  transition: background .3s;
+}
+.nav-brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  margin-right: 8px;
+  white-space: nowrap;
+}
+.nav-links { display: flex; gap: 5px; flex-wrap: wrap; flex: 1; }
+.nav-links a {
+  color: var(--nav-text);
+  text-decoration: none;
+  font-size: 12px;
+  padding: 3px 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.nav-links a:hover { background: rgba(255,255,255,0.15); }
+
+/* Search */
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  padding: 4px 12px;
+}
+.nav-search input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  outline: none;
+  width: 120px;
+}
+.nav-search input::placeholder { color: rgba(255,255,255,0.4); }
+.nav-search-icon { color: rgba(255,255,255,0.5); font-size: 13px; }
+
+/* Dark mode toggle */
+.dark-toggle {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 4px 12px;
+  white-space: nowrap;
+  transition: all .2s;
+}
+.dark-toggle:hover { background: rgba(255,255,255,0.25); }
+
+/* ═══ HERO ═══ */
+.hero {
+  background: var(--hero-bg);
+  color: #fff;
+  padding: 56px 40px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(60deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 22px);
+}
+.hero-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,.55);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.hero h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.hero h1 em { color: #6ee7b7; font-style: normal; }
+.hero-sub { font-size: 14.5px; color: rgba(255,255,255,.78); max-width: 720px; line-height: 1.75; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+.hero-tag {
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,.9);
+}
+.hero-date {
+  margin-top: 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  letter-spacing: 1px;
+}
+
+/* ═══ MAIN WRAPPER ═══ */
+.main { max-width: 1000px; margin: 0 auto; padding: 0 28px 60px; }
+
+/* ═══ SECTION TITLE ═══ */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 40px 0 18px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+.sec-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  background: var(--tag-bg);
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.section-title h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  flex: 1;
+}
+.page-ref {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent2);
+  background: rgba(245,158,11,.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* ═══ KNOWLEDGE CARD ═══ */
+.kcard {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+  transition: background .3s, border .3s;
+  overflow: hidden;
+}
+.kcard-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  transition: background .3s;
+}
+.kcard-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 700;
+  padding-top: 2px;
+  white-space: nowrap;
+}
+.kcard-title { font-size: 15px; font-weight: 700; color: var(--ink); }
+.kcard-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.kcard-body { padding: 18px 20px; }
+
+/* BADGES */
+.badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-tier1 { background: rgba(14,124,106,.12); color: var(--tier1); }
+.badge-tier2 { background: rgba(245,158,11,.12); color: #d97706; }
+.badge-tier3 { background: rgba(59,130,246,.12); color: #2563eb; }
+.badge-page { background: rgba(245,158,11,.1); color: #b45309; }
+.badge-exam { background: rgba(220,38,38,.1); color: #b91c1c; }
+.badge-year { background: rgba(124,58,237,.1); color: #7c3aed; }
+
+/* CONTENT BLOCKS */
+.block { border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+.block-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.block-definition { background: var(--quote-bg); border-left: 4px solid var(--quote-border); }
+.block-definition .block-label { color: var(--accent); }
+.block-analogy { background: rgba(245,158,11,.07); border-left: 4px solid #f59e0b; }
+.block-analogy .block-label { color: #d97706; }
+.block-memory { background: rgba(124,58,237,.07); border-left: 4px solid #7c3aed; }
+.block-memory .block-label { color: #7c3aed; }
+.block-tip { background: rgba(59,130,246,.07); border-left: 4px solid #3b82f6; }
+.block-tip .block-label { color: #2563eb; }
+.block-exam { background: rgba(220,38,38,.06); border-left: 4px solid #ef4444; }
+.block-exam .block-label { color: #dc2626; }
+.block-viva { background: rgba(14,124,106,.06); border-left: 4px solid var(--accent); }
+.block-viva .block-label { color: var(--accent); }
+
+/* QUOTE */
+.quote {
+  background: var(--quote-bg);
+  border-left: 3px solid var(--quote-border);
+  padding: 12px 16px;
+  border-radius: 0 8px 8px 0;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ink);
+  transition: background .3s;
+}
+
+/* KEYWORDS */
+.kw  { background: rgba(14,124,106,.15); color: #065f46; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+.kw2 { background: rgba(245,158,11,.15); color: #92400e; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+.kw3 { background: rgba(59,130,246,.15); color: #1e40af; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+.kw4 { background: rgba(220,38,38,.12); color: #991b1b; padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+
+/* TABLE */
+.ctable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  margin: 10px 0;
+}
+.ctable th {
+  background: var(--table-head);
+  color: #fff;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+.ctable td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--ink);
+  transition: background .3s;
+}
+.ctable tr:nth-child(even) td { background: var(--table-even); }
+.ctable tr:hover td { background: rgba(14,124,106,.06); }
+
+/* LIST */
+.kl { padding-left: 20px; }
+.kl li { margin-bottom: 5px; }
+
+/* FLOW */
+.flow {
+  display: flex;
+  align-items: stretch;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+.flow-step {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  flex: 1;
+  min-width: 120px;
+  transition: background .3s;
+}
+.flow-arrow { color: var(--accent); font-size: 20px; display: flex; align-items: center; font-weight: 700; }
+.fs-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 2px; margin-bottom: 4px; }
+.fs-title { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.fs-body { font-size: 12px; color: var(--ink2); line-height: 1.6; }
+
+/* LOGIC MAP */
+.logic-map {
+  background: var(--mindmap-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 24px 0;
+  transition: background .3s;
+}
+.logic-map h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+
+/* MINDMAP SVG CONTAINER */
+.mindmap-container {
+  background: var(--mindmap-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  margin: 24px 0;
+  overflow-x: auto;
+  transition: background .3s;
+}
+.mindmap-container h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+/* CASE BANNER */
+.case-banner {
+  background: linear-gradient(135deg, #1e3a2f, #0a5e50);
+  color: #fff;
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin: 28px 0;
+  position: relative;
+}
+.case-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 10px;
+}
+.case-banner h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.case-banner p { font-size: 13.5px; color: rgba(255,255,255,.85); line-height: 1.75; }
+.case-key { margin-top: 12px; padding: 10px 14px; background: rgba(255,255,255,.1); border-radius: 8px; font-size: 13px; }
+
+/* BCG MATRIX */
+.bcg-grid {
+  display: grid;
+  grid-template-columns: 36px 1fr 1fr;
+  grid-template-rows: 36px 1fr 1fr;
+  gap: 3px;
+  max-width: 600px;
+  margin: 16px auto;
+  font-size: 13px;
+}
+.bcg-head { background: var(--table-head); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; padding: 6px; border-radius: 4px; font-weight: 600; }
+.bcg-corner { background: transparent; }
+.bcg-label { background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--ink2); writing-mode: vertical-rl; text-orientation: mixed; padding: 6px 2px; border-radius: 4px; font-weight: 600; }
+.bcg-cell { padding: 14px; border-radius: 8px; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.bcg-star { background: rgba(59,130,246,.12); border: 2px solid #3b82f6; }
+.bcg-cow  { background: rgba(14,124,106,.1); border: 2px solid #0e7c6a; }
+.bcg-qm   { background: rgba(245,158,11,.1); border: 2px solid #f59e0b; }
+.bcg-dog  { background: rgba(156,163,175,.12); border: 2px dashed #9ca3af; }
+.bc-icon { font-size: 24px; }
+.bc-name { font-weight: 700; font-size: 12px; }
+.bc-desc { font-size: 11.5px; color: var(--ink2); line-height: 1.5; }
+
+/* TERMINAL CHAIN */
+.chain {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 28px 0;
+  transition: background .3s;
+}
+.chain h2 { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.chain-sub { color: var(--ink2); font-size: 13px; margin-bottom: 22px; }
+.chain-flow { display: flex; align-items: stretch; gap: 8px; overflow-x: auto; padding-bottom: 8px; }
+.chain-step { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; min-width: 160px; flex: 1; }
+.step-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 2px; margin-bottom: 6px; }
+.step-title { font-weight: 700; font-size: 13.5px; margin-bottom: 6px; }
+.step-body { font-size: 12px; color: var(--ink2); line-height: 1.6; }
+.chain-arrow { color: var(--accent); font-size: 22px; font-weight: 700; display: flex; align-items: center; flex-shrink: 0; }
+.chain-summary { margin-top: 20px; padding: 14px 18px; background: rgba(14,124,106,.07); border-radius: 10px; font-size: 13.5px; line-height: 1.75; }
+
+/* 30-second module */
+.quick30 {
+  background: linear-gradient(135deg, #0e7c6a 0%, #065f46 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 28px;
+  margin: 28px 0;
+}
+.quick30 h2 { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 700; margin-bottom: 16px; }
+.q30-list { list-style: none; }
+.q30-list li {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.15);
+  font-size: 13.5px;
+  color: rgba(255,255,255,.9);
+}
+.q30-list li:last-child { border-bottom: none; }
+.q30-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6ee7b7; font-weight: 700; min-width: 24px; padding-top: 2px; }
+.q30-list em { color: #fde68a; font-style: normal; font-weight: 700; }
+
+/* Oral summary */
+.oral-summary {
+  background: var(--card-bg);
+  border: 2px solid var(--accent);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 28px 0;
+  transition: background .3s;
+}
+.oral-summary h2 { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 16px; }
+.oral-item { margin-bottom: 20px; }
+.oral-q { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 8px; }
+.oral-a {
+  background: var(--bg2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  color: var(--ink);
+  border-left: 3px solid var(--accent);
+  transition: background .3s;
+}
+
+/* QUIZ */
+.quiz {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin: 28px 0;
+  transition: background .3s;
+}
+.quiz h2 { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.quiz-sub { color: var(--ink2); font-size: 13px; margin-bottom: 22px; }
+.q-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  transition: background .3s;
+}
+.q-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 2px; margin-bottom: 6px; }
+.q-text { font-weight: 600; font-size: 14.5px; margin-bottom: 10px; }
+.q-hint { font-size: 12.5px; color: var(--ink2); border-top: 1px solid var(--border); padding-top: 10px; margin-top: 10px; }
+.q-hint span { color: var(--accent); font-weight: 700; }
+.q-exam { font-size: 11.5px; color: #dc2626; background: rgba(220,38,38,.1); border-radius: 6px; padding: 2px 8px; display: inline-block; margin-bottom: 8px; }
+
+/* COMPARE TABLE highlight */
+.compare-table { overflow-x: auto; margin: 16px 0; }
+
+/* BACK TO TOP */
+.back-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity .3s, transform .2s;
+  pointer-events: none;
+}
+.back-top.visible { opacity: 1; pointer-events: all; }
+.back-top:hover { transform: scale(1.12); }
+
+/* SEARCH HIGHLIGHT */
+
+
+/* FOOTER */
+.footer-bar {
+  background: var(--nav-bg);
+  color: rgba(255,255,255,.4);
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  margin-top: 50px;
+  transition: background .3s;
+}
+
+.divider { border: none; border-top: 2px dashed var(--border); margin: 24px 0; }
+
+/* DETAILS / SUMMARY collapse */
+details { margin-bottom: 10px; }
+details > summary {
+  cursor: pointer;
+  padding: 8px 12px;
+  background: var(--bg2);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13.5px;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background .2s;
+}
+details > summary:hover { background: var(--border); }
+details > summary::before { content: '▶'; font-size: 10px; color: var(--accent); transition: transform .2s; }
+details[open] > summary::before { transform: rotate(90deg); }
+details .detail-body { padding: 14px 16px; }
+
+/* LM NODES */
+.lm-node { border: 2px solid var(--border); }
+.green { border-color: #059669 !important; background: rgba(5,150,105,.07); }
+.blue  { border-color: #3b82f6 !important; background: rgba(59,130,246,.07); }
+.yellow{ border-color: #f59e0b !important; background: rgba(245,158,11,.07); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+@media(max-width:760px) {
+  .hero { padding: 36px 18px 36px; }
+  .hero h1 { font-size: 30px; }
+  .main { padding: 0 14px 50px; }
+  .fixed-nav { padding: 8px 14px; }
+  .chain-flow { flex-direction: column; }
+  .flow { flex-direction: column; }
+}
+</style>
+
+
+<script>window._PAGE_TEXT='第七章 公司层战略 · 中南大学企业管理学硕复试笔记 \n \n \n \n \n \n \n CH.07 \n \n 逻辑图 \n 思维导图 \n §1 进程 \n §2 性质 \n §3 相关 \n §4 不相关 \n §5 混合 \n §6 推进 \n 对比表 \n 真题 \n 串联 \n 30秒 \n 背诵版 \n 检测 \n \n \n 🌙 夜间 \n \n \n \n 中南大学企业管理学硕复试笔记 · 蓝海林《企业战略管理》第2版 \n 第七章 · 公司层战略 \n 多元化企业如何让"1+1>2"？从总部出现的历史逻辑，到三种多元化战略与管理模式的动态匹配，再到五个推进策略——本章是企业战略管理的"指挥部攻略"。历年高频：多元化类型与风险、纵向一体化优缺点、BCG矩阵、案例分析。 \n \n 📍 教材 P190–222 \n 🔥 历年高频考点 \n ✍️ 名词·简答·论述·案例 \n ⭐ 1+1>2 核心逻辑 \n 🏆 2016·2018·2019·2021·2023 \n \n 生成日期：2026-03-08 | P190–222 | 2016–2025真题整合版 \n \n \n \n \n 📌 本章与其他章节的逻辑关系 \n \n \n \n 章节 关联逻辑 \n \n 第1章 战略概述 公司层战略 = 三层战略（公司层→业务层→职能层）最高层，统领全局 \n 第2-5章 战略分析 内外部分析决定是否多元化、多元化方向（相关/不相关） \n 第6章 业务层战略 公司层决定"进哪个行业"，业务层决定"如何在该行业竞争"——先有公司层，才有业务层 \n 第8章 国际化战略 国际化=地域多元化，是公司层战略的延伸，本章是第8章的逻辑前提 \n 第9章 战略实施 组合管理模式（组织结构、控制机制）是第9章战略实施的具体内容 \n \n \n \n 📌 本章各节内部逻辑 \n \n \n §01 \n 多元化进程 \n 历史背景 四个阶段 总部为何出现 \n \n → \n \n §02 \n 公司层战略性质 \n 1+1>2 三种价值创造 决策框架 \n \n → \n \n §03-05 \n 三种多元化战略 \n 相关/不相关 /混合 +管理模式匹配 \n \n → \n \n §06 \n 推进策略五要素 \n 动机·时机 方式·速度·程度 \n \n \n 逻辑主线： 为什么要有总部 → 总部创造什么价值 → 选什么行业组合 → 用什么管理模式配套 → 怎么推进不犯错 \n \n \n \n 🗺️ 章节思维导图（知识框架） \n \n \n \n \n 第七章 \n 公司层战略 \n \n \n \n §01 多元化进程 \n 四阶段·总部出现 \n \n \n \n §02 公司层战略性质 \n 1+1>2 · 三中心 · 匹配 \n \n \n \n §06 推进策略 \n 动机·时机·方式·速度·程度 \n \n \n \n §03 相关多元化 \n 纵向一体化·共享型 \n \n \n \n 纵向整合 \n \n \n 范围经济 \n \n \n \n §04 不相关多元化 \n 财务范围经济·代理成本 \n \n \n \n §05 混合多元化 \n SBU型·两者兼有 \n \n \n \n 组合管理模式匹配 \n 合作型(相关) · SBU型(混合) · 竞争型(不相关) \n \n \n \n \n \n 📖 导入案例 · P190–192 \n 湘鄂情集团：从"高端宴席"到"跨界溺水" \n 湘鄂情集团是中国餐饮业明星企业。2013年受党的"八项规定"影响，高端餐饮市场骤然萎缩。湘鄂情先后尝试进入大众餐饮（以"中科云网"品牌失败告终），再度跨界进入环保、影视、大数据行业。2014年更名"中科云网"，2015年债券违约，多元化转型全面失败。 \n ⚠️ 核心教训： 盲目多元化、缺乏核心专长、资源过度分散 ——进入不相关行业却没有相应能力和资源积累，是公司层战略失败的典型案例。 \n \n \n \n § 01 \n 多元化的进程与公司总部的出现 \n P193–197 \n \n \n \n 7.1.1 \n \n 发达国家企业多元化发展的四个阶段 \n \n ⭐⭐ 理解 \n P193–196 \n \n \n \n \n \n 阶段 特征 典型时期 \n ① 单一产品 / 服务 集中于一种产品，不多元化 工业化早期 \n ② 产品扩展 向上下游延伸（纵向一体化）或横向相近业务 19世纪末–20世纪初 \n ③ 相关多元化 进入具有相关性的不同行业 20世纪中期 \n ④ 不相关多元化 进入多个不相关行业，形成混合企业集团（Conglomerate） 20世纪60–70年代高峰 \n \n \n 🧠 助记 \n 单→扩→相关→不相关 ——就像一棵树：先有主干（单一），再长枝桠（相关），最后乱生（不相关），现在又开始修剪（回归相关）。\n \n \n \n \n \n 7.1.2 \n \n 公司总部的出现与性质 \n \n ⭐⭐⭐ 核心 \n P197 \n 名词解释 \n \n \n \n \n \n 📖 教材原句（必背） \n 总部是企业在原有的业务单位之上增加的一个 新层级 ，是一个 不直接面向顾客、不对业务单位利润负责但增加成本 的管理层级。总部的任务是通过行业或者市场多元化经营来 实现投资收益的最大化 ，抵消其本身带来的成本并产生净收益。 \n \n \n 🍰 小学生版 \n 总部就像学校的校长室——不负责具体上课（不直接面向顾客），但要让每个班（事业部）产生的总价值，比各班自己单干时更大，否则校长室就没存在的理由了。\n \n \n 🎤 复试回答模板 \n 定义 ：总部是多元化企业在业务单位之上增加的新管理层级，其本质是 不直接创造产品价值但创造组合价值 的战略决策中心。→ 核心逻辑 ：总部必须创造出大于自身成本的净价值，否则多元化企业的存在没有意义。→ 举例 ：华为集团总部统筹手机、企业网络、智能汽车三大业务板块，通过共享技术平台和研发资源实现协同。→ 总结 ：总部的存在合理性在于组合优势的创造（1+1>2）。\n \n \n \n \n \n § 02 \n 公司层战略的性质与主要内容 \n P197–202 \n \n \n \n 7.2.1 \n \n 公司层战略的性质——1+1>2 组合优势 \n \n ⭐⭐⭐⭐⭐ 必背核心 \n P197–199 \n 简答·论述 \n 2021·2023 \n \n \n \n \n \n 📖 教材原句（逐字背诵） \n 公司层战略的性质就是：多元化企业的总部为建立和发挥多行业 组合优势 而采取的一系列决策和行动，这些决策和行动的主要目的是实现行业组合效益的最大化，即多个行业性经营单位组合管理的经济效益要大于它们独立经营的经济效益之和（ 1+1>2 ）。 \n \n \n 🍰 小学生版 \n 单独一根筷子夹菜不方便，两根筷子组合在一起才能夹住东西。公司层战略就是让不同业务"组合"，产生比各自单干更大的效果（1+1>2），这种额外产生的价值叫 组合优势 （也称哺育优势）。\n \n 总部创造价值的三种方式（图7-3）： \n \n \n ① 资产管理中心 \n 以产权关系为纽带，行使股东权利（财务·资产·投资·战略·重要人事） \n \n → \n \n ② 组合管理中心 \n 开发纵向业务链，共享资源能力，降低交易成本，扩大规模/范围经济 \n \n → \n \n ③ 投资管理中心 \n 对行业进行投资或重组，形成价值最大化的行业组合 \n \n \n \n 🧠 助记口诀 \n "三个中心"：资产（股东权利）→ 组合（协同共享）→ 投资（买卖重组） \n \n \n 🎤 复试延伸问题 \n ❓ 老师可能追问： \n · 什么叫"哺育优势"？与"组合优势"有何区别？（同一概念的不同叫法） \n · 总部什么情况下会"损害"而不是"创造"价值？（过度集权、官僚化、信息失真） \n · 如何判断总部是否在创造净价值？（与独立经营绩效对比）\n \n \n \n \n \n 7.2.2 \n \n 公司层战略的决策框架——行业组合 × 管理模式的匹配 \n \n ⭐⭐⭐⭐ 重要 \n P199–200 \n 论述·简答 \n \n \n \n \n \n 📖 核心逻辑 \n 公司层战略的核心是 行业组合战略 与 组合管理模式 的动态匹配。两者不匹配时有三种选择： \n \n 稳定行业组合，调整组合管理模式 —— 市场基础观（I/O） 的偏好 \n 稳定组合管理模式，调整行业组合 —— 资源基础观（RBV） 的偏好 \n 同时调整两者，达成新的匹配 \n \n \n \n 思维方式 重视什么 调整倾向 对应重组类型 \n 市场基础观（I/O） 外部机会与威胁 调整管理模式以适应行业组合 组织重组 \n 资源基础观（RBV） 内部优势与劣势 调整行业组合以适应管理模式 业务重组 \n \n \n \n \n \n 7.2.3 \n \n 组合管理模式的五个要素 \n \n ⭐⭐⭐⭐ 必背 \n P200–202 \n 简答·论述 \n \n \n \n \n \n 要素 核心内容 \n ① 高管团队特征 知识、经验、价值观要与行业组合匹配；不同多元化类型对高管要求不同 \n ② 组织结构 总部职能设置（财务/投资/战略规划/人力等）+ 事业部制设计（利润中心边界） \n ③ 集权分权关系 有组合效益的活动→集权；无组合效益→分权 \n ④ 激励机制 相关多元化→主观·整体考核；不相关多元化→客观·单独考核 \n ⑤ 控制机制 战略控制（做什么）、财务控制（绩效如何）、行为控制（怎么做） \n \n \n 🧠 助记口诀 \n 「人（高管）结（构）权（集分）激（励）控（制）」——人结权激控，缺一不可！ \n \n \n \n \n \n § 03 \n 相关多元化战略 \n P202–209 \n \n \n \n 7.3.1 \n \n 纵向一体化的定义、优点与局限性 \n \n ⭐⭐⭐⭐⭐ 必背 \n P202–205 \n 简答·名词解释 \n 2018年考察 \n \n \n \n \n \n 📖 定义（教材原句） \n 纵向一体化 （vertical integration）：企业通过新建或并购方式，将与主业相关的 上下游价值创造活动 纳入企业边界内的行为。企业在自己边界内完成产业链上的活动越多，则纵向一体化程度越高。 \n \n \n 🍰 小学生版 + 案例 \n 前向一体化 ：一家面粉厂开始自己开面包店——更靠近终端消费者（→终点）。 \n 后向一体化 ：面包厂自己开了小麦种植基地——更靠近上游原材料（←起点）。 \n 例：美的集团构建"电控件→电机→压缩机→空调整机"全纵向产业链。\n \n \n 📌 纵向一体化的3个优点（2018年真题） \n \n \n # 优点 核心逻辑 \n ① 降低交易成本 将市场交易转为企业内部协调，减少信息不对称和机会主义行为 \n ② 增强市场影响力 控制产业链重要资源，以高于竞争对手价格出售或低于竞争对手成本生产 \n ③ 防止技术和重要信息外泄 知识产权保护不完善时避免关键技术被上下游厂商掌握 \n \n \n \n \n ⚠️ 纵向一体化的4个局限性（2018年真题） \n \n \n # 局限性 \n ① 高度纵向配套可能 牺牲规模经济 ，产生相对更高单位成本（外部供应商可能更低廉） \n ② 内部资产链接和计划管理增加了 代理成本与控制成本 \n ③ 经营风险较高， 灵活性较差 ，退出成本较高 \n ④ 可能 降低技术创新和应变能力 ，包括接受新产品和新技术的能力 \n \n \n \n \n 📝 2018真题·简答 \n 题目 ：简述纵向一体化的优点（3个）和局限性（4个）。 \n 答题模板 ：先定义纵向一体化 → 分别列举3优点（交易成本·市场影响力·防外泄）→ 4局限（规模经济·代理成本·风险灵活性·创新能力）→ 结尾：能否带来收益取决于制度环境、行业、市场及战略特点。\n \n \n 🎤 复试延伸问题 \n ❓ 老师可能追问： \n · 虚拟整合（virtual integration）与实体纵向一体化有何区别？（互联网时代更常用虚拟整合，如戴尔供应链） \n · 纵向一体化中内外部资源如何配置？（全资·参股·合资；上游是否对外供应；内部转移价格如何定）\n \n \n \n \n \n 7.3.2 \n \n 共享型相关多元化——范围经济与规模经济 \n \n ⭐⭐⭐⭐ 必背 \n P205–209 \n 名词解释·简答 \n \n \n \n \n \n 📖 教材原句（必背定义） \n 范围经济 （economies of scope）：企业的资源和能力由多个产品或行业 共享 ，或将一个部门已有的核心专长传递到其他部门所带来的 成本节约 。（P206） \n 规模经济 （economies of scale）：规模扩大使 单位产品各种成本下降 所带来的经济效益。 \n \n \n 🍰 范围 vs 规模（一秒区分） \n 范围经济 ：宝洁用同一渠道卖纸巾和纸尿裤—— 一份投入，多种产品 （横向共享）。 \n 规模经济 ：同一条流水线生产越多纸巾，每张纸巾越便宜—— 量大从优 （纵向量大）。\n \n 范围经济的三种类型（表7-1）： \n \n 类型 来源/机制 举例 \n ① 经营性范围经济 共享活动 / 核心能力传递 宝洁共享渠道；本田发动机技术跨摩托/汽车/割草机 \n ② 财务性范围经济 内部资本市场配置 / 降低风险 / 税收优势 总部作为资金放大器；亏损业务抵税 \n ③ 反竞争性范围经济 多点竞争 / 开发市场影响力 跨市场补贴·相互克制（UPS vs 联邦快递）·互惠采购 \n \n \n 共享型相关多元化的优点与挑战（"夸大的相关性"⚠️） \n \n \n \n 优点 挑战（马凯兹&威廉姆森） \n \n \n ① 多种活动共享→范围/规模经济 \n ① "夸大的相关性" ——海市蜃楼效应，过度评估协同价值 \n \n \n ② 核心专长传递与提升（学习曲线） \n ② 协同共享带来高治理成本、内部交易成本 \n \n \n ③ 跨市场补贴·相互克制·互惠采购 \n ③ 责权利不清，共享活动成功率降低 \n \n \n \n ④ 核心专长被过分分摊，损害其价值性和难以模仿性 \n \n \n \n \n \n \n \n \n 7.3.3 \n \n 相关多元化企业的组合管理模式——合作型事业部制 \n \n ⭐⭐⭐⭐ 必背 \n P207–209 \n 论述·比较 \n \n \n \n \n \n 管理模式要素 相关多元化的选择 原因 \n 高管团队 专业背景 + 超强整合能力 需管理纵向/共享业务的价值链整合 \n 总部职能 股东权益职能 + 可共享职能（研发、营销等） 需集中管理可共享的组织职能 \n 组织结构 合作型事业部制 （水平整合、协同共享） 促进事业部间合作与知识共享 \n 集权/分权 有组合效益的领域集权（生产计划/共享职能） 保障协调的权威性；无效益的部分分权 \n 激励机制 主观·整体 考核与激励 绩效不完全取决于自身，须弱化财务标准 \n 控制机制 战略控制 + 行为控制 为主 各事业部存在广泛协同效应，财务指标不能准确反映贡献 \n \n \n \n \n \n § 04 \n 不相关多元化战略 \n P209–214 \n \n \n \n 7.4.1 \n \n 不相关多元化的特点、优点与缺点 \n \n ⭐⭐⭐⭐ 必背 \n P210–213 \n 简答·案例 \n 2021年考察 \n \n \n \n \n \n 📖 定义 \n 不相关多元化战略 ：通过进入 不具有相关性的行业 实现增长目的的业务组合战略。价值创造主要来自 财务上的范围经济性 ，借助内部或外部资本市场优化配置财务资源。\n \n \n 🍰 小学生版 \n 不相关多元化就像一个只看财务报表的投资人——我不管你做什么生意，只要赚钱就行。哪里有机会就投哪里。缺点：对每个行业都不够了解，容易看走眼，代理成本高。\n \n \n 不相关多元化5大优点 \n \n \n # 优点 核心逻辑 \n ① 资金放大器 总部举债放大，抓住更多市场机会（适用于资本市场不成熟时期） \n ② 内部资本市场 比外部资本市场更有效配置资金（克服信息不对称） \n ③ 并购重组获利 外部并购市场效率高时低买高卖；低时内部重组优化资产 \n ④ 分散非系统性风险 不同行业周期性不同，相关度越低分散效果越强 \n ⑤ 税收优势 一业亏损抵消他业利润减税；提高财务杠杆 \n \n \n \n \n 不相关多元化5大缺点 \n \n \n # 缺点 \n ① 成熟市场中资金放大器作用消失，反而引发债务危机 \n ② 外部资本市场完善后，内部资本市场效率 低于 外部 \n ③ 多元化程度越高，并购重组效益越低 \n ④ 实质上分散的是 管理者风险而非股东风险 （股东自己可分散） \n ⑤ 委托代理成本 高——越进入陌生行业，股东与管理者的信息不对称越大 \n \n \n 💡 中国语境特殊性 \n 在新兴市场经济国家（如中国）的特定历史阶段，不相关多元化可通过财务范围经济推动快速成长，这是因为外部资本市场尚不成熟，内部资本市场具有比较优势。代表企业：复星国际。\n \n \n \n \n \n \n \n 7.4.2 \n \n 不相关多元化企业的管理模式——竞争型事业部制 \n \n ⭐⭐⭐ 必背 \n P213–214 \n 比较题 \n \n \n \n \n \n 管理模式要素 不相关多元化的选择 原因 \n 高管团队 金融·财务背景，擅长投资判断 核心工作是资金配置和财务杠杆运作 \n 总部职能 主要设置股东权益职能（财务/投资/人事），无共享职能 各业务相互独立，无需共享 \n 组织结构 竞争型事业部制 （独立核算，自负盈亏） 各事业部独立竞争，互不干扰 \n 集权/分权 高度分权（仅财务/人事适度集权） 无协同效益，集权无益只增成本 \n 激励机制 客观·单独 考核与激励 各事业部绩效完全独立，财务指标可准确衡量 \n 控制机制 财务控制 为主 只关注财务结果，不干预经营过程 \n \n \n \n \n \n § 05 \n 混合多元化战略 \n P214–217 \n \n \n \n 7.5.1 \n \n 混合多元化的特点与管理模式——SBU型 \n \n ⭐⭐⭐ 重要 \n P214–217 \n 简答·比较 \n \n \n \n \n \n 📖 定义 \n 混合多元化战略 ：企业同时拥有 相关和不相关的业务组合 。是现实中最常见的多元化形态，尤其多见于中国大型企业集团（如海尔、格力、华润、招商局等）。\n \n \n 🍰 案例 \n 华润集团：啤酒（华润雪花）、零售（华润万家）、医药（华润医药）、电力（华润电力）——核心业务之间部分相关（消费品渠道），部分不相关（电力）。典型混合多元化。\n \n 混合多元化的管理模式——SBU型（战略业务单元）： \n \n 管理模式要素 混合多元化（SBU） \n 组织结构 SBU型（战略业务单元型） ：在总部与事业部之间增加SBU层级，整合相关事业部；不相关部分保持独立 \n 激励机制 相关业务组合→主观整体；不相关业务组合→客观单独；混合介于两者之间 \n 控制机制 战略控制（相关部分）+ 财务控制（不相关部分）并用 \n \n \n 🧠 三种多元化管理模式口诀 \n 相关→合作型·主观·战略控制 ｜ 不相关→竞争型·客观·财务控制 ｜ 混合→SBU型·两种并用 \n \n \n \n \n \n § 06 \n 多元化战略的推进策略 \n P217–222 \n \n \n \n 7.6.1 \n \n ①动机——三大陷阱警惕！ \n \n ⭐⭐⭐⭐ 高频 \n P217–218 \n 论述·案例 \n 2016·2023 \n \n \n \n \n \n 📖 核心原则 \n 多元化的 正确动机 应该是： 以增强和维持长期战略竞争优势为目的 ，而非基于以下三大陷阱。 \n \n \n 动机陷阱 错误动机 真相 \n ① 诱惑陷阱 看到别的行业赚钱就跟风 进入时往往是高峰期，很快遭遇竞争加剧 \n ② 肥水陷阱 用主业盈余投资不熟悉的新行业 不懂行业，资本"肥水流入外人田"，实为破坏价值 \n ③ 职能社会化陷阱 为了扩大管理者自身权力和收入而多元化 管理者个人利益驱动，损害股东利益（委托代理问题） \n \n \n 🍰 湘鄂情案例 \n 湘鄂情多元化的真实动机是 "逃离困境" （被政策打压后的被动多元化），而非基于战略竞争优势的主动多元化——这正是"动机"陷阱的典型体现。\n \n \n \n \n \n 7.6.2 \n \n ②时机——过早多元化是大忌 \n \n ⭐⭐⭐⭐ 重要 \n P218–219 \n 论述题 \n \n \n \n \n 两个关键时机转变节点： \n \n \n 时机转变 \n 需同时满足的四个条件 \n \n \n 集中发展 → 多元化 \n \n ① 原行业进入 成熟/后期增长阶段 （潜力下降） \n ② 已积累 足够的财力、技术和管理人才 \n ③ 出现了 有吸引力的新行业投资机会 \n ④ 在原行业已建立 明显优势和巩固地位 \n \n \n \n 相关多元化 → 不相关多元化 \n \n ① 相关领域已无更多潜力可挖 \n ② 已建立绝对优势或牢固地位 \n ③ 具备不相关多元化所需特殊知识、财力和投资管理人才 \n ④ 出现有吸引力的新行业机会\n \n \n \n \n \n \n \n 7.6.3 \n \n ③方式——新建·并购·战略联盟的选择 \n \n ⭐⭐⭐ 重要 \n P219 \n \n \n \n \n \n 进入方式 优点 风险/局限 \n 新建全资子公司 自主可控，文化整合简单 速度慢，进入不熟悉行业风险大 \n 并购 最快速进入新行业 ① 内部创新能力下降 ② 总部可能失去控制 ③ 并购后业务整合困难 \n 战略联盟 协同优势 + 风险低 + 灵活 + 可绕过政府限制 潜在协同需仔细评估；退出比并购容易 \n \n \n 💡 选择原则 \n 新行业与现有业务 相关性高 →优先考虑自建或联盟（保持管理文化连贯性）； 相关性低 →可考虑并购（快速获取知识和资源），但须防止整合失败。\n \n \n \n \n \n 7.6.4 \n \n ④速度——BCG矩阵说明不能"一哄而起" \n \n ⭐⭐⭐⭐⭐ 高频考点 \n P220–221 \n 简答·论述 \n 2019年考察 \n \n \n \n \n \n 📖 教材核心观点 \n 企业多元化不能 "一哄而起" ，否则所有业务都处于 问题区域 （Question Mark），需要大量资金投入。应" 成功一个，再进入一个 "。\n \n 波士顿矩阵（BCG）——2019真题： \n \n \n 高市场增长率 \n 低市场增长率 \n 高 相 对 市 场 份 额 \n \n ⭐ \n 明星（Star） \n 高增长·高份额 持续大量投资 →维持/增加投入 \n \n \n 🐄 \n 现金牛（Cash Cow） \n 低增长·高份额 稳定现金来源 →收获·适当投入 \n \n 低 相 对 市 场 份 额 \n \n ❓ \n 问题（Question Mark） \n 高增长·低份额 大量消耗现金 →选择性投入或放弃 \n \n \n 🐕 \n 瘦狗（Dog） \n 低增长·低份额 资源浪费 →剥离·收缩·退出 \n \n \n \n 🍰 本田案例（教材P221） \n 本田在60年代摩托车国际化时，负债/自有资产从1:2升至3:1；摩托车成功后，恢复1:2， 才 进入汽车行业，再度举债至3:1。——充分体现"成功一个，再进入一个"的节奏控制原则。\n \n \n 📝 2019真题·简答答题框架 \n ① 定义BCG矩阵（两维度：市场增长率×相对市场份额） \n ② 四象限名称+特征+对应战略：明星（投资）·现金牛（收获）·问题（选择）·瘦狗（剥离） \n ③ 联系多元化速度控制："一哄而起"使所有业务成为问题区，资金链断裂\n \n \n \n \n \n 7.6.5 \n \n ⑤程度——过度多元化的危害与重组路径 \n \n ⭐⭐⭐⭐ 重要 \n P221–222 \n 论述·案例 \n \n \n \n \n \n 📖 过度多元化的三大危害（教材原文） \n \n ① 委托代理成本、控制成本、管理成本不断上升， 速度·弹性·创新能力越来越弱 \n ② 高层管理者越偏离原行业， 战略失控可能性越高 ，投资管理失误概率越大 \n ③ 导致 债务膨胀、资本结构恶化 ，财务风险递增，股票价格下降 \n \n \n 纠偏手段——两种重组路径（高频考点）： \n \n 战略观基础 重组类型 具体内容 \n \n 资源基础观 \n 业务重组 \n 稳定组合管理模式，单独调整行业组合（进入或退出某些行业） \n \n \n 市场基础观（I/O） \n 组织重组 \n 稳定行业组合，单独调整组合管理模式（结构调整·机制调整·文化改变） \n \n \n \n 🧠 记忆技巧 \n 资源基础观→重视"内部核心能力"→不换能力，换行业（ 业 务重组） \n 市场基础观→重视"外部行业环境"→不换行业，换组织（ 组 织重组）\n \n \n \n \n \n 7.6.6 \n \n 推进策略五要素总结图 \n \n ⭐⭐⭐⭐ 必背框架 \n \n \n \n \n \n \n 推进要素 核心问题 关键原则 常见错误 \n \n \n ① 动机 \n 为什么要多元化？ \n 以增强战略竞争优势为目的 \n 诱惑陷阱·肥水陷阱·职能社会化陷阱 \n \n \n ② 时机 \n 什么时候多元化？ \n 成熟期+资源足+有机会+已建优势（同时满足4条件） \n 过早多元化，拖垮旧业务 \n \n \n ③ 方式 \n 怎么进入新行业？ \n 视相关性和资源选择：新建/并购/联盟 \n 过分依赖并购→整合失败，创新力下降 \n \n \n ④ 速度 \n 进入速度多快？ \n "成功一个，再进入一个"（BCG矩阵节奏） \n 一哄而起→全部问题区→资金链断裂 \n \n \n ⑤ 程度 \n 多元化到何种程度？ \n "有所不为，才能有所为"；避免过度多元化 \n 过度多元化→代理成本飙升→战略失控→债务危机 \n \n \n \n 🧠 五要素助记口诀 \n 「动（机）时（机）方（式）速（度）程（度）」——动时方速程，缺一不可！ \n 每个要素对应一个"过XXX"错误：过错动机 · 过早 · 过分并购 · 过快 · 过度。\n \n \n \n \n \n 对比 \n 易混概念对比总结表 \n \n \n \n \n 维度 \n 相关多元化（纵向一体化/共享型） \n 不相关多元化 \n 混合多元化 \n \n \n 价值来源 \n 经营性/反竞争性范围经济；规模经济 \n 财务性范围经济；内部资本市场 \n 两者兼有 \n \n \n 管理模式 \n 合作型事业部制 \n 竞争型事业部制 \n SBU型（战略业务单元） \n \n \n 高管特征 \n 专业背景 + 整合能力 \n 金融/财务背景 + 投资判断 \n 复合型 \n \n \n 激励机制 \n 主观·整体 考核（弱化财务指标） \n 客观·单独 考核（以财务指标为主） \n 视业务相关性分别采用 \n \n \n 控制机制 \n 战略控制 + 行为控制 \n 财务控制 \n 战略控制 + 财务控制并用 \n \n \n 集权程度 \n 较高集权（协调为主） \n 高度分权（各自独立） \n 按业务类型分别处理 \n \n \n 主要风险 \n 夸大相关性；协同成本过高；核心专长分摊 \n 委托代理成本高；核心专长被削弱 \n 两者风险兼有；管理复杂度高 \n \n \n 典型案例 \n 美的（纵向一体化）；华为（共享型） \n GE（成熟市场）；复星国际（新兴市场） \n 华润集团；招商局 \n \n \n \n \n \n \n \n 范围经济 \n 规模经济 \n \n \n 核心逻辑 \n 一组资源服务多种产品/行业（横向共享） \n 单一产品产量越大，单位成本越低（纵向量大） \n \n \n 适用场景 \n 多元化企业；品台企业；共享经济 \n 大规模制造企业；流程型产业 \n \n \n 三个子类型 \n 经营性·财务性·反竞争性 \n —— \n \n \n 能否并存 \n ✅ 可以并存！相关多元化同时追求两种效益 \n \n \n \n \n \n 真题 \n 历年真题汇总（2016–2025） \n \n \n \n 年份 题目/考点 题型 本章对应知识点 \n \n \n 2016 \n 某制造企业多元化扩张失败，分析战略失误与人力配置问题 \n 案例分析 \n 推进策略五要素、组合管理模式匹配 \n \n \n 2018 \n 简述纵向一体化的优点（3个）和局限性（4个） \n 简答题 \n §3 纵向一体化：3优点·4局限 \n \n \n 2019 \n 简述波士顿矩阵（BCG）四个象限及其战略建议 \n 简答题 \n §6 推进速度·BCG矩阵四象限 \n \n \n 2021 \n 简述多元化战略的三种类型及各自的主要风险 \n 简答题 \n §3-5 三种多元化类型；各自风险 \n \n \n 2023 \n 论述公司层战略的性质及总部创造价值的三种方式 \n 论述题 \n §2 1+1>2；三个中心 \n \n \n 面试高频 \n 如何看待核心竞争力与多元化的关系？ \n 口头表达 \n 相关多元化利用核心专长；不相关多元化削弱核心专长 \n \n \n 面试高频 \n 请解释范围经济与规模经济的区别 \n 名词解释 \n §3 共享型相关多元化 \n \n \n \n \n 🔗 本章终极串联复习 \n 将本章所有知识点贯穿成一条逻辑链，方便最终复习 \n \n \n STEP 01 \n 为什么需要总部？ \n 多元化→职能制超载→事业部制出现→总部出现。总部存在理由：创造出大于自身成本的净价值（1+1>2） \n \n › \n \n STEP 02 \n 总部如何创造价值？ \n 三个中心：资产管理（股东权利）→ 组合管理（协同共享）→ 投资管理（买卖重组） \n \n › \n \n STEP 03 \n 选哪种行业组合？ \n 相关多元化（纵向一体化/共享型）→ 不相关多元化（财务范围经济）→ 混合多元化（两者兼有） \n \n › \n \n STEP 04 \n 用什么管理模式？ \n 相关→合作型·主观整体·战略控制；不相关→竞争型·客观单独·财务控制；混合→SBU型 \n \n › \n \n STEP 05 \n 怎么推进不犯错？ \n 动机要正确（三大陷阱）；时机选对（4条件）；方式合适；速度克制（BCG）；程度适当（避免过度） \n \n \n \n 一句话总结： 多元化企业的总部必须创造比自身成本更多的净价值（1+1>2）才有存在理由；实现这一目标的关键是 行业组合战略与组合管理模式的动态匹配 ；而在推进多元化的过程中，必须把握好动机·时机·方式·速度·程度五个维度，避免盲目多元化。\n \n \n \n \n \n 重点 \n \n 教材重要原句汇总（建议默写） \n ⭐⭐⭐⭐⭐ 必背 \n \n \n \n \n ① "公司层战略的性质就是：多元化企业的总部为建立和发挥多行业 组合优势 而采取的一系列决策和行动……实现行业组合效益的最大化，即多个行业性经营单位组合管理的经济效益要大于它们独立经营的经济效益之和（ 1+1>2 ）。"（P197-198） \n \n \n ② "总部是企业在原有的业务单位之上增加的一个新层级，是一个 不直接面向顾客、不对业务单位利润负责但增加成本 的管理层级。"（P197） \n \n \n ③ " 范围经济 是指企业的资源和能力由多个产品或行业共享，或将一个部门已有的核心专长传递到其他部门所带来的成本节约。"（P206） \n \n \n ④ "企业多元化发展的程度必须有所限制，要 \'有所不为\'才能\'有所为\' ，否则就会犯过度多元化的错误。"（P222） \n \n \n \n \n \n ⚡ 30秒复习模块（超简版） \n \n 01 总部存在理由： 创造净价值（1+1>2） ，抵消自身成本 \n 02 总部三个中心： 资产管理（股东）→ 组合管理（协同）→ 投资管理（买卖） \n 03 相关多元化= 纵向一体化（上下游） + 共享型（范围经济） \n 04 纵向一体化3优点： 降交易成本·增市场影响力·防技术外泄 ；4缺点： 规模经济牺牲·代理成本·风险·创新 \n 05 范围经济3类型： 经营性（共享活动/核心专长传递）·财务性（资本市场/税收）·反竞争性（多点竞争） \n 06 相关多元化管理模式： 合作型·主观整体·战略控制 \n 07 不相关多元化管理模式： 竞争型·客观单独·财务控制 \n 08 混合多元化管理模式： SBU型（战略业务单元） \n 09 推进策略五要素： 动机（三大陷阱）·时机（4条件）·方式（新建/并购/联盟）·速度（BCG·成功一个再一个）·程度（有所不为） \n 10 过度多元化重组：资源基础观→ 业务重组 ；市场基础观→ 组织重组 \n \n \n \n \n 🎤 背诵版总结（复试口述版） \n \n Q1：什么是公司层战略？（必问） \n \n 公司层战略是多元化企业的总部，为建立和发挥多行业 组合优势 而采取的一系列决策和行动，其核心目的是实现行业组合效益最大化，即"1+1>2"的效应。 \n 总部创造价值的三种方式：作为 资产管理中心 行使股东权利，作为 组合管理中心 促进协同共享，作为 投资管理中心 进行行业的投资与重组。 \n 公司层战略的核心决策框架是 行业组合战略与组合管理模式的动态匹配 ，两者不匹配时可选择：稳定行业组合调整管理模式（市场基础观→组织重组），或稳定管理模式调整行业组合（资源基础观→业务重组）。\n \n \n \n Q2：纵向一体化的优点和局限性？（2018真题） \n \n 纵向一体化是指企业将上下游价值创造活动纳入企业边界内的行为。 \n 三个优点： ①降低交易成本（减少信息不对称和机会主义）；②增强市场影响力（控制产业链关键资源）；③防止技术和重要信息外泄。 \n 四个局限： ①牺牲规模经济（内部生产成本可能高于外部）；②增加代理成本与控制成本；③经营风险高、灵活性差、退出成本高；④降低技术创新和应变能力。\n \n \n \n Q3：简述BCG矩阵四象限及战略？（2019真题） \n \n 波士顿矩阵以 市场增长率 和 相对市场份额 为两个维度，将业务划分为四个象限： \n ① 明星（Star） ：高增长·高份额——持续大量投资，维持或扩大份额； \n ② 现金牛（Cash Cow） ：低增长·高份额——稳定现金流来源，适度投入，最大化收益； \n ③ 问题（Question Mark） ：高增长·低份额——选择性投入，重点押注，或果断放弃； \n ④ 瘦狗（Dog） ：低增长·低份额——剥离或收缩，避免浪费资源。 \n 联系多元化速度：企业"一哄而起"同时进入多个新业务，所有业务都成为"问题区"，现金消耗量极大。应遵循"成功一个，再进入一个"的节奏（本田案例）。\n \n \n \n Q4：三种多元化战略的类型与风险？（2021真题） \n \n ① 相关多元化 （纵向一体化/共享型）：进入具有相关性的行业。主要风险：夸大相关性（海市蜃楼效应）；协同成本过高；核心专长被过分分摊。 \n ② 不相关多元化 ：进入不具有相关性的行业，价值来源于财务范围经济。主要风险：委托代理成本高；核心专长被削弱；内部资本市场效率可能低于外部；过度分散使管理失控。 \n ③ 混合多元化 ：同时拥有相关和不相关业务。兼有两者的优点和风险，管理复杂度最高，需采用SBU型管理模式分类治理。\n \n \n \n Q5：多元化战略推进应注意什么？ \n \n 多元化战略的推进需把握五个维度： \n ① 动机 ：应以增强战略竞争优势为目的，警惕三大陷阱（诱惑陷阱·肥水陷阱·职能社会化陷阱）； \n ② 时机 ：同时满足四条件——原行业成熟、资源积累足够、出现好机会、在原行业已建立优势； \n ③ 方式 ：根据相关性和自身能力选择新建、并购或战略联盟，避免过度依赖并购； \n ④ 速度 ：遵循BCG矩阵逻辑，"成功一个，再进入一个"，避免资金链断裂； \n ⑤ 程度 ："有所不为才能有所为"，过度多元化会导致代理成本飙升、战略失控、债务膨胀。\n \n \n \n \n \n 📝 课后自我检测 \n 完成以下题目验证掌握程度，建议先合书作答再查看提示 \n \n Q·01 — 名词解释 \n 什么是公司层战略？其核心性质（1+1>2）是什么意思？ \n 要点： 多元化企业总部为建立和发挥多行业组合优势而采取的决策和行动 → 组合效益最大化 → 组合管理模式与行业组合战略动态匹配 \n \n \n Q·02 — 简答 \n 2018年真题 \n 简述纵向一体化的优点（3个）和局限性（4个）。 \n 关键词： 优点：降低交易成本 / 增强市场影响力 / 防止技术外泄；局限：牺牲规模经济 / 代理成本 / 风险高灵活性差 / 降低创新能力 \n \n \n Q·03 — 简答 \n 2019年真题 \n 简述波士顿矩阵（BCG）的两个维度、四个象限及各象限的战略建议。 \n 关键词： 两维度：市场增长率×相对市场份额；四象限：明星（投资）·现金牛（收获）·问题（选择）·瘦狗（剥离）；联系：多元化速度控制，不能一哄而起 \n \n \n Q·04 — 简答 \n 2021年真题 \n 简述多元化战略的三种类型及各自的主要风险。 \n 关键词： 相关（纵向一体化/共享型）→ 夸大相关性、协同成本高；不相关 → 代理成本高、核心专长削弱；混合 → 两者兼有，管理复杂 \n \n \n Q·05 — 比较题 \n 相关多元化与不相关多元化在激励机制和控制机制上有何不同？为什么？ \n 对比： 相关→主观·整体·战略控制（各事业部绩效相互依存，财务指标不能独立衡量）；不相关→客观·单独·财务控制（事业部自负盈亏，财务指标可准确衡量） \n \n \n Q·06 — 论述 \n 企业在推进多元化战略时应注意哪些问题？请从动机、时机、方式、速度、程度五个维度论述。 \n 答题框架： 逐一论述五要素 → 每个要素点明"常见错误" → 结合BCG矩阵说明速度 → 总结：五要素缺一不可，核心是避免"过XXX" \n \n \n Q·07 — 案例分析 \n 2016年真题改编 \n 湘鄂情集团多元化转型为何失败？请结合公司层战略理论进行分析。 \n 分析维度： 动机（被迫多元化，肥水陷阱）→ 时机（条件不成熟，资源未积累）→ 方式（盲目并购/新建不熟悉业务）→ 速度（同时进入多行业，全部是问题区）→ 程度（过度多元化，核心专长餐饮丧失）→ 管理模式不匹配（缺乏不相关多元化的财务管理能力） \n \n \n Q·08 — 名词解释 \n 什么是范围经济？范围经济有哪三种类型？与规模经济有何区别？ \n 关键： 范围经济=资源和能力由多个产品/行业共享或传递核心专长所带来的成本节约；三类型：经营性/财务性/反竞争性；区别：范围=横向共享，规模=纵向量大 \n \n \n Q·09 — 预测题 \n 总部创造价值的三种方式是什么？如何判断总部是否在创造净价值而非损害价值？ \n 要点： 三中心（资产·组合·投资）→ 判断标准：各业务单位有总部（处于多元化企业内）是否比没有总部（独立经营）绩效更好 → 净价值=总部创造的协同价值-总部运行成本 \n \n \n Q·10 — 预测题 \n 多元化企业在过度多元化时如何进行战略纠偏？两种重组路径分别基于什么理论？ \n 关键： 资源基础观→业务重组（稳定管理模式，调整行业组合）；市场基础观→组织重组（稳定行业组合，调整管理模式：结构/机制/文化） \n \n \n \n \n \n 📚 中南大学企业管理学硕复试笔记 · 第七章 公司层战略 · P190–222 \n 基于蓝海林《企业战略管理》第2版 · 2016–2025真题整合版 \n 生成日期：2026-03-08\n \n \n ↑';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     FIXED TOP NAVIGATION
+═══════════════════════════════════ -->
+<nav class="fixed-nav" id="fixedNav">
+  <span class="nav-brand">CH.07</span>
+  <div class="nav-links">
+    <a href="#map">逻辑图</a>
+    <a href="#mindmap">思维导图</a>
+    <a href="#s1">§1 进程</a>
+    <a href="#s2">§2 性质</a>
+    <a href="#s3">§3 相关</a>
+    <a href="#s4">§4 不相关</a>
+    <a href="#s5">§5 混合</a>
+    <a href="#s6">§6 推进</a>
+    <a href="#compare">对比表</a>
+    <a href="#exam">真题</a>
+    <a href="#chain">串联</a>
+    <a href="#quick30">30秒</a>
+    <a href="#oral">背诵版</a>
+    <a href="#quiz">检测</a>
+  </div>
+  
+  <button class="dark-toggle" onclick="toggleDark()" id="darkBtn">🌙 夜间</button>
+</nav>
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-meta">中南大学企业管理学硕复试笔记 · 蓝海林《企业战略管理》第2版</div>
+  <h1>第七章 · <em>公司层战略</em></h1>
+  <p class="hero-sub">多元化企业如何让"1+1&gt;2"？从总部出现的历史逻辑，到三种多元化战略与管理模式的动态匹配，再到五个推进策略——本章是企业战略管理的"指挥部攻略"。历年高频：多元化类型与风险、纵向一体化优缺点、BCG矩阵、案例分析。</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📍 教材 P190–222</span>
+    <span class="hero-tag">🔥 历年高频考点</span>
+    <span class="hero-tag">✍️ 名词·简答·论述·案例</span>
+    <span class="hero-tag">⭐ 1+1&gt;2 核心逻辑</span>
+    <span class="hero-tag">🏆 2016·2018·2019·2021·2023</span>
+  </div>
+  <div class="hero-date">生成日期：2026-03-08 &nbsp;|&nbsp; P190–222 &nbsp;|&nbsp; 2016–2025真题整合版</div>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════════════════════════
+     §0 逻辑关系图
+═══════════════════════════════════ -->
+<div class="logic-map" id="map">
+  <h3>📌 本章与其他章节的逻辑关系</h3>
+  <div style="overflow-x:auto">
+  <table class="ctable" style="font-size:13px">
+    <tr>
+      <th>章节</th><th>关联逻辑</th>
+    </tr>
+    <tr><td><strong>第1章 战略概述</strong></td><td>公司层战略 = 三层战略（公司层→业务层→职能层）最高层，统领全局</td></tr>
+    <tr><td><strong>第2-5章 战略分析</strong></td><td>内外部分析决定是否多元化、多元化方向（相关/不相关）</td></tr>
+    <tr><td><strong>第6章 业务层战略</strong></td><td>公司层决定"进哪个行业"，业务层决定"如何在该行业竞争"——先有公司层，才有业务层</td></tr>
+    <tr><td><strong>第8章 国际化战略</strong></td><td>国际化=地域多元化，是公司层战略的延伸，本章是第8章的逻辑前提</td></tr>
+    <tr><td><strong>第9章 战略实施</strong></td><td>组合管理模式（组织结构、控制机制）是第9章战略实施的具体内容</td></tr>
+  </table>
+  </div>
+
+  <div style="height:20px"></div>
+  <h3 style="font-size:15px; margin-bottom:14px">📌 本章各节内部逻辑</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="fs-num">§01</div>
+      <div class="fs-title">多元化进程</div>
+      <div class="fs-body">历史背景<br>四个阶段<br>总部为何出现</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§02</div>
+      <div class="fs-title">公司层战略性质</div>
+      <div class="fs-body">1+1&gt;2<br>三种价值创造<br>决策框架</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§03-05</div>
+      <div class="fs-title">三种多元化战略</div>
+      <div class="fs-body">相关/不相关<br>/混合<br>+管理模式匹配</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§06</div>
+      <div class="fs-title">推进策略五要素</div>
+      <div class="fs-body">动机·时机<br>方式·速度·程度</div>
+    </div>
+  </div>
+  <p style="font-size:12.5px; color:var(--ink2); margin-top:10px">逻辑主线：<strong>为什么要有总部</strong> → <strong>总部创造什么价值</strong> → <strong>选什么行业组合</strong> → <strong>用什么管理模式配套</strong> → <strong>怎么推进不犯错</strong></p>
+</div>
+
+<!-- ═══════════════════════════════════
+     思维导图
+═══════════════════════════════════ -->
+<div class="mindmap-container" id="mindmap">
+  <h3>🗺️ 章节思维导图（知识框架）</h3>
+  <div style="overflow-x:auto">
+  <svg viewBox="0 0 900 480" style="width:100%;min-width:700px;height:auto;" font-family="'Noto Sans SC',sans-serif">
+    <!-- 中心节点 -->
+    <rect x="370" y="200" width="160" height="52" rx="14" fill="#0e7c6a"/>
+    <text x="450" y="222" text-anchor="middle" fill="white" font-size="13" font-weight="700">第七章</text>
+    <text x="450" y="242" text-anchor="middle" fill="#6ee7b7" font-size="11">公司层战略</text>
+
+    <!-- 左侧：§1 多元化进程 -->
+    <line x1="370" y1="226" x2="250" y2="140" stroke="#0e7c6a" stroke-width="2" stroke-dasharray="5,3"/>
+    <rect x="130" y="112" width="120" height="44" rx="10" fill="#065f46"/>
+    <text x="190" y="130" text-anchor="middle" fill="#6ee7b7" font-size="10">§01 多元化进程</text>
+    <text x="190" y="148" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="9">四阶段·总部出现</text>
+
+    <!-- 左侧：§2 性质 -->
+    <line x1="370" y1="226" x2="250" y2="226" stroke="#0e7c6a" stroke-width="2"/>
+    <rect x="90" y="200" width="160" height="52" rx="10" fill="#065f46"/>
+    <text x="170" y="220" text-anchor="middle" fill="#6ee7b7" font-size="10">§02 公司层战略性质</text>
+    <text x="170" y="238" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="9">1+1&gt;2 · 三中心 · 匹配</text>
+
+    <!-- 左下：§6 推进策略 -->
+    <line x1="370" y1="252" x2="250" y2="330" stroke="#0e7c6a" stroke-width="2" stroke-dasharray="5,3"/>
+    <rect x="110" y="306" width="140" height="44" rx="10" fill="#065f46"/>
+    <text x="180" y="324" text-anchor="middle" fill="#6ee7b7" font-size="10">§06 推进策略</text>
+    <text x="180" y="342" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="9">动机·时机·方式·速度·程度</text>
+
+    <!-- 右侧：§3 相关多元化 -->
+    <line x1="530" y1="220" x2="640" y2="130" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="640" y="96" width="160" height="52" rx="10" fill="#1e40af"/>
+    <text x="720" y="116" text-anchor="middle" fill="white" font-size="10">§03 相关多元化</text>
+    <text x="720" y="134" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="9">纵向一体化·共享型</text>
+    <!-- 子节点 -->
+    <line x1="800" y1="122" x2="840" y2="80" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <rect x="840" y="58" width="50" height="22" rx="5" fill="#2563eb"/>
+    <text x="865" y="73" text-anchor="middle" fill="white" font-size="9">纵向整合</text>
+    <line x1="800" y1="122" x2="840" y2="140" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <rect x="840" y="128" width="50" height="22" rx="5" fill="#2563eb"/>
+    <text x="865" y="143" text-anchor="middle" fill="white" font-size="9">范围经济</text>
+
+    <!-- 右侧：§4 不相关多元化 -->
+    <line x1="530" y1="226" x2="640" y2="226" stroke="#f59e0b" stroke-width="2"/>
+    <rect x="640" y="200" width="160" height="52" rx="10" fill="#92400e"/>
+    <text x="720" y="220" text-anchor="middle" fill="white" font-size="10">§04 不相关多元化</text>
+    <text x="720" y="238" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="9">财务范围经济·代理成本</text>
+
+    <!-- 右侧：§5 混合多元化 -->
+    <line x1="530" y1="238" x2="640" y2="320" stroke="#7c3aed" stroke-width="2"/>
+    <rect x="640" y="296" width="160" height="52" rx="10" fill="#4c1d95"/>
+    <text x="720" y="316" text-anchor="middle" fill="white" font-size="10">§05 混合多元化</text>
+    <text x="720" y="334" text-anchor="middle" fill="rgba(255,255,255,.7)" font-size="9">SBU型·两者兼有</text>
+
+    <!-- 底部：管理模式对比 -->
+    <line x1="450" y1="252" x2="450" y2="390" stroke="#0e7c6a" stroke-width="2" stroke-dasharray="5,3"/>
+    <rect x="300" y="390" width="300" height="52" rx="12" fill="#122920"/>
+    <text x="450" y="412" text-anchor="middle" fill="#6ee7b7" font-size="11">组合管理模式匹配</text>
+    <text x="450" y="430" text-anchor="middle" fill="rgba(255,255,255,.65)" font-size="9.5">合作型(相关) · SBU型(混合) · 竞争型(不相关)</text>
+  </svg>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     导入案例
+═══════════════════════════════════ -->
+<div class="case-banner" id="intro">
+  <div class="case-label">📖 导入案例 · P190–192</div>
+  <h3>湘鄂情集团：从"高端宴席"到"跨界溺水"</h3>
+  <p>湘鄂情集团是中国餐饮业明星企业。2013年受党的"八项规定"影响，高端餐饮市场骤然萎缩。湘鄂情先后尝试进入大众餐饮（以"中科云网"品牌失败告终），再度跨界进入环保、影视、大数据行业。2014年更名"中科云网"，2015年债券违约，多元化转型全面失败。</p>
+  <p class="case-key">⚠️ 核心教训：<strong>盲目多元化、缺乏核心专长、资源过度分散</strong>——进入不相关行业却没有相应能力和资源积累，是公司层战略失败的典型案例。</p>
+</div>
+
+<!-- ═══════════════════════════════════
+     §1 多元化进程
+═══════════════════════════════════ -->
+<div class="section-title" id="s1">
+  <span class="sec-num">§ 01</span>
+  <h2>多元化的进程与公司总部的出现</h2>
+  <span class="page-ref">P193–197</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.1.1</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">发达国家企业多元化发展的四个阶段</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐ 理解</span>
+        <span class="badge badge-page">P193–196</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>阶段</th><th>特征</th><th>典型时期</th></tr>
+      <tr><td>① 单一产品 / 服务</td><td>集中于一种产品，不多元化</td><td>工业化早期</td></tr>
+      <tr><td>② 产品扩展</td><td>向上下游延伸（纵向一体化）或横向相近业务</td><td>19世纪末–20世纪初</td></tr>
+      <tr><td>③ 相关多元化</td><td>进入具有相关性的不同行业</td><td>20世纪中期</td></tr>
+      <tr><td>④ 不相关多元化</td><td>进入多个不相关行业，形成混合企业集团（Conglomerate）</td><td>20世纪60–70年代高峰</td></tr>
+    </table>
+    <div class="block block-memory" style="margin-top:12px">
+      <div class="block-label">🧠 助记</div>
+      <strong>单→扩→相关→不相关</strong>——就像一棵树：先有主干（单一），再长枝桠（相关），最后乱生（不相关），现在又开始修剪（回归相关）。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.1.2</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">公司总部的出现与性质</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐ 核心</span>
+        <span class="badge badge-page">P197</span>
+        <span class="badge badge-exam">名词解释</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材原句（必背）</div>
+      <div class="quote"><p>总部是企业在原有的业务单位之上增加的一个<mark>新层级</mark>，是一个<mark>不直接面向顾客、不对业务单位利润负责但增加成本</mark>的管理层级。总部的任务是通过行业或者市场多元化经营来<mark>实现投资收益的最大化</mark>，抵消其本身带来的成本并产生净收益。</p></div>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版</div>
+      总部就像学校的校长室——不负责具体上课（不直接面向顾客），但要让每个班（事业部）产生的总价值，比各班自己单干时更大，否则校长室就没存在的理由了。
+    </div>
+    <div class="block block-viva">
+      <div class="block-label">🎤 复试回答模板</div>
+      <strong>定义</strong>：总部是多元化企业在业务单位之上增加的新管理层级，其本质是<span class="kw">不直接创造产品价值但创造组合价值</span>的战略决策中心。→ <strong>核心逻辑</strong>：总部必须创造出大于自身成本的净价值，否则多元化企业的存在没有意义。→ <strong>举例</strong>：华为集团总部统筹手机、企业网络、智能汽车三大业务板块，通过共享技术平台和研发资源实现协同。→ <strong>总结</strong>：总部的存在合理性在于组合优势的创造（1+1&gt;2）。
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     §2 公司层战略性质
+═══════════════════════════════════ -->
+<div class="section-title" id="s2">
+  <span class="sec-num">§ 02</span>
+  <h2>公司层战略的性质与主要内容</h2>
+  <span class="page-ref">P197–202</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.2.1</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">公司层战略的性质——1+1&gt;2 组合优势</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背核心</span>
+        <span class="badge badge-page">P197–199</span>
+        <span class="badge badge-exam">简答·论述</span>
+        <span class="badge badge-year">2021·2023</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材原句（逐字背诵）</div>
+      <div class="quote"><p>公司层战略的性质就是：多元化企业的总部为建立和发挥多行业<mark>组合优势</mark>而采取的一系列决策和行动，这些决策和行动的主要目的是实现行业组合效益的最大化，即多个行业性经营单位组合管理的经济效益要大于它们独立经营的经济效益之和（<mark>1+1&gt;2</mark>）。</p></div>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版</div>
+      单独一根筷子夹菜不方便，两根筷子组合在一起才能夹住东西。公司层战略就是让不同业务"组合"，产生比各自单干更大的效果（1+1&gt;2），这种额外产生的价值叫<strong class="kw">组合优势</strong>（也称哺育优势）。
+    </div>
+
+    <strong style="font-size:14px">总部创造价值的三种方式（图7-3）：</strong>
+    <div class="flow" style="margin-top:12px">
+      <div class="flow-step lm-node green">
+        <div class="fs-title" style="color:#065f46">① 资产管理中心</div>
+        <div class="fs-body">以产权关系为纽带，行使股东权利（财务·资产·投资·战略·重要人事）</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step lm-node blue">
+        <div class="fs-title" style="color:#1e40af">② 组合管理中心</div>
+        <div class="fs-body">开发纵向业务链，共享资源能力，降低交易成本，扩大规模/范围经济</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step lm-node yellow">
+        <div class="fs-title" style="color:#92400e">③ 投资管理中心</div>
+        <div class="fs-body">对行业进行投资或重组，形成价值最大化的行业组合</div>
+      </div>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>"三个中心"：资产（股东权利）→ 组合（协同共享）→ 投资（买卖重组）</strong>
+    </div>
+    <div class="block block-viva">
+      <div class="block-label">🎤 复试延伸问题</div>
+      ❓ 老师可能追问：<br>
+      · 什么叫"哺育优势"？与"组合优势"有何区别？（同一概念的不同叫法）<br>
+      · 总部什么情况下会"损害"而不是"创造"价值？（过度集权、官僚化、信息失真）<br>
+      · 如何判断总部是否在创造净价值？（与独立经营绩效对比）
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.2.2</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">公司层战略的决策框架——行业组合 × 管理模式的匹配</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P199–200</span>
+        <span class="badge badge-exam">论述·简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 核心逻辑</div>
+      <p>公司层战略的核心是<span class="kw">行业组合战略</span>与<span class="kw">组合管理模式</span>的动态匹配。两者不匹配时有三种选择：</p>
+      <ol style="padding-left:20px;margin-top:8px;font-size:13.5px;line-height:2">
+        <li><strong>稳定行业组合，调整组合管理模式</strong>——<span class="kw2">市场基础观（I/O）</span>的偏好</li>
+        <li><strong>稳定组合管理模式，调整行业组合</strong>——<span class="kw">资源基础观（RBV）</span>的偏好</li>
+        <li>同时调整两者，达成新的匹配</li>
+      </ol>
+    </div>
+    <table class="ctable">
+      <tr><th>思维方式</th><th>重视什么</th><th>调整倾向</th><th>对应重组类型</th></tr>
+      <tr><td>市场基础观（I/O）</td><td>外部机会与威胁</td><td>调整管理模式以适应行业组合</td><td><span class="kw2">组织重组</span></td></tr>
+      <tr><td>资源基础观（RBV）</td><td>内部优势与劣势</td><td>调整行业组合以适应管理模式</td><td><span class="kw">业务重组</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.2.3</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">组合管理模式的五个要素</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P200–202</span>
+        <span class="badge badge-exam">简答·论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>要素</th><th>核心内容</th></tr>
+      <tr><td>① 高管团队特征</td><td>知识、经验、价值观要与行业组合匹配；不同多元化类型对高管要求不同</td></tr>
+      <tr><td>② 组织结构</td><td>总部职能设置（财务/投资/战略规划/人力等）+ 事业部制设计（利润中心边界）</td></tr>
+      <tr><td>③ 集权分权关系</td><td>有组合效益的活动→集权；无组合效益→分权</td></tr>
+      <tr><td>④ 激励机制</td><td>相关多元化→主观·整体考核；不相关多元化→客观·单独考核</td></tr>
+      <tr><td>⑤ 控制机制</td><td>战略控制（做什么）、财务控制（绩效如何）、行为控制（怎么做）</td></tr>
+    </table>
+    <div class="block block-memory" style="margin-top:12px">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>「人（高管）结（构）权（集分）激（励）控（制）」——人结权激控，缺一不可！</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     §3 相关多元化
+═══════════════════════════════════ -->
+<div class="section-title" id="s3">
+  <span class="sec-num">§ 03</span>
+  <h2>相关多元化战略</h2>
+  <span class="page-ref">P202–209</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.3.1</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">纵向一体化的定义、优点与局限性</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P202–205</span>
+        <span class="badge badge-exam">简答·名词解释</span>
+        <span class="badge badge-year">2018年考察</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 定义（教材原句）</div>
+      <p><span class="kw">纵向一体化</span>（vertical integration）：企业通过新建或并购方式，将与主业相关的<strong>上下游价值创造活动</strong>纳入企业边界内的行为。企业在自己边界内完成产业链上的活动越多，则纵向一体化程度越高。</p>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版 + 案例</div>
+      <strong>前向一体化</strong>：一家面粉厂开始自己开面包店——更靠近终端消费者（→终点）。<br>
+      <strong>后向一体化</strong>：面包厂自己开了小麦种植基地——更靠近上游原材料（←起点）。<br>
+      例：美的集团构建"电控件→电机→压缩机→空调整机"全纵向产业链。
+    </div>
+
+    <details>
+      <summary>📌 纵向一体化的3个优点（2018年真题）</summary>
+      <div class="detail-body">
+      <table class="ctable">
+        <tr><th>#</th><th>优点</th><th>核心逻辑</th></tr>
+        <tr><td>①</td><td><span class="kw">降低交易成本</span></td><td>将市场交易转为企业内部协调，减少信息不对称和机会主义行为</td></tr>
+        <tr><td>②</td><td><span class="kw">增强市场影响力</span></td><td>控制产业链重要资源，以高于竞争对手价格出售或低于竞争对手成本生产</td></tr>
+        <tr><td>③</td><td><span class="kw">防止技术和重要信息外泄</span></td><td>知识产权保护不完善时避免关键技术被上下游厂商掌握</td></tr>
+      </table>
+      </div>
+    </details>
+
+    <details style="margin-top:8px">
+      <summary>⚠️ 纵向一体化的4个局限性（2018年真题）</summary>
+      <div class="detail-body">
+      <table class="ctable">
+        <tr><th>#</th><th>局限性</th></tr>
+        <tr><td>①</td><td>高度纵向配套可能<span class="kw4">牺牲规模经济</span>，产生相对更高单位成本（外部供应商可能更低廉）</td></tr>
+        <tr><td>②</td><td>内部资产链接和计划管理增加了<span class="kw4">代理成本与控制成本</span></td></tr>
+        <tr><td>③</td><td>经营风险较高，<span class="kw4">灵活性较差</span>，退出成本较高</td></tr>
+        <tr><td>④</td><td>可能<span class="kw4">降低技术创新和应变能力</span>，包括接受新产品和新技术的能力</td></tr>
+      </table>
+      </div>
+    </details>
+
+    <div class="block block-exam" style="margin-top:12px">
+      <div class="block-label">📝 2018真题·简答</div>
+      <strong>题目</strong>：简述纵向一体化的优点（3个）和局限性（4个）。<br>
+      <strong>答题模板</strong>：先定义纵向一体化 → 分别列举3优点（交易成本·市场影响力·防外泄）→ 4局限（规模经济·代理成本·风险灵活性·创新能力）→ 结尾：能否带来收益取决于制度环境、行业、市场及战略特点。
+    </div>
+    <div class="block block-viva">
+      <div class="block-label">🎤 复试延伸问题</div>
+      ❓ 老师可能追问：<br>
+      · 虚拟整合（virtual integration）与实体纵向一体化有何区别？（互联网时代更常用虚拟整合，如戴尔供应链）<br>
+      · 纵向一体化中内外部资源如何配置？（全资·参股·合资；上游是否对外供应；内部转移价格如何定）
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.3.2</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">共享型相关多元化——范围经济与规模经济</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P205–209</span>
+        <span class="badge badge-exam">名词解释·简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材原句（必背定义）</div>
+      <p><span class="kw">范围经济</span>（economies of scope）：企业的资源和能力由多个产品或行业<strong>共享</strong>，或将一个部门已有的核心专长传递到其他部门所带来的<strong>成本节约</strong>。（P206）</p>
+      <p style="margin-top:8px"><span class="kw2">规模经济</span>（economies of scale）：规模扩大使<strong>单位产品各种成本下降</strong>所带来的经济效益。</p>
+    </div>
+
+    <div class="block block-analogy">
+      <div class="block-label">🍰 范围 vs 规模（一秒区分）</div>
+      <strong>范围经济</strong>：宝洁用同一渠道卖纸巾和纸尿裤——<em>一份投入，多种产品</em>（横向共享）。<br>
+      <strong>规模经济</strong>：同一条流水线生产越多纸巾，每张纸巾越便宜——<em>量大从优</em>（纵向量大）。
+    </div>
+
+    <strong>范围经济的三种类型（表7-1）：</strong>
+    <table class="ctable" style="margin-top:8px">
+      <tr><th>类型</th><th>来源/机制</th><th>举例</th></tr>
+      <tr><td>① <span class="kw">经营性范围经济</span></td><td>共享活动 / 核心能力传递</td><td>宝洁共享渠道；本田发动机技术跨摩托/汽车/割草机</td></tr>
+      <tr><td>② <span class="kw">财务性范围经济</span></td><td>内部资本市场配置 / 降低风险 / 税收优势</td><td>总部作为资金放大器；亏损业务抵税</td></tr>
+      <tr><td>③ <span class="kw">反竞争性范围经济</span></td><td>多点竞争 / 开发市场影响力</td><td>跨市场补贴·相互克制（UPS vs 联邦快递）·互惠采购</td></tr>
+    </table>
+
+    <details style="margin-top:12px">
+      <summary>共享型相关多元化的优点与挑战（"夸大的相关性"⚠️）</summary>
+      <div class="detail-body">
+      <table class="ctable">
+        <tr>
+          <th>优点</th><th>挑战（马凯兹&威廉姆森）</th>
+        </tr>
+        <tr>
+          <td>① 多种活动共享→范围/规模经济</td>
+          <td>① <span class="kw4">"夸大的相关性"</span>——海市蜃楼效应，过度评估协同价值</td>
+        </tr>
+        <tr>
+          <td>② 核心专长传递与提升（学习曲线）</td>
+          <td>② 协同共享带来高治理成本、内部交易成本</td>
+        </tr>
+        <tr>
+          <td>③ 跨市场补贴·相互克制·互惠采购</td>
+          <td>③ 责权利不清，共享活动成功率降低</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>④ 核心专长被过分分摊，损害其价值性和难以模仿性</td>
+        </tr>
+      </table>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.3.3</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">相关多元化企业的组合管理模式——合作型事业部制</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P207–209</span>
+        <span class="badge badge-exam">论述·比较</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>管理模式要素</th><th>相关多元化的选择</th><th>原因</th></tr>
+      <tr><td>高管团队</td><td>专业背景 + 超强整合能力</td><td>需管理纵向/共享业务的价值链整合</td></tr>
+      <tr><td>总部职能</td><td>股东权益职能 + 可共享职能（研发、营销等）</td><td>需集中管理可共享的组织职能</td></tr>
+      <tr><td>组织结构</td><td><span class="kw">合作型事业部制</span>（水平整合、协同共享）</td><td>促进事业部间合作与知识共享</td></tr>
+      <tr><td>集权/分权</td><td>有组合效益的领域集权（生产计划/共享职能）</td><td>保障协调的权威性；无效益的部分分权</td></tr>
+      <tr><td>激励机制</td><td><span class="kw">主观·整体</span>考核与激励</td><td>绩效不完全取决于自身，须弱化财务标准</td></tr>
+      <tr><td>控制机制</td><td><span class="kw">战略控制 + 行为控制</span>为主</td><td>各事业部存在广泛协同效应，财务指标不能准确反映贡献</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     §4 不相关多元化
+═══════════════════════════════════ -->
+<div class="section-title" id="s4">
+  <span class="sec-num">§ 04</span>
+  <h2>不相关多元化战略</h2>
+  <span class="page-ref">P209–214</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.4.1</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">不相关多元化的特点、优点与缺点</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P210–213</span>
+        <span class="badge badge-exam">简答·案例</span>
+        <span class="badge badge-year">2021年考察</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 定义</div>
+      <span class="kw">不相关多元化战略</span>：通过进入<strong>不具有相关性的行业</strong>实现增长目的的业务组合战略。价值创造主要来自<span class="kw">财务上的范围经济性</span>，借助内部或外部资本市场优化配置财务资源。
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版</div>
+      不相关多元化就像一个只看财务报表的投资人——我不管你做什么生意，只要赚钱就行。哪里有机会就投哪里。缺点：对每个行业都不够了解，容易看走眼，代理成本高。
+    </div>
+    <details>
+      <summary>不相关多元化5大优点</summary>
+      <div class="detail-body">
+      <table class="ctable">
+        <tr><th>#</th><th>优点</th><th>核心逻辑</th></tr>
+        <tr><td>①</td><td>资金放大器</td><td>总部举债放大，抓住更多市场机会（适用于资本市场不成熟时期）</td></tr>
+        <tr><td>②</td><td><span class="kw">内部资本市场</span></td><td>比外部资本市场更有效配置资金（克服信息不对称）</td></tr>
+        <tr><td>③</td><td>并购重组获利</td><td>外部并购市场效率高时低买高卖；低时内部重组优化资产</td></tr>
+        <tr><td>④</td><td>分散非系统性风险</td><td>不同行业周期性不同，相关度越低分散效果越强</td></tr>
+        <tr><td>⑤</td><td>税收优势</td><td>一业亏损抵消他业利润减税；提高财务杠杆</td></tr>
+      </table>
+      </div>
+    </details>
+    <details style="margin-top:8px">
+      <summary>不相关多元化5大缺点</summary>
+      <div class="detail-body">
+      <table class="ctable">
+        <tr><th>#</th><th>缺点</th></tr>
+        <tr><td>①</td><td>成熟市场中资金放大器作用消失，反而引发债务危机</td></tr>
+        <tr><td>②</td><td>外部资本市场完善后，内部资本市场效率<strong>低于</strong>外部</td></tr>
+        <tr><td>③</td><td>多元化程度越高，并购重组效益越低</td></tr>
+        <tr><td>④</td><td>实质上分散的是<span class="kw4">管理者风险而非股东风险</span>（股东自己可分散）</td></tr>
+        <tr><td>⑤</td><td><span class="kw4">委托代理成本</span>高——越进入陌生行业，股东与管理者的信息不对称越大</td></tr>
+      </table>
+      <div class="block block-tip" style="margin-top:10px">
+        <div class="block-label">💡 中国语境特殊性</div>
+        在新兴市场经济国家（如中国）的特定历史阶段，不相关多元化可通过财务范围经济推动快速成长，这是因为外部资本市场尚不成熟，内部资本市场具有比较优势。代表企业：复星国际。
+      </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.4.2</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">不相关多元化企业的管理模式——竞争型事业部制</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P213–214</span>
+        <span class="badge badge-exam">比较题</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>管理模式要素</th><th>不相关多元化的选择</th><th>原因</th></tr>
+      <tr><td>高管团队</td><td>金融·财务背景，擅长投资判断</td><td>核心工作是资金配置和财务杠杆运作</td></tr>
+      <tr><td>总部职能</td><td>主要设置股东权益职能（财务/投资/人事），无共享职能</td><td>各业务相互独立，无需共享</td></tr>
+      <tr><td>组织结构</td><td><span class="kw">竞争型事业部制</span>（独立核算，自负盈亏）</td><td>各事业部独立竞争，互不干扰</td></tr>
+      <tr><td>集权/分权</td><td>高度分权（仅财务/人事适度集权）</td><td>无协同效益，集权无益只增成本</td></tr>
+      <tr><td>激励机制</td><td><span class="kw2">客观·单独</span>考核与激励</td><td>各事业部绩效完全独立，财务指标可准确衡量</td></tr>
+      <tr><td>控制机制</td><td><span class="kw2">财务控制</span>为主</td><td>只关注财务结果，不干预经营过程</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     §5 混合多元化
+═══════════════════════════════════ -->
+<div class="section-title" id="s5">
+  <span class="sec-num">§ 05</span>
+  <h2>混合多元化战略</h2>
+  <span class="page-ref">P214–217</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.5.1</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">混合多元化的特点与管理模式——SBU型</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P214–217</span>
+        <span class="badge badge-exam">简答·比较</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 定义</div>
+      <span class="kw">混合多元化战略</span>：企业同时拥有<strong>相关和不相关的业务组合</strong>。是现实中最常见的多元化形态，尤其多见于中国大型企业集团（如海尔、格力、华润、招商局等）。
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 案例</div>
+      华润集团：啤酒（华润雪花）、零售（华润万家）、医药（华润医药）、电力（华润电力）——核心业务之间部分相关（消费品渠道），部分不相关（电力）。典型混合多元化。
+    </div>
+
+    <strong>混合多元化的管理模式——SBU型（战略业务单元）：</strong>
+    <table class="ctable" style="margin-top:8px">
+      <tr><th>管理模式要素</th><th>混合多元化（SBU）</th></tr>
+      <tr><td>组织结构</td><td><span class="kw">SBU型（战略业务单元型）</span>：在总部与事业部之间增加SBU层级，整合相关事业部；不相关部分保持独立</td></tr>
+      <tr><td>激励机制</td><td>相关业务组合→主观整体；不相关业务组合→客观单独；混合介于两者之间</td></tr>
+      <tr><td>控制机制</td><td>战略控制（相关部分）+ 财务控制（不相关部分）并用</td></tr>
+    </table>
+    <div class="block block-memory" style="margin-top:12px">
+      <div class="block-label">🧠 三种多元化管理模式口诀</div>
+      <strong>相关→合作型·主观·战略控制 ｜ 不相关→竞争型·客观·财务控制 ｜ 混合→SBU型·两种并用</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     §6 推进策略
+═══════════════════════════════════ -->
+<div class="section-title" id="s6">
+  <span class="sec-num">§ 06</span>
+  <h2>多元化战略的推进策略</h2>
+  <span class="page-ref">P217–222</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.6.1</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">①动机——三大陷阱警惕！</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 高频</span>
+        <span class="badge badge-page">P217–218</span>
+        <span class="badge badge-exam">论述·案例</span>
+        <span class="badge badge-year">2016·2023</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 核心原则</div>
+      <p>多元化的<span class="kw">正确动机</span>应该是：<strong>以增强和维持长期战略竞争优势为目的</strong>，而非基于以下三大陷阱。</p>
+    </div>
+    <table class="ctable">
+      <tr><th>动机陷阱</th><th>错误动机</th><th>真相</th></tr>
+      <tr><td><span class="kw4">① 诱惑陷阱</span></td><td>看到别的行业赚钱就跟风</td><td>进入时往往是高峰期，很快遭遇竞争加剧</td></tr>
+      <tr><td><span class="kw4">② 肥水陷阱</span></td><td>用主业盈余投资不熟悉的新行业</td><td>不懂行业，资本"肥水流入外人田"，实为破坏价值</td></tr>
+      <tr><td><span class="kw4">③ 职能社会化陷阱</span></td><td>为了扩大管理者自身权力和收入而多元化</td><td>管理者个人利益驱动，损害股东利益（委托代理问题）</td></tr>
+    </table>
+    <div class="block block-analogy" style="margin-top:10px">
+      <div class="block-label">🍰 湘鄂情案例</div>
+      湘鄂情多元化的真实动机是<strong>"逃离困境"</strong>（被政策打压后的被动多元化），而非基于战略竞争优势的主动多元化——这正是"动机"陷阱的典型体现。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.6.2</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">②时机——过早多元化是大忌</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P218–219</span>
+        <span class="badge badge-exam">论述题</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <strong>两个关键时机转变节点：</strong>
+    <table class="ctable" style="margin-top:10px">
+      <tr>
+        <th>时机转变</th>
+        <th>需同时满足的四个条件</th>
+      </tr>
+      <tr>
+        <td>集中发展 → 多元化</td>
+        <td>
+          ① 原行业进入<strong>成熟/后期增长阶段</strong>（潜力下降）<br>
+          ② 已积累<strong>足够的财力、技术和管理人才</strong><br>
+          ③ 出现了<strong>有吸引力的新行业投资机会</strong><br>
+          ④ 在原行业已建立<strong>明显优势和巩固地位</strong>
+        </td>
+      </tr>
+      <tr>
+        <td>相关多元化 → 不相关多元化</td>
+        <td>
+          ① 相关领域已无更多潜力可挖<br>
+          ② 已建立绝对优势或牢固地位<br>
+          ③ 具备不相关多元化所需特殊知识、财力和投资管理人才<br>
+          ④ 出现有吸引力的新行业机会
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.6.3</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">③方式——新建·并购·战略联盟的选择</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P219</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>进入方式</th><th>优点</th><th>风险/局限</th></tr>
+      <tr><td><span class="kw">新建全资子公司</span></td><td>自主可控，文化整合简单</td><td>速度慢，进入不熟悉行业风险大</td></tr>
+      <tr><td><span class="kw2">并购</span></td><td>最快速进入新行业</td><td>① 内部创新能力下降 ② 总部可能失去控制 ③ 并购后业务整合困难</td></tr>
+      <tr><td><span class="kw3">战略联盟</span></td><td>协同优势 + 风险低 + 灵活 + 可绕过政府限制</td><td>潜在协同需仔细评估；退出比并购容易</td></tr>
+    </table>
+    <div class="block block-tip" style="margin-top:10px">
+      <div class="block-label">💡 选择原则</div>
+      新行业与现有业务<strong>相关性高</strong>→优先考虑自建或联盟（保持管理文化连贯性）；<strong>相关性低</strong>→可考虑并购（快速获取知识和资源），但须防止整合失败。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.6.4</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">④速度——BCG矩阵说明不能"一哄而起"</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高频考点</span>
+        <span class="badge badge-page">P220–221</span>
+        <span class="badge badge-exam">简答·论述</span>
+        <span class="badge badge-year">2019年考察</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材核心观点</div>
+      企业多元化不能<span class="kw">"一哄而起"</span>，否则所有业务都处于<strong>问题区域</strong>（Question Mark），需要大量资金投入。应"<strong>成功一个，再进入一个</strong>"。
+    </div>
+
+    <strong style="font-size:14px">波士顿矩阵（BCG）——2019真题：</strong>
+    <div class="bcg-grid" style="margin-top:14px">
+      <div class="bcg-corner"></div>
+      <div class="bcg-head">高市场增长率</div>
+      <div class="bcg-head">低市场增长率</div>
+      <div class="bcg-label" style="writing-mode:vertical-rl;transform:rotate(180deg)">高&nbsp;相&nbsp;对&nbsp;市&nbsp;场&nbsp;份&nbsp;额</div>
+      <div class="bcg-cell bcg-star">
+        <div class="bc-icon">⭐</div>
+        <div class="bc-name">明星（Star）</div>
+        <div class="bc-desc">高增长·高份额<br>持续大量投资<br>→维持/增加投入</div>
+      </div>
+      <div class="bcg-cell bcg-cow">
+        <div class="bc-icon">🐄</div>
+        <div class="bc-name">现金牛（Cash Cow）</div>
+        <div class="bc-desc">低增长·高份额<br>稳定现金来源<br>→收获·适当投入</div>
+      </div>
+      <div class="bcg-label" style="writing-mode:vertical-rl;transform:rotate(180deg)">低&nbsp;相&nbsp;对&nbsp;市&nbsp;场&nbsp;份&nbsp;额</div>
+      <div class="bcg-cell bcg-qm">
+        <div class="bc-icon">❓</div>
+        <div class="bc-name">问题（Question Mark）</div>
+        <div class="bc-desc">高增长·低份额<br>大量消耗现金<br>→选择性投入或放弃</div>
+      </div>
+      <div class="bcg-cell bcg-dog">
+        <div class="bc-icon">🐕</div>
+        <div class="bc-name">瘦狗（Dog）</div>
+        <div class="bc-desc">低增长·低份额<br>资源浪费<br>→剥离·收缩·退出</div>
+      </div>
+    </div>
+
+    <div class="block block-analogy" style="margin-top:12px">
+      <div class="block-label">🍰 本田案例（教材P221）</div>
+      本田在60年代摩托车国际化时，负债/自有资产从1:2升至3:1；摩托车成功后，恢复1:2，<strong>才</strong>进入汽车行业，再度举债至3:1。——充分体现"成功一个，再进入一个"的节奏控制原则。
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">📝 2019真题·简答答题框架</div>
+      ① 定义BCG矩阵（两维度：市场增长率×相对市场份额）<br>
+      ② 四象限名称+特征+对应战略：明星（投资）·现金牛（收获）·问题（选择）·瘦狗（剥离）<br>
+      ③ 联系多元化速度控制："一哄而起"使所有业务成为问题区，资金链断裂
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.6.5</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">⑤程度——过度多元化的危害与重组路径</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P221–222</span>
+        <span class="badge badge-exam">论述·案例</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 过度多元化的三大危害（教材原文）</div>
+      <ul class="kl" style="font-size:13.5px">
+        <li>① 委托代理成本、控制成本、管理成本不断上升，<span class="kw4">速度·弹性·创新能力越来越弱</span></li>
+        <li>② 高层管理者越偏离原行业，<span class="kw4">战略失控可能性越高</span>，投资管理失误概率越大</li>
+        <li>③ 导致<span class="kw4">债务膨胀、资本结构恶化</span>，财务风险递增，股票价格下降</li>
+      </ul>
+    </div>
+    <strong>纠偏手段——两种重组路径（高频考点）：</strong>
+    <table class="ctable" style="margin-top:8px">
+      <tr><th>战略观基础</th><th>重组类型</th><th>具体内容</th></tr>
+      <tr>
+        <td>资源基础观</td>
+        <td><span class="kw">业务重组</span></td>
+        <td>稳定组合管理模式，单独调整行业组合（进入或退出某些行业）</td>
+      </tr>
+      <tr>
+        <td>市场基础观（I/O）</td>
+        <td><span class="kw2">组织重组</span></td>
+        <td>稳定行业组合，单独调整组合管理模式（结构调整·机制调整·文化改变）</td>
+      </tr>
+    </table>
+    <div class="block block-memory" style="margin-top:10px">
+      <div class="block-label">🧠 记忆技巧</div>
+      资源基础观→重视"内部核心能力"→不换能力，换行业（<strong>业</strong>务重组）<br>
+      市场基础观→重视"外部行业环境"→不换行业，换组织（<strong>组</strong>织重组）
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">7.6.6</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">推进策略五要素总结图</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 必背框架</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>推进要素</th><th>核心问题</th><th>关键原则</th><th>常见错误</th>
+      </tr>
+      <tr>
+        <td>① <span class="kw">动机</span></td>
+        <td>为什么要多元化？</td>
+        <td>以增强战略竞争优势为目的</td>
+        <td>诱惑陷阱·肥水陷阱·职能社会化陷阱</td>
+      </tr>
+      <tr>
+        <td>② <span class="kw">时机</span></td>
+        <td>什么时候多元化？</td>
+        <td>成熟期+资源足+有机会+已建优势（同时满足4条件）</td>
+        <td>过早多元化，拖垮旧业务</td>
+      </tr>
+      <tr>
+        <td>③ <span class="kw">方式</span></td>
+        <td>怎么进入新行业？</td>
+        <td>视相关性和资源选择：新建/并购/联盟</td>
+        <td>过分依赖并购→整合失败，创新力下降</td>
+      </tr>
+      <tr>
+        <td>④ <span class="kw">速度</span></td>
+        <td>进入速度多快？</td>
+        <td>"成功一个，再进入一个"（BCG矩阵节奏）</td>
+        <td>一哄而起→全部问题区→资金链断裂</td>
+      </tr>
+      <tr>
+        <td>⑤ <span class="kw">程度</span></td>
+        <td>多元化到何种程度？</td>
+        <td>"有所不为，才能有所为"；避免过度多元化</td>
+        <td>过度多元化→代理成本飙升→战略失控→债务危机</td>
+      </tr>
+    </table>
+    <div class="block block-memory" style="margin-top:12px">
+      <div class="block-label">🧠 五要素助记口诀</div>
+      <strong>「动（机）时（机）方（式）速（度）程（度）」——动时方速程，缺一不可！</strong><br>
+      每个要素对应一个"过XXX"错误：过错动机 · 过早 · 过分并购 · 过快 · 过度。
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     对比汇总表
+═══════════════════════════════════ -->
+<div class="section-title" id="compare">
+  <span class="sec-num">对比</span>
+  <h2>易混概念对比总结表</h2>
+</div>
+
+<div class="compare-table">
+<table class="ctable" style="font-size:13px">
+  <tr>
+    <th>维度</th>
+    <th>相关多元化（纵向一体化/共享型）</th>
+    <th>不相关多元化</th>
+    <th>混合多元化</th>
+  </tr>
+  <tr>
+    <td>价值来源</td>
+    <td>经营性/反竞争性范围经济；规模经济</td>
+    <td>财务性范围经济；内部资本市场</td>
+    <td>两者兼有</td>
+  </tr>
+  <tr>
+    <td>管理模式</td>
+    <td><span class="kw">合作型事业部制</span></td>
+    <td><span class="kw2">竞争型事业部制</span></td>
+    <td><span class="kw3">SBU型（战略业务单元）</span></td>
+  </tr>
+  <tr>
+    <td>高管特征</td>
+    <td>专业背景 + 整合能力</td>
+    <td>金融/财务背景 + 投资判断</td>
+    <td>复合型</td>
+  </tr>
+  <tr>
+    <td>激励机制</td>
+    <td><strong>主观·整体</strong>考核（弱化财务指标）</td>
+    <td><strong>客观·单独</strong>考核（以财务指标为主）</td>
+    <td>视业务相关性分别采用</td>
+  </tr>
+  <tr>
+    <td>控制机制</td>
+    <td>战略控制 + 行为控制</td>
+    <td>财务控制</td>
+    <td>战略控制 + 财务控制并用</td>
+  </tr>
+  <tr>
+    <td>集权程度</td>
+    <td>较高集权（协调为主）</td>
+    <td>高度分权（各自独立）</td>
+    <td>按业务类型分别处理</td>
+  </tr>
+  <tr>
+    <td>主要风险</td>
+    <td>夸大相关性；协同成本过高；核心专长分摊</td>
+    <td>委托代理成本高；核心专长被削弱</td>
+    <td>两者风险兼有；管理复杂度高</td>
+  </tr>
+  <tr>
+    <td>典型案例</td>
+    <td>美的（纵向一体化）；华为（共享型）</td>
+    <td>GE（成熟市场）；复星国际（新兴市场）</td>
+    <td>华润集团；招商局</td>
+  </tr>
+</table>
+</div>
+
+<div class="compare-table" style="margin-top:20px">
+<table class="ctable" style="font-size:13px">
+  <tr>
+    <th></th>
+    <th>范围经济</th>
+    <th>规模经济</th>
+  </tr>
+  <tr>
+    <td>核心逻辑</td>
+    <td>一组资源服务多种产品/行业（横向共享）</td>
+    <td>单一产品产量越大，单位成本越低（纵向量大）</td>
+  </tr>
+  <tr>
+    <td>适用场景</td>
+    <td>多元化企业；品台企业；共享经济</td>
+    <td>大规模制造企业；流程型产业</td>
+  </tr>
+  <tr>
+    <td>三个子类型</td>
+    <td>经营性·财务性·反竞争性</td>
+    <td>——</td>
+  </tr>
+  <tr>
+    <td>能否并存</td>
+    <td colspan="2" style="text-align:center">✅ 可以并存！相关多元化同时追求两种效益</td>
+  </tr>
+</table>
+</div>
+
+<!-- ═══════════════════════════════════
+     历年真题汇总
+═══════════════════════════════════ -->
+<div class="section-title" id="exam">
+  <span class="sec-num">真题</span>
+  <h2>历年真题汇总（2016–2025）</h2>
+</div>
+
+<table class="ctable">
+  <tr>
+    <th>年份</th><th>题目/考点</th><th>题型</th><th>本章对应知识点</th>
+  </tr>
+  <tr>
+    <td><span class="badge badge-year">2016</span></td>
+    <td>某制造企业多元化扩张失败，分析战略失误与人力配置问题</td>
+    <td>案例分析</td>
+    <td>推进策略五要素、组合管理模式匹配</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-year">2018</span></td>
+    <td>简述纵向一体化的优点（3个）和局限性（4个）</td>
+    <td>简答题</td>
+    <td>§3 纵向一体化：3优点·4局限</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-year">2019</span></td>
+    <td>简述波士顿矩阵（BCG）四个象限及其战略建议</td>
+    <td>简答题</td>
+    <td>§6 推进速度·BCG矩阵四象限</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-year">2021</span></td>
+    <td>简述多元化战略的三种类型及各自的主要风险</td>
+    <td>简答题</td>
+    <td>§3-5 三种多元化类型；各自风险</td>
+  </tr>
+  <tr>
+    <td><span class="badge badge-year">2023</span></td>
+    <td>论述公司层战略的性质及总部创造价值的三种方式</td>
+    <td>论述题</td>
+    <td>§2 1+1&gt;2；三个中心</td>
+  </tr>
+  <tr>
+    <td><span style="color:var(--accent);font-weight:700">面试高频</span></td>
+    <td>如何看待核心竞争力与多元化的关系？</td>
+    <td>口头表达</td>
+    <td>相关多元化利用核心专长；不相关多元化削弱核心专长</td>
+  </tr>
+  <tr>
+    <td><span style="color:var(--accent);font-weight:700">面试高频</span></td>
+    <td>请解释范围经济与规模经济的区别</td>
+    <td>名词解释</td>
+    <td>§3 共享型相关多元化</td>
+  </tr>
+</table>
+
+<!-- ═══════════════════════════════════
+     终极串联
+═══════════════════════════════════ -->
+<div class="chain" id="chain">
+  <h2>🔗 本章终极串联复习</h2>
+  <p class="chain-sub">将本章所有知识点贯穿成一条逻辑链，方便最终复习</p>
+  <div class="chain-flow">
+    <div class="chain-step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">为什么需要总部？</div>
+      <div class="step-body">多元化→职能制超载→事业部制出现→总部出现。总部存在理由：创造出大于自身成本的净价值（1+1&gt;2）</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-title">总部如何创造价值？</div>
+      <div class="step-body">三个中心：资产管理（股东权利）→ 组合管理（协同共享）→ 投资管理（买卖重组）</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-title">选哪种行业组合？</div>
+      <div class="step-body">相关多元化（纵向一体化/共享型）→ 不相关多元化（财务范围经济）→ 混合多元化（两者兼有）</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 04</div>
+      <div class="step-title">用什么管理模式？</div>
+      <div class="step-body">相关→合作型·主观整体·战略控制；不相关→竞争型·客观单独·财务控制；混合→SBU型</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 05</div>
+      <div class="step-title">怎么推进不犯错？</div>
+      <div class="step-body">动机要正确（三大陷阱）；时机选对（4条件）；方式合适；速度克制（BCG）；程度适当（避免过度）</div>
+    </div>
+  </div>
+  <div class="chain-summary">
+    <strong>一句话总结：</strong>多元化企业的总部必须创造比自身成本更多的净价值（1+1&gt;2）才有存在理由；实现这一目标的关键是<mark style="background:#6ee7b7;color:#0f1f2e;padding:0 4px;border-radius:3px">行业组合战略与组合管理模式的动态匹配</mark>；而在推进多元化的过程中，必须把握好动机·时机·方式·速度·程度五个维度，避免盲目多元化。
+  </div>
+</div>
+
+<!-- 教材重要原句汇总 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">重点</span>
+    <div class="kcard-title-wrap" style="flex:1">
+      <div class="kcard-title">教材重要原句汇总（建议默写）</div>
+      <div class="kcard-meta"><span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背</span></div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="quote" style="margin-bottom:10px">
+      <p>① "公司层战略的性质就是：多元化企业的总部为建立和发挥多行业<mark>组合优势</mark>而采取的一系列决策和行动……实现行业组合效益的最大化，即多个行业性经营单位组合管理的经济效益要大于它们独立经营的经济效益之和（<mark>1+1&gt;2</mark>）。"（P197-198）</p>
+    </div>
+    <div class="quote" style="margin-bottom:10px">
+      <p>② "总部是企业在原有的业务单位之上增加的一个新层级，是一个<mark>不直接面向顾客、不对业务单位利润负责但增加成本</mark>的管理层级。"（P197）</p>
+    </div>
+    <div class="quote" style="margin-bottom:10px">
+      <p>③ "<mark>范围经济</mark>是指企业的资源和能力由多个产品或行业共享，或将一个部门已有的核心专长传递到其他部门所带来的成本节约。"（P206）</p>
+    </div>
+    <div class="quote">
+      <p>④ "企业多元化发展的程度必须有所限制，要<mark>'有所不为'才能'有所为'</mark>，否则就会犯过度多元化的错误。"（P222）</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     30秒复习
+═══════════════════════════════════ -->
+<div class="quick30" id="quick30">
+  <h2>⚡ 30秒复习模块（超简版）</h2>
+  <ul class="q30-list">
+    <li><span class="q30-num">01</span><span>总部存在理由：<em>创造净价值（1+1&gt;2）</em>，抵消自身成本</span></li>
+    <li><span class="q30-num">02</span><span>总部三个中心：<em>资产管理（股东）→ 组合管理（协同）→ 投资管理（买卖）</em></span></li>
+    <li><span class="q30-num">03</span><span>相关多元化=<em>纵向一体化（上下游）</em>+<em>共享型（范围经济）</em></span></li>
+    <li><span class="q30-num">04</span><span>纵向一体化3优点：<em>降交易成本·增市场影响力·防技术外泄</em>；4缺点：<em>规模经济牺牲·代理成本·风险·创新</em></span></li>
+    <li><span class="q30-num">05</span><span>范围经济3类型：<em>经营性（共享活动/核心专长传递）·财务性（资本市场/税收）·反竞争性（多点竞争）</em></span></li>
+    <li><span class="q30-num">06</span><span>相关多元化管理模式：<em>合作型·主观整体·战略控制</em></span></li>
+    <li><span class="q30-num">07</span><span>不相关多元化管理模式：<em>竞争型·客观单独·财务控制</em></span></li>
+    <li><span class="q30-num">08</span><span>混合多元化管理模式：<em>SBU型（战略业务单元）</em></span></li>
+    <li><span class="q30-num">09</span><span>推进策略五要素：<em>动机（三大陷阱）·时机（4条件）·方式（新建/并购/联盟）·速度（BCG·成功一个再一个）·程度（有所不为）</em></span></li>
+    <li><span class="q30-num">10</span><span>过度多元化重组：资源基础观→<em>业务重组</em>；市场基础观→<em>组织重组</em></span></li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════
+     背诵版总结（复试口述版）
+═══════════════════════════════════ -->
+<div class="oral-summary" id="oral">
+  <h2>🎤 背诵版总结（复试口述版）</h2>
+
+  <div class="oral-item">
+    <div class="oral-q">Q1：什么是公司层战略？（必问）</div>
+    <div class="oral-a">
+      公司层战略是多元化企业的总部，为建立和发挥多行业<strong>组合优势</strong>而采取的一系列决策和行动，其核心目的是实现行业组合效益最大化，即"1+1&gt;2"的效应。<br><br>
+      总部创造价值的三种方式：作为<strong>资产管理中心</strong>行使股东权利，作为<strong>组合管理中心</strong>促进协同共享，作为<strong>投资管理中心</strong>进行行业的投资与重组。<br><br>
+      公司层战略的核心决策框架是<strong>行业组合战略与组合管理模式的动态匹配</strong>，两者不匹配时可选择：稳定行业组合调整管理模式（市场基础观→组织重组），或稳定管理模式调整行业组合（资源基础观→业务重组）。
+    </div>
+  </div>
+
+  <div class="oral-item">
+    <div class="oral-q">Q2：纵向一体化的优点和局限性？（2018真题）</div>
+    <div class="oral-a">
+      纵向一体化是指企业将上下游价值创造活动纳入企业边界内的行为。<br><br>
+      <strong>三个优点：</strong>①降低交易成本（减少信息不对称和机会主义）；②增强市场影响力（控制产业链关键资源）；③防止技术和重要信息外泄。<br><br>
+      <strong>四个局限：</strong>①牺牲规模经济（内部生产成本可能高于外部）；②增加代理成本与控制成本；③经营风险高、灵活性差、退出成本高；④降低技术创新和应变能力。
+    </div>
+  </div>
+
+  <div class="oral-item">
+    <div class="oral-q">Q3：简述BCG矩阵四象限及战略？（2019真题）</div>
+    <div class="oral-a">
+      波士顿矩阵以<strong>市场增长率</strong>和<strong>相对市场份额</strong>为两个维度，将业务划分为四个象限：<br><br>
+      ① <strong>明星（Star）</strong>：高增长·高份额——持续大量投资，维持或扩大份额；<br>
+      ② <strong>现金牛（Cash Cow）</strong>：低增长·高份额——稳定现金流来源，适度投入，最大化收益；<br>
+      ③ <strong>问题（Question Mark）</strong>：高增长·低份额——选择性投入，重点押注，或果断放弃；<br>
+      ④ <strong>瘦狗（Dog）</strong>：低增长·低份额——剥离或收缩，避免浪费资源。<br><br>
+      联系多元化速度：企业"一哄而起"同时进入多个新业务，所有业务都成为"问题区"，现金消耗量极大。应遵循"成功一个，再进入一个"的节奏（本田案例）。
+    </div>
+  </div>
+
+  <div class="oral-item">
+    <div class="oral-q">Q4：三种多元化战略的类型与风险？（2021真题）</div>
+    <div class="oral-a">
+      ① <strong>相关多元化</strong>（纵向一体化/共享型）：进入具有相关性的行业。主要风险：夸大相关性（海市蜃楼效应）；协同成本过高；核心专长被过分分摊。<br><br>
+      ② <strong>不相关多元化</strong>：进入不具有相关性的行业，价值来源于财务范围经济。主要风险：委托代理成本高；核心专长被削弱；内部资本市场效率可能低于外部；过度分散使管理失控。<br><br>
+      ③ <strong>混合多元化</strong>：同时拥有相关和不相关业务。兼有两者的优点和风险，管理复杂度最高，需采用SBU型管理模式分类治理。
+    </div>
+  </div>
+
+  <div class="oral-item">
+    <div class="oral-q">Q5：多元化战略推进应注意什么？</div>
+    <div class="oral-a">
+      多元化战略的推进需把握五个维度：<br><br>
+      ①<strong>动机</strong>：应以增强战略竞争优势为目的，警惕三大陷阱（诱惑陷阱·肥水陷阱·职能社会化陷阱）；<br>
+      ②<strong>时机</strong>：同时满足四条件——原行业成熟、资源积累足够、出现好机会、在原行业已建立优势；<br>
+      ③<strong>方式</strong>：根据相关性和自身能力选择新建、并购或战略联盟，避免过度依赖并购；<br>
+      ④<strong>速度</strong>：遵循BCG矩阵逻辑，"成功一个，再进入一个"，避免资金链断裂；<br>
+      ⑤<strong>程度</strong>："有所不为才能有所为"，过度多元化会导致代理成本飙升、战略失控、债务膨胀。
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     课后自我检测
+═══════════════════════════════════ -->
+<div class="quiz" id="quiz">
+  <h2>📝 课后自我检测</h2>
+  <p class="quiz-sub">完成以下题目验证掌握程度，建议先合书作答再查看提示</p>
+
+  <div class="q-item">
+    <div class="q-num">Q·01 — 名词解释</div>
+    <div class="q-text">什么是公司层战略？其核心性质（1+1&gt;2）是什么意思？</div>
+    <div class="q-hint"><span>要点：</span>多元化企业总部为建立和发挥多行业组合优势而采取的决策和行动 → 组合效益最大化 → 组合管理模式与行业组合战略动态匹配</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·02 — 简答</div>
+    <div class="q-exam">2018年真题</div>
+    <div class="q-text">简述纵向一体化的优点（3个）和局限性（4个）。</div>
+    <div class="q-hint"><span>关键词：</span>优点：降低交易成本 / 增强市场影响力 / 防止技术外泄；局限：牺牲规模经济 / 代理成本 / 风险高灵活性差 / 降低创新能力</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·03 — 简答</div>
+    <div class="q-exam">2019年真题</div>
+    <div class="q-text">简述波士顿矩阵（BCG）的两个维度、四个象限及各象限的战略建议。</div>
+    <div class="q-hint"><span>关键词：</span>两维度：市场增长率×相对市场份额；四象限：明星（投资）·现金牛（收获）·问题（选择）·瘦狗（剥离）；联系：多元化速度控制，不能一哄而起</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·04 — 简答</div>
+    <div class="q-exam">2021年真题</div>
+    <div class="q-text">简述多元化战略的三种类型及各自的主要风险。</div>
+    <div class="q-hint"><span>关键词：</span>相关（纵向一体化/共享型）→ 夸大相关性、协同成本高；不相关 → 代理成本高、核心专长削弱；混合 → 两者兼有，管理复杂</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·05 — 比较题</div>
+    <div class="q-text">相关多元化与不相关多元化在激励机制和控制机制上有何不同？为什么？</div>
+    <div class="q-hint"><span>对比：</span>相关→主观·整体·战略控制（各事业部绩效相互依存，财务指标不能独立衡量）；不相关→客观·单独·财务控制（事业部自负盈亏，财务指标可准确衡量）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·06 — 论述</div>
+    <div class="q-text">企业在推进多元化战略时应注意哪些问题？请从动机、时机、方式、速度、程度五个维度论述。</div>
+    <div class="q-hint"><span>答题框架：</span>逐一论述五要素 → 每个要素点明"常见错误" → 结合BCG矩阵说明速度 → 总结：五要素缺一不可，核心是避免"过XXX"</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·07 — 案例分析</div>
+    <div class="q-exam">2016年真题改编</div>
+    <div class="q-text">湘鄂情集团多元化转型为何失败？请结合公司层战略理论进行分析。</div>
+    <div class="q-hint"><span>分析维度：</span>动机（被迫多元化，肥水陷阱）→ 时机（条件不成熟，资源未积累）→ 方式（盲目并购/新建不熟悉业务）→ 速度（同时进入多行业，全部是问题区）→ 程度（过度多元化，核心专长餐饮丧失）→ 管理模式不匹配（缺乏不相关多元化的财务管理能力）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·08 — 名词解释</div>
+    <div class="q-text">什么是范围经济？范围经济有哪三种类型？与规模经济有何区别？</div>
+    <div class="q-hint"><span>关键：</span>范围经济=资源和能力由多个产品/行业共享或传递核心专长所带来的成本节约；三类型：经营性/财务性/反竞争性；区别：范围=横向共享，规模=纵向量大</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·09 — 预测题</div>
+    <div class="q-text">总部创造价值的三种方式是什么？如何判断总部是否在创造净价值而非损害价值？</div>
+    <div class="q-hint"><span>要点：</span>三中心（资产·组合·投资）→ 判断标准：各业务单位有总部（处于多元化企业内）是否比没有总部（独立经营）绩效更好 → 净价值=总部创造的协同价值-总部运行成本</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q·10 — 预测题</div>
+    <div class="q-text">多元化企业在过度多元化时如何进行战略纠偏？两种重组路径分别基于什么理论？</div>
+    <div class="q-hint"><span>关键：</span>资源基础观→业务重组（稳定管理模式，调整行业组合）；市场基础观→组织重组（稳定行业组合，调整管理模式：结构/机制/文化）</div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<!-- ═══════════════════════════════════
+     FOOTER
+═══════════════════════════════════ -->
+<div class="footer-bar">
+  📚 中南大学企业管理学硕复试笔记 · 第七章 公司层战略 · P190–222<br>
+  基于蓝海林《企业战略管理》第2版 · 2016–2025真题整合版<br>
+  生成日期：2026-03-08
+</div>
+
+<!-- BACK TO TOP BUTTON -->
+<button class="back-top" id="backTop" onclick="scrollToTop()" title="返回顶部">↑</button>
+
+<!-- ═══════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════ -->
+<script>
+/* ── Dark Mode ── */
+function toggleDark() {
+  document.body.classList.toggle('dark-mode');
+  const btn = document.getElementById('darkBtn');
+  if (document.body.classList.contains('dark-mode')) {
+    btn.textContent = '☀️ 日间';
+    localStorage.setItem('darkMode', '1');
+  } else {
+    btn.textContent = '🌙 夜间';
+    localStorage.setItem('darkMode', '0');
+  }
+}
+// Restore preference
+if (localStorage.getItem('darkMode') === '1') {
+  document.body.classList.add('dark-mode');
+  document.getElementById('darkBtn').textContent = '☀️ 日间';
+}
+
+/* ── Back to Top ── */
+const backTopBtn = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backTopBtn.classList.add('visible');
+  } else {
+    backTopBtn.classList.remove('visible');
+  }
+});
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ── Search ── */
+function doSearch(query) {
+  // Remove old highlights
+  document.querySelectorAll('.search-highlight').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
+  });
+
+  if (!query.trim()) return;
+
+  const walker = document.createTreeWalker(
+    document.querySelector('.main'),
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+
+  const regex = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+  const nodes = [];
+  let node;
+  while (node = walker.nextNode()) {
+    if (node.nodeValue.match(regex)) nodes.push(node);
+  }
+
+  let first = null;
+  nodes.forEach(textNode => {
+    const span = document.createElement('span');
+    const highlighted = textNode.nodeValue.replace(regex, match => {
+      return `<mark class="search-highlight">${match}</mark>`;
+    });
+    span.innerHTML = highlighted;
+    const frag = document.createDocumentFragment();
+    while (span.firstChild) frag.appendChild(span.firstChild);
+    textNode.parentNode.replaceChild(frag, textNode);
+    if (!first) first = document.querySelector('.search-highlight');
+  });
+
+  if (first) {
+    first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+// Enter key search
+
+});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

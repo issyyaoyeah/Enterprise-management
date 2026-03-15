@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中南大学企业管理复试面试训练系统</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --primary: #2c3e50;
+  --accent: #3498db;
+  --accent2: #2ecc71;
+  --accent3: #e74c3c;
+  --accent4: #f39c12;
+  --accent5: #9b59b6;
+  --bg-body: #f0f2f5;
+  --bg-card: #ffffff;
+  --bg-nav: #2c3e50;
+  --bg-sidebar: #1a252f;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-nav: #ecf0f1;
+  --border: #e2e8f0;
+  --shadow: 0 2px 12px rgba(44,62,80,0.10);
+  --shadow-lg: 0 8px 32px rgba(44,62,80,0.15);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --tag-en: #dbeafe;
+  --tag-en-text: #1d4ed8;
+  --tag-zh: #dcfce7;
+  --tag-zh-text: #166534;
+  --tag-hot: #fee2e2;
+  --tag-hot-text: #991b1b;
+  font-variant-numeric: tabular-nums;
+}
+body.dark {
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+  --bg-nav: #0f172a;
+  --bg-sidebar: #0a0f1a;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: #334155;
+  --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+  --tag-en: #1e3a5f;
+  --tag-en-text: #93c5fd;
+  --tag-zh: #14532d;
+  --tag-zh-text: #86efac;
+  --tag-hot: #450a0a;
+  --tag-hot-text: #fca5a5;
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+  background: var(--bg-body);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
+}
+a { text-decoration: none; color: var(--accent); }
+
+/* ===== NAVBAR ===== */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: var(--bg-nav);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  height: 56px;
+  display: flex; align-items: center; padding: 0 20px;
+  gap: 0;
+  transition: background 0.3s;
+}
+.nav-brand {
+  color: #fff; font-weight: 700; font-size: 15px;
+  margin-right: 20px; white-space: nowrap; flex-shrink: 0;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-brand span { color: #3498db; }
+.nav-links {
+  display: flex; align-items: center; gap: 2px;
+  flex-wrap: nowrap; overflow-x: auto; flex: 1;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-link {
+  color: rgba(255,255,255,0.75);
+  padding: 6px 11px; border-radius: 6px;
+  font-size: 12.5px; font-weight: 500;
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.2s;
+  border: none; background: none;
+}
+.nav-link:hover, .nav-link.active {
+  color: #fff; background: rgba(52,152,219,0.35);
+}
+.nav-right {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: 12px;
+}
+.btn-sm {
+  padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  cursor: pointer; border: none; transition: all 0.2s;
+}
+.btn-dark { background: rgba(255,255,255,0.12); color: #fff; }
+.btn-dark:hover { background: rgba(255,255,255,0.22); }
+
+/* ===== SEARCH BAR ===== */
+#search-bar-wrap {
+  position: fixed; top: 56px; left: 0; right: 0; z-index: 999;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 20px;
+  display: flex; align-items: center; gap: 10px;
+  transition: background 0.3s;
+}
+#search-input {
+  flex: 1; max-width: 480px;
+  padding: 7px 14px; border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-body); color: var(--text-primary);
+  font-size: 13px; font-family: inherit;
+  transition: border 0.2s;
+}
+#search-input:focus { outline: none; border-color: var(--accent); }
+.search-result-count { font-size: 12px; color: var(--text-muted); }
+
+/* ===== MAIN LAYOUT ===== */
+#main { margin-top: 96px; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 20px 16px 60px; }
+
+/* ===== SECTION HEADERS ===== */
+.sec-header {
+  display: flex; align-items: center; gap: 10px;
+  margin: 28px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+.sec-icon { font-size: 20px; }
+.sec-title { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+.sec-badge {
+  font-size: 11px; padding: 2px 8px; border-radius: 10px;
+  background: var(--accent); color: #fff; font-weight: 600;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  transition: background 0.3s, box-shadow 0.2s;
+}
+.card:hover { box-shadow: var(--shadow-lg); }
+.card-grid { display: grid; gap: 16px; }
+.card-grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.card-grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.card-grid-5 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+/* ===== STAT CARDS ===== */
+.stat-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 14px;
+  transition: all 0.2s;
+}
+.stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.stat-icon { font-size: 28px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 10px; flex-shrink: 0; }
+.stat-info h3 { font-size: 22px; font-weight: 700; color: var(--text-primary); }
+.stat-info p { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+/* ===== TAGS ===== */
+.tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 10px; border-radius: 20px;
+  font-size: 11px; font-weight: 600;
+}
+.tag-en { background: var(--tag-en); color: var(--tag-en-text); }
+.tag-zh { background: var(--tag-zh); color: var(--tag-zh-text); }
+.tag-hot { background: var(--tag-hot); color: var(--tag-hot-text); }
+.tag-year { background: #f0f4ff; color: #3730a3; }
+body.dark .tag-year { background: #1e1b4b; color: #a5b4fc; }
+.tag-mid { background: #fff7ed; color: #c2410c; }
+body.dark .tag-mid { background: #431407; color: #fdba74; }
+.tag-low { background: #f0fdf4; color: #166534; }
+body.dark .tag-low { background: #052e16; color: #86efac; }
+
+/* ===== QUESTION CARDS ===== */
+.q-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.q-card.hidden { display: none; }
+.q-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s;
+}
+.q-header:hover { background: rgba(52,152,219,0.06); }
+.q-year { font-size: 12px; font-weight: 700; color: var(--accent); min-width: 36px; }
+.q-text { flex: 1; font-size: 13.5px; color: var(--text-primary); font-weight: 500; }
+.q-meta { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.freq-dot { width: 10px; height: 10px; border-radius: 50%; }
+.freq-high { background: #ef4444; }
+.freq-mid { background: #f97316; }
+.freq-low { background: #3b82f6; }
+.q-toggle { color: var(--text-muted); font-size: 12px; transition: transform 0.2s; }
+.q-card.open .q-toggle { transform: rotate(180deg); }
+.q-body {
+  display: none; padding: 0 16px 16px;
+  border-top: 1px solid var(--border);
+  animation: fadeSlide 0.2s ease;
+}
+.q-card.open .q-body { display: block; }
+@keyframes fadeSlide { from { opacity:0; transform: translateY(-6px); } to { opacity:1; transform: translateY(0); } }
+
+/* ===== WRONG BOOK & PROGRESS ===== */
+.q-actions { display: flex; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+.btn {
+  padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 600;
+  cursor: pointer; border: none; transition: all 0.2s; font-family: inherit;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #2980b9; }
+.btn-danger { background: #fee2e2; color: #b91c1c; }
+.btn-danger:hover { background: #fca5a5; }
+body.dark .btn-danger { background: #450a0a; color: #fca5a5; }
+.btn-success { background: #dcfce7; color: #166534; }
+.btn-success:hover { background: #bbf7d0; }
+body.dark .btn-success { background: #052e16; color: #86efac; }
+.btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text-secondary); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.done-badge { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+body.dark .done-badge { background: #052e16; color: #86efac; }
+
+/* ===== TEMPLATE BOX ===== */
+.template-box {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 1px solid #bae6fd;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+body.dark .template-box { background: linear-gradient(135deg,#0c2340,#0c1a2e); border-color: #1e3a5f; }
+.template-box h4 { color: var(--accent); font-size: 13px; margin-bottom: 8px; }
+.template-label { display: inline-block; background: var(--accent); color: #fff; padding: 1px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-right: 6px; }
+
+/* ===== PROGRESS BAR ===== */
+.progress-wrap { background: var(--border); border-radius: 100px; height: 12px; overflow: hidden; margin: 8px 0; }
+.progress-bar { height: 100%; border-radius: 100px; transition: width 0.5s ease; background: linear-gradient(90deg, #3498db, #2ecc71); }
+
+/* ===== TABLE ===== */
+.tbl-wrap { overflow-x: auto; border-radius: var(--radius-sm); margin: 12px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: var(--primary); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+body.dark th { background: #1e293b; }
+td { padding: 9px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+tr:nth-child(even) td { background: rgba(52,152,219,0.04); }
+tr:hover td { background: rgba(52,152,219,0.08); }
+
+/* ===== EXAM STRUCTURE ===== */
+.exam-structure { display: grid; gap: 12px; }
+.exam-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: var(--bg-card); border-radius: var(--radius-sm);
+  padding: 14px 16px; border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.exam-item.highlight { border-color: var(--accent); background: linear-gradient(135deg, rgba(52,152,219,0.06), rgba(52,152,219,0.02)); }
+.exam-item-icon { font-size: 22px; width: 40px; text-align: center; flex-shrink: 0; padding-top: 2px; }
+.exam-item-info h3 { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.exam-item-info p { font-size: 12.5px; color: var(--text-secondary); margin-top: 3px; }
+.exam-score { font-size: 20px; font-weight: 700; color: var(--accent); margin-left: auto; flex-shrink: 0; }
+.pass-badge { background: #f0fdf4; color: #166534; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+body.dark .pass-badge { background: #052e16; color: #86efac; }
+
+/* ===== MOCK INTERVIEW ===== */
+#mock-overlay {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+}
+#mock-overlay.active { display: flex; }
+#mock-panel {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 600px; width: 92%;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  text-align: center;
+}
+.mock-step { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.mock-question { font-size: 18px; font-weight: 700; color: var(--text-primary); margin: 12px 0; line-height: 1.5; }
+.mock-type { display: inline-block; }
+.timer-circle {
+  width: 80px; height: 80px; border-radius: 50%;
+  border: 4px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  margin: 16px auto;
+  font-size: 24px; font-weight: 700; color: var(--accent);
+  position: relative;
+  transition: border-color 0.3s;
+}
+.timer-circle.urgent { border-color: #ef4444; color: #ef4444; }
+.mock-hint { font-size: 13px; color: var(--text-muted); margin: 8px 0 16px; background: var(--bg-body); padding: 10px 14px; border-radius: 8px; text-align: left; }
+.mock-controls { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+
+/* ===== RANDOM CARD ===== */
+.random-card {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  border-radius: var(--radius); padding: 24px; color: #fff; text-align: center;
+  margin-bottom: 16px;
+}
+.random-q { font-size: 17px; font-weight: 700; margin: 12px 0; min-height: 52px; display: flex; align-items: center; justify-content: center; }
+.random-type { font-size: 12px; opacity: 0.75; }
+
+/* ===== PREDICTION ===== */
+.pred-card {
+  background: var(--bg-card); border-radius: var(--radius-sm);
+  border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 10px;
+  display: flex; align-items: flex-start; gap: 12px;
+  transition: all 0.2s;
+}
+.pred-card:hover { transform: translateX(4px); border-color: var(--accent); }
+.pred-rank { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+.pred-rank-1 { background: #fef3c7; color: #92400e; }
+.pred-rank-2 { background: #f1f5f9; color: #334155; }
+.pred-rank-3 { background: #fef9c3; color: #713f12; }
+body.dark .pred-rank-1 { background: #451a03; color: #fcd34d; }
+body.dark .pred-rank-2 { background: #1e293b; color: #94a3b8; }
+body.dark .pred-rank-3 { background: #1c1917; color: #fef08a; }
+.pred-info h4 { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+.pred-info p { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+.pred-prob { margin-left: auto; font-size: 20px; font-weight: 700; color: var(--accent3); flex-shrink: 0; }
+
+/* ===== CHART CONTAINERS ===== */
+.chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.chart-box { background: var(--bg-card); border-radius: var(--radius); padding: 20px; border: 1px solid var(--border); }
+.chart-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 14px; }
+.chart-canvas-wrap { position: relative; height: 220px; }
+
+/* ===== WRONG BOOK ===== */
+.empty-state { text-align: center; padding: 40px; color: var(--text-muted); font-size: 14px; }
+.empty-icon { font-size: 40px; margin-bottom: 10px; }
+
+/* ===== BACK TO TOP ===== */
+#back-top {
+  position: fixed; bottom: 24px; right: 24px; z-index: 500;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  border: none; cursor: pointer; font-size: 18px;
+  box-shadow: 0 4px 12px rgba(52,152,219,0.4);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s, transform 0.2s;
+}
+#back-top.visible { opacity: 1; }
+#back-top:hover { transform: translateY(-3px); }
+
+/* ===== HIGHLIGHT SEARCH ===== */
+.search-hl { background: #fef08a; color: #000; border-radius: 2px; padding: 0 2px; }
+body.dark .search-hl { background: #854d0e; color: #fef9c3; }
+
+/* ===== TABS ===== */
+.tab-bar { display: flex; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 16px; }
+.tab-btn {
+  padding: 8px 16px; font-size: 13px; font-weight: 600;
+  cursor: pointer; border: none; background: none; color: var(--text-muted);
+  border-bottom: 2px solid transparent; margin-bottom: -2px;
+  transition: all 0.2s; font-family: inherit;
+}
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ===== SECTIONS ===== */
+.page-section { display: none; }
+.page-section.active { display: block; }
+
+/* ===== FREQ LEGEND ===== */
+.freq-legend { display: flex; align-items: center; gap: 16px; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; }
+.freq-legend-item { display: flex; align-items: center; gap: 5px; }
+
+/* ===== CATEGORY BADGE ===== */
+.cat-badge { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; }
+.cat-en { background: #dbeafe; color: #1d4ed8; }
+.cat-zh { background: #dcfce7; color: #166534; }
+body.dark .cat-en { background: #1e3a5f; color: #93c5fd; }
+body.dark .cat-zh { background: #052e16; color: #86efac; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .nav-brand { font-size: 13px; }
+  .nav-link { font-size: 11.5px; padding: 5px 8px; }
+  #main { padding: 12px 10px 50px; }
+  .sec-title { font-size: 16px; }
+}
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="nav-brand">🎓 <span>中南大学</span> 企管复试</div>
+  <div class="nav-links">
+    <button class="nav-link active" onclick="showSection('home')">🏠 首页</button>
+    <button class="nav-link" onclick="showSection('qbank')">📚 面试题库</button>
+    <button class="nav-link" onclick="showSection('stats')">📊 高频统计</button>
+    <button class="nav-link" onclick="showSection('predict')">🔮 概率预测</button>
+    <button class="nav-link" onclick="showSection('templates')">📝 回答模板</button>
+    <button class="nav-link" onclick="showSection('random')">🎲 随机抽题</button>
+    <button class="nav-link" onclick="showSection('mock')">🎤 模拟面试</button>
+    <button class="nav-link" onclick="showSection('wrong')">❌ 错题本</button>
+    <button class="nav-link" onclick="showSection('progress')">📈 复习进度</button>
+  </div>
+  <div class="nav-right">
+    <button class="btn-sm btn-dark" onclick="toggleDark()" id="dark-btn">🌙 夜间</button>
+  </div>
+</nav>
+
+<!-- ===== SEARCH BAR ===== -->
+<div id="search-bar-wrap">
+  
+  <span class="search-result-count" id="search-count"></span>
+  <button class="btn btn-outline" onclick="clearSearch()" style="padding:5px 10px;font-size:12px;">清除</button>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div id="main">
+
+<!-- ══════════════════════════════════════════
+     🏠 首页
+══════════════════════════════════════════ -->
+<div class="page-section active" id="sec-home">
+  <div style="background: linear-gradient(135deg,#2c3e50,#3498db); border-radius:16px; padding:28px 28px 24px; color:#fff; margin-bottom:20px;">
+    <div style="font-size:12px;opacity:0.7;margin-bottom:6px;">中南大学 · 企业管理学硕（120202）复试备考工具</div>
+    <h1 style="font-size:22px;font-weight:700;margin-bottom:6px;">面试训练系统</h1>
+    <p style="font-size:13px;opacity:0.85;line-height:1.7;">整合 2016–2025 年真题 · 英语面试 + 综合面试 · 智能统计 · 模拟训练</p>
+    <div style="margin-top:16px;font-size:11.5px;opacity:0.6;">生成日期：2026-03-10</div>
+  </div>
+
+  <!-- 复试结构 -->
+  <div class="sec-header">
+    <span class="sec-icon">📋</span>
+    <span class="sec-title">复试科目结构</span>
+  </div>
+  <div class="exam-structure">
+    <div class="exam-item">
+      <div class="exam-item-icon">🧠</div>
+      <div class="exam-item-info">
+        <h3>心理健康测试</h3>
+        <p>通过心理量表筛查，主要考查心理健康状况是否符合研究生培养要求</p>
+      </div>
+      <span class="pass-badge">合格制</span>
+    </div>
+    <div class="exam-item">
+      <div class="exam-item-icon">🇨🇳</div>
+      <div class="exam-item-info">
+        <h3>思想政治考核</h3>
+        <p>政治面貌、思想品德、价值观等综合考核，形式以谈话为主</p>
+      </div>
+      <span class="pass-badge">合格制</span>
+    </div>
+    <div class="exam-item">
+      <div class="exam-item-icon">📝</div>
+      <div class="exam-item-info">
+        <h3>专业基础笔试</h3>
+        <p>企业管理综合（战略管理50% + 人力资源管理50%）· 简答 / 论述 / 案例分析</p>
+      </div>
+      <span class="exam-score">100分</span>
+    </div>
+    <div class="exam-item highlight">
+      <div class="exam-item-icon">🗣️</div>
+      <div class="exam-item-info">
+        <h3>外语能力面试 ⭐ 重点备考</h3>
+        <p>英语听说能力测试：自我介绍 + 专业英语问答 + 即兴演讲 / 翻译</p>
+      </div>
+      <span class="exam-score">100分</span>
+    </div>
+    <div class="exam-item highlight">
+      <div class="exam-item-icon">🎤</div>
+      <div class="exam-item-info">
+        <h3>综合素质面试 ⭐ 重点备考</h3>
+        <p>专业素养 + 科研潜力 + 逻辑表达 + 时政热点 + 职业规划（含思政答辩）</p>
+      </div>
+      <span class="exam-score">100分</span>
+    </div>
+  </div>
+
+  <!-- 快速统计 -->
+  <div class="sec-header" style="margin-top:24px;">
+    <span class="sec-icon">📊</span>
+    <span class="sec-title">题库总览</span>
+  </div>
+  <div class="card-grid card-grid-3">
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#dbeafe;">📚</div>
+      <div class="stat-info"><h3 id="total-q-count">48</h3><p>题库总题数</p></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#fce7f3;">🇬🇧</div>
+      <div class="stat-info"><h3 id="en-q-count">22</h3><p>英语面试题</p></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#dcfce7;">💬</div>
+      <div class="stat-info"><h3 id="zh-q-count">26</h3><p>综合面试题</p></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#fee2e2;">🔴</div>
+      <div class="stat-info"><h3 id="hot-q-count">0</h3><p>高频题（≥3次）</p></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#fef3c7;">✅</div>
+      <div class="stat-info"><h3 id="done-count">0</h3><p>已掌握题数</p></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon" style="background:#f3e8ff;">❌</div>
+      <div class="stat-info"><h3 id="wrong-count">0</h3><p>错题本题数</p></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">📌 复试备考核心提示</div>
+    <ul style="font-size:13px;color:var(--text-secondary);line-height:2;padding-left:18px;">
+      <li>英语面试：<strong>自我介绍</strong>必须熟练，建议背诵 1.5–2 分钟版本</li>
+      <li>综合面试：<strong>职业规划</strong>、<strong>为何选中南</strong>、<strong>研究方向</strong>是每年必问</li>
+      <li>热点结合：近三年高频话题包括 <strong>AI/数字化、ESG、双循环、专精特新</strong></li>
+      <li>跨考考生须提前准备<strong>专业背景转换说明</strong>，逻辑要清晰自洽</li>
+      <li>每题倒计时 60 秒，回答控制在 <strong>1–2 分钟</strong>以内最佳</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     📚 面试题库
+══════════════════════════════════════════ -->
+<div class="page-section" id="sec-qbank">
+  <div class="sec-header">
+    <span class="sec-icon">📚</span>
+    <span class="sec-title">面试题库（2016–2025）</span>
+    <span class="sec-badge" id="qbank-count">48题</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap;">
+    <div class="freq-legend">
+      <span class="freq-legend-item"><span class="freq-dot freq-high"></span>🔴 高频（≥3次）</span>
+      <span class="freq-legend-item"><span class="freq-dot freq-mid"></span>🟠 中频（2次）</span>
+      <span class="freq-legend-item"><span class="freq-dot freq-low"></span>🔵 低频（1次）</span>
+    </div>
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <button class="btn btn-outline" onclick="filterType('all')" id="filter-all" style="font-size:11.5px;padding:4px 12px;">全部</button>
+      <button class="btn btn-outline" onclick="filterType('英语')" id="filter-en" style="font-size:11.5px;padding:4px 12px;">🇬🇧 英语</button>
+      <button class="btn btn-outline" onclick="filterType('综合')" id="filter-zh" style="font-size:11.5px;padding:4px 12px;">💬 综合</button>
+      <button class="btn btn-outline" onclick="filterType('wrong')" id="filter-wrong" style="font-size:11.5px;padding:4px 12px;">❌ 错题</button>
+    </div>
+  </div>
+  <div id="qbank-list"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     📊 高频统计
+══════════════════════════════════════════ -->
+<div class="page-section" id="sec-stats">
+  <div class="sec-header">
+    <span class="sec-icon">📊</span>
+    <span class="sec-title">高频考点统计分析</span>
+  </div>
+  <div class="chart-grid" style="margin-bottom:20px;">
+    <div class="chart-box">
+      <div class="chart-title">📈 高频题目出现次数（TOP 10）</div>
+      <div class="chart-canvas-wrap"><canvas id="chart-freq"></canvas></div>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">🥧 题型比例分布</div>
+      <div class="chart-canvas-wrap"><canvas id="chart-type"></canvas></div>
+    </div>
+  </div>
+  <div class="sec-header">
+    <span class="sec-icon">🏆</span>
+    <span class="sec-title">高频考点排名表</span>
+  </div>
+  <div class="tbl-wrap card">
+    <table id="freq-table">
+      <thead>
+        <tr>
+          <th>排名</th><th>题目</th><th>类型</th><th>出现次数</th><th>频率标记</th><th>代表年份</th>
+        </tr>
+      </thead>
+      <tbody id="freq-table-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     🔮 概率预测
+══════════════════════════════════════════ -->
+<div class="page-section" id="sec-predict">
+  <div class="sec-header">
+    <span class="sec-icon">🔮</span>
+    <span class="sec-title">2026 复试命题概率预测</span>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div style="font-size:13px;color:var(--text-secondary);line-height:1.8;">
+      基于 <strong>2016–2025 年高频考点</strong>、<strong>近三年命题趋势</strong>及<strong>宏观热点</strong>综合预测，仅供参考。概率为综合估算值。
+    </div>
+  </div>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab(this,'pred-en')">🇬🇧 英语面试预测</button>
+    <button class="tab-btn" onclick="switchTab(this,'pred-zh')">💬 综合面试预测</button>
+  </div>
+  <div id="pred-en" class="tab-panel active">
+    <div id="pred-en-list"></div>
+  </div>
+  <div id="pred-zh" class="tab-panel">
+    <div id="pred-zh-list"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     📝 回答模板
+══════════════════════════════════════════ -->
+<div class="page-section" id="sec-templates">
+  <div class="sec-header">
+    <span class="sec-icon">📝</span>
+    <span class="sec-title">高分回答模板</span>
+  </div>
+  <div class="card" style="margin-bottom:8px;">
+    <div style="font-size:13px;color:var(--text-secondary);">以下模板为结构化参考框架，请<strong>结合个人实际情况</strong>修改填充，切勿死记硬背。点击题目展开示例。</div>
+  </div>
+  <div id="template-list"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     🎲 随机抽题
+══════════════════════════════════════════ -->
+<div class="page-section" id="sec-random">
+  <div class="sec-header">
+    <span class="sec-icon">🎲</span>
+    <span class="sec-title">随机抽题练习</span>
+  </div>
+  <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">每次随机生成 1 道英语题 + 1 道综合题，模拟真实面试抽题场景。</p>
+  <div class="random-card" id="random-en-card">
+    <div class="random-type">🇬🇧 英语面试题</div>
+    <div class="random-q" id="random-en-q">点击下方按钮开始抽题</div>
+    <div id="random-en-year" style="font-size:11px;opacity:0.6;"></div>
+  </div>
+  <div class="random-card" id="random-zh-card" style="background:linear-gradient(135deg,#1a6b3c,#27ae60);">
+    <div class="random-type">💬 综合面试题</div>
+    <div class="random-q" id="random-zh-q">点击下方按钮开始抽题</div>
+    <div id="random-zh-year" style="font-size:11px;opacity:0.6;"></div>
+  </div>
+  <div style="text-align:center;margin-top:8px;">
+    <button class="btn btn-primary" onclick="drawRandom()" style="padding:10px 28px;font-size:14px;">🎲 开始抽题</button>
+    <button class="btn btn-outline" onclick="startMockFromRandom()" style="padding:10px 20px;font-size:13px;margin-left:8px;">⏱️ 计时回答</button>
+  </div>
+  <div id="random-template-area" style="margin-top:16px;"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     🎤 模拟面试
+══════════════════════════════════════════ -->
+<div class="page-section" id="sec-mock">
+  <div class="sec-header">
+    <span class="sec-icon">🎤</span>
+    <span class="sec-title">模拟面试流程</span>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div style="font-size:13px;color:var(--text-secondary);line-height:1.8;">
+      模拟完整面试流程，共 <strong>4 个环节</strong>，每题 <strong>60 秒倒计时</strong>。建议找安静环境，开口练习。
+    </div>
+    <div class="card-grid card-grid-2" style="margin-top:14px;gap:10px;">
+      <div style="background:var(--bg-body);padding:12px;border-radius:8px;font-size:13px;"><strong>Step 1</strong> · 🇬🇧 英文自我介绍</div>
+      <div style="background:var(--bg-body);padding:12px;border-radius:8px;font-size:13px;"><strong>Step 2</strong> · 🇬🇧 随机英语问题</div>
+      <div style="background:var(--bg-body);padding:12px;border-radius:8px;font-size:13px;"><strong>Step 3</strong> · 💬 随机综合问题</div>
+      <div style="background:var(--bg-body);padding:12px;border-radius:8px;font-size:13px;"><strong>Step 4</strong> · 💬 职业规划陈述</div>
+    </div>
+    <div style="text-align:center;margin-top:16px;">
+      <button class="btn btn-primary" onclick="startMock()" style="padding:11px 32px;font-size:14px;">🎤 开始模拟面试</button>
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:13px;font-weight:700;color:var(--text-primary);margin-bottom:10px;">⭐ 面试评分标准参考</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>维度</th><th>评分要点</th><th>建议做法</th></tr></thead>
+        <tbody>
+          <tr><td>逻辑性</td><td>回答有条理、层次分明</td><td>使用"首先/其次/最后"结构</td></tr>
+          <tr><td>专业性</td><td>准确使用专业术语</td><td>适当引用教材框架与概念</td></tr>
+          <tr><td>针对性</td><td>直接回答问题、不跑题</td><td>先给结论再解释原因</td></tr>
+          <tr><td>语言表达</td><td>清晰流畅、语速适当</td><td>120–150词/分钟为宜</td></tr>
+          <tr><td>自信度</td><td>眼神接触、声音有力</td><td>提前练习、充分准备</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ❌ 错题本
+══════════════════════════════════════════ -->
+<div class="page-section" id="sec-wrong">
+  <div class="sec-header">
+    <span class="sec-icon">❌</span>
+    <span class="sec-title">错题本</span>
+    <span class="sec-badge" id="wrong-badge">0</span>
+  </div>
+  <div style="display:flex;gap:8px;margin-bottom:12px;">
+    <button class="btn btn-danger" onclick="clearAllWrong()">🗑️ 清空错题本</button>
+  </div>
+  <div id="wrong-list"><div class="empty-state"><div class="empty-icon">📭</div>暂无错题，在题库中点击「标记不会」添加</div></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     📈 复习进度
+══════════════════════════════════════════ -->
+<div class="page-section" id="sec-progress">
+  <div class="sec-header">
+    <span class="sec-icon">📈</span>
+    <span class="sec-title">复习进度</span>
+  </div>
+  <div class="card" style="margin-bottom:16px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+      <span style="font-size:13px;font-weight:700;color:var(--text-primary);">总体完成进度</span>
+      <span style="font-size:18px;font-weight:700;color:var(--accent)" id="progress-pct">0%</span>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px;">已掌握 <strong id="progress-done">0</strong> 题 / 共 <strong id="progress-total">48</strong> 题</div>
+  </div>
+  <div class="card-grid card-grid-2">
+    <div class="card">
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px;">🇬🇧 英语面试进度</div>
+      <div class="progress-wrap"><div class="progress-bar" id="progress-bar-en" style="width:0%;background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div></div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:6px;"><span id="progress-en-done">0</span> / <span id="progress-en-total">22</span> 题已掌握</div>
+    </div>
+    <div class="card">
+      <div style="font-size:13px;font-weight:700;margin-bottom:10px;">💬 综合面试进度</div>
+      <div class="progress-wrap"><div class="progress-bar" id="progress-bar-zh" style="width:0%;background:linear-gradient(90deg,#10b981,#34d399)"></div></div>
+      <div style="font-size:12px;color:var(--text-muted);margin-top:6px;"><span id="progress-zh-done">0</span> / <span id="progress-zh-total">26</span> 题已掌握</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:16px;">
+    <div style="font-size:13px;font-weight:700;margin-bottom:12px;">📆 按年份已掌握情况</div>
+    <div id="year-progress-list"></div>
+  </div>
+  <div style="text-align:center;margin-top:16px;">
+    <button class="btn btn-danger" onclick="resetProgress()">🔄 重置所有进度</button>
+  </div>
+</div>
+
+</div><!-- end #main -->
+
+<!-- ===== BACK TO TOP ===== -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- ===== MOCK INTERVIEW OVERLAY ===== -->
+<div id="mock-overlay">
+  <div id="mock-panel">
+    <div class="mock-step" id="mock-step-label">Step 1 / 4</div>
+    <div style="font-size:24px;margin-bottom:4px;" id="mock-step-icon">🇬🇧</div>
+    <div style="font-size:12px;color:var(--text-muted);margin-bottom:8px;" id="mock-step-name">英文自我介绍</div>
+    <div class="mock-question" id="mock-q-text">Please introduce yourself in English.</div>
+    <div class="timer-circle" id="mock-timer">60</div>
+    <div class="mock-hint" id="mock-hint">💡 建议结构：Name → Education Background → Research Interest → Why CSU → Closing</div>
+    <div class="mock-controls">
+      <button class="btn btn-primary" onclick="mockNext()" id="mock-next-btn">下一题 →</button>
+      <button class="btn btn-outline" onclick="mockPause()" id="mock-pause-btn">⏸ 暂停</button>
+      <button class="btn btn-danger" onclick="closeMock()">✕ 退出</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════
+const questions = [
+  // ── ENGLISH ──
+  {id:1, year:'2016', text:'Please introduce yourself in English.', type:'英语', topic:'自我介绍', freq:10, hint:'姓名 → 本科背景 → 研究兴趣 → 选择中南原因 → 结语'},
+  {id:2, year:'2017', text:'Please introduce yourself and explain why you choose this major.', type:'英语', topic:'自我介绍+选专业', freq:8, hint:'与上题类似，重点补充"为何选企业管理"'},
+  {id:3, year:'2023', text:'Please give a brief self-introduction in English.', type:'英语', topic:'自我介绍', freq:10, hint:'控制在90秒以内，结构清晰流畅'},
+  {id:4, year:'2016', text:'Why did you choose Central South University?', type:'英语', topic:'为何选中南', freq:7, hint:'学校排名 → 导师 → 地区优势 → 专业实力'},
+  {id:5, year:'2019', text:'Why do you choose to study at CSU for your postgraduate education?', type:'英语', topic:'为何选中南', freq:7, hint:'同上，侧重"研究生阶段的学术追求"'},
+  {id:6, year:'2016', text:'What is your career plan after graduation?', type:'英语', topic:'职业规划', freq:9, hint:'短期（2-3年）→ 中期（5年）→ 长期（职业愿景）'},
+  {id:7, year:'2020', text:'Please describe your career plan in English.', type:'英语', topic:'职业规划', freq:9, hint:'结合专业方向，体现对行业的思考'},
+  {id:8, year:'2023', text:'Please introduce your career plan briefly.', type:'英语', topic:'职业规划', freq:9, hint:'简洁表达，体现战略思维'},
+  {id:9, year:'2017', text:'What is your research interest and why?', type:'英语', topic:'研究兴趣', freq:6, hint:'研究方向 → 关注原因 → 计划如何研究'},
+  {id:10, year:'2022', text:'What aspects of enterprise management are you most interested in researching?', type:'英语', topic:'研究兴趣', freq:6, hint:'结合导师方向和自身背景'},
+  {id:11, year:'2018', text:'What is strategic alliance? Please explain in English.', type:'英语', topic:'专业术语翻译', freq:5, hint:'战略联盟 = a cooperative arrangement between two or more firms'},
+  {id:12, year:'2017', text:'Please translate the following term: talent retention.', type:'英语', topic:'专业术语翻译', freq:5, hint:'人才留存/保留 = maintaining skilled employees within organization'},
+  {id:13, year:'2024', text:'Please introduce yourself and explain your understanding of digital transformation.', type:'英语', topic:'数字化转型', freq:4, hint:'Digital transformation = integrating digital technology into all areas of business'},
+  {id:14, year:'2021', text:'Please summarize this academic abstract in English. (on platform business model)', type:'英语', topic:'文献摘要翻译', freq:4, hint:'听清关键词，平台 = platform, 商业模式 = business model'},
+  {id:15, year:'2025', text:'What are your thoughts on sustainable development in business?', type:'英语', topic:'可持续发展', freq:4, hint:'ESG框架：Environmental/Social/Governance，结合企业案例'},
+  {id:16, year:'2019', text:'What is your opinion on Artificial Intelligence in Human Resources?', type:'英语', topic:'AI与管理', freq:4, hint:'AI in HR: recruitment, performance evaluation, talent analytics'},
+  {id:17, year:'2020', text:'Please talk about your experience of working from home.', type:'英语', topic:'远程办公', freq:3, hint:'结合疫情背景，探讨弹性工作对组织管理的挑战'},
+  {id:18, year:'2022', text:'How do you understand the concept of core competence?', type:'英语', topic:'核心竞争力', freq:3, hint:'Core competence = unique capabilities difficult to imitate，举华为/比亚迪案例'},
+  {id:19, year:'2024', text:'Please do an impromptu speech on "green strategy and sustainable development".', type:'英语', topic:'绿色战略', freq:3, hint:'结构：定义 → 重要性 → 企业实践 → 个人观点'},
+  {id:20, year:'2025', text:'Please share your understanding of digital intelligence transformation in organizations.', type:'英语', topic:'数智化转型', freq:3, hint:'Digital intelligence = data-driven + AI-empowered organizational change'},
+  {id:21, year:'2018', text:'Please read this passage aloud and translate it. (on organizational culture)', type:'英语', topic:'口译', freq:3, hint:'enterprise culture = 企业文化，先通读再翻译关键信息'},
+  {id:22, year:'2023', text:'Please talk about your undergraduate thesis research in English.', type:'英语', topic:'本科论文', freq:3, hint:'Topic → Methodology → Findings → Contribution，提前准备30秒英文版'},
+
+  // ── 综合 ──
+  {id:23, year:'2016', text:'请谈谈你对核心竞争力的理解。', type:'综合', topic:'核心竞争力', freq:8, hint:'定义（VRIN标准）→ 重要性 → 如何构建 → 案例（华为/比亚迪）'},
+  {id:24, year:'2023', text:'请谈谈你的职业规划。', type:'综合', topic:'职业规划', freq:9, hint:'短期目标 → 中期规划 → 长期愿景，结合个人优势和专业方向'},
+  {id:25, year:'2016', text:'如果你是HR，如何识别高潜力人才？', type:'综合', topic:'人才管理', freq:5, hint:'胜任力模型 → 测评工具 → 岗位匹配 → 潜力指标'},
+  {id:26, year:'2017', text:'企业生命周期各阶段应采取什么战略？', type:'综合', topic:'战略选择', freq:6, hint:'初创期（差异化）→ 成长期（扩张）→ 成熟期（效率）→ 衰退期（重组/退出）'},
+  {id:27, year:'2017', text:'如何激励新生代（95后/Z世代）员工？', type:'综合', topic:'员工激励', freq:6, hint:'马斯洛需求 → 内在激励 → 弹性工作 → 意义感 → 双向反馈'},
+  {id:28, year:'2018', text:'请谈谈战略联盟的风险及管控措施。', type:'综合', topic:'战略联盟', freq:5, hint:'机会主义风险 + 信息泄露风险 → 管控：合同机制+信任机制+治理结构'},
+  {id:29, year:'2019', text:'并购中如何做好人力整合？', type:'综合', topic:'并购整合', freq:5, hint:'文化融合 → 关键人才留存 → 组织结构调整 → HR流程统一'},
+  {id:30, year:'2019', text:'请谈谈你对动态竞争理论的理解。', type:'综合', topic:'动态竞争', freq:4, hint:'竞争行动与反应 → A-M-C框架（感知-激励-能力）→ 竞争互动节奏'},
+  {id:31, year:'2020', text:'如何应对疫情对企业战略的冲击？', type:'综合', topic:'战略应对', freq:4, hint:'短期：现金流管理；中期：战略调整；长期：韧性构建与数字化'},
+  {id:32, year:'2020', text:'数字化人力资源管理有哪些新变化？', type:'综合', topic:'数字化HR', freq:5, hint:'招聘数字化 → 绩效数据化 → 员工体验 → HRBP角色转型'},
+  {id:33, year:'2021', text:'谈谈平台型企业的战略特点与竞争优势。', type:'综合', topic:'平台战略', freq:5, hint:'网络效应 → 双边市场 → 生态圈构建 → 案例：阿里/美团/滴滴'},
+  {id:34, year:'2021', text:'如何评价ESG对企业战略与价值的影响？', type:'综合', topic:'ESG战略', freq:5, hint:'E（环境）+S（社会）+G（治理）→ 长期价值 → 资本市场反应 → 案例'},
+  {id:35, year:'2022', text:'什么是商业模式创新？请举例说明。', type:'综合', topic:'商业模式', freq:5, hint:'价值主张 → 价值创造 → 价值获取 → 案例：拼多多/蔚来/喜茶'},
+  {id:36, year:'2022', text:'高绩效团队有哪些特征？如何建设？', type:'综合', topic:'团队管理', freq:4, hint:'明确目标+互补技能+互信机制+清晰角色+有效沟通 → 建设路径'},
+  {id:37, year:'2023', text:'颠覆性创新对传统企业有哪些挑战？', type:'综合', topic:'创新战略', freq:4, hint:'Christensen颠覆性创新理论 → 高端颠覆/低端颠覆 → 传统企业应对策略'},
+  {id:38, year:'2023', text:'请介绍你的本科毕业论文及研究成果。', type:'综合', topic:'自我介绍', freq:7, hint:'研究问题 → 研究方法 → 主要发现 → 不足与展望，3分钟内完整表达'},
+  {id:39, year:'2024', text:'AI对企业战略与管理有哪些变革性影响？', type:'综合', topic:'AI与管理', freq:5, hint:'战略制定辅助 → 运营效率提升 → 商业模式重构 → 风险与挑战'},
+  {id:40, year:'2024', text:'如何构建组织敏捷性以应对不确定环境？', type:'综合', topic:'组织敏捷', freq:4, hint:'扁平化 → 小团队 → 快速迭代 → 数据驱动决策 → 学习型组织'},
+  {id:41, year:'2025', text:'数智化战略转型中企业面临哪些组织挑战？', type:'综合', topic:'数智化转型', freq:4, hint:'技术能力短板 → 组织惯性 → 人才结构失衡 → 文化变革阻力'},
+  {id:42, year:'2025', text:'如何保障战略的有效落地与执行？', type:'综合', topic:'战略实施', freq:6, hint:'组织结构匹配 → 资源配置 → 企业文化 → 战略控制与反馈'},
+  {id:43, year:'2024', text:'请谈谈你为什么选择企业管理专业/为什么跨考？', type:'综合', topic:'选专业原因', freq:8, hint:'兴趣来源 → 与本科的联系 → 未来应用方向 → 中南大学的优势'},
+  {id:44, year:'2022', text:'请介绍一个你认为成功的企业战略案例，并分析原因。', type:'综合', topic:'案例分析', freq:6, hint:'案例选择建议：华为5G/比亚迪新能源/茅台品牌战略/字节跳动国际化'},
+  {id:45, year:'2021', text:'你认为当前企业在人才培养方面面临哪些挑战？', type:'综合', topic:'人才培养', freq:4, hint:'技能迭代快 → 学习型组织 → 内部培训体系 → 与高校产学研合作'},
+  {id:46, year:'2019', text:'请谈谈你对绩效管理的理解及改进建议。', type:'综合', topic:'绩效管理', freq:5, hint:'KPI局限性 → OKR适用场景 → 绩效面谈 → 与薪酬脱钩和挂钩的利弊'},
+  {id:47, year:'2020', text:'柔性组织与敏捷战略有何关联？', type:'综合', topic:'组织与战略', freq:3, hint:'柔性 = 适应不确定性的组织能力 → 扁平化+模块化+动态团队'},
+  {id:48, year:'2018', text:'谈谈你对组织扁平化的看法。', type:'综合', topic:'组织设计', freq:3, hint:'优：快速决策/沟通效率 缺：管理幅度大/控制难 → 适用条件'}
+];
+
+const templates = [
+  {
+    id:'t1', topic:'英文自我介绍', type:'英语',
+    title:'Self Introduction',
+    structure:'Name & Background → Major & Research Interest → Why CSU → Career Goal → Closing',
+    example:`Good morning, professors. My name is [Your Name], and I am from [Hometown Province]. I completed my undergraduate degree in [Major] at [University], where I developed a strong foundation in [Key Skills/Courses].
+
+During my undergraduate studies, I became fascinated by enterprise management—particularly strategic decision-making and organizational behavior. My thesis focused on [Topic], which deepened my interest in this field.
+
+I chose Central South University because of its outstanding reputation in business research and the expertise of your faculty in [Research Area]. I am particularly hoping to work under Professor [Name]'s guidance.
+
+After completing my master's degree, I plan to [Career Goal, e.g., work in corporate strategy consulting or pursue academic research]. I am confident that CSU will provide the ideal environment for my growth.
+
+Thank you for this opportunity.`
+  },
+  {
+    id:'t2', topic:'为何选中南', type:'英语',
+    title:'Why Choose CSU',
+    structure:'School Reputation → Faculty Expertise → Research Resources → Career Development → Personal Fit',
+    example:`I chose Central South University for several compelling reasons.
+
+First, CSU has a distinguished reputation in management sciences, ranking among China's top universities in business research output. The School of Business consistently produces high-impact research in strategic management and organizational behavior.
+
+Second, I am deeply impressed by the expertise of your faculty. Professor [Name]'s research on [Topic] aligns closely with my own interests, and I believe mentorship from such scholars would significantly accelerate my academic development.
+
+Third, CSU's location in Changsha, the economic hub of central China, provides outstanding opportunities for industry collaboration and real-world research application.
+
+I am confident that CSU represents the ideal environment for me to achieve my academic and professional goals.`
+  },
+  {
+    id:'t3', topic:'职业规划', type:'综合',
+    title:'职业规划回答框架',
+    structure:'短期目标（毕业后1-3年）→ 中期发展（3-5年）→ 长期愿景（5年以上）→ 与中南培养的联系',
+    example:`我的职业规划分为三个阶段。
+
+短期目标（毕业后1-3年）：进入一家知名咨询公司或大型企业战略部门，积累实际的战略分析与项目管理经验，同时通过MBA或相关认证持续提升专业能力。
+
+中期规划（3-5年）：晋升为核心业务骨干，主导参与大型战略规划或组织变革项目，建立自己在行业内的专业声誉，并考虑在更具挑战的平台上承担管理职能。
+
+长期愿景（5年以上）：成为具有战略思维和全局视野的高级管理者或独立顾问，致力于帮助中国企业提升管理水平，实现可持续发展。
+
+我相信中南大学系统的学术训练和丰富的实践资源，将帮助我构建扎实的理论基础和战略视野，为实现这一规划提供有力支撑。`
+  },
+  {
+    id:'t4', topic:'研究兴趣', type:'英语',
+    title:'Research Interest',
+    structure:'Research Area → Why Interested → Current Gap → How to Research → Expected Contribution',
+    example:`My primary research interest lies in digital transformation strategies and their impact on organizational performance.
+
+The accelerating pace of digital innovation has fundamentally changed how firms create and capture value. However, there is still significant ambiguity around how companies should align their digital strategies with organizational capabilities, especially in traditional Chinese industries undergoing transformation.
+
+I am particularly interested in exploring how dynamic capabilities theory can be applied to explain why some firms succeed in digital transformation while others fail. I believe a mixed-methods approach, combining longitudinal case studies with quantitative surveys, would yield meaningful insights.
+
+I hope to contribute both theoretical frameworks and practical guidelines that help Chinese enterprises navigate the complexities of digital transformation more effectively.`
+  },
+  {
+    id:'t5', topic:'为何选企业管理/跨考原因', type:'综合',
+    title:'选专业/跨考说明框架',
+    structure:'本科背景介绍 → 转变契机（具体事件）→ 自学积累 → 与本科的协同 → 未来规划',
+    example:`我本科学习的是[专业]，在学习过程中，我接触到企业管理的相关课程和案例，产生了浓厚的兴趣。
+
+尤其是在[具体课程/项目/实习经历]中，我深刻认识到战略决策对企业发展的关键作用，也意识到管理学理论对实际问题的解释力。这让我下定决心跨考企业管理。
+
+为了弥补专业背景的差距，我系统学习了《企业战略管理》、《组织行为学》、《人力资源管理》等核心教材，并阅读了[相关学术期刊/书籍]。我认为我的[本科专业技能，如数据分析/工程思维/法律思维]能与管理学形成有效互补，反而是一种独特优势。
+
+我选择中南大学企业管理专业，是因为[具体原因]，希望在这里系统构建管理学知识体系，为[职业目标]奠定基础。`
+  },
+  {
+    id:'t6', topic:'ESG与可持续发展', type:'综合',
+    title:'ESG战略回答框架',
+    structure:'ESG定义 → 战略价值 → 实施路径 → 挑战 → 案例',
+    example:`ESG是环境（Environmental）、社会（Social）和公司治理（Governance）三个维度的综合评估框架。它已从单纯的企业社会责任概念，演变为影响企业战略决策和资本市场估值的核心因素。
+
+从战略价值来看，ESG表现优异的企业往往具备更强的长期竞争力：一方面可降低融资成本，吸引国际机构投资者；另一方面有助于构建品牌声誉，提升消费者忠诚度和员工归属感。
+
+在实施路径上，企业需要将ESG目标嵌入战略规划，建立量化披露机制，同时推动供应链绿色化。
+
+典型案例如宁德时代，将绿色制造和碳中和目标融入核心战略，不仅获得ESG高评级，也赢得国际市场的认可。
+
+当然，ESG实施也面临短期成本增加和信息披露标准不统一等挑战，需要企业做好长短期平衡。`
+  },
+  {
+    id:'t7', topic:'核心竞争力/核心专长', type:'综合',
+    title:'核心专长回答框架',
+    structure:'定义（教材视角）→ 四大标准（VRIN）→ 构建路径 → 案例 → 与战略关系',
+    example:`核心专长是指企业通过长期专注和积累所形成的、竞争对手难以在短期内模仿的独特能力体系。它是企业持续竞争优势的根本来源。
+
+根据教材观点，核心专长需满足四个标准：有价值性（能创造顾客价值）、稀缺性（不是所有竞争者都具备）、难以模仿性（历史路径或社会复杂性使其难以复制）、不可替代性（没有战略等价物）。
+
+构建核心专长需要长期专注投入。蓝海林教授强调"做专才能做长"，企业应在价值链的关键环节持续投资，避免过于分散。
+
+以华为为例，其在研发领域长达数十年的持续投入，形成了涵盖芯片设计、5G通信、操作系统的技术能力体系，构成了极难复制的核心专长。
+
+核心专长与战略选择高度关联：企业应基于已有或可培育的核心专长选择业务领域，使战略有利于核心专长的建立、保持和发挥。`
+  }
+];
+
+const predictions_en = [
+  {rank:1, q:'Please introduce yourself in English.', topic:'自我介绍', prob:98, reason:'每年必考，无一例外'},
+  {rank:2, q:'What is your career plan after graduation?', topic:'职业规划', prob:90, reason:'2016/2020/2023均考，高度稳定'},
+  {rank:3, q:'Why did you choose Central South University?', topic:'为何选中南', prob:85, reason:'2016/2019反复出现'},
+  {rank:4, q:'What is your research interest?', topic:'研究兴趣', prob:80, reason:'2017/2022均考，近年趋势'},
+  {rank:5, q:'Please talk about sustainable development / digital transformation in business.', topic:'热点话题', prob:75, reason:'2024/2025热词趋势明显'},
+];
+const predictions_zh = [
+  {rank:1, q:'请谈谈你的职业规划。', topic:'职业规划', prob:95, reason:'每年必问，跨考生尤其重要'},
+  {rank:2, q:'为什么选择企业管理专业/为什么跨考？', topic:'选专业', prob:92, reason:'综合面试开场必备题'},
+  {rank:3, q:'请介绍你的本科论文研究。', topic:'学术经历', prob:88, reason:'2023/2024均考，考察科研潜力'},
+  {rank:4, q:'请谈谈AI/数字化转型对企业管理的影响。', topic:'AI+管理', prob:82, reason:'2024/2025连续出现'},
+  {rank:5, q:'如何保障战略的有效落地执行？（含案例分析）', topic:'战略实施', prob:78, reason:'2025年真题，回调概率高'},
+];
+
+// ════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════
+let wrongSet = new Set(JSON.parse(localStorage.getItem('csu_wrong') || '[]'));
+let doneSet = new Set(JSON.parse(localStorage.getItem('csu_done') || '[]'));
+let currentFilter = 'all';
+let currentSearch = '';
+let mockStep = 0;
+let mockTimer = null;
+let mockTimeLeft = 60;
+let mockPaused = false;
+let randomEnQ = null;
+let randomZhQ = null;
+
+// ════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  if(localStorage.getItem('csu_dark') === '1') { document.body.classList.add('dark'); document.getElementById('dark-btn').textContent = '☀️ 日间'; }
+  renderQBank();
+  renderFreqTable();
+  renderPredictions();
+  renderTemplates();
+  renderProgress();
+  renderWrong();
+  renderYearProgress();
+  initCharts();
+  updateStatCards();
+
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('back-top');
+    btn.classList.toggle('visible', window.scrollY > 300);
+  });
+});
+
+// ════════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════════
+function showSection(id) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  const map = {home:0,qbank:1,stats:2,predict:3,templates:4,random:5,mock:6,wrong:7,progress:8};
+  document.querySelectorAll('.nav-link')[map[id]]?.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function switchTab(btn, panelId) {
+  document.querySelectorAll('#sec-predict .tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#sec-predict .tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(panelId).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ════════════════════════════════════════════
+// DARK MODE
+// ════════════════════════════════════════════
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  const on = document.body.classList.contains('dark');
+  document.getElementById('dark-btn').textContent = on ? '☀️ 日间' : '🌙 夜间';
+  localStorage.setItem('csu_dark', on ? '1' : '0');
+  setTimeout(initCharts, 100);
+}
+
+// ════════════════════════════════════════════
+// SEARCH
+// ════════════════════════════════════════════
+function onSearch(v) {
+  currentSearch = v.toLowerCase().trim();
+  renderQBank();
+}
+function clearSearch() {
+  document.getElementById('search-input').value = '';
+  currentSearch = '';
+  renderQBank();
+  document.getElementById('search-count').textContent = '';
+}
+
+// ════════════════════════════════════════════
+// RENDER QBANK
+// ════════════════════════════════════════════
+function getFreqLabel(freq) {
+  if(freq >= 7) return {dot:'freq-high', label:'🔴 高频', cls:'tag-hot'};
+  if(freq >= 4) return {dot:'freq-mid', label:'🟠 中频', cls:'tag-mid'};
+  return {dot:'freq-low', label:'🔵 低频', cls:'tag-low'};
+}
+
+function renderQBank() {
+  const list = document.getElementById('qbank-list');
+  let filtered = questions;
+  if(currentFilter === '英语') filtered = filtered.filter(q=>q.type==='英语');
+  else if(currentFilter === '综合') filtered = filtered.filter(q=>q.type==='综合');
+  else if(currentFilter === 'wrong') filtered = filtered.filter(q=>wrongSet.has(q.id));
+
+  if(currentSearch) {
+    filtered = filtered.filter(q =>
+      q.text.toLowerCase().includes(currentSearch) ||
+      q.topic.toLowerCase().includes(currentSearch) ||
+      q.year.includes(currentSearch)
+    );
+    document.getElementById('search-count').textContent = `找到 ${filtered.length} 条`;
+  } else {
+    document.getElementById('search-count').textContent = '';
+  }
+
+  let html = '';
+  filtered.forEach(q => {
+    const f = getFreqLabel(q.freq);
+    const isDone = doneSet.has(q.id);
+    const isWrong = wrongSet.has(q.id);
+    const tpl = templates.find(t=>t.topic === q.topic);
+    const qText = currentSearch ? highlight(q.text, currentSearch) : q.text;
+    html += `<div class="q-card" id="qc-${q.id}">
+      <div class="q-header" onclick="toggleQ(${q.id})">
+        <span class="q-year">${q.year}</span>
+        <span class="q-text">${qText}</span>
+        <div class="q-meta">
+          <span class="cat-badge cat-${q.type==='英语'?'en':'zh'}">${q.type}</span>
+          <span class="freq-dot ${f.dot}" title="${f.label}"></span>
+          ${isDone ? '<span class="done-badge">✓ 已掌握</span>' : ''}
+          <span class="q-toggle">▼</span>
+        </div>
+      </div>
+      <div class="q-body">
+        <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:8px;">💡 回答提示：${q.hint}</div>
+        ${tpl ? `<details><summary style="font-size:12.5px;padding:8px 12px;">📋 查看回答模板框架</summary><div style="padding:10px;font-size:12.5px;color:var(--text-secondary);line-height:1.8;background:var(--bg-body);border-radius:8px;margin-top:6px;"><strong>结构：</strong>${tpl.structure}</div></details>` : ''}
+        <div class="q-actions">
+          <button class="btn btn-success" onclick="markDone(${q.id})">${isDone ? '↩ 取消掌握' : '✅ 标记已掌握'}</button>
+          <button class="btn btn-danger" onclick="markWrong(${q.id})">${isWrong ? '↩ 移出错题' : '❌ 标记不会'}</button>
+          <span class="tag ${f.cls}">${f.label}</span>
+          <span style="font-size:11px;color:var(--text-muted);">话题：${q.topic}</span>
+        </div>
+      </div>
+    </div>`;
+  });
+  list.innerHTML = html || '<div class="empty-state"><div class="empty-icon">🔍</div>没有找到匹配的题目</div>';
+
+  // restore open state
+  filtered.forEach(q => {
+    const card = document.getElementById('qc-'+q.id);
+    if(card && card.classList.contains('open')) {
+      card.querySelector('.q-body').style.display = 'block';
+    }
+  });
+  document.getElementById('qbank-count').textContent = filtered.length + '题';
+}
+
+function highlight(text, kw) {
+  if(!kw) return text;
+  const re = new RegExp(kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');
+  return text.replace(re, m=>`<span class="search-hl">${m}</span>`);
+}
+
+function toggleQ(id) {
+  const card = document.getElementById('qc-'+id);
+  card.classList.toggle('open');
+}
+
+// ════════════════════════════════════════════
+// WRONG / DONE
+// ════════════════════════════════════════════
+function markDone(id) {
+  if(doneSet.has(id)) doneSet.delete(id); else doneSet.add(id);
+  saveSets(); renderQBank(); renderProgress(); renderYearProgress(); updateStatCards();
+}
+function markWrong(id) {
+  if(wrongSet.has(id)) wrongSet.delete(id); else wrongSet.add(id);
+  saveSets(); renderQBank(); renderWrong(); updateStatCards();
+}
+function clearAllWrong() {
+  if(!confirm('确认清空错题本？')) return;
+  wrongSet.clear(); saveSets(); renderQBank(); renderWrong(); updateStatCards();
+}
+function resetProgress() {
+  if(!confirm('确认重置所有进度（已掌握+错题）？')) return;
+  doneSet.clear(); wrongSet.clear(); saveSets();
+  renderQBank(); renderProgress(); renderWrong(); renderYearProgress(); updateStatCards();
+}
+function saveSets() {
+  localStorage.setItem('csu_wrong', JSON.stringify([...wrongSet]));
+  localStorage.setItem('csu_done', JSON.stringify([...doneSet]));
+}
+
+function renderWrong() {
+  const list = document.getElementById('wrong-list');
+  document.getElementById('wrong-badge').textContent = wrongSet.size;
+  if(wrongSet.size === 0) { list.innerHTML = '<div class="empty-state"><div class="empty-icon">📭</div>暂无错题，在题库中点击「标记不会」添加</div>'; return; }
+  const qs = questions.filter(q=>wrongSet.has(q.id));
+  list.innerHTML = qs.map(q=>{
+    const f = getFreqLabel(q.freq);
+    return `<div class="q-card" id="wqc-${q.id}">
+      <div class="q-header" onclick="toggleWQ(${q.id})">
+        <span class="q-year">${q.year}</span>
+        <span class="q-text">${q.text}</span>
+        <div class="q-meta">
+          <span class="cat-badge cat-${q.type==='英语'?'en':'zh'}">${q.type}</span>
+          <span class="q-toggle">▼</span>
+        </div>
+      </div>
+      <div class="q-body">
+        <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:8px;">💡 ${q.hint}</div>
+        <div class="q-actions">
+          <button class="btn btn-success" onclick="markDone(${q.id})">${doneSet.has(q.id)?'↩ 取消掌握':'✅ 标记已掌握'}</button>
+          <button class="btn btn-danger" onclick="markWrong(${q.id})">↩ 移出错题</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+function toggleWQ(id) { document.getElementById('wqc-'+id)?.classList.toggle('open'); }
+
+// ════════════════════════════════════════════
+// PROGRESS
+// ════════════════════════════════════════════
+function renderProgress() {
+  const total = questions.length;
+  const done = doneSet.size;
+  const enDone = questions.filter(q=>q.type==='英语'&&doneSet.has(q.id)).length;
+  const zhDone = questions.filter(q=>q.type==='综合'&&doneSet.has(q.id)).length;
+  const enTotal = questions.filter(q=>q.type==='英语').length;
+  const zhTotal = questions.filter(q=>q.type==='综合').length;
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-done').textContent = done;
+  document.getElementById('progress-total').textContent = total;
+  document.getElementById('progress-bar-en').style.width = (enTotal?Math.round(enDone/enTotal*100):0) + '%';
+  document.getElementById('progress-en-done').textContent = enDone;
+  document.getElementById('progress-en-total').textContent = enTotal;
+  document.getElementById('progress-bar-zh').style.width = (zhTotal ? Math.round(zhDone/zhTotal*100) : 0) + '%';
+  document.getElementById('progress-zh-done').textContent = zhDone;
+  document.getElementById('progress-zh-total').textContent = zhTotal;
+}
+function renderYearProgress() {
+  const years = [...new Set(questions.map(q=>q.year))].sort();
+  let html = '';
+  years.forEach(y => {
+    const yqs = questions.filter(q=>q.year===y);
+    const ydone = yqs.filter(q=>doneSet.has(q.id)).length;
+    const pct = Math.round(ydone/yqs.length*100);
+    html += `<div style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;">
+        <span style="color:var(--text-secondary);">${y} 年（${yqs.length}题）</span>
+        <span style="color:var(--accent);font-weight:700;">${pct}%</span>
+      </div>
+      <div class="progress-wrap" style="height:8px;"><div class="progress-bar" style="width:${pct}%;height:100%;"></div></div>
+    </div>`;
+  });
+  document.getElementById('year-progress-list').innerHTML = html;
+}
+
+// ════════════════════════════════════════════
+// STAT CARDS
+// ════════════════════════════════════════════
+function updateStatCards() {
+  document.getElementById('total-q-count').textContent = questions.length;
+  document.getElementById('en-q-count').textContent = questions.filter(q=>q.type==='英语').length;
+  document.getElementById('zh-q-count').textContent = questions.filter(q=>q.type==='综合').length;
+  document.getElementById('hot-q-count').textContent = questions.filter(q=>q.freq>=7).length;
+  document.getElementById('done-count').textContent = doneSet.size;
+  document.getElementById('wrong-count').textContent = wrongSet.size;
+}
+
+// ════════════════════════════════════════════
+// FILTER
+// ════════════════════════════════════════════
+function filterType(type) {
+  currentFilter = type;
+  ['all','en','zh','wrong'].forEach(t=>document.getElementById('filter-'+t)?.classList.remove('btn-primary'));
+  const map = {all:'all',英语:'en',综合:'zh',wrong:'wrong'};
+  document.getElementById('filter-'+(map[type]||type))?.classList.add('btn-primary');
+  renderQBank();
+}
+
+// ════════════════════════════════════════════
+// FREQ TABLE
+// ════════════════════════════════════════════
+function renderFreqTable() {
+  const sorted = [...questions].sort((a,b)=>b.freq-a.freq);
+  const tbody = document.getElementById('freq-table-body');
+  let html = '';
+  sorted.forEach((q,i) => {
+    const f = getFreqLabel(q.freq);
+    html += `<tr>
+      <td><strong>${i+1}</strong></td>
+      <td style="max-width:320px;">${q.text}</td>
+      <td><span class="cat-badge cat-${q.type==='英语'?'en':'zh'}">${q.type}</span></td>
+      <td><strong>${q.freq}</strong></td>
+      <td><span class="tag ${f.cls}">${f.label}</span></td>
+      <td>${q.year}</td>
+    </tr>`;
+  });
+  tbody.innerHTML = html;
+}
+
+// ════════════════════════════════════════════
+// PREDICTIONS
+// ════════════════════════════════════════════
+function renderPredictions() {
+  const rankColors = ['pred-rank-1','pred-rank-2','pred-rank-3'];
+  function buildList(preds, containerId) {
+    document.getElementById(containerId).innerHTML = preds.map(p=>`
+      <div class="pred-card">
+        <div class="pred-rank ${rankColors[p.rank-1]||'pred-rank-2'}">${p.rank}</div>
+        <div class="pred-info">
+          <h4>${p.q}</h4>
+          <p>话题：${p.topic} · ${p.reason}</p>
+        </div>
+        <div class="pred-prob">${p.prob}%</div>
+      </div>`).join('');
+  }
+  buildList(predictions_en, 'pred-en-list');
+  buildList(predictions_zh, 'pred-zh-list');
+}
+
+// ════════════════════════════════════════════
+// TEMPLATES
+// ════════════════════════════════════════════
+function renderTemplates() {
+  document.getElementById('template-list').innerHTML = templates.map(t=>`
+    <div class="q-card" id="tc-${t.id}">
+      <div class="q-header" onclick="toggleTpl('${t.id}')">
+        <span style="font-size:16px;">${t.type==='英语'?'🇬🇧':'💬'}</span>
+        <span class="q-text"><strong>${t.topic}</strong> — ${t.title}</span>
+        <div class="q-meta">
+          <span class="cat-badge cat-${t.type==='英语'?'en':'zh'}">${t.type}</span>
+          <span class="q-toggle">▼</span>
+        </div>
+      </div>
+      <div class="q-body">
+        <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:8px;">📐 回答结构框架</div>
+        <div style="font-size:13px;color:var(--text-secondary);background:var(--bg-body);padding:10px 14px;border-radius:8px;margin-bottom:12px;">${t.structure}</div>
+        <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:8px;">✍️ 示例回答（请结合实际情况修改）</div>
+        <div class="template-box">${t.example.replace(/\n\n/g,'</p><p style="margin:8px 0;">').replace(/\n/g,'<br>')}</div>
+      </div>
+    </div>`).join('');
+}
+function toggleTpl(id) { document.getElementById('tc-'+id)?.classList.toggle('open'); }
+
+// ════════════════════════════════════════════
+// RANDOM
+// ════════════════════════════════════════════
+function drawRandom() {
+  const enQs = questions.filter(q=>q.type==='英语');
+  const zhQs = questions.filter(q=>q.type==='综合');
+  randomEnQ = enQs[Math.floor(Math.random()*enQs.length)];
+  randomZhQ = zhQs[Math.floor(Math.random()*zhQs.length)];
+  document.getElementById('random-en-q').textContent = randomEnQ.text;
+  document.getElementById('random-en-year').textContent = '来源年份：' + randomEnQ.year + ' · 话题：' + randomEnQ.topic;
+  document.getElementById('random-zh-q').textContent = randomZhQ.text;
+  document.getElementById('random-zh-year').textContent = '来源年份：' + randomZhQ.year + ' · 话题：' + randomZhQ.topic;
+
+  const area = document.getElementById('random-template-area');
+  const tplEn = templates.find(t=>t.topic===randomEnQ.topic);
+  const tplZh = templates.find(t=>t.topic===randomZhQ.topic);
+  let tplHtml = '';
+  if(tplEn) tplHtml += `<div class="card" style="margin-bottom:8px;"><div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;">🇬🇧 英语题回答框架：${tplEn.title}</div><div style="font-size:12.5px;color:var(--text-secondary);">${tplEn.structure}</div></div>`;
+  if(tplZh) tplHtml += `<div class="card"><div style="font-size:12px;font-weight:700;color:#27ae60;margin-bottom:6px;">💬 综合题回答框架：${tplZh.title}</div><div style="font-size:12.5px;color:var(--text-secondary);">${tplZh.structure}</div></div>`;
+  area.innerHTML = tplHtml;
+}
+function startMockFromRandom() {
+  if(!randomEnQ || !randomZhQ) { drawRandom(); }
+  startMock();
+}
+
+// ════════════════════════════════════════════
+// MOCK INTERVIEW
+// ════════════════════════════════════════════
+const mockSteps = [
+  {icon:'🇬🇧', name:'Step 1 · 英文自我介绍', q:'Please introduce yourself in English.', hint:'建议结构：Name → Education → Research Interest → Why CSU → Career Goal · 目标时长：90秒'},
+  {icon:'🇬🇧', name:'Step 2 · 随机英语问题', q:'', hint:''},
+  {icon:'💬', name:'Step 3 · 随机综合问题', q:'', hint:''},
+  {icon:'💬', name:'Step 4 · 职业规划陈述', q:'请谈谈你的职业规划（3年、5年和长期目标）。', hint:'结构：短期→中期→长期→与中南培养的关联，建议2分钟内完成'},
+];
+
+function startMock() {
+  // fill random questions
+  const enQs = questions.filter(q=>q.type==='英语');
+  const zhQs = questions.filter(q=>q.type==='综合');
+  const rEn = enQs[Math.floor(Math.random()*enQs.length)];
+  const rZh = zhQs[Math.floor(Math.random()*zhQs.length)];
+  mockSteps[1].q = rEn.text;
+  mockSteps[1].hint = '💡 ' + rEn.hint;
+  mockSteps[2].q = rZh.text;
+  mockSteps[2].hint = '💡 ' + rZh.hint;
+  mockStep = 0;
+  showMockStep();
+  document.getElementById('mock-overlay').classList.add('active');
+}
+function showMockStep() {
+  const s = mockSteps[mockStep];
+  document.getElementById('mock-step-label').textContent = `Step ${mockStep+1} / ${mockSteps.length}`;
+  document.getElementById('mock-step-icon').textContent = s.icon;
+  document.getElementById('mock-step-name').textContent = s.name;
+  document.getElementById('mock-q-text').textContent = s.q;
+  document.getElementById('mock-hint').textContent = s.hint;
+  document.getElementById('mock-next-btn').textContent = mockStep < mockSteps.length-1 ? '下一题 →' : '完成 ✓';
+  startCountdown();
+}
+function startCountdown() {
+  clearInterval(mockTimer);
+  mockTimeLeft = 60;
+  mockPaused = false;
+  const el = document.getElementById('mock-timer');
+  el.textContent = 60;
+  el.classList.remove('urgent');
+  mockTimer = setInterval(() => {
+    if(mockPaused) return;
+    mockTimeLeft--;
+    el.textContent = mockTimeLeft;
+    el.classList.toggle('urgent', mockTimeLeft <= 10);
+    if(mockTimeLeft <= 0) { clearInterval(mockTimer); el.textContent = '⏰'; }
+  }, 1000);
+}
+function mockNext() {
+  if(mockStep < mockSteps.length-1) {
+    mockStep++;
+    showMockStep();
+  } else {
+    closeMock();
+    alert('✅ 模拟面试完成！请继续练习，熟能生巧。');
+  }
+}
+function mockPause() {
+  mockPaused = !mockPaused;
+  document.getElementById('mock-pause-btn').textContent = mockPaused ? '▶ 继续' : '⏸ 暂停';
+}
+function closeMock() {
+  clearInterval(mockTimer);
+  document.getElementById('mock-overlay').classList.remove('active');
+}
+
+// ════════════════════════════════════════════
+// CHARTS
+// ════════════════════════════════════════════
+let chartFreq = null, chartType = null;
+function initCharts() {
+  const isDark = document.body.classList.contains('dark');
+  const textColor = isDark ? '#94a3b8' : '#4a5568';
+  const gridColor = isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.07)';
+
+  const top10 = [...questions].sort((a,b)=>b.freq-a.freq).slice(0,10);
+
+  if(chartFreq) chartFreq.destroy();
+  const ctx1 = document.getElementById('chart-freq')?.getContext('2d');
+  if(ctx1) chartFreq = new Chart(ctx1, {
+    type:'bar',
+    data:{
+      labels: top10.map(q=>q.topic.length>8?q.topic.slice(0,8)+'…':q.topic),
+      datasets:[{
+        label:'出现次数',
+        data: top10.map(q=>q.freq),
+        backgroundColor: top10.map(q=> q.freq>=7?'#ef4444': q.freq>=4?'#f97316':'#3b82f6'),
+        borderRadius: 6,
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{
+        x:{ticks:{color:textColor,font:{size:11}}, grid:{color:gridColor}},
+        y:{ticks:{color:textColor}, grid:{color:gridColor}, beginAtZero:true}
+      }
+    }
+  });
+
+  if(chartType) chartType.destroy();
+  const enCount = questions.filter(q=>q.type==='英语').length;
+  const zhCount = questions.filter(q=>q.type==='综合').length;
+  const ctx2 = document.getElementById('chart-type')?.getContext('2d');
+  if(ctx2) chartType = new Chart(ctx2, {
+    type:'doughnut',
+    data:{
+      labels:['英语面试题','综合面试题'],
+      datasets:[{data:[enCount,zhCount], backgroundColor:['#3b82f6','#10b981'], borderWidth:2, borderColor: isDark?'#1e293b':'#fff'}]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{color:textColor,font:{size:12}}}}
+    }
+  });
+}
+</script>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

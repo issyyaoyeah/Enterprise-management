@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《人力资源管理》30秒复习合集 · 中南大学企业管理学硕复试</title>
+<style>
+:root {
+  --ink: #0f1f2e;
+  --bg: #f0f4f8;
+  --bg2: #e1eaf2;
+  --card-bg: #ffffff;
+  --border: #b8cfe8;
+  --shadow: 0 4px 20px rgba(15,31,46,0.10);
+  --accent:  #1a56db;
+  --accent2: #f59e0b;
+  --accent3: #0e7c6a;
+  --accent4: #7c3aed;
+  --accent5: #dc2626;
+  --gold: #d97706;
+  --c1: #1a56db; --c2: #0e7c6a; --c3: #7c3aed;
+  --c4: #dc2626; --c5: #d97706; --c6: #0891b2;
+  --c7: #be185d; --c8: #65a30d; --c9: #ea580c; --c10: #0f766e; --c11: #6d28d9;
+}
+body.night {
+  --ink: #e2e8f0; --bg: #0f172a; --bg2: #1e293b;
+  --card-bg: #1e293b; --border: #334155;
+  --shadow: 0 4px 20px rgba(0,0,0,0.45);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Microsoft YaHei','PingFang SC','Helvetica Neue',Arial,sans-serif;
+  font-size:15px;line-height:1.8;
+  padding:0 0 120px;transition:background .3s,color .3s;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,#0f1f2e 0%,#0c2d6b 50%,#1a56db 100%);
+  color:#fff;padding:56px 40px 48px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(60deg,rgba(255,255,255,.03) 0,rgba(255,255,255,.03) 1px,transparent 1px,transparent 22px);
+}
+.hero-label{
+  font-size:12px;letter-spacing:4px;color:rgba(255,255,255,.6);
+  text-transform:uppercase;margin-bottom:10px;font-family:monospace;
+}
+.hero h1{font-size:34px;font-weight:900;line-height:1.25;margin-bottom:12px}
+.hero h1 span{color:#93c5fd}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.75);max-width:640px;line-height:1.7}
+.hero-meta{margin-top:20px;display:flex;flex-wrap:wrap;gap:12px}
+.hero-badge{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  border-radius:20px;padding:4px 14px;font-size:12px;color:rgba(255,255,255,.9);
+}
+
+/* ── NAV BAR ── */
+.topnav{
+  position:sticky;top:0;z-index:100;
+  background:var(--card-bg);border-bottom:2px solid var(--border);
+  padding:0 20px;display:flex;align-items:center;gap:4px;
+  flex-wrap:wrap;box-shadow:var(--shadow);transition:background .3s;
+}
+.topnav a{
+  display:inline-block;padding:10px 12px;font-size:13px;font-weight:600;
+  color:var(--ink);text-decoration:none;border-radius:6px;
+  transition:background .2s,color .2s;white-space:nowrap;
+}
+.topnav a:hover{background:var(--bg2);color:var(--accent)}
+.topnav-btns{margin-left:auto;display:flex;gap:8px;align-items:center}
+.btn-sm{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:20px;padding:5px 14px;font-size:12px;
+  cursor:pointer;color:var(--ink);transition:background .2s;font-weight:600;
+}
+.btn-sm:hover{background:var(--accent);color:#fff}
+
+/* ── MAIN LAYOUT ── */
+.main{max-width:960px;margin:0 auto;padding:32px 24px}
+
+/* ── PROGRESS OVERVIEW ── */
+.overview-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:12px;margin-bottom:36px;
+}
+.ov-card{
+  background:var(--card-bg);border-radius:12px;padding:14px 16px;
+  border:2px solid transparent;cursor:pointer;transition:all .2s;
+  box-shadow:var(--shadow);text-align:center;
+}
+.ov-card:hover{transform:translateY(-2px);border-color:var(--accent)}
+.ov-num{font-size:28px;font-weight:900;line-height:1}
+.ov-title{font-size:12px;margin-top:4px;color:var(--ink);opacity:.8;line-height:1.4}
+
+/* ── CHAPTER SECTION ── */
+.chap-section{margin-bottom:48px;scroll-margin-top:70px}
+.chap-header{
+  display:flex;align-items:center;gap:14px;
+  padding:18px 22px;border-radius:14px 14px 0 0;
+  background:linear-gradient(135deg,var(--ch-a),var(--ch-b));
+  color:#fff;
+}
+.chap-num{
+  font-size:32px;font-weight:900;opacity:.4;
+  font-family:monospace;flex-shrink:0;
+}
+.chap-name h2{font-size:20px;font-weight:800;line-height:1.2}
+.chap-name p{font-size:12px;opacity:.8;margin-top:2px}
+
+.chap-body{
+  background:var(--card-bg);border:1px solid var(--border);
+  border-top:none;border-radius:0 0 14px 14px;
+  padding:24px;box-shadow:var(--shadow);
+}
+
+/* ── ITEM ROWS ── */
+.item-row{
+  display:flex;gap:12px;align-items:flex-start;
+  padding:12px 14px;border-radius:10px;margin-bottom:8px;
+  background:var(--bg);border:1px solid var(--border);
+  transition:background .2s;
+}
+.item-row:hover{background:var(--bg2)}
+.item-num{
+  flex-shrink:0;width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;color:#fff;
+  background:var(--ch-a);font-family:monospace;
+}
+.item-content{flex:1;font-size:14px;line-height:1.7}
+.item-content strong{color:var(--ch-a);font-weight:700}
+
+/* ── KEYWORD HIGHLIGHT ── */
+.kw{
+  background:rgba(245,158,11,.18);color:#92400e;
+  border-radius:4px;padding:0 3px;font-weight:600;
+}
+body.night .kw{background:rgba(245,158,11,.22);color:#fbbf24}
+
+/* ── KEYWORD PILL ── */
+.pill{
+  display:inline-block;background:var(--bg2);
+  border:1px solid var(--border);border-radius:20px;
+  padding:2px 10px;font-size:12px;margin:2px;
+  font-weight:600;
+}
+
+/* ── FORMULA BLOCK ── */
+.formula{
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  color:#93c5fd;border-radius:10px;padding:14px 18px;
+  font-family:monospace;font-size:13px;line-height:2;
+  margin:10px 0;border:1px solid #334155;
+}
+
+/* ── MNEMONIC BOX ── */
+.mnemonic{
+  background:linear-gradient(135deg,#fef3c7,#fde68a);
+  border:1.5px solid #f59e0b;border-radius:10px;
+  padding:12px 16px;font-size:13px;font-weight:700;
+  color:#78350f;margin:10px 0;
+}
+body.night .mnemonic{
+  background:linear-gradient(135deg,#451a03,#78350f);
+  border-color:#d97706;color:#fde68a;
+}
+
+/* ── SUMMARY TAG ── */
+.summary-strip{
+  background:var(--ch-a);color:#fff;
+  border-radius:8px;padding:10px 16px;font-size:13px;
+  font-weight:700;letter-spacing:.5px;margin-top:16px;
+}
+
+/* ── CHAIN ── */
+.chain{
+  display:flex;align-items:center;flex-wrap:wrap;gap:4px;
+  margin:10px 0;
+}
+.chain-step{
+  background:var(--card-bg);border:1.5px solid var(--ch-a);
+  color:var(--ch-a);border-radius:8px;padding:4px 12px;
+  font-size:13px;font-weight:700;
+}
+.chain-arrow{font-size:16px;color:var(--ch-a);font-weight:900}
+
+/* ── COMPARE TABLE ── */
+.cmp-table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+.cmp-table th{
+  background:var(--ch-a);color:#fff;padding:8px 12px;
+  text-align:left;font-weight:700;
+}
+.cmp-table td{
+  padding:8px 12px;border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+.cmp-table tr:nth-child(even) td{background:var(--bg)}
+body.night .cmp-table tr:nth-child(even) td{background:var(--bg2)}
+
+/* ── RECITE BLOCK ── */
+.recite-block{
+  background:linear-gradient(135deg,var(--ch-a),var(--ch-b));
+  color:#fff;border-radius:12px;padding:20px 22px;margin-top:20px;
+}
+.recite-block h4{font-size:15px;font-weight:800;margin-bottom:12px;opacity:.9}
+.recite-block .r-item{
+  padding:8px 0;border-bottom:1px solid rgba(255,255,255,.15);
+  font-size:13.5px;line-height:1.7;
+}
+.recite-block .r-item:last-child{border-bottom:none}
+
+/* ── SEARCH PILL ── */
+.search-pill{
+  position:fixed;bottom:28px;right:24px;z-index:999;
+  background:#0f1f2e;color:#e2e8f0;border-radius:28px;
+  padding:10px 18px;display:flex;align-items:center;gap:8px;
+  box-shadow:0 4px 24px rgba(0,0,0,.45);
+  font-size:13.5px;font-weight:600;min-width:200px;
+  transition:opacity .2s;
+}
+body.night .search-pill{background:#1e293b;border:1px solid #334155}
+.search-pill input{
+  background:transparent;border:none;outline:none;
+  color:inherit;font-size:13.5px;width:120px;
+  font-family:inherit;
+}
+.search-pill input::placeholder{color:rgba(255,255,255,.4)}
+.sp-count{font-size:12px;opacity:.7;white-space:nowrap}
+.sp-btn{
+  background:none;border:none;cursor:pointer;
+  color:#93c5fd;font-size:15px;padding:0;line-height:1;
+}
+.sp-btn:hover{color:#fff}
+.search-highlight{background:#f59e0b;color:#0f1f2e;border-radius:3px;padding:0 2px}
+.search-current{background:#ef4444;color:#fff;border-radius:3px;padding:0 2px}
+
+/* ── BACK-TO-TOP ── */
+#back-top{
+  position:fixed;bottom:28px;left:24px;z-index:999;
+  background:var(--accent);color:#fff;border:none;
+  border-radius:50%;width:44px;height:44px;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(26,86,219,.4);
+  display:none;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+#back-top:hover{background:#1d4ed8}
+#back-top.show{display:flex}
+
+/* ── FOOTER ── */
+.footer{
+  text-align:center;padding:32px 24px;font-size:12px;
+  color:var(--ink);opacity:.5;border-top:1px solid var(--border);
+  margin-top:48px;
+}
+
+/* responsive */
+@media(max-width:640px){
+  .hero{padding:36px 20px 30px}
+  .hero h1{font-size:24px}
+  .topnav{padding:0 10px}
+  .topnav a{padding:8px 8px;font-size:12px}
+  .main{padding:20px 14px}
+  .chap-header{padding:14px 16px}
+  .chap-body{padding:16px}
+  .overview-grid{grid-template-columns:repeat(3,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">中南大学 · 企业管理学硕复试 · 颜爱民《人力资源管理》第3版</div>
+  <h1>⚡ <span>30秒复习合集</span></h1>
+  <div class="hero-sub">全书1–11章「30秒复习模块」集中整理版 · 关键词压缩 · 口诀速背 · 考前冲刺专用</div>
+  <div class="hero-meta">
+    <span class="hero-badge">📚 覆盖全11章</span>
+    <span class="hero-badge">🎯 2016–2025真题整合</span>
+    <span class="hero-badge">🗓 生成日期：2026-03-14</span>
+  </div>
+</div>
+
+<!-- TOP NAV -->
+<nav class="topnav" id="topnav">
+  <a href="#ch1">第一章</a>
+  <a href="#ch2">第二章</a>
+  <a href="#ch3">第三章</a>
+  <a href="#ch4">第四章</a>
+  <a href="#ch5">第五章</a>
+  <a href="#ch6">第六章</a>
+  <a href="#ch7">第七章</a>
+  <a href="#ch8">第八章</a>
+  <a href="#ch9">第九章</a>
+  <a href="#ch10">第十章</a>
+  <a href="#ch11">第十一章</a>
+  <a href="#ch12">第十二章</a>
+  <a href="#ch13">第十三章</a>
+  <a href="#ch14">第十四章</a>
+  <div class="topnav-btns">
+    <button class="btn-sm" onclick="toggleNight()">🌙 夜间</button>
+  </div>
+</nav>
+
+<div class="main">
+
+<!-- OVERVIEW CARDS -->
+<div class="overview-grid">
+  <div class="ov-card" onclick="location.href='#ch1'" style="--ch-a:#1a56db">
+    <div class="ov-num" style="color:#1a56db">01</div>
+    <div class="ov-title">人力资源管理概述</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch2'" style="--ch-a:#0e7c6a">
+    <div class="ov-num" style="color:#0e7c6a">02</div>
+    <div class="ov-title">人力资源相关经济理论</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch3'" style="--ch-a:#7c3aed">
+    <div class="ov-num" style="color:#7c3aed">03</div>
+    <div class="ov-title">组织与人力资源管理</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch4'" style="--ch-a:#dc2626">
+    <div class="ov-num" style="color:#dc2626">04</div>
+    <div class="ov-title">文化与人力资源管理</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch5'" style="--ch-a:#d97706">
+    <div class="ov-num" style="color:#d97706">05</div>
+    <div class="ov-title">人力资源规划</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch6'" style="--ch-a:#0891b2">
+    <div class="ov-num" style="color:#0891b2">06</div>
+    <div class="ov-title">工作分析</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch7'" style="--ch-a:#be185d">
+    <div class="ov-num" style="color:#be185d">07</div>
+    <div class="ov-title">员工招聘</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch8'" style="--ch-a:#65a30d">
+    <div class="ov-num" style="color:#65a30d">08</div>
+    <div class="ov-title">绩效管理</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch9'" style="--ch-a:#ea580c">
+    <div class="ov-num" style="color:#ea580c">09</div>
+    <div class="ov-title">薪酬</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch10'" style="--ch-a:#0f766e">
+    <div class="ov-num" style="color:#0f766e">10</div>
+    <div class="ov-title">人力资源开发与培训</div>
+  </div>
+  <div class="ov-card" onclick="location.href='#ch11'" style="--ch-a:#6d28d9">
+    <div class="ov-num" style="color:#6d28d9">11</div>
+    <div class="ov-title">激励</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     第一章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch1" style="--ch-a:#1a56db;--ch-b:#1d4ed8">
+  <div class="chap-header">
+    <div class="chap-num">01</div>
+    <div class="chap-name">
+      <h2>人力资源管理概述</h2>
+      <p>教材 P003–P035 · ★★★★★ 必考核心</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>HRM定义</strong>：组织为实现目标而<span class="kw">获取→配置→开发→使用</span>人力资源的各项活动（P015）<br>
+        <span class="pill">找人</span><span class="pill">用人</span><span class="pill">育人</span><span class="pill">留人</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>西方渊源演变</strong>：<span class="kw">泰勒</span>科学管理（萌芽）→<span class="kw">霍桑实验</span>（行为突破）→<span class="kw">孟斯特伯格</span>工业心理学→激励理论→<span class="kw">德鲁克</span>（1946年"人力资源"概念）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>人力资源5特征</strong>（口诀：<span class="kw">生再能两社</span>）<br>
+        生物性 · 再生性 · <strong>能动性</strong>（最活跃因素）· 两重性（投资主体+目标）· 社会性
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>HRM管理6特征</strong>（口诀：<span class="kw">系时联二文创</span>）<br>
+        系统性 · 时代性 · 联动性 · 二重性（科学+艺术）· 文化亲缘性 · 创新性
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>PM vs HRM 区别</strong><br>
+        <table class="cmp-table">
+          <tr><th>人事管理（PM）</th><th>人力资源管理（HRM）</th></tr>
+          <tr><td>人 = 成本</td><td>人 = 资源/资产</td></tr>
+          <tr><td>短期操作性</td><td>长期战略性</td></tr>
+          <tr><td>被动消极</td><td>主动积极</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>中国HRM 6大趋势</strong>：政府主导市场化 · 市场体系完善 · 制度→<span class="kw">柔性管理</span> · 工作导向→<span class="kw">能力导向</span> · 培训开发热点 · 文化与HRM协同
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>德鲁克贡献</strong>：1946年提出"人力资源"概念；1954年《管理的实践》——<span class="kw">"人力资源是唯一特殊资产"</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>发展趋势</strong>：战略化 · 全球化 · 团队化 · 知识型员工管理 · <span class="kw">信息化（e-HRM）</span> · 循证HRM · "互联网+"革新
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 必背原句：「人力资源管理就是组织为了实现其目标而获取、配置、开发和使用人力资源的各项活动。」——P015</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第二章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch2" style="--ch-a:#0e7c6a;--ch-b:#0f766e">
+  <div class="chap-header">
+    <div class="chap-num">02</div>
+    <div class="chap-name">
+      <h2>人力资源相关经济理论</h2>
+      <p>教材 P037–P098 · ★★★★☆ 高频重点</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>劳动经济学5大流派</strong>：古典 → 制度 → 凯恩斯 → <span class="kw">新古典（主流）</span> → 新制度
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>工资理论6种</strong>：早期工资理论 / 边际生产力 / 均衡工资 / 谈判理论 / <span class="kw">效率工资</span> / 利润分享理论
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>二元劳动力市场</strong>：<span class="kw">主要市场</span>（高薪稳定·晋升路径清晰）vs <span class="kw">次要市场</span>（低薪不稳·流动率高）；<br>
+        派遣工问题 = 次要市场典型形态
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>人力资本理论诞生</strong>：<span class="kw">舒尔茨1960年</span>美国经济学会年会演讲；<span class="kw">贝克尔1964年</span>《人力资本》确立学科体系
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>人力资本内涵</strong>（3要点）：① 不是人本身，是<span class="kw">质量因素</span>（知识技能体能素质）② 凝结在人身上，具有<span class="kw">经济价值</span> ③ 后天形成（投资获得）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>人力资本产权3特性</strong>：<span class="kw">排他性</span>（个人专属）/ <span class="kw">不可分割性</span>（人与资本不可分离）/ <span class="kw">所有权制约派生权</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>委托-代理2大不对称</strong>：<span class="kw">利益不对称</span>（股东追求利润vs经理追求权力）+ <span class="kw">信息不对称</span>（道德风险+逆向选择）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>委托-代理拓展模型</strong>：声誉模型 / <span class="kw">棘轮效应</span>（今年努力→明年提高标准→不敢努力）/ 多任务模型 / 打破预算平衡原则
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">9</div>
+      <div class="item-content">
+        <strong>委托-代理应用</strong>：股权激励 = 将代理人变合伙人，解决利益不一致问题
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">10</div>
+      <div class="item-content">
+        <strong>效率工资经典案例</strong>：<span class="kw">福特1914年·5美元工资</span> → 生产率↑ · 离职率↓ · 优秀员工来投 · 道德风险降低
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 口诀：委托代理「两不对称」——利益不对（目标冲突）+ 信息不对（逆向选择+道德风险）</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第三章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch3" style="--ch-a:#7c3aed;--ch-b:#6d28d9">
+  <div class="chap-header">
+    <div class="chap-num">03</div>
+    <div class="chap-name">
+      <h2>组织与人力资源管理</h2>
+      <p>教材 P099–P121 · ★★★★☆ 高频重点</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>西方人性假设4阶段</strong>：
+        <div class="chain">
+          <span class="chain-step">经济人（X）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">社会人</span><span class="chain-arrow">→</span>
+          <span class="chain-step">自动人（Y）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">复杂人（超Y）</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>中国人性三论</strong>：<span class="kw">孟子性善论</span>（≈Y理论）· <span class="kw">荀子性恶论</span>（≈X理论）· <span class="kw">张载可塑论</span>（教材推崇：管理不仅适应人性，更要塑造人性）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>胜任力3层次</strong>（Spencer夫妇）：<span class="kw">必要胜任力</span>（人人可培训）→ <span class="kw">差异胜任力</span>（区分优秀/一般，难开发）→ <span class="kw">战略胜任力</span>（核心竞争力）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>心理契约</strong>（卢梭1989）：员工与雇主间<span class="kw">无形/非正式/双向期望</span>；分<span class="kw">交易型</span>（短期·经济）vs <span class="kw">关系型</span>（长期·情感）；违背→信任崩塌→离职意愿↑
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>工作压力倒U曲线</strong>（Karasek,1979）：<span class="kw">适度压力→绩效最高</span>；压力过低（无动力）或过高（崩溃）→绩效下降
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>组织结构3阶段演变</strong>：<span class="kw">简单结构</span>（无技能·集权）→ <span class="kw">官僚结构</span>（机械化·高度正规化）→ <span class="kw">有机结构</span>（知识经济·扁平·高参与）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>人性可塑论核心</strong>：管理不仅是<span class="kw">适应</span>人性，更是<span class="kw">塑造</span>人性的过程（张载观点，教材推崇）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>知觉偏差的HRM影响</strong>：面试/绩效评估应建立<span class="kw">客观标准</span>，减少主观偏差；常见偏差：晕轮效应、首因/近期效应、刻板印象
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 口诀记胜任力三层次：「必要→差异→战略」= 人人有 → 优劣分 → 竞争力</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第四章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch4" style="--ch-a:#dc2626;--ch-b:#b91c1c">
+  <div class="chap-header">
+    <div class="chap-num">04</div>
+    <div class="chap-name">
+      <h2>文化与人力资源管理</h2>
+      <p>教材 P099–P121（文化章）· ★★★★★ 复试重点</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>文化狭义定义</strong>（本书采用）：群体成员共同认同和拥有的<span class="kw">整套思想理念·信仰·风俗习惯·价值观·行为模式</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>霍尔冰山模型</strong>：<span class="kw">公开文化</span>（可见·水面上）+ <span class="kw">隐蔽文化</span>（不可见·水面下）；隐蔽文化才是真正决定行为的力量
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>文化4特征</strong>（口诀：<span class="kw">地历运非</span>）：地缘性 · 历史继承性 · 运行惯性 · 对行为影响的非理性
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>三大行为约束体系</strong>：
+        <div class="chain">
+          <span class="chain-step">法律（刚·有界·惩罚）</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-step">道德（中·舆论）</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-step">文化（柔·无界·超越法律）</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>儒家五常HRM对应</strong>：<span class="kw">仁</span>（以人为本·基础）→ <span class="kw">义</span>（正当路径）→ <span class="kw">礼</span>（制度规范）→ <span class="kw">智</span>（能力保障）→ <span class="kw">信</span>（环境必需）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>道家HRM启示</strong>：<span class="kw">无为而治</span>（顺势而为·减少干预·充分授权）+ <span class="kw">清虚自守</span>（慈·俭·退；领导修身）；松下幸之助"顺应自然法则"
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>孙子兵法3原则</strong>：<span class="kw">修道保法</span>（以人为本）· <span class="kw">求之于势</span>（用人之长）· <span class="kw">令之以文，齐之以武</span>（激励+约束）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>将苑知人七术</strong>（诸葛亮）：是（非）· 辩（辞）· 谋（计）· 难（祸）· 酒（性）· 利（廉）· 事（信）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">9</div>
+      <div class="item-content">
+        <strong>三种经济文化形态</strong>：<span class="kw">自然经济</span>（劳动力·非组织）→ <span class="kw">工业经济</span>（资本·协作纪律）→ <span class="kw">知识经济</span>（人力资本·创新）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">10</div>
+      <div class="item-content">
+        <strong>转型期HRM 3大特征</strong>：<span class="kw">价值多元化</span>（行为规范缺失）· <span class="kw">文化惯性障碍</span>（农业文化阻碍工业化）· <span class="kw">人力资源结构性矛盾</span>（供过于求+结构短缺）
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 文化约束口诀：法律刚（有边界·惩罚）→ 道德中 → 文化柔（无边界·心灵调控·不可替代）</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第五章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch5" style="--ch-a:#d97706;--ch-b:#b45309">
+  <div class="chap-header">
+    <div class="chap-num">05</div>
+    <div class="chap-name">
+      <h2>人力资源规划</h2>
+      <p>教材 P123–P159 · ★★★★★ 必考核心</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>HRP定义</strong>：企业在<span class="kw">恰当时间·恰当岗位</span>获得<span class="kw">恰当人才</span>的系统工程；是连接<span class="kw">企业战略与具体HR活动</span>的桥梁
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>战略作用5层面</strong>：环境层面 · 企业层面 · HR部门层面 · 数量层面（供需预测）· 活动层面（落地实践）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>企业生命周期 HRP 重点</strong>：
+        <div class="chain">
+          <span class="chain-step">婴儿（质量）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">成长（数量）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">竞争（关键）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">成熟（质量并重）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">衰退（减员）</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>需求预测方法</strong><br>
+        <span class="kw">定性</span>：经验预测 · 现状预测 · <span class="kw">德尔菲法</span>（专家结构化预测）· 分合性预测<br>
+        <span class="kw">定量</span>：劳动定额（<strong>N=W/Q</strong>）· 比例分析 · 回归分析 · 计算机模拟
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>供给预测（内部3技术）</strong>：
+        <div class="chain">
+          <span class="chain-step">技能清单</span><span class="chain-arrow">→</span>
+          <span class="chain-step">人员接替模型</span><span class="chain-arrow">→</span>
+          <span class="chain-step">马尔科夫转移矩阵</span>
+        </div>
+        外部：市场调查法 + 相关因素预测法
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>供需平衡调整</strong>（口诀）<br>
+        <span class="kw">过剩</span>（裁·关·退·训·减·冻）：裁员·关厂·提前退休·培训储备·减少工时·冻结招聘<br>
+        <span class="kw">短缺</span>（效·留·延·改·招·包）：提效率·降离职·加班·工作重设·外部招聘·业务外包
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>规划评估5法</strong>：会计评估 · 关键指标评估 · 成本评估 · 声誉评估 · <span class="kw">标杆法</span>（与最优企业对标）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>HRMIS</strong>：人力资源管理信息系统；三大作用：<span class="kw">提效率·增公平·支撑战略</span>；三大性能：可操作性·安全可靠性·可维护性
+      </div>
+    </div>
+
+    <div class="formula">N = W / Q　　（N=所需人数，W=工作总量，Q=人均工作量）</div>
+    <div class="mnemonic">💡 过剩口诀：裁关退训减冻 ｜ 短缺口诀：效留延改招包</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第六章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch6" style="--ch-a:#0891b2;--ch-b:#0e7490">
+  <div class="chap-header">
+    <div class="chap-num">06</div>
+    <div class="chap-name">
+      <h2>工作分析</h2>
+      <p>教材 P160–P198 · ★★★★☆ 高频考点</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>工作分析定义</strong>：对岗位进行系统分析研究，以<span class="kw">6W1H框架</span>确定工作内容·职责·条件及任职资格，并形成<span class="kw">工作说明书</span>（工作描述+工作规范）的过程
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>工作分析 = HRM基础</strong>：为<span class="kw">规划·招聘·绩效·薪酬·培训</span>全部职能提供依据（8大作用）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>工作分析流程4阶段</strong>：<span class="kw">前期准备</span> → <span class="kw">调查</span> → <span class="kw">分析汇总</span> → <span class="kw">完成</span>（草拟→对比→修正→合并）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>信息收集5法</strong>（口诀：<span class="kw">观访问关日</span>）：观察法 · 访谈法 · 问卷法 · 关键事件法 · 工作日志法
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>工作分析工具</strong>：<span class="kw">PAQ</span>（1972年·194题·6大维度·13总体维度）；<span class="kw">MPDQ</span>（专为管理岗位·13方面·208题）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>工作设计5法</strong>（口诀：<span class="kw">专换大富团</span>）：工作专业化 · 工作轮换 · 工作扩大化（横向）· 工作丰富化（纵向·激励因素）· 团队为基础设计
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>工作特征模型</strong>（Hackman & Oldham）：<span class="kw">多整重自反</span>（技能多样性+任务完整性+任务重要性+自主性+反馈性）→ 计算<span class="kw">激励潜力分（MPS）</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>扩大化 vs 丰富化 对比</strong><br>
+        <table class="cmp-table">
+          <tr><th>工作扩大化</th><th>工作丰富化</th></tr>
+          <tr><td>横向量变（增加任务数量）</td><td>纵向质变（增加自主权/责任）</td></tr>
+          <tr><td>减少单调感</td><td>增加成就感（激励因素）</td></tr>
+          <tr><td>赫茨伯格认为效果有限</td><td>赫茨伯格双因素理论支持</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 工作说明书：工作描述（针对"岗"：做什么）+ 工作规范（针对"人"：需要什么条件）</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第七章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch7" style="--ch-a:#be185d;--ch-b:#9d174d">
+  <div class="chap-header">
+    <div class="chap-num">07</div>
+    <div class="chap-name">
+      <h2>员工招聘</h2>
+      <p>教材 P199–P253 · ★★★★★ 必考核心</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>招聘 = 招募 + 选拔</strong>；招聘计划4要素：<span class="kw">规模·范围·时间·预算</span>；<span class="kw">金字塔模型</span>用于确定招募规模
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>招聘渠道</strong><br>
+        <span class="kw">内部</span>：晋升 / 轮换（成本低·激励员工·信息可靠）<br>
+        <span class="kw">外部</span>（口诀：<span class="kw">校猎市网员推海</span>）：校招·猎头·劳动力市场·网络·员工推荐·中介·海外
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>选拔6步程序</strong>→ <span class="kw">最终录用决策由直线部门作出</span>（非HR部门）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>面试3类型</strong>：<span class="kw">结构式</span>（全面·程式化）· <span class="kw">非结构式</span>（灵活·不全面）· <span class="kw">混合式</span>（最常用）<br>
+        BD行为描述面试 = 行为连贯性原理；<span class="kw">STAR法</span>：情（境）·任（务）·动（作）·果（结果）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>评价中心</strong>：情景模拟评价，使用非实际工作任务；主要方法：<span class="kw">LGD无领导小组讨论</span> · 公文处理 · 管理游戏 · 角色扮演
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>录用决策策略</strong>：<span class="kw">多重淘汰式</span>（关关必过·层层筛选）vs <span class="kw">补偿式</span>（综合加权·东方不亮西方亮）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>测试法类型</strong>（口诀：<span class="kw">知能性兴样</span>）：知识测试·能力测试·性格测试·兴趣测试·样本测试<br>
+        ⚠️ 心理测试<span class="kw">不能作为唯一录用依据</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>招聘效果评估</strong>：<span class="kw">招聘收益成本比越高越好</span>；还包括录用比·招聘完成比·应聘比·质量评估（入职后绩效）
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 STAR法口诀：情（Situation）任（Task）动（Action）果（Result）——行为描述面试必背</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第八章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch8" style="--ch-a:#65a30d;--ch-b:#4d7c0f">
+  <div class="chap-header">
+    <div class="chap-num">08</div>
+    <div class="chap-name">
+      <h2>绩效管理</h2>
+      <p>教材 P254–P308 · ★★★★★ 必考核心（高频出题）</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>绩效3种观点</strong>：结果观 / 行为观 / <span class="kw">结合观</span>（教材采用）；二维模型：<span class="kw">任务绩效</span>（直接工作行为）+ <span class="kw">关系绩效</span>（间接·润滑作用）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>绩效4特点</strong>：多层次性 · 多因性 · 多维性 · 动态性<br>
+        <strong>影响绩效4因素</strong>：<span class="kw">技能·激励·环境·机会</span>（评价时应排除环境和机会因素影响）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>绩效管理 ≠ 绩效评价</strong>：绩效评价是绩效管理的<span class="kw">一个环节</span>；绩效管理是确保员工与组织目标一致的<span class="kw">完整循环</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>绩效管理4环节</strong>：
+        <div class="chain">
+          <span class="chain-step">计划（SMART）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">实施（教练）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">评价</span><span class="chain-arrow">→</span>
+          <span class="chain-step">反馈（7条）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">新循环</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>SMART原则</strong>：<span class="kw">S</span>pecific具体 / <span class="kw">M</span>easurable可衡量 / <span class="kw">A</span>ttainable可达成 / <span class="kw">R</span>elevant相关 / <span class="kw">T</span>ime-bound有时限
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>360度评价</strong>：上级+同事+下属+客户+自评；更适合<span class="kw">领导能力开发</span>目的；财富1000强大多使用
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>4类评价误差</strong>：<span class="kw">晕轮误差</span>（以偏概全）/ <span class="kw">分布误差</span>（宽松·苛刻·居中）/ <span class="kw">近期效应</span>（只看近期）/ <span class="kw">个人偏见</span>（受个人特征影响）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>8种评价方法</strong>（口诀：<span class="kw">图交配强关锚目语</span>）：<br>
+        图尺度法 / 交替排序法 / 配对比较法 / <span class="kw">强制分布法</span>（克服分布误差）/ <span class="kw">关键事件法</span>（克服近期误差）/ <span class="kw">BARS行为锚定法</span>（克服晕轮误差）/ MBO目标考评法 / 评语法
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">9</div>
+      <div class="item-content">
+        <strong>KPI关键绩效指标</strong>：<span class="kw">80/20法则</span>；设计流程：战略目标 → CSF（关键成功因素）→ 企业KPI → 部门KPI → 岗位KPI
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">10</div>
+      <div class="item-content">
+        <strong>BSC平衡计分卡</strong>（卡普兰+诺顿1992）：<br>
+        <span class="kw">财务</span>（结果）/ <span class="kw">顾客</span>（市场）/ <span class="kw">内部流程</span>（过程）/ <span class="kw">学习成长</span>（基础）<br>
+        因果链：<strong>学习→流程→顾客→财务</strong>；4特点：长短期平衡·因果关系纽带·战略紧密联系
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">11</div>
+      <div class="item-content">
+        <strong>绩效反馈7条建议</strong>：准备 → 经常 → 自评 → 参与 → 肯定 → 解决问题 → 制定改善目标（规定检查时间）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">12</div>
+      <div class="item-content">
+        <strong>评价结果3大用途</strong>：<span class="kw">薪酬分配</span> / <span class="kw">职务调整</span>（晋升·调岗·降职）/ <span class="kw">培训开发</span>（针对薄弱环节）
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 2016年笔试真题：BSC四维度！因果链必背：学习→流程→顾客→财务</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第九章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch9" style="--ch-a:#ea580c;--ch-b:#c2410c">
+  <div class="chap-header">
+    <div class="chap-num">09</div>
+    <div class="chap-name">
+      <h2>薪酬</h2>
+      <p>教材 P274–P322 · ★★★★★ 必考核心</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>薪酬本质</strong>：劳动者与用人单位间以<span class="kw">契约</span>为表现形式的交换关系；分<span class="kw">内在薪酬</span>（非经济性）+ <span class="kw">外在薪酬</span>（经济性 = 基本+可变+福利）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>4大薪酬模式</strong>：<span class="kw">岗位薪酬</span>（传统·稳定）/ <span class="kw">能力薪酬</span>（宽带结构）/ <span class="kw">绩效薪酬</span>（KPI挂钩）/ <span class="kw">市场薪酬</span>（供求定价）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>传统设计6原则</strong>（口诀：<span class="kw">公竞认平激战</span>）：公平·竞争·认可·平衡·激励·战略<br>
+        <strong>现代3原则</strong>：团队薪酬 · 隐性薪酬 · 双赢
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>薪酬结构规律</strong>：职级越高 → 浮动比例越高；高层 → 长期薪酬（股权）比例越高<br>
+        三种类型：<span class="kw">高弹性型</span>（浮动为主）/ <span class="kw">高稳定型</span>（固定为主）/ <span class="kw">平衡型</span>（推荐）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>岗位评估</strong>：<span class="kw">对岗不对人</span>；5大方法；<span class="kw">海氏系统</span> = 技能水平 × 解决问题能力 × 职务责任；三种岗型：上山型（责任>技能）/ 平路型 / 下山型（技能>责任）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>年薪制结构</strong>：月工资 + 福利 + 年终奖 + 股权激励<br>
+        激励效果：<span class="kw">股权激励 &gt; 年终奖 &gt; 月工资 &gt; 福利</span><br>
+        ⚠️ 年薪制 ≠ 高薪制；是高激励与高风险并存的回报机制（P309）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>战略性薪酬</strong>（米尔科维奇）：薪酬决策要与企业战略对齐，对组织绩效具有<span class="kw">关键性影响</span>的薪酬决策模式
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>影响薪酬满意度最直接因素</strong>：<span class="kw">内部公平性</span>（必背！P284）<br>
+        薪酬管理被认为是最困难·最敏感·政策性最强的HR工作（P274）
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 必背原句（P284）：「影响员工薪酬满意度的最直接因素是内部公平性。」</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第十章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch10" style="--ch-a:#0f766e;--ch-b:#0d6b63">
+  <div class="chap-header">
+    <div class="chap-num">10</div>
+    <div class="chap-name">
+      <h2>人力资源开发与培训</h2>
+      <p>教材 P324–P380 · ★★★★★ 必考核心（名词解释高频）</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>人力资源开发定义</strong>（P324）：贯穿<span class="kw">个人·家庭·组织·社会</span>，围绕<span class="kw">技能+生理+心智+道德</span>四素质，采取学习·教育·规划·配置等手段的<span class="kw">所有措施</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>培训需求分析3层次</strong>：
+        <div class="chain">
+          <span class="chain-step">组织分析（战略需要）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">任务分析（岗位KSA要求）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">人员分析（个体差距）</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>在职培训 vs 脱产培训</strong><br>
+        <span class="kw">OJT</span>（在职：师徒制·轮岗）= 成本低·针对性强；适合操作技能<br>
+        <span class="kw">脱产培训</span> = 系统深入·成本高；适合知识类·管理能力
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>柯克帕特里克4层次模型</strong>：
+        <div class="chain">
+          <span class="chain-step">反应层（满意度）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">学习层（KSA获得）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">行为层（岗位变化）</span><span class="chain-arrow">→</span>
+          <span class="chain-step">结果层（组织绩效）</span>
+        </div>
+        层次越高·越难评估·价值越大
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>霍兰德职业性向</strong>（RIASEC）：<span class="kw">实（R）研（I）艺（A）社（S）企（E）常（C）</span>；人–环境匹配原则决定职业适配度
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>职业锚（沙因）</strong>：无论如何都<span class="kw">不愿放弃</span>的职业中最重要的核心价值取向；8种类型（口诀：<span class="kw">技管安创自服挑生</span>）；应用：<span class="kw">双通道晋升体系</span>（技术通道+管理通道）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>格林豪斯5阶段</strong>：准备（0-25岁）→ 进入（18-25岁）→ 早期（25-40岁）→ 中期（40-55岁）→ 晚期（55-退休）；各阶段HRM任务不同
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>人力资源开发现代特征</strong>：主体多元化 · 客体终身化 · 内容素质化 · 手段纵深化<br>
+        ⚠️ 松下名言：「在制造产品之前要先制造人才」（P324）
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 职业锚8类型口诀：技（术）管（理）安（全）创（业）自（主）服（务）挑（战）生（活）</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第十一章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch11" style="--ch-a:#6d28d9;--ch-b:#5b21b6">
+  <div class="chap-header">
+    <div class="chap-num">11</div>
+    <div class="chap-name">
+      <h2>激励</h2>
+      <p>教材 P381–P435 · ★★★★★ 必考核心（理论最多）</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>激励定义</strong>：影响需要/动机→强化引导改变行为的<span class="kw">反复过程</span>；4要素：目的性 · 作用于需要/动机 · 持续性 · 多样性
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>马斯洛需求层次理论</strong>（口诀：<span class="kw">生安爱尊实</span>）：生理→安全→爱和归属→尊重→<span class="kw">自我实现</span><br>
+        低层需要：刚性强·满足后激励效果弱；高层：弹性大·持续作用强；<span class="kw">只有未满足的需要才激励人</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>赫茨伯格双因素理论</strong><br>
+        <span class="kw">激励因素</span> = 工作本身（成就感·责任·晋升）→ 产生满意<br>
+        <span class="kw">保健因素</span> = 工作环境（薪酬·关系·安全）→ 消除不满<br>
+        ⚠️ <span class="kw">满意 ≠ 不满意的对立面</span>（两者相互独立）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>期望理论（弗鲁姆）</strong>：
+        <div class="formula">激励力 = 期望值 × 效价</div>
+        三关系：<span class="kw">努力→绩效→奖励→个人目标</span>；每个→均需高概率才能形成强激励
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>公平理论（亚当斯）</strong>：
+        <div class="formula">自己的Qp / Ip = 参照人的Qx / Ix</div>
+        三维度：<span class="kw">内部公平性</span>（同企业不同岗位）/ <span class="kw">外部公平性</span>（行业对标）/ <span class="kw">自我公平性</span>（历史比较）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>强化理论4类</strong>（口诀：<span class="kw">正负罚忽</span>）：<span class="kw">正强化</span>（奖励期望行为）/ <span class="kw">负强化</span>（规避事前厌恶刺激）/ <span class="kw">惩罚</span>（抑制不良行为）/ <span class="kw">忽视</span>（冷处理·自然消退）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>分层激励方案</strong><br>
+        <span class="kw">高管</span>：股权/持股计划（长期激励）<br>
+        <span class="kw">中层</span>：授权+业绩工资（基本5~10倍）<br>
+        <span class="kw">科技人员</span>：环境支持+成果奖<br>
+        <span class="kw">一般员工</span>：参与管理+岗位工资
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>股权激励</strong>：<span class="kw">1952年辉瑞</span>起源；6种类型（激励性期权·购买计划·非法定·虚拟股票·增值权·业绩股票）；机制设计六要素
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">9</div>
+      <div class="item-content">
+        <strong>压力-动力6大原理</strong>：欲望原理·情欲原理·生存原理·自主原理·目标原理·群体原理<br>
+        <span class="kw">驴子实验</span>：9000+8000=<strong>30000磅</strong>（群体动力 1+1&gt;2，协同效应）
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 双因素记忆法：激励因素 = 工作「内容」本身（往内看）；保健因素 = 工作「环境」（往外看）</div>
+
+    <div class="recite-block">
+      <h4>🎙️ 复试口述：三大激励理论对比速记</h4>
+      <div class="r-item">马斯洛：5层级需求，低层刚性，高层持续，只有未满足才激励→ 启示：按层次差异化满足</div>
+      <div class="r-item">赫茨伯格：双因素，激励因素↑满意，保健因素↓不满→ 启示：不能只靠加薪，要增加工作成就感</div>
+      <div class="r-item">弗鲁姆：激励力=期望×效价，三条链全强才有动力→ 启示：确保绩效-奖励-个人目标三条链畅通</div>
+    </div>
+  </div>
+</section>
+
+</div><!-- end .main -->
+
+<!-- SEARCH PILL -->
+<div class="search-pill" id="searchPill">
+  <span>🔍</span>
+  <input type="text" id="searchInput" placeholder="输入关键词搜索…" autocomplete="off">
+  <span class="sp-count" id="spCount"></span>
+  <button class="sp-btn" id="spPrev" title="上一个 Shift+F3">↑</button>
+  <button class="sp-btn" id="spNext" title="下一个 F3">↓</button>
+  <button class="sp-btn" id="spClose" title="关闭">✕</button>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+
+<!-- ═══════════════════════════════
+     第十二章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch12" style="--ch-a:#7c3aed;--ch-b:#6d28d9">
+  <div class="chap-header">
+    <div class="chap-num">12</div>
+    <div class="chap-name">
+      <h2>劳动关系</h2>
+      <p>教材 P320–P370 · ★★★★ 高频重点</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>劳动关系定义</strong>：企业所有者、经营管理者、职工及工会之间的<span class="kw">权责利关系</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>三要素</strong>：<span class="kw">主体</span>（劳资双方）+<span class="kw">内容</span>（权利义务）+<span class="kw">客体</span>（劳动时间/报酬等，人格人身不可作客体）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>表现形式</strong>：<span class="kw">合作</span>（被迫+满足）与<span class="kw">冲突</span>（根本根源4个：异化·利益差异·权力等级·合同执行）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>类型分类</strong>：按力量（均衡/倾斜/政府）；按冲突合作（对抗→休战→和睦→合作）；按利益（冲突/共同/一体化/协调）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>五大学派</strong>（口诀：<span class="kw">新管正自激</span>）<br>
+        新保（市场）→ 管理（HRM）→ 正多（工会）→ 自由（战略）→ 激进（对立）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>三方协商9项内容</strong><br>
+        口诀：<span class="kw">「就薪安息保训合民争」</span><br>
+        就业政策 · 薪酬标准 · 安全卫生 · 休息休假 · 社会保障 · 培训 · 劳动合同 · 民主管理 · 劳动争议
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>劳动合同试用期</strong>：最长<span class="kw">6个月</span>；工资≥<span class="kw">80%</span>约定工资；不合格可解除，<span class="kw">无需</span>经济补偿
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>集体谈判三大功能</strong>：<span class="kw">经济决策</span>（资金分配）+<span class="kw">管理</span>（立法效力）+<span class="kw">决策</span>（公平民主）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">9</div>
+      <div class="item-content">
+        <strong>劳动争议程序</strong>：<span class="kw">一调一裁两审</span><br>
+        调解 → <span class="kw">仲裁（前置必须）</span> → 一审 → 二审
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">10</div>
+      <div class="item-content">
+        <strong>中国发展趋势</strong>：三关键词：<span class="kw">「和谐—灵活—集体化」</span>；《劳动合同法》开启集体调整新起点
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 核心记忆：劳动关系 = 主体+内容+客体；争议程序 = 一调一裁两审（仲裁前置）；试用期最长6个月</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第十三章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch13" style="--ch-a:#b45309;--ch-b:#92400e">
+  <div class="chap-header">
+    <div class="chap-num">13</div>
+    <div class="chap-name">
+      <h2>战略人力资源管理</h2>
+      <p>教材 P371–P418 · ★★★★★ 必考核心</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>SHRM定义</strong>：SHRM = <span class="kw">HRM + 企业战略</span>，HR从成本→战略资源，从执行→驱动
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>理论基础</strong>：<span class="kw">环境基础</span>（波特竞争理论/匹配理论）+ <span class="kw">资源基础</span>（VRIN/竞争优势）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>VRIN模型</strong>：<span class="kw">V</span>alue价值 + <span class="kw">R</span>are稀缺 + <span class="kw">I</span>nimitable难模仿 + <span class="kw">N</span>on-substitutable难替代<br>
+        人力资源满足四条件 → 成为持续竞争优势来源
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>HR战略选择三类</strong>：<span class="kw">最佳实践</span>（抄行业最优）/ <span class="kw">最佳适配</span>（量体裁衣匹配战略）/ <span class="kw">最佳结构</span>（搭积木组合）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>战略-HR配对</strong>：低成本战略→<span class="kw">专业化稳定</span>HR；差异化战略→<span class="kw">创新灵活</span>HR
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>HR四类型</strong>（价值性 × 专有性矩阵）：<br>
+        <span class="kw">战略型</span>（高价高专）/ <span class="kw">通用型</span>（高价低专）/ <span class="kw">独特型</span>（低价高专）/ <span class="kw">辅助型</span>（低价低专）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>五模式演进</strong>：分离→单向→双向→一体化→驱动<br>
+        行政→执行→伙伴→融合→<span class="kw">驱动（最高阶）</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>HR外包决策</strong>：传统型+外围型可外包；<span class="kw">独特型+核心型</span>内部化
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">9</div>
+      <div class="item-content">
+        <strong>并购三阶段HR管理</strong>：规划筹备（评估HR）→ 谈判（管文化冲突）→ 整合（<span class="kw">安抚+公平选拔</span>）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">10</div>
+      <div class="item-content">
+        <strong>HR能力构成</strong>：<span class="kw">任职能力</span> + <span class="kw">职业化行为能力</span>，均需VRIN化以支撑竞争优势
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 核心记忆：VRIN四条件；五模式演进（分单双一驱）；战略匹配：低成本→专业稳定，差异化→创新灵活</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════
+     第十四章
+═══════════════════════════════ -->
+<section class="chap-section" id="ch14" style="--ch-a:#065f46;--ch-b:#047857">
+  <div class="chap-header">
+    <div class="chap-num">14</div>
+    <div class="chap-name">
+      <h2>国际人力资源管理</h2>
+      <p>教材 P419–P460 · ★★★★ 高频重点</p>
+    </div>
+  </div>
+  <div class="chap-body">
+
+    <div class="item-row">
+      <div class="item-num">1</div>
+      <div class="item-content">
+        <strong>摩尔根模型（三维框架）</strong>：HRM活动 × <span class="kw">三类国家</span>（东道/母/第三）× <span class="kw">三类员工</span>（外派/东道国/第三国）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">2</div>
+      <div class="item-content">
+        <strong>IHRM两大特征</strong>：①管理复杂性（5方面）②<span class="kw">人才本土化必要性</span>（增信任/降成本/熟市场）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">3</div>
+      <div class="item-content">
+        <strong>HHP模式比较</strong>：<br>
+        日本=<span class="kw">主妇型</span>（精细短视）；美国=<span class="kw">丈夫型</span>（开拓远见）；中国=<span class="kw">家长制</span>（灵活粗放）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">4</div>
+      <div class="item-content">
+        <strong>外派5大选拔标准</strong>（按优先级）：<br>
+        <span class="kw">专业技能</span> → 文化适应 → 外语 → 家庭 → 国外经历<br>
+        ⚠️ 外派失败主因：<span class="kw">文化适应能力低</span>
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">5</div>
+      <div class="item-content">
+        <strong>外派培训3类</strong>：①<span class="kw">东道国介绍</span>（语言+文化意识）②持续开发（职业生涯）③<span class="kw">回返调整</span>（消除文化休克）
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">6</div>
+      <div class="item-content">
+        <strong>外派薪酬4构成</strong>（口诀：<span class="kw">基津奖福</span>）：<br>
+        基本薪酬 + 津贴（住/生/教/安家）+ 奖金（任职/期满/探亲/艰苦）+ 福利
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">7</div>
+      <div class="item-content">
+        <strong>国际绩效4特点</strong>：三目标结合 / 战略业绩统一 / <span class="kw">持续绩效沟通</span> / 重视诊断辅导
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">8</div>
+      <div class="item-content">
+        <strong>外派失败率</strong>：一般<span class="kw">25~50%</span>；发展中国家<span class="kw">70%</span>；有培训计划的公司失败率大幅降低
+      </div>
+    </div>
+
+    <div class="item-row">
+      <div class="item-num">9</div>
+      <div class="item-content">
+        <strong>德国双元制</strong>：企业培训（实操）+ 学校教育（理论）；学员=学生+学徒；<span class="kw">企业为主</span>，负责结业考试
+      </div>
+    </div>
+
+    <div class="mnemonic">💡 核心记忆：外派失败主因=文化适应低；薪酬=基津奖福；失败率25~50%；德国双元制企业为主</div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<div class="footer">
+  《人力资源管理》第3版 · 颜爱民 · 中南大学企业管理学硕复试笔记<br>
+  30秒复习合集 · 覆盖第1–14章 · 整合2016–2025年真题<br>
+  生成日期：2026-03-14
+</div>
+
+<script>
+// ── Night Mode ──
+function toggleNight(){
+  document.body.classList.toggle('night');
+  localStorage.setItem('night', document.body.classList.contains('night'));
+}
+if(localStorage.getItem('night')==='true') document.body.classList.add('night');
+
+// ── Back to top ──
+const btn = document.getElementById('back-top');
+window.addEventListener('scroll', ()=>{
+  btn.classList.toggle('show', window.scrollY > 400);
+});
+
+// ── Search ──
+const pill = document.getElementById('searchPill');
+const input = document.getElementById('searchInput');
+const countEl = document.getElementById('spCount');
+let matches = [], curIdx = -1, origNodes = [];
+
+function clearHighlights(){
+  document.querySelectorAll('.search-highlight,.search-current').forEach(el=>{
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
+  });
+  matches=[]; curIdx=-1; countEl.textContent='';
+}
+
+function doSearch(q){
+  clearHighlights();
+  if(!q) return;
+  const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');
+  const walker = document.createTreeWalker(
+    document.querySelector('.main'),
+    NodeFilter.SHOW_TEXT,
+    {acceptNode: n=>{
+      const p=n.parentNode;
+      if(['SCRIPT','STYLE','INPUT'].includes(p.tagName)) return NodeFilter.FILTER_REJECT;
+      return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+    }}
+  );
+  const toReplace=[];
+  while(walker.nextNode()){
+    const node=walker.currentNode;
+    if(re.test(node.nodeValue)){
+      toReplace.push(node);
+      re.lastIndex=0;
+    }
+  }
+  toReplace.forEach(node=>{
+    const frag=document.createDocumentFragment();
+    let last=0; let m;
+    re.lastIndex=0;
+    while((m=re.exec(node.nodeValue))!==null){
+      frag.appendChild(document.createTextNode(node.nodeValue.slice(last,m.index)));
+      const span=document.createElement('mark');
+      span.className='search-highlight';
+      span.textContent=m[0];
+      frag.appendChild(span);
+      matches.push(span);
+      last=m.index+m[0].length;
+    }
+    frag.appendChild(document.createTextNode(node.nodeValue.slice(last)));
+    node.parentNode.replaceChild(frag,node);
+  });
+  if(matches.length){
+    curIdx=0; jumpTo(0);
+  } else {
+    countEl.textContent='无结果';
+  }
+}
+
+function jumpTo(i){
+  if(!matches.length) return;
+  if(curIdx>=0 && matches[curIdx]) matches[curIdx].className='search-highlight';
+  curIdx=(i+matches.length)%matches.length;
+  const el=matches[curIdx];
+  el.className='search-current';
+  el.scrollIntoView({behavior:'smooth',block:'center'});
+  countEl.textContent=`${curIdx+1} / ${matches.length}`;
+}
+
+input.addEventListener('input',()=>doSearch(input.value.trim()));
+document.getElementById('spNext').onclick=()=>jumpTo(curIdx+1);
+document.getElementById('spPrev').onclick=()=>jumpTo(curIdx-1);
+document.getElementById('spClose').onclick=()=>{ clearHighlights(); input.value=''; };
+
+document.addEventListener('keydown', e=>{
+  if(e.key==='F3'){ e.preventDefault(); e.shiftKey ? jumpTo(curIdx-1) : jumpTo(curIdx+1); }
+  if(e.key==='Escape'){ clearHighlights(); input.value=''; }
+});
+</script>
+</body>
+</html>

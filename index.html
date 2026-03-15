@@ -1,0 +1,1094 @@
+	<!DOCTYPE html>
+	<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业管理复试学习系统 | 中南大学</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f4f6f9;--card:#fff;--nav:#1a2340;--navt:#e8ecf4;
+  --text:#1e2a3a;--muted:#5a6a7e;--accent:#2563eb;--accent2:#7c3aed;
+  --green:#16a34a;--amber:#d97706;--red:#dc2626;--border:#e2e8f0;
+  --sh:0 2px 12px rgba(30,42,58,.09);--r:10px;
+  --ts:#dbeafe;--tst:#1d4ed8;--th:#fce7f3;--tht:#be185d;--tr:#d1fae5;--trt:#065f46;
+}
+.dark{
+  --bg:#111827;--card:#1f2937;--nav:#0d1424;--navt:#d1d5db;
+  --text:#f1f5f9;--muted:#9ca3af;--border:#374151;--sh:0 2px 14px rgba(0,0,0,.45);
+  --ts:#1e3a5f;--tst:#93c5fd;--th:#4a1942;--tht:#f9a8d4;--tr:#14352a;--trt:#6ee7b7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Microsoft YaHei','PingFang SC',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;font-variant-numeric:tabular-nums;transition:background .25s,color .25s}
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:300;background:var(--nav);color:var(--navt);display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:52px;box-shadow:0 2px 14px rgba(0,0,0,.3)}
+.logo{font-size:15px;font-weight:800}.logo span{color:#60a5fa}
+.navr{display:flex;align-items:center;gap:9px}
+#si{border:none;border-radius:20px;padding:5px 13px;font-size:13px;width:185px;outline:none;background:rgba(255,255,255,.1);color:var(--navt)}
+#si::placeholder{color:rgba(255,255,255,.4)}
+.nb{background:rgba(255,255,255,.1);border:none;cursor:pointer;border-radius:6px;padding:4px 9px;color:var(--navt);font-size:12px}
+.nb:hover{background:rgba(255,255,255,.2)}
+/* LAYOUT */
+.w{margin-top:52px;padding:16px 16px 60px;max-width:1200px;margin-left:auto;margin-right:auto}
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a2340,#1e3a5f);border-radius:13px;padding:20px 24px;color:#fff;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.hero h1{font-size:19px;font-weight:800}.hero p{color:#93c5fd;font-size:12px;margin-top:3px}
+.hs{display:flex;gap:20px}.sb{text-align:center}
+.sb .n{font-size:24px;font-weight:800;color:#60a5fa}.sb .l{font-size:11px;color:#93c5fd}
+/* PROGRESS */
+.pp{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:13px 17px;margin-bottom:12px;box-shadow:var(--sh)}
+.pp h3{font-size:13px;font-weight:700;margin-bottom:9px}
+.pr{display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.pl{font-size:12px;color:var(--muted);width:96px;flex-shrink:0}
+.pw{flex:1;background:var(--border);border-radius:99px;height:7px;overflow:hidden}
+.pb{height:100%;border-radius:99px;transition:width .5s}
+.pbl{background:linear-gradient(90deg,#2563eb,#60a5fa)}
+.pbp{background:linear-gradient(90deg,#be185d,#f472b6)}
+.pbg{background:linear-gradient(90deg,#16a34a,#4ade80)}
+.pct{font-size:12px;color:var(--muted);width:32px;text-align:right}
+/* FILTER */
+.fb{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;align-items:center}
+.fl{font-size:12px;color:var(--muted)}
+.fn{padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;font-size:12px;transition:all .15s}
+.fn:hover,.fn.a{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* SECTION TITLE */
+.st{font-size:14px;font-weight:700;margin:16px 0 9px;display:flex;align-items:center;gap:7px}
+.bx{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:600}
+.bs{background:var(--ts);color:var(--tst)}.bh{background:var(--th);color:var(--tht)}.br{background:var(--tr);color:var(--trt)}
+.ct{font-size:12px;color:var(--muted);font-weight:400;cursor:pointer;user-select:none;margin-left:3px;display:inline-flex;align-items:center;gap:3px}
+/* CARD GRID */
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(222px,1fr));gap:10px}
+.cl{overflow:hidden;transition:max-height .4s ease}
+.cl.h{max-height:0!important}
+.cl:not(.h){max-height:none}
+/* MATERIAL CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:7px;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 5px 18px rgba(30,42,58,.12)}
+.card.sn{border-left:3px solid var(--border)}.card.si{border-left:3px solid var(--amber)}.card.sd{border-left:3px solid var(--green)}
+.ch{display:flex;align-items:flex-start;justify-content:space-between;gap:5px}
+.ctit{font-size:13px;font-weight:600;flex:1;line-height:1.4}
+.sbtn{font-size:14px;cursor:pointer;border:none;background:none;padding:0;line-height:1;color:var(--border)}
+.sbtn.on{color:#f59e0b}
+.ctag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:99px}
+.tgs{background:var(--ts);color:var(--tst)}.tgh{background:var(--th);color:var(--tht)}.tgr{background:var(--tr);color:var(--trt)}
+.cf{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.ss{font-size:12px;border-radius:6px;padding:3px 7px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;outline:none}
+.ob{font-size:12px;padding:4px 10px;border-radius:6px;border:none;background:var(--accent);color:#fff;cursor:pointer;text-decoration:none;display:inline-block;transition:background .15s}
+.ob:hover{background:#1d4ed8}
+.hc{display:none!important}
+/* ════ RADAR SECTION ════ */
+.mod{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-top:16px;box-shadow:var(--sh)}
+.mod-h{font-size:15px;font-weight:700;margin-bottom:3px}
+.mod-sub{font-size:12px;color:var(--muted);margin-bottom:13px}
+.tabrow{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.tab{padding:4px 13px;border-radius:20px;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;font-size:12px;transition:all .15s}
+.tab:hover,.tab.a{background:var(--accent);color:#fff;border-color:var(--accent)}
+.tab.a2{background:var(--accent2);color:#fff;border-color:var(--accent2)}
+/* RADAR CHARTS */
+.radar-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+@media(max-width:680px){.radar-grid{grid-template-columns:1fr}}
+.rc{background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:14px 12px}
+.rc h4{font-size:13px;font-weight:700;margin-bottom:10px;text-align:center}
+.rc canvas{max-height:260px;width:100%!important}
+/* HF LIST */
+.hf-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.hff{padding:3px 11px;border-radius:16px;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;font-size:11px;transition:all .15s}
+.hff:hover,.hff.a{background:var(--accent);color:#fff;border-color:var(--accent)}
+.hf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:8px}
+.hfi{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 13px;cursor:pointer;transition:border-color .15s,transform .15s;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.hfi:hover{border-color:var(--accent);transform:translateY(-1px)}
+.hfi-l{flex:1}
+.hfi-name{font-size:13px;font-weight:600;line-height:1.4}
+.hfi-meta{font-size:11px;color:var(--muted);margin-top:2px}
+.hfi-stars{color:#f59e0b;font-size:12px;white-space:nowrap;margin-top:2px}
+.hfi-tag{display:inline-block;font-size:10px;padding:1px 7px;border-radius:99px;margin-top:4px;font-weight:600}
+
+/* ════ COUNTDOWN MODULE ════ */
+.countdown-mod{background:linear-gradient(135deg,#1e3a5f,#1a2340);border-radius:var(--r);padding:18px 20px;margin-bottom:12px;box-shadow:var(--sh);color:#fff}
+.countdown-mod .mod-h{color:#fff}
+.countdown-mod .mod-sub{color:#93c5fd}
+.cd-flex{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:10px}
+.cd-boxes{display:flex;gap:10px}
+.cd-box{background:rgba(255,255,255,.12);border-radius:8px;padding:10px 14px;text-align:center;min-width:64px}
+.cd-num{font-size:28px;font-weight:800;color:#60a5fa;line-height:1;font-variant-numeric:tabular-nums}
+.cd-lbl{font-size:11px;color:#93c5fd;margin-top:2px}
+.cd-sep{font-size:24px;font-weight:800;color:#60a5fa;align-self:center;margin-bottom:16px}
+.cd-set{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px}
+.cd-set label{font-size:12px;color:#93c5fd}
+.cd-set input[type="date"]{padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:12px;outline:none}
+.cd-set input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(1)}
+.cd-setbtn{padding:4px 13px;border-radius:6px;border:none;background:#2563eb;color:#fff;font-size:12px;cursor:pointer;font-weight:600}
+.cd-setbtn:hover{background:#1d4ed8}
+.cd-finish{font-size:18px;font-weight:700;color:#4ade80;padding:10px 0}
+
+/* ════ TODAY TASK MODULE ════ */
+.today-mod{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:15px 18px;margin-bottom:12px;box-shadow:var(--sh)}
+.today-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:10px}
+.today-item{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:8px 11px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.today-item:hover{border-color:var(--accent)}
+.today-item.done-t{background:#d1fae5;border-color:#6ee7b7}
+.dark .today-item.done-t{background:#14352a;border-color:#065f46}
+.today-item input[type="checkbox"]{accent-color:var(--accent);width:14px;height:14px;cursor:pointer;flex-shrink:0}
+.today-item span{font-size:12px;font-weight:600;line-height:1.4}
+.today-item.done-t span{text-decoration:line-through;color:var(--muted)}
+
+/* Today progress */
+.today-progress{margin-top:12px}
+.today-p-label{font-size:12px;color:var(--muted);margin-bottom:4px;display:flex;justify-content:space-between}
+.today-pw{background:var(--border);border-radius:99px;height:8px;overflow:hidden}
+.today-pb{height:100%;border-radius:99px;background:linear-gradient(90deg,#f59e0b,#fcd34d);transition:width .5s}
+
+
+/* ════ TRAINING ENTRY MODULE ════ */
+.train-mod{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-top:16px;box-shadow:var(--sh)}
+.train-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+@media(max-width:600px){.train-grid{grid-template-columns:1fr}}
+.train-card{display:block;text-decoration:none;border-radius:10px;padding:20px 18px;transition:transform .18s,box-shadow .18s;cursor:pointer;position:relative;overflow:hidden}
+.train-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.train-card.tc-blue{background:linear-gradient(135deg,#1d4ed8,#2563eb)}
+.train-card.tc-purple{background:linear-gradient(135deg,#6d28d9,#7c3aed)}
+.train-card .tc-icon{font-size:30px;margin-bottom:8px}
+.train-card .tc-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:4px}
+.train-card .tc-desc{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6}
+.train-card .tc-arrow{position:absolute;bottom:14px;right:16px;font-size:20px;color:rgba(255,255,255,.5)}
+
+/* ════ 3-PHASE KANBAN ════ */
+.kb3-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:760px){.kb3-grid{grid-template-columns:1fr}}
+.kb3-col{display:flex;flex-direction:column;gap:0}
+.kb3-head{border-radius:9px 9px 0 0;padding:12px 14px;color:#fff}
+.kb3-head-blue{background:linear-gradient(135deg,#1d4ed8,#2563eb)}
+.kb3-head-purple{background:linear-gradient(135deg,#6d28d9,#7c3aed)}
+.kb3-head-green{background:linear-gradient(135deg,#065f46,#16a34a)}
+.kb3-head>span:first-child{font-size:14px;font-weight:800;display:block}
+.kb3-meta{font-size:11px;opacity:.8;display:block;margin:3px 0 8px}
+.kb3-prog-wrap{display:flex;align-items:center;gap:7px}
+.kb3-prog-bar{flex:1;background:rgba(255,255,255,.2);border-radius:99px;height:6px;overflow:hidden}
+.kb3-prog-fill{height:100%;border-radius:99px;transition:width .5s;background:rgba(255,255,255,.85)}
+.kb3-pct{font-size:12px;font-weight:700;color:#fff;min-width:28px;text-align:right}
+.kb3-list{border:1px solid var(--border);border-top:none;border-radius:0 0 9px 9px;padding:8px;display:flex;flex-direction:column;gap:6px;max-height:520px;overflow-y:auto;background:var(--bg)}
+.kb3-card{background:var(--card);border:1px solid var(--border);border-radius:7px;padding:9px 11px;cursor:pointer;transition:transform .12s,box-shadow .12s,border-color .15s;user-select:none}
+.kb3-card:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(30,42,58,.1)}
+.kb3-card.kb3-done{border-left:3px solid #16a34a;background:#f0fdf4}
+.dark .kb3-card.kb3-done{background:#14352a}
+.kb3-card-name{font-size:12px;font-weight:600;line-height:1.4;color:var(--text)}
+.kb3-card-sub{display:flex;align-items:center;justify-content:space-between;margin-top:5px;gap:6px}
+.kb3-card-status{font-size:11px;font-weight:600}
+.kb3-card-status.done{color:#16a34a}
+.kb3-card-status.todo{color:var(--muted)}
+
+/* SCROLL TOP */
+#scrollTop{position:fixed;bottom:22px;right:22px;background:var(--accent);color:#fff;border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(37,99,235,.4);z-index:99}
+#scrollTop.show{display:flex}
+@media(max-width:600px){.hero{flex-direction:column}.cg{grid-template-columns:1fr 1fr}#si{width:120px}.radar-grid{grid-template-columns:1fr}}
+
+/* ════ SPA CHAPTER PANEL ════ */
+#chapterOverlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.45);backdrop-filter:blur(3px);
+}
+#chapterOverlay.open{display:block;}
+#chapterPanel{
+  position:fixed;top:0;right:0;bottom:0;width:100%;max-width:1100px;
+  background:var(--bg);z-index:501;
+  display:flex;flex-direction:column;
+  box-shadow:-6px 0 40px rgba(0,0,0,.25);
+  transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);
+}
+#chapterPanel.open{transform:translateX(0);}
+#chapterBar{
+  flex-shrink:0;display:flex;align-items:center;gap:10px;
+  background:var(--nav);color:var(--navt);padding:0 16px;height:48px;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+#chapterTitle{font-size:14px;font-weight:700;flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.cpanel-btn{
+  flex-shrink:0;background:rgba(255,255,255,.12);border:none;color:var(--navt);
+  cursor:pointer;border-radius:6px;padding:4px 11px;font-size:12px;font-weight:600;
+  transition:background .15s;
+}
+.cpanel-btn:hover{background:rgba(255,255,255,.22);}
+.cpanel-close{font-size:18px;padding:4px 10px;}
+#chapterFrame{flex:1;border:none;width:100%;background:#fff;}
+@media(max-width:760px){#chapterPanel{max-width:100%;}}
+
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="logo">📚 <span>企业管理</span>复试系统</div>
+  <div class="navr">
+    <input id="si" type="text" placeholder="🔍 搜索资料…" oninput="doSearch(this.value)">
+    <button class="nb" onclick="toggleDark()">🌙 夜间</button>
+  </div>
+</nav>
+
+<div class="w">
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <h1>🎓 中南大学企业管理硕士复试</h1>
+      <p>企业战略管理 · 人力资源管理 · 2016–2025真题整合 · 全程备考跟踪系统</p>
+    </div>
+    <div class="hs">
+      <div class="sb"><div class="n" id="totalC">0</div><div class="l">总资料</div></div>
+      <div class="sb"><div class="n" id="doneC">0</div><div class="l">已学习</div></div>
+      <div class="sb"><div class="n" id="starC">0</div><div class="l">高频标记</div></div>
+    </div>
+  </div>
+
+  <!-- ════ COUNTDOWN ════ -->
+  <div class="countdown-mod">
+    <div class="mod-h">🎓 中南大学企业管理复试倒计时</div>
+    <div class="mod-sub">设置复试日期，实时追踪备考时间</div>
+    <div id="cd-main"></div>
+    <div class="cd-set">
+      <label>设置复试日期：</label>
+      <input type="date" id="cd-input">
+      <button class="cd-setbtn" onclick="setCdDate()">确认设置</button>
+      <span id="cd-hint" style="font-size:11px;color:#93c5fd;"></span>
+    </div>
+  </div>
+
+  <!-- ════ PROGRESS ════ -->
+  <div class="pp">
+    <h3>📊 三阶段复习进度</h3>
+    <div style="font-size:11px;color:var(--muted);margin-bottom:10px">根据看板章节完成状态自动统计 · 在看板中为章节选择阶段并标记完成即可更新</div>
+    <div class="pr">
+      <span class="pl" style="display:flex;align-items:center;gap:4px"><span style="font-size:15px">📖</span>理解阶段</span>
+      <div class="pw"><div class="pb pbl" id="pb-phase1"></div></div>
+      <span class="pct" id="pct-phase1">0%</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin:-3px 0 8px 105px">第一轮：理解章节框架 + 基本概念</div>
+    <div class="pr">
+      <span class="pl" style="display:flex;align-items:center;gap:4px"><span style="font-size:15px">📝</span>熟背阶段</span>
+      <div class="pw"><div class="pb pbp" id="pb-phase2"></div></div>
+      <span class="pct" id="pct-phase2">0%</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin:-3px 0 8px 105px">第二轮：记忆高频考点 + 真题知识点</div>
+    <div class="pr">
+      <span class="pl" style="display:flex;align-items:center;gap:4px"><span style="font-size:15px">🚀</span>冲刺阶段</span>
+      <div class="pw"><div class="pb pbg" id="pb-phase3"></div></div>
+      <span class="pct" id="pct-phase3">0%</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin:-3px 0 4px 105px">第三轮：快速回顾章节 + 真题训练</div>
+  </div>
+
+  <!-- ════ TODAY REVIEWED ════ -->
+  <div class="today-mod" id="todayReviewedMod">
+    <div class="mod-h">📖 今日学习章节</div>
+    <div id="todayReviewedList" style="margin-top:10px;font-size:13px;color:var(--muted)">今日暂无记录</div>
+  </div>
+
+  <!-- FILTER -->
+  <div class="fb">
+    <span class="fl">筛选：</span>
+    <button class="fn a" onclick="setF('all',this)">全部</button>
+    <button class="fn" onclick="setF('no',this)">未学习</button>
+    <button class="fn" onclick="setF('done',this)">已学习</button>
+    <button class="fn" onclick="setF('star',this)">⭐ 高频考点</button>
+  </div>
+
+  <div class="st">📘 企业战略管理<span class="bx bs">教材章节</span><span class="ct" id="togs" onclick="toggleSec('gs','togs')">折叠 ▾</span></div>
+  <div class="cg cl" id="gs"></div>
+
+  <div class="st">📗 人力资源管理<span class="bx bh">教材章节</span><span class="ct" id="togh" onclick="toggleSec('gh','togh')">折叠 ▾</span></div>
+  <div class="cg cl" id="gh"></div>
+
+  <div class="st">📙 综合复习资料<span class="bx br">真题·案例·模板·考点</span><span class="ct" id="togr" onclick="toggleSec('gr','togr')">折叠 ▾</span></div>
+  <div id="rev-cat-tabs" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+    <button class="fn a" onclick="setRevCat('all',this)">全部资料</button>
+    <button class="fn" onclick="setRevCat('s-exam',this)">📘 战略管理 · 真题分析</button>
+    <button class="fn" onclick="setRevCat('s-hf',this)">📘 战略管理 · 高频考点</button>
+    <button class="fn" onclick="setRevCat('s-case',this)">📘 战略管理 · 案例整理</button>
+    <button class="fn" onclick="setRevCat('h-exam',this)">📗 人力资源 · 真题分析</button>
+    <button class="fn" onclick="setRevCat('h-hf',this)">📗 人力资源 · 高频考点</button>
+    <button class="fn" onclick="setRevCat('h-case',this)">📗 人力资源 · 案例整理</button>
+  </div>
+  <div class="cg cl" id="gr"></div>
+
+  <!-- ════ KANBAN ════ -->
+  <div class="mod" style="margin-top:16px">
+    <div class="mod-h">📋 三阶段复习计划看板</div>
+    <div class="mod-sub">每章节在三个阶段均有独立任务卡片 · 点击卡片切换完成状态 · 数据自动保存</div>
+    <!-- phase grid -->
+    <div class="kb3-grid">
+      <!-- 理解阶段 -->
+      <div class="kb3-col">
+        <div class="kb3-head kb3-head-blue">
+          <span>📖 理解阶段</span>
+          <span class="kb3-meta">第一轮：理解框架+基本概念</span>
+          <div class="kb3-prog-wrap">
+            <div class="kb3-prog-bar">
+              <div class="kb3-prog-fill kb3-fill-blue" id="kbbar-phase1" style="width:0%"></div>
+            </div>
+            <span class="kb3-pct" id="kbpct-phase1">0%</span>
+          </div>
+        </div>
+        <div class="kb3-list" id="kb3-col-phase1"></div>
+      </div>
+      <!-- 熟背阶段 -->
+      <div class="kb3-col">
+        <div class="kb3-head kb3-head-purple">
+          <span>📝 熟背阶段</span>
+          <span class="kb3-meta">第二轮：记忆高频考点+真题</span>
+          <div class="kb3-prog-wrap">
+            <div class="kb3-prog-bar">
+              <div class="kb3-prog-fill kb3-fill-purple" id="kbbar-phase2" style="width:0%"></div>
+            </div>
+            <span class="kb3-pct" id="kbpct-phase2">0%</span>
+          </div>
+        </div>
+        <div class="kb3-list" id="kb3-col-phase2"></div>
+      </div>
+      <!-- 冲刺阶段 -->
+      <div class="kb3-col">
+        <div class="kb3-head kb3-head-green">
+          <span>🚀 冲刺阶段</span>
+          <span class="kb3-meta">第三轮：快速回顾+真题训练</span>
+          <div class="kb3-prog-wrap">
+            <div class="kb3-prog-bar">
+              <div class="kb3-prog-fill kb3-fill-green" id="kbbar-phase3" style="width:0%"></div>
+            </div>
+            <span class="kb3-pct" id="kbpct-phase3">0%</span>
+          </div>
+        </div>
+        <div class="kb3-list" id="kb3-col-phase3"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ TRAINING ENTRY ════ -->
+  <div class="train-mod">
+    <div class="mod-h">📚 复试专项训练</div>
+    <div class="mod-sub">点击进入专项训练系统，全面提升复试竞争力</div>
+    <div class="train-grid">
+      <div class="train-card tc-blue"  onclick="loadChapter('中南大学企业管理复试面试训练系统.html')" style="cursor:pointer">
+        <div class="tc-icon">🎤</div>
+        <div class="tc-title">面试训练系统</div>
+        <div class="tc-desc">口头表达 · 复试问题模拟 · 答题模板训练 · 自我介绍优化</div>
+        <div class="tc-arrow">→</div>
+      </div>
+      <div class="train-card tc-purple"  onclick="loadChapter('案例题库_企业战略管理×人力资源管理.html')" style="cursor:pointer">
+        <div class="tc-icon">📚</div>
+        <div class="tc-title">跨学科案例题库</div>
+        <div class="tc-desc">企业战略管理 × 人力资源管理 · 综合案例分析 · 跨学科命题预测</div>
+        <div class="tc-arrow">→</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ RADAR MODULE ════ -->
+  <div class="mod">
+    <div class="mod-h">📡 企管复试高频考点雷达图系统</div>
+    <div class="mod-sub">数据来源：2016–2025 真题分析 · 点击考点列表可跳转对应资料</div>
+    <div class="tabrow" id="radarTabs">
+      <button class="tab a" onclick="setRadarTab('both',this)">双科对比</button>
+      <button class="tab" onclick="setRadarTab('strat',this)">📘 战略管理</button>
+      <button class="tab" onclick="setRadarTab('hr',this)">📗 人力资源</button>
+    </div>
+    <div class="radar-grid" id="radarGrid">
+      <div class="rc" id="rc-s">
+        <h4>📘 企业战略管理 · 高频考点雷达</h4>
+        <canvas id="chartS"></canvas>
+      </div>
+      <div class="rc" id="rc-h">
+        <h4>📗 人力资源管理 · 高频考点雷达</h4>
+        <canvas id="chartH"></canvas>
+      </div>
+    </div>
+    <div>
+      <div class="hf-filter">
+        <span class="fl" style="font-size:12px">考点筛选：</span>
+        <button class="hff a" onclick="filterHF('all',this)">全部考点</button>
+        <button class="hff" onclick="filterHF('5',this)">★★★★★ 必考</button>
+        <button class="hff" onclick="filterHF('4',this)">★★★★ 高频</button>
+        <button class="hff" onclick="filterHF('3',this)">★★★ 常考</button>
+        <button class="hff" onclick="filterHF('strat',this)">战略管理</button>
+        <button class="hff" onclick="filterHF('hr',this)">人力资源</button>
+      </div>
+      <div class="hf-grid" id="hfGrid"></div>
+    </div>
+  </div>
+
+
+</div><!-- /.w -->
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ─── 资料数据 ───────────────────────────────────────────────
+const STRAT_CHAP=[
+  {name:"第一章_战略管理导论",              file:"企业战略管理/第一章_战略管理导论.html"},
+  {name:"第二章_企业战略管理者",             file:"企业战略管理/第二章_企业战略管理者.html"},
+  {name:"第三章_外部环境分析",               file:"企业战略管理/第三章_外部环境分析.html"},
+  {name:"第四章_内部环境分析",               file:"企业战略管理/第四章_内部环境分析.html"},
+  {name:"第五章_战略问题确认与基本战略选择",  file:"企业战略管理/第五章_战略问题的确认与基本战略选择.html"},
+  {name:"第六章_业务层战略",                 file:"企业战略管理/第六章_业务层战略.html"},
+  {name:"第七章_公司层战略",                 file:"企业战略管理/第七章_公司层战略.html"},
+  {name:"第八章_国际化战略",                 file:"企业战略管理/第八章_国际化战略.html"},
+  {name:"第九章_战略联盟并购与重组",          file:"企业战略管理/第九章_战略联盟并购与重组.html"},
+  {name:"第十章_战略实施的性质和特点",        file:"企业战略管理/第十章_战略实施的性质和特点.html"},
+  {name:"第十一章_战略实施的管理与控制",      file:"企业战略管理/第十一章_战略实施的管理与控制.html"},
+];
+const STRAT_REV=[
+  {name:"核心必备30个考点_企业战略管理", file:"企业战略管理/核心必备30个考点_企业战略管理.html", revcat:"s-hf"},
+  {name:"企业战略管理_复试案例分析库",   file:"企业战略管理/企业战略管理_复试案例分析库.html",  revcat:"s-case"},
+  {name:"企业战略管理_真题分析",         file:"企业战略管理/企业战略管理_真题分析.html",         revcat:"s-exam"},
+  {name:"企业战略管理真题解析_2016-2025",file:"企业战略管理/企业战略管理真题解析_2016-2025.html",revcat:"s-exam"},
+  {name:"企业战略管理_通用答题模板",     file:"企业战略管理/企业战略管理_通用答题模板.html",     revcat:"s-hf"},
+  {name:"全书框架导读_企业战略管理第2版",file:"企业战略管理/全书框架导读_企业战略管理第2版.html",revcat:"s-hf"},
+];
+const HR_CHAP=[
+  {name:"第一章_人力资源管理概述",     file:"人力资源管理/第一章_人力资源管理概述.html"},
+  {name:"第二章_人力资源相关经济理论", file:"人力资源管理/第二章_人力资源相关经济理论.html"},
+  {name:"第三章_组织与人力资源管理",   file:"人力资源管理/第三章_组织与人力资源管理.html"},
+  {name:"第四章_文化与人力资源管理",   file:"人力资源管理/第四章_文化与人力资源管理.html"},
+  {name:"第五章_人力资源规划",         file:"人力资源管理/第五章_人力资源规划.html"},
+  {name:"第六章_工作分析",             file:"人力资源管理/第六章_工作分析.html"},
+  {name:"第七章_员工招聘",             file:"人力资源管理/第七章_员工招聘.html"},
+  {name:"第八章_绩效管理",             file:"人力资源管理/第八章_绩效管理.html"},
+  {name:"第九章_薪酬",                 file:"人力资源管理/第九章_薪酬.html"},
+  {name:"第十章_人力资源开发与培训",   file:"人力资源管理/第十章_人力资源开发与培训.html"},
+  {name:"第十一章_激励",               file:"人力资源管理/第十一章_激励.html"},
+  {name:"第十二章_劳动关系",           file:"人力资源管理/第十二章_劳动关系.html"},
+  {name:"第十三章_战略人力资源管理",   file:"人力资源管理/第十三章_战略人力资源管理.html"},
+  {name:"第十四章_国际人力资源管理",   file:"人力资源管理/第十四章_国际人力资源管理.html"},
+];
+const HR_REV=[
+  {name:"核心必背30考点_人力资源管理",    file:"人力资源管理/核心必背30考点_人力资源管理.html",    revcat:"h-hf"},
+  {name:"人力资源管理_复试案例分析库",     file:"人力资源管理/人力资源管理_复试案例分析库.html",     revcat:"h-case"},
+  {name:"人力资源管理_真题分析",           file:"人力资源管理/人力资源管理_真题分析.html",           revcat:"h-exam"},
+  {name:"人力资源管理真题解析_2016-2025",  file:"人力资源管理/人力资源管理真题解析_2016-2025.html",  revcat:"h-exam"},
+  {name:"人力资源管理_通用答题模板",       file:"人力资源管理/人力资源管理_通用答题模板.html",       revcat:"h-hf"},
+  {name:"全书框架导读_人力资源管理第3版",  file:"人力资源管理/全书框架导读_人力资源管理第3版.html",  revcat:"h-hf"},
+];
+
+// ─── 高频考点数据 ─────────────────────────────────────────
+const STRAT_HF=[
+  {name:"差异化战略",         score:5,times:6,years:"2016·2017·2021·2022·2023·2024",type:"简答/论述",file:"企业战略管理/第六章_业务层战略.html"},
+  {name:"战略实施与控制",     score:5,times:6,years:"2016·2018·2020·2022·2025",    type:"简答/论述/案例",file:"企业战略管理/第十一章_战略实施的管理与控制.html"},
+  {name:"外部环境分析(五力/PESTEL)",score:5,times:5,years:"2016·2017·2018·2019·2020",type:"简答/论述",file:"企业战略管理/第三章_外部环境分析.html"},
+  {name:"内部环境分析(RBV/价值链)",score:5,times:5,years:"2016·2020·2022·2023",   type:"简答/论述",file:"企业战略管理/第四章_内部环境分析.html"},
+  {name:"多元化战略(BCG矩阵)", score:5,times:5,years:"2016·2018·2019·2021",       type:"简答/案例",file:"企业战略管理/第七章_公司层战略.html"},
+  {name:"成本领先战略",        score:4,times:3,years:"2016·2019·2024",             type:"简答",file:"企业战略管理/第六章_业务层战略.html"},
+  {name:"SWOT综合分析",        score:4,times:3,years:"2017·2021·2023",             type:"简答/论述",file:"企业战略管理/第五章_战略问题的确认与基本战略选择.html"},
+  {name:"国际化战略类型",      score:4,times:3,years:"2020·2023·2024",             type:"简答/案例",file:"企业战略管理/第八章_国际化战略.html"},
+  {name:"平衡计分卡(BSC)",     score:5,times:2,years:"2016·历年面试",              type:"简答",file:"企业战略管理/第十一章_战略实施的管理与控制.html"},
+  {name:"企业文化",            score:5,times:2,years:"2018·2021面试",              type:"论述",file:"企业战略管理/第十一章_战略实施的管理与控制.html"},
+  {name:"波特五力模型",        score:5,times:2,years:"2016·历年面试",              type:"简答/论述",file:"企业战略管理/第三章_外部环境分析.html"},
+  {name:"战略联盟",            score:3,times:2,years:"2018面试·2023",              type:"简答",file:"企业战略管理/第九章_战略联盟并购与重组.html"},
+  {name:"商业模式·平台战略",  score:3,times:2,years:"2024·2025",                  type:"简答",file:"企业战略管理/第六章_业务层战略.html"},
+  {name:"动态能力理论",        score:3,times:2,years:"2019面试·2023",              type:"简答",file:"企业战略管理/第四章_内部环境分析.html"},
+  {name:"战略管理过程",        score:3,times:2,years:"2025·历年面试",              type:"简答",file:"企业战略管理/第一章_战略管理导论.html"},
+];
+const HR_HF=[
+  {name:"绩效管理",            score:5,times:6,years:"2016·2018·2019·2021·2022·2024",type:"简答/论述/面试",file:"人力资源管理/第八章_绩效管理.html"},
+  {name:"薪酬管理",            score:5,times:5,years:"2017·2019·2021·2023·2025",    type:"简答/面试",file:"人力资源管理/第九章_薪酬.html"},
+  {name:"培训与职业发展",      score:5,times:5,years:"2016·2018·2020·2022·2024",    type:"简答/面试",file:"人力资源管理/第十章_人力资源开发与培训.html"},
+  {name:"员工招聘与甄选",      score:5,times:4,years:"2016·2019·2021·2023",         type:"简答/案例",file:"人力资源管理/第七章_员工招聘.html"},
+  {name:"战略性HRM/HRBP",     score:5,times:4,years:"2016·2020·2022·2024",         type:"论述/简答",file:"人力资源管理/第十三章_战略人力资源管理.html"},
+  {name:"组织设计与结构",      score:4,times:4,years:"2017·2019·2021·2023",         type:"简答/面试",file:"人力资源管理/第三章_组织与人力资源管理.html"},
+  {name:"员工关系与EAP",       score:4,times:4,years:"2018·2020·2022·2025",         type:"面试/论述",file:"人力资源管理/第十二章_劳动关系.html"},
+  {name:"胜任力模型(冰山)",    score:4,times:3,years:"2017·2021·2023",              type:"简答/论述",file:"人力资源管理/第三章_组织与人力资源管理.html"},
+  {name:"人力资源规划",        score:4,times:3,years:"2018·2021·2024",              type:"简答/面试",file:"人力资源管理/第五章_人力资源规划.html"},
+  {name:"HRM概论与数字化趋势", score:4,times:3,years:"2020·2023·2025",              type:"论述/面试",file:"人力资源管理/第一章_人力资源管理概述.html"},
+  {name:"工作分析",            score:3,times:2,years:"2019·2022",                   type:"面试",file:"人力资源管理/第六章_工作分析.html"},
+  {name:"激励理论",            score:3,times:2,years:"2017·2024",                   type:"简答",file:"人力资源管理/第十一章_激励.html"},
+  {name:"新生代员工管理",      score:3,times:2,years:"2023·2025",                   type:"面试/论述",file:"人力资源管理/第十一章_激励.html"},
+  {name:"劳动合同管理",        score:2,times:1,years:"2021",                        type:"面试",file:"人力资源管理/第十二章_劳动关系.html"},
+];
+
+// ─── 综合资料分类筛选 ─────────────────────────────────────
+let curRevCat='all';
+function setRevCat(cat,btn){
+  curRevCat=cat;
+  document.querySelectorAll('#rev-cat-tabs .fn').forEach(b=>b.classList.remove('a'));
+  btn.classList.add('a');
+  document.querySelectorAll('.card[data-sec="r"]').forEach(c=>{
+    const rc=c.dataset.revcat||'';
+    c.classList.toggle('hc', curRevCat!=='all' && rc!==curRevCat);
+  });
+}
+
+// ─── 今日复习章节统计 ─────────────────────────────────────
+const TODAY_STR2 = new Date().toISOString().slice(0,10);
+const TR_KEY = 'csu_todayrev_'+TODAY_STR2;
+let todayReviewed = JSON.parse(localStorage.getItem(TR_KEY)||'[]');
+function recordTodayReview(name){
+  if(!todayReviewed.includes(name)){
+    todayReviewed.push(name);
+    localStorage.setItem(TR_KEY, JSON.stringify(todayReviewed));
+    renderTodayReviewed();
+  }
+}
+function renderTodayReviewed(){
+  const el=document.getElementById('todayReviewedList');
+  if(!todayReviewed.length){el.innerHTML='<span style="color:var(--muted);font-size:13px">今日暂无复习记录</span>';return;}
+  el.innerHTML=todayReviewed.map(n=>`<span style="display:inline-block;background:var(--ts);color:var(--tst);border-radius:6px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;font-weight:600">${n.replace(/_/g,' ')}</span>`).join('');
+}
+
+// ─── 看板式章节任务 ───────────────────────────────────────
+// KANBAN_ITEMS: all chapters with kanban state + phase
+// ─── 三阶段看板 ────────────────────────────────────────────
+const KANBAN_ITEMS=[
+  ...STRAT_CHAP.map(c=>({id:c.file, name:c.name, subject:'战略管理', file:c.file})),
+  ...HR_CHAP.map(c=>({id:c.file, name:c.name, subject:'人力资源', file:c.file})),
+];
+const KB3_PHASES=['phase1','phase2','phase3'];
+// Storage: csu_kb3 = { "file:phase": true/false }
+let KB3 = JSON.parse(localStorage.getItem('csu_kb3')||'{}');
+function saveKB3(){localStorage.setItem('csu_kb3',JSON.stringify(KB3));}
+function kb3Key(id,phase){return id+'::'+phase;}
+function isKB3Done(id,phase){return !!KB3[kb3Key(id,phase)];}
+function toggleKB3(id,phase){
+  const key=kb3Key(id,phase);
+  KB3[key]=!KB3[key];
+  saveKB3();
+  renderKanban();
+  // sync card status: done if all 3 phases done
+  const allDone=KB3_PHASES.every(p=>isKB3Done(id,p));
+  const anyDone=KB3_PHASES.some(p=>isKB3Done(id,p));
+  const s=getS(id);
+  s.status=allDone?'done':(anyDone?'done':'no');
+  saveS(); updateStats();
+}
+
+function renderKanban(){
+  KB3_PHASES.forEach((phase,pi)=>{
+    const col=document.getElementById('kb3-col-'+phase);
+    if(!col)return;
+    col.innerHTML='';
+    let done=0;
+    KANBAN_ITEMS.forEach(it=>{
+      const isDone=isKB3Done(it.id,phase);
+      if(isDone)done++;
+      const card=document.createElement('div');
+      card.className='kb3-card'+(isDone?' kb3-done':'');
+      card.title='点击切换完成状态';
+      const subTag=it.subject==='战略管理'?'tgs':'tgh';
+      card.innerHTML=`<div class="kb3-card-name">${it.name.replace(/_/g,' ')}</div>
+        <div class="kb3-card-sub">
+          <span class="ctag ${subTag}" style="font-size:10px">${it.subject}</span>
+          <span class="kb3-card-status ${isDone?'done':'todo'}">${isDone?'✅ 已完成':'⬜ 未完成'}</span>
+        </div>`;
+      card.onclick=()=>toggleKB3(it.id,phase);
+      col.appendChild(card);
+    });
+    // progress bar
+    const total=KANBAN_ITEMS.length;
+    const pct=total?Math.round(done/total*100):0;
+    const bar=document.getElementById('kbbar-'+phase);
+    const lbl=document.getElementById('kbpct-'+phase);
+    if(bar)bar.style.width=pct+'%';
+    if(lbl)lbl.textContent=pct+'%';
+  });
+  updatePhaseProgress();
+}
+
+// ─── 三阶段进度统计（顶部进度条同步）────────────────────────
+function updatePhaseProgress(){
+  const phases=['phase1','phase2','phase3'];
+  const pbIds=['phase1','phase2','phase3'];
+  const total=KANBAN_ITEMS.length;
+  phases.forEach((ph,i)=>{
+    const done=KANBAN_ITEMS.filter(it=>isKB3Done(it.id,ph)).length;
+    const pct=total?Math.round(done/total*100):0;
+    const bar=document.getElementById('pb-'+pbIds[i]);
+    const lbl=document.getElementById('pct-'+pbIds[i]);
+    if(bar)bar.style.width=pct+'%';
+    if(lbl)lbl.textContent=pct+'%';
+  });
+}
+// stub for old references
+function getKB(id){return {status:'no',phase:'理解阶段'};}
+function saveKB(){}
+function kbMove(){}
+function kbPhase(){}
+
+
+// ─── 搜索增强 ─────────────────────────────────────────────
+const SEARCH_INDEX=[
+  ...STRAT_CHAP.map(c=>({name:c.name.replace(/_/g,' '),file:c.file,subj:'企业战略管理'})),
+  ...HR_CHAP.map(c=>({name:c.name.replace(/_/g,' '),file:c.file,subj:'人力资源管理'})),
+  ...STRAT_REV.map(c=>({name:c.name.replace(/_/g,' '),file:c.file,subj:'战略管理资料'})),
+  ...HR_REV.map(c=>({name:c.name.replace(/_/g,' '),file:c.file,subj:'人力资源资料'})),
+];
+let searchResultBox=null;
+
+/* --- chapter card search filter --- */
+
+
+// ─── 状态管理 ────────────────────────────────────────────
+let ST  = JSON.parse(localStorage.getItem('csu_st3')||'{}');
+let curF='all', curS='', curHF='all', curRT='both';
+const saveS=()=>localStorage.setItem('csu_st3',JSON.stringify(ST));
+function getS(f){if(!ST[f])ST[f]={status:'no',star:false};return ST[f];}
+
+// ─── 倒计时 ───────────────────────────────────────────────
+let cdDate=localStorage.getItem('csu_cddate')||'';
+let cdIv=null;
+function setCdDate(){
+  const v=document.getElementById('cd-input').value;
+  if(!v){document.getElementById('cd-hint').textContent='请选择日期';return;}
+  cdDate=v; localStorage.setItem('csu_cddate',cdDate);
+  document.getElementById('cd-hint').textContent='✅ 已保存';
+  setTimeout(()=>{document.getElementById('cd-hint').textContent='';},2000);
+  startCountdown();
+}
+function startCountdown(){
+  if(cdIv)clearInterval(cdIv);
+  renderCountdown();
+}
+function renderCountdown(){
+  const el=document.getElementById('cd-main');
+  if(!cdDate){el.innerHTML='<div style="color:#93c5fd;font-size:13px;padding:10px 0">尚未设置复试日期，请在下方输入并确认</div>';return;}
+  const now=new Date();
+  const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const target=new Date(cdDate);
+  const diff=target-today;
+  if(diff<=0){el.innerHTML='<div class="cd-finish">🎉 复试日期已到！祝你发挥出色！</div>';return;}
+  const d=Math.floor(diff/86400000);
+  el.innerHTML=`<div class="cd-flex">
+    <div class="cd-boxes">
+      <div class="cd-box"><div class="cd-num" style="font-size:40px">${d}</div><div class="cd-lbl">天</div></div>
+    </div>
+    <div style="font-size:13px;color:#93c5fd;line-height:2">
+      复试倒计时：还有 <strong style="color:#60a5fa;font-size:18px">${d}</strong> 天<br>
+      📅 复试日期：<strong style="color:#60a5fa">${cdDate}</strong><br>
+      加油！坚持就是胜利 💪
+    </div>
+  </div>`;
+}
+if(cdDate){
+  document.addEventListener('DOMContentLoaded',()=>{
+    const inp=document.getElementById('cd-input');
+    if(inp)inp.value=cdDate;
+  });
+}
+
+// ─── CARDS ───────────────────────────────────────────────
+function makeCard(item,sec){
+  const s=getS(item.file);
+  const tcls=sec==='s'?'tgs':(sec==='h'?'tgh':'tgr');
+  const tlbl=sec==='s'?'战略管理':(sec==='h'?'人力资源':'复习资料');
+  const fk=item.file.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+  const nm=item.name.replace(/'/g,"\\'");
+  const d=document.createElement('div');
+  d.className=`card s${s.status==='done'?'d':'n'}`;
+  d.dataset.file=item.file; d.dataset.sec=sec; d.dataset.name=item.name.toLowerCase();
+  if(item.revcat)d.dataset.revcat=item.revcat;
+  d.innerHTML=`<div class="ch"><span class="ctit">${item.name.replace(/_/g,' ')}</span>
+    <button class="sbtn${s.star?' on':''}" onclick="toggleStar('${fk}',this)">⭐</button></div>
+    <span class="ctag ${tcls}">${tlbl}</span>
+    <div class="cf">
+      <button class="ob" style="font-size:11px;padding:3px 9px;background:${s.status==='done'?'#16a34a':'var(--border)'};color:${s.status==='done'?'#fff':'var(--muted)'}"
+        onclick="toggleDoneStatus('${fk}','${nm}',this)">${s.status==='done'?'✅ 已学习':'📌 未学习'}</button>
+      <button class="ob" onclick="recordTodayReview('${item.name.replace(/_/g,' ')}');loadChapter('${fk}','${nm.replace(/_/g,' ')}')">打开 →</button>
+    </div>`;
+  return d;
+}
+function renderCards(){
+  ['gs','gh','gr'].forEach(id=>document.getElementById(id).innerHTML='');
+  STRAT_CHAP.forEach(f=>document.getElementById('gs').appendChild(makeCard(f,'s')));
+  HR_CHAP.forEach(f=>document.getElementById('gh').appendChild(makeCard(f,'h')));
+  [...STRAT_REV,...HR_REV].forEach(f=>document.getElementById('gr').appendChild(makeCard(f,'r')));
+  applyFilter(); updateStats();
+}
+function toggleDoneStatus(file,name,btn){
+  const s=getS(file);
+  const newVal=s.status==='done'?'no':'done';
+  s.status=newVal; saveS();
+  const cl=btn.closest('.card');
+  cl.className=cl.className.replace(/s[nid]/,newVal==='done'?'sd':'sn');
+  btn.style.background=newVal==='done'?'#16a34a':'var(--border)';
+  btn.style.color=newVal==='done'?'#fff':'var(--muted)';
+  btn.textContent=newVal==='done'?'✅ 已学习':'📌 未学习';
+  updateStats(); applyFilter();
+}
+function toggleStar(file,btn){
+  const s=getS(file); s.star=!s.star; saveS();
+  btn.classList.toggle('on',s.star); updateStats(); applyFilter();
+}
+function applyFilter(){
+  document.querySelectorAll('.card').forEach(c=>{
+    const s=getS(c.dataset.file);
+    const mf=curF==='all'||(curF==='no'&&s.status!=='done')||(curF==='done'&&s.status==='done')||(curF==='star'&&s.star);
+    const ms=!curS||c.dataset.name.includes(curS);
+    // revcat filter for review materials
+    const rc=c.dataset.revcat||'';
+    const mr=c.dataset.sec!=='r'||(curRevCat==='all'||rc===curRevCat);
+    c.classList.toggle('hc',!(mf&&ms&&mr));
+  });
+}
+function setF(f,btn){curF=f;document.querySelectorAll('.fn').forEach(b=>b.classList.remove('a'));btn.classList.add('a');applyFilter();}
+function updateStats(){
+  const all=[...STRAT_CHAP,...STRAT_REV,...HR_CHAP,...HR_REV];
+  document.getElementById('totalC').textContent=all.length;
+  let done=0,stars=0;
+  all.forEach(f=>{const s=getS(f.file);if(s.status==='done')done++;if(s.star)stars++;});
+  document.getElementById('doneC').textContent=done;
+  document.getElementById('starC').textContent=stars;
+}
+function toggleSec(gid,tid){
+  const el=document.getElementById(gid),tg=document.getElementById(tid);
+  el.classList.toggle('h');
+  const collapsed=el.classList.contains('h');
+  tg.innerHTML=collapsed?'展开 ▸':'折叠 ▾';
+}
+
+// ─── RADAR ───────────────────────────────────────────────
+let chartS=null, chartH=null;
+function getChartColors(dark){
+  return{
+    s:{bg:'rgba(37,99,235,0.18)',bd:'rgba(37,99,235,0.85)'},
+    h:{bg:'rgba(190,24,93,0.18)',bd:'rgba(190,24,93,0.85)'},
+    grid:dark?'rgba(255,255,255,0.12)':'rgba(0,0,0,0.1)',
+    tick:dark?'rgba(255,255,255,0.55)':'rgba(0,0,0,0.5)',
+    ptick:dark?'#9ca3af':'#5a6a7e'
+  };
+}
+function buildRadar(canvasId,data,color,title){
+  const ctx=document.getElementById(canvasId).getContext('2d');
+  const dark=document.body.classList.contains('dark');
+  const cl=getChartColors(dark);
+  const labels=data.map(d=>d.name.length>8?d.name.slice(0,8)+'…':d.name);
+  const scores=data.map(d=>d.score);
+  const cfg={
+    type:'radar',
+    data:{
+      labels,
+      datasets:[{label:title,data:scores,
+        backgroundColor:color.bg,borderColor:color.bd,
+        pointBackgroundColor:color.bd,pointBorderColor:'#fff',
+        pointRadius:4,borderWidth:2,pointHoverRadius:6}]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:true,
+      scales:{r:{
+        min:0,max:5,ticks:{stepSize:1,color:cl.tick,backdropColor:'transparent',font:{size:10}},
+        grid:{color:cl.grid},angleLines:{color:cl.grid},
+        pointLabels:{color:cl.ptick,font:{size:10}}
+      }},
+      plugins:{legend:{display:false},tooltip:{
+        callbacks:{label:ctx=>`${ctx.label}: ${['','★','★★','★★★','★★★★','★★★★★'][ctx.raw]}`}
+      }}
+    }
+  };
+  const chart=new Chart(ctx,cfg);
+  return chart;
+}
+function initCharts(){
+  if(chartS){chartS.destroy();chartS=null;}
+  if(chartH){chartH.destroy();chartH=null;}
+  const dark=document.body.classList.contains('dark');
+  const cl=getChartColors(dark);
+  chartS=buildRadar('chartS',STRAT_HF,cl.s,'战略管理');
+  chartH=buildRadar('chartH',HR_HF,cl.h,'人力资源');
+}
+function setRadarTab(mode,btn){
+  curRT=mode;
+  document.querySelectorAll('#radarTabs .tab').forEach(b=>b.classList.remove('a'));
+  btn.classList.add('a');
+  const rg=document.getElementById('radarGrid');
+  const rs=document.getElementById('rc-s');
+  const rh=document.getElementById('rc-h');
+  if(mode==='both'){rs.style.display='';rh.style.display='';rg.style.gridTemplateColumns='1fr 1fr';}
+  else if(mode==='strat'){rs.style.display='';rh.style.display='none';rg.style.gridTemplateColumns='1fr';}
+  else{rs.style.display='none';rh.style.display='';rg.style.gridTemplateColumns='1fr';}
+  setTimeout(()=>{if(chartS)chartS.resize();if(chartH)chartH.resize();},50);
+}
+
+// ─── HF LIST ─────────────────────────────────────────────
+function starStr(n){return'★'.repeat(n)+'☆'.repeat(5-n);}
+function renderHF(){
+  const g=document.getElementById('hfGrid'); g.innerHTML='';
+  const all=[
+    ...STRAT_HF.map(d=>({...d,cat:'strat',catLbl:'战略管理',tagCls:'tgs'})),
+    ...HR_HF.map(d=>({...d,cat:'hr',catLbl:'人力资源',tagCls:'tgh'}))
+  ];
+  all.forEach(d=>{
+    const show=curHF==='all'||(curHF==='5'&&d.score===5)||(curHF==='4'&&d.score===4)||(curHF==='3'&&d.score===3)||(curHF===d.cat);
+    if(!show)return;
+    const div=document.createElement('div');
+    div.className='hfi';
+    const fc=d.file.replace(/'/g,"\\'");
+    div.innerHTML=`<div class="hfi-l">
+      <div class="hfi-name">${d.name}</div>
+      <div class="hfi-meta">出现 ${d.times} 次 · ${d.years} · ${d.type}</div>
+      <span class="hfi-tag ctag ${d.tagCls}">${d.catLbl}</span>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <div class="hfi-stars">${starStr(d.score)}</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:4px">${['','低频','低频','中频','高频','必考'][d.score]}</div>
+    </div>`;
+    div.onclick=()=>loadChapter(d.file,d.name);
+    g.appendChild(div);
+  });
+}
+function filterHF(f,btn){
+  curHF=f;
+  document.querySelectorAll('.hff').forEach(b=>b.classList.remove('a'));
+  btn.classList.add('a'); renderHF();
+}
+
+// ─── DARK MODE ───────────────────────────────────────────
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('csu_dark3',document.body.classList.contains('dark')?'1':'0');
+  setTimeout(()=>{initCharts();},80);
+}
+
+// ─── SCROLL TOP ──────────────────────────────────────────
+window.addEventListener('scroll',()=>document.getElementById('scrollTop').classList.toggle('show',scrollY>300));
+
+// ─── INIT ────────────────────────────────────────────────
+if(localStorage.getItem('csu_dark3')==='1')document.body.classList.add('dark');
+if(cdDate){
+  const inp=document.getElementById('cd-input');
+  if(inp)inp.value=cdDate;
+}
+renderCountdown();
+startCountdown();
+renderTodayReviewed();
+renderCards();
+renderHF();
+renderKanban();
+setTimeout(initCharts,120);
+
+// ─── SPA CHAPTER LOADER ─────────────────────────────────────────────────────
+let _curChapterFile = '';
+let _pendingHighlight = '';
+function loadChapter(file, titleHint){
+  _curChapterFile = file;
+  const name = (titleHint || file.split('/').pop().replace('.html','').replace(/_/g,' '));
+  document.getElementById('chapterTitle').textContent = name;
+  // ★ 如果有待高亮关键词，拼入 URL 参数，让章节页自己执行高亮
+  // （兼容 search.js 通过 window._pendingHighlight 设置的值）
+  const kw = window._pendingHighlight || _pendingHighlight || '';
+  window._pendingHighlight = ''; _pendingHighlight = '';
+  // ★ 对文件路径中的特殊字符（× 等）进行编码，防止 iframe 找不到文件
+  const encodedFile = file.split('/').map(seg => encodeURIComponent(seg)).join('/');
+  const src = kw ? `${encodedFile}?highlight=${encodeURIComponent(kw)}` : encodedFile;
+  document.getElementById('chapterFrame').src = src;
+  document.getElementById('chapterOverlay').classList.add('open');
+  document.getElementById('chapterPanel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  /* hide index search pill while chapter is open */
+  var _sp=document.getElementById('search-pill');if(_sp)_sp.style.display='none';
+  var _st=document.getElementById('search-trigger');if(_st)_st.style.display='none';
+}
+function closeChapter(){
+  document.getElementById('chapterOverlay').classList.remove('open');
+  document.getElementById('chapterPanel').classList.remove('open');
+  document.body.style.overflow = '';
+  /* restore index search trigger */
+  var _sp=document.getElementById('search-pill');if(_sp)_sp.style.display='none';
+  var _st=document.getElementById('search-trigger');if(_st)_st.style.display='flex';
+  // slight delay before clearing src to avoid flicker
+  setTimeout(()=>{ document.getElementById('chapterFrame').src='about:blank'; }, 350);
+}
+function openChapterExternal(){
+  if(_curChapterFile){
+    const encoded = _curChapterFile.split('/').map(s=>encodeURIComponent(s)).join('/');
+    window.open(encoded, '_blank');
+  }
+}
+// close on Escape
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeChapter(); });
+
+</script>
+
+<!-- ════ SPA CHAPTER PANEL ════ -->
+<div id="chapterOverlay" onclick="closeChapter()"></div>
+<div id="chapterPanel">
+  <div id="chapterBar">
+    <span style="font-size:18px;flex-shrink:0">📄</span>
+    <span id="chapterTitle">加载中…</span>
+    <button class="cpanel-btn" onclick="openChapterExternal()" title="在新标签页打开">↗ 新标签</button>
+    <button class="cpanel-btn cpanel-close" onclick="closeChapter()">✕</button>
+  </div>
+  <iframe id="chapterFrame" src="about:blank" allowfullscreen></iframe>
+</div>
+<!-- ════ 全站搜索系统 ════ -->
+<link rel="stylesheet" href="search.css">
+<script src="search_index.js"></script>
+<script src="search.js"></script>
+
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

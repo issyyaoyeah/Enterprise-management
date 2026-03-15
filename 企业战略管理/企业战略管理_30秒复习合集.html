@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《企业战略管理》30秒复习合集 · 中南大学企管学硕复试</title>
+<style>
+  :root {
+    --bg: #f5f4ef;
+    --bg2: #edecea;
+    --card: #ffffff;
+    --card-border: #e0ddd8;
+    --text: #1a1916;
+    --text2: #4a4845;
+    --text3: #7a7775;
+    --accent: #c0392b;
+    --accent2: #e74c3c;
+    --gold: #d4a017;
+    --green: #16a085;
+    --blue: #2980b9;
+    --purple: #8e44ad;
+    --nav-bg: #1a1916;
+    --nav-text: #f5f4ef;
+    --tag-bg: #fff3f0;
+    --tag-border: #f5c6c0;
+    --highlight: #fffbe6;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.14);
+    --radius: 10px;
+    --font: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  }
+
+  [data-theme="dark"] {
+    --bg: #111110;
+    --bg2: #1a1917;
+    --card: #232220;
+    --card-border: #333230;
+    --text: #f0ede8;
+    --text2: #c0bdb8;
+    --text3: #888683;
+    --accent: #e74c3c;
+    --gold: #f0c040;
+    --green: #1abc9c;
+    --nav-bg: #0a0908;
+    --nav-text: #f0ede8;
+    --tag-bg: #2a1510;
+    --tag-border: #5a2018;
+    --highlight: #2a2510;
+    --shadow: 0 2px 12px rgba(0,0,0,0.4);
+    --shadow-hover: 0 6px 24px rgba(0,0,0,0.6);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 15px; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-variant-numeric: tabular-nums;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: var(--nav-bg);
+    color: var(--nav-text);
+    padding: 28px 40px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,0.015) 40px,
+      rgba(255,255,255,0.015) 80px
+    );
+  }
+  .header-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+  .header-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  header h1 em { color: var(--gold); font-style: normal; }
+  .header-meta {
+    margin-top: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 5px; }
+
+  /* ===== TOP NAV ===== */
+  nav {
+    background: var(--nav-bg);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  nav::-webkit-scrollbar { height: 3px; }
+  nav::-webkit-scrollbar-track { background: transparent; }
+  nav::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+    white-space: nowrap;
+    gap: 2px;
+  }
+  .nav-inner a {
+    display: inline-block;
+    padding: 12px 14px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-inner a:hover,
+  .nav-inner a.active {
+    color: #fff;
+    border-bottom-color: var(--accent);
+  }
+  .nav-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .nav-btn {
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.8);
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-family: var(--font);
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+  /* ===== SEARCH BAR ===== */
+  
+  
+  
+  
+  
+
+  mark { background: #ffe066; color: #111; border-radius: 2px; padding: 0 1px; }
+
+  /* ===== INTRO CARD ===== */
+  .intro-section {
+    max-width: 1100px;
+    margin: 32px auto 0;
+    padding: 0 24px;
+  }
+  .intro-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-left: 5px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    box-shadow: var(--shadow);
+  }
+  @media (max-width: 600px) {
+    .intro-card { grid-template-columns: 1fr; }
+  }
+  .intro-stat { text-align: center; }
+  .intro-stat .num {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .intro-stat .label { font-size: 12px; color: var(--text3); margin-top: 4px; }
+
+  /* ===== CHAPTER GRID ===== */
+  .chapter-grid {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  /* ===== CHAPTER CARD ===== */
+  .chapter-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.25s, transform 0.2s;
+  }
+  .chapter-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .chapter-header {
+    padding: 16px 20px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .chapter-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 900;
+    flex-shrink: 0;
+    color: #fff;
+    letter-spacing: 0;
+  }
+  .chapter-title { flex: 1; }
+  .chapter-title h2 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+  }
+  .chapter-title .subtitle {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 2px;
+  }
+
+  .chapter-body { padding: 16px 20px 18px; }
+
+  /* ===== REVIEW ITEMS ===== */
+  .review-item {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--card-border);
+  }
+  .review-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .review-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .review-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .review-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .review-content {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+    padding-left: 30px;
+  }
+  .kw {
+    color: var(--accent2);
+    font-weight: 700;
+  }
+  .kw-green { color: var(--green); font-weight: 700; }
+  .kw-blue { color: var(--blue); font-weight: 700; }
+  .kw-gold { color: var(--gold); font-weight: 700; }
+  .kw-purple { color: var(--purple); font-weight: 700; }
+
+  /* Formula style */
+  .formula {
+    background: var(--highlight);
+    border: 1px solid var(--card-border);
+    border-radius: 5px;
+    padding: 7px 12px;
+    font-size: 12.5px;
+    color: var(--text);
+    margin: 5px 0;
+    font-family: 'Courier New', monospace;
+    line-height: 1.5;
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--accent);
+    font-size: 10px;
+    padding: 1px 7px;
+    border-radius: 3px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .tag-green {
+    background: rgba(22,160,133,0.08);
+    border-color: rgba(22,160,133,0.3);
+    color: var(--green);
+  }
+  .tag-blue {
+    background: rgba(41,128,185,0.08);
+    border-color: rgba(41,128,185,0.3);
+    color: var(--blue);
+  }
+
+  /* Mnemonic */
+  .mnemonic {
+    background: linear-gradient(90deg, rgba(192,57,43,0.06), transparent);
+    border-left: 3px solid var(--accent);
+    padding: 6px 10px;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 4px 0;
+    border-radius: 0 5px 5px 0;
+  }
+
+  /* Color themes for chapter numbers */
+  .color-1 { background: #c0392b; }
+  .color-2 { background: #e67e22; }
+  .color-3 { background: #27ae60; }
+  .color-4 { background: #2980b9; }
+  .color-5 { background: #8e44ad; }
+  .color-6 { background: #16a085; }
+  .color-7 { background: #d35400; }
+  .color-8 { background: #2c3e50; }
+  .color-9 { background: #c0392b; }
+  .color-10 { background: #7f8c8d; }
+  .color-11 { background: #1a252f; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--nav-bg);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    margin-top: 48px;
+  }
+  footer strong { color: rgba(255,255,255,0.7); }
+
+  /* ===== BACK TO TOP ===== */
+  #back-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 3px 12px rgba(192,57,43,0.4);
+    transition: opacity 0.3s, transform 0.3s;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    z-index: 200;
+  }
+  #back-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+  #back-top:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(192,57,43,0.5); }
+
+  /* ===== PROGRESS BAR ===== */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--accent);
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.1s;
+  }
+
+  @media (max-width: 768px) {
+    header { padding: 20px 20px 16px; }
+    
+    header h1 { font-size: 20px; }
+    .chapter-grid { padding: 0 12px; gap: 14px; grid-template-columns: 1fr; }
+    .intro-section { padding: 0 12px; }
+  }
+
+
+/* ===== FLOATING SEARCH PILL ===== */
+#search-pill {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 9999;
+  background: #1e1e2e;
+  color: #e0e0e0;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+  font-family: 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all .25s ease;
+  overflow: hidden;
+  cursor: pointer;
+  /* collapsed: just the icon */
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  justify-content: center;
+}
+#search-pill.expanded {
+  width: 320px;
+  height: auto;
+  min-height: 44px;
+  padding: 8px 14px;
+  gap: 7px;
+  cursor: default;
+}
+#search-pill-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  line-height: 1;
+  user-select: none;
+}
+#search-pill.expanded #search-pill-icon { font-size: 15px; }
+#search-pill-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-family: inherit;
+  min-width: 0;
+  display: none;
+}
+#search-pill.expanded #search-pill-input { display: block; }
+#search-pill-info {
+  font-size: 12px;
+  color: #aaa;
+  white-space: nowrap;
+  display: none;
+}
+#search-pill.expanded #search-pill-info { display: inline; }
+.pill-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: color .15s, background .15s;
+  display: none;
+  flex-shrink: 0;
+}
+#search-pill.expanded .pill-btn { display: inline-block; }
+.pill-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+mark.pill-hl {
+  background: rgba(255,165,0,0.35);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+mark.pill-hl.pill-hl-active {
+  background: #ff8c00;
+  color: #000;
+  border-radius: 2px;
+  outline: 2px solid #ff8c00;
+}
+
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-badge">⚡ 30秒复习合集</div>
+    <h1>《企业战略管理》<em>极速背诵版</em></h1>
+    <div class="header-meta">
+      <span>📚 蓝海林 第2版</span>
+      <span>🎓 中南大学企管学硕复试</span>
+      <span>📅 生成日期：2026-03-13</span>
+      <span>📋 全11章核心要点</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <a href="#ch1">第一章</a>
+    <a href="#ch2">第二章</a>
+    <a href="#ch3">第三章</a>
+    <a href="#ch4">第四章</a>
+    <a href="#ch5">第五章</a>
+    <a href="#ch6">第六章</a>
+    <a href="#ch7">第七章</a>
+    <a href="#ch8">第八章</a>
+    <a href="#ch9">第九章</a>
+    <a href="#ch10">第十章</a>
+    <a href="#ch11">第十一章</a>
+    <div class="nav-controls">
+      
+      <button class="nav-btn" onclick="toggleDark()">🌙 夜间</button>
+    </div>
+  </div>
+</nav>
+
+<!-- SEARCH BAR -->
+
+</div>
+
+<!-- INTRO -->
+<div class="intro-section">
+  <div class="intro-card">
+    <div class="intro-stat">
+      <div class="num">11</div>
+      <div class="label">章节覆盖</div>
+    </div>
+    <div class="intro-stat">
+      <div class="num">80+</div>
+      <div class="label">核心考点</div>
+    </div>
+    <div class="intro-stat">
+      <div class="num">30秒</div>
+      <div class="label">每章快速过</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHAPTER GRID -->
+<div class="chapter-grid" id="content-area">
+
+  <!-- ===== 第一章 ===== -->
+  <div class="chapter-card" id="ch1">
+    <div class="chapter-header">
+      <div class="chapter-num color-1">一</div>
+      <div class="chapter-title">
+        <h2>战略管理导论</h2>
+        <div class="subtitle">战略本质 · 三层结构 · 管理过程</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">VUCA = 4特征</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">动态·不确定·复杂·模糊</span><br>
+          <span style="font-size:11px;color:var(--text3)">← 技术进步 + 全球化驱动</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">战略决策3类型</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">战略承诺（价值,20年+）→ 战略决策（理性,3-5年）→ 战略行动（速度,即时）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">明茨伯格5P</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">计划·模式·定位·愿景·计谋</span>
+          <div class="mnemonic">🔑 口诀：计模位愿谋</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">IO vs RBV</div>
+        </div>
+        <div class="review-content">
+          <span class="kw-blue">IO</span>：先选行业（外→内）<br>
+          <span class="kw-green">RBV</span>：先看资源（内→外）<br>
+          <span style="font-size:11px;color:var(--text3)">教材用RBV框架</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">三层战略</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">公司层（多元化组合）→ 业务层（单行业竞争）→ 职能层（支撑）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">战略管理过程</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">制定</span>（意图→使命→目标→战略）→
+          <span class="kw">实施</span>（目标分解→计划→职能→管理）→
+          <span class="kw">评价控制</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">7</div>
+          <div class="review-title">动态管理三原则</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">承诺坚定</span>（连续性）+
+          <span class="kw">决策科学</span>（正确性）+
+          <span class="kw">行动迅速</span>（效率）
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第二章 ===== -->
+  <div class="chapter-card" id="ch2">
+    <div class="chapter-header">
+      <div class="chapter-num color-2">二</div>
+      <div class="chapter-title">
+        <h2>企业战略管理者</h2>
+        <div class="subtitle">领导力 · 代理问题 · 利益相关者</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">战略管理者定义</div>
+        </div>
+        <div class="review-content">
+          整体责任 + 三重影响<br>
+          <span class="kw">重大性·长期性·根本性</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">委托代理问题</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">信息不对称</span> → 利益冲突<br>
+          股东 vs 经理人 · 代理成本
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">董事会职能</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">监督·咨询·资源</span><br>
+          内部董事 vs 独立董事
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">战略领导力5大行为</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 方向·人才·文化·道德·平衡</div>
+          缺一不可，相互支撑
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">企业家精神4要素</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">识机·担险·创新·整合</span><br>
+          动态环境下的核心能力
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">权力-关注矩阵</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">略·知·满·重（A/B/C/D）</span><br>
+          <span class="kw-green">D象限</span>=重要参与者，最需关注
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">7</div>
+          <div class="review-title">企业文化三层次</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">价值观 → 信仰 → 行为范式</div>
+          由易识别→到难改变（冰山模型）
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第三章 ===== -->
+  <div class="chapter-card" id="ch3">
+    <div class="chapter-header">
+      <div class="chapter-num color-3">三</div>
+      <div class="chapter-title">
+        <h2>外部环境分析</h2>
+        <div class="subtitle">PESTEL · 波特五力 · 战略群组</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">PESTEL六维</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">政治(P)·经济(E)·社会(S)·技术(T)·生态(E)·法律(L)</span><br>
+          分析宏观环境机会与威胁
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">波特五力</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">新进入者·替代品·购买者·供应商·现有竞争者</span><br>
+          评估<span class="kw-green">行业</span>吸引力
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">战略群组</div>
+        </div>
+        <div class="review-content">
+          同行业中采用<span class="kw">相似战略</span>的企业集合<br>
+          帮助识别直接竞争对手
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">分析层次顺序</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">宏观(PESTEL) → 行业(五力) → 竞争(群组) → 输出O/T → 进入SWOT</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">进入壁垒6类</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 规模经济·资本要求·转换成本·品牌忠诚·政策壁垒·经验曲线</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">战略要素评价法</div>
+        </div>
+        <div class="review-content">
+          加权打分 → 总分<span class="kw-green">&gt;2.5</span>外部环境好，<span class="kw">&lt;2.5</span>外部环境差
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第四章 ===== -->
+  <div class="chapter-card" id="ch4">
+    <div class="chapter-header">
+      <div class="chapter-num color-4">四</div>
+      <div class="chapter-title">
+        <h2>内部环境分析</h2>
+        <div class="subtitle">资源·能力·价值链·核心专长</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">内部分析三特点</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">复杂性·不确定性·利益冲突性</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">企业资源三分法</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">人力资源·有形资源·无形资源</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">企业能力四类型</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">管理 → 经营 → 整合 → 动态（层层递进）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">价值链 5+4 结构</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">基本</span>"输制输营服"（进料→生产→出料→营销→售后）<br>
+          <span class="kw">支持</span>"基人技采"（基础设施·人力·技术·采购）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">核心专长四标准</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 有稀难替——有价值·稀缺·难以模仿·不可替代</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">核心专长发挥三路径</div>
+        </div>
+        <div class="review-content">
+          <span class="kw-blue">规模经济</span>（横向扩张）·
+          <span class="kw-green">范围经济</span>（相关多元化）·
+          <span class="kw-purple">降低交易成本</span>（纵向整合）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">7</div>
+          <div class="review-title">本章核心逻辑链</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">历史 → 资源 → 能力 → 价值链 → 核心专长 → 战略问题确认（第5章）</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第五章 ===== -->
+  <div class="chapter-card" id="ch5">
+    <div class="chapter-header">
+      <div class="chapter-num color-5">五</div>
+      <div class="chapter-title">
+        <h2>战略问题确认与基本战略选择</h2>
+        <div class="subtitle">SWOT · 战略承诺 · 战略目标</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">战略问题</div>
+        </div>
+        <div class="review-content">
+          源自内外部关键因素趋势性变化，具有<span class="kw">重大·长期·根本</span>影响<br>
+          分外部（机会/威胁类）+ 内部（优劣势类）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">SWOT确认三步</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">列举比对 → 四类组合(SO/ST/WO/WT) → 识别性质（层次/内容/责任）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">战略承诺</div>
+        </div>
+        <div class="review-content">
+          四要素：<span class="kw">使命→愿景→战略意图→价值观</span><br>
+          <span style="font-size:11px;color:var(--text3)">不能太宽，不能太具体</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">基本战略方向①</div>
+        </div>
+        <div class="review-content">
+          行业×市场维度：<span class="kw">集中/行业多元化/国际化/行业市场双多元化</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">基本战略方向②（发展态势）5种</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 稳（高→高）·增（低→高/最流行）·收（高→低/以退为进）·防（低→低/等待）·混（大企业组合）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">战略目标</div>
+        </div>
+        <div class="review-content">
+          阶段性结果的<span class="kw">精确可测</span>描述<br>
+          三合理（内容/层次/时间）；四矛盾（结果vs手段·定量vs定性·挑战vs可能·坚持vs调整）
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第六章 ===== -->
+  <div class="chapter-card" id="ch6">
+    <div class="chapter-header">
+      <div class="chapter-num color-6">六</div>
+      <div class="chapter-title">
+        <h2>业务层战略</h2>
+        <div class="subtitle">竞争定位 · 动态竞争 · 先动优势</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">波特四种基本定位</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">低成本定位 / 高差异定位 / 低成本聚焦 / 高差异聚焦</span><br>
+          两维度：市场宽窄 + 成本差异
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">夹在中间</div>
+        </div>
+        <div class="review-content">
+          波特认为既不偏向成本也不偏向差异→<span class="kw">难以建立竞争优势</span>（危险地带）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">整合战略</div>
+        </div>
+        <div class="review-content">
+          事业部制同时实施低成本+高差异<br>
+          分权→<span class="kw">相克</span>，集权→<span class="kw-green">相生</span>（伊甸园）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">动态竞争（陈明哲模型）</div>
+        </div>
+        <div class="review-content">
+          了解竞争态势 → 预测互动结果 → 分析资源能力<br>
+          <span class="kw-blue">市场产品共同性</span>（反击路线）+ <span class="kw-green">资源相似性</span>（反击速度）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">先动 vs 跟进</div>
+        </div>
+        <div class="review-content">
+          先动：<span class="kw">市场+忠诚+规则</span>优势<br>
+          跟进：<span class="kw-green">产品完善</span>优势<br>
+          跟进速度决定先动优势大小
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">自灭自新</div>
+        </div>
+        <div class="review-content">
+          在竞争优势被侵蚀前<span class="kw">主动放弃</span>并建立新优势，<span class="kw">时机</span>把握关键
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第七章 ===== -->
+  <div class="chapter-card" id="ch7">
+    <div class="chapter-header">
+      <div class="chapter-num color-7">七</div>
+      <div class="chapter-title">
+        <h2>公司层战略</h2>
+        <div class="subtitle">多元化 · 纵向一体化 · 范围经济</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">总部存在理由</div>
+        </div>
+        <div class="review-content">
+          创造<span class="kw">净价值（1+1&gt;2）</span>，抵消自身成本
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">相关多元化 = </div>
+        </div>
+        <div class="review-content">
+          <span class="kw">纵向一体化</span>（上下游）+ <span class="kw-green">共享型</span>（范围经济）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">纵向一体化优缺点</div>
+        </div>
+        <div class="review-content">
+          <span class="kw-green">3优</span>：降交易成本·增市场影响力·防技术外泄<br>
+          <span class="kw">4缺</span>：规模经济牺牲·代理成本·风险·创新
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">范围经济3类型</div>
+        </div>
+        <div class="review-content">
+          <span class="kw-blue">经营性</span>（共享活动/核心专长传递）·
+          <span class="kw">财务性</span>（资本市场/税收）·
+          <span class="kw-purple">反竞争性</span>（多点竞争）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">三种多元化管理模式</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">相关：合作型·主观整体·战略控制
+不相关：竞争型·客观单独·财务控制
+混合：SBU型（战略业务单元）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">推进策略五要素</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 动机（三大陷阱）·时机（4条件）·方式（新建/并购/联盟）·速度（成功一个再一个）·程度（有所不为）</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第八章 ===== -->
+  <div class="chapter-card" id="ch8">
+    <div class="chapter-header">
+      <div class="chapter-num color-8">八</div>
+      <div class="chapter-title">
+        <h2>国际化战略</h2>
+        <div class="subtitle">I-R矩阵 · 进入方式 · 四类动因</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">核心定义</div>
+        </div>
+        <div class="review-content">
+          国际化战略 = <span class="kw">市场多元化战略</span>，将企业竞争优势（核心专长）跨国转移
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">I-R矩阵四象限</div>
+        </div>
+        <div class="review-content">
+          两轴：<span class="kw">全球整合压力</span>（纵）+ <span class="kw-blue">本土化响应压力</span>（横）
+          <div class="formula">全球化/多国化/跨国化/国际化（狭义）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">战略类型口诀</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 全球=高整低响·产品结构；多国=低整高响·地区结构；跨国=两高·矩阵；国际=两低·事业部</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">进入方式顺序</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">出口 → 许可证 → 特许经营 → 合资 → 绿地投资 → 并购</div>
+          控制↑ 资源↑ 风险↑
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">四类动因</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 市资效战：市场寻求·资源寻求·效率寻求·战略资产寻求</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">与第七章关系</div>
+        </div>
+        <div class="review-content">
+          第7章 = <span class="kw-blue">行业多元化</span>（跨行业）<br>
+          第8章 = <span class="kw-green">市场多元化</span>（跨国家）<br>
+          两者都是公司层战略
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第九章 ===== -->
+  <div class="chapter-card" id="ch9">
+    <div class="chapter-header">
+      <div class="chapter-num color-9">九</div>
+      <div class="chapter-title">
+        <h2>战略联盟、并购与重组</h2>
+        <div class="subtitle">企业扩张三大路径</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">战略联盟定义</div>
+        </div>
+        <div class="review-content">
+          两企业以上·<span class="kw">保持独立性</span>·共享资源/风险·介于市场与兼并之间
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">联盟六大动机</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 进获分加建学（进入市场/获互补/分风险/加速研发/建标准/学技术）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">并购三种类型</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">横</span>（同行）·<span class="kw-blue">纵</span>（上下游）·<span class="kw-green">混</span>（不相关）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">并购失败五原因</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 价整文高人（溢价高/整合难/文化冲/协同高估/人才流失）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">重组两条路径</div>
+        </div>
+        <div class="review-content">
+          <span class="kw-blue">RBV</span>→<span class="kw">业务重组</span>（换业务）<br>
+          <span class="kw-green">I/O</span>→<span class="kw">组织重组</span>（换管法：结构/机制/文化）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">三路径选择逻辑</div>
+        </div>
+        <div class="review-content">
+          灵活互补→<span class="kw-green">联盟</span> | 快速控制→<span class="kw">并购</span> | 归核聚焦→<span class="kw-blue">重组</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第十章 ===== -->
+  <div class="chapter-card" id="ch10">
+    <div class="chapter-header">
+      <div class="chapter-num color-10">十</div>
+      <div class="chapter-title">
+        <h2>战略实施的性质和特点</h2>
+        <div class="subtitle">河床模式 · 恰当性 · 推进策略</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">战略实施定义</div>
+        </div>
+        <div class="review-content">
+          战略实施 = <span class="kw">计划→行动→目标</span><br>
+          过程4步：目标分解→资源配置→政策支持→评价控制
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">河床模式</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">河床</span>=承诺（不变），<span class="kw-blue">河水</span>=行动（灵活）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">恰当性三含义</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">承诺坚定</span> + <span class="kw-green">决策科学</span> + <span class="kw-blue">行动迅速</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">两大难点</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">内部冲突</span>（回避/缓解/正视）+ <span class="kw-blue">有限理性</span>（西蒙）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">三种实施类型</div>
+        </div>
+        <div class="review-content">
+          <span class="kw-green">执行型</span>（低+足）/ <span class="kw-blue">学习型</span>（低+缺）/ <span class="kw">探索型</span>（高动态）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">制定 vs 实施对比</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">制定：前/效果/思维/分析/少数人
+实施：中/效率/行动/激励/多数人</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== 第十一章 ===== -->
+  <div class="chapter-card" id="ch11">
+    <div class="chapter-header">
+      <div class="chapter-num color-11">十一</div>
+      <div class="chapter-title">
+        <h2>战略实施的管理与控制</h2>
+        <div class="subtitle">组织结构 · BSC · 四种战略控制</div>
+      </div>
+    </div>
+    <div class="chapter-body">
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">1</div>
+          <div class="review-title">钱德勒命题</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">结构追随战略</span><br>
+          <div class="formula">四阶段：简单 → 职能 → 事业部 → 矩阵/网络</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">2</div>
+          <div class="review-title">五种组织结构</div>
+        </div>
+        <div class="review-content">
+          <div class="mnemonic">🔑 简单·职能·事业部·矩阵·网络（创业→扩大→多元→复杂→数字化）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">3</div>
+          <div class="review-title">四种战略控制</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">前提</span>（假设）→<span class="kw-blue">监控</span>（扫描）→<span class="kw-green">特别预警</span>（应急）→<span class="kw-purple">实施</span>（里程碑）
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">4</div>
+          <div class="review-title">BSC四维度</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">财务（股东）→ 客户（市场）→ 内部流程（运营）→ 学习成长（基础）</div>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">5</div>
+          <div class="review-title">BSC因果链</div>
+        </div>
+        <div class="review-content">
+          <div class="formula">学习成长 → 内部流程改善 → 客户满意 → 财务成功</div>
+          <span style="font-size:11px;color:var(--text3)">从下往上驱动</span>
+        </div>
+      </div>
+
+      <div class="review-item">
+        <div class="review-label">
+          <div class="review-num">6</div>
+          <div class="review-title">企业文化三层次（沙因）</div>
+        </div>
+        <div class="review-content">
+          <span class="kw">人工制品</span>（表）→<span class="kw-blue">价值观</span>（中）→<span class="kw-purple">基本假设</span>（深）<br>
+          文化五功能：导向·凝聚·激励·约束·辐射
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end chapter-grid -->
+
+<!-- BACK TO TOP -->
+<button id="back-top" onclick="scrollToTop()" title="返回顶部">↑</button>
+
+<!-- FOOTER -->
+<footer>
+  <strong>《企业战略管理》30秒复习合集</strong> · 蓝海林第2版 · 中南大学企管学硕复试<br>
+  <span>生成日期：2026-03-13 · 内容来源：各章节笔记30秒复习模块原文提取整理</span>
+</footer>
+
+<script>
+// ===== DARK MODE =====
+function toggleDark() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? '' : 'dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+}
+// Load saved theme
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+})();
+
+// ===== BACK TO TOP =====
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('back-top');
+  if (window.scrollY > 300) {
+    btn.classList.add('visible');
+  } else {
+    btn.classList.remove('visible');
+  }
+  
+  // Progress bar
+  const bar = document.getElementById('progress-bar');
+  const h = document.documentElement;
+  const pct = (window.scrollY / (h.scrollHeight - h.clientHeight)) * 100;
+  bar.style.width = pct + '%';
+  
+  // Active nav
+  updateActiveNav();
+});
+
+// ===== ACTIVE NAV =====
+function updateActiveNav() {
+  const chapters = ['ch1','ch2','ch3','ch4','ch5','ch6','ch7','ch8','ch9','ch10','ch11'];
+  let current = '';
+  chapters.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= 100) current = id;
+    }
+  });
+  document.querySelectorAll('.nav-inner a').forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}
+
+// ===== FLOATING SEARCH PILL =====
+(function() {
+  function initPill() {
+    const pill     = document.getElementById('search-pill');
+    const input    = document.getElementById('search-pill-input');
+    const info     = document.getElementById('search-pill-info');
+    const btnPrev  = document.getElementById('pill-prev');
+    const btnNext  = document.getElementById('pill-next');
+    const btnClose = document.getElementById('pill-close');
+    if (!pill || !input || !btnPrev || !btnNext || !btnClose) return;
+
+    let matches = [];
+    let cursor  = -1;
+
+    function expandPill() {
+      pill.classList.add('expanded');
+      setTimeout(() => { input.focus(); }, 50);
+    }
+    function collapsePill() {
+      pill.classList.remove('expanded');
+      clearHL();
+      input.value = '';
+      info.textContent = '';
+      matches = []; cursor = -1;
+    }
+
+    // clicking the collapsed pill expands it
+    pill.addEventListener('click', function(e) {
+      if (!pill.classList.contains('expanded')) expandPill();
+    });
+
+    function getTextNodes(root) {
+      const skip = new Set(['SCRIPT','STYLE','NOSCRIPT','MARK','BUTTON','INPUT','TEXTAREA']);
+      const nodes = [];
+      const walk = (n) => {
+        if (n.nodeType === 3 && n.nodeValue.trim()) { nodes.push(n); return; }
+        if (n.nodeType === 1 && skip.has(n.tagName)) return;
+        n.childNodes.forEach(walk);
+      };
+      walk(root);
+      return nodes;
+    }
+
+    function clearHL() {
+      document.querySelectorAll('mark.pill-hl').forEach(m => {
+        m.parentNode.replaceChild(document.createTextNode(m.textContent), m);
+        m.parentNode.normalize();
+      });
+      matches = []; cursor = -1;
+    }
+
+    function doSearch(term) {
+      clearHL();
+      if (!term.trim()) { info.textContent = ''; return; }
+      const lower = term.toLowerCase();
+      getTextNodes(document.body).forEach(tn => {
+        let val = tn.nodeValue;
+        let lo  = val.toLowerCase();
+        let idx = 0;
+        while ((idx = lo.indexOf(lower, idx)) !== -1) {
+          const mark = document.createElement('mark');
+          mark.className = 'pill-hl';
+          mark.textContent = val.substr(idx, term.length);
+          const rest = tn.splitText(idx);
+          rest.splitText(term.length);
+          rest.parentNode.replaceChild(mark, rest);
+          tn  = mark.nextSibling;
+          if (!tn || !tn.nodeValue) break;
+          val = tn.nodeValue;
+          lo  = val.toLowerCase();
+          idx = 0;
+        }
+      });
+      matches = Array.from(document.querySelectorAll('mark.pill-hl'));
+      cursor  = matches.length > 0 ? 0 : -1;
+      updateCursor();
+    }
+
+    function updateCursor() {
+      matches.forEach((m, i) => m.classList.toggle('pill-hl-active', i === cursor));
+      if (cursor >= 0) {
+        matches[cursor].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        info.textContent = (cursor + 1) + ' / ' + matches.length;
+      } else {
+        info.textContent = matches.length ? '无结果' : '';
+      }
+    }
+
+    function goNext() {
+      if (!matches.length) return;
+      cursor = (cursor + 1) % matches.length;
+      updateCursor();
+    }
+    function goPrev() {
+      if (!matches.length) return;
+      cursor = (cursor - 1 + matches.length) % matches.length;
+      updateCursor();
+    }
+
+    input.addEventListener('input', () => doSearch(input.value));
+    btnNext.addEventListener('click', (e) => { e.stopPropagation(); goNext(); });
+    btnPrev.addEventListener('click', (e) => { e.stopPropagation(); goPrev(); });
+    btnClose.addEventListener('click', (e) => { e.stopPropagation(); collapsePill(); });
+
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && e.key === 'f') || (!pill.classList.contains('expanded') && e.key === '/')) {
+        e.preventDefault(); expandPill(); return;
+      }
+      if (e.key === 'F3') {
+        e.preventDefault();
+        if (!pill.classList.contains('expanded')) { expandPill(); return; }
+        e.shiftKey ? goPrev() : goNext(); return;
+      }
+      if (e.key === 'Escape' && pill.classList.contains('expanded')) { collapsePill(); }
+      if (e.key === 'Enter' && pill.classList.contains('expanded') && document.activeElement === input) {
+        e.shiftKey ? goPrev() : goNext();
+      }
+    });
+
+    window.toggleSearch   = expandPill;
+    window.pillOpenSearch = expandPill;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPill);
+  } else {
+    initPill();
+  }
+})();
+
+</script>
+
+<!-- Floating Search Pill -->
+<div id="search-pill" title="点击搜索 / Ctrl+F">
+  <span id="search-pill-icon">🔍</span>
+  <input id="search-pill-input" type="text" placeholder="搜索关键词…" autocomplete="off">
+  <span id="search-pill-info"></span>
+  <button class="pill-btn" id="pill-prev" title="上一个 (Shift+F3)">↑</button>
+  <button class="pill-btn" id="pill-next" title="下一个 (F3)">↓</button>
+  <button class="pill-btn" id="pill-close" title="关闭">✕</button>
+</div>
+
+</body>
+</html>

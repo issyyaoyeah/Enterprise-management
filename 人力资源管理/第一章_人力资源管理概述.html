@@ -1,0 +1,2171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第一章 人力资源管理概述 | 中南大学企业管理复试笔记</title>
+<style>
+/* ===== CSS变量：夜间模式系统 ===== */
+:root {
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-header: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+  --bg-nav: #1a237e;
+  --bg-nav-hover: #283593;
+  --bg-table-head: #e8eaf6;
+  --bg-table-alt: #f5f5f5;
+  --bg-tag: #e8eaf6;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a6a;
+  --text-nav: #ffffff;
+  --text-muted: #6b7280;
+  --border-color: #e2e8f0;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.14);
+  --highlight-yellow: #fff3cd;
+  --highlight-border: #ffc107;
+  --card-border: #e2e8f0;
+  --mindmap-bg: #f8f9ff;
+  --btn-bg: #3949ab;
+  --btn-text: #fff;
+  --accordion-bg: #f0f4f8;
+  --tag-exam: #fff3e0;
+  --tag-exam-border: #ff9800;
+  --card-blue: #e3f2fd;
+  --card-blue-border: #1976d2;
+  --card-green: #e8f5e9;
+  --card-green-border: #388e3c;
+  --card-purple: #f3e5f5;
+  --card-purple-border: #7b1fa2;
+  --card-orange: #fff8e1;
+  --card-orange-border: #f57c00;
+  --card-red: #fce4ec;
+  --card-red-border: #c62828;
+  --card-teal: #e0f2f1;
+  --card-teal-border: #00695c;
+}
+body.dark-mode {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: #1c2333;
+  --bg-header: linear-gradient(135deg, #0d0f1e 0%, #1a1a2e 50%, #1e2448 100%);
+  --bg-nav: #0d0f1e;
+  --bg-nav-hover: #1a1a2e;
+  --bg-table-head: #1e2448;
+  --bg-table-alt: #1a1f2e;
+  --bg-tag: #1e2448;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-nav: #e6edf3;
+  --text-muted: #6e7681;
+  --border-color: #30363d;
+  --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.5);
+  --highlight-yellow: #2d2416;
+  --highlight-border: #b8860b;
+  --card-border: #30363d;
+  --mindmap-bg: #131820;
+  --btn-bg: #1e2448;
+  --btn-text: #c9d1d9;
+  --accordion-bg: #161b22;
+  --tag-exam: #1e1500;
+  --tag-exam-border: #b8860b;
+  --card-blue: #0d2137;
+  --card-blue-border: #1976d2;
+  --card-green: #0d2117;
+  --card-green-border: #388e3c;
+  --card-purple: #1a0d24;
+  --card-purple-border: #7b1fa2;
+  --card-orange: #241a00;
+  --card-orange-border: #f57c00;
+  --card-red: #2a0a14;
+  --card-red-border: #c62828;
+  --card-teal: #0a1f1e;
+  --card-teal-border: #00695c;
+}
+
+/* ===== 全局样式 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  line-height: 1.8;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 顶部固定导航 ===== */
+#top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--bg-nav);
+  z-index: 1000;
+  padding: 0 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  height: 52px;
+  gap: 8px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+#top-nav a {
+  color: var(--text-nav);
+  text-decoration: none;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  transition: background 0.2s;
+  opacity: 0.85;
+}
+#top-nav a:hover { background: var(--bg-nav-hover); opacity: 1; }
+#top-nav .nav-title {
+  font-weight: 700;
+  font-size: 14px;
+  opacity: 1;
+  margin-right: 8px;
+  border-right: 1px solid rgba(255,255,255,0.3);
+  padding-right: 12px;
+}
+.nav-btns {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.btn-dark, .btn-top {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+.btn-dark:hover, .btn-top:hover { background: rgba(255,255,255,0.2); }
+
+/* ===== 搜索框 ===== */
+#search-bar {
+  position: fixed;
+  top: 52px; left: 0; right: 0;
+  background: var(--bg-secondary);
+  padding: 8px 16px;
+  z-index: 999;
+  border-bottom: 1px solid var(--border-color);
+  display: none;
+}
+#search-bar input {
+  width: 100%;
+  max-width: 500px;
+  padding: 8px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: inherit;
+}
+#search-results { margin-top: 8px; font-size: 13px; color: var(--text-muted); }
+
+
+/* ===== 页面主体 ===== */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 16px 40px;
+}
+
+/* ===== 页眉 ===== */
+.page-header {
+  background: var(--bg-header);
+  color: #fff;
+  padding: 48px 40px 36px;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+.page-header .subtitle {
+  font-size: 14px;
+  opacity: 0.75;
+  margin-bottom: 16px;
+}
+.page-header .meta {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  font-size: 13px; opacity: 0.8;
+}
+.meta-tag {
+  background: rgba(255,255,255,0.15);
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* ===== 章节段落 ===== */
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 36px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #3949ab;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title .icon { font-size: 22px; }
+
+/* ===== 知识卡片 ===== */
+.knowledge-card {
+  background: var(--bg-card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s;
+}
+.knowledge-card:hover { box-shadow: var(--shadow-hover); }
+.knowledge-card.blue { border-left: 4px solid var(--card-blue-border); background: var(--card-blue); }
+.knowledge-card.green { border-left: 4px solid var(--card-green-border); background: var(--card-green); }
+.knowledge-card.purple { border-left: 4px solid var(--card-purple-border); background: var(--card-purple); }
+.knowledge-card.orange { border-left: 4px solid var(--card-orange-border); background: var(--card-orange); }
+.knowledge-card.red { border-left: 4px solid var(--card-red-border); background: var(--card-red); }
+.knowledge-card.teal { border-left: 4px solid var(--card-teal-border); background: var(--card-teal); }
+
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+.card-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+.badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-page { background: #e8eaf6; color: #3949ab; }
+.badge-star { background: #fff8e1; color: #f57c00; }
+.badge-prob { background: #e8f5e9; color: #2e7d32; }
+.badge-type { background: var(--bg-tag); color: var(--text-secondary); }
+body.dark-mode .badge-page { background: #1e2448; color: #7986cb; }
+body.dark-mode .badge-star { background: #2d2416; color: #f9a825; }
+body.dark-mode .badge-prob { background: #0d2117; color: #66bb6a; }
+
+/* ===== 折叠块 ===== */
+details {
+  margin: 10px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+details summary {
+  background: var(--accordion-bg);
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+details summary:hover { background: var(--bg-tag); }
+details[open] summary { border-bottom: 1px solid var(--border-color); }
+details .detail-content {
+  padding: 14px 16px;
+  background: var(--bg-card);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* ===== 高亮块 ===== */
+.highlight-box {
+  background: var(--highlight-yellow);
+  border-left: 4px solid var(--highlight-border);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.highlight-box strong { color: var(--text-primary); }
+
+/* ===== 关键词高亮 ===== */
+.kw { color: #1565c0; font-weight: 700; }
+body.dark-mode .kw { color: #64b5f6; }
+.kw-red { color: #c62828; font-weight: 700; }
+body.dark-mode .kw-red { color: #ef9a9a; }
+.kw-green { color: #2e7d32; font-weight: 700; }
+body.dark-mode .kw-green { color: #81c784; }
+
+/* ===== 表格 ===== */
+.table-wrap { overflow-x: auto; margin: 16px 0; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+th {
+  background: var(--bg-table-head);
+  color: var(--text-primary);
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 2px solid var(--border-color);
+}
+td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: var(--bg-table-alt); }
+tr:hover td { background: var(--bg-tag); }
+
+/* ===== 真题标签 ===== */
+.exam-tag {
+  display: inline-block;
+  background: var(--tag-exam);
+  border: 1px solid var(--tag-exam-border);
+  color: #e65100;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 2px;
+  white-space: nowrap;
+}
+body.dark-mode .exam-tag { color: #ffb74d; }
+
+/* ===== 复试答题模板 ===== */
+.answer-template {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px;
+  margin-top: 12px;
+}
+.answer-template .step {
+  display: flex;
+  gap: 10px;
+  margin: 8px 0;
+  font-size: 13.5px;
+}
+.step-num {
+  width: 22px; height: 22px;
+  background: #3949ab;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+body.dark-mode .step-num { background: #1e2448; }
+
+/* ===== 口诀助记 ===== */
+.mnemonic {
+  background: linear-gradient(135deg, #e8eaf6, #f3e5f5);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  color: #4527a0;
+  letter-spacing: 2px;
+  margin: 10px 0;
+}
+body.dark-mode .mnemonic { background: linear-gradient(135deg, #1e2448, #1a0d24); color: #b39ddb; }
+
+/* ===== 小学生版解释 ===== */
+.simple-explain {
+  background: #e8f5e9;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13.5px;
+  color: #1b5e20;
+  border-left: 3px solid #4caf50;
+  margin: 10px 0;
+}
+body.dark-mode .simple-explain { background: #0d2117; color: #a5d6a7; border-left-color: #388e3c; }
+.simple-explain::before { content: '🎈 '; }
+
+/* ===== 案例框 ===== */
+.case-box {
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border-color);
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  margin: 10px 0;
+}
+.case-box::before { content: '📌 案例：'; font-weight: 700; color: var(--text-primary); }
+
+/* ===== 逻辑图 ===== */
+.logic-diagram {
+  background: var(--mindmap-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+  text-align: center;
+}
+.flow-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0;
+}
+.flow-box {
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  box-shadow: var(--shadow);
+  min-width: 80px;
+}
+.flow-box.highlight-box-flow { border-color: #3949ab; background: #e8eaf6; color: #1a237e; }
+body.dark-mode .flow-box.highlight-box-flow { background: #1e2448; color: #7986cb; }
+.flow-arrow { font-size: 20px; color: var(--text-muted); }
+.flow-down { text-align: center; font-size: 20px; color: var(--text-muted); margin: 4px 0; }
+
+/* ===== 思维导图 ===== */
+.mindmap {
+  background: var(--mindmap-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+}
+.mindmap-center {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #1a237e;
+  background: #e8eaf6;
+  border: 2px solid #3949ab;
+  border-radius: 50px;
+  padding: 12px 32px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+body.dark-mode .mindmap-center { color: #7986cb; background: #1e2448; border-color: #3949ab; }
+.mindmap-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+.mindmap-branch {
+  background: var(--bg-card);
+  border-radius: 10px;
+  padding: 14px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+.branch-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--border-color);
+}
+.branch-item {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  padding: 3px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.branch-item::before { content: '▸'; color: #3949ab; flex-shrink: 0; }
+
+/* ===== 快速复习30秒 ===== */
+.quick-review {
+  background: linear-gradient(135deg, #1a237e, #283593);
+  color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.quick-review h3 { font-size: 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.qr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.qr-item {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.qr-item strong { display: block; font-size: 14px; margin-bottom: 4px; color: #ffd54f; }
+
+/* ===== 背诵版总结 ===== */
+.recitation {
+  background: var(--bg-card);
+  border: 2px solid #3949ab;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.recitation h3 { font-size: 18px; font-weight: 700; margin-bottom: 16px; color: #1a237e; display: flex; align-items: center; gap: 8px; }
+body.dark-mode .recitation h3 { color: #7986cb; }
+.recitation ol { padding-left: 20px; }
+.recitation li { margin: 10px 0; font-size: 14px; line-height: 1.8; }
+
+/* ===== 自我检测 ===== */
+.self-test {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.self-test h3 { font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.question-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 14px;
+  margin: 10px 0;
+  font-size: 13.5px;
+}
+.question-item .q-num {
+  font-weight: 700;
+  color: #3949ab;
+  margin-right: 8px;
+}
+body.dark-mode .question-item .q-num { color: #7986cb; }
+.q-type { font-size: 11px; padding: 1px 6px; border-radius: 4px; margin-left: 6px; }
+.q-textbook { background: #e8eaf6; color: #3949ab; }
+.q-exam { background: var(--tag-exam); color: #e65100; border: 1px solid var(--tag-exam-border); }
+.q-predict { background: #e8f5e9; color: #2e7d32; }
+body.dark-mode .q-textbook { background: #1e2448; color: #7986cb; }
+body.dark-mode .q-predict { background: #0d2117; color: #66bb6a; }
+body.dark-mode .q-exam { color: #ffb74d; }
+
+/* ===== 对比表 ===== */
+.compare-section { margin: 16px 0; }
+
+/* ===== 返回顶部 ===== */
+#back-to-top {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 50%;
+  width: 44px; height: 44px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow-hover);
+  transition: all 0.2s;
+  display: none;
+  z-index: 998;
+}
+#back-to-top:hover { transform: translateY(-3px); }
+
+/* ===== 页脚 ===== */
+footer {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-muted);
+  font-size: 13px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 40px;
+}
+
+/* ===== 信息格 ===== */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 12px 0;
+}
+.info-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+}
+.info-item .label { color: var(--text-muted); font-size: 11px; margin-bottom: 4px; }
+.info-item .value { font-weight: 700; color: var(--text-primary); }
+
+/* ===== 延伸问题 ===== */
+.extension-questions {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 14px;
+  margin-top: 10px;
+}
+.ext-q {
+  font-size: 13px;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--border-color);
+  color: var(--text-secondary);
+  display: flex;
+  gap: 8px;
+}
+.ext-q:last-child { border-bottom: none; }
+.ext-q::before { content: '❓'; flex-shrink: 0; }
+
+/* ===== 教材原句 ===== */
+.textbook-quote {
+  background: var(--highlight-yellow);
+  border: 1px solid var(--highlight-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--text-primary);
+  margin: 10px 0;
+  position: relative;
+}
+.textbook-quote::before {
+  content: '"';
+  font-size: 32px;
+  color: var(--highlight-border);
+  position: absolute;
+  top: -4px;
+  left: 10px;
+  line-height: 1;
+}
+.textbook-quote .source {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-style: normal;
+}
+
+/* ===== p标签 ===== */
+p { margin: 8px 0; font-size: 14px; line-height: 1.8; color: var(--text-secondary); }
+ul, ol { padding-left: 20px; }
+li { margin: 6px 0; font-size: 14px; color: var(--text-secondary); }
+
+/* ===== 响应式 ===== */
+@media (max-width: 600px) {
+  .page-header { padding: 28px 20px; }
+  .page-header h1 { font-size: 20px; }
+  main { padding: 70px 10px 30px; }
+  .mindmap-branches { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
+
+<script>window._PAGE_TEXT='第一章 人力资源管理概述 | 中南大学企业管理复试笔记 \n \n \n \n \n \n 第一章 概述 \n 逻辑图 \n 思维导图 \n 1.1 渊源演变 \n 1.2 内涵特征 \n 1.3 发展趋势 \n 1.4 中国特征 \n 对比表 \n 历年真题 \n 终极串联 \n 30秒复习 \n 背诵版 \n 自我检测 \n \n 🔍 \n 🌙 \n \n \n \n \n \n \n \n \n \n \n \n 📘 第一章 人力资源管理概述 \n Human Resource Management — Chapter 1 Overview \n \n 📖 教材：颜爱民《人力资源管理》第3版 \n 🎓 中南大学企业管理学硕复试 \n 📄 页码：P003–P035 \n 📅 生成日期：2026-03-08 \n \n \n \n \n 🔗 本章逻辑结构 \n \n \n 人力资源管理概述 \n \n ↓ \n \n 1.1 渊源与演变 西方·中国·历史 \n → \n 1.2 内涵与特征 定义·人力资源特征·HRM特征 \n → \n 1.3 发展趋势 职能提升·范围拓展·信息化 \n → \n 1.4 中国特征 政府主导·柔性·能力导向 \n \n ↓ \n \n \n 核心逻辑： 从人事管理 → 人力资源管理 → 战略人力资源管理 \n 人本主义贯穿始终：人是最活跃、最重要的生产要素\n \n \n \n \n \n \n 🧠 章节思维导图 \n \n \n 第一章 人力资源管理概述 \n \n \n \n 📜 渊源与演变 \n 泰勒科学管理（萌芽） \n 霍桑实验（行为突破） \n 工业心理学（孟斯特伯格） \n 激励理论（马斯洛等） \n 德鲁克提出"人力资源" \n 迈尔斯人力资源模式 \n 中国儒家等文化渊源 \n \n \n ⭐ 人力资源特征 \n 生物性（有生命的活资源） \n 再生性（人口再生产） \n 能动性（最活跃的因素） \n 两重性（投资主体+目标） \n 社会性（一切社会关系总和） \n \n \n 🏢 HRM管理特征 \n 系统性 \n 时代性 \n 联动性 \n 二重性（科学+艺术） \n 文化亲缘性 \n 创新性 \n \n \n 🔮 发展趋势 \n 职能层次提升（战略化） \n 范围从内到外，区域到全球 \n 个人→团队与组织 \n 知识型员工/人才管理 \n 信息化（e-HRM） \n 循证HRM \n "互联网+"全面革新 \n \n \n 🇨🇳 中国特征 \n 政府主导 \n 市场体系待完善 \n 制度管理→柔性管理 \n 能力导向替代工作导向 \n 培训开发为热点 \n 文化与HRM协同 \n \n \n 📌 核心定义（教材版） \n HRM = 获取+配置+开发+使用人力资源 \n 目的：实现组织目标 \n 人力资本（舒尔茨1960） \n 德鲁克：人力资源唯一特殊资产 \n \n \n \n \n \n 📚 核心知识点 \n \n \n 1.1 人力资源管理的渊源和演变 \n \n \n \n 💡 知识点1：人力资源管理的定义（教材核心定义） \n \n P003 / P014 \n ★★★★★ 必考 \n 高概率 ★★★★★ \n 名词解释 / 简答 \n \n \n \n 📖 专有名词解释（教材原意） \n \n 人力资源管理（HRM，Human Resource Management） ： \n \n 人力资源管理就是组织为了实现其目标而 获取、配置、开发和使用 人力资源的各项活动。\n ——颜爱民《人力资源管理》第3版，P015 \n \n 关键词分解： 获取 （招聘选拔）→ 配置 （岗位匹配）→ 开发 （培训提升）→ 使用 （激励绩效） \n \n \n \n 🎈 小学生版通俗解释 \n \n \n 就像班主任管一个班：首先要找到合适的学生来上课（获取），然后安排每个人坐哪个位置干什么（配置），再帮大家学好知识技能（开发），最后让每个人发挥最大作用（使用）。这就是人力资源管理！\n \n \n \n \n 🏢 企业/生活案例 \n \n \n 华为的人力资源管理：① 获取——全球校招+猎头招募顶尖工程师；② 配置——根据工程师能力匹配研发、销售等岗位；③ 开发——"华为大学"持续培训；④ 使用——绩效考核+奖励激励。最终实现"以奋斗者为本"的企业目标。\n \n \n \n \n 🧠 助记口诀 \n \n 获取 → 配置 → 开发 → 使用 （找人 → 用人 → 育人 → 留人） \n \n \n \n 💬 复试回答模板 \n \n \n ① 定义： 教材定义——组织为实现目标，对人力资源进行获取、配置、开发和使用的各项活动。 \n ② 核心要素： 主体是组织；目的是实现组织目标；内容包含获取、配置、开发、使用四个环节。 \n ③ 举例： 以华为为例，从全球招聘、岗位配置到华为大学培训，再到绩效激励，形成完整HRM体系。 \n ④ 升华： 本质是把人视为最重要的资源，通过科学管理实现人与组织的共同发展。 \n \n \n \n \n 🔗 管理学联系 \n \n • 与 战略管理 的联系：HRM是实现企业战略的重要工具，第13章"战略HRM"专章讨论。 \n • 与 组织行为学 的联系：HRM涉及对人的行为管理，依托组织行为学理论基础。 \n • 与 激励理论 的联系：HRM的"使用"环节核心是激励员工，见第11章。 \n \n \n \n 📅 历年考察 & 必背原句 \n \n \n 2016复试 \n 2017复试 \n 2019笔试 \n 2022复试 \n \n \n "人力资源管理(HRM)就是组织为了实现其目标而获取、配置、开发和使用人力资源的各项活动。"\n 教材P015，必背原句 \n \n \n \n \n ❓ 复试延伸问题 \n \n \n 人事管理与人力资源管理有什么区别？ \n 为什么说人力资源是"最特殊的资产"？（德鲁克观点） \n HRM的第一责任人是谁？为什么不是HR部门？ \n 人力资源管理的层次性如何体现？ \n \n \n \n \n \n \n \n 🏛️ 知识点2：人力资源管理的渊源（西方渊源） \n \n P005–P008 \n ★★★★ 重要 \n 较高 ★★★★ \n 简答 / 论述 \n \n \n \n 📜 西方人力资源管理四大渊源 \n \n \n \n \n 渊源 代表人物 时间 核心贡献 \n \n \n ①科学管理 \n 泰勒（Taylor） \n 1911年 \n 《科学管理原理》——设置制定定额部门（最早HR职能部门）；差别计件工资制（工作分析雏形）；绩效考核制度萌芽 \n \n \n ②霍桑实验 \n 梅奥（Mayo） \n 1924–1932年 \n 发现"社会人"理论：社会心理因素>经济因素；士气理论；非正式群体理论；人际关系型领导 \n \n \n ③工业心理学 \n 孟斯特伯格（Munsterberg） \n 1912年 \n 《心理学与工业效率》——心理测验选拔员工；学习理论培训；行为研究激励；奠定行为科学基础 \n \n \n ④激励理论 \n 马斯洛、麦克里格、赫茨伯格 \n 20世纪50–70年代 \n 需要层次理论；X/Y理论；双因素理论；揭示人的行为内在机理 \n \n \n \n \n 🔑 核心记忆点： "人力资源"最早由 彼得·德鲁克 系统提出。1946年《公司的概念》中提出"人力资源"一词；1954年《管理的实践》提出"传统人事管理正成为过去，人力资源开发的人事革命正在到来"。\n \n \n \n \n 🎈 小学生版：霍桑实验是什么？ \n \n \n 科学家想知道把教室灯开亮点，学生成绩会不会变好。结果发现：灯光亮不亮无所谓，关键是被老师关注、有好伙伴在一起，同学们才会努力学习！所以"被重视""有归属感"比"工资高"更重要——这就是霍桑实验的发现！\n \n \n \n \n 🧠 霍桑实验四大理论（必背） \n \n \n 社会人理论 社会心理因素第一位，经济因素第二位 \n 士气理论 心理需要满足→提高效率的基础 \n 非正式群体理论 正式组织中存在自发的非正式群体 \n 人际关系型领导 平衡正式群体与非正式群体的需要 \n \n \n \n \n 💬 复试回答模板：西方HRM渊源 \n \n \n ① 科学管理的萌芽（1911）： 泰勒《科学管理原理》建立了最早的HR职能部门和绩效考核雏形。 \n ② 霍桑实验的突破（1924-1932）： 梅奥发现社会心理因素比经济因素更重要，提出"社会人"理论，是HRM从萌生到诞生的重要理论突破。 \n ③ 工业心理学的奠基（1912）： 孟斯特伯格开创工业心理学，将心理学导入HR研究，为行为科学发展奠定基础。 \n ④ 德鲁克的正式提出（1946-1954）： 德鲁克系统提出"人力资源"概念，推动人事管理向人力资源管理的革命。 \n \n \n \n \n 📅 历年考察年份 \n \n 2017笔试 \n 2018复试 \n 2020复试 \n 霍桑实验常作为"行为科学"和"人本管理"相关题目的背景知识考查。 \n \n \n \n \n \n 1.2 人力资源管理的内涵及特征 \n \n \n \n ⭐ 知识点3：人力资源的五大特征 \n \n P011–P012 \n ★★★★★ 必考 \n 高概率 ★★★★★ \n 名词解释 / 简答 \n \n \n \n 📖 五大特征详解 \n \n \n \n \n 特征 核心含义 简单说明 管理启示 \n \n \n ①生物性 \n 人是有生命的"活"资源，与自然生理特征相联系 \n 人有生老病死，需要休息、营养 \n 根据人性进行人性化管理（松下幸之助） \n \n \n ②再生性 \n 人口不断更新，人力资源可以再生；受人类意识支配 \n 不像矿山挖完就没了，人会生育、成长 \n 注重人才培养与后备人才建设 \n \n \n ③能动性 \n 人能积极主动、有目的地认识和改造世界， 生产力中最活跃的因素 \n 人会主动想办法，机器不行 \n 激发主观能动性，授权赋能 \n \n \n ④两重性 \n 既是投资主体又是投资目标；既是生产者又是消费者 \n 我们既创造财富，又享受财富 \n 管理手段性+目标性并重；重视人口数量控制与开发 \n \n \n ⑤社会性 \n 人的本质是"一切社会关系的总和"（马克思） \n 人是社会动物，离不开集体 \n 人力资源是社会资源，需从社会角度配置 \n \n \n \n \n \n \n 🧠 助记口诀 \n \n 生（生物性）再（再生性）能（能动性）两（两重性）社（社会性） 谐音：「生再能两社」→「生在能量社会」 \n \n \n \n 🎈 小学生版解释 \n \n \n 生物性 ：你会饿会累，机器不会； 再生性 ：人会生宝宝，越来越多； 能动性 ：你可以主动想办法解决问题； 两重性 ：你既是工厂的工人，又是超市的顾客； 社会性 ：你需要朋友和家人，不能一个人生活。\n \n \n \n \n 💬 复试回答模板 \n \n \n ① 人力资源作为特殊资源，具有五大主要特征。 \n ② 生物性 ：人是有生命的活资源，管理需符合人的自然属性。 \n ③ 再生性 ：人口可再生，且受人类意识支配，有别于一般生物资源。 \n ④ 能动性 ：人是生产力中最活跃的因素，能主动认识和改造世界。 \n ⑤ 两重性 ：人既是投资主体又是投资目标，管理时要兼顾手段性和目标性。 \n ⑥ 社会性 ：马克思指出人的本质是一切社会关系的总和，人力资源本质上是社会资源。 \n \n \n \n \n 📅 历年考察 & 必背原句 \n \n 2019复试 \n 2021笔试 \n 2023复试 \n \n "人是生产力中最活跃的因素。"（能动性核心句） \n "人的本质不是单个人所固有的抽象物，在其现实性上，它是一切社会关系的总和。"（马克思，社会性）\n 教材P011-P012 \n \n \n \n \n ❓ 复试延伸问题 \n \n \n 为什么说人力资源是企业最重要的资源？（联系能动性回答） \n 两重性对企业人口控制和人才培养有什么启示？ \n 人力资源的社会性如何影响跨国企业的HR实践？ \n \n \n \n \n \n \n \n 🏢 知识点4：人力资源管理的六大特征 \n \n P012–P013 \n ★★★★ 重要 \n 较高 ★★★★ \n 简答 / 名词解释 \n \n \n \n 📖 六大特征详解 \n \n \n \n 系统性 \n 融合于整个管理系统；第一责任人是最高管理者 \n \n \n 时代性 \n "时势造英雄"；农业→工业→知识经济，HR要求不断提升 \n \n \n 联动性 \n 人是生产要素的结合者和最终来源；人出差错则其他资源失效 \n \n \n 二重性 \n 科学性+艺术性；既理论又实践，艺术性更突出 \n \n \n 文化亲缘性 \n 人受文化支配；不同文化背景HR管理截然不同 \n \n \n 创新性 \n 从雇员管理→人事管理→人本型→战略型，持续创新 \n \n \n \n \n \n 🧠 助记口诀 \n \n 系（系统性）时（时代性）联（联动性）二（二重性）文（文化亲缘性）创（创新性） 口诀：「系时联二文创」→「系统时代联动着二重文化，持续创新」 \n \n \n \n 📌 重点：文化亲缘性（最有中南大特色） \n \n \n "人力资源管理最具文化亲缘性，同时也最具创新难度。"\n 教材P013 \n \n 原因：人的思想受文化传统制约；文化有地域性、历史性；不同文化背景下HR管理差异巨大。盲目照搬西方模式会"适得其反"。 \n \n 日本企业的终身雇用制、年功序列制是日本儒家文化的产物；直接移植到美国企业则失败。这就是文化亲缘性的体现。\n \n \n \n \n \n \n \n 🔄 知识点5：人事管理 vs 人力资源管理（易混点） \n \n P008–P009 \n ★★★★★ 必考 \n 高概率 ★★★★★ \n 论述 / 对比 \n \n \n \n 📊 对比总结表（斯托瑞1992年分析） \n \n \n \n \n 维度 人事管理（PM） 人力资源管理（HRM） \n \n \n 产生时代 \n 工业化早期 \n 20世纪60年代后 \n \n \n 人的观念 \n 人是成本、费用支出 \n 人是资源、最重要资产 \n \n \n 管理重点 \n 工资、纪律、常规事务 \n 战略、开发、激励 \n \n \n 时间取向 \n 短期、操作性 \n 长期、战略性 \n \n \n 决策层次 \n 执行层面 \n 战略层面 \n \n \n 负责人 \n 人事部门专职人员 \n 全体管理者+HR部门 \n \n \n 员工关系 \n 对立（劳资矛盾） \n 合作伙伴关系 \n \n \n 培训观念 \n 培训是成本 \n 培训是投资 \n \n \n \n \n \n \n 🎈 小学生版对比 \n \n \n 人事管理像旧式班主任：只管考勤和纪律，不管你开不开心。人力资源管理像新式班主任：关心你的成长，帮你发现特长，给你合适的任务，让你越来越好——把你当宝贝而不是管理对象！\n \n \n \n \n 💬 复试回答模板 \n \n \n ① 理念差异： 人事管理视人为成本，HRM视人为战略资源。 \n ② 职能范围： 人事管理局限于招聘、工资等事务，HRM涵盖战略规划、激励开发等全方位。 \n ③ 时间导向： 人事管理短期操作性，HRM具有长期战略性。 \n ④ 负责主体： HRM不只是人事部门的事，是全体管理者的共同责任，企业家是第一责任人。 \n \n \n \n \n 📅 历年考察年份 \n \n 2016笔试 \n 2018复试 \n 2022笔试 \n 2024复试 \n \n \n \n \n \n \n 💰 知识点6：人力资本理论（舒尔茨） \n \n P007 \n ★★★★ 重要 \n 较高 ★★★★ \n 名词解释 / 简答 \n \n \n \n 📖 核心内容 \n \n 提出者： 西奥多·舒尔茨（Theodore Schultz） ，1960年 \n 标志： 《论人力资本投资》， 标志人力资本理论的诞生 \n \n 核心观点三要点： \n ① 完整的资本概念包括 物力资本 和 人力资本 两方面 \n ② 人力资本的 收益率高于 物力资本 \n ③ 教育是人力资本形成的主要来源 \n \n \n \n \n 🎈 小学生版 \n \n \n 以前大家觉得钱、机器才是最重要的资本。舒尔茨说：不对！人的知识和能力也是资本，而且更赚钱！投资读书（教育）就是在增加"人力资本"，就像存钱一样会有回报的！\n \n \n \n \n 📅 历年考察 & 必背原句 \n \n 2017笔试 \n 2020复试 \n \n "完整的资本概念应该包括物力资本和人力资本两方面，人力资本和物力资本在投资收益率上是有差别的，人力资本的收益率高于后者；教育是人力资本形成的主要来源。"\n 教材P007 \n \n \n \n \n \n \n 1.3 人力资源管理研究的发展趋势 \n \n \n \n 🔮 知识点7：HRM研究的发展趋势（六大趋势） \n \n P017–P021 \n ★★★★ 重要 \n 较高 ★★★★ \n 简答 / 论述 \n \n \n \n 📋 六大趋势总结表 \n \n \n \n \n # 趋势 核心变化 关键词 \n \n \n ① \n 职能层次提升 \n 从人事管理→人力资源管理→ 战略人力资源管理 \n 战略化、整合、竞争优势 \n \n \n ② \n 范围进一步拓展 \n 从内部→外部（利益相关者）；从区域化→ 全球化 \n 跨国、全球化、多元文化 \n \n \n ③ \n 个人→团队与组织 \n 自我管理团队（Self-managed Team）；虚拟团队（Virtual Team）；1+1>2 \n 团队学习、学习型组织 \n \n \n ④ \n 重心偏移 \n 类型上→ 知识型员工 ；层次上→ 人才管理 （1997麦肯锡"人才战争"） \n 心理契约、核心人才 \n \n \n ⑤ \n 信息化 \n HRIS→HRMS→ e-HRM （电子化人力资源管理） \n 数字化、大数据 \n \n \n ⑥ \n 循证HRM \n Rousseau(2006)引入管理学；用最佳科学证据支持决策，摒弃"拍脑袋" \n 数据驱动、科学决策 \n \n \n \n \n 🌟 加分项： "互联网+"趋势——互联网与HRM深度融合，推动企业内部沟通变革、信息对称、组织去中心化。\n \n \n \n \n 💡 知识型员工特征（重点） \n \n 知识型员工 ：主要依靠脑力劳动，运用知识和智慧给产品带来附加值的员工。 \n 特点：重视自主权；注重有挑战性的工作；心理契约>书面契约；管理要从"约束"转向"激励与赋能"。 \n \n 谷歌工程师可以用20%工作时间做自己的项目，这就是针对知识型员工特点的HR创新——心理契约管理的实践。\n \n \n \n \n 💬 复试回答模板 \n \n \n ① 职能提升： HRM从操作层向战略层转变，成为企业竞争优势的重要来源。 \n ② 范围拓展： 从内部员工管理延伸至外部利益相关者，从国内走向全球化。 \n ③ 团队化： 从以个人绩效为中心转向团队与组织能力开发，形成1+1>2的效果。 \n ④ 知识型员工： 管理重心向知识型员工和人才管理偏移，心理契约管理成为核心。 \n ⑤ 信息化： e-HRM使管理更科学化、制度化；大数据支持循证HRM决策。 \n \n \n \n \n 📅 历年考察年份 \n \n 2017笔试 \n 2019复试 \n 2023笔试 \n 2024复试 \n \n \n \n \n \n 1.4 中国人力资源管理的主要特征与发展趋势 \n \n \n \n 🇨🇳 知识点8：中国HRM的六大特征与趋势 \n \n P021–P028 \n ★★★★★ 必考 \n 高概率 ★★★★★ \n 论述 / 简答 / 案例 \n \n \n \n 📋 六大特征与趋势总表 \n \n \n \n \n # 特征/趋势 核心内容 \n \n \n ① \n 政府主导 \n 中国市场经济发展一直有政府主导特征；人力资源市场化起步最晚、进程最慢；2000年江泽民提出"人才资源是第一资源" \n \n \n ② \n 人力资源市场体系待完善 \n 存在二元分割市场；国有/集体/合同工/农民工等身份标签；市场化程度低；需健全法律体系（2008《劳动合同法》） \n \n \n ③ \n 制度管理→柔性管理 \n 中国主体上仍处农业→工业过渡期；制度管理占主要地位较长时期；柔性管理将逐步成为主旋律 \n \n \n ④ \n 能力导向替代工作导向 \n 基于"工作"（泰勒）→基于"能力"（McClelland,1973）；适应高动态转型期；胜任力模型兴起 \n \n \n ⑤ \n 培训开发为热点 \n 中国转型期需组织持续学习；文化惯性需培训抵消；培训是有效的人力资本投资手段 \n \n \n ⑥ \n 文化与HRM协同 \n 中西文化差异导致西方HRM技术在中国应用失灵；必须将文化与HRM结合；构建中国特色HRM体系 \n \n \n \n \n \n \n 🔑 重点：柔性管理 vs 制度管理 \n \n \n \n \n 维度 制度管理（硬性管理） 柔性管理（软性管理） \n \n \n 适用环境 \n 稳定、农业/工业经济时期 \n 动态、知识经济时期 \n \n \n 核心工具 \n 规章制度、奖惩机制 \n 文化、信任、价值观、授权 \n \n \n 员工关系 \n 命令服从 \n 合作伙伴 \n \n \n 中国现状 \n 当前主要方式（制度尚不健全） \n 未来发展方向 \n \n \n \n \n "制度管理在较长时期内占重要地位，柔性管理将逐步成为人力资源管理的主旋律。"\n 教材P022 \n \n \n \n \n 🔑 能力导向 vs 工作导向 \n \n \n \n \n 维度 基于"工作"的HRM 基于"能力"的HRM \n \n \n 起源 \n 泰勒科学管理（物本管理） \n McClelland，1973年哈佛大学 \n \n \n 核心逻辑 \n 以任务为中心，以工作为导向 \n 以人的胜任特征为基础 \n \n \n 适用情境 \n 稳定环境，目标固定 \n 动态环境，高度变化 \n \n \n 工作分析 \n 分析工作内容 \n 分析优异表现的能力特征 \n \n \n 薪酬设计 \n 基于岗位价值 \n 基于能力/胜任力 \n \n \n \n \n 阿里巴巴招聘不只看工作经历，更看候选人是否具备"创新力、执行力、客户第一"等胜任特征——这就是能力导向的体现。\n \n \n \n \n 💬 复试回答模板：中国HRM特征 \n \n \n ① 政府主导： 中国人力资源市场化由政府主导，起步晚但推进坚决。"人才资源是第一资源"已上升至国家战略。 \n ② 市场体系待完善： 二元分割市场尚未消除，2008《劳动合同法》标志着法律体系的重要进步。 \n ③ 制度→柔性： 中国处于转型期，制度管理是当前主要方式，但柔性管理是未来方向。 \n ④ 能力导向： 中国高动态转型期更需要基于能力的HRM，胜任力模型正成为主流工具。 \n ⑤ 文化融合： 不能照搬西方，需结合儒家、道家等传统文化，构建中国特色HRM体系。 \n \n \n \n \n 📅 历年考察年份 \n \n 2016复试 \n 2018笔试 \n 2021复试 \n 2023笔试 \n 2025复试 \n \n \n \n ❓ 复试延伸问题 \n \n \n 为什么说"文化是导致西方HRM技术在中国应用失灵的主要根源"？ \n 在数字化时代，中国企业如何推进HRM信息化改造？ \n 《劳动合同法》的颁布对企业HR管理产生了哪些影响？ \n 如何理解"人才强国战略"与HRM学科发展的关系？ \n \n \n \n \n \n \n 📊 易混概念对比总结 \n \n \n \n \n 易混概念 区别1 区别2 区别3 记忆技巧 \n \n \n 人力资本 vs 人力资源 \n 资本强调投资与收益角度 \n 资源强调存量与利用角度 \n 舒尔茨提出人力资本理论，德鲁克提出人力资源 \n 资本=钱的视角；资源=矿藏的视角 \n \n \n 人事管理 vs HRM \n 人事管理视人为成本 \n HRM视人为战略资源 \n 人事管理短期操作，HRM战略长期 \n 人事=管人打卡；HRM=战略伙伴 \n \n \n 生物性 vs 能动性 \n 生物性：人有生理需求（饿、累、病） \n 能动性：人能主动思考、创造 \n 生物性是先天属性；能动性是人独有 \n 生物=生理本能；能动=主动思考 \n \n \n 两重性 vs 社会性 \n 两重性：投资主体+投资目标双重角色 \n 社会性：人是社会关系的总和 \n 两重性强调人的经济地位；社会性强调群体属性 \n 两重=两个角色；社会=群体关系 \n \n \n 制度管理 vs 柔性管理 \n 制度管理靠规章制度约束 \n 柔性管理靠文化价值观引导 \n 制度适合稳定期，柔性适合动态期 \n 制度=硬约束；柔性=软引导 \n \n \n 工作导向 vs 能力导向 \n 工作导向以任务为中心（泰勒） \n 能力导向以胜任特征为中心 \n 工作导向适合稳定环境；能力导向适合动态环境 \n 工作=完成任务；能力=胜任特征 \n \n \n \n \n \n \n \n 📝 历年真题汇总 \n \n \n \n \n 年份 题型 题目内容 考查知识点 \n \n \n 2016 \n 论述 \n 论述企业战略与人力资源战略的匹配关系 \n HRM战略化；第13章联系 \n \n \n 2017 \n 简答 \n 简述胜任力模型构建流程 \n 能力导向HRM；胜任力 \n \n \n 2017 \n 论述 \n 数字化转型对企业战略与人力的影响 \n HRM信息化；发展趋势 \n \n \n 2018 \n 论述 \n 企业文化对战略实施的作用 \n 文化亲缘性；中国HRM特征 \n \n \n 2019 \n 简答 \n 简述员工职业发展通道设计 \n 人才管理；知识型员工 \n \n \n 2021 \n 简答 \n 招聘中如何识别高潜人才 \n 能力导向；胜任力 \n \n \n 2023 \n 案例 \n 数字化转型背景下某制造企业战略重构与人力变革 \n 发展趋势；互联网+ \n \n \n \n \n 💡 规律总结： 第一章作为基础章，常作为"联系题"的背景知识出现，尤其是 文化亲缘性、能力导向、柔性管理 这三个中国特色概念，高频与其他章节（绩效、薪酬、战略）联合考查。\n \n \n \n \n \n 🔗 本章知识终极串联（逻辑流程图） \n \n \n \n 为什么需要HRM？ \n → \n 人是生产力中最活跃的因素（能动性） \n → \n 人力资本收益率最高（舒尔茨） \n \n ↓ \n \n HRM从哪里来？ \n → \n 泰勒（萌芽）→霍桑（突破）→德鲁克（正式提出）→迈尔斯（理论化） \n \n ↓ \n \n HRM是什么？ \n → \n 获取+配置+开发+使用（教材定义） \n → \n 5大人力资源特征 + 6大HRM特征 \n \n ↓ \n \n HRM去哪里？ \n → \n 战略化→全球化→信息化→能力导向→循证HRM \n \n ↓ \n \n 中国HRM？ \n → \n 政府主导→制度→柔性 | 工作导向→能力导向 | 文化融合 \n \n \n \n \n \n \n \n ⚡ 30秒超速复习模块 \n \n \n 📌 HRM定义 \n 获取→配置→开发→使用 目的：实现组织目标\n \n \n 🏛️ 西方渊源 \n 泰勒→霍桑→孟斯特伯格→激励理论→德鲁克\n \n \n ⭐ 人力资源5特征 \n 生物·再生·能动·两重·社会 口诀：生再能两社\n \n \n 🏢 HRM6特征 \n 系统·时代·联动·二重·文化亲缘·创新 口诀：系时联二文创\n \n \n 🔄 PM vs HRM \n 人事：人=成本，短期操作 HRM：人=资源，长期战略\n \n \n 🇨🇳 中国6特征 \n 政府主导·市场待完善 制度→柔性·工作→能力 培训热点·文化融合\n \n \n 💡 德鲁克贡献 \n 1946提出"人力资源" 1954《管理的实践》 "人力资源是唯一特殊资产"\n \n \n 📈 发展趋势 \n 战略化·全球化·团队化 知识型员工·信息化·循证\n \n \n \n \n \n \n \n 🎙️ 背诵版总结（适合复试口述） \n 【HRM定义背诵】 \n \n "人力资源管理就是组织为了实现其目标而获取、配置、开发和使用人力资源的各项活动。"（P015）\n \n 【人力资源五大特征】 \n \n 生物性 ——人是有生命的活资源（管理须符合人的自然属性） \n 再生性 ——受人类意识支配，有别于一般生物资源 \n 能动性 ——人是生产力中最活跃的因素（核心！） \n 两重性 ——既是投资主体又是投资目标，管理须兼顾手段性与目标性 \n 社会性 ——马克思："人的本质是一切社会关系的总和" \n \n 【HRM六大管理特征】 \n \n 系统性 ——HR是全体管理者的职能，企业家是第一责任人 \n 时代性 ——"时势造英雄"，随经济发展而变化 \n 联动性 ——人是生产要素的结合者，人出差错则其他资源无效 \n 二重性 ——科学性+艺术性并重 \n 文化亲缘性 ——最具文化亲缘性，不同文化背景差异极大 \n 创新性 ——从雇员管理→人事→人本型→战略型持续创新 \n \n 【中国HRM六大趋势】 \n \n 政府主导人力资源市场化进程 \n 人力资源市场体系待强力推进和完善 \n 制度管理占重要地位，柔性管理将成主旋律 \n 基于"能力"逐步替代基于"工作"的HRM思想 \n 培训开发是中国企业HR管理的热点 \n 文化与HRM协同运作成为重要趋势 \n \n \n \n \n \n ✏️ 课后自我检测 \n \n 🧪 检测题目（覆盖教材课后题 + 历年真题 + 预测题） \n \n Q1 什么是人力资源管理？其主要特征是什么？\n 教材课后题 \n \n \n Q2 请简述人力资源与人力资本的区别与联系，并说明舒尔茨人力资本理论的核心观点。\n 预测题 \n \n \n Q3 霍桑实验的主要发现有哪些？它对现代人力资源管理有什么启示？\n 历年真题 \n \n \n Q4 如何理解人力资源管理的层次性？企业家在人力资源管理中扮演哪些角色？\n 教材课后题 \n \n \n Q5 试分析中国人力资源管理的主要特征，并结合现实说明"制度管理向柔性管理转变"的必要性。\n 历年真题 \n \n \n Q6 为什么说人力资源管理最具"文化亲缘性"？试举例说明文化差异对HRM实践的影响。\n 预测题 \n \n \n Q7 请论述21世纪人力资源管理研究的主要发展趋势，并结合"互联网+"背景分析其对HRM的影响。\n 历年真题 \n \n \n Q8 （案例题）某传统制造企业引进了一套来自美国的绩效管理系统，但实施半年后效果很差，员工抵触明显。请运用本章知识分析原因并提出建议。\n 预测题 \n \n \n \n \n \n ↑ \n \n \n 📘 中南大学企业管理学硕复试笔记 | 第一章 人力资源管理概述 \n 教材：颜爱民《人力资源管理》第3版（北京大学出版社，2017年） \n 生成日期：2026-03-08 | 仅供学习参考';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<nav id="top-nav">
+  <span class="nav-title">第一章 概述</span>
+  <a href="#logic">逻辑图</a>
+  <a href="#mindmap">思维导图</a>
+  <a href="#sec11">1.1 渊源演变</a>
+  <a href="#sec12">1.2 内涵特征</a>
+  <a href="#sec13">1.3 发展趋势</a>
+  <a href="#sec14">1.4 中国特征</a>
+  <a href="#compare">对比表</a>
+  <a href="#exams">历年真题</a>
+  <a href="#serial">终极串联</a>
+  <a href="#quick30">30秒复习</a>
+  <a href="#recite">背诵版</a>
+  <a href="#selftest">自我检测</a>
+  <div class="nav-btns">
+    <button class="btn-dark" onclick="toggleSearch()">🔍</button>
+    <button class="btn-dark" onclick="toggleDark()">🌙</button>
+  </div>
+</nav>
+
+<!-- ===== 搜索框 ===== -->
+<div id="search-bar">
+  
+  <div id="search-results"></div>
+</div>
+
+<!-- ===== 主体 ===== -->
+<main>
+
+<!-- 页眉 -->
+<div class="page-header">
+  <h1>📘 第一章 人力资源管理概述</h1>
+  <div class="subtitle">Human Resource Management — Chapter 1 Overview</div>
+  <div class="meta">
+    <span class="meta-tag">📖 教材：颜爱民《人力资源管理》第3版</span>
+    <span class="meta-tag">🎓 中南大学企业管理学硕复试</span>
+    <span class="meta-tag">📄 页码：P003–P035</span>
+    <span class="meta-tag">📅 生成日期：2026-03-08</span>
+  </div>
+</div>
+
+<!-- ===== 一、逻辑结构 ===== -->
+<div id="logic">
+<div class="section-title"><span class="icon">🔗</span>本章逻辑结构</div>
+<div class="logic-diagram">
+  <div class="flow-row">
+    <div class="flow-box highlight-box-flow">人力资源管理概述</div>
+  </div>
+  <div class="flow-down">↓</div>
+  <div class="flow-row">
+    <div class="flow-box">1.1 渊源与演变<br><small>西方·中国·历史</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">1.2 内涵与特征<br><small>定义·人力资源特征·HRM特征</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">1.3 发展趋势<br><small>职能提升·范围拓展·信息化</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box">1.4 中国特征<br><small>政府主导·柔性·能力导向</small></div>
+  </div>
+  <div class="flow-down">↓</div>
+  <div class="flow-row">
+    <div class="flow-box" style="min-width:320px; border-color:#3949ab;">
+      <strong>核心逻辑：</strong> 从人事管理 → 人力资源管理 → 战略人力资源管理<br>
+      人本主义贯穿始终：人是最活跃、最重要的生产要素
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 二、思维导图 ===== -->
+<div id="mindmap">
+<div class="section-title"><span class="icon">🧠</span>章节思维导图</div>
+<div class="mindmap">
+  <div style="text-align:center; margin-bottom:16px;">
+    <span class="mindmap-center">第一章 人力资源管理概述</span>
+  </div>
+  <div class="mindmap-branches">
+    <div class="mindmap-branch" style="border-top:3px solid #1976d2;">
+      <div class="branch-title" style="color:#1976d2;">📜 渊源与演变</div>
+      <div class="branch-item">泰勒科学管理（萌芽）</div>
+      <div class="branch-item">霍桑实验（行为突破）</div>
+      <div class="branch-item">工业心理学（孟斯特伯格）</div>
+      <div class="branch-item">激励理论（马斯洛等）</div>
+      <div class="branch-item">德鲁克提出"人力资源"</div>
+      <div class="branch-item">迈尔斯人力资源模式</div>
+      <div class="branch-item">中国儒家等文化渊源</div>
+    </div>
+    <div class="mindmap-branch" style="border-top:3px solid #388e3c;">
+      <div class="branch-title" style="color:#388e3c;">⭐ 人力资源特征</div>
+      <div class="branch-item">生物性（有生命的活资源）</div>
+      <div class="branch-item">再生性（人口再生产）</div>
+      <div class="branch-item">能动性（最活跃的因素）</div>
+      <div class="branch-item">两重性（投资主体+目标）</div>
+      <div class="branch-item">社会性（一切社会关系总和）</div>
+    </div>
+    <div class="mindmap-branch" style="border-top:3px solid #7b1fa2;">
+      <div class="branch-title" style="color:#7b1fa2;">🏢 HRM管理特征</div>
+      <div class="branch-item">系统性</div>
+      <div class="branch-item">时代性</div>
+      <div class="branch-item">联动性</div>
+      <div class="branch-item">二重性（科学+艺术）</div>
+      <div class="branch-item">文化亲缘性</div>
+      <div class="branch-item">创新性</div>
+    </div>
+    <div class="mindmap-branch" style="border-top:3px solid #f57c00;">
+      <div class="branch-title" style="color:#f57c00;">🔮 发展趋势</div>
+      <div class="branch-item">职能层次提升（战略化）</div>
+      <div class="branch-item">范围从内到外，区域到全球</div>
+      <div class="branch-item">个人→团队与组织</div>
+      <div class="branch-item">知识型员工/人才管理</div>
+      <div class="branch-item">信息化（e-HRM）</div>
+      <div class="branch-item">循证HRM</div>
+      <div class="branch-item">"互联网+"全面革新</div>
+    </div>
+    <div class="mindmap-branch" style="border-top:3px solid #c62828;">
+      <div class="branch-title" style="color:#c62828;">🇨🇳 中国特征</div>
+      <div class="branch-item">政府主导</div>
+      <div class="branch-item">市场体系待完善</div>
+      <div class="branch-item">制度管理→柔性管理</div>
+      <div class="branch-item">能力导向替代工作导向</div>
+      <div class="branch-item">培训开发为热点</div>
+      <div class="branch-item">文化与HRM协同</div>
+    </div>
+    <div class="mindmap-branch" style="border-top:3px solid #00695c;">
+      <div class="branch-title" style="color:#00695c;">📌 核心定义（教材版）</div>
+      <div class="branch-item">HRM = 获取+配置+开发+使用人力资源</div>
+      <div class="branch-item">目的：实现组织目标</div>
+      <div class="branch-item">人力资本（舒尔茨1960）</div>
+      <div class="branch-item">德鲁克：人力资源唯一特殊资产</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 三、核心知识点 ===== -->
+<div class="section-title"><span class="icon">📚</span>核心知识点</div>
+
+<!-- ===== 知识点1：人力资源管理定义 ===== -->
+<div id="sec11">
+<div class="section-title" style="font-size:16px; border-color:#1976d2; margin-top:16px;"><span class="icon">1.1</span>人力资源管理的渊源和演变</div>
+</div>
+
+<div class="knowledge-card blue" id="kp1">
+  <div class="card-header">
+    <div class="card-title">💡 知识点1：人力资源管理的定义（教材核心定义）</div>
+    <div class="card-meta">
+      <span class="badge badge-page">P003 / P014</span>
+      <span class="badge badge-star">★★★★★ 必考</span>
+      <span class="badge badge-prob">高概率 ★★★★★</span>
+      <span class="badge badge-type">名词解释 / 简答</span>
+    </div>
+  </div>
+
+  <details open>
+    <summary>📖 专有名词解释（教材原意）</summary>
+    <div class="detail-content">
+      <p><span class="kw">人力资源管理（HRM，Human Resource Management）</span>：</p>
+      <div class="textbook-quote">
+        人力资源管理就是组织为了实现其目标而<strong>获取、配置、开发和使用</strong>人力资源的各项活动。
+        <div class="source">——颜爱民《人力资源管理》第3版，P015</div>
+      </div>
+      <p>关键词分解：<span class="kw">获取</span>（招聘选拔）→ <span class="kw">配置</span>（岗位匹配）→ <span class="kw">开发</span>（培训提升）→ <span class="kw">使用</span>（激励绩效）</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>🎈 小学生版通俗解释</summary>
+    <div class="detail-content">
+      <div class="simple-explain">
+        就像班主任管一个班：首先要找到合适的学生来上课（获取），然后安排每个人坐哪个位置干什么（配置），再帮大家学好知识技能（开发），最后让每个人发挥最大作用（使用）。这就是人力资源管理！
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🏢 企业/生活案例</summary>
+    <div class="detail-content">
+      <div class="case-box">
+        华为的人力资源管理：① 获取——全球校招+猎头招募顶尖工程师；② 配置——根据工程师能力匹配研发、销售等岗位；③ 开发——"华为大学"持续培训；④ 使用——绩效考核+奖励激励。最终实现"以奋斗者为本"的企业目标。
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🧠 助记口诀</summary>
+    <div class="detail-content">
+      <div class="mnemonic">获取 → 配置 → 开发 → 使用<br>（找人 → 用人 → 育人 → 留人）</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>💬 复试回答模板</summary>
+    <div class="detail-content">
+      <div class="answer-template">
+        <div class="step"><span class="step-num">①</span><span><strong>定义：</strong>教材定义——组织为实现目标，对人力资源进行获取、配置、开发和使用的各项活动。</span></div>
+        <div class="step"><span class="step-num">②</span><span><strong>核心要素：</strong>主体是组织；目的是实现组织目标；内容包含获取、配置、开发、使用四个环节。</span></div>
+        <div class="step"><span class="step-num">③</span><span><strong>举例：</strong>以华为为例，从全球招聘、岗位配置到华为大学培训，再到绩效激励，形成完整HRM体系。</span></div>
+        <div class="step"><span class="step-num">④</span><span><strong>升华：</strong>本质是把人视为最重要的资源，通过科学管理实现人与组织的共同发展。</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔗 管理学联系</summary>
+    <div class="detail-content">
+      <p>• 与<strong>战略管理</strong>的联系：HRM是实现企业战略的重要工具，第13章"战略HRM"专章讨论。</p>
+      <p>• 与<strong>组织行为学</strong>的联系：HRM涉及对人的行为管理，依托组织行为学理论基础。</p>
+      <p>• 与<strong>激励理论</strong>的联系：HRM的"使用"环节核心是激励员工，见第11章。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>📅 历年考察 & 必背原句</summary>
+    <div class="detail-content">
+      <div>
+        <span class="exam-tag">2016复试</span>
+        <span class="exam-tag">2017复试</span>
+        <span class="exam-tag">2019笔试</span>
+        <span class="exam-tag">2022复试</span>
+      </div>
+      <div class="textbook-quote" style="margin-top:10px;">
+        "人力资源管理(HRM)就是组织为了实现其目标而获取、配置、开发和使用人力资源的各项活动。"
+        <div class="source">教材P015，必背原句</div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>❓ 复试延伸问题</summary>
+    <div class="detail-content">
+      <div class="extension-questions">
+        <div class="ext-q">人事管理与人力资源管理有什么区别？</div>
+        <div class="ext-q">为什么说人力资源是"最特殊的资产"？（德鲁克观点）</div>
+        <div class="ext-q">HRM的第一责任人是谁？为什么不是HR部门？</div>
+        <div class="ext-q">人力资源管理的层次性如何体现？</div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ===== 知识点2：人力资源管理渊源 ===== -->
+<div class="knowledge-card green" id="kp2">
+  <div class="card-header">
+    <div class="card-title">🏛️ 知识点2：人力资源管理的渊源（西方渊源）</div>
+    <div class="card-meta">
+      <span class="badge badge-page">P005–P008</span>
+      <span class="badge badge-star">★★★★ 重要</span>
+      <span class="badge badge-prob">较高 ★★★★</span>
+      <span class="badge badge-type">简答 / 论述</span>
+    </div>
+  </div>
+
+  <details open>
+    <summary>📜 西方人力资源管理四大渊源</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>渊源</th><th>代表人物</th><th>时间</th><th>核心贡献</th>
+          </tr>
+          <tr>
+            <td><span class="kw">①科学管理</span></td>
+            <td>泰勒（Taylor）</td>
+            <td>1911年</td>
+            <td>《科学管理原理》——设置制定定额部门（最早HR职能部门）；差别计件工资制（工作分析雏形）；绩效考核制度萌芽</td>
+          </tr>
+          <tr>
+            <td><span class="kw">②霍桑实验</span></td>
+            <td>梅奥（Mayo）</td>
+            <td>1924–1932年</td>
+            <td>发现"社会人"理论：社会心理因素>经济因素；士气理论；非正式群体理论；人际关系型领导</td>
+          </tr>
+          <tr>
+            <td><span class="kw">③工业心理学</span></td>
+            <td>孟斯特伯格（Munsterberg）</td>
+            <td>1912年</td>
+            <td>《心理学与工业效率》——心理测验选拔员工；学习理论培训；行为研究激励；奠定行为科学基础</td>
+          </tr>
+          <tr>
+            <td><span class="kw">④激励理论</span></td>
+            <td>马斯洛、麦克里格、赫茨伯格</td>
+            <td>20世纪50–70年代</td>
+            <td>需要层次理论；X/Y理论；双因素理论；揭示人的行为内在机理</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="highlight-box">
+        <strong>🔑 核心记忆点：</strong>"人力资源"最早由<span class="kw">彼得·德鲁克</span>系统提出。1946年《公司的概念》中提出"人力资源"一词；1954年《管理的实践》提出"传统人事管理正成为过去，人力资源开发的人事革命正在到来"。
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🎈 小学生版：霍桑实验是什么？</summary>
+    <div class="detail-content">
+      <div class="simple-explain">
+        科学家想知道把教室灯开亮点，学生成绩会不会变好。结果发现：灯光亮不亮无所谓，关键是被老师关注、有好伙伴在一起，同学们才会努力学习！所以"被重视""有归属感"比"工资高"更重要——这就是霍桑实验的发现！
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🧠 霍桑实验四大理论（必背）</summary>
+    <div class="detail-content">
+      <div class="info-grid">
+        <div class="info-item"><div class="label">社会人理论</div><div class="value">社会心理因素第一位，经济因素第二位</div></div>
+        <div class="info-item"><div class="label">士气理论</div><div class="value">心理需要满足→提高效率的基础</div></div>
+        <div class="info-item"><div class="label">非正式群体理论</div><div class="value">正式组织中存在自发的非正式群体</div></div>
+        <div class="info-item"><div class="label">人际关系型领导</div><div class="value">平衡正式群体与非正式群体的需要</div></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>💬 复试回答模板：西方HRM渊源</summary>
+    <div class="detail-content">
+      <div class="answer-template">
+        <div class="step"><span class="step-num">①</span><span><strong>科学管理的萌芽（1911）：</strong>泰勒《科学管理原理》建立了最早的HR职能部门和绩效考核雏形。</span></div>
+        <div class="step"><span class="step-num">②</span><span><strong>霍桑实验的突破（1924-1932）：</strong>梅奥发现社会心理因素比经济因素更重要，提出"社会人"理论，是HRM从萌生到诞生的重要理论突破。</span></div>
+        <div class="step"><span class="step-num">③</span><span><strong>工业心理学的奠基（1912）：</strong>孟斯特伯格开创工业心理学，将心理学导入HR研究，为行为科学发展奠定基础。</span></div>
+        <div class="step"><span class="step-num">④</span><span><strong>德鲁克的正式提出（1946-1954）：</strong>德鲁克系统提出"人力资源"概念，推动人事管理向人力资源管理的革命。</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>📅 历年考察年份</summary>
+    <div class="detail-content">
+      <span class="exam-tag">2017笔试</span>
+      <span class="exam-tag">2018复试</span>
+      <span class="exam-tag">2020复试</span>
+      <p style="margin-top:8px;color:var(--text-muted);">霍桑实验常作为"行为科学"和"人本管理"相关题目的背景知识考查。</p>
+    </div>
+  </details>
+</div>
+
+<!-- ===== 知识点3：人力资源的主要特征 ===== -->
+<div id="sec12">
+<div class="section-title" style="font-size:16px; border-color:#388e3c; margin-top:16px;"><span class="icon">1.2</span>人力资源管理的内涵及特征</div>
+</div>
+
+<div class="knowledge-card orange" id="kp3">
+  <div class="card-header">
+    <div class="card-title">⭐ 知识点3：人力资源的五大特征</div>
+    <div class="card-meta">
+      <span class="badge badge-page">P011–P012</span>
+      <span class="badge badge-star">★★★★★ 必考</span>
+      <span class="badge badge-prob">高概率 ★★★★★</span>
+      <span class="badge badge-type">名词解释 / 简答</span>
+    </div>
+  </div>
+
+  <details open>
+    <summary>📖 五大特征详解</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>特征</th><th>核心含义</th><th>简单说明</th><th>管理启示</th>
+          </tr>
+          <tr>
+            <td><span class="kw">①生物性</span></td>
+            <td>人是有生命的"活"资源，与自然生理特征相联系</td>
+            <td>人有生老病死，需要休息、营养</td>
+            <td>根据人性进行人性化管理（松下幸之助）</td>
+          </tr>
+          <tr>
+            <td><span class="kw">②再生性</span></td>
+            <td>人口不断更新，人力资源可以再生；受人类意识支配</td>
+            <td>不像矿山挖完就没了，人会生育、成长</td>
+            <td>注重人才培养与后备人才建设</td>
+          </tr>
+          <tr>
+            <td><span class="kw">③能动性</span></td>
+            <td>人能积极主动、有目的地认识和改造世界，<span class="kw-red">生产力中最活跃的因素</span></td>
+            <td>人会主动想办法，机器不行</td>
+            <td>激发主观能动性，授权赋能</td>
+          </tr>
+          <tr>
+            <td><span class="kw">④两重性</span></td>
+            <td>既是投资主体又是投资目标；既是生产者又是消费者</td>
+            <td>我们既创造财富，又享受财富</td>
+            <td>管理手段性+目标性并重；重视人口数量控制与开发</td>
+          </tr>
+          <tr>
+            <td><span class="kw">⑤社会性</span></td>
+            <td>人的本质是"一切社会关系的总和"（马克思）</td>
+            <td>人是社会动物，离不开集体</td>
+            <td>人力资源是社会资源，需从社会角度配置</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🧠 助记口诀</summary>
+    <div class="detail-content">
+      <div class="mnemonic">生（生物性）再（再生性）能（能动性）两（两重性）社（社会性）<br>谐音：「生再能两社」→「生在能量社会」</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🎈 小学生版解释</summary>
+    <div class="detail-content">
+      <div class="simple-explain">
+        <strong>生物性</strong>：你会饿会累，机器不会；<strong>再生性</strong>：人会生宝宝，越来越多；<strong>能动性</strong>：你可以主动想办法解决问题；<strong>两重性</strong>：你既是工厂的工人，又是超市的顾客；<strong>社会性</strong>：你需要朋友和家人，不能一个人生活。
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>💬 复试回答模板</summary>
+    <div class="detail-content">
+      <div class="answer-template">
+        <div class="step"><span class="step-num">①</span><span>人力资源作为特殊资源，具有五大主要特征。</span></div>
+        <div class="step"><span class="step-num">②</span><span><strong>生物性</strong>：人是有生命的活资源，管理需符合人的自然属性。</span></div>
+        <div class="step"><span class="step-num">③</span><span><strong>再生性</strong>：人口可再生，且受人类意识支配，有别于一般生物资源。</span></div>
+        <div class="step"><span class="step-num">④</span><span><strong>能动性</strong>：人是生产力中最活跃的因素，能主动认识和改造世界。</span></div>
+        <div class="step"><span class="step-num">⑤</span><span><strong>两重性</strong>：人既是投资主体又是投资目标，管理时要兼顾手段性和目标性。</span></div>
+        <div class="step"><span class="step-num">⑥</span><span><strong>社会性</strong>：马克思指出人的本质是一切社会关系的总和，人力资源本质上是社会资源。</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>📅 历年考察 & 必背原句</summary>
+    <div class="detail-content">
+      <span class="exam-tag">2019复试</span>
+      <span class="exam-tag">2021笔试</span>
+      <span class="exam-tag">2023复试</span>
+      <div class="textbook-quote" style="margin-top:10px;">
+        "人是生产力中最活跃的因素。"（能动性核心句）<br>
+        "人的本质不是单个人所固有的抽象物，在其现实性上，它是一切社会关系的总和。"（马克思，社会性）
+        <div class="source">教材P011-P012</div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>❓ 复试延伸问题</summary>
+    <div class="detail-content">
+      <div class="extension-questions">
+        <div class="ext-q">为什么说人力资源是企业最重要的资源？（联系能动性回答）</div>
+        <div class="ext-q">两重性对企业人口控制和人才培养有什么启示？</div>
+        <div class="ext-q">人力资源的社会性如何影响跨国企业的HR实践？</div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ===== 知识点4：人力资源管理特征 ===== -->
+<div class="knowledge-card purple" id="kp4">
+  <div class="card-header">
+    <div class="card-title">🏢 知识点4：人力资源管理的六大特征</div>
+    <div class="card-meta">
+      <span class="badge badge-page">P012–P013</span>
+      <span class="badge badge-star">★★★★ 重要</span>
+      <span class="badge badge-prob">较高 ★★★★</span>
+      <span class="badge badge-type">简答 / 名词解释</span>
+    </div>
+  </div>
+
+  <details open>
+    <summary>📖 六大特征详解</summary>
+    <div class="detail-content">
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">系统性</div>
+          <div class="value">融合于整个管理系统；第一责任人是最高管理者</div>
+        </div>
+        <div class="info-item">
+          <div class="label">时代性</div>
+          <div class="value">"时势造英雄"；农业→工业→知识经济，HR要求不断提升</div>
+        </div>
+        <div class="info-item">
+          <div class="label">联动性</div>
+          <div class="value">人是生产要素的结合者和最终来源；人出差错则其他资源失效</div>
+        </div>
+        <div class="info-item">
+          <div class="label">二重性</div>
+          <div class="value">科学性+艺术性；既理论又实践，艺术性更突出</div>
+        </div>
+        <div class="info-item">
+          <div class="label">文化亲缘性</div>
+          <div class="value">人受文化支配；不同文化背景HR管理截然不同</div>
+        </div>
+        <div class="info-item">
+          <div class="label">创新性</div>
+          <div class="value">从雇员管理→人事管理→人本型→战略型，持续创新</div>
+        </div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🧠 助记口诀</summary>
+    <div class="detail-content">
+      <div class="mnemonic">系（系统性）时（时代性）联（联动性）二（二重性）文（文化亲缘性）创（创新性）<br>口诀：「系时联二文创」→「系统时代联动着二重文化，持续创新」</div>
+    </div>
+  </details>
+
+  <details>
+    <summary>📌 重点：文化亲缘性（最有中南大特色）</summary>
+    <div class="detail-content">
+      <div class="textbook-quote">
+        "人力资源管理最具文化亲缘性，同时也最具创新难度。"
+        <div class="source">教材P013</div>
+      </div>
+      <p>原因：人的思想受文化传统制约；文化有地域性、历史性；不同文化背景下HR管理差异巨大。盲目照搬西方模式会"适得其反"。</p>
+      <div class="case-box">
+        日本企业的终身雇用制、年功序列制是日本儒家文化的产物；直接移植到美国企业则失败。这就是文化亲缘性的体现。
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ===== 知识点5：人事管理vs人力资源管理 ===== -->
+<div class="knowledge-card teal" id="kp5">
+  <div class="card-header">
+    <div class="card-title">🔄 知识点5：人事管理 vs 人力资源管理（易混点）</div>
+    <div class="card-meta">
+      <span class="badge badge-page">P008–P009</span>
+      <span class="badge badge-star">★★★★★ 必考</span>
+      <span class="badge badge-prob">高概率 ★★★★★</span>
+      <span class="badge badge-type">论述 / 对比</span>
+    </div>
+  </div>
+
+  <details open>
+    <summary>📊 对比总结表（斯托瑞1992年分析）</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>维度</th><th>人事管理（PM）</th><th>人力资源管理（HRM）</th>
+          </tr>
+          <tr>
+            <td><strong>产生时代</strong></td>
+            <td>工业化早期</td>
+            <td>20世纪60年代后</td>
+          </tr>
+          <tr>
+            <td><strong>人的观念</strong></td>
+            <td>人是成本、费用支出</td>
+            <td><span class="kw">人是资源、最重要资产</span></td>
+          </tr>
+          <tr>
+            <td><strong>管理重点</strong></td>
+            <td>工资、纪律、常规事务</td>
+            <td>战略、开发、激励</td>
+          </tr>
+          <tr>
+            <td><strong>时间取向</strong></td>
+            <td>短期、操作性</td>
+            <td><span class="kw">长期、战略性</span></td>
+          </tr>
+          <tr>
+            <td><strong>决策层次</strong></td>
+            <td>执行层面</td>
+            <td>战略层面</td>
+          </tr>
+          <tr>
+            <td><strong>负责人</strong></td>
+            <td>人事部门专职人员</td>
+            <td><span class="kw">全体管理者+HR部门</span></td>
+          </tr>
+          <tr>
+            <td><strong>员工关系</strong></td>
+            <td>对立（劳资矛盾）</td>
+            <td>合作伙伴关系</td>
+          </tr>
+          <tr>
+            <td><strong>培训观念</strong></td>
+            <td>培训是成本</td>
+            <td><span class="kw">培训是投资</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🎈 小学生版对比</summary>
+    <div class="detail-content">
+      <div class="simple-explain">
+        人事管理像旧式班主任：只管考勤和纪律，不管你开不开心。人力资源管理像新式班主任：关心你的成长，帮你发现特长，给你合适的任务，让你越来越好——把你当宝贝而不是管理对象！
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>💬 复试回答模板</summary>
+    <div class="detail-content">
+      <div class="answer-template">
+        <div class="step"><span class="step-num">①</span><span><strong>理念差异：</strong>人事管理视人为成本，HRM视人为战略资源。</span></div>
+        <div class="step"><span class="step-num">②</span><span><strong>职能范围：</strong>人事管理局限于招聘、工资等事务，HRM涵盖战略规划、激励开发等全方位。</span></div>
+        <div class="step"><span class="step-num">③</span><span><strong>时间导向：</strong>人事管理短期操作性，HRM具有长期战略性。</span></div>
+        <div class="step"><span class="step-num">④</span><span><strong>负责主体：</strong>HRM不只是人事部门的事，是全体管理者的共同责任，企业家是第一责任人。</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>📅 历年考察年份</summary>
+    <div class="detail-content">
+      <span class="exam-tag">2016笔试</span>
+      <span class="exam-tag">2018复试</span>
+      <span class="exam-tag">2022笔试</span>
+      <span class="exam-tag">2024复试</span>
+    </div>
+  </details>
+</div>
+
+<!-- ===== 知识点6：人力资本理论 ===== -->
+<div class="knowledge-card red" id="kp6">
+  <div class="card-header">
+    <div class="card-title">💰 知识点6：人力资本理论（舒尔茨）</div>
+    <div class="card-meta">
+      <span class="badge badge-page">P007</span>
+      <span class="badge badge-star">★★★★ 重要</span>
+      <span class="badge badge-prob">较高 ★★★★</span>
+      <span class="badge badge-type">名词解释 / 简答</span>
+    </div>
+  </div>
+
+  <details open>
+    <summary>📖 核心内容</summary>
+    <div class="detail-content">
+      <p><strong>提出者：</strong><span class="kw">西奥多·舒尔茨（Theodore Schultz）</span>，1960年</p>
+      <p><strong>标志：</strong>《论人力资本投资》，<span class="kw-green">标志人力资本理论的诞生</span></p>
+      <div class="highlight-box">
+        <strong>核心观点三要点：</strong><br>
+        ① 完整的资本概念包括<span class="kw">物力资本</span>和<span class="kw">人力资本</span>两方面<br>
+        ② 人力资本的<span class="kw">收益率高于</span>物力资本<br>
+        ③ <span class="kw">教育是人力资本形成的主要来源</span>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🎈 小学生版</summary>
+    <div class="detail-content">
+      <div class="simple-explain">
+        以前大家觉得钱、机器才是最重要的资本。舒尔茨说：不对！人的知识和能力也是资本，而且更赚钱！投资读书（教育）就是在增加"人力资本"，就像存钱一样会有回报的！
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>📅 历年考察 & 必背原句</summary>
+    <div class="detail-content">
+      <span class="exam-tag">2017笔试</span>
+      <span class="exam-tag">2020复试</span>
+      <div class="textbook-quote" style="margin-top:8px;">
+        "完整的资本概念应该包括物力资本和人力资本两方面，人力资本和物力资本在投资收益率上是有差别的，人力资本的收益率高于后者；教育是人力资本形成的主要来源。"
+        <div class="source">教材P007</div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ===== 知识点7：发展趋势 ===== -->
+<div id="sec13">
+<div class="section-title" style="font-size:16px; border-color:#f57c00; margin-top:16px;"><span class="icon">1.3</span>人力资源管理研究的发展趋势</div>
+</div>
+
+<div class="knowledge-card orange" id="kp7">
+  <div class="card-header">
+    <div class="card-title">🔮 知识点7：HRM研究的发展趋势（六大趋势）</div>
+    <div class="card-meta">
+      <span class="badge badge-page">P017–P021</span>
+      <span class="badge badge-star">★★★★ 重要</span>
+      <span class="badge badge-prob">较高 ★★★★</span>
+      <span class="badge badge-type">简答 / 论述</span>
+    </div>
+  </div>
+
+  <details open>
+    <summary>📋 六大趋势总结表</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>#</th><th>趋势</th><th>核心变化</th><th>关键词</th>
+          </tr>
+          <tr>
+            <td>①</td>
+            <td><span class="kw">职能层次提升</span></td>
+            <td>从人事管理→人力资源管理→<span class="kw">战略人力资源管理</span></td>
+            <td>战略化、整合、竞争优势</td>
+          </tr>
+          <tr>
+            <td>②</td>
+            <td><span class="kw">范围进一步拓展</span></td>
+            <td>从内部→外部（利益相关者）；从区域化→<span class="kw">全球化</span></td>
+            <td>跨国、全球化、多元文化</td>
+          </tr>
+          <tr>
+            <td>③</td>
+            <td><span class="kw">个人→团队与组织</span></td>
+            <td>自我管理团队（Self-managed Team）；虚拟团队（Virtual Team）；1+1>2</td>
+            <td>团队学习、学习型组织</td>
+          </tr>
+          <tr>
+            <td>④</td>
+            <td><span class="kw">重心偏移</span></td>
+            <td>类型上→<span class="kw">知识型员工</span>；层次上→<span class="kw">人才管理</span>（1997麦肯锡"人才战争"）</td>
+            <td>心理契约、核心人才</td>
+          </tr>
+          <tr>
+            <td>⑤</td>
+            <td><span class="kw">信息化</span></td>
+            <td>HRIS→HRMS→<span class="kw">e-HRM</span>（电子化人力资源管理）</td>
+            <td>数字化、大数据</td>
+          </tr>
+          <tr>
+            <td>⑥</td>
+            <td><span class="kw">循证HRM</span></td>
+            <td>Rousseau(2006)引入管理学；用最佳科学证据支持决策，摒弃"拍脑袋"</td>
+            <td>数据驱动、科学决策</td>
+          </tr>
+        </table>
+      </div>
+      <div class="highlight-box">
+        <strong>🌟 加分项：</strong>"互联网+"趋势——互联网与HRM深度融合，推动企业内部沟通变革、信息对称、组织去中心化。
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>💡 知识型员工特征（重点）</summary>
+    <div class="detail-content">
+      <p><span class="kw">知识型员工</span>：主要依靠脑力劳动，运用知识和智慧给产品带来附加值的员工。</p>
+      <p>特点：重视自主权；注重有挑战性的工作；心理契约>书面契约；管理要从"约束"转向"激励与赋能"。</p>
+      <div class="case-box">
+        谷歌工程师可以用20%工作时间做自己的项目，这就是针对知识型员工特点的HR创新——心理契约管理的实践。
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>💬 复试回答模板</summary>
+    <div class="detail-content">
+      <div class="answer-template">
+        <div class="step"><span class="step-num">①</span><span><strong>职能提升：</strong>HRM从操作层向战略层转变，成为企业竞争优势的重要来源。</span></div>
+        <div class="step"><span class="step-num">②</span><span><strong>范围拓展：</strong>从内部员工管理延伸至外部利益相关者，从国内走向全球化。</span></div>
+        <div class="step"><span class="step-num">③</span><span><strong>团队化：</strong>从以个人绩效为中心转向团队与组织能力开发，形成1+1>2的效果。</span></div>
+        <div class="step"><span class="step-num">④</span><span><strong>知识型员工：</strong>管理重心向知识型员工和人才管理偏移，心理契约管理成为核心。</span></div>
+        <div class="step"><span class="step-num">⑤</span><span><strong>信息化：</strong>e-HRM使管理更科学化、制度化；大数据支持循证HRM决策。</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>📅 历年考察年份</summary>
+    <div class="detail-content">
+      <span class="exam-tag">2017笔试</span>
+      <span class="exam-tag">2019复试</span>
+      <span class="exam-tag">2023笔试</span>
+      <span class="exam-tag">2024复试</span>
+    </div>
+  </details>
+</div>
+
+<!-- ===== 知识点8：中国HRM特征 ===== -->
+<div id="sec14">
+<div class="section-title" style="font-size:16px; border-color:#c62828; margin-top:16px;"><span class="icon">1.4</span>中国人力资源管理的主要特征与发展趋势</div>
+</div>
+
+<div class="knowledge-card red" id="kp8">
+  <div class="card-header">
+    <div class="card-title">🇨🇳 知识点8：中国HRM的六大特征与趋势</div>
+    <div class="card-meta">
+      <span class="badge badge-page">P021–P028</span>
+      <span class="badge badge-star">★★★★★ 必考</span>
+      <span class="badge badge-prob">高概率 ★★★★★</span>
+      <span class="badge badge-type">论述 / 简答 / 案例</span>
+    </div>
+  </div>
+
+  <details open>
+    <summary>📋 六大特征与趋势总表</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>#</th><th>特征/趋势</th><th>核心内容</th>
+          </tr>
+          <tr>
+            <td>①</td>
+            <td><span class="kw">政府主导</span></td>
+            <td>中国市场经济发展一直有政府主导特征；人力资源市场化起步最晚、进程最慢；2000年江泽民提出"人才资源是第一资源"</td>
+          </tr>
+          <tr>
+            <td>②</td>
+            <td><span class="kw">人力资源市场体系待完善</span></td>
+            <td>存在二元分割市场；国有/集体/合同工/农民工等身份标签；市场化程度低；需健全法律体系（2008《劳动合同法》）</td>
+          </tr>
+          <tr>
+            <td>③</td>
+            <td><span class="kw">制度管理→柔性管理</span></td>
+            <td>中国主体上仍处农业→工业过渡期；制度管理占主要地位较长时期；柔性管理将逐步成为主旋律</td>
+          </tr>
+          <tr>
+            <td>④</td>
+            <td><span class="kw">能力导向替代工作导向</span></td>
+            <td>基于"工作"（泰勒）→基于"能力"（McClelland,1973）；适应高动态转型期；胜任力模型兴起</td>
+          </tr>
+          <tr>
+            <td>⑤</td>
+            <td><span class="kw">培训开发为热点</span></td>
+            <td>中国转型期需组织持续学习；文化惯性需培训抵消；培训是有效的人力资本投资手段</td>
+          </tr>
+          <tr>
+            <td>⑥</td>
+            <td><span class="kw">文化与HRM协同</span></td>
+            <td>中西文化差异导致西方HRM技术在中国应用失灵；必须将文化与HRM结合；构建中国特色HRM体系</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔑 重点：柔性管理 vs 制度管理</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>维度</th><th>制度管理（硬性管理）</th><th>柔性管理（软性管理）</th>
+          </tr>
+          <tr>
+            <td>适用环境</td>
+            <td>稳定、农业/工业经济时期</td>
+            <td>动态、知识经济时期</td>
+          </tr>
+          <tr>
+            <td>核心工具</td>
+            <td>规章制度、奖惩机制</td>
+            <td>文化、信任、价值观、授权</td>
+          </tr>
+          <tr>
+            <td>员工关系</td>
+            <td>命令服从</td>
+            <td>合作伙伴</td>
+          </tr>
+          <tr>
+            <td>中国现状</td>
+            <td>当前主要方式（制度尚不健全）</td>
+            <td>未来发展方向</td>
+          </tr>
+        </table>
+      </div>
+      <div class="textbook-quote">
+        "制度管理在较长时期内占重要地位，柔性管理将逐步成为人力资源管理的主旋律。"
+        <div class="source">教材P022</div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>🔑 能力导向 vs 工作导向</summary>
+    <div class="detail-content">
+      <div class="table-wrap">
+        <table>
+          <tr>
+            <th>维度</th><th>基于"工作"的HRM</th><th>基于"能力"的HRM</th>
+          </tr>
+          <tr>
+            <td>起源</td>
+            <td>泰勒科学管理（物本管理）</td>
+            <td>McClelland，1973年哈佛大学</td>
+          </tr>
+          <tr>
+            <td>核心逻辑</td>
+            <td>以任务为中心，以工作为导向</td>
+            <td>以人的胜任特征为基础</td>
+          </tr>
+          <tr>
+            <td>适用情境</td>
+            <td>稳定环境，目标固定</td>
+            <td>动态环境，高度变化</td>
+          </tr>
+          <tr>
+            <td>工作分析</td>
+            <td>分析工作内容</td>
+            <td>分析优异表现的能力特征</td>
+          </tr>
+          <tr>
+            <td>薪酬设计</td>
+            <td>基于岗位价值</td>
+            <td>基于能力/胜任力</td>
+          </tr>
+        </table>
+      </div>
+      <div class="case-box">
+        阿里巴巴招聘不只看工作经历，更看候选人是否具备"创新力、执行力、客户第一"等胜任特征——这就是能力导向的体现。
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>💬 复试回答模板：中国HRM特征</summary>
+    <div class="detail-content">
+      <div class="answer-template">
+        <div class="step"><span class="step-num">①</span><span><strong>政府主导：</strong>中国人力资源市场化由政府主导，起步晚但推进坚决。"人才资源是第一资源"已上升至国家战略。</span></div>
+        <div class="step"><span class="step-num">②</span><span><strong>市场体系待完善：</strong>二元分割市场尚未消除，2008《劳动合同法》标志着法律体系的重要进步。</span></div>
+        <div class="step"><span class="step-num">③</span><span><strong>制度→柔性：</strong>中国处于转型期，制度管理是当前主要方式，但柔性管理是未来方向。</span></div>
+        <div class="step"><span class="step-num">④</span><span><strong>能力导向：</strong>中国高动态转型期更需要基于能力的HRM，胜任力模型正成为主流工具。</span></div>
+        <div class="step"><span class="step-num">⑤</span><span><strong>文化融合：</strong>不能照搬西方，需结合儒家、道家等传统文化，构建中国特色HRM体系。</span></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>📅 历年考察年份</summary>
+    <div class="detail-content">
+      <span class="exam-tag">2016复试</span>
+      <span class="exam-tag">2018笔试</span>
+      <span class="exam-tag">2021复试</span>
+      <span class="exam-tag">2023笔试</span>
+      <span class="exam-tag">2025复试</span>
+    </div>
+  </details>
+
+  <details>
+    <summary>❓ 复试延伸问题</summary>
+    <div class="detail-content">
+      <div class="extension-questions">
+        <div class="ext-q">为什么说"文化是导致西方HRM技术在中国应用失灵的主要根源"？</div>
+        <div class="ext-q">在数字化时代，中国企业如何推进HRM信息化改造？</div>
+        <div class="ext-q">《劳动合同法》的颁布对企业HR管理产生了哪些影响？</div>
+        <div class="ext-q">如何理解"人才强国战略"与HRM学科发展的关系？</div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ===== 四、对比总结表 ===== -->
+<div id="compare">
+<div class="section-title"><span class="icon">📊</span>易混概念对比总结</div>
+
+<div class="compare-section">
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>易混概念</th><th>区别1</th><th>区别2</th><th>区别3</th><th>记忆技巧</th>
+      </tr>
+      <tr>
+        <td><strong>人力资本 vs 人力资源</strong></td>
+        <td>资本强调投资与收益角度</td>
+        <td>资源强调存量与利用角度</td>
+        <td>舒尔茨提出人力资本理论，德鲁克提出人力资源</td>
+        <td>资本=钱的视角；资源=矿藏的视角</td>
+      </tr>
+      <tr>
+        <td><strong>人事管理 vs HRM</strong></td>
+        <td>人事管理视人为成本</td>
+        <td>HRM视人为战略资源</td>
+        <td>人事管理短期操作，HRM战略长期</td>
+        <td>人事=管人打卡；HRM=战略伙伴</td>
+      </tr>
+      <tr>
+        <td><strong>生物性 vs 能动性</strong></td>
+        <td>生物性：人有生理需求（饿、累、病）</td>
+        <td>能动性：人能主动思考、创造</td>
+        <td>生物性是先天属性；能动性是人独有</td>
+        <td>生物=生理本能；能动=主动思考</td>
+      </tr>
+      <tr>
+        <td><strong>两重性 vs 社会性</strong></td>
+        <td>两重性：投资主体+投资目标双重角色</td>
+        <td>社会性：人是社会关系的总和</td>
+        <td>两重性强调人的经济地位；社会性强调群体属性</td>
+        <td>两重=两个角色；社会=群体关系</td>
+      </tr>
+      <tr>
+        <td><strong>制度管理 vs 柔性管理</strong></td>
+        <td>制度管理靠规章制度约束</td>
+        <td>柔性管理靠文化价值观引导</td>
+        <td>制度适合稳定期，柔性适合动态期</td>
+        <td>制度=硬约束；柔性=软引导</td>
+      </tr>
+      <tr>
+        <td><strong>工作导向 vs 能力导向</strong></td>
+        <td>工作导向以任务为中心（泰勒）</td>
+        <td>能力导向以胜任特征为中心</td>
+        <td>工作导向适合稳定环境；能力导向适合动态环境</td>
+        <td>工作=完成任务；能力=胜任特征</td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+
+<!-- ===== 五、历年真题汇总 ===== -->
+<div id="exams">
+<div class="section-title"><span class="icon">📝</span>历年真题汇总</div>
+<div class="knowledge-card blue">
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <th>年份</th><th>题型</th><th>题目内容</th><th>考查知识点</th>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2016</span></td>
+        <td>论述</td>
+        <td>论述企业战略与人力资源战略的匹配关系</td>
+        <td>HRM战略化；第13章联系</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2017</span></td>
+        <td>简答</td>
+        <td>简述胜任力模型构建流程</td>
+        <td>能力导向HRM；胜任力</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2017</span></td>
+        <td>论述</td>
+        <td>数字化转型对企业战略与人力的影响</td>
+        <td>HRM信息化；发展趋势</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2018</span></td>
+        <td>论述</td>
+        <td>企业文化对战略实施的作用</td>
+        <td>文化亲缘性；中国HRM特征</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2019</span></td>
+        <td>简答</td>
+        <td>简述员工职业发展通道设计</td>
+        <td>人才管理；知识型员工</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2021</span></td>
+        <td>简答</td>
+        <td>招聘中如何识别高潜人才</td>
+        <td>能力导向；胜任力</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2023</span></td>
+        <td>案例</td>
+        <td>数字化转型背景下某制造企业战略重构与人力变革</td>
+        <td>发展趋势；互联网+</td>
+      </tr>
+    </table>
+  </div>
+  <div class="highlight-box" style="margin-top:12px;">
+    <strong>💡 规律总结：</strong>第一章作为基础章，常作为"联系题"的背景知识出现，尤其是<strong>文化亲缘性、能力导向、柔性管理</strong>这三个中国特色概念，高频与其他章节（绩效、薪酬、战略）联合考查。
+  </div>
+</div>
+</div>
+
+<!-- ===== 六、本章终极串联 ===== -->
+<div id="serial">
+<div class="section-title"><span class="icon">🔗</span>本章知识终极串联（逻辑流程图）</div>
+<div class="logic-diagram">
+  <div style="text-align:left; line-height:2.2; font-size:14px; color:var(--text-primary);">
+    <div class="flow-row" style="justify-content:flex-start;">
+      <div class="flow-box highlight-box-flow">为什么需要HRM？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">人是生产力中最活跃的因素（能动性）</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">人力资本收益率最高（舒尔茨）</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row" style="justify-content:flex-start;">
+      <div class="flow-box highlight-box-flow">HRM从哪里来？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">泰勒（萌芽）→霍桑（突破）→德鲁克（正式提出）→迈尔斯（理论化）</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row" style="justify-content:flex-start;">
+      <div class="flow-box highlight-box-flow">HRM是什么？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">获取+配置+开发+使用（教材定义）</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">5大人力资源特征 + 6大HRM特征</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row" style="justify-content:flex-start;">
+      <div class="flow-box highlight-box-flow">HRM去哪里？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">战略化→全球化→信息化→能力导向→循证HRM</div>
+    </div>
+    <div class="flow-down">↓</div>
+    <div class="flow-row" style="justify-content:flex-start;">
+      <div class="flow-box highlight-box-flow">中国HRM？</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box">政府主导→制度→柔性 | 工作导向→能力导向 | 文化融合</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 七、30秒复习 ===== -->
+<div id="quick30">
+<div class="quick-review">
+  <h3>⚡ 30秒超速复习模块</h3>
+  <div class="qr-grid">
+    <div class="qr-item">
+      <strong>📌 HRM定义</strong>
+      获取→配置→开发→使用<br>目的：实现组织目标
+    </div>
+    <div class="qr-item">
+      <strong>🏛️ 西方渊源</strong>
+      泰勒→霍桑→孟斯特伯格→激励理论→德鲁克
+    </div>
+    <div class="qr-item">
+      <strong>⭐ 人力资源5特征</strong>
+      生物·再生·能动·两重·社会<br>口诀：生再能两社
+    </div>
+    <div class="qr-item">
+      <strong>🏢 HRM6特征</strong>
+      系统·时代·联动·二重·文化亲缘·创新<br>口诀：系时联二文创
+    </div>
+    <div class="qr-item">
+      <strong>🔄 PM vs HRM</strong>
+      人事：人=成本，短期操作<br>HRM：人=资源，长期战略
+    </div>
+    <div class="qr-item">
+      <strong>🇨🇳 中国6特征</strong>
+      政府主导·市场待完善<br>制度→柔性·工作→能力<br>培训热点·文化融合
+    </div>
+    <div class="qr-item">
+      <strong>💡 德鲁克贡献</strong>
+      1946提出"人力资源"<br>1954《管理的实践》<br>"人力资源是唯一特殊资产"
+    </div>
+    <div class="qr-item">
+      <strong>📈 发展趋势</strong>
+      战略化·全球化·团队化<br>知识型员工·信息化·循证
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== 八、背诵版总结 ===== -->
+<div id="recite">
+<div class="recitation">
+  <h3>🎙️ 背诵版总结（适合复试口述）</h3>
+
+  <p style="font-weight:700; color:var(--text-primary); margin-bottom:8px;">【HRM定义背诵】</p>
+  <div class="textbook-quote">
+    "人力资源管理就是组织为了实现其目标而获取、配置、开发和使用人力资源的各项活动。"（P015）
+  </div>
+
+  <p style="font-weight:700; color:var(--text-primary); margin: 16px 0 8px;">【人力资源五大特征】</p>
+  <ol>
+    <li><span class="kw">生物性</span>——人是有生命的活资源（管理须符合人的自然属性）</li>
+    <li><span class="kw">再生性</span>——受人类意识支配，有别于一般生物资源</li>
+    <li><span class="kw">能动性</span>——人是生产力中最活跃的因素（核心！）</li>
+    <li><span class="kw">两重性</span>——既是投资主体又是投资目标，管理须兼顾手段性与目标性</li>
+    <li><span class="kw">社会性</span>——马克思："人的本质是一切社会关系的总和"</li>
+  </ol>
+
+  <p style="font-weight:700; color:var(--text-primary); margin: 16px 0 8px;">【HRM六大管理特征】</p>
+  <ol>
+    <li><span class="kw">系统性</span>——HR是全体管理者的职能，企业家是第一责任人</li>
+    <li><span class="kw">时代性</span>——"时势造英雄"，随经济发展而变化</li>
+    <li><span class="kw">联动性</span>——人是生产要素的结合者，人出差错则其他资源无效</li>
+    <li><span class="kw">二重性</span>——科学性+艺术性并重</li>
+    <li><span class="kw">文化亲缘性</span>——最具文化亲缘性，不同文化背景差异极大</li>
+    <li><span class="kw">创新性</span>——从雇员管理→人事→人本型→战略型持续创新</li>
+  </ol>
+
+  <p style="font-weight:700; color:var(--text-primary); margin: 16px 0 8px;">【中国HRM六大趋势】</p>
+  <ol>
+    <li>政府主导人力资源市场化进程</li>
+    <li>人力资源市场体系待强力推进和完善</li>
+    <li>制度管理占重要地位，柔性管理将成主旋律</li>
+    <li>基于"能力"逐步替代基于"工作"的HRM思想</li>
+    <li>培训开发是中国企业HR管理的热点</li>
+    <li>文化与HRM协同运作成为重要趋势</li>
+  </ol>
+</div>
+</div>
+
+<!-- ===== 九、自我检测 ===== -->
+<div id="selftest">
+<div class="section-title"><span class="icon">✏️</span>课后自我检测</div>
+<div class="self-test">
+  <h3>🧪 检测题目（覆盖教材课后题 + 历年真题 + 预测题）</h3>
+
+  <div class="question-item">
+    <span class="q-num">Q1</span>什么是人力资源管理？其主要特征是什么？
+    <span class="badge q-type q-textbook">教材课后题</span>
+  </div>
+  <div class="question-item">
+    <span class="q-num">Q2</span>请简述人力资源与人力资本的区别与联系，并说明舒尔茨人力资本理论的核心观点。
+    <span class="badge q-type q-predict">预测题</span>
+  </div>
+  <div class="question-item">
+    <span class="q-num">Q3</span>霍桑实验的主要发现有哪些？它对现代人力资源管理有什么启示？
+    <span class="badge q-type q-exam">历年真题</span>
+  </div>
+  <div class="question-item">
+    <span class="q-num">Q4</span>如何理解人力资源管理的层次性？企业家在人力资源管理中扮演哪些角色？
+    <span class="badge q-type q-textbook">教材课后题</span>
+  </div>
+  <div class="question-item">
+    <span class="q-num">Q5</span>试分析中国人力资源管理的主要特征，并结合现实说明"制度管理向柔性管理转变"的必要性。
+    <span class="badge q-type q-exam">历年真题</span>
+  </div>
+  <div class="question-item">
+    <span class="q-num">Q6</span>为什么说人力资源管理最具"文化亲缘性"？试举例说明文化差异对HRM实践的影响。
+    <span class="badge q-type q-predict">预测题</span>
+  </div>
+  <div class="question-item">
+    <span class="q-num">Q7</span>请论述21世纪人力资源管理研究的主要发展趋势，并结合"互联网+"背景分析其对HRM的影响。
+    <span class="badge q-type q-exam">历年真题</span>
+  </div>
+  <div class="question-item">
+    <span class="q-num">Q8</span>（案例题）某传统制造企业引进了一套来自美国的绩效管理系统，但实施半年后效果很差，员工抵触明显。请运用本章知识分析原因并提出建议。
+    <span class="badge q-type q-predict">预测题</span>
+  </div>
+</div>
+</div>
+
+</main>
+
+<!-- 返回顶部 -->
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- 页脚 -->
+<footer>
+  <p>📘 中南大学企业管理学硕复试笔记 | 第一章 人力资源管理概述</p>
+  <p>教材：颜爱民《人力资源管理》第3版（北京大学出版社，2017年）</p>
+  <p>生成日期：2026-03-08 | 仅供学习参考</p>
+</footer>
+
+<script>
+// ===== 夜间模式 =====
+function toggleDark() {
+  document.body.classList.toggle('dark-mode');
+  const btn = document.querySelector('.btn-dark');
+  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+  localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+}
+// 初始化夜间模式
+if (localStorage.getItem('darkMode') === 'true') {
+  document.body.classList.add('dark-mode');
+  document.querySelector('.btn-dark').textContent = '☀️';
+}
+
+// ===== 返回顶部 =====
+window.addEventListener('scroll', () => {
+  document.getElementById('back-to-top').style.display =
+    window.scrollY > 300 ? 'flex' : 'none';
+});
+document.getElementById('back-to-top').style.display = 'none';
+document.getElementById('back-to-top').style.alignItems = 'center';
+document.getElementById('back-to-top').style.justifyContent = 'center';
+
+// ===== 搜索功能 =====
+let searchVisible = false;
+function toggleSearch() {
+  searchVisible = !searchVisible;
+  const bar = document.getElementById('search-bar');
+  bar.style.display = searchVisible ? 'block' : 'none';
+  if (searchVisible) {
+    document.getElementById('search-input').focus();
+    document.querySelector('main').style.paddingTop = '120px';
+  } else {
+    document.querySelector('main').style.paddingTop = '80px';
+    clearHighlights();
+    document.getElementById('search-results').textContent = '';
+  }
+}
+
+function clearHighlights() {
+  document.querySelectorAll('.search-highlight').forEach(el => {
+    el.outerHTML = el.textContent;
+  });
+}
+
+
+// ===== 键盘ESC关闭搜索 =====
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && searchVisible) toggleSearch();
+});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,3100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业管理复试 · 综合案例题库 | 战略管理×人力资源管理</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ===== CSS VARIABLES ===== */
+:root {
+  --bg: #f3f1ec;
+  --surface: #ffffff;
+  --surface2: #faf9f6;
+  --surface3: #f0ede6;
+  --border: #e2ddd4;
+  --border2: #cdc8be;
+
+  --str: #1a4fa0;      /* 战略管理 蓝 */
+  --str-bg: #eef3fb;
+  --str-light: #dce8f7;
+
+  --hr: #0d7a5f;       /* 人力资源 绿 */
+  --hr-bg: #e8f7f3;
+  --hr-light: #d0f0e7;
+
+  --cross: #7b3fa0;    /* 跨章节 紫 */
+  --cross-bg: #f4eefa;
+  --cross-light: #e8d8f5;
+
+  --warn: #b85c00;     /* 警告/重点 橙 */
+  --warn-bg: #fef3e8;
+
+  --red: #c0392b;
+  --gold: #c9820b;
+  --gold-bg: #fef8e7;
+
+  --text: #1c1a17;
+  --text2: #4a4640;
+  --text3: #7a7570;
+  --text-inv: #f5f3ef;
+
+  --header: #14120e;
+  --nav: #1c1914;
+
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.07);
+  --shadow: 0 3px 12px rgba(0,0,0,0.09);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+  --radius: 10px;
+  --radius-lg: 16px;
+
+  --str-badge: #1a4fa0;
+  --hr-badge: #0d7a5f;
+}
+
+body.dark {
+  --bg: #121009;
+  --surface: #1a1814;
+  --surface2: #201e19;
+  --surface3: #252220;
+  --border: #302c25;
+  --border2: #3d3830;
+
+  --str: #5b91e8;
+  --str-bg: #141c2e;
+  --str-light: #1c2a42;
+
+  --hr: #3dc99c;
+  --hr-bg: #0e2018;
+  --hr-light: #142e22;
+
+  --cross: #b880e8;
+  --cross-bg: #1c1228;
+  --cross-light: #261840;
+
+  --warn: #e8943a;
+  --warn-bg: #221508;
+
+  --gold: #e8b83a;
+  --gold-bg: #201808;
+
+  --text: #f0ece5;
+  --text2: #afa9a0;
+  --text3: #6a6660;
+  --text-inv: #1c1a17;
+
+  --header: #0c0a08;
+  --nav: #0e0c09;
+  --shadow: 0 3px 12px rgba(0,0,0,0.35);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.50);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 15px; }
+body {
+  font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-variant-numeric: tabular-nums;
+  transition: background .3s, color .3s;
+}
+
+/* ===== HEADER ===== */
+.site-header {
+  background: var(--header);
+  color: var(--text-inv);
+  padding: 24px 32px 20px;
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.header-inner { max-width: 1320px; margin: 0 auto; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.header-logo {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.25rem; font-weight: 700;
+  color: var(--text-inv); white-space: nowrap;
+}
+.header-logo span { color: #e8b53a; }
+.header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-left: auto; align-items: center; }
+.header-badge {
+  font-size: .72rem; padding: 3px 10px; border-radius: 99px;
+  font-weight: 500; border: 1px solid rgba(255,255,255,.2);
+  color: rgba(255,255,255,.75);
+}
+.header-badge.str { background: rgba(26,79,160,.45); border-color: rgba(90,145,232,.5); color: #8bbdf0; }
+.header-badge.hr  { background: rgba(13,122,95,.40); border-color: rgba(61,201,156,.5); color: #6dd9b5; }
+.header-date { font-size: .72rem; color: rgba(255,255,255,.4); white-space: nowrap; }
+
+/* ===== NAV ===== */
+.main-nav {
+  background: var(--nav);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  position: sticky; top: 70px; z-index: 90;
+  overflow-x: auto; white-space: nowrap;
+}
+.nav-inner { max-width: 1320px; margin: 0 auto; display: flex; padding: 0 24px; gap: 2px; }
+.nav-item {
+  color: rgba(255,255,255,.55); font-size: .78rem;
+  padding: 10px 14px; border-bottom: 2px solid transparent;
+  cursor: pointer; text-decoration: none; transition: all .2s;
+  display: inline-block; font-weight: 500;
+}
+.nav-item:hover { color: rgba(255,255,255,.9); }
+.nav-item.active { color: #e8b53a; border-bottom-color: #e8b53a; }
+
+/* ===== TOOLBAR ===== */
+.toolbar {
+  max-width: 1320px; margin: 0 auto;
+  padding: 18px 24px 0;
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+.search-wrap { flex: 1; min-width: 200px; max-width: 360px; position: relative; }
+.search-wrap input {
+  width: 100%; padding: 8px 14px 8px 36px;
+  border: 1.5px solid var(--border); border-radius: 99px;
+  background: var(--surface); color: var(--text); font-size: .82rem;
+  font-family: inherit; outline: none; transition: border-color .2s;
+}
+.search-wrap input:focus { border-color: var(--str); }
+.search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: .9rem; opacity: .4; pointer-events: none; }
+.filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-btn {
+  font-size: .75rem; padding: 5px 14px; border-radius: 99px; cursor: pointer;
+  border: 1.5px solid var(--border); background: var(--surface); color: var(--text2);
+  font-family: inherit; font-weight: 500; transition: all .18s;
+}
+.filter-btn:hover { border-color: var(--str); color: var(--str); }
+.filter-btn.active { background: var(--str); border-color: var(--str); color: #fff; }
+.filter-btn.hr-active { background: var(--hr); border-color: var(--hr); color: #fff; }
+.dark-btn, .top-btn {
+  padding: 6px 14px; border-radius: 99px; cursor: pointer;
+  font-size: .78rem; border: 1.5px solid var(--border);
+  background: var(--surface); color: var(--text2);
+  font-family: inherit; transition: all .18s;
+  white-space: nowrap;
+}
+.dark-btn:hover, .top-btn:hover { border-color: var(--text3); }
+
+/* ===== MAIN CONTENT ===== */
+.main { max-width: 1320px; margin: 0 auto; padding: 20px 24px 60px; }
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px; margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px 20px;
+  display: flex; flex-direction: column; gap: 4px;
+  box-shadow: var(--shadow-sm);
+}
+.stat-num { font-size: 1.9rem; font-weight: 700; line-height: 1; font-family: 'JetBrains Mono', monospace; }
+.stat-num.blue { color: var(--str); }
+.stat-num.green { color: var(--hr); }
+.stat-num.purple { color: var(--cross); }
+.stat-num.gold { color: var(--gold); }
+.stat-label { font-size: .75rem; color: var(--text3); font-weight: 500; }
+
+/* ===== SECTION HEADER ===== */
+.section-header {
+  display: flex; align-items: center; gap: 12px; margin: 32px 0 16px;
+  padding-bottom: 12px; border-bottom: 2px solid var(--border);
+}
+.section-title { font-size: 1.1rem; font-weight: 700; font-family: 'Noto Serif SC', serif; }
+.section-count { font-size: .78rem; color: var(--text3); background: var(--surface3); padding: 2px 10px; border-radius: 99px; }
+
+/* ===== CASE CARD ===== */
+.case-grid { display: flex; flex-direction: column; gap: 20px; }
+.case-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden;
+  box-shadow: var(--shadow); transition: box-shadow .2s;
+}
+.case-card:hover { box-shadow: var(--shadow-lg); }
+
+.case-card-header {
+  padding: 16px 20px 14px;
+  display: flex; align-items: flex-start; gap: 14px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer; user-select: none;
+}
+.case-num {
+  font-family: 'JetBrains Mono', monospace; font-size: .8rem; font-weight: 600;
+  color: var(--text3); min-width: 28px; padding-top: 2px;
+}
+.case-title-block { flex: 1; }
+.case-title { font-size: 1rem; font-weight: 700; line-height: 1.4; margin-bottom: 6px; }
+.case-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.tag {
+  font-size: .7rem; padding: 2px 9px; border-radius: 99px; font-weight: 500;
+  border: 1px solid transparent;
+}
+.tag-str { background: var(--str-bg); color: var(--str); border-color: var(--str-light); }
+.tag-hr  { background: var(--hr-bg);  color: var(--hr);  border-color: var(--hr-light); }
+.tag-cross { background: var(--cross-bg); color: var(--cross); border-color: var(--cross-light); }
+.tag-year { background: var(--gold-bg); color: var(--gold); }
+.tag-warn { background: var(--warn-bg); color: var(--warn); }
+.case-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.case-level { font-size: .72rem; color: var(--text3); }
+.toggle-icon { font-size: .85rem; color: var(--text3); transition: transform .25s; }
+.case-card-header[data-open="true"] .toggle-icon { transform: rotate(180deg); }
+
+.case-body { display: none; }
+.case-body.open { display: block; }
+
+/* ===== CASE SECTIONS ===== */
+.case-section {
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--border);
+}
+.case-section:last-child { border-bottom: none; }
+.cs-title {
+  font-size: .78rem; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.cs-icon { font-size: 1rem; }
+.cs-str  { color: var(--str); }
+.cs-hr   { color: var(--hr); }
+.cs-cross{ color: var(--cross); }
+.cs-warn { color: var(--warn); }
+.cs-gold { color: var(--gold); }
+.cs-body { font-size: .88rem; line-height: 1.8; color: var(--text2); }
+.cs-body p { margin-bottom: 8px; }
+.cs-body p:last-child { margin-bottom: 0; }
+
+/* ===== KNOWLEDGE TAGS GRID ===== */
+.kp-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+.kp-item {
+  font-size: .75rem; padding: 3px 10px; border-radius: 6px; font-weight: 500;
+  display: flex; align-items: center; gap: 5px;
+}
+.kp-item .kp-page { font-family: 'JetBrains Mono', monospace; opacity: .7; }
+
+/* ===== QUESTIONS ===== */
+.q-list { display: flex; flex-direction: column; gap: 12px; }
+.q-item {
+  border-left: 3px solid var(--border);
+  padding: 12px 16px;
+  background: var(--surface2);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.q-num { font-size: .72rem; color: var(--text3); margin-bottom: 4px; font-family: 'JetBrains Mono', monospace; }
+.q-text { font-size: .88rem; font-weight: 600; color: var(--text); margin-bottom: 0; line-height: 1.5; }
+.q-type { font-size: .7rem; color: var(--text3); margin-top: 4px; }
+.q-item.q-str { border-left-color: var(--str); }
+.q-item.q-hr  { border-left-color: var(--hr);  }
+.q-item.q-cross { border-left-color: var(--cross); }
+
+/* ===== ANSWER BLOCK ===== */
+.ans-block details { margin-top: 10px; }
+.ans-block summary {
+  cursor: pointer; font-size: .78rem; font-weight: 600;
+  color: var(--str); padding: 8px 12px;
+  background: var(--str-bg); border-radius: var(--radius);
+  border: 1px solid var(--str-light);
+  list-style: none; display: flex; align-items: center; gap: 6px;
+}
+.ans-block summary::-webkit-details-marker { display: none; }
+.ans-block details[open] summary { border-radius: var(--radius) var(--radius) 0 0; }
+.ans-content {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-top: none; border-radius: 0 0 var(--radius) var(--radius);
+  padding: 16px;
+}
+.ans-content .ans-header {
+  font-size: .75rem; font-weight: 700; color: var(--text3);
+  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px;
+}
+.ans-content p, .ans-content li { font-size: .86rem; line-height: 1.9; color: var(--text2); }
+.ans-content ol, .ans-content ul { padding-left: 20px; }
+.ans-content li { margin-bottom: 4px; }
+.ans-content .key { color: var(--text); font-weight: 600; }
+.ans-content .str-key { color: var(--str); font-weight: 600; }
+.ans-content .hr-key  { color: var(--hr);  font-weight: 600; }
+.ans-content .cross-key { color: var(--cross); font-weight: 600; }
+
+/* ===== TEMPLATE BLOCK ===== */
+.tmpl-block {
+  background: var(--surface3); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 16px; margin-top: 10px;
+}
+.tmpl-title { font-size: .72rem; font-weight: 700; color: var(--cross); letter-spacing: .06em; margin-bottom: 8px; }
+.tmpl-steps { display: flex; flex-direction: column; gap: 6px; }
+.tmpl-step {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: .82rem; color: var(--text2);
+}
+.tmpl-step-num {
+  min-width: 22px; height: 22px; border-radius: 50%;
+  background: var(--cross-bg); color: var(--cross);
+  font-size: .7rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  border: 1px solid var(--cross-light);
+}
+
+/* ===== TABLE ===== */
+.kp-table {
+  width: 100%; border-collapse: collapse; font-size: .83rem;
+  margin-top: 10px; background: var(--surface);
+}
+.kp-table th {
+  background: var(--surface3); padding: 8px 12px;
+  text-align: left; font-weight: 600; font-size: .78rem;
+  border: 1px solid var(--border); color: var(--text2);
+}
+.kp-table td {
+  padding: 8px 12px; border: 1px solid var(--border);
+  vertical-align: top; color: var(--text2);
+}
+.kp-table tr:hover td { background: var(--surface2); }
+
+/* ===== HIGHLIGHT ===== */
+.hl { background: #fff3a0; color: #5a4200; border-radius: 2px; padding: 0 2px; }
+body.dark .hl { background: #5a4200; color: #f5d860; }
+
+/* ===== OVERVIEW TABLE ===== */
+.overview-table-wrap { overflow-x: auto; margin-top: 16px; }
+.overview-table {
+  width: 100%; min-width: 700px; border-collapse: collapse;
+  font-size: .82rem; background: var(--surface);
+}
+.overview-table th {
+  background: var(--surface3); padding: 10px 14px;
+  border: 1px solid var(--border); text-align: left;
+  font-size: .76rem; font-weight: 700; color: var(--text2);
+}
+.overview-table td {
+  padding: 9px 14px; border: 1px solid var(--border); vertical-align: top;
+}
+.overview-table tr:hover td { background: var(--surface2); }
+.overview-table a { color: var(--str); text-decoration: none; font-weight: 500; }
+.overview-table a:hover { text-decoration: underline; }
+
+/* ===== HIDDEN ===== */
+.case-card.hidden { display: none; }
+
+/* ===== BACK TO TOP ===== */
+#backTop {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--header); color: var(--text-inv); border: none;
+  font-size: 1.1rem; cursor: pointer;
+  display: none; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-lg); transition: opacity .2s;
+}
+#backTop.visible { display: flex; }
+
+/* ===== DIVIDER ===== */
+.divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 680px) {
+  .site-header { padding: 16px; }
+  .main { padding: 16px 14px 50px; }
+  .case-card-header { padding: 14px 14px; }
+  .case-section { padding: 14px 16px; }
+}
+
+/* ===== PREDICTION SECTION ===== */
+.predict-card {
+  background: linear-gradient(135deg, var(--cross-bg) 0%, var(--hr-bg) 100%);
+  border: 1.5px solid var(--cross-light);
+  border-radius: var(--radius-lg); padding: 24px 28px;
+  margin-bottom: 28px;
+}
+.predict-title { font-size: 1.05rem; font-weight: 700; color: var(--cross); margin-bottom: 16px; font-family: 'Noto Serif SC', serif; }
+.predict-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.predict-item {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 12px 14px;
+}
+.predict-q { font-size: .86rem; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
+.predict-meta { display: flex; gap: 6px; flex-wrap: wrap; }
+.predict-prob { font-size: .7rem; color: var(--red); font-weight: 600; }
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo">企业管理<span>·</span>复试题库</div>
+    <div class="header-meta">
+      <span class="header-badge str">《企业战略管理》蓝海林 第2版</span>
+      <span class="header-badge hr">《人力资源管理》颜爱民 第3版</span>
+      <span class="header-date">生成日期：2026-03-10</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a class="nav-item active" href="#overview">📊 案例总览</a>
+    <a class="nav-item" href="#part1">📘 战略×HR匹配</a>
+    <a class="nav-item" href="#part2">📗 国际化战略×IHRM</a>
+    <a class="nav-item" href="#part3">📙 多元化×人才管理</a>
+    <a class="nav-item" href="#part4">📒 竞争战略×绩效薪酬</a>
+    <a class="nav-item" href="#part5">📕 战略实施×激励文化</a>
+    <a class="nav-item" href="#predict">🎯 2026预测题</a>
+  </div>
+</nav>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    
+  </div>
+  <div class="filter-btns">
+    <button class="filter-btn active" onclick="filterCards('all',this)">全部</button>
+    <button class="filter-btn" onclick="filterCards('str',this)">战略管理</button>
+    <button class="filter-btn" onclick="filterCards('hr',this)">人力资源</button>
+    <button class="filter-btn" onclick="filterCards('cross',this)">跨章节综合</button>
+  </div>
+  <button class="dark-btn" onclick="toggleDark()">🌙 夜间模式</button>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-card">
+    <span class="stat-num blue">20</span>
+    <span class="stat-label">综合案例总数</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num green">15</span>
+    <span class="stat-label">覆盖真实企业</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num purple">38</span>
+    <span class="stat-label">涵盖核心知识点</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num gold">10</span>
+    <span class="stat-label">历年真题改编</span>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="section-header">
+    <span class="section-title">📊 案例总览索引</span>
+    <span class="section-count">共 20 案例</span>
+  </div>
+  <div class="overview-table-wrap">
+    <table class="overview-table">
+      <thead>
+        <tr>
+          <th>#</th><th>案例名称</th><th>战略管理知识点</th><th>人力资源知识点</th><th>难度</th><th>来源</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>01</td><td><a href="#c01">某制造企业战略失配与人才断层</a></td><td>战略与HR纵向匹配</td><td>HR战略·规划缺口</td><td>⭐⭐⭐</td><td>2016真题改编</td></tr>
+        <tr><td>02</td><td><a href="#c02">传统零售数字化转型中的人才转型</a></td><td>战略变革·差异化</td><td>培训需求分析·KPI</td><td>⭐⭐⭐⭐</td><td>2017/2022改编</td></tr>
+        <tr><td>03</td><td><a href="#c03">专精特新企业胜任力模型构建</a></td><td>集中化战略·VRIO</td><td>胜任力模型·招聘</td><td>⭐⭐⭐⭐</td><td>2017真题改编</td></tr>
+        <tr><td>04</td><td><a href="#c04">新能源企业国际化外派人员管理</a></td><td>跨国化战略·IE-LR矩阵</td><td>IHRM·外派管理·薪酬</td><td>⭐⭐⭐⭐⭐</td><td>2024改编</td></tr>
+        <tr><td>05</td><td><a href="#c05">互联网平台并购内容公司整合困境</a></td><td>相关多元化·并购战略</td><td>并购人才整合·文化融合</td><td>⭐⭐⭐⭐</td><td>2016改编</td></tr>
+        <tr><td>06</td><td><a href="#c06">成本领先战略下的薪酬绩效体系</a></td><td>成本领先战略·价值链</td><td>KPI设计·固定薪酬·岗位评估</td><td>⭐⭐⭐</td><td>2020改编</td></tr>
+        <tr><td>07</td><td><a href="#c07">差异化战略失败：激励机制与文化错配</a></td><td>差异化战略·战略一致性</td><td>激励体系设计·公平理论</td><td>⭐⭐⭐⭐</td><td>新编</td></tr>
+        <tr><td>08</td><td><a href="#c08">某日企在华本土化困境与HR管理</a></td><td>多国化战略·本土响应</td><td>国际HRM·HHP模式·文化</td><td>⭐⭐⭐⭐⭐</td><td>2020/2024改编</td></tr>
+        <tr><td>09</td><td><a href="#c09">战略联盟中的人才共享与心理契约</a></td><td>战略联盟·协同效应</td><td>人才共享·心理契约·激励</td><td>⭐⭐⭐⭐</td><td>新编</td></tr>
+        <tr><td>10</td><td><a href="#c10">数字化转型失败：战略实施的人力障碍</a></td><td>战略实施四维度·组织变革</td><td>HRBP转型·培训评估</td><td>⭐⭐⭐⭐⭐</td><td>2022/2025改编</td></tr>
+        <tr><td>11</td><td><a href="#c11">海底捞差异化战略与企业文化激励</a></td><td>差异化战略·战略实施文化维度</td><td>文化与HRM·激励机理</td><td>⭐⭐⭐⭐</td><td>新编</td></tr>
+        <tr><td>12</td><td><a href="#c12">某国企归核化战略与裁员人才保留</a></td><td>归核化战略·剥离战略</td><td>人员流动规划·裁员管理</td><td>⭐⭐⭐⭐</td><td>新编</td></tr>
+        <tr><td>13</td><td><a href="#c13">宽带薪酬制度改革与员工满意度</a></td><td>竞争战略·战略执行</td><td>薪酬设计·公平理论·岗位评估</td><td>⭐⭐⭐</td><td>2019/2020改编</td></tr>
+        <tr><td>14</td><td><a href="#c14">战略人力资源管理VRIN与竞争优势</a></td><td>资源基础观·VRIO框架</td><td>SHRM·VRIN·人力资本理论</td><td>⭐⭐⭐⭐⭐</td><td>2023改编</td></tr>
+        <tr><td>15</td><td><a href="#c15">外卖平台灵活用工与劳动关系认定</a></td><td>平台战略·商业模式创新</td><td>劳动关系·灵活用工·激励</td><td>⭐⭐⭐⭐</td><td>2019改编</td></tr>
+        <tr><td>16</td><td><a href="#c16">家族企业接班与职业经理人激励</a></td><td>战略管理者·代理理论</td><td>绩效管理·股权激励·目标设置</td><td>⭐⭐⭐⭐</td><td>新编</td></tr>
+        <tr><td>17</td><td><a href="#c17">某医疗企业并购重组后的薪酬整合</a></td><td>并购重组·战略协同</td><td>薪酬整合·公平理论·岗位评估</td><td>⭐⭐⭐⭐</td><td>2021/2023改编</td></tr>
+        <tr><td>18</td><td><a href="#c18">AI时代战略转型与人力资本再造</a></td><td>动态能力·商业模式创新</td><td>人力资源开发·培训体系重建</td><td>⭐⭐⭐⭐⭐</td><td>2025改编·压轴</td></tr>
+        <tr><td>19</td><td><a href="#c19">绿色转型战略与可持续人力资源管理</a></td><td>ESG战略·战略转型</td><td>战略HRM·人力资源规划</td><td>⭐⭐⭐</td><td>新编</td></tr>
+        <tr><td>20</td><td><a href="#c20">综合压轴：某跨国集团战略调整全案</a></td><td>全章节整合·战略管理完整流程</td><td>全模块整合·SHRM实践</td><td>⭐⭐⭐⭐⭐</td><td>综合预测题</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- PART 1: 战略×HR匹配 -->
+<section id="part1">
+<div class="section-header">
+  <span class="section-title">📘 第一组：战略与HR纵横匹配</span>
+  <span class="section-count">案例 01–03</span>
+</div>
+<div class="case-grid">
+
+<!-- C01 -->
+<div class="case-card" id="c01" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">01</span>
+  <div class="case-title-block">
+    <div class="case-title">某制造企业多元化扩张中的战略失配与人才断层</div>
+    <div class="case-tags">
+      <span class="tag tag-str">战略×HR纵向匹配</span>
+      <span class="tag tag-str">多元化战略</span>
+      <span class="tag tag-hr">人力资源规划</span>
+      <span class="tag tag-hr">HR战略选择</span>
+      <span class="tag tag-year">2016真题改编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆ 高频</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <!-- 背景 -->
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>H公司是一家以汽车零部件制造为主业的中型企业，2015—2018年间实施激进的多元化扩张战略，先后进入新能源电池、工程机械、房地产三个不相关领域。集团总部对各子公司实施统一的人事政策：沿用汽车制造行业的绩效考核体系和固定薪酬结构，所有新业务的中高层管理岗位优先从内部提拔，招聘预算统一压缩。</p>
+      <p>三年后，新业务整体亏损。调查发现：新能源电池子公司的研发总监由原来的汽车零件生产经理晋升而来，缺乏电化学背景；工程机械子公司销售部门考核指标仍沿用制造业产量指标；房地产业务因无法吸引到熟悉土地市场的专业人才，多个项目延期。2019年集团被迫进行"归核化"调整，但核心汽车业务也已出现人才流失。</p>
+    </div>
+  </div>
+  <!-- 知识点 -->
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">战略×HR纵向匹配 <span class="kp-page">P428 蓝/P436 颜</span></span>
+      <span class="kp-item tag-str">不相关多元化战略风险 <span class="kp-page">蓝P186</span></span>
+      <span class="kp-item tag-hr">HR战略选择思路（竞争战略匹配）<span class="kp-page">颜P437</span></span>
+      <span class="kp-item tag-hr">人力资源规划（供需预测缺口）<span class="kp-page">颜P125</span></span>
+      <span class="kp-item tag-hr">内部招募 vs 外部招募 <span class="kp-page">颜P206</span></span>
+      <span class="kp-item tag-cross">战略实施的人力支撑要素 <span class="kp-page">蓝P295</span></span>
+    </div>
+  </div>
+  <!-- 问题 -->
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-str">
+        <div class="q-num">问题一（战略分析）</div>
+        <div class="q-text">请从战略管理视角分析H公司多元化扩张失败的根本原因。</div>
+        <div class="q-type">题型：案例分析 / 论述</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二（人力资源）</div>
+        <div class="q-text">结合HR战略与企业战略的纵向匹配原理，指出H公司人力资源管理的核心失误，并提出改进方案。</div>
+        <div class="q-type">题型：案例分析 / 简答</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题三（综合应用）</div>
+        <div class="q-text">若H公司重新启动多元化战略，你认为应如何设计与新业务相匹配的人力资源战略框架？请结合纵向匹配与横向匹配原则作答。</div>
+        <div class="q-type">题型：综合论述</div>
+      </div>
+    </div>
+  </div>
+  <!-- 答题思路 -->
+  <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 问题一答题框架（战略视角）</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>界定战略类型：不相关多元化（进入无相关性的三个行业）→ 无法利用核心能力，范围经济缺失</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>战略管理者问题：决策者未做充分的内外部环境分析（SWOT），高估跨行业资源转移能力</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>战略实施失败：组织结构未随战略调整（钱德勒命题 = 结构跟随战略）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">4</span>结论：根本原因 = 战略与组织能力不匹配 + 战略与HR不匹配</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;">
+      <div class="tmpl-title">▶ 问题二答题框架（HR视角）</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>纵向匹配失败：HR战略（统一政策）与各业务战略方向完全不一致</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>横向匹配失败：招聘、绩效、薪酬子模块间也不协调（招了不合适的人，考核用错指标）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>人力规划缺失：未做新业务人才需求预测和供给预测，产生结构性人才缺口</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">4</span>改进方案：① 差异化HR政策（各业务独立设计）② 新业务优先外部招募 ③ 绩效指标业务适配 ④ 薪酬体系宽带化</div>
+      </div>
+    </div>
+  </div>
+  <!-- 标准答案 -->
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 问题一（战略视角）答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>判断战略类型 → 不相关多元化（三个领域无相关性）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>分析失败原因 → 核心能力无法迁移 + 钱德勒命题（结构未随战略调整）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>结论落脚点 → 战略与组织能力/人才不匹配</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;">
+      <div class="tmpl-title">▶ 问题二（HR视角）答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>点出纵向匹配失败：统一HR政策 ≠ 不同业务战略需求</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>点出横向匹配失败：招聘·绩效·薪酬三模块互相错位</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>指出HR规划缺位：未做供需预测 → 结构性人才缺口</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">4</span>提出改进建议（分业务差异化HR政策）</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 论述题标准结构（"四步法"）</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">定</span><strong>定义界定</strong>：H公司实施的是不相关多元化战略，指进入与主业无相关性的新领域……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">析</span><strong>原因分析</strong>：失败根本原因在于战略与HR纵向匹配断裂——HR战略（统一人事政策）与三个差异化业务战略之间完全不一致……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">联</span><strong>联系理论</strong>：依据颜爱民教材，HR战略与企业战略的纵向匹配要求HR方向服从业务战略目标；横向匹配要求招聘·绩效·薪酬各子模块相互协调……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">策</span><strong>对策建议</strong>：建议针对各业务单元分别制定独立HR战略，实施差异化人才政策，同时完善战略性人力资源规划体系……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">不相关多元化 → 无协同 → 战略失败 → 根本：HR纵向（战略不匹配）+ 横向（模块错位）+ 规划缺位 → 改进：差异化HR政策</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：战略分析</div>
+        <ol>
+          <li><span class="str-key">战略类型判断</span>：H公司实施的是<span class="key">不相关多元化战略</span>（进入汽车制造的非相关行业）。不相关多元化缺乏行业间协同效应（无相关性的范围经济），仅能在财务层面分散风险，但无法将核心能力迁移到新业务。</li>
+          <li><span class="str-key">战略分析缺失</span>：公司在进入新业务前未充分运用SWOT/价值链分析，未识别自身核心竞争力（精密制造）无法在电池、房产等行业发挥作用。</li>
+          <li><span class="str-key">结构未随战略调整</span>：钱德勒命题指出"结构跟随战略"——H公司新业务沿用旧组织结构和管理体制，是战略实施的根本障碍。</li>
+          <li><span class="str-key">结论</span>：根本原因是战略制定阶段的资源能力高估 + 战略实施阶段的组织与人才支撑缺失。</li>
+        </ol>
+        <div class="ans-header" style="margin-top:12px;">问题二：HR纵横匹配分析</div>
+        <ol>
+          <li><span class="hr-key">纵向匹配（Vertical Alignment）失败</span>：HR战略应与企业战略方向一致。新能源电池需要创新型人才策略（柔性绩效、宽带薪酬），房地产需要市场型人才策略，但公司实施统一的制造业策略，纵向匹配完全断裂。</li>
+          <li><span class="hr-key">横向匹配（Horizontal Alignment）失败</span>：新业务招聘（内部提拔）+ 绩效（制造指标）+ 薪酬（固定结构）三模块之间方向一致但方向错误，形成"协调的错误"。</li>
+          <li><span class="hr-key">人力资源规划缺失</span>：未对新业务进行人才需求预测（德尔菲法/回归分析），供给预测（技能清单/马尔科夫矩阵），导致结构性人才缺口无法识别和弥补。</li>
+          <li><span class="hr-key">改进方案</span>：① 针对不同业务单元制定独立的HR战略（成本型/创新型/市场型）；② 新业务核心岗位优先外部招募；③ 各业务绩效指标与其战略目标对齐；④ 引入宽带薪酬适配创新业务需求；⑤ 建立战略性人才储备机制。</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div><!-- .case-body -->
+</div><!-- .case-card -->
+
+<!-- C02 -->
+<div class="case-card" id="c02" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">02</span>
+  <div class="case-title-block">
+    <div class="case-title">传统零售企业数字化转型中的战略变革与培训体系重构</div>
+    <div class="case-tags">
+      <span class="tag tag-str">差异化战略</span>
+      <span class="tag tag-str">战略变革</span>
+      <span class="tag tag-hr">培训需求分析（三层次）</span>
+      <span class="tag tag-hr">KPI与OKR</span>
+      <span class="tag tag-year">2017/2022真题改编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆ 高频</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>R超市连锁是华南地区规模前三的传统零售商，2019年面对电商冲击，CEO宣布"全面数字化转型"战略——向"线上+到家"差异化服务模式转型，核心竞争优势从"低价量大"转向"便利+精准"。战略目标：3年内线上销售占比从5%提升至40%。</p>
+      <p>然而转型启动一年后，进展缓慢。人力资源部门反映：① 全部1200名一线员工从未接受过数字工具操作培训，手机端库存系统使用率仅12%；② 绩效考核仍沿用线下门店销售额KPI，线上运营行为未被纳入考核；③ 中层管理者普遍抵触"到家业务"——因为线上订单会分流线下业绩；④ 几位有互联网经验的新引进人才因"文化不合"相继离职。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">差异化战略（Porter）<span class="kp-page">蓝P142</span></span>
+      <span class="kp-item tag-str">战略变革阻力管理 <span class="kp-page">蓝P298</span></span>
+      <span class="kp-item tag-hr">培训需求分析三层次 <span class="kp-page">颜P338</span></span>
+      <span class="kp-item tag-hr">KPI与OKR区别适用 <span class="kp-page">颜P256</span></span>
+      <span class="kp-item tag-hr">柯克帕特里克四层次评估 <span class="kp-page">颜P358</span></span>
+      <span class="kp-item tag-cross">战略实施中的人力资源障碍 <span class="kp-page">蓝P295</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一</div>
+        <div class="q-text">运用培训需求分析的三层次模型，诊断R超市的培训缺口。</div>
+        <div class="q-type">题型：简答 / 案例分析</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二</div>
+        <div class="q-text">R超市应选择KPI还是OKR来支撑数字化转型战略？请比较两者差异并给出建议。</div>
+        <div class="q-type">题型：对比分析</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题三</div>
+        <div class="q-text">该案例体现了哪些战略实施障碍？请综合战略管理与人力资源管理视角给出改进建议。</div>
+        <div class="q-type">题型：综合论述</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 三个问题的答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>培训需求三层次：组织（战略缺口）→ 工作（KSA缺口）→ 个人（意愿/技能双缺口，区分一线与中层）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>KPI vs OKR：数字化初期=OKR（创新·试错·目标不确定）；成熟后=KPI；中层绩效需线上线下合并考核消除抵触</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>战略实施障碍：四维度（资源·结构·文化·激励）逐一对应案例现象</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 培训需求分析标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">引</span>培训需求分析是设计培训方案前，系统识别"谁需要培训、需要什么培训"的过程，采用三层次分析模型……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">析</span>组织层次：R超市战略目标（线上40%）与当前能力（5%）差距明显，数字化能力是组织核心短板……任务层次：……个人层次：……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">议</span>建议采用分层培训方案：基层——OJT操作实训；中层——数字化管理研讨会；新引进人才——导师制文化融入……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">培训三层次：组织（战略缺口）+ 任务（KSA缺口）+ 个人（意愿/技能）→ KPI适合成熟业务，OKR适合创新初期 → 战略实施障碍：资源·结构·文化·激励四维</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：培训需求分析三层次</div>
+        <ol>
+          <li><span class="hr-key">组织层次</span>：战略目标（线上40%）与当前能力（线上5%）存在巨大差距，数字化转型是组织层面的核心培训驱动；组织文化（传统零售思维）与新战略冲突，需要文化变革培训。</li>
+          <li><span class="hr-key">任务/工作层次</span>：数字化运营岗位需要的KSA——手机端系统操作（技能）、线上客户服务（能力）、数据分析基础（知识）均存在缺口；"到家业务"要求员工掌握路线规划、实时沟通等新技能。</li>
+          <li><span class="hr-key">个人层次</span>：1200名一线员工几乎全部存在数字技能缺口（系统使用率仅12%为证）；中层管理者存在"意愿"缺口（不是不会，而是抵触），需要认知转变而非技能培训。</li>
+          <li>培训方案建议：分层设计——基层侧重操作技能（OJT现场实操）；中层侧重数字化管理理念（研讨会+案例）；新引进互联网人才侧重文化融入（导师制）。</li>
+        </ol>
+        <div class="ans-header" style="margin-top:12px;">问题二：KPI vs OKR选择</div>
+        <table class="kp-table">
+          <thead><tr><th>维度</th><th>KPI</th><th>OKR</th></tr></thead>
+          <tbody>
+            <tr><td>导向</td><td>结果指标考核</td><td>目标方向引导</td></tr>
+            <tr><td>与薪酬关系</td><td>直接挂钩</td><td>通常脱钩</td></tr>
+            <tr><td>适用场景</td><td>成熟业务、可量化工作</td><td>创新业务、需快速迭代</td></tr>
+            <tr><td>更新周期</td><td>年度/半年</td><td>季度（更敏捷）</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px;"><span class="hr-key">建议</span>：数字化转型初期应采用<span class="key">OKR</span>——因为线上业务目标尚不确定，需要鼓励创新试错；同时需要设置少量底线KPI（如合规指标）。待业务成熟后再逐步引入KPI强化执行。中层管理者的线上/线下协同绩效指标应合并计算，消除抵触动机。</p>
+        <div class="ans-header" style="margin-top:12px;">问题三：综合改进建议</div>
+        <p>战略实施障碍：① 资源与能力障碍（员工技能缺口）② 组织结构障碍（绩效体系与新战略不匹配）③ 文化障碍（传统零售文化抵触变革）④ 人才吸引保留障碍（新型人才流失）。改进建议：重新设计绩效体系，合并线上线下考核；分层培训；建立数字化文化氛围；为互联网人才设计差异化薪酬包。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C03 -->
+<div class="case-card" id="c03" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">03</span>
+  <div class="case-title-block">
+    <div class="case-title">专精特新企业核心竞争力与胜任力模型构建</div>
+    <div class="case-tags">
+      <span class="tag tag-str">集中化战略·VRIO框架</span>
+      <span class="tag tag-hr">胜任力模型构建</span>
+      <span class="tag tag-hr">选拔录用·评价中心</span>
+      <span class="tag tag-year">2017真题改编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆ 高频</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>M公司是一家专注于工业传感器精密制造的"专精特新"小巨人企业，产品80%出口至德国、日本高端制造客户。公司依靠差异化的产品精度（误差≤0.01μm）在细分市场占据30%份额，属于集中差异化战略。核心竞争力在于30余名技术工程师的隐性知识和工艺积累。</p>
+      <p>近年公司面临两大挑战：① 老一代工程师陆续退休，隐性知识难以传承；② 扩张期间招聘了一批"学历不错但实际操作差"的应届生，半年内离职率高达45%。HR总监认为问题出在选人标准上——现有招聘完全依赖学历和笔试，未能识别关键岗位的隐性能力。公司亟需建立一套工程师岗位族的胜任力模型。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">集中化战略（细分市场聚焦）<span class="kp-page">蓝P148</span></span>
+      <span class="kp-item tag-str">VRIO框架（核心能力识别）<span class="kp-page">蓝P108</span></span>
+      <span class="kp-item tag-hr">胜任力模型定义与构建步骤 <span class="kp-page">颜P80</span></span>
+      <span class="kp-item tag-hr">冰山模型（Spencer）<span class="kp-page">颜P81</span></span>
+      <span class="kp-item tag-hr">行为事件访谈法（BEI）<span class="kp-page">颜P83</span></span>
+      <span class="kp-item tag-hr">评价中心技术（LGD/公文处理）<span class="kp-page">颜P228</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-str">
+        <div class="q-num">问题一</div>
+        <div class="q-text">运用VRIO框架分析M公司"工程师隐性知识"这一资源的战略价值。</div>
+        <div class="q-type">题型：理论应用分析</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二（2017真题核心）</div>
+        <div class="q-text">简述胜任力模型的含义，并为M公司设计工程师岗位胜任力模型的构建流程。</div>
+        <div class="q-type">题型：简答 + 应用设计</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题三</div>
+        <div class="q-text">在选拔新工程师时，M公司应采用哪些测评工具识别冰山水下的隐性能力？</div>
+        <div class="q-type">题型：简答</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 三个问题的答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>VRIO分析：有价值✓ → 稀缺✓ → 难模仿（隐性知识/路径依赖）✓ → 组织维度△（老工程师退休，组织支撑弱化）→ 竞争优势有隐患</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>胜任力模型：先背定义（Spencer冰山模型）→ 再述五步构建流程（目标→BEI→分析→建模→验证）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>测评工具：冰山水下=评价中心（LGD·工作样本）+结构化面试STAR，不能只靠笔试</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 胜任力模型标准答题模板（名词解释+应用）</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">定</span>胜任力是将绩优员工与普通员工区分开来的、与工作绩效高度相关的知识、技能、能力和个性特征的集合（Spencer,1993）……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">模</span>冰山模型：水上（知识·技能）易培训；水下（态度·价值观·特质）难改变——选人核心聚焦水下……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">步</span>五步构建：①确定目标岗位族 ②BEI行为事件访谈 ③编码分析特征差异 ④构建胜任力词典 ⑤效标验证……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">用</span>M公司应用：工程师岗族BEI访谈绩优/普通两组，识别"精密感知力·质量偏执特质·跨工序协同"等水下特征……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">胜任力=区分绩优/普通的特征集 → 冰山模型（水上易培训·水下难改变）→ 五步构建（目标→BEI→分析→建模→验证）→ 测评工具：评价中心+工作样本+结构化面试</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：VRIO分析</div>
+        <ol>
+          <li><span class="str-key">有价值性（Valuable）</span>：直接支撑产品精度，是客户购买决策的关键，有价值 ✓</li>
+          <li><span class="str-key">稀缺性（Rare）</span>：30余名工程师20年积累的工艺知识，市场稀缺 ✓</li>
+          <li><span class="str-key">难以模仿（Inimitable）</span>：隐性知识（Tacit Knowledge）具有路径依赖性，无法通过购买或逆向工程复制 ✓</li>
+          <li><span class="str-key">组织支撑（Organization）</span>：目前老工程师退休导致组织支撑弱化 △（风险！）</li>
+          <li>结论：该资源具备持续竞争优势潜力，但组织维度存在风险，需紧急通过知识管理和传承机制加固。</li>
+        </ol>
+        <div class="ans-header" style="margin-top:12px;">问题二：胜任力模型构建</div>
+        <p><span class="hr-key">定义</span>：胜任力（Competency）是将绩优员工与普通员工区分开来的、与工作绩效高度相关的知识、技能、能力和个性特征的集合（Spencer,1993）。冰山模型：水上（知识·技能）易培训，水下（态度·价值观·特质）难改变——选人要聚焦水下。</p>
+        <p><span class="hr-key">五步构建流程</span>：</p>
+        <ol>
+          <li>确定目标岗位族（工程师族），界定"绩优"标准（精度达标率、工艺改进次数）</li>
+          <li>收集行为数据：对绩优/普通两组工程师进行<span class="key">行为事件访谈（BEI）</span>，收集关键工作事件</li>
+          <li>分析提炼：编码比较两组特征差异，识别绩优群体独有的行为模式</li>
+          <li>构建模型：形成含名称、定义、分级行为描述的胜任力词典（如：精密感知力、质量偏执型认知、跨工序协同能力）</li>
+          <li>验证应用：用效标样本验证模型预测力，应用于招聘标准和培训目标</li>
+        </ol>
+        <div class="ans-header" style="margin-top:12px;">问题三：测评工具</div>
+        <p>针对隐性能力应选用：① <span class="hr-key">评价中心</span>（Assessment Center）——情景模拟（工艺问题解决）+LGD无领导小组讨论（团队协作）+公文处理（问题判断）；② <span class="hr-key">工作样本测试</span>（实操考核精度）；③ <span class="hr-key">结构化行为面试</span>（STAR法）。不建议单独依赖学历/笔试，因这两者主要测量冰山水上部分。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+</div><!-- .case-grid -->
+</section>
+
+<!-- PART 2: 国际化战略×IHRM -->
+<section id="part2">
+<div class="section-header">
+  <span class="section-title">📗 第二组：国际化战略×国际人力资源管理</span>
+  <span class="section-count">案例 04–05</span>
+</div>
+<div class="case-grid">
+
+<!-- C04 -->
+<div class="case-card" id="c04" data-cat="str hr cross">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">04</span>
+  <div class="case-title-block">
+    <div class="case-title">某新能源企业欧洲市场国际化战略中的外派人员管理困境</div>
+    <div class="case-tags">
+      <span class="tag tag-str">跨国化战略·IE-LR矩阵</span>
+      <span class="tag tag-hr">IHRM·摩尔根三维模型</span>
+      <span class="tag tag-hr">外派人员选拔·薪酬</span>
+      <span class="tag tag-year">2024真题改编</span>
+      <span class="tag tag-warn">★★★★★ 极高频</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★★ 极高频</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>NE公司是一家中国新能源汽车企业，2022年决定进入欧洲市场，采取"绿地投资+自建渠道"方式在德国慕尼黑设立区域总部，计划3年内实现月销5000台。</p>
+      <p>从中国总部派遣了8名高管和15名技术骨干赴德，然而18个月后出现以下问题：① 3名外派高管因文化不适（语言障碍、家庭压力、社交孤立）提前回国，德国业务陷入瘫痪；② 留下的外派人员享受高额外派津贴，引发德国本地员工强烈不满（外派与本地同职级薪酬差2.8倍）；③ 德国本地销售副总裁反映，中国总部的产品更新节奏与欧洲合规认证周期严重错位，决策权完全集中在总部，德国团队无法及时响应本地市场；④ 技术培训体系全部采用中文教材，德国工程师无法有效吸收。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">IE-LR矩阵（全球整合vs本土响应）<span class="kp-page">蓝P216</span></span>
+      <span class="kp-item tag-str">国际化进入方式（绿地投资）<span class="kp-page">蓝P225</span></span>
+      <span class="kp-item tag-hr">IHRM含义·摩尔根三维模型 <span class="kp-page">颜P453</span></span>
+      <span class="kp-item tag-hr">外派人员选拔5大标准 <span class="kp-page">颜P462</span></span>
+      <span class="kp-item tag-hr">国际薪酬·资产负债表法 <span class="kp-page">颜P475</span></span>
+      <span class="kp-item tag-hr">国际培训（外派前+任职中）<span class="kp-page">颜P466</span></span>
+      <span class="kp-item tag-hr">HHP模式选择 <span class="kp-page">颜P457</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-str">
+        <div class="q-num">问题一</div>
+        <div class="q-text">运用IE-LR矩阵分析NE公司当前国际化战略定位，并评价其是否合理。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二（2024面试核心）</div>
+        <div class="q-text">请从IHRM视角，诊断NE公司外派人员管理中存在的问题，并针对外派选拔、培训、薪酬三个模块提出改进建议。</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题三</div>
+        <div class="q-text">NE公司应选择以母国为中心（Ethnocentric）还是多国中心（Polycentric）的HHP模式？结合案例阐述理由。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 三个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>IE-LR矩阵：汽车行业本土合规要求高（高本土响应）+ 品牌/技术需标准化（高整合）→ 理论上跨国战略，实际执行国际战略 → 不合理</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>外派IHRM诊断：选拔（缺文化适应评估）→ 培训（无外派前培训·无本地化教材）→ 薪酬（差距2.8倍违反内部公平→资产负债表法）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>HHP模式：当前=母国中心（Ethnocentric）→ 建议转多国中心（Polycentric）理由：本土响应需求高·外派失败率高·客户关系本地化</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 国际HRM外派管理标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">引</span>国际人力资源管理（IHRM）是随企业国际化而产生的HRM国际化，基于摩尔根三维模型，涵盖三类活动×三类国家×三类员工……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">选</span>外派选拔五大标准：技术能力·跨文化适应力·语言能力·家庭配合度·个人意愿——NE公司仅考虑技术能力，导致外派失败……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">培</span>外派培训三阶段：派前（文化·语言·生活适应）→ 任职中（持续支持·家庭协助）→ 回国（再适应）……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">薪</span>国际薪酬采用资产负债表法：以母国生活标准为基础，叠加海外津贴，确保"不因外派受损，不因外派暴富"……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">IHRM三维模型 → 外派五标准（技术·文化·语言·家庭·意愿）→ 三阶段培训 → 资产负债表薪酬法 → HHP三模式（母国/东道国/全球中心）</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：IE-LR矩阵分析</div>
+        <p>IE-LR矩阵横轴=本土响应压力，纵轴=全球整合压力。NE公司当前行为特征：决策权集中总部（高整合压力），但德国本地合规要求和消费者偏好差异明显（高本土响应压力）→ 理论上应采取<span class="str-key">跨国战略</span>（兼顾全球整合与本土响应），但实际上执行的是<span class="str-key">国际战略</span>（高整合、低响应）。不合理——汽车行业本土法规合规、消费文化差异显著，必须提高本土响应能力。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：IHRM问题诊断与改进</div>
+        <p><span class="hr-key">选拔问题</span>：仅凭技术能力外派，忽视了外派5大标准中的：跨文化适应能力、语言能力、家庭配合度（家庭因素）。<br>改进：建立外派评估中心，重点测试跨文化沟通、德语基础、家庭访谈；引入外派意愿确认机制。</p>
+        <p><span class="hr-key">培训问题</span>：未提供外派前文化培训（语言、德国商业礼仪、签证生活适应）；任职期间缺乏持续支持；德本地员工培训体系语言障碍明显。<br>改进：外派前至少6个月跨文化培训+德语课程；建立外派配套支持（子女教育、配偶就业协助）；本地培训材料本土化。</p>
+        <p><span class="hr-key">薪酬问题</span>：外派与本地薪酬2.8倍差距，违反了国际薪酬的内部公平原则。应采用<span class="key">资产负债表法</span>设计外派薪酬——确保外派员工"不因外派而损失，不因外派而暴富"，基于母国生活标准+海外津贴（艰苦补贴、子女教育补贴）的结构，并逐步向本地市场标准靠拢。</p>
+        <div class="ans-header" style="margin-top:12px;">问题三：HHP模式选择</div>
+        <p>NE公司当前是<span class="str-key">以母国为中心（Ethnocentric）</span>——核心职位全部由中国人担任。建议转向<span class="str-key">多国中心（Polycentric）</span>或<span class="str-key">地区中心（Regiocentric）</span>：理由①德国汽车市场本土化要求极高，本地管理者更了解监管和消费者；②外派失败率高，成本极大；③本地高管对本地员工激励效果更好。建议保留少数总部外派确保战略一致性，大量关键职位本地化。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C05 -->
+<div class="case-card" id="c05" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">05</span>
+  <div class="case-title-block">
+    <div class="case-title">互联网巨头并购内容平台后的人才整合失败案例</div>
+    <div class="case-tags">
+      <span class="tag tag-str">相关多元化·并购战略</span>
+      <span class="tag tag-hr">并购人才整合·文化融合</span>
+      <span class="tag tag-hr">企业文化（颜第4章）</span>
+      <span class="tag tag-year">2016案例改编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>T科技（互联网广告平台）2021年以80亿元收购了一家拥有300万创作者的内容社区平台W站。战略目标：通过内容生态丰富广告产品，形成"内容+广告"的相关多元化协同。</p>
+      <p>并购完成后，T科技强推整合：① 将W站技术、产品、运营团队全部纳入T科技统一管理体系，取消W站独立品牌和独立考核机制；② 要求W站所有员工改签T科技劳动合同，执行T科技OKR+绩效排名（10%末位淘汰）；③ T科技的"快节奏·高压力"文化与W站"创作者社区·慢文化"严重冲突；④ 18个月内，W站核心创始团队离职，80%的明星内容创作者迁移至竞争平台，300万创作者基础损失殆尽，协同效应归零。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">相关多元化战略·范围经济 <span class="kp-page">蓝P180</span></span>
+      <span class="kp-item tag-str">并购整合策略 <span class="kp-page">蓝P258</span></span>
+      <span class="kp-item tag-hr">并购中的HR整合 <span class="kp-page">颜P447</span></span>
+      <span class="kp-item tag-hr">企业文化含义与作用机理 <span class="kp-page">颜P99</span></span>
+      <span class="kp-item tag-hr">心理契约违背与员工流失 <span class="kp-page">颜P65</span></span>
+      <span class="kp-item tag-hr">关键人才保留策略 <span class="kp-page">颜P447</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-str">
+        <div class="q-num">问题一</div>
+        <div class="q-text">T科技收购W站的战略逻辑是什么？实际结果为何未能实现协同效应？</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二</div>
+        <div class="q-text">从颜爱民教材第4章"文化与人力资源管理"视角，分析文化冲突对本案例HR管理的影响机理，并提出文化整合建议。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>战略层：相关多元化→范围经济逻辑正确 → 但并购整合策略错误（完全吸收而非保留）→ 核心资产（创作者生态）被摧毁 → 协同归零</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>文化层：文化冲突机理（继承性·惯性·非理性）→ 心理契约违背 → 离职 → 文化整合建议（保留+渐进融合）</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 并购整合+文化冲突标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">战略</span>T科技收购W站旨在通过相关多元化实现"内容+广告"范围经济协同，战略逻辑合理；但整合策略选择"完全吸收式"，摧毁了W站作为内容社区的核心资产——300万创作者关系网络……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">文化</span>依据颜爱民教材，文化具有继承性与惯性，W站"慢文化"认同无法在短期内被强制改变；末位淘汰制与创作型组织的激励逻辑背离，触发心理契约违背……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">建议</span>并购整合应选择"文化保留+渐进融合"策略；提前进行文化尽职调查；核心创始团队和内容创作者需专项保留方案……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">相关多元化并购 → 协同逻辑正确 → 整合策略错误（完全吸收摧毁无形资产）→ 文化冲突机理（继承性·惯性·非理性）→ 心理契约违背 → 文化保留+渐进整合</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：战略分析</div>
+        <p>并购逻辑：通过内容生态（W站）增强广告平台（T科技）的用户黏性和数据资产，实现<span class="str-key">范围经济</span>——共享流量、技术和品牌，降低获取内容的边际成本。协同效应失败原因：① 并购整合策略选择错误——T科技选择"完全吸收式整合"而非"保留式整合"，摧毁了被并购方的核心价值来源（创作者生态）；② 价值资产判断失误——W站的核心资产是300万创作者关系网络，而非技术或有形资产；完全整合导致这一无形资产瓦解。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：文化整合分析</div>
+        <p><span class="hr-key">文化冲突机理（颜P102-108）</span>：文化作为一种软性约束，通过价值观念、行为规范影响员工行为。T科技的"快节奏·排名文化"与W站"创作者社区·归属文化"在以下层面冲突：</p>
+        <ol>
+          <li>文化的<span class="key">继承性</span>：W站员工5年积累的"慢文化"认同无法在短期内改变；</li>
+          <li>文化的<span class="key">惯性（非理性）</span>：强制改签合同破坏了员工心理安全感，触发非理性离职；</li>
+          <li>激励机制与文化错配：末位淘汰制在创作型组织中破坏协作氛围，与创意工作的激励逻辑背离。</li>
+        </ol>
+        <p><span class="hr-key">文化整合建议</span>：① 并购前进行文化尽职调查（Cultural Due Diligence）；② 选择"文化保留+渐进融合"策略，保留W站独立品牌和价值观，仅对财务和安全底线统一；③ 针对核心创作者和关键员工设计专属保留方案（股权锁定+文化认可）；④ 建立文化整合工作组，由双方人员共同参与，避免单方面强制推进。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+</div><!-- .case-grid -->
+</section>
+
+<!-- PART 3: 多元化×人才管理 -->
+<section id="part3">
+<div class="section-header">
+  <span class="section-title">📙 第三组：多元化战略×人才开发与激励</span>
+  <span class="section-count">案例 06–09</span>
+</div>
+<div class="case-grid">
+
+<!-- C06 -->
+<div class="case-card" id="c06" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">06</span>
+  <div class="case-title-block">
+    <div class="case-title">成本领先战略企业的KPI体系设计与薪酬结构优化</div>
+    <div class="case-tags">
+      <span class="tag tag-str">成本领先战略·价值链分析</span>
+      <span class="tag tag-hr">KPI绩效体系·薪酬结构设计</span>
+      <span class="tag tag-hr">岗位评估·海氏系统</span>
+      <span class="tag tag-year">2020真题改编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>L公司是一家电子元器件代工企业（EMS），客户包括全球多家品牌电子商，竞争策略为典型的成本领先战略——靠规模效益、精益生产、极致降本取胜。</p>
+      <p>2023年，HR部门提交薪酬改革方案，拟引入宽带薪酬+绩效浮动机制，希望提升激励弹性。CEO提出质疑：① 代工厂核心岗位（生产线工人、品控员）工作高度标准化，绩效指标差异极小，如何避免考核形式化？② 引入宽带薪酬后，岗位价值如何量化评估？③ 高管与一线员工薪酬差距扩大是否会影响凝聚力？同时，销售总监反映，当前KPI中"产量"权重90%，"客户满意度"仅5%，导致品质投入不足，大客户流失风险上升。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">成本领先战略的人力资源策略 <span class="kp-page">蓝P142</span></span>
+      <span class="kp-item tag-hr">薪酬设计六大传统原则 <span class="kp-page">颜P284</span></span>
+      <span class="kp-item tag-hr">岗位评估方法（海氏三因素）<span class="kp-page">颜P293</span></span>
+      <span class="kp-item tag-hr">宽带薪酬（Broad Band）<span class="kp-page">颜P299</span></span>
+      <span class="kp-item tag-hr">KPI设计（关键绩效指标）<span class="kp-page">颜P256</span></span>
+      <span class="kp-item tag-hr">公平理论（亚当斯）<span class="kp-page">颜P363</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一（2020笔试核心）</div>
+        <div class="q-text">结合薪酬设计原则，分析L公司薪酬结构改革方案的合理性，并提出优化建议。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二</div>
+        <div class="q-text">如何运用海氏评价系统对L公司的核心岗位进行评估？简述海氏三因素及适用性。</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题三</div>
+        <div class="q-text">L公司的KPI权重设计与成本领先战略目标相矛盾，请用BSC平衡计分卡框架重新设计关键绩效维度。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 三个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>薪酬原则分析：逐一对应六大原则 → 代工厂一线岗位标准化→浮动比例不宜高 → 宽带薪酬需配套岗位评估体系</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>海氏评价：三因素（诀窍·解决问题·职责）→ 加权计分 → 确定岗位点值→薪酬等级</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>BSC重构：四维度权重重新分配，客户维度（客户满意度）权重提升，平衡单一产量指标</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 薪酬设计原则+岗位评估标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">原则</span>薪酬设计应遵循六大原则：内部公平性（岗位价值差异→岗位评估量化）、外部竞争性（市场调查对标）、激励性（绩效浮动挂钩）、合法合规、战略导向（成本领先→控制成本）、成本控制……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">评估</span>海氏评价系统三因素：诀窍（知识技能水平）、解决问题（思维挑战程度）、职责（对结果的影响程度）；加权求和得岗位点值，确定薪酬等级……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">BSC</span>平衡计分卡四维度：财务（成本/利润）→ 客户（满意度/续约率）→ 内部流程（良品率/产能）→ 学习成长（技能/离职率）；当前90%产量单一指标需重构为多维平衡……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">薪酬六原则（内·外·激·法·战·控）→ 海氏三因素（诀窍·解决问题·职责）→ BSC四维度（财务·客户·内部流程·学习成长）→ 成本领先战略：固定为主·效率导向KPI</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：薪酬设计原则分析</div>
+        <p>六大传统原则：<span class="hr-key">内部公平性、外部竞争性、激励性、合法合规性、战略导向性、成本控制性</span>。L公司薪酬改革分析：</p>
+        <ol>
+          <li>内部公平性：引入岗位评估（如海氏）是正确方向，能量化岗位间价值差异；</li>
+          <li>激励性：代工厂一线岗位高度标准化，绩效差异小，浮动比例不宜过高（建议固定80%+浮动20%，避免"考核形式化"）；</li>
+          <li>战略导向：成本领先战略下，薪酬应兼顾控制成本与保留关键技能员工；宽带薪酬适合扁平化组织，但等级不宜太少，否则晋升通道感知弱；</li>
+          <li>公平感知（亚当斯）：高管与一线差距扩大需通过透明沟通和公开评估标准维护公平感。</li>
+        </ol>
+        <div class="ans-header" style="margin-top:12px;">问题二：海氏评价系统</div>
+        <p>海氏（Hay）三因素：① <span class="hr-key">诀窍（Know-How）</span>——完成工作所需的知识和技能水平；② <span class="hr-key">解决问题（Problem Solving）</span>——岗位面临的思维挑战程度；③ <span class="hr-key">职责（Accountability）</span>——岗位对最终结果的影响程度。三因素加权计算岗位点值→ 确定薪酬等级。L公司适用性：适合各层级岗位的横向比较，尤其适合技术和管理岗；一线操作岗可配合要素计点法（Factor Comparison）。</p>
+        <div class="ans-header" style="margin-top:12px;">问题三：BSC重新设计绩效维度</div>
+        <table class="kp-table">
+          <thead><tr><th>BSC维度</th><th>L公司对应KPI</th><th>建议权重</th></tr></thead>
+          <tbody>
+            <tr><td>财务维度</td><td>单位产品成本、毛利率</td><td>30%</td></tr>
+            <tr><td>客户维度</td><td>客户满意度、大客户续约率、交货准时率</td><td>25%</td></tr>
+            <tr><td>内部流程维度</td><td>产能利用率、良品率、设备停机率</td><td>30%</td></tr>
+            <tr><td>学习成长维度</td><td>技能认证率、改善提案数、员工离职率</td><td>15%</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px;">原来90%产量权重单一导向应调整为多维平衡，特别是提升客户维度权重，防止品质投入不足导致大客户流失。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C07 -->
+<div class="case-card" id="c07" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">07</span>
+  <div class="case-title-block">
+    <div class="case-title">差异化战略失败：激励机制与企业文化的战略错配</div>
+    <div class="case-tags">
+      <span class="tag tag-str">差异化战略·战略一致性</span>
+      <span class="tag tag-hr">激励体系设计</span>
+      <span class="tag tag-hr">公平理论·马斯洛层次</span>
+      <span class="tag tag-warn">新编·综合高频</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>某互联网教育公司Z，2020年确定差异化战略：以"名师+个性化辅导"为核心卖点，定位高端K12市场，目标是让家长愿意为"最好的老师"支付3倍于市场均价的学费。</p>
+      <p>为引进顶级名师，公司开出市场最高薪酬，平均月薪8万元。但激励体系的其他部分未配套更新：① 名师晋升通道仅有"高级讲师→首席讲师"两级，顶到天花板仅需2年；② 所有讲师统一以"课时完成量"作为主要绩效指标，名师与普通讲师使用同一考核表；③ 公司管理层公开批评"一些名师耍大牌、不服管"，反复强调"遵守规章制度"。④ 由于扁平管理要求，名师没有独立的课程设计自主权，必须遵照标准化教案授课。</p>
+      <p>结果：3名行业顶级名师相继跳槽，公司差异化战略名存实亡，生源随名师流失，营收下滑40%。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">差异化战略要求的人力策略 <span class="kp-page">蓝P144</span></span>
+      <span class="kp-item tag-hr">激励的含义与机理 <span class="kp-page">颜P354</span></span>
+      <span class="kp-item tag-hr">马斯洛需要层次理论 <span class="kp-page">颜P359</span></span>
+      <span class="kp-item tag-hr">赫茨伯格双因素理论 <span class="kp-page">颜P361</span></span>
+      <span class="kp-item tag-hr">内在薪酬vs外在薪酬 <span class="kp-page">颜P275</span></span>
+      <span class="kp-item tag-hr">激励体系分层设计原则 <span class="kp-page">颜P374</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一</div>
+        <div class="q-text">运用马斯洛需要层次理论分析顶级名师群体的核心需要类型，并解释Z公司为何仅靠高薪无法留住人才。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二</div>
+        <div class="q-text">用赫茨伯格双因素理论分析Z公司激励体系的问题所在，并设计改进方案。</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题三</div>
+        <div class="q-text">差异化战略要求对核心人才（名师）采用何种HR战略模式？Z公司的做法与此有何偏差？</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 三个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>马斯洛：名师已满足低层次（生理·安全），主导需要=尊重（被认可）+自我实现（创作自主）→ 高薪是保健因素，满足了也不激励</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>双因素：薪酬=保健因素 → 公司破坏激励因素（批评名师·剥夺自主权·晋升天花板低）→ 保健因素满足+激励因素缺失=留不住</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>战略HR匹配：差异化战略→需柔性HR（宽松绩效·授权·个性化激励）；Z公司用成本领先风格HR → 战略与HR双失配</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 激励理论综合应用标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">马</span>马斯洛需要层次理论（1943）将人类需要分为五层：生理→安全→归属→尊重→自我实现。名师群体高薪已满足前两层，主导需要在尊重（专业认可）和自我实现（课程自主创作），高薪对高层次需要无激励效果……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">赫</span>赫茨伯格双因素理论区分保健因素（满足→不产生不满，但无正激励）与激励因素（满足→产生持久激励）。薪酬属保健因素；工作自主性、成就认可、晋升发展属激励因素……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">策</span>改进方案：设立大师级荣誉体系；赋予名师课程设计自主权；绩效指标加入学员进步率；建立多层晋升通道……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">马斯洛五层（生安爱尊实）→ 双因素（保健：薪酬·制度；激励：成就·认可·自主·晋升）→ 差异化战略需柔性HR（授权·宽松绩效）→ Z公司用成本领先HR策略=双重失配</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：马斯洛层次分析</div>
+        <p>顶级名师已通过高薪满足了生理、安全需要，其主导需要在<span class="hr-key">尊重需要</span>（被认可为行业顶尖、受尊敬）和<span class="hr-key">自我实现需要</span>（在专业领域达到卓越）。Z公司问题：高薪属于外在薪酬，满足低层次需要；而"批评耍大牌""标准化教案"等行为伤害了尊重需要；"无课程自主权"剥夺了自我实现渠道。已满足的低层次需要不再具有激励作用——薪酬变成了"保健因素"而非激励因素。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：双因素理论分析</div>
+        <p>赫茨伯格双因素：<span class="hr-key">保健因素</span>（薪酬、规章制度、人际关系）——不满足会产生不满，满足也不会带来积极激励；<span class="hr-key">激励因素</span>（成就感、认可、工作本身、晋升、成长）——满足才能带来持久激励。</p>
+        <p>Z公司问题：只提升了保健因素（薪酬），同时严重损害了激励因素（工作自主权=成就感；被批评=无认可；晋升天花板低=无成长空间）。改进：① 设立"大师级讲师"荣誉体系；② 给名师课程设计自主权；③ 绩效指标加入"学生进步率、续课率、口碑评分"；④ 为名师提供个人品牌运营支持；⑤ 让名师参与公司战略决策（授权感）。</p>
+        <div class="ans-header" style="margin-top:12px;">问题三：差异化战略与HR模式</div>
+        <p>差异化战略要求对核心人才的HR策略：宽松绩效评价（结果导向）、宽带薪酬、高度自主性、以创新和人才发展为导向（区别于成本领先战略的标准化控制）。Z公司偏差：表面上采用差异化战略，HR模式却是成本领先风格（标准化教案、统一考核表、严格规章），战略与HR横向/纵向双重失配。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C08 -->
+<div class="case-card" id="c08" data-cat="hr cross">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">08</span>
+  <div class="case-title-block">
+    <div class="case-title">某日资企业在华管理困境：HHP模式与文化冲突</div>
+    <div class="case-tags">
+      <span class="tag tag-str">多国化战略·本土响应</span>
+      <span class="tag tag-hr">国际HRM·HHP模式</span>
+      <span class="tag tag-hr">美日文化比较·颜第14章</span>
+      <span class="tag tag-year">2020/2024面试改编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★★</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>日本汽车配件企业Y株式会社1998年在武汉设立中国子公司，采用典型的日式管理体制：① 所有高管及技术主管职位由日本总部外派（以母国为中心的Ethnocentric模式）；② 薪酬体系沿用日本年功序列制（资历决定薪酬，每年按工龄自动晋级）；③ 决策流程为日式"根回"（事前非正式沟通）+ 全员共识决策，一个决定往往需要2—3个月；④ 中国员工被要求每天早会唱公司社歌、进行5S早操。</p>
+      <p>进入2018年，问题全面爆发：① 30岁以下的中国员工大量流失，普遍反映"晋升通道堵死、能力不被认可"；② 中国业务在汽车市场新能源转型浪潮中反应极慢，竞争对手抢占市场；③ 中国区总经理（日本人）不懂中文，重要沟通依赖翻译，客户关系建设困难；④ 中国HR经理提交本土化建议方案，被日本总部以"不符合集团标准"否决。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">多国化战略与本土响应 <span class="kp-page">蓝P216</span></span>
+      <span class="kp-item tag-hr">HHP模式：母国/东道国/全球中心 <span class="kp-page">颜P457</span></span>
+      <span class="kp-item tag-hr">日式HRM特征（年功序列·集体决策）<span class="kp-page">颜P456</span></span>
+      <span class="kp-item tag-hr">国际绩效考核特点 <span class="kp-page">颜P469</span></span>
+      <span class="kp-item tag-hr">文化维度（霍夫斯泰德）<span class="kp-page">颜P109</span></span>
+      <span class="kp-item tag-cross">本土化战略vs全球标准化 <span class="kp-page">蓝P213</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一（2020面试核心）</div>
+        <div class="q-text">请比较日式、美式人力资源管理模式的主要差异，并分析Y株式会社中国子公司目前HRM模式的主要问题。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二（2024面试核心）</div>
+        <div class="q-text">Y株式会社中国子公司应如何从"以母国为中心"转型为"多国中心"HHP模式？请设计过渡方案。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>日美对比：年功序列vs绩效导向 / 集体决策vs个人决策 / 终身雇用vs市场化 / 母国中心vs本土化 → 每个维度联系案例中的具体问题</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>HHP转型：母国中心→多国中心/地区中心 → 三个阶段（短中长期）逐步本土化 → 保留少数外派确保战略一致性</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 国际HRM模式比较标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">引</span>国际人力资源管理因文化、制度环境差异，不同国家形成了各具特色的管理模式……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">比</span>日本模式（"主妇型"）：年功序列·终身雇用·集体决策·上下一致培训；美国模式（"丈夫型"）：绩效导向·市场化用工·个人决策·专业培训……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">析</span>Y株式会社中国子公司将日式管理全盘照搬（母国中心），与中国市场高本土响应需求严重不符：年功序列→中国年轻员工晋升阻塞；集体决策→市场响应迟缓……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">策</span>建议转向多国中心模式：关键职位本土化；薪酬结合年功与绩效；决策权下放中国子公司……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">日式（年功·集体·终身·主妇型）vs 美式（绩效·个人·市场·丈夫型）→ HHP三模式（母国/东道国/全球中心）→ 母国中心阻碍本土化→建议转多国中心</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：日美HRM模式对比</div>
+        <table class="kp-table">
+          <thead><tr><th>比较维度</th><th>日本（Y株式会社）</th><th>美国模式</th><th>问题诊断</th></tr></thead>
+          <tbody>
+            <tr><td>薪酬基础</td><td>年功序列（资历）</td><td>绩效能力导向</td><td>中国年轻员工晋升受阻→流失</td></tr>
+            <tr><td>决策方式</td><td>根回+全员共识（慢）</td><td>个人决策（快）</td><td>市场响应缓慢→竞争失利</td></tr>
+            <tr><td>人员配置</td><td>终身雇用+内部晋升</td><td>外部市场化招聘</td><td>本地人才发展空间受限</td></tr>
+            <tr><td>关键职位</td><td>全部母国外派</td><td>本地化+外派并行</td><td>客户关系障碍，本地适应差</td></tr>
+            <tr><td>管理文化</td><td>集体主义·和谐 "主妇型"</td><td>个人主义·效率 "丈夫型"</td><td>中国文化介于两者，错配</td></tr>
+          </tbody>
+        </table>
+        <div class="ans-header" style="margin-top:12px;">问题二：HHP转型方案</div>
+        <ol>
+          <li><span class="hr-key">短期（1年）</span>：立即引入中国本地人为副总裁/中国区HR总监，关键客户关系职位本土化；保留1—2名日本外派高管作为战略对接人。</li>
+          <li><span class="hr-key">中期（2—3年）</span>：逐步将年功序列薪酬调整为"年功+绩效"混合制；加快30岁以下优秀员工的快速通道晋升；引入OKR替代纯年功绩效。</li>
+          <li><span class="hr-key">长期</span>：向地区中心模式（Regiocentric）过渡，中国子公司获得更大自主权；建立"日本集团标准"与"中国本土实践"的双轨并行机制；输出有潜力的中国管理者到总部任职（双向文化融合）。</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C09 -->
+<div class="case-card" id="c09" data-cat="str hr cross">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">09</span>
+  <div class="case-title-block">
+    <div class="case-title">战略联盟中的人才共享机制与员工心理契约管理</div>
+    <div class="case-tags">
+      <span class="tag tag-str">战略联盟·协同效应</span>
+      <span class="tag tag-hr">心理契约·激励机理</span>
+      <span class="tag tag-hr">劳动关系·三方协商</span>
+      <span class="tag tag-warn">新编·跨章节综合</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>A电商与B物流于2022年成立战略联盟，核心条款之一是"技术人员共享"——A的30名算法工程师将同时服务B的智能仓储项目，每周3天在B工作、2天在A。双方约定：工资由A发放，但B对这30人的工作任务拥有"指挥权"。</p>
+      <p>一年后，工程师普遍反映：① 两家公司需求不断冲突，经常同一天被A、B双方要求"优先完成我的任务"；② 不知道自己的KPI由谁考核——A说以A项目贡献为主，B说"在B没产出的工程师下次不要来"；③ 职业发展困惑：是向A走"平台算法"路线，还是向B走"物流AI"路线？④ 薪资由A决定，但B不承担任何薪酬义务却拥有指挥权，部分工程师认为这违反了劳动合同约定。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">战略联盟的含义与风险 <span class="kp-page">蓝P238</span></span>
+      <span class="kp-item tag-hr">心理契约（员工期望与组织承诺）<span class="kp-page">颜P65</span></span>
+      <span class="kp-item tag-hr">激励机理（需要→动机→行为）<span class="kp-page">颜P357</span></span>
+      <span class="kp-item tag-hr">劳动合同·劳动关系主体 <span class="kp-page">颜P390</span></span>
+      <span class="kp-item tag-hr">职业生涯规划（职业锚·职业性向）<span class="kp-page">颜P365</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一</div>
+        <div class="q-text">运用心理契约理论分析工程师群体的困境，并说明心理契约违背会带来哪些后果。</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题二</div>
+        <div class="q-text">从战略管理和人力资源管理双视角，为A、B战略联盟设计人才共享的管理方案（含绩效考核、薪酬机制、职业发展路径设计）。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>心理契约：定义（隐性承诺）→ 三类违背（角色明确性·公平期望·发展性期望）→ 后果（绩效下降·离职意向·OCB减少）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>人才共享方案：绩效（双方联席委员会·复合KPI）→ 薪酬（联盟派遣津贴·费用共担）→ 职业发展（沙因职业锚·自主选择方向）→ 劳动关系合规（书面同意变更条款）</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 心理契约标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">定</span>心理契约是员工对组织隐性承诺（稳定雇用·公平对待·职业发展机会·清晰角色）与组织实际行为之间的主观感知匹配……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">析</span>本案例工程师面临三重违背：①角色明确性破坏（双重指挥，不知为谁干）②公平期望违背（B指挥却不承担薪酬，付出/回报失衡）③发展性期望违背（职业路径不清晰）……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">果</span>心理契约违背后果：工作积极性下降→绩效降低；情感承诺减弱→离职意向增强；创新投入下降……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">策</span>改进：建立双方共同认可的复合绩效考核体系；薪酬费用A·B共担；设计清晰职业发展协议……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">心理契约=隐性期望匹配 → 三类违背（角色·公平·发展）→ 后果（绩效下降·离职意向·OCB减少）→ 改进（复合KPI+费用共担+职业协议+劳动合规）</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：心理契约分析</div>
+        <p><span class="hr-key">心理契约</span>是指员工对组织隐性承诺（稳定雇用、公平对待、职业发展机会、清晰角色）与组织对员工实际行为之间的主观感知匹配。工程师困境本质是多重心理契约违背：角色明确性破坏（不知道为谁干）→ 安全感丧失；公平期望破坏（B指挥但不承担薪酬义务，付出/回报比失衡）→ 公平感知下降；发展性期望破坏（职业路径不清晰）→ 归属感丧失。</p>
+        <p>后果（教材对应）：工作积极性下降→绩效降低；情感承诺减弱→离职意向增强；组织公民行为减少；创新性投入下降。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：人才共享管理方案</div>
+        <ol>
+          <li><span class="hr-key">绩效考核</span>：建立双方共同认可的考核委员会，制定"A项目贡献50%+B项目贡献50%"的复合KPI；每季度联席绩效评审，避免双重标准冲突。</li>
+          <li><span class="hr-key">薪酬机制</span>：在A原薪酬基础上增加"联盟派遣津贴"（由A、B按比例共担）；B享有指挥权须对应承担一定费用，体现贡献对应权利的公平原则。</li>
+          <li><span class="hr-key">职业发展</span>：允许工程师在联盟期结束后自主选择发展方向（A/B任一方或融合路径）；双方签署职业发展保障协议，承诺不因联盟期间的选择而影响后续晋升；利用沙因职业锚理论评估工程师核心职业取向，提前规划方向。</li>
+          <li><span class="hr-key">劳动关系合规</span>：明确劳动合同中的"工作地点、工作内容变更条款"，获取工程师书面同意；避免B实质上形成"劳务派遣"关系而未承担相应法律义务。</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+</div><!-- .case-grid -->
+</section>
+
+<!-- PART 4: 竞争战略×绩效薪酬 -->
+<section id="part4">
+<div class="section-header">
+  <span class="section-title">📒 第四组：竞争战略×绩效与薪酬管理</span>
+  <span class="section-count">案例 10–14</span>
+</div>
+<div class="case-grid">
+
+<!-- C10 -->
+<div class="case-card" id="c10" data-cat="str hr cross">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">10</span>
+  <div class="case-title-block">
+    <div class="case-title">某制造企业数字化转型失败：战略实施的人力资源障碍诊断</div>
+    <div class="case-tags">
+      <span class="tag tag-str">战略实施四维度</span>
+      <span class="tag tag-hr">HRBP转型·培训评估四层次</span>
+      <span class="tag tag-year">2022/2025真题改编</span>
+      <span class="tag tag-warn">★★★★★ 极高频</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★★</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>F集团是传统流程制造企业，2022年宣布"智能制造战略"——3年内实现产线80%自动化，数据驱动决策，减少人工50%。战略投入8亿元采购自动化设备和MES系统。</p>
+      <p>2024年第三方评估发现：① 设备和系统按时上线，但系统利用率不足30%；② 一线班组长普遍反映"系统太复杂，不知道怎么用，还不如原来手工记录快"；③ 车间主任采用双轨制：白天系统上输入数据，晚上还是用Excel传统方式做报告；④ 两名引进的"数字化转型总监"分别于9个月和14个月后离职，理由均为"无法推动跨部门协作"；⑤ HR部门全程未参与数字化转型项目，所有培训由外部系统供应商直接提供（一次性2天培训），无跟踪评估。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">战略实施的性质与特点 <span class="kp-page">蓝P283</span></span>
+      <span class="kp-item tag-str">战略实施四维度（结构·文化·激励·资源）<span class="kp-page">蓝P289</span></span>
+      <span class="kp-item tag-hr">HRBP角色（HR三支柱）<span class="kp-page">颜P30</span></span>
+      <span class="kp-item tag-hr">培训评估：柯克帕特里克四层次 <span class="kp-page">颜P358</span></span>
+      <span class="kp-item tag-hr">培训需求分析三层次 <span class="kp-page">颜P338</span></span>
+      <span class="kp-item tag-hr">变革阻力与激励机理 <span class="kp-page">颜P354</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-str">
+        <div class="q-num">问题一（2025真题改编）</div>
+        <div class="q-text">运用战略实施四维度框架，系统诊断F集团数字化转型失败的原因。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二（2022真题改编）</div>
+        <div class="q-text">运用柯克帕特里克四层次评估模型，评价F集团供应商直接培训方式的缺陷，并设计科学的培训评估方案。</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题三</div>
+        <div class="q-text">如果你是F集团HRBP，在战略实施过程中应如何发挥作用？</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 三个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>战略实施四维度：结构（无PMO跨部门协调）→ 文化（双轨制=传统文化抵制）→ 激励（新系统使用行为未纳入考核）→ 资源（人才培训投入严重不足）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>柯克帕特里克四层次：对应供应商"一次性2天培训"的缺陷（反应无问卷·学习无考核·行为无跟踪·结果未评估）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>HRBP五大作用：战略伙伴→变革推手→培训统筹→人才保留→文化倡导</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 战略实施+培训评估标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">实施</span>战略实施的核心挑战在于"把纸上的战略转化为组织行动"。蓝海林教材指出，战略实施涉及结构、文化、激励、资源四维度：F集团结构维度——无跨部门协调机制；文化维度——传统操作文化抵制；激励维度——新行为未与绩效挂钩；资源维度——人才培训严重不足……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">培训</span>柯克帕特里克四层次评估：反应层（满意度）→学习层（知识掌握）→行为层（工作行为改变）→结果层（业务指标改善）。F集团外包的"2天培训"四个层次均未评估，无法确认培训效果……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">HRBP</span>HRBP（HR业务伙伴）在战略实施中应发挥：战略伙伴（参与项目立项）·变革推手（设计激励方案）·培训统筹（不外包了事）·人才保留（数字化总监留任）·文化倡导（传播变革意义）……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">战略实施四维（结构·文化·激励·资源）→ 柯克帕特里克四层（反应·学习·行为·结果）→ HRBP五角色（战略伙伴·变革推手·培训统筹·人才保留·文化倡导）</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：战略实施四维度诊断</div>
+        <ol>
+          <li><span class="str-key">结构维度</span>：数字化转型总监无法推动跨部门协作，说明组织结构未随战略调整——应设立数字化转型项目管理办公室（PMO），明确跨部门协调权限。</li>
+          <li><span class="str-key">文化维度</span>：车间主任"双轨制"行为反映出传统操作文化对数字化文化的抵制，变革文化尚未形成——需要领导层以身作则，建立数字化行为规范。</li>
+          <li><span class="str-key">激励维度</span>：员工无动力使用新系统——新系统使用行为未与绩效考核挂钩，缺乏正激励。应将系统操作合规率纳入班组KPI。</li>
+          <li><span class="str-key">资源维度</span>：8亿元投入硬件，但人才资源（培训、技能提升）投入严重不足；HR未参与项目，人力资源规划未跟上。</li>
+        </ol>
+        <div class="ans-header" style="margin-top:12px;">问题二：柯克帕特里克四层次评估</div>
+        <table class="kp-table">
+          <thead><tr><th>层次</th><th>评估内容</th><th>F集团缺失</th><th>改进建议</th></tr></thead>
+          <tbody>
+            <tr><td>第一层：反应</td><td>学员对培训的满意度</td><td>未收集反馈问卷</td><td>培训后立即进行满意度调查</td></tr>
+            <tr><td>第二层：学习</td><td>知识/技能掌握程度</td><td>无测试，无考核</td><td>培训后进行操作考核</td></tr>
+            <tr><td>第三层：行为</td><td>工作中的行为改变</td><td>无跟踪（系统利用率30%）</td><td>培训后1个月、3个月行为跟踪</td></tr>
+            <tr><td>第四层：结果</td><td>业务结果改善（ROI）</td><td>完全未评估</td><td>与业务指标（系统利用率、效率提升）挂钩</td></tr>
+          </tbody>
+        </table>
+        <div class="ans-header" style="margin-top:12px;">问题三：HRBP在战略实施中的角色</div>
+        <ol>
+          <li><span class="hr-key">战略伙伴</span>：在转型项目立项时参与，提出人才能力需求评估</li>
+          <li><span class="hr-key">变革推手</span>：设计变革激励方案，将新系统使用纳入绩效考核</li>
+          <li><span class="hr-key">培训统筹</span>：统筹分层培训体系，不将培训外包给供应商了事</li>
+          <li><span class="hr-key">人才保留</span>：为数字化转型关键人才（总监级）设计留任方案</li>
+          <li><span class="hr-key">文化倡导</span>：协助管理层传播数字化转型的意义与文化</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C11 -->
+<div class="case-card" id="c11" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">11</span>
+  <div class="case-title-block">
+    <div class="case-title">海底捞：差异化战略与企业文化驱动的激励体系</div>
+    <div class="case-tags">
+      <span class="tag tag-str">差异化战略·战略实施文化维度</span>
+      <span class="tag tag-hr">企业文化与HRM·激励机理</span>
+      <span class="tag tag-hr">内部激励·马斯洛·服务文化</span>
+      <span class="tag tag-warn">新编·必考经典</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>海底捞是中国最成功的餐饮品牌之一，其竞争战略是典型的差异化战略——不以低价竞争，而以"极致服务"作为核心竞争优势，包括：顾客生日惊喜、免费美甲、擦鞋、外卖保温等超预期服务。这种差异化的背后，是一套独特的人力资源管理体系。</p>
+      <p>海底捞的HR实践：① 招聘偏重"态度"而非"技能"——选择"认可海底捞文化，愿意好好干"的人；② 薪酬采用"同区域最高标准+师徒制分成"——师傅带出的徒弟越好，师傅薪酬越高；③ 门店经理有权"免单"权（不需要向上汇报，直接赔付顾客损失），体现高度授权；④ 员工宿舍、父母探视支持、子女教育补贴等关怀性福利；⑤ 晋升"完全内部化"——所有店长及以上均从基层晋升；⑥ 文化核心："双手改变命运"——来自农村的员工相信通过努力在海底捞能实现改变。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">差异化战略·战略实施文化维度 <span class="kp-page">蓝P144</span></span>
+      <span class="kp-item tag-hr">文化内涵与作用机理（颜P99）</span>
+      <span class="kp-item tag-hr">马斯洛需要层次·激励机理 <span class="kp-page">颜P359</span></span>
+      <span class="kp-item tag-hr">内部激励vs外部激励 <span class="kp-page">颜P355</span></span>
+      <span class="kp-item tag-hr">激励压力-动力机制 <span class="kp-page">颜P376</span></span>
+      <span class="kp-item tag-hr">激励体系设计原则 <span class="kp-page">颜P373</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-cross">
+        <div class="q-num">问题一</div>
+        <div class="q-text">运用激励理论（马斯洛+赫茨伯格）分析海底捞激励体系的设计逻辑，说明其为何能保持一线员工高积极性。</div>
+      </div>
+      <div class="q-item q-str">
+        <div class="q-num">问题二</div>
+        <div class="q-text">海底捞的差异化战略与HR管理之间存在怎样的纵向匹配关系？企业文化在其中扮演了什么角色？</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>激励理论：马斯洛（海底捞全五层覆盖）+ 双因素（保健因素领先行业+激励因素全面激活）+ 压力-动力机制（师徒制分成·内部晋升制）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>战略HR匹配+文化作用：差异化战略→需高服务意愿→选"态度"→高授权→内部成长激励 → 文化"双手改变命运"作为软性规范持续驱动行为</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 激励体系+文化战略标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">马</span>马斯洛五层次视角：海底捞员工多为外来务工者，高薪满足生理·安全需要；集体归属文化满足归属需要；授权决策权满足尊重需要；"双手改变命运"的晋升信念满足自我实现需要——五层全覆盖是其高激励密度的根本……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">双</span>赫茨伯格视角：薪酬福利领先行业（保健因素充足，无不满）；工作本身意义感、授权、师徒认可、明确晋升通道（激励因素充分激活，产生持久内驱力）……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">文</span>文化作为软性约束（颜P102-108）：文化超越法律，通过价值观念塑造员工自发行为。"双手改变命运"的文化核心是一种内部激励，无需额外成本却持续驱动员工超越服务标准……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">马斯洛五层全覆盖 → 双因素（保健充足+激励因素全面激活）→ 压力-动力（师徒分成+内部晋升）→ 文化=软性激励（超越法律，持续驱动）→ 差异化战略+文化驱动HR=有机整合</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：激励理论分析</div>
+        <p><span class="hr-key">马斯洛视角</span>：海底捞一线员工多为农村来城务工者，马斯洛层次从低到高均有覆盖：生理需要（高薪）→ 安全需要（宿舍、父母支持）→ 归属需要（"家文化"集体归属）→ 尊重需要（授权决策、社会认可）→ 自我实现（"双手改变命运"的信念：任何人都可以从传菜员做到区域经理）。关键是海底捞把所有五层需要都满足到了，而餐饮行业竞争对手通常只满足前两层。</p>
+        <p><span class="hr-key">双因素视角</span>：保健因素（薪酬福利）领先同行，避免不满；激励因素（工作本身的意义感、授权、晋升通道清晰、师徒认可）充分激活，产生持久激励。一线员工"主动超越服务标准"正是激励因素作用下的内驱表现。</p>
+        <p><span class="hr-key">压力-动力机制</span>：师徒制分成（徒弟表现影响师傅收入）制造了"带好人才的动力"；内部晋升制制造了"努力就有希望"的上升压力，二者共同构成持续激励。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：战略与HR纵向匹配+文化作用</div>
+        <p>差异化战略要求一线员工有<span class="str-key">高服务意愿和创造力</span>（而非简单执行），HR战略对应采用：选人看"态度"（能力可培训但价值观选择）、高授权（能立即响应顾客需求）、以内部成长为激励核心。这与"快餐文化"企业通过标准化降成本的成本领先策略形成鲜明对比。</p>
+        <p>文化作用（颜P104）：文化通过"超越法律的软性规范"影响员工行为。"双手改变命运"的价值观是一种<span class="hr-key">内部文化激励</span>——它无需额外成本，却持续驱动员工自发超越服务标准。文化在战略实施中起到"粘合剂"作用，使HR各子系统（招聘→培训→激励）形成高度一致的合力。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C12 -->
+<div class="case-card" id="c12" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">12</span>
+  <div class="case-title-block">
+    <div class="case-title">某国企归核化战略中的员工流动规划与核心人才保留</div>
+    <div class="case-tags">
+      <span class="tag tag-str">归核化战略·剥离战略</span>
+      <span class="tag tag-hr">人员流动规划·裁员管理</span>
+      <span class="tag tag-hr">人力资源规划（供需平衡）</span>
+      <span class="tag tag-warn">新编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>G集团是一家业务涉及化工、地产、金融、文旅的国有企业，2022年响应国资委"主业聚焦"要求，实施归核化战略：剥离文旅和金融业务，聚焦化工主业，计划2年内完成。归核化后，集团员工将从12000人减少至约7000人，涉及约5000人的分流安置。</p>
+      <p>HR部门面临的挑战：① 文旅板块中有一批年龄偏大（45—55岁）、技能单一的员工，无法转入化工主业；② 核心化工业务的技术骨干在重组消息传出后，开始被竞争对手高薪挖角；③ 被剥离业务的员工心态不稳，工作积极性下滑；④ 部分子公司员工认为"归核化就是甩包袱"，引发劳动纠纷风险；⑤ 政策要求：国有企业裁员须遵守《劳动合同法》相关规定，不得任意解除合同。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">归核化战略·剥离战略 <span class="kp-page">蓝P197</span></span>
+      <span class="kp-item tag-hr">人力资源规划·供需平衡（过剩处理）<span class="kp-page">颜P140</span></span>
+      <span class="kp-item tag-hr">人员流动规划 <span class="kp-page">颜P149</span></span>
+      <span class="kp-item tag-hr">劳动关系·劳动合同法 <span class="kp-page">颜P396</span></span>
+      <span class="kp-item tag-hr">激励（保留核心人才）<span class="kp-page">颜P373</span></span>
+      <span class="kp-item tag-hr">股权激励（锁定核心人才）<span class="kp-page">颜P378</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一</div>
+        <div class="q-text">结合人力资源规划中"人员过剩"的处理原则，为G集团设计5000人分流的安置方案。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二</div>
+        <div class="q-text">G集团应如何保留化工主业的核心技术骨干？请从激励理论和具体措施两个维度回答。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>人员分流：六种过剩处理方式逐一对应三类人员（45岁以上→内退·自然减员；可转型者→内部转岗；随业务剥离→整体转移；补偿离职→协议解除）→ 合规前提（工会·报告·41条）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>核心人才保留：马斯洛（技术骨干处于尊重+自我实现层次）→ 双因素（激励因素）→ 具体措施（留任奖金·股权·荣誉体系·技术通道·信息透明）</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 人员分流+人才保留标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">规划</span>人力资源规划中人员过剩处理原则：提前预警·分类安置·依法合规·人文关怀。六种主要方式：自然减员·内部转岗·协议解除·随业务转移·再培训再就业·弹性用工……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">保留</span>核心技术骨干保留应综合运用：短期——留任奖金（条件：2年内不离职）；中期——股权激励（限制性股票，分批解锁）；精神激励——技术专家荣誉体系；发展——清晰技术晋升通道；信息——主动透明沟通消除恐慌……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">合规</span>国有企业大规模裁员须遵守《劳动合同法》第41条经济性裁员程序，提前通知工会，向劳动行政部门报告……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">过剩六处理（自然减员·转岗·协议解除·业务转移·再培训·弹性用工）→ 核心人才保留（留任奖金+股权+荣誉+通道+透明）→ 合规（劳动法41条·工会·报告）</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：人员过剩分流方案（颜P140-142）</div>
+        <p>人员过剩处理原则：<span class="hr-key">提前预警、分类安置、依法合规、人文关怀</span>。六种过剩处理方式：</p>
+        <ol>
+          <li><span class="hr-key">自然减员</span>：对45岁以上员工可适用提前退休/内退政策（符合劳动法），引导部分人自愿离开</li>
+          <li><span class="hr-key">内部转岗</span>：对技能可转移的文旅人员优先考虑转入化工辅助岗位（行政、后勤、安全管理）</li>
+          <li><span class="hr-key">协议解除</span>：给予高于法定标准的经济补偿金，与员工协商解除劳动合同</li>
+          <li><span class="hr-key">随业务转移</span>：被剥离文旅业务整体出售时，相关员工随业务转移至新主体（需获员工同意）</li>
+          <li><span class="hr-key">再培训再就业</span>：对有意愿转型的员工，提供职业技能培训补贴</li>
+          <li><span class="hr-key">保留弹性用工</span>：对部分岗位转为劳务合同或外包，降低固定用工风险</li>
+        </ol>
+        <p>合规提示：国有企业大规模裁员须提前通知工会，按《劳动合同法》第41条执行经济性裁员程序，需向劳动行政部门报告。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：核心人才保留方案</div>
+        <p>激励理论基础：核心技术骨干处于马斯洛尊重+自我实现层次，双因素理论中需激励因素（成长机会、成就认可）。</p>
+        <ol>
+          <li><span class="hr-key">短期（立即）</span>：重组期间向核心技术骨干发放"战略关键期留任奖金"（条件：2年内不离职）</li>
+          <li><span class="hr-key">中期</span>：实施技术骨干<span class="key">股权激励/限制性股票</span>方案，锁定3年，与公司长期绩效挂钩</li>
+          <li><span class="hr-key">精神激励</span>：设立技术骨干认定体系（首席工程师/技术专家），给予品牌荣誉与决策参与权</li>
+          <li><span class="hr-key">职业发展</span>：明确技术通道晋升路径，消除"只有走管理才能提升"的天花板效应</li>
+          <li><span class="hr-key">信息透明</span>：向核心员工主动说明重组计划对其个人的影响，降低信息不对称引发的恐慌性离职</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C13 -->
+<div class="case-card" id="c13" data-cat="hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">13</span>
+  <div class="case-title-block">
+    <div class="case-title">某科技公司宽带薪酬改革方案：岗位评估与员工满意度的博弈</div>
+    <div class="case-tags">
+      <span class="tag tag-hr">薪酬设计·宽带薪酬</span>
+      <span class="tag tag-hr">公平理论·岗位评估</span>
+      <span class="tag tag-year">2019/2020真题改编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>P公司是一家500人规模的互联网科技公司，原来薪酬体系为14个职级，每个职级薪酬区间较窄（上下浮动±10%），导致：老员工"到顶不涨"、新员工"入职即接近天花板"，对高绩效员工激励不足。</p>
+      <p>2023年HR推行宽带薪酬改革：将14个职级压缩为5个宽带，每个宽带薪酬区间扩大至±50%。改革后出现以下反应：① 一批老员工发现自己多年积累的职级"消失"，同被划入同一宽带，愤愤不平；② 两名同在P3宽带的员工，A年薪28万、B年薪18万，B认为"做的工作差不多，凭什么差那么多"；③ 管理者反映，宽带制下薪酬调整权力增大，但缺乏统一的岗位价值评估标准，不知道怎么给具体员工定位置；④ 部分员工抱怨：宽带薪酬让薪酬变得"不透明、看不到天花板"。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-hr">薪酬概念与结构 <span class="kp-page">颜P274</span></span>
+      <span class="kp-item tag-hr">薪酬设计六大原则 <span class="kp-page">颜P284</span></span>
+      <span class="kp-item tag-hr">宽带薪酬特点与适用性 <span class="kp-page">颜P299</span></span>
+      <span class="kp-item tag-hr">岗位评估方法（要素计点法）<span class="kp-page">颜P291</span></span>
+      <span class="kp-item tag-hr">公平理论（内部/外部/自我公平）<span class="kp-page">颜P363</span></span>
+      <span class="kp-item tag-hr">战略性薪酬管理 <span class="kp-page">颜P279</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一（2020笔试核心）</div>
+        <div class="q-text">结合公平理论，分析P公司员工产生不公平感的来源，并提出消除对策。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二</div>
+        <div class="q-text">要使宽带薪酬改革成功推行，P公司需要建立什么样的岗位价值评估体系？简述要素计点法的基本流程。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>公平理论：亚当斯Qp/Ip=Qx/Ix → 三类公平感（内部·外部·程序）→ P公司三类不公平感来源（横向比较·程序·信息不透明）→ 对应对策</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>要素计点法：五步（确定要素→设权重→设等级→打分→映射薪酬）→ 解决"宽带薪酬缺乏客观依据"的问题</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 公平理论+薪酬设计标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">定</span>亚当斯公平理论（20世纪60年代）核心公式：Qp/Ip = Qx/Ix（自己报酬/投入 = 参照系报酬/投入）。左＜右→不公平感→降低努力；人的心理偏差：倾向高估自身投入、低估他人投入……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">析</span>P公司公平感缺失三来源：①内部公平——B与A同宽带但薪酬差10万，缺乏岗位价值评估依据；②程序公平——老员工职级被取消，历史贡献感知被忽视；③信息公平——宽带边界不透明，员工不知如何提升……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">策</span>建立要素计点法岗位评估体系（确定要素→设权重→分等级→打分→对应薪酬）；设保护期；公开宽带内薪酬矩阵……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">公平理论Qp/Ip=Qx/Ix → 三类公平（内部·外部·程序/信息）→ 宽带薪酬配套要素计点法（5步）→ 改革原则：透明·渐进·不降薪</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：公平理论分析（亚当斯）</div>
+        <p>公平感核心公式：<span class="hr-key">Qp/Ip = Qx/Ix</span>（自己报酬/投入 = 参照系报酬/投入）。P公司产生不公平的三个来源：</p>
+        <ol>
+          <li><span class="hr-key">内部公平失衡</span>：B员工（18万）与A员工（28万）在同一宽带，却对工作价值差异认知不清 → 产生"差10万但凭什么"的纵向比较不公平感。对策：建立岗位价值评估体系，公开说明同宽带内薪酬差距的依据（技能水平、绩效贡献、市场稀缺性）。</li>
+          <li><span class="hr-key">程序公平失衡</span>：老员工职级突然"消失"，感到历史投入未被尊重。对策：设置薪酬保护期（原职级薪酬不低于改革前），渐进过渡，说明改革逻辑。</li>
+          <li><span class="hr-key">信息公平（透明度）</span>：宽带制下薪酬区间大，缺乏透明晋级标准 → 员工感知"说不清楚的规则"。对策：公开宽带内各位置的能力级别要求（Salary Grade Matrix），让员工知道如何提升到宽带高端。</li>
+        </ol>
+        <div class="ans-header" style="margin-top:12px;">问题二：要素计点法（Factor Point Method）</div>
+        <ol>
+          <li>确定薪酬评估要素（如：工作复杂度、责任范围、知识技能要求、工作条件、与目标的影响程度）</li>
+          <li>为每个要素设定权重（反映其对该公司价值的相对重要性，各要素权重加总=100%）</li>
+          <li>为每个要素设定评分等级（如1—5级），并编写详细的等级描述</li>
+          <li>对每个岗位按各要素打分，乘以权重，加总得到该岗位的总点值</li>
+          <li>根据点值范围划分薪酬等级，并与市场薪酬调查数据比对，确定各等级薪酬水平</li>
+        </ol>
+        <p>要素计点法适用性：比岗位排列法更客观科学，适合中型以上企业；是宽带薪酬改革的基础，能为宽带内薪酬定位提供量化依据。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C14 -->
+<div class="case-card" id="c14" data-cat="str hr cross">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">14</span>
+  <div class="case-title-block">
+    <div class="case-title">战略人力资源管理的VRIN竞争优势：某科技公司HR能力建设</div>
+    <div class="case-tags">
+      <span class="tag tag-str">资源基础观·VRIO框架</span>
+      <span class="tag tag-hr">SHRM·VRIN条件·HR能力建设</span>
+      <span class="tag tag-year">2023真题改编</span>
+      <span class="tag tag-warn">★★★★★ 极高频·SHRM核心</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★★</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>K公司是国内领先的工业软件企业，在高度定制化的制造业ERP领域占据35%市场份额。竞争对手多次尝试模仿其产品，但均难以复制K公司的核心竞争力。深度分析显示，K公司的真正优势不在于代码（可被逆向工程），而在于：① 800人研发团队中，超过60%深入了解汽车、化工、装备制造等细分行业客户的业务逻辑；② 独特的"客户共同开发"文化——研发团队通常驻场客户6—18个月，将行业隐性知识转化为软件功能；③ 这一模式依赖极低的研发人员离职率（行业平均18%，K公司长期保持在4%）和强大的知识传承体系。</p>
+      <p>HR部门认为，研发人员的"行业知识+低离职率"组合是不可模仿的战略资产，需要从SHRM角度系统维护。但近年随着规模扩大，研发离职率上升至8%，部分核心员工对晋升通道不清晰表示不满。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">资源基础观（RBV）·VRIO框架 <span class="kp-page">蓝P108</span></span>
+      <span class="kp-item tag-hr">SHRM含义与特征 <span class="kp-page">颜P425</span></span>
+      <span class="kp-item tag-hr">VRIN四条件（人力资源版）<span class="kp-page">颜P432</span></span>
+      <span class="kp-item tag-hr">路径依赖性（HR资源积累）<span class="kp-page">颜P434</span></span>
+      <span class="kp-item tag-hr">HR能力建设：外包/并购/能力培育 <span class="kp-page">颜P445</span></span>
+      <span class="kp-item tag-hr">人力资源开发（四维度）<span class="kp-page">颜P325</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一（2023面试核心）</div>
+        <div class="q-text">运用VRIN模型，分析K公司研发团队"行业知识+低离职率"组合是否构成持续竞争优势的来源。</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题二</div>
+        <div class="q-text">从SHRM理论出发，K公司应如何设计HR战略来保护和强化这一竞争优势？请从招聘、开发、激励三个维度分别提出建议。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>VRIN分析：有价值✓ → 稀缺✓ → 难模仿（路径依赖·社会复杂性）✓ → 组织支撑△（离职率上升=警告）→ 具备竞争优势潜力但组织维度有风险</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>SHRM框架：三维度改进（招聘=双维评估·开发=知识沉淀体系·激励=技术通道+股权）→ 每个维度都服务于"保护VRIN资源"这一战略目标</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ VRIN/SHRM标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">引</span>资源基础观（RBV, Barney,1991）认为企业的竞争优势来源于内部稀缺的、难以模仿的战略资源。VRIN模型是判断资源是否构成持续竞争优势的分析框架……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">V</span>有价值性：K公司工程师的行业知识直接转化为客户定制能力，是客户溢价购买的核心原因——有价值 ✓</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">RIN</span>稀缺性（市场上复合型人才极稀缺✓）→ 难以模仿（路径依赖性：每人知识积累是独特成长路径的产物；社会复杂性：文化嵌入组织层面✓）→ 组织支撑（离职率上升△，需SHRM加固）……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">SHRM</span>从SHRM视角：招聘加入行业背景维度；开发建立知识沉淀·导师传承体系；激励设计技术专家晋升通道+股权方案——三维度共同保护和强化VRIN竞争优势……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">RBV资源基础观 → VRIN四条件（有价值·稀缺·难模仿·组织支撑）→ 难模仿：路径依赖+社会复杂性 → SHRM：招聘（双维）+开发（知识沉淀）+激励（通道+股权）</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：VRIN分析</div>
+        <ol>
+          <li><span class="str-key">有价值性（Valuable）</span>：行业知识直接转化为客户定制化解决方案能力，是客户愿意付溢价的根本原因 ✓</li>
+          <li><span class="str-key">稀缺性（Rare）</span>：60%研发人员具备细分行业深度知识，市场上既懂软件又懂汽车/化工业务逻辑的复合型人才极为稀缺 ✓</li>
+          <li><span class="str-key">难以模仿（Inimitable）</span>：存在两重难以模仿性：① <span class="key">路径依赖性</span>（颜P434）——每名员工的知识积累是K公司独特成长路径的产物，无法被复制；② 社会复杂性——"客户共同开发文化"嵌入组织层面，单挖走个别人才无法复制整体能力 ✓</li>
+          <li><span class="str-key">组织支撑（Organization/Non-substitutable）</span>：知识传承体系和低离职率是组织支撑，但目前离职率上升（4%→8%）说明组织支撑开始松动 △（警告！）</li>
+        </ol>
+        <p>结论：该资源组合具备持续竞争优势的潜力，但组织维度存在风险，必须加大SHRM投入。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：SHRM战略设计</div>
+        <ol>
+          <li><span class="hr-key">招聘</span>：建立"行业知识+技术能力"双维评估体系，引入行业背景（有汽车/化工工作经验者优先）；通过胜任力模型识别"学习驱动型"特质，降低短期功利导向的候选人比例。</li>
+          <li><span class="hr-key">开发（人力资源开发）</span>：建立"客户驻场知识沉淀"标准化流程——每个项目结束后输出结构化知识文档；设立行业专家导师制度，系统传承隐性知识；与目标行业客户建立联合培训机制。</li>
+          <li><span class="hr-key">激励（保留）</span>：清晰设计"技术专家晋升通道"（让技术人才不必走管理路线）；为入职3年以上员工提供限制性股票方案（解决晋升通道问题同时锁定核心人才）；以低离职率为HR部门的核心考核KPI之一（内部公平—间接激励全员）。</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+</div><!-- .case-grid -->
+</section>
+
+<!-- PART 5: 战略实施×激励文化 -->
+<section id="part5">
+<div class="section-header">
+  <span class="section-title">📕 第五组：战略实施×激励与文化（压轴案例）</span>
+  <span class="section-count">案例 15–20</span>
+</div>
+<div class="case-grid">
+
+<!-- C15 -->
+<div class="case-card" id="c15" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">15</span>
+  <div class="case-title-block">
+    <div class="case-title">外卖平台灵活用工战略与骑手劳动关系认定困境</div>
+    <div class="case-tags">
+      <span class="tag tag-str">平台战略·商业模式创新</span>
+      <span class="tag tag-hr">劳动关系·灵活用工</span>
+      <span class="tag tag-hr">激励体系·三方协商机制</span>
+      <span class="tag tag-year">2019真题改编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>某外卖平台E（对应案例分析场景）拥有100万骑手，均以"自由接单"模式运营：骑手与平台签订"合作协议"（非劳动合同），无固定薪酬，以计件抽成为主要收入。平台通过算法系统全面管理骑手——接单时间、配送路线、超时惩罚均由算法控制，骑手实际上完全依赖平台。</p>
+      <p>引发的问题：① 骑手发生交通事故时，平台主张无劳动关系，拒绝承担工伤保险责任；② 平台通过算法持续压缩配送时间（如将30分钟压到28分钟），骑手交通事故率上升；③ 骑手无法享受最低工资保障，淡季收入骤降时无任何保障；④ 2021年某地劳动仲裁认定平台与骑手存在"不完全劳动关系"，要求承担部分工伤保险义务；⑤ 骑手群体尝试成立非正式互助组织，引发平台关注。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">平台化商业模式战略 <span class="kp-page">蓝P25</span></span>
+      <span class="kp-item tag-hr">劳动关系含义（三种理解）<span class="kp-page">颜P390</span></span>
+      <span class="kp-item tag-hr">劳动关系主体（员工·管理方·工会）<span class="kp-page">颜P391</span></span>
+      <span class="kp-item tag-hr">三方协商机制 <span class="kp-page">颜P414</span></span>
+      <span class="kp-item tag-hr">激励机理·目标设置理论 <span class="kp-page">颜P365</span></span>
+      <span class="kp-item tag-hr">非正式群体（组织行为学）<span class="kp-page">颜P66</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一（2019案例核心）</div>
+        <div class="q-text">从劳动关系理论视角，分析平台与骑手之间关系的本质，并阐述"不完全劳动关系"认定的合理性。</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题二</div>
+        <div class="q-text">平台应如何构建与灵活用工模式相适配的激励机制？同时如何运用三方协商机制化解劳动关系矛盾？</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>劳动关系认定：三标准（主体资格·从属性·劳动报酬）→ 骑手具备经济从属性和算法人身控制 → 不完全劳动关系合理：介于劳动/劳务之间的新型用工</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>激励方案（目标设置理论）+ 三方协商机制（政府·雇主·工会/员工代表）→ 骑手代表委员会·平台协商薪酬规则·政府监督</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 劳动关系+三方协商标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">定</span>劳动关系（颜P390）：最早见于1935年美国《国家劳动关系法》，本书定义为企业所有者、经营管理者、普通职工及其工会组织之间在生产经营活动中形成的各种权、责、利关系……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">判</span>劳动关系认定三标准：主体资格（双方均符合）·从属性（骑手被算法全面控制→经济从属性显著）·劳动报酬（计件但属劳动成果）→ "不完全劳动关系"认定合理……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">激</span>洛克目标设置理论：目标应具体·有挑战性·可实现。算法时间压缩违背此原则。改进：保底收入+目标透明+荣誉积分+正激励为主……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">三</span>三方协商机制：政府（监督）+雇主组织（平台）+工会/骑手代表 → 联合制定配送时间标准·工伤保险·最低收入保障……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">劳动关系三标准（主体·从属·报酬）→ 不完全劳动关系=新型用工 → 洛克目标设置（具体·挑战·可达·反馈）→ 三方协商（政府+雇主+工会）</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：劳动关系认定</div>
+        <p>劳动关系判断三标准（颜P390）：① 主体资格：双方符合劳动法主体资格；② 从属性（人身从属+经济从属）：骑手收入完全依赖平台、工作内容/时间/方式受算法控制，具有明显经济从属性；③ 劳动报酬：平台实质上是按劳动成果（件）支付，具有报酬关系。</p>
+        <p>"不完全劳动关系"认定合理性：骑手既有灵活性（自主接单时间），又有从属性（算法控制路线、时间压力），属于介于劳动关系和劳务关系之间的新型用工形态。认定不完全劳动关系意味着平台需对工伤保险等核心权益负责，而不能以"合作协议"完全规避。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：激励机制与三方协商</div>
+        <p><span class="hr-key">激励机制设计</span>（结合洛克目标设置理论）：</p>
+        <ol>
+          <li>保底收入机制：设置每月最低保障接单收入，减少淡季骑手大量流失</li>
+          <li>目标激励透明化：算法配送时间目标应合理（不违背交通法规），公开算法规则，让骑手有"可接受的挑战性目标"</li>
+          <li>荣誉积分体系：引入骑手等级制（星级评分），高等级骑手获优先接单权和更高抽成比例</li>
+          <li>正激励为主：减少超时惩罚，增加准时奖励，减少被动负激励</li>
+        </ol>
+        <p><span class="hr-key">三方协商机制（颜P414）</span>：三方协商由政府、雇主组织、工会（或员工代表）共同参与，就劳动关系重大问题达成一致。具体措施：① 建立骑手代表委员会（准工会性质），使骑手有正式渠道表达诉求；② 平台与代表委员会定期协商配送时间标准、计费规则等；③ 政府劳动部门参与监督，确保平台履行基本权益保障义务（工伤保险、最低收入保障）；④ 探索行业集体协商机制，制定平台经济灵活用工行业标准。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C16 -->
+<div class="case-card" id="c16" data-cat="hr str">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">16</span>
+  <div class="case-title-block">
+    <div class="case-title">家族企业接班与职业经理人绩效管理：股权激励的设计逻辑</div>
+    <div class="case-tags">
+      <span class="tag tag-str">战略管理者·委托代理理论</span>
+      <span class="tag tag-hr">绩效管理·股权激励</span>
+      <span class="tag tag-hr">目标设置理论·BSC</span>
+      <span class="tag tag-warn">新编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>家族企业Q（年营收50亿元，传统制造），创始人退休后将经营权交由职业CEO负责，自己保留董事长职位。问题逐渐暴露：① 职业CEO追求短期EPS（每股收益），削减了研发预算；② 长期战略项目（新产品线开发）被搁置，因为它3年内不贡献利润；③ CEO强调"降本增效"，导致优秀工程师流失；④ 创始人认为CEO"破坏了公司文化和长期竞争力"，双方矛盾激化。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">战略管理者的角色（高层管理者）<span class="kp-page">蓝P43</span></span>
+      <span class="kp-item tag-hr">股权激励（渊源·6种类型）<span class="kp-page">颜P378</span></span>
+      <span class="kp-item tag-hr">股权激励机制设计6要素 <span class="kp-page">颜P380</span></span>
+      <span class="kp-item tag-hr">BSC平衡计分卡（财务vs非财务）<span class="kp-page">颜P258</span></span>
+      <span class="kp-item tag-hr">绩效管理流程（SMART目标）<span class="kp-page">颜P243</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一</div>
+        <div class="q-text">为Q公司职业CEO设计一套结合BSC四维度的绩效评价体系，使其兼顾短期与长期目标。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二</div>
+        <div class="q-text">应如何通过股权激励机制设计，将CEO利益与公司长期战略目标绑定？请说明6要素设计逻辑。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>BSC设计：四维度（财务·客户·内部流程·学习成长）→ 防止单一财务指标导致短视行为 → 权重向内部流程（R&D）和学习成长（人才保留）倾斜</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>股权激励六要素：激励对象·类型·规模·授予条件·行权条件·定价机制 → 每个要素都服务于"绑定CEO与长期战略"这一目标</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ BSC+股权激励标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">BSC</span>平衡计分卡（Kaplan&Norton）从财务、客户、内部流程、学习成长四维度评价，建立"学习成长→内部流程改善→客户满意→财务成果"的因果链。职业CEO偏重短期EPS需通过BSC平衡——将研发投入强度、核心工程师留存率等纳入考核……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">股权</span>股权激励将管理层利益与公司长期价值深度绑定，解决委托代理问题。六要素设计：①激励对象（CEO及核心高管）②类型（限制性股票）③规模（总薪酬30—40%）④授予条件（战略里程碑，如新产品线商业化）⑤行权条件（4年分批解锁）⑥定价（公允市场价+BSC挂钩）……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">BSC四维因果链（学习→流程→客户→财务）→ 股权激励六要素（对象·类型·规模·授予条件·行权条件·定价）→ 核心目的：解决委托代理问题，绑定长期战略</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：BSC绩效评价设计</div>
+        <table class="kp-table">
+          <thead><tr><th>BSC维度</th><th>Q公司CEO评价指标</th><th>权重</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>财务维度</td><td>营收增长率、净利率、EBITDA</td><td>30%</td><td>防止只追求短期EPS；重视可持续盈利</td></tr>
+            <tr><td>客户维度</td><td>主要客户续约率、品牌NPS净推荐值</td><td>20%</td><td>体现市场竞争力</td></tr>
+            <tr><td>内部流程</td><td>新产品开发进度、研发投入强度（R&D/营收%）</td><td>25%</td><td>防止削减研发</td></tr>
+            <tr><td>学习成长</td><td>核心工程师留存率、管理层培养继任计划完成率</td><td>25%</td><td>防止人才流失破坏长期能力</td></tr>
+          </tbody>
+        </table>
+        <div class="ans-header" style="margin-top:12px;">问题二：股权激励6要素设计</div>
+        <ol>
+          <li><span class="hr-key">激励对象</span>：CEO及核心高管（因为他们的决策对长期价值影响最大）</li>
+          <li><span class="hr-key">激励类型</span>：限制性股票（Restricted Stock）——优于纯期权，锁定保留效果更强</li>
+          <li><span class="hr-key">激励规模</span>：总薪酬的30—40%以股权形式发放，确保足够激励性</li>
+          <li><span class="hr-key">授予条件</span>：需满足"3年新产品线达到商业化阶段"等战略条件，而非仅财务指标</li>
+          <li><span class="hr-key">行权条件</span>：4年分批解锁（25%/年），防止短视行为；若在锁定期内决策导致核心人才大量流失，可设置回扣条款</li>
+          <li><span class="hr-key">定价机制</span>：以公允市场价格授予，并与长期BSC考核结果挂钩，确保获益是"真正创造了价值"的结果</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C17 -->
+<div class="case-card" id="c17" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">17</span>
+  <div class="case-title-block">
+    <div class="case-title">医疗集团并购重组后的薪酬整合：公平理论与岗位重评</div>
+    <div class="case-tags">
+      <span class="tag tag-str">并购重组·战略协同</span>
+      <span class="tag tag-hr">薪酬整合·公平理论</span>
+      <span class="tag tag-hr">岗位评估·薪酬结构</span>
+      <span class="tag tag-year">2021/2023改编</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>大型医疗集团H收购了一家社区医院（300人），并购完成后两个机构的薪酬体系差异极大：H集团护士平均月薪8000元、被收购医院护士5200元；相同职级的医生，H集团月薪18000元、被收购医院12000元。H集团决定推进薪酬统一化，引发强烈抵触：H集团员工认为"新进员工会被抬到与我们一样，不公平"；被收购医院员工则担心"整合后可能被压薪"。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">并购整合策略（吸收/共存/保留）<span class="kp-page">蓝P258</span></span>
+      <span class="kp-item tag-hr">薪酬整合策略 <span class="kp-page">颜P447</span></span>
+      <span class="kp-item tag-hr">公平理论（内部/外部/个人公平）<span class="kp-page">颜P363</span></span>
+      <span class="kp-item tag-hr">岗位评估（为何需要重评）<span class="kp-page">颜P289</span></span>
+      <span class="kp-item tag-hr">薪酬调查与市场定位 <span class="kp-page">颜P287</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一</div>
+        <div class="q-text">运用公平理论分析两个机构员工产生不同公平感知的根源，并说明薪酬整合方案应遵循的原则。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二</div>
+        <div class="q-text">设计H医疗集团并购后薪酬整合的操作方案（含过渡期安排）。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>公平理论：H集团员工=内部相对公平威胁（横向比较）；被收购员工=自我公平威胁（担心降薪）→ 两类不同感知→分别对应对策</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>整合方案：稳定（不降薪承诺）→ 评估（统一岗位评估）→ 映射（被收购员工按新等级定位）→ 绩效调薪（逐步合理化）→ 透明沟通全程贯穿</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 并购薪酬整合标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">理</span>公平理论（亚当斯）：薪酬公平感分三层——内部公平（组织内岗位间薪酬合理性）·外部公平（与市场对标）·自我公平（个人付出与所得相称）。并购后双方员工产生不同层面的公平感知威胁……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">析</span>H集团员工：内部公平感受威胁（同职级新员工薪酬接近，历史积累被稀释）→对策：岗位重评体系提供客观差距依据。被收购员工：自我公平感受威胁（担心降薪）→对策：承诺"只升不降"原则……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">策</span>分三步推进：①维持现状+启动统一岗位评估；②评估结果映射新等级体系；③通过绩效差异化调薪逐步合理化。全程透明沟通，配套外部薪酬调查保竞争力……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">并购薪酬整合原则（只升不降·岗位重评·透明沟通）→ 公平三层（内部·外部·自我）→ 整合三步（稳定→评估→绩效差异调薪）→ 外部调查保竞争力</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：公平感知分析</div>
+        <p><span class="hr-key">H集团员工的威胁感</span>：来自横向比较（新进同职级员工薪酬与自己接近/相同），感到"历史积累贡献被稀释"——这是<span class="key">内部相对公平感</span>的威胁。对策：整合后采用"按能力/贡献定位，而非按历史薪酬平移"——通过统一岗位评估（要素计点法）重新定价，使差距有客观依据。</p>
+        <p><span class="hr-key">被收购医院员工的担忧</span>：来自对自身利益损失的预期（可能降薪）——这是<span class="key">自我公平感</span>威胁。原则：薪酬整合一般遵循"只升不降"原则（在法律层面劳动合同变更须经员工同意，单方降薪违法）。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：薪酬整合方案</div>
+        <ol>
+          <li><span class="hr-key">第一步（并购当年）</span>：维持现状，宣布"整合期内薪酬不降"，稳定军心；同时启动全集团统一的岗位评估</li>
+          <li><span class="hr-key">第二步（第1—2年）</span>：基于统一岗位评估，重新建立集团薪酬等级体系；将被收购医院员工按评估结果映射到新等级，原薪酬低于新等级下限者，补涨至下限</li>
+          <li><span class="hr-key">第三步（第2—3年）</span>：通过绩效差异化调薪，使新体系内薪酬分布逐步合理化（高绩效员工加速提升）</li>
+          <li><span class="hr-key">沟通机制</span>：全程向员工透明说明岗位评估标准和对应薪酬范围，避免信息不对称引发恐慌</li>
+          <li><span class="hr-key">外部竞争性</span>：进行医疗行业市场薪酬调查，确保整合后薪酬水平在市场75分位以上，防止优秀医护人才流失</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C18 -->
+<div class="case-card" id="c18" data-cat="str hr cross">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">18</span>
+  <div class="case-title-block">
+    <div class="case-title">AI时代战略转型与人力资本再造：某传统咨询公司的全面重构【压轴】</div>
+    <div class="case-tags">
+      <span class="tag tag-str">动态能力·商业模式创新</span>
+      <span class="tag tag-hr">人力资源开发·培训体系重建</span>
+      <span class="tag tag-hr">SHRM·战略性HR实践</span>
+      <span class="tag tag-year">2025真题改编·压轴</span>
+      <span class="tag tag-warn">★★★★★ 最高难度</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★★ 压轴题</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>S咨询公司（成立20年，1500名顾问，专注于企业管理咨询）在2023年遭遇战略危机：AI大语言模型可完成其70%的"标准化咨询报告"工作，客户开始质疑每个项目50万元的报价。公司面临生死抉择：如果继续按现有模式运营，3年内将流失60%收入；如果向"AI赋能+高端战略咨询"模式转型，则需要对1500名顾问进行全面能力再造。</p>
+      <p>CEO提出新战略：从"知识交付型"转向"判断力+创造力+AI协同"三核心能力模型。新模式下，顾问不再写报告，而是：① 运用AI工具高效分析；② 提供AI无法替代的"直觉判断+行业洞察"；③ 管理客户关系和变革执行。HR面临挑战：① 400名"资深报告写作型顾问"核心竞争力将直接被AI替代，如何处置？② 如何快速培育新能力？③ 如何在转型期保持组织凝聚力，防止恐慌性离职？</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">动态能力理论（Teece）<span class="kp-page">蓝P117</span></span>
+      <span class="kp-item tag-str">战略转型·商业模式重构 <span class="kp-page">蓝P303</span></span>
+      <span class="kp-item tag-hr">人力资源开发（四维度：技能·生理·心智·道德）<span class="kp-page">颜P325</span></span>
+      <span class="kp-item tag-hr">培训体系设计（需求分析+方法+评估）<span class="kp-page">颜P337</span></span>
+      <span class="kp-item tag-hr">SHRM含义与特征 <span class="kp-page">颜P425</span></span>
+      <span class="kp-item tag-hr">人员过剩处理+关键人才保留 <span class="kp-page">颜P140</span></span>
+      <span class="kp-item tag-hr">激励机理·变革期激励设计 <span class="kp-page">颜P354</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-str">
+        <div class="q-num">问题一（战略）</div>
+        <div class="q-text">运用动态能力理论分析S咨询公司战略转型的本质，说明其需要建立哪些新的动态能力。</div>
+      </div>
+      <div class="q-item q-hr">
+        <div class="q-num">问题二（人力资源）</div>
+        <div class="q-text">针对400名"报告写作型顾问"的能力再造，从人力资源开发（培训需求分析→培训方案设计→培训评估）三个环节设计系统方案。</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题三（综合·SHRM）</div>
+        <div class="q-text">如何从SHRM角度，确保S咨询公司的人力资源管理系统能支撑"AI赋能+高端战略咨询"新战略的落地？请从招聘、培训、绩效、薪酬、文化五个维度构建HR战略框架。</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 三个问题答题逻辑链（压轴综合题）</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>动态能力：感知（识别AI价值空间）→ 捕获（重构商业模式）→ 重构（重置人员能力结构+激励体系）→ S公司转型本质=建立新动态能力</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>人力资源开发：三层次需求分析→分层培训方案（强制·选择·自驱）→ 柯克帕特里克四层次评估</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">3</span>SHRM五维框架：招聘（AI原住民·行业洞察）→ 培训（技能认证）→ 绩效（BSC重构）→ 薪酬（宽带+AI激励）→ 文化（学习型组织）</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ AI时代SHRM压轴综合论述模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">动能</span>动态能力理论（Teece,1997）：企业在快速变化环境中维持竞争优势需要感知·捕获·重构三大能力。S公司面对AI颠覆，原有"知识积累"核心能力被替代，须重构动态能力：感知AI边界（AI能做什么/不能做什么）→ 捕获新商业模式（AI+判断力咨询）→ 重构人才结构……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">开发</span>人力资源开发（颜P324）：围绕劳动技能·生理素质·心智水平·道德修养四维度。AI时代重点是心智层面（批判性思维·判断力）和技能层面（AI工具）的再造。培训方案：分层（强制性AI认证→选择性行业培训→自驱学习积分体系）……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">SHRM</span>SHRM（颜P425）将HR视为战略性资源而非成本：S公司HR重构核心是将"顾问"从AI竞争威胁下重新定位为"AI无法替代的战略资产"——招聘（AI协同复合型人才）+培训（AI认证+判断力）+绩效（BSC多维）+薪酬（AI加薪机制）+文化（学习型组织）五维协同……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">动态能力（感知·捕获·重构）→ 人力资源开发四维（技能·生理·心智·道德，AI时代重心智）→ SHRM五维重构（招聘·培训·绩效·薪酬·文化）→ 本质：将"人"重新定位为AI时代战略资产</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开完整参考答案（综合论述完整版）</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：动态能力分析</div>
+        <p>动态能力（Teece,1997）：企业随环境变化，<span class="str-key">获取、整合、重置资源和能力</span>的能力，是在快速变化的环境中维持竞争优势的关键。S公司转型本质是：原有"知识积累型核心能力"被AI替代（能力过时），需要建立新的动态能力：</p>
+        <ol>
+          <li><span class="str-key">感知能力（Sensing）</span>：识别AI时代客户需求变化，洞察"AI做不了什么"的新价值空间</li>
+          <li><span class="str-key">捕获能力（Seizing）</span>：快速重构商业模式，将AI工具嵌入咨询流程，形成"AI+人类判断力"新产品</li>
+          <li><span class="str-key">重构能力（Reconfiguring）</span>：重新配置1500名顾问的能力结构，从"写作型"转向"判断型+执行型"；重置激励体系匹配新能力要求</li>
+        </ol>
+        <div class="ans-header" style="margin-top:12px;">问题二：人力资源开发方案</div>
+        <p><span class="hr-key">培训需求分析（三层次）</span>：</p>
+        <ul>
+          <li>组织层次：新战略要求"AI协同+高端判断力"，现有能力结构与之差距显著</li>
+          <li>工作层次：400名报告写作型顾问需要获取：AI工具操作（技能）、批判性思维与判断力（能力）、客户沟通引导（行为）</li>
+          <li>个人层次：区分"可快速转型者"（学习能力强，意愿高）vs"转型阻力者"（年龄大，学习动机低）→ 差异化方案</li>
+        </ul>
+        <p><span class="hr-key">培训方案设计</span>：</p>
+        <ol>
+          <li>AI工具培训（在职培训OJT+微课）：强制性，所有顾问必须通过AI操作认证</li>
+          <li>批判性思维培训（工作坊+案例研讨）：用真实项目练习"AI给出的内容哪里有问题、如何超越AI"</li>
+          <li>高级客户引导培训（角色扮演+外部讲师）：培养"顾问型销售+变革教练"能力</li>
+          <li>自我驱动学习机制：建立内部学习积分体系，激励自主学习</li>
+        </ol>
+        <p><span class="hr-key">培训评估（柯克帕特里克四层次）</span>：反应层（满意度问卷）→学习层（AI认证考试）→行为层（6个月后项目AI使用率，客户满意度变化）→结果层（项目利润率，客户续约率）。</p>
+        <div class="ans-header" style="margin-top:12px;">问题三：SHRM五维度框架</div>
+        <table class="kp-table">
+          <thead><tr><th>HR维度</th><th>旧模式</th><th>新战略要求</th></tr></thead>
+          <tbody>
+            <tr><td>招聘</td><td>优秀"写作者"，强调逻辑表达</td><td>招聘"AI协同+行业洞察"复合型人才；引入"AI原住民"（数字化背景）</td></tr>
+            <tr><td>培训</td><td>方法论培训为主</td><td>AI技能认证+判断力培养+客户管理能力的系统培训体系</td></tr>
+            <tr><td>绩效</td><td>项目交付质量+报告完成率</td><td>BSC重构：客户满意度（高权重）+AI增效率+高端项目承接数量+知识贡献（内部共享）</td></tr>
+            <tr><td>薪酬</td><td>职级×工龄</td><td>宽带薪酬+AI认证加薪+高端项目分成激励；对"AI拒绝者"不增薪</td></tr>
+            <tr><td>文化</td><td>知识权威文化（顾问=知识供给者）</td><td>学习型组织文化（顾问=判断者+学习者）；建立"拥抱AI是专业进化而非威胁"的心理安全感</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:8px;">SHRM核心结论：S公司HR体系的全面重构，本质是将"人力资源"从AI时代的"被淘汰要素"重新定位为"AI无法替代的战略资源"，这正是SHRM理论的核心价值——将人定位为竞争优势的持续来源。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C19 -->
+<div class="case-card" id="c19" data-cat="str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">19</span>
+  <div class="case-title-block">
+    <div class="case-title">某制造企业ESG绿色转型战略与可持续人力资源管理</div>
+    <div class="case-tags">
+      <span class="tag tag-str">ESG战略·可持续战略</span>
+      <span class="tag tag-hr">战略HRM·人力资源规划</span>
+      <span class="tag tag-hr">培训开发·绩效指标重构</span>
+      <span class="tag tag-warn">新编·预测高频</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★☆☆</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>汽车零件制造商W公司2023年宣布"2030碳中和"战略目标，转型绿色制造。战略目标落地需要：① 引入新能源工艺和碳管理体系（大量技术更新）；② 现有4000名员工中，约1200人从事传统内燃机零件生产（未来3年该业务逐步缩减）；③ 需要新引进碳管理、新能源工艺工程师约400人，目前市场上此类人才严重稀缺；④ 客户（主机厂）要求W公司提供供应链碳排放数据，要求员工具备碳核算能力。</p>
+    </div>
+  </div>
+    <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 考察知识点</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">ESG可持续战略·战略转型 <span class="kp-page">蓝P303</span></span>
+      <span class="kp-item tag-hr">人力资源规划（供需分析·平衡策略）<span class="kp-page">颜P125</span></span>
+      <span class="kp-item tag-hr">人员过剩处理六种方式 <span class="kp-page">颜P140</span></span>
+      <span class="kp-item tag-hr">人员短缺弥补途径 <span class="kp-page">颜P143</span></span>
+      <span class="kp-item tag-hr">SHRM纵向匹配原则 <span class="kp-page">颜P436</span></span>
+      <span class="kp-item tag-hr">培训开发体系·绩效KPI设计 <span class="kp-page">颜P337·P256</span></span>
+      <span class="kp-item tag-cross">绿色战略与HR整合（SHRM适配）<span class="kp-page">颜P428</span></span>
+    </div>
+  </div>
+<div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题</div>
+    <div class="q-list">
+      <div class="q-item q-hr">
+        <div class="q-num">问题一</div>
+        <div class="q-text">运用人力资源规划（供需分析+平衡策略），为W公司绿色转型设计人力资源规划方案。</div>
+      </div>
+      <div class="q-item q-cross">
+        <div class="q-num">问题二</div>
+        <div class="q-text">从SHRM纵向匹配视角，W公司绿色转型战略对HR战略（招聘、培训、绩效）提出哪些新要求？</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 两个问题答题逻辑链</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">1</span>HR规划：需求（新增400人·全员碳能力）→ 供给（内部可转型+外部市场稀缺）→ 供需平衡（过剩分流6方式+短缺弥补校企合作·猎头）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">2</span>SHRM纵向匹配：ESG战略→对招聘（碳专业）·培训（全员碳核算）·绩效（纳入碳减排KPI）提出新要求</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（口述 / 书面通用）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ HR规划+SHRM匹配标准答题模板</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">规划</span>人力资源规划是架设企业战略与具体HR活动之间的桥梁（颜P127）。W公司绿色转型战略产生明确的供需缺口：需求侧——新增400碳/新能源工程师+全员碳能力；供给侧——内部1200人传统岗位部分可再培训转型，外部市场该专业人才稀缺……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">平衡</span>供需平衡：过剩处理（传统岗位→转岗培训·自然减员·协议解除）；短缺弥补（校企合作·竞争薪酬·猎头·股权吸引核心专才）……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">SHRM</span>SHRM纵向匹配：ESG战略要求HR战略同向调整——招聘加入ESG胜任力维度；培训建立碳核算认证体系；绩效指标纳入碳减排贡献（与BSC环境维度对接）……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背要点</div>
+      <p style="font-size:.83rem;color:var(--text2);">HR规划=战略桥梁（需求预测+供给预测+供需平衡）→ 过剩六方式·短缺四途径 → SHRM纵向匹配（ESG战略→碳专业招聘+碳培训+碳KPI）</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点</div>
+    <details>
+      <summary>▶ 展开参考答案</summary>
+      <div class="ans-content">
+        <div class="ans-header">问题一：HR规划方案</div>
+        <p><span class="hr-key">需求预测</span>：新增碳管理/新能源工程师约400人（3年内分批）；现有员工需普遍提升碳核算基础能力。<span class="hr-key">供给预测</span>：内部1200名传统内燃机员工中约30%可经转岗培训后胜任辅助性新能源岗位；外部市场该专业人才稀缺，需主动校企合作培育。<span class="hr-key">供需平衡</span>：人员过剩处理——传统业务人员通过再培训转岗（优先）、自然减员、协议补偿分流；人员短缺弥补——建立"绿色工程师校企培养基地"，与高校定向培养；核心人才引进走"猎头+竞争薪酬+股权激励"路线。</p>
+        <div class="ans-header" style="margin-top:12px;">问题二：SHRM纵向匹配</div>
+        <ol>
+          <li><span class="hr-key">招聘</span>：增加碳管理、ESG专业背景的胜任力评估维度；与高校环境工程、新能源专业建立实习直招通道。</li>
+          <li><span class="hr-key">培训</span>：全员碳核算基础知识培训；重点人员新能源工艺转岗培训；管理层ESG战略与领导力培训。</li>
+          <li><span class="hr-key">绩效</span>：将碳减排贡献指标纳入各部门KPI（如：碳排放数据质量、绿色材料使用率）；避免只用财务指标忽视碳目标。</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+<!-- C20 -->
+<div class="case-card" id="c20" data-cat="cross str hr">
+<div class="case-card-header" onclick="toggleCard(this)">
+  <span class="case-num">20</span>
+  <div class="case-title-block">
+    <div class="case-title">综合压轴：某跨国制造集团战略调整的全案分析【全章节整合】</div>
+    <div class="case-tags">
+      <span class="tag tag-str">战略管理全流程整合</span>
+      <span class="tag tag-hr">SHRM全模块整合</span>
+      <span class="tag tag-cross">跨章节最高综合度</span>
+      <span class="tag tag-year">2026预测综合题</span>
+      <span class="tag tag-warn">★★★★★ 综合最高</span>
+    </div>
+  </div>
+  <div class="case-meta">
+    <span class="case-level">★★★★★ 综合压轴</span>
+    <span class="toggle-icon">▼</span>
+  </div>
+</div>
+<div class="case-body">
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">📋</span> 案例背景</div>
+    <div class="cs-body">
+      <p>ZG集团是国内老牌工业集团（营收300亿元，员工25000名），业务涵盖：工程机械（主业，营收占60%）、新能源设备（30%，成长期）、传统农机（10%，衰退期）。集团正面临三重挑战：</p>
+      <p>① <strong>外部环境</strong>：工程机械行业进入成熟期，国内市场价格战激烈；新能源设备赛道出现强劲竞争对手；东南亚市场快速增长。</p>
+      <p>② <strong>战略层面</strong>：董事会决定：剥离农机业务（归核化）；工程机械深化成本领先战略；新能源设备实施差异化战略；新增国际化战略（进入越南、印尼市场）。</p>
+      <p>③ <strong>人力资源层面</strong>：现有25000人员工结构严重不匹配新战略需求——农机业务3000人需分流；新能源业务急缺1500名高端技术人才；国际化业务急需100名具备跨文化管理能力的国际业务人才；现有HR体系仍是计划经济时代建立的传统人事管理体系。</p>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-str"><span class="cs-icon">🏷</span> 全章节考察知识点（战略管理+人力资源管理完整覆盖）</div>
+    <div class="kp-grid">
+      <span class="kp-item tag-str">BCG矩阵（业务组合分析）<span class="kp-page">蓝P172</span></span>
+      <span class="kp-item tag-str">归核化·成本领先·差异化·国际化四类战略 <span class="kp-page">蓝各章</span></span>
+      <span class="kp-item tag-str">战略实施四维度 <span class="kp-page">蓝P289</span></span>
+      <span class="kp-item tag-hr">SHRM纵横匹配 <span class="kp-page">颜P436</span></span>
+      <span class="kp-item tag-hr">人力资源规划（供需+平衡）<span class="kp-page">颜P125</span></span>
+      <span class="kp-item tag-hr">IHRM·外派管理 <span class="kp-page">颜P452</span></span>
+      <span class="kp-item tag-hr">绩效管理·薪酬设计 <span class="kp-page">颜P238·P273</span></span>
+      <span class="kp-item tag-hr">激励体系·股权激励 <span class="kp-page">颜P354·P378</span></span>
+      <span class="kp-item tag-cross">HR从传统人事→SHRM转型 <span class="kp-page">颜P423</span></span>
+    </div>
+  </div>
+  <div class="case-section">
+    <div class="cs-title cs-warn"><span class="cs-icon">❓</span> 案例问题 · 综合问题（完整论述题）</div>
+    <div class="q-list">
+      <div class="q-item q-cross">
+        <div class="q-num">综合论述题（建议70—90分钟完成）</div>
+        <div class="q-text">请综合运用企业战略管理与人力资源管理的理论知识，对ZG集团的战略调整进行系统分析，并设计配套的人力资源战略框架。要求：① 用BCG矩阵分析三大业务板块的战略定位；② 分析四项战略对HR管理的不同要求；③ 设计人力资源规划方案（含分流、引进、国际化人才）；④ 从SHRM纵横匹配视角构建集团HR战略框架；⑤ 说明HR体系应如何从传统人事管理向战略性人力资源管理转型。</div>
+        <div class="q-type">题型：综合论述（完整性20分 + 理论运用20分 + 方案设计20分 + 逻辑结构10分 + 案例对应10分）</div>
+      </div>
+    </div>
+  </div>
+  
+    <div class="case-section">
+    <div class="cs-title cs-gold"><span class="cs-icon">🧭</span> 答题思路框架（全章节综合压轴）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 综合论述题答题逻辑总览</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">①</span>BCG矩阵：三业务→现金牛（工程机械）·明星问题（新能源）·瘦狗（农机）→各自战略</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">②</span>四类战略HR需求差异：成本领先（标准化）·差异化（创新型）·归核化（分流合规）·国际化（IHRM·外派）</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">③</span>HR规划三问题：农机3000分流→转岗·减员·随业务转移；新能源1500引进→校企·竞争薪酬；国际化100人→跨文化评估</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">④</span>SHRM纵横匹配：三板块分别建立独立HR战略 + 各板块内部模块相互协调</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">⑤</span>传统人事→SHRM转型：五个维度（参与决策·三支柱·数据驱动·组织学习·战略性资产观）</div>
+      </div>
+    </div>
+    </div>
+
+    <div class="case-section">
+    <div class="cs-title cs-cross"><span class="cs-icon">🎤</span> 答题模板（综合论述完整版）</div>
+    <div class="tmpl-block">
+      <div class="tmpl-title">▶ 综合大论述标准答题结构（五段论）</div>
+      <div class="tmpl-steps">
+        <div class="tmpl-step"><span class="tmpl-step-num">引</span><strong>开篇定调</strong>：ZG集团面临多业务战略调整，需综合运用战略管理（蓝海林）与SHRM（颜爱民）理论框架，构建与战略匹配的人力资源管理体系……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">战略</span><strong>业务分析</strong>：BCG矩阵分析三业务定位→对应四类战略（成本领先·差异化·归核化·国际化）→明确各业务战略对HR的差异化要求……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">规划</span><strong>HR规划</strong>：三类人员分流引进方案（供需预测+平衡策略），确保人才储备支撑战略执行……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">匹配</span><strong>SHRM框架</strong>：纵向匹配（三板块各建独立HR战略）+ 横向匹配（各板块内部招聘·培训·绩效·薪酬协调一致）……</div>
+        <div class="tmpl-step"><span class="tmpl-step-num">转型</span><strong>传统→SHRM</strong>：HR总监参与战略决策；建立HR三支柱（SSC+BP+COE）；HRMIS支撑数据决策；从"管人"到"视人为战略资产"的根本转变……</div>
+      </div>
+    </div>
+    <div class="tmpl-block" style="margin-top:10px;background:var(--gold-bg);border-color:var(--gold);">
+      <div class="tmpl-title" style="color:var(--gold);">⚡ 30秒速背框架</div>
+      <p style="font-size:.83rem;color:var(--text2);">BCG三象限 → 四类战略×四类HR策略 → HR规划（分流+引进+国际化人才）→ SHRM纵横匹配（三板块独立+内部协调）→ 传统人事→SHRM五维转型（决策参与·三支柱·数据驱动·组织学习·战略资产观）</p>
+    </div>
+    </div>
+<div class="case-section ans-block">
+    <div class="cs-title cs-cross"><span class="cs-icon">📝</span> 标准答案要点（综合论述完整框架）</div>
+    <details>
+      <summary>▶ 展开完整综合论述框架（建议打印后自测）</summary>
+      <div class="ans-content">
+        <div class="ans-header">① BCG矩阵业务分析</div>
+        <table class="kp-table">
+          <thead><tr><th>业务</th><th>BCG象限</th><th>战略建议</th></tr></thead>
+          <tbody>
+            <tr><td>工程机械（60%）</td><td>现金牛（高份额·低增长）</td><td>收割现金流，深化成本领先</td></tr>
+            <tr><td>新能源设备（30%）</td><td>明星/问题（高增长·份额待确认）</td><td>加大投入，建立差异化优势</td></tr>
+            <tr><td>传统农机（10%）</td><td>瘦狗（低增长·低份额）</td><td>剥离/退出，释放资源</td></tr>
+          </tbody>
+        </table>
+        <div class="ans-header" style="margin-top:12px;">② 四类战略对HR的不同要求</div>
+        <p>成本领先战略（工程机械）→ 标准化招聘·效率导向KPI·固定薪酬为主·严格培训<br>
+        差异化战略（新能源）→ 创新型人才·宽松绩效·宽带薪酬+股权激励·R&D人才培育<br>
+        归核化（农机剥离）→ 人员分流规划·劳动关系合规·核心人才保留<br>
+        国际化（东南亚）→ 跨文化人才选拔·外派管理体系·IHRM机制建立</p>
+        <div class="ans-header" style="margin-top:12px;">③ 人力资源规划方案</div>
+        <p>农机3000人分流：自然减员200人/年，转岗培训至工程机械板块约1000人（技能可转移者），协议解除约800人，跟随业务整体剥离约1000人。新能源1500人引进：高校定向合作（新能源技术专业）+竞争薪酬（市场75分位）+应届3年培养计划。国际化100人：建立跨文化评估中心筛选，制定外派标准（含语言+文化适应能力），设计资产负债表薪酬体系。</p>
+        <div class="ans-header" style="margin-top:12px;">④ SHRM纵横匹配框架</div>
+        <p>纵向匹配：三个业务板块各建立独立HR战略（分别对应成本型/创新型/过渡型），统一由集团SHRM顶层设计管控。横向匹配：各板块内部招聘→培训→绩效→薪酬→激励子系统方向一致，工程机械板块"标准化招聘+效率KPI+固定薪酬"三位一体；新能源板块"创新型招聘+宽松绩效+股权激励"三位一体。</p>
+        <div class="ans-header" style="margin-top:12px;">⑤ 从传统人事→SHRM转型</div>
+        <p>传统HRM特征：人是成本/要素，被动响应，以人事行政为主。SHRM转型要求：① 将HR提升至战略制定层参与（HR总监参与董事会决策）；② 建立HR三支柱（SSC共享服务+BP业务伙伴+COE专家中心）；③ 用数据驱动HR决策（人力资源信息系统HRMIS支撑规划预测）；④ 将组织学习能力建设纳入HR核心职责。转型的本质：从"管理人"到"视人为战略资产并系统开发"。</p>
+      </div>
+    </details>
+  </div>
+</div>
+</div>
+
+</div><!-- .case-grid -->
+</section>
+
+<!-- PREDICTION SECTION -->
+<section id="predict">
+<div class="section-header">
+  <span class="section-title">🎯 2026年复试命题预测</span>
+  <span class="section-count">10道高概率题目</span>
+</div>
+<div class="predict-card">
+  <div class="predict-title">📊 基于2016—2025真题规律 · 2026年命题预测（战略×HR综合）</div>
+  <div class="predict-grid">
+    <div class="predict-item">
+      <div class="predict-q">论述企业战略与人力资源战略的纵向与横向匹配关系，并以企业案例说明匹配失败的后果。</div>
+      <div class="predict-meta">
+        <span class="tag tag-str">战略×HR纵横匹配</span>
+        <span class="predict-prob">命中概率 95%</span>
+      </div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-q">简述战略人力资源管理（SHRM）的含义与特征，分析其与传统HRM的本质区别。</div>
+      <div class="predict-meta">
+        <span class="tag tag-hr">SHRM</span>
+        <span class="predict-prob">命中概率 90%</span>
+      </div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-q">案例分析：某企业国际化战略中外派人员管理出现问题，请从选拔、培训、薪酬三个维度分析并提出改进建议。</div>
+      <div class="predict-meta">
+        <span class="tag tag-hr">IHRM·外派管理</span>
+        <span class="predict-prob">命中概率 88%</span>
+      </div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-q">论述绩效管理系统的设计与实施，结合KPI与BSC的区别，说明如何选择适合不同战略的绩效评价工具。</div>
+      <div class="predict-meta">
+        <span class="tag tag-hr">绩效管理·BSC</span>
+        <span class="predict-prob">命中概率 85%</span>
+      </div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-q">简述胜任力模型的含义与构建步骤，分析其在企业招聘中的应用价值。</div>
+      <div class="predict-meta">
+        <span class="tag tag-hr">胜任力模型</span>
+        <span class="predict-prob">命中概率 85%</span>
+      </div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-q">论述薪酬设计的主要原则，结合公平理论分析薪酬不公平感的来源及管理对策。</div>
+      <div class="predict-meta">
+        <span class="tag tag-hr">薪酬·公平理论</span>
+        <span class="predict-prob">命中概率 82%</span>
+      </div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-q">分析AI技术对企业战略管理与人力资源管理的影响，企业应如何应对人才结构性变化？</div>
+      <div class="predict-meta">
+        <span class="tag tag-cross">战略×HR·AI时代</span>
+        <span class="predict-prob">命中概率 80%</span>
+      </div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-q">运用VRIN模型分析人力资源如何成为企业持续竞争优势的来源，并设计HR能力建设方案。</div>
+      <div class="predict-meta">
+        <span class="tag tag-hr">VRIN·SHRM</span>
+        <span class="predict-prob">命中概率 78%</span>
+      </div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-q">简述培训需求分析的三层次模型，并说明柯克帕特里克培训评估四层次的具体内容与应用。</div>
+      <div class="predict-meta">
+        <span class="tag tag-hr">培训开发</span>
+        <span class="predict-prob">命中概率 75%</span>
+      </div>
+    </div>
+    <div class="predict-item">
+      <div class="predict-q">分析马斯洛需要层次理论与赫茨伯格双因素理论的区别与联系，在企业激励体系设计中如何综合运用这两个理论？</div>
+      <div class="predict-meta">
+        <span class="tag tag-hr">激励理论综合</span>
+        <span class="predict-prob">命中概率 75%</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+</main><!-- /.main -->
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ===== DARK MODE =====
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+}
+if (localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark');
+
+// ===== BACK TO TOP =====
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('backTop');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+});
+
+// ===== TOGGLE CARD =====
+function toggleCard(header) {
+  const body = header.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open');
+  header.setAttribute('data-open', !isOpen);
+}
+
+// ===== FILTER =====
+function filterCards(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.remove('active', 'hr-active');
+  });
+  if (cat === 'hr') btn.classList.add('hr-active');
+  else btn.classList.add('active');
+
+  document.querySelectorAll('.case-card').forEach(card => {
+    if (cat === 'all') {
+      card.classList.remove('hidden');
+    } else {
+      const cats = card.dataset.cat || '';
+      if (cats.includes(cat)) card.classList.remove('hidden');
+      else card.classList.add('hidden');
+    }
+  });
+}
+
+
+
+// ===== NAV ACTIVE =====
+const navItems = document.querySelectorAll('.nav-item');
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 140) current = s.id;
+  });
+  navItems.forEach(item => {
+    item.classList.toggle('active', item.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+
+<footer style="text-align:center;padding:24px;font-size:.75rem;color:var(--text3);border-top:1px solid var(--border);margin-top:40px;">
+  企业管理复试综合案例题库 · 生成日期：2026-03-10 · 基于《企业战略管理（第2版）》蓝海林 &amp; 《人力资源管理（第3版）》颜爱民 · 中南大学企业管理学硕复试专用
+</footer>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

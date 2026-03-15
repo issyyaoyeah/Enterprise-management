@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第四章 内部环境分析 | 中南大学企业管理复试笔记</title>
+<style>
+/* ===== CSS变量：夜间模式系统 ===== */
+:root {
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-header: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+  --bg-nav: #1a237e;
+  --bg-nav-hover: #283593;
+  --bg-table-head: #e8eaf6;
+  --bg-table-alt: #f5f5f5;
+  --bg-tag: #e8eaf6;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a6a;
+  --text-nav: #ffffff;
+  --text-muted: #6b7280;
+  --border-color: #e2e8f0;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.14);
+  --highlight-yellow: #fff3cd;
+  --highlight-border: #ffc107;
+  --card-border: #e2e8f0;
+  --mindmap-bg: #f8f9ff;
+  --btn-bg: #3949ab;
+  --btn-text: #fff;
+  --accordion-bg: #f0f4f8;
+  --tag-exam: #fff3e0;
+  --tag-exam-border: #ff9800;
+  --code-bg: #f1f3f4;
+}
+body.dark-mode {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: #1c2333;
+  --bg-header: linear-gradient(135deg, #0d0f1e 0%, #1a1a2e 50%, #1e2448 100%);
+  --bg-nav: #0d0f1e;
+  --bg-nav-hover: #1a1a2e;
+  --bg-table-head: #1e2448;
+  --bg-table-alt: #1a1f2e;
+  --bg-tag: #1e2448;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-nav: #e6edf3;
+  --text-muted: #6e7681;
+  --border-color: #30363d;
+  --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.5);
+  --highlight-yellow: #2d2416;
+  --highlight-border: #b8860b;
+  --card-border: #30363d;
+  --mindmap-bg: #131820;
+  --btn-bg: #1e2448;
+  --btn-text: #c9d1d9;
+  --accordion-bg: #161b22;
+  --tag-exam: #1e1500;
+  --tag-exam-border: #b8860b;
+  --code-bg: #1c2333;
+}
+
+/* ===== 全局样式 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  line-height: 1.7;
+}
+
+/* ===== 顶部固定导航 ===== */
+#top-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--bg-nav);
+  z-index: 1000;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.nav-title {
+  color: var(--text-nav);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.nav-controls { display: flex; gap: 10px; align-items: center; }
+.nav-btn {
+  background: rgba(255,255,255,0.12);
+  color: var(--text-nav);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 5px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.22); }
+#search-box {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: var(--text-nav);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  width: 200px;
+  outline: none;
+  transition: all 0.2s;
+}
+#search-box:focus { background: rgba(255,255,255,0.18); width: 240px; }
+#search-box::placeholder { color: rgba(255,255,255,0.5); }
+
+/* 导航菜单 */
+.nav-menu {
+  display: flex;
+  overflow-x: auto;
+  padding: 6px 16px;
+  gap: 4px;
+  scrollbar-width: none;
+}
+.nav-menu::-webkit-scrollbar { display: none; }
+.nav-item {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+.nav-item:hover { 
+  color: #fff; 
+  background: var(--bg-nav-hover);
+  border-color: rgba(255,255,255,0.2);
+}
+
+/* ===== 主内容区 ===== */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 20px 60px;
+}
+
+/* ===== Hero标题区 ===== */
+.hero {
+  background: var(--bg-header);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 28px;
+  text-align: center;
+  color: white;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+  animation: pulse 4s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+.hero-chapter { font-size: 0.9rem; opacity: 0.7; letter-spacing: 4px; margin-bottom: 8px; }
+.hero-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; letter-spacing: 2px; }
+.hero-subtitle { font-size: 1rem; opacity: 0.8; margin-bottom: 16px; }
+.hero-tags { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.hero-tag {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+/* ===== 搜索结果高亮 ===== */
+
+
+/* ===== 章节逻辑结构图 ===== */
+.section-box {
+  background: var(--bg-card);
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+}
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #3949ab;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, #3949ab, #5c6bc0);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ===== 逻辑关系图 ===== */
+.logic-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 20px;
+  background: var(--mindmap-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+.flow-box {
+  background: var(--bg-secondary);
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 10px 16px;
+  text-align: center;
+  min-width: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+.flow-box:hover { transform: translateY(-2px); }
+.flow-box.ch2 { border-color: #4caf50; color: #4caf50; }
+.flow-box.ch3 { border-color: #ff9800; color: #ff9800; }
+.flow-box.ch4 { border-color: #3949ab; color: #3949ab; background: rgba(57,73,171,0.08); }
+.flow-box.ch5 { border-color: #e91e63; color: #e91e63; }
+.flow-box.ch6 { border-color: #9c27b0; color: #9c27b0; }
+.flow-box.ch7 { border-color: #00bcd4; color: #00bcd4; }
+.flow-arrow {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+}
+
+/* ===== 思维导图 ===== */
+.mindmap {
+  background: var(--mindmap-bg);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid var(--border-color);
+}
+.mm-center {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.mm-core {
+  display: inline-block;
+  background: linear-gradient(135deg, #3949ab, #5c6bc0);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(57,73,171,0.3);
+}
+.mm-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+.mm-branch {
+  border-radius: 10px;
+  padding: 14px;
+  border-left: 4px solid;
+}
+.mm-branch.b1 { border-color: #4caf50; background: rgba(76,175,80,0.06); }
+.mm-branch.b2 { border-color: #ff9800; background: rgba(255,152,0,0.06); }
+.mm-branch.b3 { border-color: #e91e63; background: rgba(233,30,99,0.06); }
+.mm-branch.b4 { border-color: #00bcd4; background: rgba(0,188,212,0.06); }
+.mm-branch.b5 { border-color: #9c27b0; background: rgba(156,39,176,0.06); }
+.mm-branch.b6 { border-color: #ff5722; background: rgba(255,87,34,0.06); }
+.mm-branch.b7 { border-color: #607d8b; background: rgba(96,125,139,0.06); }
+.mm-branch-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+.mm-branch.b1 .mm-branch-title { color: #4caf50; }
+.mm-branch.b2 .mm-branch-title { color: #ff9800; }
+.mm-branch.b3 .mm-branch-title { color: #e91e63; }
+.mm-branch.b4 .mm-branch-title { color: #00bcd4; }
+.mm-branch.b5 .mm-branch-title { color: #9c27b0; }
+.mm-branch.b6 .mm-branch-title { color: #ff5722; }
+.mm-branch.b7 .mm-branch-title { color: #607d8b; }
+.mm-items { display: flex; flex-wrap: wrap; gap: 6px; }
+.mm-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+/* ===== 知识卡片 ===== */
+.knowledge-section {
+  margin-bottom: 32px;
+}
+.ks-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.ks-number {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, #3949ab, #5c6bc0);
+  color: white;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.ks-title-area { flex: 1; }
+.ks-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
+.ks-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+.badge {
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.badge-page { background: #e8eaf6; color: #3949ab; }
+.badge-imp { background: #fff3e0; color: #e65100; }
+.badge-prob { background: #fce4ec; color: #c62828; }
+.badge-type { background: #e8f5e9; color: #2e7d32; }
+
+/* 知识卡片体 */
+.kcard {
+  background: var(--bg-card);
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+.kcard:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.kcard-top-bar {
+  height: 5px;
+}
+.bar-blue { background: linear-gradient(90deg, #3949ab, #5c6bc0); }
+.bar-green { background: linear-gradient(90deg, #4caf50, #66bb6a); }
+.bar-orange { background: linear-gradient(90deg, #ff9800, #ffa726); }
+.bar-pink { background: linear-gradient(90deg, #e91e63, #f06292); }
+.bar-cyan { background: linear-gradient(90deg, #00bcd4, #26c6da); }
+.bar-purple { background: linear-gradient(90deg, #9c27b0, #ab47bc); }
+.bar-red { background: linear-gradient(90deg, #f44336, #ef5350); }
+.bar-teal { background: linear-gradient(90deg, #009688, #26a69a); }
+
+.kcard-body { padding: 22px; }
+.kcard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+@media (max-width: 640px) { .kcard-grid { grid-template-columns: 1fr; } }
+.kcard-item {
+  background: var(--accordion-bg);
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+}
+.kcard-item-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.kcard-item-content { font-size: 0.9rem; color: var(--text-primary); }
+.kcard-full {
+  background: var(--accordion-bg);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+}
+.kcard-full-label {
+  font-size: 0.72rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;
+}
+
+/* 高亮框 */
+.highlight-box {
+  background: var(--highlight-yellow);
+  border-left: 4px solid var(--highlight-border);
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-size: 0.88rem;
+}
+.highlight-keyword {
+  background: linear-gradient(120deg, #ffd54f 0%, #ffca28 100%);
+  color: #000;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+.highlight-blue {
+  background: rgba(57,73,171,0.1);
+  border-left: 4px solid #3949ab;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 10px 0;
+}
+.highlight-green {
+  background: rgba(76,175,80,0.1);
+  border-left: 4px solid #4caf50;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 10px 0;
+}
+
+/* 复试回答模板 */
+.interview-box {
+  background: linear-gradient(135deg, rgba(57,73,171,0.08), rgba(92,107,192,0.05));
+  border: 2px solid rgba(57,73,171,0.3);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.interview-title {
+  font-size: 0.8rem; font-weight: 700; color: #3949ab;
+  margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+}
+.interview-step {
+  display: flex; align-items: flex-start; gap: 10px;
+  margin-bottom: 8px; font-size: 0.88rem;
+}
+.step-num {
+  min-width: 22px; height: 22px;
+  background: #3949ab; color: white;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700; flex-shrink: 0;
+}
+
+/* 考题标签 */
+.exam-tag {
+  display: inline-block;
+  background: var(--tag-exam);
+  border: 1px solid var(--tag-exam-border);
+  color: #b8860b;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin: 2px;
+}
+body.dark-mode .exam-tag { color: #ffc107; }
+.exam-tags-row { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0; }
+
+/* 折叠功能 */
+details { margin: 10px 0; }
+summary {
+  cursor: pointer;
+  padding: 10px 16px;
+  background: var(--accordion-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-size: 0.88rem;
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  color: var(--text-primary);
+}
+summary::-webkit-details-marker { display: none; }
+summary::before {
+  content: '▶';
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+  color: #3949ab;
+}
+details[open] summary::before { transform: rotate(90deg); }
+summary:hover { background: var(--bg-tag); }
+.details-content { padding: 14px; border: 1px solid var(--border-color); border-top: 0; border-radius: 0 0 8px 8px; background: var(--bg-card); }
+
+/* ===== 表格样式 ===== */
+.table-wrap { overflow-x: auto; margin: 12px 0; border-radius: 10px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+th {
+  background: var(--bg-table-head);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-color);
+}
+td {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: var(--bg-table-alt); }
+tr:hover td { background: rgba(57,73,171,0.05); }
+
+/* ===== 价值链SVG图 ===== */
+.value-chain-diagram {
+  background: var(--mindmap-bg);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 14px 0;
+  border: 1px solid var(--border-color);
+  overflow-x: auto;
+}
+.vc-support {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.vc-basic {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+.vc-cell {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.vc-cell:hover { transform: scale(1.03); }
+.vc-cell.support { border-top: 3px solid #5c6bc0; }
+.vc-cell.basic { border-top: 3px solid #4caf50; }
+.vc-label { font-size: 0.7rem; color: var(--text-muted); margin-top: 4px; }
+.vc-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 10px;
+}
+.vc-tag {
+  font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 12px;
+}
+.vc-tag.support-tag { background: rgba(92,107,192,0.15); color: #5c6bc0; }
+.vc-tag.basic-tag { background: rgba(76,175,80,0.15); color: #4caf50; }
+
+/* ===== 高频考点 & 真题 ===== */
+.exam-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.exam-card-header {
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+.exam-year-badge {
+  background: #3949ab;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.exam-type-badge {
+  background: var(--bg-tag);
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.72rem;
+}
+.exam-card-body { padding: 14px 18px; font-size: 0.88rem; }
+
+/* ===== 终极串联 ===== */
+.ultimate-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.uf-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.uf-box {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: default;
+}
+.uf-box:hover { border-color: #3949ab; color: #3949ab; }
+.uf-arrow { font-size: 1.2rem; color: #3949ab; flex-shrink: 0; }
+.uf-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  background: var(--accordion-bg);
+  border-radius: 6px;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ===== 30秒复习 ===== */
+.quick-review {
+  background: linear-gradient(135deg, #1a237e, #283593);
+  color: white;
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+.qr-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.qr-item {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 12px;
+}
+.qr-item-title { font-size: 0.8rem; opacity: 0.7; margin-bottom: 6px; }
+.qr-item-content { font-size: 0.88rem; font-weight: 600; }
+
+/* ===== 背诵版 ===== */
+.recite-box {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: white;
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 24px;
+}
+.recite-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; }
+.recite-content { font-size: 0.9rem; line-height: 1.9; }
+.recite-point {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-left: 3px solid rgba(255,255,255,0.4);
+}
+.recite-key { color: #a5d6a7; font-weight: 700; }
+
+/* ===== 自我检测 ===== */
+.test-section { margin-bottom: 24px; }
+.test-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  padding: 18px;
+  margin-bottom: 12px;
+}
+.test-q {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.test-num {
+  min-width: 26px; height: 26px;
+  background: #3949ab; color: white;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700; flex-shrink: 0;
+}
+.test-hint {
+  font-size: 0.8rem; color: var(--text-muted);
+  display: flex; align-items: center; gap: 4px;
+}
+
+/* ===== 返回顶部按钮 ===== */
+#back-top {
+  position: fixed;
+  bottom: 30px; right: 25px;
+  width: 46px; height: 46px;
+  background: #3949ab;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 16px rgba(57,73,171,0.4);
+  z-index: 999;
+  transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+#back-top:hover { background: #5c6bc0; transform: translateY(-2px); }
+
+/* ===== 实用小组件 ===== */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 12px 0;
+}
+@media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+.info-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 14px;
+  font-size: 0.8rem;
+}
+.page-divider {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+  margin: 28px 0;
+}
+
+/* ===== 知识框架图（四个能力/三种资源） ===== */
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.fw-card {
+  border-radius: 10px;
+  padding: 14px;
+  border: 2px solid;
+  text-align: center;
+  transition: all 0.2s;
+}
+.fw-card:hover { transform: translateY(-3px); }
+.fw-card.fw1 { border-color: #3949ab; background: rgba(57,73,171,0.07); }
+.fw-card.fw2 { border-color: #4caf50; background: rgba(76,175,80,0.07); }
+.fw-card.fw3 { border-color: #ff9800; background: rgba(255,152,0,0.07); }
+.fw-card.fw4 { border-color: #e91e63; background: rgba(233,30,99,0.07); }
+.fw-card.fw5 { border-color: #9c27b0; background: rgba(156,39,176,0.07); }
+.fw-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.fw-card.fw1 .fw-title { color: #3949ab; }
+.fw-card.fw2 .fw-title { color: #4caf50; }
+.fw-card.fw3 .fw-title { color: #ff9800; }
+.fw-card.fw4 .fw-title { color: #e91e63; }
+.fw-card.fw5 .fw-title { color: #9c27b0; }
+.fw-items { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6; }
+
+/* ===== 动画 ===== */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade-in { animation: fadeIn 0.5s ease forwards; }
+
+/* 隐藏搜索不匹配项 */
+
+
+</style>
+
+
+<script>window._PAGE_TEXT='第四章 内部环境分析 | 中南大学企业管理复试笔记 \n \n \n \n \n \n \n 📚 第四章 · 内部环境分析 \n \n \n 🌙 夜间 \n \n \n \n 📊 逻辑关系 \n 🧠 思维导图 \n §1 分析概述 \n §2 企业历史 \n §3 企业资源 \n §4 企业能力 \n §5 价值链 \n §6 核心专长 \n §7 分析工具 \n ⚖️ 对比表 \n 📝 历年真题 \n 🔗 终极串联 \n ⚡ 30秒复习 \n 🎯 背诵版 \n ✅ 自我检测 \n \n \n \n \n \n \n 中南大学企业管理硕 · 《企业战略管理（第二版·蓝海林）》 \n 第四章 · 内部环境分析 \n Internal Environment Analysis | 页码 P99–P119 \n \n ⭐⭐⭐⭐⭐ 极高重要性 \n 🎯 高频考察 \n 7个核心节点 \n 真题覆盖2016–2025 \n \n \n \n \n \n 📊 \n 本章与其他章节逻辑关系图\n \n \n 第2章 战略管理框架 \n → \n 第3章 外部环境分析 \n → \n 📍第4章 内部环境分析 \n → \n 第5章 战略问题确认 （SWOT综合） \n → \n 第6章 业务层战略 \n → \n 第7章 公司层战略 \n \n \n 💡 逻辑说明： 第3章（外部）与第4章（内部）共同构成 SWOT分析 的两个基础维度，二者结合后在第5章完成战略问题的确认，为第6/7章的战略选择提供依据。核心专长（§6）是连接内部分析与战略选择的关键桥梁。\n \n \n \n \n \n 🧠 \n 章节思维导图（知识框架）\n \n \n \n 第四章：内部环境分析 \n \n \n \n §1 分析概述 \n \n 目的 \n 特点 \n 复杂性 \n 不确定性 \n 利益冲突性 \n \n \n \n §2 企业历史分析 \n \n 历史阶段划分 \n 成长路径 \n 价值观形成 \n 行为模式 \n \n \n \n §3 企业资源分析 \n \n 人力资源 \n 有形资源 \n 无形资源 \n 自有资源 \n 可利用资源 \n \n \n \n §4 企业能力分析 \n \n 管理能力 \n 经营能力 \n 整合能力 \n 动态能力 \n 四大特性 \n \n \n \n §5 价值链分析 \n \n 基本活动×5 \n 支持活动×4 \n 价值创造体系 \n 外包决策 \n \n \n \n §6 核心专长分析 \n \n 有价值 \n 稀缺 \n 难以模仿 \n 不可替代 \n 三大特性 \n 建立/保持/发挥 \n \n \n \n §7 分析工具 \n \n 经验曲线 \n 雷达图 \n 战略要素评价法 \n \n \n \n \n \n \n \n \n §1 \n \n 内部环境分析概述 \n \n 📄 P99–P101 \n ⭐⭐⭐⭐ 重要 \n 🎯 较高概率 \n 简答 / 论述 \n \n \n \n \n \n \n \n \n \n 📖 专有名词解释 \n 内部环境分析 ：对企业在历史、资源、能力、核心专长等方面的系统性分析，以识别企业相对于竞争对手的优势与劣势，为战略选择提供依据。 \n \n \n 🧒 小学生版解释 \n 就好像运动会前先照镜子，看看自己跑步快不快、力气大不大，这样才知道去参加哪些比赛能赢！ \n \n \n 💡 助记口诀 \n \n 三难：复杂、不确定、利益冲突 \n 简记： "复不利" （复杂性·不确定性·利益冲突性）\n \n \n \n 🏢 企业案例 \n 华为做5G战略决策前，必须先摸清自己的芯片研发能力、专利积累量、人才储备数量——这就是内部环境分析的具体体现。 \n \n \n \n 🔑 内部环境分析的三大特点（教材核心） \n \n \n 🔴 复杂性 \n 企业资源、能力多样复杂； 人力资源行为难以量化预测； 核心专长的识别本身具有模糊性 \n \n \n 🟡 不确定性 \n 企业的优势和劣势是相对的， 相对于特定机会/威胁才有意义； 环境变化导致判断结果随时改变 \n \n \n 🟠 利益冲突性 \n 不同管理者对企业优劣势判断 受个人利益影响； 可能出现蒙蔽性分析结果 \n \n \n \n 📌 教材原句（需背诵）： "内部环境分析要以环境与企业战略行为的互动为主线，判断企业相对于竞争对手的优势与劣势，为企业战略制定提供依据。"\n \n \n \n 【2017笔试·简答】 \n 【2020笔试·论述】 \n 【2023复试面试】 \n \n \n 🎤 复试回答模板 \n 1 定义： 内部环境分析是识别企业相对于竞争对手的优势与劣势的过程。 \n 2 三大特点： 复杂性（企业资源能力难以全面评价）、不确定性（优劣势相对于环境而言）、利益冲突性（分析结果受利益影响）。 \n 3 主要内容： 涵盖企业历史、资源、能力、价值链、核心专长五个方面。 \n 4 举例： 华为分析自身5G研发能力与高通对比，发现具有专利和人才优势，从而明确核心竞争方向。 \n \n 📌 复试延伸问题（老师可能追问） \n \n ① 内部环境分析与外部环境分析的关系是什么？（答：相互依存，SWOT的两个维度，缺一不可） \n ② 为什么说优势和劣势都是相对的？（答：相对于特定机会和威胁而言，脱离外部环境谈优劣势无意义） \n ③ 如何克服利益冲突性的影响？（答：引入第三方评估、建立客观量化指标体系、高层战略共识） \n \n \n \n \n \n \n \n \n \n §2 \n \n 企业历史分析 \n \n 📄 P101–P103 \n ⭐⭐⭐ 一般 \n 🎯 低概率 \n 简答 / 论述 \n \n \n \n \n \n \n \n \n 📖 专有名词解释 \n 企业历史分析 ：通过系统梳理企业成长过程中的重大历史事件，分析环境变化、战略行为与企业文化、管理传统形成之间的互动关系。 \n \n \n 🧒 小学生版解释 \n 就像翻家庭相册，了解爷爷奶奶年轻时怎么克服困难、形成了什么家风，这个家风影响着今天怎么做决策。 \n \n \n 💡 助记口诀 \n 三看三分： 看环境·看战略·看文化；分阶段·分行为·分影响 \n \n \n 🏢 企业案例 \n 华润集团经历抗日战争、解放战争的洗礼，其特殊历史决定了独特的价值观念和管理传统，使其战略制定具有独特性。（教材原案例） \n \n \n \n 📋 企业历史分析的四步骤 \n \n \n 步骤 分析内容 核心关注点 \n \n 第一步 划分企业历史发展阶段 外部环境重大变化 + 战略行为重大改变 + 经济效益指标变化 \n 第二步 按阶段分析环境、战略、结果 分析各阶段资源、能力优势和劣势的形成过程 \n 第三步 重点分析关键战略行为/事件/领导 对增长模式、企业文化、管理传统和核心价值观的影响 \n 第四步 总结价值观、管理传统、行为模式 结合外部环境初步结果，判断文化上的优势与劣势 \n \n \n \n \n 管理学联系： 企业历史分析与 制度理论（Institutional Theory） 和 路径依赖理论 密切相关——历史积累形成的组织惯例、文化规范对战略选择产生"路径锁定"效应。\n \n \n \n \n \n \n \n \n §3 \n \n 企业资源分析 \n \n 📄 P102–P105 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 高概率 \n 名词解释 / 简答 / 论述 \n \n \n \n \n \n \n \n \n 📖 专有名词解释 \n 企业资源 ：企业可以获取和整合的与企业价值创造活动有关的各种要素，包括有形的和无形的、硬的和软的、财务的和非财务的要素。 \n \n \n 🧒 小学生版解释 \n 就像一个人的"家底"——钱（财务资源）、房子工厂（有形资源）、好名声和技术秘方（无形资源）、有能力的员工（人力资源）。拥有什么"家底"就能做什么"生意"。 \n \n \n 💡 助记口诀 \n 人有无三分法： 人力（脑）+ 有形（手）+ 无形（心） 自有资源 vs 可利用资源 \n \n \n 🏢 企业案例 \n 阿里巴巴创建初期：自有资源匮乏，但整合外部资源（天使投资、外部开发者）获得了发展资金和技术支持，这正是"可利用资源"的典型应用。 \n \n \n \n 📋 企业资源三分类（教材表4-1） \n \n \n 资源类型 子类别 具体内容 特征 \n \n \n 人力资源 （人力资本） \n — \n 企业员工的数量、年龄、知识、专业和文化；员工向企业提供技能、知识和参与决策的能力 \n 可升值、可流动 \n \n \n 有形资源 \n 实物资源 \n 经营所需场所、设备的数量、分布和水平 \n 可见、可量化 \n \n \n 财务资源 \n 企业内部和外部整合的各种财务资源 \n \n \n 组织资源 \n 企业正式的组织结构和计划、控制、协调系统 \n \n \n 无形资源 \n 技术资源 \n 专利、版权、质量标准、商业秘密、与科研机构的关系 \n 不可见/难以量化；根植企业；难以模仿 \n \n \n 声誉资源 \n 商标、品牌、商誉、关系（客户/供应商/利益相关者） \n \n \n \n \n \n \n 🔑 资源分析的两个维度 \n \n \n 按属性分： 人力资源 / 有形资源 / 无形资源（三分法） 关注点：资源的数量、质量、稀缺性、可获取性、可转移性 \n \n \n 按来源分： 自有资源（产权资源+直接雇佣人力） 可利用资源（以其他方式整合并利用的资源，存在于内外部）\n \n \n \n 📌 教材原句： "企业资源就是企业可以获取和整合的与企业价值创造活动有关的各种要素，包括有形的和无形的、硬的和软的、财务的和非财务的要素。"\n \n \n \n 【2019笔试·简答】 \n 【2022笔试·论述】 \n 【2024复试面试】 \n \n \n 🎤 复试回答模板：企业资源 \n 1 定义： 企业可获取和整合的、与价值创造有关的各种要素（有形+无形+硬软+财务非财务） \n 2 分类： 人力资源（技能知识决策能力）/ 有形资源（实物、财务、组织）/ 无形资源（技术、声誉） \n 3 意义： 资源数量越多、质量越高，竞争优势越大，战略可选择性越多；无形资源是企业核心专长的重要来源 \n 4 例子： 苹果公司——品牌（无形声誉）、iOS生态专利（技术资源）、全球供应链（可利用资源）构成其强大竞争优势 \n \n 📌 延伸：资源基础观（RBV）与内部分析的关系 \n \n 资源基础观（Resource-Based View，Barney 1991）认为，企业持续竞争优势来自于企业独特资源与能力，这些资源需满足 VRIN标准 ：有价值（Valuable）、稀缺（Rare）、难以模仿（Inimitable）、不可替代（Non-substitutable）——这四个标准与教材§6的核心专长标准高度对应！ \n 联系：RBV→资源分析（§3）→能力分析（§4）→价值链（§5）→核心专长（§6），形成完整的内部分析逻辑链。 \n \n \n \n \n \n \n \n \n \n §4 \n \n 企业能力分析 \n \n 📄 P105–P108 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 高概率 \n 名词解释 / 简答 / 论述 / 案例 \n \n \n \n \n \n \n \n \n 📖 专有名词解释 \n 企业能力 ：企业所拥有的利用和整合企业资源实现企业经营目的所需要的各种 知识和技能 。这些知识和技能通过实践、学习、积累而形成，通过企业内部的传播、培训和共享而增强。 \n \n \n 🧒 小学生版解释 \n 资源是"有什么"（有多少钱、有多少设备），能力是"会干什么"（会不会用这些东西把工作做好）。光有钱不会花也没用！能力就是"用资源的本事"。 \n \n \n 💡 助记口诀 \n 管经整动四层楼： 管理（地基）→经营（一楼）→整合（二楼）→动态（顶层） 越往上越难被模仿！ \n \n \n 🏢 企业案例 \n 中集集团：在标准集装箱领域形成 生产管理、成本管理、质量管理、采购管理 能力优势，并清晰评估这些能力的可转移性边界，据此构建相关多元化组合（机场廊桥、特种车辆等）。 \n \n \n \n 📋 企业能力的四种类型（教材表4-2） \n \n \n 🏗️ 管理能力 \n 计划能力 组织能力 领导能力 控制能力 基础管理学原理 \n \n \n 🔧 经营能力 \n 营销/财务管理 采购/生产/研发 投融资/渠道 供应链管理 专业经营技能 \n \n \n 🔗 整合能力 \n 内部整合能力 （战略/预算/文化） 外部整合能力 （整合外部资源） 综合协调 \n \n \n ⚡ 动态能力 \n 应变能力 创新能力 重组能力 灵活应对环境变化 \n \n \n \n 💡 重要判断： 随着市场竞争水平提升，管理能力和经营能力逐步演变为 基础能力 （门槛），而 整合能力和动态能力 将在很大程度上决定企业基础能力的发挥。\n \n \n \n 🔑 企业能力的四大特性（分析维度） \n \n \n 特性 含义 判断方法 案例 \n \n \n 价值性 \n 能力是否在价值链关键环节、能否创造价值 \n 看能力所在领域是否为关键成功因素；分析可转移性 \n 中集的制造管理能力在集装箱这个重资产行业是核心价值创造环节 \n \n \n 稀缺性 \n 是否为竞争对手所不具有的独特能力 \n 分析有多少竞争对手具备同等能力 \n 尚品宅配的IT基因形成的大规模定制能力在传统家具行业极为稀缺 \n \n \n 难以获取性 \n 竞争对手学习/模仿所需时间和成本 \n 历史形成的能力 / 综合性能力 / 嵌入特定文化的能力更难获取 \n 华为40年技术积累形成的5G能力，竞争对手无法短期复制 \n \n \n 不可替代性 \n 能力是否有其他能力可代替 \n 上一层次能力需要下一层次能力支撑，一般不可替代 \n 没有基础管理能力的企业不可能有强大的整合能力 \n \n \n \n \n \n \n ⚠️ 企业能力分析的两个关键判断问题（教材原话） \n \n \n 问题一： 相对于企业 现行战略 有效实施，能力是高还是低？ → 判断为低：应稳定或收缩经营范围，而非继续扩大 \n \n \n 问题二： 相对于企业所面临的 战略选择 ，能力是高还是低？ → 判断为低：需考虑选择合作或并购方式实施新战略 \n \n \n \n 📌 教材金句： "如果企业战略管理者总是高估自己的能力，企业就有更大的可能性越变越小；反之，如果企业战略管理者总是能够正确评估自己的能力，企业就有更大的可能性越变越大。"\n \n \n \n 【2020笔试·价值链+核心竞争力】 \n 【2022面试·整合能力】 \n 【预测题·动态能力】 \n \n \n 🎤 复试回答模板：企业能力 vs 企业资源 \n 1 区别： 资源是"有什么"（要素），能力是"会用什么"（整合技能）；资源是基础，能力是转化力 \n 2 四类能力： 管理→经营→整合→动态（层层递进，前者是后者的基础） \n 3 能力优于资源的三点： ①知识经济下能力价值创造力更高；②能力更易整合外部资源；③能力具有更强的难以模仿性和可扩展性 \n 4 案例： 同样是超市，沃尔玛的供应链整合能力使其比普通超市更具竞争优势——相同资源，不同能力，结果迥异 \n \n \n \n \n \n \n \n §5 \n \n 价值链分析 \n \n 📄 P108–P110 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 极高概率 \n 名词解释 / 简答 / 论述 / 案例 \n \n \n \n \n \n \n \n \n 📖 专有名词解释 \n 价值链分析 ：由 迈克尔·波特 开发的战略分析工具，用于确认具有潜在价值创造作用的商业活动，将企业价值创造活动分为 基本活动 和 支持活动 两类。 \n \n \n 🧒 小学生版解释 \n 把做蛋糕的全过程拆开来看：买鸡蛋面粉（输入物流）→打蛋搅拌烘焙（制造）→送到蛋糕店（输出物流）→打广告吸引顾客（营销）→售后服务（服务）。每一步都在增加蛋糕的"价值"！ \n \n \n 💡 助记口诀 \n 基本活动5个： 输入→制造→输出→营销→服务 记： "输制输营服" （输入、制造、输出、营销、服务） 支持活动4个： 基础、人力、技术、采购 记： "基人技采" \n \n \n 🏢 企业案例 \n 苹果公司：输入物流（台积电供货）→制造（富士康代工）→输出物流（物流合作）→营销（Think Different）→服务（Apple Care）；支持：技术开发（芯片自研）是最高价值环节。 \n \n \n \n 📊 企业价值链结构图（波特模型） \n \n \n ⬆ 支持活动（4类） \n Porter, 1985 \n \n \n \n 🏗️ 企业基础设施\n 计划·财务·质控·信息管理 \n \n \n 👥 人力资源管理\n 招聘·培训·能力开发·激励 \n \n \n 💻 技术开发\n 研发·流程设计·业务改善 \n \n \n 🛒 采购\n 获取各类基本活动所需输入资源 \n \n \n ──────────────────── 利 润 边 际 ──────────────────── \n \n ▶ 基本活动（5类） \n \n \n \n 📦 输入物流\n 接收·储存·配送生产要素 \n \n \n ⚙️ 制造与运营\n 加工·包装·装配·检测 \n \n \n 🚚 输出物流\n 仓储·订单·装运·发货 \n \n \n 📢 营销和销售\n 广告·促销·销售管理 \n \n \n 🔧 服务\n 安装·维护·技术支持·投诉 \n \n \n \n \n \n 🌐 价值创造体系（超越单一企业价值链） \n \n 核心概念： 任何一家企业都是范围更大的 价值创造体系 的一部分！ \n 供应商价值链 → 企业价值链 → 渠道价值链 → 客户价值链 \n 三个决策问题： \n ① 某项业务活动：自己完成 还是 外包？ \n ② 在各环节上：谁是最好的合作伙伴？ \n ③ 与合作伙伴建立什么关系（供应商 or 战略联盟）？\n \n \n 📌 教材原句： "价值创造体系内对一系列相互关联的活动进行专业分工的过程创造了最有价值的产品。因此，任何企业都必须清楚自己擅长从事哪些分工活动。"\n \n \n \n 【2020笔试·价值链与核心竞争力】 \n 【2016面试·波特五力模型关联】 \n 【2023预测·高差异战略价值链】 \n \n \n 🎤 复试回答模板：价值链分析 \n 1 提出者： 迈克尔·波特，1985年《竞争优势》中提出，是识别价值创造活动的战略工具 \n 2 结构： 基本活动（输入物流/制造/输出物流/营销销售/服务）+ 支持活动（基础设施/人力资源/技术开发/采购） \n 3 作用： 识别价值创造关键环节→判断哪些活动自己做、哪些外包→为核心专长分析提供维护和发展视角 \n 4 联系核心专长： 价值链侧重核心专长的维护和发展，四个判断标准（VRIN）侧重发掘，二者互补 \n \n 📌 延伸：价值链分析与SWOT的关系 \n \n 价值链分析揭示企业内部的 S（优势）和W（劣势） ：价值链上高增值、具有竞争优势的环节=S；价值链上低增值、缺乏竞争力的环节=W。这与第5章SWOT分析直接衔接。 \n \n \n \n \n \n \n \n \n \n §6 \n \n 企业核心专长分析 \n \n 📄 P109–P116 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 极高概率（每年必考） \n 名词解释 / 简答 / 论述 / 案例 \n \n \n \n \n \n \n \n \n 📖 专有名词解释 \n \n 核心专长（Core Competence） ：能够作为企业竞争优势来源的能力。 \n ①为企业带来 独特 竞争优势（其他竞争对手不具备）； \n ②为企业带来 持续 竞争优势（难以模仿、不可替代）。 \n 提出者：普拉哈拉德和哈梅尔，1990年《哈佛商业评论》 \n \n \n \n 🧒 小学生版解释 \n 核心专长就是你的"绝活"——别人学不来、替代不了、顾客特别认可的那个超级本领。比如麦当劳的绝活不是做汉堡，而是 全球标准化运营管理能力 ！ \n \n \n 💡 助记口诀 \n \n 四标准口诀： \n "有稀难替" \n 有（有价值）→稀（稀缺）→难（难以模仿）→替（不可替代） \n 记忆： 有稀世难替代的武功秘籍 \n \n \n \n 🏢 企业案例 \n \n 英特尔（教材原案例）： \n 核心专长→微处理器架构设计能力 \n 有价值✓ 稀缺✓ 难以模仿✓ 不可替代✓ \n "Intel Inside"品牌战略将核心专长转化为消费者认知价值。\n \n \n \n \n 🔑 核心专长的四个判断标准（VRIN框架） \n \n \n ✅ 有价值（Valuable） \n 能为顾客带来价值？ 顾客认为其有价值？ 相对于：顾客 \n \n \n 💎 稀缺（Rare） \n 只有少数企业具备？ 多数企业具备则战略价值大打折扣 相对于：竞争对手 \n \n \n 🔒 难以模仿（Inimitable） \n 竞争对手很难模仿？ 容易被模仿的能力很快失去战略价值 相对于：竞争对手 \n \n \n 🚫 不可替代（Non-substitutable） \n 竞争对手很难用其他能力替代？ 可替代的能力战略价值易被侵蚀 相对于：顾客 \n \n \n \n 💡 关键逻辑： \n 有价值 + 稀缺 → 决定竞争优势的 关键性 \n 难以模仿 + 不可替代 → 决定竞争优势的 可保持性 \n \n \n \n 🏛️ 核心专长的三大重要特性（教材核心） \n \n 特性一：核心专长具有相对性/适配性 \n \n 任何企业的核心专长都是 针对特定战略承诺/定位 而言的（特定行业、市场、经营定位）。 不存在 所谓一般的、普适性核心专长。 \n 要求企业：①在战略承诺和定位上保持清晰取舍；②在清晰取舍基础上承诺坚定；③业务领域选择不能超越核心专长的适配范围。 \n \n \n \n 特性二：核心专长是若干关键和可保持竞争优势的组合 \n \n 清晰的战略定位是构建核心专长的 前提 ，但还不够——必须围绕战略承诺建立 若干符合VRIN标准的竞争优势 。 \n 判断核心专长的两个方面：①竞争优势的关键性（分布在价值链哪些环节+稀缺性）；②竞争优势的可保持性（难以学习模仿+不可替代程度） \n \n \n \n 特性三：核心专长的构建需要结构、机制和文化支撑 \n \n 只有多种关键和可保持竞争优势的 有机整合 （而非简单组合）才能构成核心专长——实现"1+1>2"的效应，增加竞争对手模仿的时间和成本。 \n 需要构建适配的管理模式： 组织结构 + 管理机制 + 企业文化 共同支撑。 \n \n \n \n \n 🚀 核心专长的建立、保持和发挥（三种战略选择） \n \n \n 战略选择 方式 说明 案例 \n \n \n 规模经济 \n 横向开拓国内外市场 \n 核心专长跨区域/跨国转移，多点竞争优势强化专长 \n 中集集团标准集装箱业务全球化 \n \n \n 范围经济 \n 开拓相似功能产品/共享资源 \n 核心专长在相似/相邻领域发挥，包括共享职能/技术/平台/文化 \n 阿里巴巴将电商运营能力扩展至云计算 \n \n \n 降低交易成本 \n 开拓价值链上下游行业 \n 核心专长跨行业转移，整合上下游降低交易成本强化专长 \n 中集集团纵向整合，扩展至机场廊桥、特种车辆 \n \n \n \n \n \n 📌 核心专长 vs 核心竞争力（教材重要区分）： \n 本书选用"核心专长"而非"核心竞争力"—— 核心专长强调"做专才能做长" ，是长期持续专注投入的结果；"核心竞争力"侧重外在市场表现，可能将临时性竞争优势误认为核心专长。\n \n \n \n 【2016面试·核心竞争力】 \n 【2019笔试·成本领先战略实现路径】 \n 【2020笔试·价值链与核心竞争力】 \n 【2022预测·核心专长建立方法】 \n 【2024预测·核心专长发挥】 \n \n \n 🎤 复试回答模板：什么是核心专长？如何建立核心专长？ \n 1 定义： 核心专长是能为企业带来独特且持续竞争优势的能力，由普拉哈拉德和哈梅尔1990年提出 \n 2 四大标准： 有价值（顾客认可）+ 稀缺（竞争对手少有）+ 难以模仿 + 不可替代——"有稀难替" \n 3 三大特性： 相对性（针对特定战略定位）、竞争优势组合性（关键性+可保持性）、需要结构机制文化支撑 \n 4 建立路径： 清晰取舍战略定位→价值链分析找关键环节→建立VRIN标准优势→有机整合形成专长 \n 5 发挥方式： 规模经济（横向扩张）/ 范围经济（相关多元化）/ 降低交易成本（纵向整合） \n \n 📌 延伸：核心专长的负面效应（教材提到） \n \n 核心专长可能产生两种完全不同的作用： \n ① 正向： 构成持续竞争优势的来源 \n ② 负向（核心刚性）： 原有核心专长在环境变化时可能成为变革的障碍——过度依赖现有能力反而限制了创新和转型（柯达坚持胶片技术导致在数字时代衰败） \n \n \n \n \n \n \n \n \n \n §7 \n \n 内部环境分析工具 \n \n 📄 P116–P119 \n ⭐⭐⭐ 一般 \n 🎯 较低概率 \n 名词解释 / 简答 \n \n \n \n \n \n \n \n \n 🔵 工具一：经验曲线（Experience Curve） \n \n \n \n 📖 定义 \n 表示 生产单位时间 与 连续生产单位成本 之间关系的曲线。当个体或组织在一项任务中积累更多经验时，效率提升，成本下降。 提出者：BCG的布鲁斯·亨德森，1960年 \n \n \n 💡 核心规律 \n 产品 累计总产量每增加一倍 ，代价值（单位产品管理+营销+分销+制造费用）下降比率在 10%～30% 之间。 \n \n \n \n 用途： 分析企业规模、专业化水平和新旧企业之间的优势和劣势。 \n 通俗： 就像骑自行车，越练越熟，越熟越省力！越大的厂，生产同样东西的成本越低。\n \n \n \n \n \n 🔵 工具二：雷达图分析法（Radar Chart） \n \n \n \n 📖 定义 \n 以企业 财务比率数据 为基础综合分析企业实力的方法。包括动态分析（纵向比较）和静态分析（横向比较）两种。 \n \n \n 📊 五类指标 \n \n ① 收益性 （ROA、ROE等） \n ② 成长性 （销售收入增长率等） \n ③ 安全性 （资产负债率等） \n ④ 流动性 （总资产周转率等） \n ⑤ 生产性 （人均销售收入等）\n \n \n \n \n 判读方法： \n 标准线之外 → 优势（高于行业水平） \n 标准线之内 → 需改进 \n 最小圆圈内 → 极差状态（经营危险信号）\n \n \n \n \n \n 🔵 工具三：战略要素评价法（IFE矩阵） \n \n \n 📖 定义 \n 帮助企业对内部/外部环境的主要优势（机会）与劣势（威胁）进行 全面综合评价 的方法。通过加权打分得出综合评价值。 \n \n \n \n 步骤 操作 说明 \n \n 第一步 确定影响因素 列出可能影响企业战略行为的各种因素 \n 第二步 确定权重 0.0（不重要）～1.0（很重要），各权重之和=1.0 \n 第三步 打分（1～4分） 确认机会/威胁/优势/劣势 \n 第四步 计算加权分值 权重 × 评价值 = 加权分值 \n 第五步 加总得总分 总分>2.5：内部状况较好；总分 \n \n \n \n \n 适用范围： 战略要素数量一般控制在5～20个之间，最好5～10个。 \n 教材案例： 海德酒店IFE表，总加权值2.96（>2.5），内部状况较好；创新能力为最大弱点（得分1），管理能力/服务质量/品牌声誉为主要优势（得分4）。\n \n \n \n \n 【2018笔试·PESTEL相关】 \n 【2020面试·价值链工具】 \n \n \n \n \n \n \n \n ⚖️ \n 易混概念对比表\n \n \n \n 对比项 企业资源 企业能力 核心专长 \n \n 本质 企业拥有的要素（有什么） 利用整合资源的技能（会干什么） 难以模仿的持续竞争优势来源（绝活是什么） \n 特征 有形/无形；可见/不可见 知识和技能；通过学习积累 有价值+稀缺+难以模仿+不可替代 \n 层次关系 基础 中层（整合资源） 顶层（整合能力的结果） \n 可转移性 相对低（有形资源尤其） 相对高 在特定定位范围内有效 \n 可模仿性 有形资源易模仿；无形资源难 综合性、历史性能力难模仿 极难模仿（本质特征） \n 分析工具 资源三分法（人力/有形/无形） 四类能力分析框架 价值链 + VRIN四标准 \n \n \n \n \n \n \n 对比项 基本活动 支持活动 \n \n 数量 5种 4种 \n 内容 输入物流/制造/输出物流/营销销售/服务 基础设施/人力资源管理/技术开发/采购 \n 与产品关系 与产品/服务的创造或交付 直接 相关 帮助提高基本活动的效果或效率（ 间接 ） \n 记忆口诀 "输制输营服"（5字） "基人技采"（4字） \n \n \n \n \n \n \n \n 对比项 核心专长 核心竞争力 \n \n 教材立场 ✅ 本书采用的表述 ❌ 本书不采用 \n 侧重点 企业 内在本质 ："做专才能做长"，长期专注投入 企业 外在表现 ：在市场竞争中具有竞争力 \n 问题 — 可能将临时性优势误认为核心专长 \n 关键差异 强调来源（长期专注积累） 强调结果（竞争对手难以企及） \n \n \n \n \n \n \n \n \n 📝 \n 历年真题汇总（2016–2025）\n \n \n \n 2020年 \n 笔试·论述 \n \n \n Q：简述价值链分析与核心竞争力打造的关系。 \n 考察知识点：§5价值链分析 + §6核心专长；考察关联：价值链侧重维护发展，VRIN标准侧重发掘；价值链找关键活动环节→建立核心专长 \n \n \n \n \n 2019年 \n 笔试·简答 \n \n \n Q：简述成本领先战略的实现路径。 \n 考察知识点：§5价值链（关键环节成本控制）+ §3企业资源（规模资源）+ §6核心专长（成本管理核心专长）；经验曲线也是关联工具 \n \n \n \n \n 2016年 \n 面试 \n \n \n Q：如何看待企业的核心竞争力？ \n 考察知识点：§6核心专长分析；需区分核心专长vs核心竞争力的教材立场；VRIN四标准；建立保持发挥三路径 \n \n \n \n \n 2022年 \n 预测·论述 \n \n \n Q（预测）：论述企业内部环境分析的主要内容及其与战略选择的关系。 \n 考察知识点：§1～§6全部内容；历史→资源→能力→价值链→核心专长的逻辑链条；内部分析为战略选择提供依据 \n \n \n \n \n 2025年 \n 高预测·案例 \n \n \n Q（预测）：以某企业为案例，分析其资源、能力和核心专长与战略选择之间的关系。 \n 对应能力拓展题；建议准备华为/阿里巴巴/中集集团案例；需覆盖§3+§4+§5+§6 \n \n \n \n \n \n \n 🔗 \n 本章知识终极串联（逻辑流程图）\n \n \n \n 📋 确定分析起点 \n → \n 基于企业 现行战略面临的问题 ，结合 外部环境分析（第3章） 提供的可能选择开始分析 \n \n \n 🏛️ §2 历史分析 \n → \n 了解企业 成长路径、价值观、管理传统、行为模式 ，为资源能力分析提供背景和解释 \n \n \n 🏗️ §3 资源分析 \n → \n 识别企业拥有的 人力/有形/无形资源 （质量、数量、稀缺性、可获取性），判断 资源优势与劣势 \n \n \n ⚡ §4 能力分析 \n → \n 评估企业 管理/经营/整合/动态 四类能力的价值性、稀缺性、难以获取性、不可替代性，判断 能力优势与劣势 \n \n \n 🔗 §5 价值链分析 \n → \n 找到 价值创造的关键活动环节 ，识别企业在价值链上哪些环节具有优势，判断外包决策，为核心专长定位 \n \n \n 💎 §6 核心专长 \n → \n 用 VRIN四标准 判断企业是否拥有核心专长，明确 建立、保持和发挥 核心专长的方式（规模/范围/交易成本） \n \n \n 📊 §7 分析工具 \n → \n 运用 经验曲线/雷达图/战略要素评价法 对上述分析进行量化评估，提高客观性 \n \n \n ➡️ 输出到第5章 \n → \n 内部分析结果（S优势+W劣势）与第3章外部分析结果（O机会+T威胁）在第5章进行 SWOT综合 ，确认战略问题 \n \n \n \n \n \n \n ⚡ 30秒复习模块（超简版） \n \n \n §1 内部分析三特点 \n 复杂性 · 不确定性 · 利益冲突性 \n \n \n §3 企业资源三分法 \n 人力资源 · 有形资源 · 无形资源 \n \n \n §4 企业能力四类型 \n 管理 → 经营 → 整合 → 动态（层层递进） \n \n \n §5 价值链5+4结构 \n 基本"输制输营服" 支持"基人技采" \n \n \n §6 核心专长四标准 \n "有稀难替" 有价值·稀缺·难以模仿·不可替代 \n \n \n §7 三大分析工具 \n 经验曲线 · 雷达图 · 战略要素评价法 \n \n \n 核心专长发挥三路径 \n 规模经济（横向扩张） 范围经济（相关多元化） 降低交易成本（纵向整合） \n \n \n 本章核心逻辑 \n 历史→资源→能力→ 价值链→核心专长→ 战略问题确认（第5章） \n \n \n \n \n \n \n \n 🎯 背诵版总结（复试口述版） \n \n \n 【内部环境分析】 以识别企业相对竞争对手的优势与劣势为目的，具有 复杂性、不确定性和利益冲突性 三大特点，主要包括历史分析、资源分析、能力分析、价值链分析和核心专长分析五个方面。\n \n \n 【企业资源】 可分为 人力资源、有形资源（实物/财务/组织）和无形资源（技术/声誉） 三类；按来源分为自有资源和可利用资源。无形资源是难以模仿的竞争优势来源。\n \n \n 【企业能力】 分为 管理、经营、整合、动态 四类，层层递进。能力分析需关注价值性、稀缺性、难以获取性、不可替代性四大特性。整合能力和动态能力是高竞争环境下的关键。\n \n \n 【价值链分析】 波特提出，分为 基本活动（输入物流/制造/输出物流/营销销售/服务） 和 支持活动（基础设施/人力资源管理/技术开发/采购） 。企业是更大价值创造体系的一部分，需决定哪些活动自做、哪些外包。\n \n \n 【核心专长】 是企业带来独特且持续竞争优势的能力，需满足 "有稀难替" 四个标准——有价值（顾客认可）、稀缺（竞争对手少有）、难以模仿、不可替代。发挥路径：规模经济（横向）/ 范围经济（相关多元化）/ 降低交易成本（纵向整合）。强调 "做专才能做长" 。\n \n \n \n \n \n \n \n \n ✅ \n 课后自我检测\n \n \n 📚 教材课后思考题 \n \n 1 企业历史会以何种方式、在多大程度上影响企业的未来战略？ \n 💡 提示：路径依赖、价值观形成、管理传统对战略取舍的影响 \n \n \n 2 为什么内部环境分析具有复杂性、不确定性和利益冲突性？ \n 💡 提示：三个特点的成因分析，结合实例说明 \n \n \n 3 如何理解企业资源和能力优势的关键性？ \n 💡 提示：价值链上关键环节+VRIN标准+与竞争对手相比 \n \n \n 4 如何理解企业资源和能力优势的可持续性？ \n 💡 提示：难以模仿性（历史积累、综合性、文化嵌入）+ 不可替代性 \n \n \n 5 核心专长是如何建立、保持和发挥的？ \n 💡 提示：建立=清晰定位+VRIN优势有机整合；发挥=规模/范围/交易成本三路径 \n \n \n 6 竞争优势可持续性的主要来源是什么？ \n 💡 提示：难以模仿性 + 不可替代性（VRIN标准后两项） \n \n \n 7 为什么核心专长可能对企业发展产生两种性质完全不同的作用？ \n 💡 提示：正向=持续竞争优势；负向=核心刚性，在环境变化时成为变革障碍（柯达案例） \n \n \n \n 📝 历年真题练习 \n \n T1 【2020年笔试】简述价值链分析与核心竞争力打造的关系。（约200字） \n \n \n T2 【2016年面试】结合具体案例谈谈你对企业核心竞争力的理解。 \n \n \n \n 🔮 预测题 \n \n P1 【高预测·论述】以某企业为例，运用资源、能力和价值链分析框架，判断该企业的核心专长，并分析其战略选择是否有利于核心专长的建立、保持和发挥。（约400字） \n 💡 建议案例：华为/比亚迪/中集集团/阿里巴巴 \n \n \n P2 【高预测·简答】简述企业能力的四种类型及其在战略管理中的重要性。（约150字） \n \n \n P3 【中预测·名词解释】核心专长（Core Competence） \n 💡 要点：定义+提出者+四标准+有机整合+"做专才能做长" \n \n \n \n \n \n \n 📚 中南大学企业管理学硕复试笔记 · 依据《企业战略管理（第二版·蓝海林）》整理 \n 第四章 内部环境分析 · P99–P119 · 2016–2025历年真题整合版 \n 当前完成：第4章 全部内容（§1–§7） \n \n \n \n ↑';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ===== 顶部固定导航 ===== -->
+<nav id="top-nav">
+  <div class="nav-header">
+    <span class="nav-title">📚 第四章 · 内部环境分析</span>
+    <div class="nav-controls">
+      
+      <button class="nav-btn" onclick="toggleDark()">🌙 夜间</button>
+    </div>
+  </div>
+  <div class="nav-menu">
+    <a href="#sec-logic" class="nav-item">📊 逻辑关系</a>
+    <a href="#sec-mindmap" class="nav-item">🧠 思维导图</a>
+    <a href="#sec-overview" class="nav-item">§1 分析概述</a>
+    <a href="#sec-history" class="nav-item">§2 企业历史</a>
+    <a href="#sec-resource" class="nav-item">§3 企业资源</a>
+    <a href="#sec-capability" class="nav-item">§4 企业能力</a>
+    <a href="#sec-valuechain" class="nav-item">§5 价值链</a>
+    <a href="#sec-core" class="nav-item">§6 核心专长</a>
+    <a href="#sec-tools" class="nav-item">§7 分析工具</a>
+    <a href="#sec-compare" class="nav-item">⚖️ 对比表</a>
+    <a href="#sec-examq" class="nav-item">📝 历年真题</a>
+    <a href="#sec-ultimate" class="nav-item">🔗 终极串联</a>
+    <a href="#sec-quick" class="nav-item">⚡ 30秒复习</a>
+    <a href="#sec-recite" class="nav-item">🎯 背诵版</a>
+    <a href="#sec-test" class="nav-item">✅ 自我检测</a>
+  </div>
+</nav>
+
+<!-- ===== 主内容区 ===== -->
+<div class="main-container">
+
+<!-- Hero标题 -->
+<div class="hero fade-in">
+  <div class="hero-chapter">中南大学企业管理硕 · 《企业战略管理（第二版·蓝海林）》</div>
+  <div class="hero-title">第四章 · 内部环境分析</div>
+  <div class="hero-subtitle">Internal Environment Analysis | 页码 P99–P119</div>
+  <div class="hero-tags">
+    <span class="hero-tag">⭐⭐⭐⭐⭐ 极高重要性</span>
+    <span class="hero-tag">🎯 高频考察</span>
+    <span class="hero-tag">7个核心节点</span>
+    <span class="hero-tag">真题覆盖2016–2025</span>
+  </div>
+</div>
+
+<!-- ===== §0 本章逻辑结构 ===== -->
+<div id="sec-logic" class="section-box fade-in">
+  <div class="section-title">
+    <div class="section-icon">📊</div>
+    本章与其他章节逻辑关系图
+  </div>
+  <div class="logic-flow">
+    <div class="flow-box ch2">第2章<br><small>战略管理框架</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box ch3">第3章<br><small>外部环境分析</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box ch4">📍第4章<br><small>内部环境分析</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box ch5">第5章<br><small>战略问题确认<br>（SWOT综合）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box ch6">第6章<br><small>业务层战略</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box ch7">第7章<br><small>公司层战略</small></div>
+  </div>
+  <div style="margin-top:14px; padding:12px 16px; background:var(--accordion-bg); border-radius:8px; font-size:0.85rem; color:var(--text-secondary);">
+    💡 <strong>逻辑说明：</strong>第3章（外部）与第4章（内部）共同构成<span class="highlight-keyword">SWOT分析</span>的两个基础维度，二者结合后在第5章完成战略问题的确认，为第6/7章的战略选择提供依据。核心专长（§6）是连接内部分析与战略选择的关键桥梁。
+  </div>
+</div>
+
+<!-- ===== §0 思维导图 ===== -->
+<div id="sec-mindmap" class="section-box fade-in">
+  <div class="section-title">
+    <div class="section-icon">🧠</div>
+    章节思维导图（知识框架）
+  </div>
+  <div class="mindmap">
+    <div class="mm-center">
+      <div class="mm-core">第四章：内部环境分析</div>
+    </div>
+    <div class="mm-branches">
+      <div class="mm-branch b1">
+        <div class="mm-branch-title">§1 分析概述</div>
+        <div class="mm-items">
+          <span class="mm-item">目的</span>
+          <span class="mm-item">特点</span>
+          <span class="mm-item">复杂性</span>
+          <span class="mm-item">不确定性</span>
+          <span class="mm-item">利益冲突性</span>
+        </div>
+      </div>
+      <div class="mm-branch b2">
+        <div class="mm-branch-title">§2 企业历史分析</div>
+        <div class="mm-items">
+          <span class="mm-item">历史阶段划分</span>
+          <span class="mm-item">成长路径</span>
+          <span class="mm-item">价值观形成</span>
+          <span class="mm-item">行为模式</span>
+        </div>
+      </div>
+      <div class="mm-branch b3">
+        <div class="mm-branch-title">§3 企业资源分析</div>
+        <div class="mm-items">
+          <span class="mm-item">人力资源</span>
+          <span class="mm-item">有形资源</span>
+          <span class="mm-item">无形资源</span>
+          <span class="mm-item">自有资源</span>
+          <span class="mm-item">可利用资源</span>
+        </div>
+      </div>
+      <div class="mm-branch b4">
+        <div class="mm-branch-title">§4 企业能力分析</div>
+        <div class="mm-items">
+          <span class="mm-item">管理能力</span>
+          <span class="mm-item">经营能力</span>
+          <span class="mm-item">整合能力</span>
+          <span class="mm-item">动态能力</span>
+          <span class="mm-item">四大特性</span>
+        </div>
+      </div>
+      <div class="mm-branch b5">
+        <div class="mm-branch-title">§5 价值链分析</div>
+        <div class="mm-items">
+          <span class="mm-item">基本活动×5</span>
+          <span class="mm-item">支持活动×4</span>
+          <span class="mm-item">价值创造体系</span>
+          <span class="mm-item">外包决策</span>
+        </div>
+      </div>
+      <div class="mm-branch b6">
+        <div class="mm-branch-title">§6 核心专长分析</div>
+        <div class="mm-items">
+          <span class="mm-item">有价值</span>
+          <span class="mm-item">稀缺</span>
+          <span class="mm-item">难以模仿</span>
+          <span class="mm-item">不可替代</span>
+          <span class="mm-item">三大特性</span>
+          <span class="mm-item">建立/保持/发挥</span>
+        </div>
+      </div>
+      <div class="mm-branch b7">
+        <div class="mm-branch-title">§7 分析工具</div>
+        <div class="mm-items">
+          <span class="mm-item">经验曲线</span>
+          <span class="mm-item">雷达图</span>
+          <span class="mm-item">战略要素评价法</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §1 内部环境分析概述 ===== -->
+<div id="sec-overview" class="knowledge-section">
+  <div class="ks-header">
+    <div class="ks-number">§1</div>
+    <div class="ks-title-area">
+      <div class="ks-title">内部环境分析概述</div>
+      <div class="ks-meta">
+        <span class="badge badge-page">📄 P99–P101</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-prob">🎯 较高概率</span>
+        <span class="badge badge-type">简答 / 论述</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 知识点：内部环境分析的目的 -->
+  <div class="kcard">
+    <div class="kcard-top-bar bar-blue"></div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 专有名词解释</div>
+          <div class="kcard-item-content"><strong>内部环境分析</strong>：对企业在历史、资源、能力、核心专长等方面的系统性分析，以识别企业相对于竞争对手的优势与劣势，为战略选择提供依据。</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🧒 小学生版解释</div>
+          <div class="kcard-item-content">就好像运动会前先照镜子，看看自己跑步快不快、力气大不大，这样才知道去参加哪些比赛能赢！</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content">
+            <span class="highlight-keyword">三难：复杂、不确定、利益冲突</span><br>
+            简记：<strong>"复不利"</strong>（复杂性·不确定性·利益冲突性）
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🏢 企业案例</div>
+          <div class="kcard-item-content">华为做5G战略决策前，必须先摸清自己的芯片研发能力、专利积累量、人才储备数量——这就是内部环境分析的具体体现。</div>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">🔑 内部环境分析的三大特点（教材核心）</div>
+        <div class="framework-grid">
+          <div class="fw-card fw1">
+            <div class="fw-title">🔴 复杂性</div>
+            <div class="fw-items">企业资源、能力多样复杂；<br>人力资源行为难以量化预测；<br>核心专长的识别本身具有模糊性</div>
+          </div>
+          <div class="fw-card fw2">
+            <div class="fw-title">🟡 不确定性</div>
+            <div class="fw-items">企业的优势和劣势是相对的，<br>相对于特定机会/威胁才有意义；<br>环境变化导致判断结果随时改变</div>
+          </div>
+          <div class="fw-card fw3">
+            <div class="fw-title">🟠 利益冲突性</div>
+            <div class="fw-items">不同管理者对企业优劣势判断<br>受个人利益影响；<br>可能出现蒙蔽性分析结果</div>
+          </div>
+        </div>
+        <div class="highlight-box">
+          📌 <strong>教材原句（需背诵）：</strong>"内部环境分析要以环境与企业战略行为的互动为主线，判断企业相对于竞争对手的优势与劣势，为企业战略制定提供依据。"
+        </div>
+      </div>
+
+      <div class="exam-tags-row">
+        <span class="exam-tag">【2017笔试·简答】</span>
+        <span class="exam-tag">【2020笔试·论述】</span>
+        <span class="exam-tag">【2023复试面试】</span>
+      </div>
+
+      <div class="interview-box">
+        <div class="interview-title">🎤 复试回答模板</div>
+        <div class="interview-step"><span class="step-num">1</span><span><strong>定义：</strong>内部环境分析是识别企业相对于竞争对手的优势与劣势的过程。</span></div>
+        <div class="interview-step"><span class="step-num">2</span><span><strong>三大特点：</strong>复杂性（企业资源能力难以全面评价）、不确定性（优劣势相对于环境而言）、利益冲突性（分析结果受利益影响）。</span></div>
+        <div class="interview-step"><span class="step-num">3</span><span><strong>主要内容：</strong>涵盖企业历史、资源、能力、价值链、核心专长五个方面。</span></div>
+        <div class="interview-step"><span class="step-num">4</span><span><strong>举例：</strong>华为分析自身5G研发能力与高通对比，发现具有专利和人才优势，从而明确核心竞争方向。</span></div>
+        <details>
+          <summary>📌 复试延伸问题（老师可能追问）</summary>
+          <div class="details-content">
+            <p>① 内部环境分析与外部环境分析的关系是什么？（答：相互依存，SWOT的两个维度，缺一不可）</p>
+            <p>② 为什么说优势和劣势都是相对的？（答：相对于特定机会和威胁而言，脱离外部环境谈优劣势无意义）</p>
+            <p>③ 如何克服利益冲突性的影响？（答：引入第三方评估、建立客观量化指标体系、高层战略共识）</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §2 企业历史分析 ===== -->
+<div id="sec-history" class="knowledge-section">
+  <div class="ks-header">
+    <div class="ks-number">§2</div>
+    <div class="ks-title-area">
+      <div class="ks-title">企业历史分析</div>
+      <div class="ks-meta">
+        <span class="badge badge-page">📄 P101–P103</span>
+        <span class="badge badge-imp">⭐⭐⭐ 一般</span>
+        <span class="badge badge-prob">🎯 低概率</span>
+        <span class="badge badge-type">简答 / 论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard">
+    <div class="kcard-top-bar bar-green"></div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 专有名词解释</div>
+          <div class="kcard-item-content"><strong>企业历史分析</strong>：通过系统梳理企业成长过程中的重大历史事件，分析环境变化、战略行为与企业文化、管理传统形成之间的互动关系。</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🧒 小学生版解释</div>
+          <div class="kcard-item-content">就像翻家庭相册，了解爷爷奶奶年轻时怎么克服困难、形成了什么家风，这个家风影响着今天怎么做决策。</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content"><span class="highlight-keyword">三看三分：</span>分阶段·分行为·总文化；看环境·看战略·看结果</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🏢 企业案例</div>
+          <div class="kcard-item-content">华润集团经历抗日战争、解放战争的洗礼，其特殊历史决定了独特的价值观念和管理传统，使其战略制定具有独特性。（教材原案例）</div>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">📋 企业历史分析的四步骤</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>步骤</th><th>分析内容</th><th>核心关注点</th></tr></thead>
+            <tbody>
+              <tr><td><strong>第一步</strong></td><td>划分企业历史发展阶段</td><td>外部环境重大变化 + 战略行为重大改变 + 经济效益指标变化</td></tr>
+              <tr><td><strong>第二步</strong></td><td>按阶段分析环境、战略、结果</td><td>分析各阶段资源、能力优势和劣势的形成过程</td></tr>
+              <tr><td><strong>第三步</strong></td><td>重点分析关键战略行为/事件/领导</td><td>对增长模式、企业文化、管理传统和核心价值观的影响</td></tr>
+              <tr><td><strong>第四步</strong></td><td>总结价值观、管理传统、行为模式</td><td>结合外部环境初步结果，判断文化上的优势与劣势</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="highlight-blue">
+          <strong>管理学联系：</strong>企业历史分析与<strong>制度理论（Institutional Theory）</strong>和<strong>路径依赖理论</strong>密切相关——历史积累形成的组织惯例、文化规范对战略选择产生"路径锁定"效应。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §3 企业资源分析 ===== -->
+<div id="sec-resource" class="knowledge-section">
+  <div class="ks-header">
+    <div class="ks-number">§3</div>
+    <div class="ks-title-area">
+      <div class="ks-title">企业资源分析</div>
+      <div class="ks-meta">
+        <span class="badge badge-page">📄 P102–P105</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">🎯 高概率</span>
+        <span class="badge badge-type">名词解释 / 简答 / 论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard">
+    <div class="kcard-top-bar bar-orange"></div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 专有名词解释</div>
+          <div class="kcard-item-content"><strong>企业资源</strong>：企业可以获取和整合的与企业价值创造活动有关的各种要素，包括有形的和无形的、硬的和软的、财务的和非财务的要素。</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🧒 小学生版解释</div>
+          <div class="kcard-item-content">就像一个人的"家底"——钱（财务资源）、房子工厂（有形资源）、好名声和技术秘方（无形资源）、有能力的员工（人力资源）。拥有什么"家底"就能做什么"生意"。</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content"><span class="highlight-keyword">人有无三分法：</span><br>人力（脑）+ 有形（手）+ 无形（心）<br>自有资源 vs 可利用资源</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🏢 企业案例</div>
+          <div class="kcard-item-content">阿里巴巴创建初期：自有资源匮乏，但整合外部资源（天使投资、外部开发者）获得了发展资金和技术支持，这正是"可利用资源"的典型应用。</div>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">📋 企业资源三分类（教材表4-1）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>资源类型</th><th>子类别</th><th>具体内容</th><th>特征</th></tr></thead>
+            <tbody>
+              <tr>
+                <td rowspan="1"><strong>人力资源</strong><br><small>（人力资本）</small></td>
+                <td>—</td>
+                <td>企业员工的数量、年龄、知识、专业和文化；员工向企业提供技能、知识和参与决策的能力</td>
+                <td>可升值、可流动</td>
+              </tr>
+              <tr>
+                <td rowspan="3"><strong>有形资源</strong></td>
+                <td>实物资源</td>
+                <td>经营所需场所、设备的数量、分布和水平</td>
+                <td rowspan="3">可见、可量化</td>
+              </tr>
+              <tr>
+                <td>财务资源</td>
+                <td>企业内部和外部整合的各种财务资源</td>
+              </tr>
+              <tr>
+                <td>组织资源</td>
+                <td>企业正式的组织结构和计划、控制、协调系统</td>
+              </tr>
+              <tr>
+                <td rowspan="2"><strong>无形资源</strong></td>
+                <td>技术资源</td>
+                <td>专利、版权、质量标准、商业秘密、与科研机构的关系</td>
+                <td rowspan="2">不可见/难以量化；根植企业；难以模仿</td>
+              </tr>
+              <tr>
+                <td>声誉资源</td>
+                <td>商标、品牌、商誉、关系（客户/供应商/利益相关者）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">🔑 资源分析的两个维度</div>
+        <div class="two-col">
+          <div class="highlight-blue">
+            <strong>按属性分：</strong><br>人力资源 / 有形资源 / 无形资源（三分法）<br><small>关注点：资源的数量、质量、稀缺性、可获取性、可转移性</small>
+          </div>
+          <div class="highlight-green">
+            <strong>按来源分：</strong><br>自有资源（产权资源+直接雇佣人力）<br>可利用资源（以其他方式整合并利用的资源，存在于内外部）
+          </div>
+        </div>
+        <div class="highlight-box">
+          📌 <strong>教材原句：</strong>"企业资源就是企业可以获取和整合的与企业价值创造活动有关的各种要素，包括有形的和无形的、硬的和软的、财务的和非财务的要素。"
+        </div>
+      </div>
+
+      <div class="exam-tags-row">
+        <span class="exam-tag">【2019笔试·简答】</span>
+        <span class="exam-tag">【2022笔试·论述】</span>
+        <span class="exam-tag">【2024复试面试】</span>
+      </div>
+
+      <div class="interview-box">
+        <div class="interview-title">🎤 复试回答模板：企业资源</div>
+        <div class="interview-step"><span class="step-num">1</span><span><strong>定义：</strong>企业可获取和整合的、与价值创造有关的各种要素（有形+无形+硬软+财务非财务）</span></div>
+        <div class="interview-step"><span class="step-num">2</span><span><strong>分类：</strong>人力资源（技能知识决策能力）/ 有形资源（实物、财务、组织）/ 无形资源（技术、声誉）</span></div>
+        <div class="interview-step"><span class="step-num">3</span><span><strong>意义：</strong>资源数量越多、质量越高，竞争优势越大，战略可选择性越多；无形资源是企业核心专长的重要来源</span></div>
+        <div class="interview-step"><span class="step-num">4</span><span><strong>例子：</strong>苹果公司——品牌（无形声誉）、iOS生态专利（技术资源）、全球供应链（可利用资源）构成其强大竞争优势</span></div>
+        <details>
+          <summary>📌 延伸：资源基础观（RBV）与内部分析的关系</summary>
+          <div class="details-content">
+            <p>资源基础观（Resource-Based View，Barney 1991）认为，企业持续竞争优势来自于企业独特资源与能力，这些资源需满足<strong>VRIN标准</strong>：有价值（Valuable）、稀缺（Rare）、难以模仿（Inimitable）、不可替代（Non-substitutable）——这四个标准与教材§6的核心专长标准高度对应！</p>
+            <p>联系：RBV→资源分析（§3）→能力分析（§4）→价值链（§5）→核心专长（§6），形成完整的内部分析逻辑链。</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §4 企业能力分析 ===== -->
+<div id="sec-capability" class="knowledge-section">
+  <div class="ks-header">
+    <div class="ks-number">§4</div>
+    <div class="ks-title-area">
+      <div class="ks-title">企业能力分析</div>
+      <div class="ks-meta">
+        <span class="badge badge-page">📄 P105–P108</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">🎯 高概率</span>
+        <span class="badge badge-type">名词解释 / 简答 / 论述 / 案例</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard">
+    <div class="kcard-top-bar bar-pink"></div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 专有名词解释</div>
+          <div class="kcard-item-content"><strong>企业能力</strong>：企业所拥有的利用和整合企业资源实现企业经营目的所需要的各种<span class="highlight-keyword">知识和技能</span>。这些知识和技能通过实践、学习、积累而形成，通过企业内部的传播、培训和共享而增强。</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🧒 小学生版解释</div>
+          <div class="kcard-item-content">资源是"有什么"（有多少钱、有多少设备），能力是"会干什么"（会不会用这些东西把工作做好）。光有钱不会花也没用！能力就是"用资源的本事"。</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content"><span class="highlight-keyword">管经整动四层楼：</span><br>管理（地基）→经营（一楼）→整合（二楼）→动态（顶层）<br>越往上越难被模仿！</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🏢 企业案例</div>
+          <div class="kcard-item-content">中集集团：在标准集装箱领域形成<strong>生产管理、成本管理、质量管理、采购管理</strong>能力优势，并清晰评估这些能力的可转移性边界，据此构建相关多元化组合（机场廊桥、特种车辆等）。</div>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">📋 企业能力的四种类型（教材表4-2）</div>
+        <div class="framework-grid">
+          <div class="fw-card fw1">
+            <div class="fw-title">🏗️ 管理能力</div>
+            <div class="fw-items">计划能力<br>组织能力<br>领导能力<br>控制能力<br><small style="color:var(--text-muted)">基础管理学原理</small></div>
+          </div>
+          <div class="fw-card fw2">
+            <div class="fw-title">🔧 经营能力</div>
+            <div class="fw-items">营销/财务管理<br>采购/生产/研发<br>投融资/渠道<br>供应链管理<br><small style="color:var(--text-muted)">专业经营技能</small></div>
+          </div>
+          <div class="fw-card fw3">
+            <div class="fw-title">🔗 整合能力</div>
+            <div class="fw-items">内部整合能力<br>（战略/预算/文化）<br>外部整合能力<br>（整合外部资源）<br><small style="color:var(--text-muted)">综合协调</small></div>
+          </div>
+          <div class="fw-card fw4">
+            <div class="fw-title">⚡ 动态能力</div>
+            <div class="fw-items">应变能力<br>创新能力<br>重组能力<br><small style="color:var(--text-muted)">灵活应对环境变化</small></div>
+          </div>
+        </div>
+        <div class="highlight-box">
+          💡 <strong>重要判断：</strong>随着市场竞争水平提升，管理能力和经营能力逐步演变为<span class="highlight-keyword">基础能力</span>（门槛），而<span class="highlight-keyword">整合能力和动态能力</span>将在很大程度上决定企业基础能力的发挥。
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">🔑 企业能力的四大特性（分析维度）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>特性</th><th>含义</th><th>判断方法</th><th>案例</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>价值性</strong></td>
+                <td>能力是否在价值链关键环节、能否创造价值</td>
+                <td>看能力所在领域是否为关键成功因素；分析可转移性</td>
+                <td>中集的制造管理能力在集装箱这个重资产行业是核心价值创造环节</td>
+              </tr>
+              <tr>
+                <td><strong>稀缺性</strong></td>
+                <td>是否为竞争对手所不具有的独特能力</td>
+                <td>分析有多少竞争对手具备同等能力</td>
+                <td>尚品宅配的IT基因形成的大规模定制能力在传统家具行业极为稀缺</td>
+              </tr>
+              <tr>
+                <td><strong>难以获取性</strong></td>
+                <td>竞争对手学习/模仿所需时间和成本</td>
+                <td>历史形成的能力 / 综合性能力 / 嵌入特定文化的能力更难获取</td>
+                <td>华为40年技术积累形成的5G能力，竞争对手无法短期复制</td>
+              </tr>
+              <tr>
+                <td><strong>不可替代性</strong></td>
+                <td>能力是否有其他能力可代替</td>
+                <td>上一层次能力需要下一层次能力支撑，一般不可替代</td>
+                <td>没有基础管理能力的企业不可能有强大的整合能力</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">⚠️ 企业能力分析的两个关键判断问题（教材原话）</div>
+        <div class="two-col">
+          <div class="highlight-blue">
+            <strong>问题一：</strong>相对于企业<strong>现行战略</strong>有效实施，能力是高还是低？<br><small>→ 判断为低：应稳定或收缩经营范围，而非继续扩大</small>
+          </div>
+          <div class="highlight-green">
+            <strong>问题二：</strong>相对于企业所面临的<strong>战略选择</strong>，能力是高还是低？<br><small>→ 判断为低：需考虑选择合作或并购方式实施新战略</small>
+          </div>
+        </div>
+        <div class="highlight-box">
+          📌 <strong>教材金句：</strong>"如果企业战略管理者总是高估自己的能力，企业就有更大的可能性越变越小；反之，如果企业战略管理者总是能够正确评估自己的能力，企业就有更大的可能性越变越大。"
+        </div>
+      </div>
+
+      <div class="exam-tags-row">
+        <span class="exam-tag">【2020笔试·价值链+核心竞争力】</span>
+        <span class="exam-tag">【2022面试·整合能力】</span>
+        <span class="exam-tag">【预测题·动态能力】</span>
+      </div>
+
+      <div class="interview-box">
+        <div class="interview-title">🎤 复试回答模板：企业能力 vs 企业资源</div>
+        <div class="interview-step"><span class="step-num">1</span><span><strong>区别：</strong>资源是"有什么"（要素），能力是"会用什么"（整合技能）；资源是基础，能力是转化力</span></div>
+        <div class="interview-step"><span class="step-num">2</span><span><strong>四类能力：</strong>管理→经营→整合→动态（层层递进，前者是后者的基础）</span></div>
+        <div class="interview-step"><span class="step-num">3</span><span><strong>能力优于资源的三点：</strong>①知识经济下能力价值创造力更高；②能力更易整合外部资源；③能力具有更强的难以模仿性和可扩展性</span></div>
+        <div class="interview-step"><span class="step-num">4</span><span><strong>案例：</strong>同样是超市，沃尔玛的供应链整合能力使其比普通超市更具竞争优势——相同资源，不同能力，结果迥异</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §5 价值链分析 ===== -->
+<div id="sec-valuechain" class="knowledge-section">
+  <div class="ks-header">
+    <div class="ks-number">§5</div>
+    <div class="ks-title-area">
+      <div class="ks-title">价值链分析</div>
+      <div class="ks-meta">
+        <span class="badge badge-page">📄 P108–P110</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">🎯 极高概率</span>
+        <span class="badge badge-type">名词解释 / 简答 / 论述 / 案例</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard">
+    <div class="kcard-top-bar bar-cyan"></div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 专有名词解释</div>
+          <div class="kcard-item-content"><strong>价值链分析</strong>：由<span class="highlight-keyword">迈克尔·波特</span>开发的战略分析工具，用于确认具有潜在价值创造作用的商业活动，将企业价值创造活动分为<strong>基本活动</strong>和<strong>支持活动</strong>两类。</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🧒 小学生版解释</div>
+          <div class="kcard-item-content">把做蛋糕的全过程拆开来看：买鸡蛋面粉（输入物流）→打蛋搅拌烘焙（制造）→送到蛋糕店（输出物流）→打广告吸引顾客（营销）→售后服务（服务）。每一步都在增加蛋糕的"价值"！</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content"><span class="highlight-keyword">基本活动5个：</span>输入→制造→输出→营销→服务<br>记：<strong>"输制输营服"</strong>（输入、制造、输出、营销、服务）<br><span class="highlight-keyword">支持活动4个：</span>基础、人力、技术、采购<br>记：<strong>"基人技采"</strong></div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🏢 企业案例</div>
+          <div class="kcard-item-content">苹果公司：输入物流（台积电供货）→制造（富士康代工）→输出物流（物流合作）→营销（Think Different）→服务（Apple Care）；支持：技术开发（芯片自研）是最高价值环节。</div>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">📊 企业价值链结构图（波特模型）</div>
+        <div class="value-chain-diagram">
+          <div class="vc-header">
+            <span class="vc-tag support-tag">⬆ 支持活动（4类）</span>
+            <span style="font-size:0.8rem; color:var(--text-muted)">Porter, 1985</span>
+          </div>
+          <div class="vc-support">
+            <div class="vc-cell support">
+              🏗️ 企业基础设施
+              <div class="vc-label">计划·财务·质控·信息管理</div>
+            </div>
+            <div class="vc-cell support">
+              👥 人力资源管理
+              <div class="vc-label">招聘·培训·能力开发·激励</div>
+            </div>
+            <div class="vc-cell support">
+              💻 技术开发
+              <div class="vc-label">研发·流程设计·业务改善</div>
+            </div>
+            <div class="vc-cell support">
+              🛒 采购
+              <div class="vc-label">获取各类基本活动所需输入资源</div>
+            </div>
+          </div>
+          <div style="text-align:center; padding:6px 0; font-size:0.75rem; color:var(--text-muted);">──────────────────── 利 润 边 际 ────────────────────</div>
+          <div class="vc-header" style="margin-top:6px;">
+            <span class="vc-tag basic-tag">▶ 基本活动（5类）</span>
+          </div>
+          <div class="vc-basic">
+            <div class="vc-cell basic">
+              📦 输入物流
+              <div class="vc-label">接收·储存·配送生产要素</div>
+            </div>
+            <div class="vc-cell basic">
+              ⚙️ 制造与运营
+              <div class="vc-label">加工·包装·装配·检测</div>
+            </div>
+            <div class="vc-cell basic">
+              🚚 输出物流
+              <div class="vc-label">仓储·订单·装运·发货</div>
+            </div>
+            <div class="vc-cell basic">
+              📢 营销和销售
+              <div class="vc-label">广告·促销·销售管理</div>
+            </div>
+            <div class="vc-cell basic">
+              🔧 服务
+              <div class="vc-label">安装·维护·技术支持·投诉</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">🌐 价值创造体系（超越单一企业价值链）</div>
+        <div class="highlight-green">
+          <strong>核心概念：</strong>任何一家企业都是范围更大的<span class="highlight-keyword">价值创造体系</span>的一部分！<br>
+          供应商价值链 → <strong>企业价值链</strong> → 渠道价值链 → 客户价值链<br><br>
+          <strong>三个决策问题：</strong><br>
+          ① 某项业务活动：自己完成 还是 外包？<br>
+          ② 在各环节上：谁是最好的合作伙伴？<br>
+          ③ 与合作伙伴建立什么关系（供应商 or 战略联盟）？
+        </div>
+        <div class="highlight-box">
+          📌 <strong>教材原句：</strong>"价值创造体系内对一系列相互关联的活动进行专业分工的过程创造了最有价值的产品。因此，任何企业都必须清楚自己擅长从事哪些分工活动。"
+        </div>
+      </div>
+
+      <div class="exam-tags-row">
+        <span class="exam-tag">【2020笔试·价值链与核心竞争力】</span>
+        <span class="exam-tag">【2016面试·波特五力模型关联】</span>
+        <span class="exam-tag">【2023预测·高差异战略价值链】</span>
+      </div>
+
+      <div class="interview-box">
+        <div class="interview-title">🎤 复试回答模板：价值链分析</div>
+        <div class="interview-step"><span class="step-num">1</span><span><strong>提出者：</strong>迈克尔·波特，1985年《竞争优势》中提出，是识别价值创造活动的战略工具</span></div>
+        <div class="interview-step"><span class="step-num">2</span><span><strong>结构：</strong>基本活动（输入物流/制造/输出物流/营销销售/服务）+ 支持活动（基础设施/人力资源/技术开发/采购）</span></div>
+        <div class="interview-step"><span class="step-num">3</span><span><strong>作用：</strong>识别价值创造关键环节→判断哪些活动自己做、哪些外包→为核心专长分析提供维护和发展视角</span></div>
+        <div class="interview-step"><span class="step-num">4</span><span><strong>联系核心专长：</strong>价值链侧重核心专长的维护和发展，四个判断标准（VRIN）侧重发掘，二者互补</span></div>
+        <details>
+          <summary>📌 延伸：价值链分析与SWOT的关系</summary>
+          <div class="details-content">
+            <p>价值链分析揭示企业内部的<strong>S（优势）和W（劣势）</strong>：价值链上高增值、具有竞争优势的环节=S；价值链上低增值、缺乏竞争力的环节=W。这与第5章SWOT分析直接衔接。</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §6 企业核心专长分析 ===== -->
+<div id="sec-core" class="knowledge-section">
+  <div class="ks-header">
+    <div class="ks-number">§6</div>
+    <div class="ks-title-area">
+      <div class="ks-title">企业核心专长分析</div>
+      <div class="ks-meta">
+        <span class="badge badge-page">📄 P109–P116</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">🎯 极高概率（每年必考）</span>
+        <span class="badge badge-type">名词解释 / 简答 / 论述 / 案例</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard">
+    <div class="kcard-top-bar bar-purple"></div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 专有名词解释</div>
+          <div class="kcard-item-content">
+            <strong>核心专长（Core Competence）</strong>：能够作为企业竞争优势来源的能力。<br>
+            ①为企业带来<span class="highlight-keyword">独特</span>竞争优势（其他竞争对手不具备）；<br>
+            ②为企业带来<span class="highlight-keyword">持续</span>竞争优势（难以模仿、不可替代）。<br>
+            <small>提出者：普拉哈拉德和哈梅尔，1990年《哈佛商业评论》</small>
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🧒 小学生版解释</div>
+          <div class="kcard-item-content">核心专长就是你的"绝活"——别人学不来、替代不了、顾客特别认可的那个超级本领。比如麦当劳的绝活不是做汉堡，而是<strong>全球标准化运营管理能力</strong>！</div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content">
+            <span class="highlight-keyword">四标准口诀：</span><br>
+            <strong>"有稀难替"</strong><br>
+            有（有价值）→稀（稀缺）→难（难以模仿）→替（不可替代）<br>
+            <br>记忆：<em>有稀世难替代的武功秘籍</em>
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🏢 企业案例</div>
+          <div class="kcard-item-content">
+            <strong>英特尔（教材原案例）：</strong><br>
+            核心专长→微处理器架构设计能力<br>
+            有价值✓ 稀缺✓ 难以模仿✓ 不可替代✓<br>
+            "Intel Inside"品牌战略将核心专长转化为消费者认知价值。
+          </div>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">🔑 核心专长的四个判断标准（VRIN框架）</div>
+        <div class="framework-grid">
+          <div class="fw-card fw1">
+            <div class="fw-title">✅ 有价值（Valuable）</div>
+            <div class="fw-items">能为顾客带来价值？<br>顾客认为其有价值？<br><em>相对于：顾客</em></div>
+          </div>
+          <div class="fw-card fw2">
+            <div class="fw-title">💎 稀缺（Rare）</div>
+            <div class="fw-items">只有少数企业具备？<br>多数企业具备则战略价值大打折扣<br><em>相对于：竞争对手</em></div>
+          </div>
+          <div class="fw-card fw3">
+            <div class="fw-title">🔒 难以模仿（Inimitable）</div>
+            <div class="fw-items">竞争对手很难模仿？<br>容易被模仿的能力很快失去战略价值<br><em>相对于：竞争对手</em></div>
+          </div>
+          <div class="fw-card fw4">
+            <div class="fw-title">🚫 不可替代（Non-substitutable）</div>
+            <div class="fw-items">竞争对手很难用其他能力替代？<br>可替代的能力战略价值易被侵蚀<br><em>相对于：顾客</em></div>
+          </div>
+        </div>
+        <div class="highlight-box">
+          💡 <strong>关键逻辑：</strong><br>
+          <strong>有价值 + 稀缺</strong> → 决定竞争优势的<span class="highlight-keyword">关键性</span><br>
+          <strong>难以模仿 + 不可替代</strong> → 决定竞争优势的<span class="highlight-keyword">可保持性</span>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">🏛️ 核心专长的三大重要特性（教材核心）</div>
+        <details open>
+          <summary>特性一：核心专长具有相对性/适配性</summary>
+          <div class="details-content">
+            <p>任何企业的核心专长都是<strong>针对特定战略承诺/定位</strong>而言的（特定行业、市场、经营定位）。<strong>不存在</strong>所谓一般的、普适性核心专长。</p>
+            <p>要求企业：①在战略承诺和定位上保持清晰取舍；②在清晰取舍基础上承诺坚定；③业务领域选择不能超越核心专长的适配范围。</p>
+          </div>
+        </details>
+        <details>
+          <summary>特性二：核心专长是若干关键和可保持竞争优势的组合</summary>
+          <div class="details-content">
+            <p>清晰的战略定位是构建核心专长的<strong>前提</strong>，但还不够——必须围绕战略承诺建立<strong>若干符合VRIN标准的竞争优势</strong>。</p>
+            <p>判断核心专长的两个方面：①竞争优势的关键性（分布在价值链哪些环节+稀缺性）；②竞争优势的可保持性（难以学习模仿+不可替代程度）</p>
+          </div>
+        </details>
+        <details>
+          <summary>特性三：核心专长的构建需要结构、机制和文化支撑</summary>
+          <div class="details-content">
+            <p>只有多种关键和可保持竞争优势的<strong>有机整合</strong>（而非简单组合）才能构成核心专长——实现"1+1>2"的效应，增加竞争对手模仿的时间和成本。</p>
+            <p>需要构建适配的管理模式：<strong>组织结构 + 管理机制 + 企业文化</strong>共同支撑。</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">🚀 核心专长的建立、保持和发挥（三种战略选择）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>战略选择</th><th>方式</th><th>说明</th><th>案例</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>规模经济</strong></td>
+                <td>横向开拓国内外市场</td>
+                <td>核心专长跨区域/跨国转移，多点竞争优势强化专长</td>
+                <td>中集集团标准集装箱业务全球化</td>
+              </tr>
+              <tr>
+                <td><strong>范围经济</strong></td>
+                <td>开拓相似功能产品/共享资源</td>
+                <td>核心专长在相似/相邻领域发挥，包括共享职能/技术/平台/文化</td>
+                <td>阿里巴巴将电商运营能力扩展至云计算</td>
+              </tr>
+              <tr>
+                <td><strong>降低交易成本</strong></td>
+                <td>开拓价值链上下游行业</td>
+                <td>核心专长跨行业转移，整合上下游降低交易成本强化专长</td>
+                <td>中集集团纵向整合，扩展至机场廊桥、特种车辆</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="highlight-green">
+          📌 <strong>核心专长 vs 核心竞争力（教材重要区分）：</strong><br>
+          本书选用"核心专长"而非"核心竞争力"——<span class="highlight-keyword">核心专长强调"做专才能做长"</span>，是长期持续专注投入的结果；"核心竞争力"侧重外在市场表现，可能将临时性竞争优势误认为核心专长。
+        </div>
+      </div>
+
+      <div class="exam-tags-row">
+        <span class="exam-tag">【2016面试·核心竞争力】</span>
+        <span class="exam-tag">【2019笔试·成本领先战略实现路径】</span>
+        <span class="exam-tag">【2020笔试·价值链与核心竞争力】</span>
+        <span class="exam-tag">【2022预测·核心专长建立方法】</span>
+        <span class="exam-tag">【2024预测·核心专长发挥】</span>
+      </div>
+
+      <div class="interview-box">
+        <div class="interview-title">🎤 复试回答模板：什么是核心专长？如何建立核心专长？</div>
+        <div class="interview-step"><span class="step-num">1</span><span><strong>定义：</strong>核心专长是能为企业带来独特且持续竞争优势的能力，由普拉哈拉德和哈梅尔1990年提出</span></div>
+        <div class="interview-step"><span class="step-num">2</span><span><strong>四大标准：</strong>有价值（顾客认可）+ 稀缺（竞争对手少有）+ 难以模仿 + 不可替代——"有稀难替"</span></div>
+        <div class="interview-step"><span class="step-num">3</span><span><strong>三大特性：</strong>相对性（针对特定战略定位）、竞争优势组合性（关键性+可保持性）、需要结构机制文化支撑</span></div>
+        <div class="interview-step"><span class="step-num">4</span><span><strong>建立路径：</strong>清晰取舍战略定位→价值链分析找关键环节→建立VRIN标准优势→有机整合形成专长</span></div>
+        <div class="interview-step"><span class="step-num">5</span><span><strong>发挥方式：</strong>规模经济（横向扩张）/ 范围经济（相关多元化）/ 降低交易成本（纵向整合）</span></div>
+        <details>
+          <summary>📌 延伸：核心专长的负面效应（教材提到）</summary>
+          <div class="details-content">
+            <p>核心专长可能产生两种完全不同的作用：<br>
+            ①<strong>正向：</strong>构成持续竞争优势的来源<br>
+            ②<strong>负向（核心刚性）：</strong>原有核心专长在环境变化时可能成为变革的障碍——过度依赖现有能力反而限制了创新和转型（柯达坚持胶片技术导致在数字时代衰败）</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §7 内部环境分析工具 ===== -->
+<div id="sec-tools" class="knowledge-section">
+  <div class="ks-header">
+    <div class="ks-number">§7</div>
+    <div class="ks-title-area">
+      <div class="ks-title">内部环境分析工具</div>
+      <div class="ks-meta">
+        <span class="badge badge-page">📄 P116–P119</span>
+        <span class="badge badge-imp">⭐⭐⭐ 一般</span>
+        <span class="badge badge-prob">🎯 较低概率</span>
+        <span class="badge badge-type">名词解释 / 简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard">
+    <div class="kcard-top-bar bar-teal"></div>
+    <div class="kcard-body">
+
+      <!-- 经验曲线 -->
+      <details open>
+        <summary>🔵 工具一：经验曲线（Experience Curve）</summary>
+        <div class="details-content">
+          <div class="kcard-grid">
+            <div class="kcard-item">
+              <div class="kcard-item-label">📖 定义</div>
+              <div class="kcard-item-content">表示<strong>生产单位时间</strong>与<strong>连续生产单位成本</strong>之间关系的曲线。当个体或组织在一项任务中积累更多经验时，效率提升，成本下降。<br><small>提出者：BCG的布鲁斯·亨德森，1960年</small></div>
+            </div>
+            <div class="kcard-item">
+              <div class="kcard-item-label">💡 核心规律</div>
+              <div class="kcard-item-content">产品<strong>累计总产量每增加一倍</strong>，代价值（单位产品管理+营销+分销+制造费用）下降比率在<span class="highlight-keyword">10%～30%</span>之间。</div>
+            </div>
+          </div>
+          <div class="highlight-blue">
+            <strong>用途：</strong>分析企业规模、专业化水平和新旧企业之间的优势和劣势。<br>
+            <strong>通俗：</strong>就像骑自行车，越练越熟，越熟越省力！越大的厂，生产同样东西的成本越低。
+          </div>
+        </div>
+      </details>
+
+      <!-- 雷达图 -->
+      <details>
+        <summary>🔵 工具二：雷达图分析法（Radar Chart）</summary>
+        <div class="details-content">
+          <div class="kcard-grid">
+            <div class="kcard-item">
+              <div class="kcard-item-label">📖 定义</div>
+              <div class="kcard-item-content">以企业<strong>财务比率数据</strong>为基础综合分析企业实力的方法。包括动态分析（纵向比较）和静态分析（横向比较）两种。</div>
+            </div>
+            <div class="kcard-item">
+              <div class="kcard-item-label">📊 五类指标</div>
+              <div class="kcard-item-content">
+                ① <strong>收益性</strong>（ROA、ROE等）<br>
+                ② <strong>成长性</strong>（销售收入增长率等）<br>
+                ③ <strong>安全性</strong>（资产负债率等）<br>
+                ④ <strong>流动性</strong>（总资产周转率等）<br>
+                ⑤ <strong>生产性</strong>（人均销售收入等）
+              </div>
+            </div>
+          </div>
+          <div class="highlight-box">
+            <strong>判读方法：</strong><br>
+            标准线之外 → 优势（高于行业水平）<br>
+            标准线之内 → 需改进<br>
+            最小圆圈内 → 极差状态（经营危险信号）
+          </div>
+        </div>
+      </details>
+
+      <!-- 战略要素评价法 -->
+      <details>
+        <summary>🔵 工具三：战略要素评价法（IFE矩阵）</summary>
+        <div class="details-content">
+          <div class="kcard-item" style="margin-bottom:10px;">
+            <div class="kcard-item-label">📖 定义</div>
+            <div class="kcard-item-content">帮助企业对内部/外部环境的主要优势（机会）与劣势（威胁）进行<strong>全面综合评价</strong>的方法。通过加权打分得出综合评价值。</div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>步骤</th><th>操作</th><th>说明</th></tr></thead>
+              <tbody>
+                <tr><td>第一步</td><td>确定影响因素</td><td>列出可能影响企业战略行为的各种因素</td></tr>
+                <tr><td>第二步</td><td>确定权重</td><td>0.0（不重要）～1.0（很重要），各权重之和=1.0</td></tr>
+                <tr><td>第三步</td><td>打分（1～4分）</td><td>确认机会/威胁/优势/劣势</td></tr>
+                <tr><td>第四步</td><td>计算加权分值</td><td>权重 × 评价值 = 加权分值</td></tr>
+                <tr><td>第五步</td><td>加总得总分</td><td>总分>2.5：内部状况较好；总分<2.5：内部状况较差</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="highlight-green">
+            <strong>适用范围：</strong>战略要素数量一般控制在5～20个之间，最好5～10个。<br>
+            <strong>教材案例：</strong>海德酒店IFE表，总加权值2.96（>2.5），内部状况较好；创新能力为最大弱点（得分1），管理能力/服务质量/品牌声誉为主要优势（得分4）。
+          </div>
+        </div>
+      </details>
+
+      <div class="exam-tags-row">
+        <span class="exam-tag">【2018笔试·PESTEL相关】</span>
+        <span class="exam-tag">【2020面试·价值链工具】</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 对比总结表 ===== -->
+<div id="sec-compare" class="section-box">
+  <div class="section-title">
+    <div class="section-icon">⚖️</div>
+    易混概念对比表
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>对比项</th><th>企业资源</th><th>企业能力</th><th>核心专长</th></tr></thead>
+      <tbody>
+        <tr><td><strong>本质</strong></td><td>企业拥有的要素（有什么）</td><td>利用整合资源的技能（会干什么）</td><td>难以模仿的持续竞争优势来源（绝活是什么）</td></tr>
+        <tr><td><strong>特征</strong></td><td>有形/无形；可见/不可见</td><td>知识和技能；通过学习积累</td><td>有价值+稀缺+难以模仿+不可替代</td></tr>
+        <tr><td><strong>层次关系</strong></td><td>基础</td><td>中层（整合资源）</td><td>顶层（整合能力的结果）</td></tr>
+        <tr><td><strong>可转移性</strong></td><td>相对低（有形资源尤其）</td><td>相对高</td><td>在特定定位范围内有效</td></tr>
+        <tr><td><strong>可模仿性</strong></td><td>有形资源易模仿；无形资源难</td><td>综合性、历史性能力难模仿</td><td>极难模仿（本质特征）</td></tr>
+        <tr><td><strong>分析工具</strong></td><td>资源三分法（人力/有形/无形）</td><td>四类能力分析框架</td><td>价值链 + VRIN四标准</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="margin-top:16px;">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>对比项</th><th>基本活动</th><th>支持活动</th></tr></thead>
+        <tbody>
+          <tr><td><strong>数量</strong></td><td>5种</td><td>4种</td></tr>
+          <tr><td><strong>内容</strong></td><td>输入物流/制造/输出物流/营销销售/服务</td><td>基础设施/人力资源管理/技术开发/采购</td></tr>
+          <tr><td><strong>与产品关系</strong></td><td>与产品/服务的创造或交付<strong>直接</strong>相关</td><td>帮助提高基本活动的效果或效率（<strong>间接</strong>）</td></tr>
+          <tr><td><strong>记忆口诀</strong></td><td>"输制输营服"（5字）</td><td>"基人技采"（4字）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top:16px;">
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>对比项</th><th>核心专长</th><th>核心竞争力</th></tr></thead>
+        <tbody>
+          <tr><td><strong>教材立场</strong></td><td>✅ 本书采用的表述</td><td>❌ 本书不采用</td></tr>
+          <tr><td><strong>侧重点</strong></td><td>企业<strong>内在本质</strong>："做专才能做长"，长期专注投入</td><td>企业<strong>外在表现</strong>：在市场竞争中具有竞争力</td></tr>
+          <tr><td><strong>问题</strong></td><td>—</td><td>可能将临时性优势误认为核心专长</td></tr>
+          <tr><td><strong>关键差异</strong></td><td>强调来源（长期专注积累）</td><td>强调结果（竞争对手难以企及）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 历年真题汇总 ===== -->
+<div id="sec-examq" class="section-box">
+  <div class="section-title">
+    <div class="section-icon">📝</div>
+    历年真题汇总（2016–2025）
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-card-header">
+      <span class="exam-year-badge">2020年</span>
+      <span class="exam-type-badge">笔试·论述</span>
+    </div>
+    <div class="exam-card-body">
+      <strong>Q：简述价值链分析与核心竞争力打造的关系。</strong><br>
+      <small style="color:var(--text-muted)">考察知识点：§5价值链分析 + §6核心专长；考察关联：价值链侧重维护发展，VRIN标准侧重发掘；价值链找关键活动环节→建立核心专长</small>
+    </div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-card-header">
+      <span class="exam-year-badge">2019年</span>
+      <span class="exam-type-badge">笔试·简答</span>
+    </div>
+    <div class="exam-card-body">
+      <strong>Q：简述成本领先战略的实现路径。</strong><br>
+      <small style="color:var(--text-muted)">考察知识点：§5价值链（关键环节成本控制）+ §3企业资源（规模资源）+ §6核心专长（成本管理核心专长）；经验曲线也是关联工具</small>
+    </div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-card-header">
+      <span class="exam-year-badge">2016年</span>
+      <span class="exam-type-badge">面试</span>
+    </div>
+    <div class="exam-card-body">
+      <strong>Q：如何看待企业的核心竞争力？</strong><br>
+      <small style="color:var(--text-muted)">考察知识点：§6核心专长分析；需区分核心专长vs核心竞争力的教材立场；VRIN四标准；建立保持发挥三路径</small>
+    </div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-card-header">
+      <span class="exam-year-badge">2022年</span>
+      <span class="exam-type-badge">预测·论述</span>
+    </div>
+    <div class="exam-card-body">
+      <strong>Q（预测）：论述企业内部环境分析的主要内容及其与战略选择的关系。</strong><br>
+      <small style="color:var(--text-muted)">考察知识点：§1～§6全部内容；历史→资源→能力→价值链→核心专长的逻辑链条；内部分析为战略选择提供依据</small>
+    </div>
+  </div>
+
+  <div class="exam-card">
+    <div class="exam-card-header">
+      <span class="exam-year-badge">2025年</span>
+      <span class="exam-type-badge">高预测·案例</span>
+    </div>
+    <div class="exam-card-body">
+      <strong>Q（预测）：以某企业为案例，分析其资源、能力和核心专长与战略选择之间的关系。</strong><br>
+      <small style="color:var(--text-muted)">对应能力拓展题；建议准备华为/阿里巴巴/中集集团案例；需覆盖§3+§4+§5+§6</small>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 终极串联 ===== -->
+<div id="sec-ultimate" class="section-box">
+  <div class="section-title">
+    <div class="section-icon">🔗</div>
+    本章知识终极串联（逻辑流程图）
+  </div>
+  <div class="ultimate-flow">
+    <div class="uf-row">
+      <div class="uf-box">📋 确定分析起点</div>
+      <div class="uf-arrow">→</div>
+      <div class="uf-desc">基于企业<strong>现行战略面临的问题</strong>，结合<strong>外部环境分析（第3章）</strong>提供的可能选择开始分析</div>
+    </div>
+    <div class="uf-row">
+      <div class="uf-box">🏛️ §2 历史分析</div>
+      <div class="uf-arrow">→</div>
+      <div class="uf-desc">了解企业<strong>成长路径、价值观、管理传统、行为模式</strong>，为资源能力分析提供背景和解释</div>
+    </div>
+    <div class="uf-row">
+      <div class="uf-box">🏗️ §3 资源分析</div>
+      <div class="uf-arrow">→</div>
+      <div class="uf-desc">识别企业拥有的<strong>人力/有形/无形资源</strong>（质量、数量、稀缺性、可获取性），判断<strong>资源优势与劣势</strong></div>
+    </div>
+    <div class="uf-row">
+      <div class="uf-box">⚡ §4 能力分析</div>
+      <div class="uf-arrow">→</div>
+      <div class="uf-desc">评估企业<strong>管理/经营/整合/动态</strong>四类能力的价值性、稀缺性、难以获取性、不可替代性，判断<strong>能力优势与劣势</strong></div>
+    </div>
+    <div class="uf-row">
+      <div class="uf-box">🔗 §5 价值链分析</div>
+      <div class="uf-arrow">→</div>
+      <div class="uf-desc">找到<strong>价值创造的关键活动环节</strong>，识别企业在价值链上哪些环节具有优势，判断外包决策，为核心专长定位</div>
+    </div>
+    <div class="uf-row">
+      <div class="uf-box">💎 §6 核心专长</div>
+      <div class="uf-arrow">→</div>
+      <div class="uf-desc">用<strong>VRIN四标准</strong>判断企业是否拥有核心专长，明确<strong>建立、保持和发挥</strong>核心专长的方式（规模/范围/交易成本）</div>
+    </div>
+    <div class="uf-row">
+      <div class="uf-box">📊 §7 分析工具</div>
+      <div class="uf-arrow">→</div>
+      <div class="uf-desc">运用<strong>经验曲线/雷达图/战略要素评价法</strong>对上述分析进行量化评估，提高客观性</div>
+    </div>
+    <div class="uf-row">
+      <div class="uf-box" style="background:rgba(57,73,171,0.1); border-color:#3949ab;">➡️ 输出到第5章</div>
+      <div class="uf-arrow">→</div>
+      <div class="uf-desc">内部分析结果（S优势+W劣势）与第3章外部分析结果（O机会+T威胁）在第5章进行<strong>SWOT综合</strong>，确认战略问题</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 30秒复习 ===== -->
+<div id="sec-quick">
+  <div class="quick-review">
+    <div class="qr-title">⚡ 30秒复习模块（超简版）</div>
+    <div class="qr-grid">
+      <div class="qr-item">
+        <div class="qr-item-title">§1 内部分析三特点</div>
+        <div class="qr-item-content">复杂性 · 不确定性 · 利益冲突性</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-item-title">§3 企业资源三分法</div>
+        <div class="qr-item-content">人力资源 · 有形资源 · 无形资源</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-item-title">§4 企业能力四类型</div>
+        <div class="qr-item-content">管理 → 经营 → 整合 → 动态（层层递进）</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-item-title">§5 价值链5+4结构</div>
+        <div class="qr-item-content">基本"输制输营服"<br>支持"基人技采"</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-item-title">§6 核心专长四标准</div>
+        <div class="qr-item-content">"有稀难替"<br>有价值·稀缺·难以模仿·不可替代</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-item-title">§7 三大分析工具</div>
+        <div class="qr-item-content">经验曲线 · 雷达图 · 战略要素评价法</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-item-title">核心专长发挥三路径</div>
+        <div class="qr-item-content">规模经济（横向扩张）<br>范围经济（相关多元化）<br>降低交易成本（纵向整合）</div>
+      </div>
+      <div class="qr-item">
+        <div class="qr-item-title">本章核心逻辑</div>
+        <div class="qr-item-content">历史→资源→能力→<br>价值链→核心专长→<br>战略问题确认（第5章）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 背诵版总结 ===== -->
+<div id="sec-recite">
+  <div class="recite-box">
+    <div class="recite-title">🎯 背诵版总结（复试口述版）</div>
+    <div class="recite-content">
+      <div class="recite-point">
+        <span class="recite-key">【内部环境分析】</span>以识别企业相对竞争对手的优势与劣势为目的，具有<span class="recite-key">复杂性、不确定性和利益冲突性</span>三大特点，主要包括历史分析、资源分析、能力分析、价值链分析和核心专长分析五个方面。
+      </div>
+      <div class="recite-point">
+        <span class="recite-key">【企业资源】</span>可分为<span class="recite-key">人力资源、有形资源（实物/财务/组织）和无形资源（技术/声誉）</span>三类；按来源分为自有资源和可利用资源。无形资源是难以模仿的竞争优势来源。
+      </div>
+      <div class="recite-point">
+        <span class="recite-key">【企业能力】</span>分为<span class="recite-key">管理、经营、整合、动态</span>四类，层层递进。能力分析需关注价值性、稀缺性、难以获取性、不可替代性四大特性。整合能力和动态能力是高竞争环境下的关键。
+      </div>
+      <div class="recite-point">
+        <span class="recite-key">【价值链分析】</span>波特提出，分为<span class="recite-key">基本活动（输入物流/制造/输出物流/营销销售/服务）</span>和<span class="recite-key">支持活动（基础设施/人力资源管理/技术开发/采购）</span>。企业是更大价值创造体系的一部分，需决定哪些活动自做、哪些外包。
+      </div>
+      <div class="recite-point">
+        <span class="recite-key">【核心专长】</span>是企业带来独特且持续竞争优势的能力，需满足<span class="recite-key">"有稀难替"</span>四个标准——有价值（顾客认可）、稀缺（竞争对手少有）、难以模仿、不可替代。发挥路径：规模经济（横向）/ 范围经济（相关多元化）/ 降低交易成本（纵向整合）。强调<span class="recite-key">"做专才能做长"</span>。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 自我检测 ===== -->
+<div id="sec-test" class="test-section">
+  <div class="section-box">
+    <div class="section-title">
+      <div class="section-icon">✅</div>
+      课后自我检测
+    </div>
+
+    <div style="margin-bottom:18px;">
+      <div style="font-size:0.88rem; font-weight:700; color:var(--text-secondary); margin-bottom:10px;">📚 教材课后思考题</div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">1</span><span>企业历史会以何种方式、在多大程度上影响企业的未来战略？</span></div>
+        <div class="test-hint">💡 提示：路径依赖、价值观形成、管理传统对战略取舍的影响</div>
+      </div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">2</span><span>为什么内部环境分析具有复杂性、不确定性和利益冲突性？</span></div>
+        <div class="test-hint">💡 提示：三个特点的成因分析，结合实例说明</div>
+      </div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">3</span><span>如何理解企业资源和能力优势的关键性？</span></div>
+        <div class="test-hint">💡 提示：价值链上关键环节+VRIN标准+与竞争对手相比</div>
+      </div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">4</span><span>如何理解企业资源和能力优势的可持续性？</span></div>
+        <div class="test-hint">💡 提示：难以模仿性（历史积累、综合性、文化嵌入）+ 不可替代性</div>
+      </div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">5</span><span>核心专长是如何建立、保持和发挥的？</span></div>
+        <div class="test-hint">💡 提示：建立=清晰定位+VRIN优势有机整合；发挥=规模/范围/交易成本三路径</div>
+      </div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">6</span><span>竞争优势可持续性的主要来源是什么？</span></div>
+        <div class="test-hint">💡 提示：难以模仿性 + 不可替代性（VRIN标准后两项）</div>
+      </div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">7</span><span>为什么核心专长可能对企业发展产生两种性质完全不同的作用？</span></div>
+        <div class="test-hint">💡 提示：正向=持续竞争优势；负向=核心刚性，在环境变化时成为变革障碍（柯达案例）</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:18px;">
+      <div style="font-size:0.88rem; font-weight:700; color:var(--text-secondary); margin-bottom:10px;">📝 历年真题练习</div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">T1</span><span>【2020年笔试】简述价值链分析与核心竞争力打造的关系。（约200字）</span></div>
+      </div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">T2</span><span>【2016年面试】结合具体案例谈谈你对企业核心竞争力的理解。</span></div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:0.88rem; font-weight:700; color:var(--text-secondary); margin-bottom:10px;">🔮 预测题</div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">P1</span><span>【高预测·论述】以某企业为例，运用资源、能力和价值链分析框架，判断该企业的核心专长，并分析其战略选择是否有利于核心专长的建立、保持和发挥。（约400字）</span></div>
+        <div class="test-hint">💡 建议案例：华为/比亚迪/中集集团/阿里巴巴</div>
+      </div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">P2</span><span>【高预测·简答】简述企业能力的四种类型及其在战略管理中的重要性。（约150字）</span></div>
+      </div>
+      <div class="test-card">
+        <div class="test-q"><span class="test-num">P3</span><span>【中预测·名词解释】核心专长（Core Competence）</span></div>
+        <div class="test-hint">💡 要点：定义+提出者+四标准+有机整合+"做专才能做长"</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<div style="text-align:center; padding:24px; color:var(--text-muted); font-size:0.8rem; border-top:1px solid var(--border-color); margin-top:24px;">
+  📚 中南大学企业管理学硕复试笔记 · 依据《企业战略管理（第二版·蓝海林）》整理<br>
+  第四章 内部环境分析 · P99–P119 · 2016–2025历年真题整合版<br>
+  <span style="color:#3949ab;">当前完成：第4章 全部内容（§1–§7）</span>
+</div>
+
+</div><!-- end main-container -->
+
+<!-- 返回顶部按钮 -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ===== 夜间模式 =====
+function toggleDark() {
+  document.body.classList.toggle('dark-mode');
+  const btn = document.querySelector('.nav-btn[onclick="toggleDark()"]');
+  if (document.body.classList.contains('dark-mode')) {
+    btn.textContent = '☀️ 日间';
+    localStorage.setItem('darkMode', 'on');
+  } else {
+    btn.textContent = '🌙 夜间';
+    localStorage.setItem('darkMode', 'off');
+  }
+}
+if (localStorage.getItem('darkMode') === 'on') {
+  document.body.classList.add('dark-mode');
+  const btn = document.querySelector('.nav-btn[onclick="toggleDark()"]');
+  if (btn) btn.textContent = '☀️ 日间';
+}
+
+
+// ===== 返回顶部按钮显示/隐藏 =====
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('back-top');
+  if (window.scrollY > 300) btn.style.opacity = '1';
+  else btn.style.opacity = '0';
+});
+document.getElementById('back-top').style.opacity = '0';
+document.getElementById('back-top').style.transition = 'opacity 0.3s';
+
+// ===== 导航高亮当前节 =====
+const sections = document.querySelectorAll('[id^="sec-"]');
+const navItems = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', function() {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navItems.forEach(item => {
+    item.style.background = '';
+    item.style.color = '';
+    if (item.getAttribute('href') === '#' + current) {
+      item.style.background = 'rgba(255,255,255,0.2)';
+      item.style.color = '#fff';
+    }
+  });
+});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

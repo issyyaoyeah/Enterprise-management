@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十一章 · 战略实施的管理与控制</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1f2e;
+    --bg: #f0f4f8;
+    --bg2: #e1eaf2;
+    --accent:  #1a56db;
+    --accent2: #f59e0b;
+    --accent3: #0e7c6a;
+    --accent4: #7c3aed;
+    --accent5: #dc2626;
+    --gold: #d97706;
+    --card-bg: #ffffff;
+    --border: #b8cfe8;
+    --tier1: #1a56db;
+    --tier2: #f59e0b;
+    --tier3: #0e7c6a;
+    --shadow: 0 4px 20px rgba(15,31,46,0.10);
+  }
+
+  body.night {
+    --ink: #e2e8f0;
+    --bg: #0f172a;
+    --bg2: #1e293b;
+    --card-bg: #1e293b;
+    --border: #334155;
+    --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 0 0 80px;
+    transition: background .3s, color .3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0f1f2e 0%, #0c2d6b 50%, #1a56db 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(60deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 22px);
+  }
+  .hero-day {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: #93c5fd; }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,.75);
+    max-width: 700px;
+    line-height: 1.7;
+  }
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 24px;
+  }
+  .hero-tag {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,.9);
+  }
+
+  /* ── FIXED TOP NAV ── */
+  .fixed-nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 40px;
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 12px rgba(0,0,0,.3);
+    transition: background .3s;
+  }
+  body.night .fixed-nav { background: #0f172a; }
+  .toc-label { font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-right: 6px; }
+  .fixed-nav a {
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 12px;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .fixed-nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+  .nav-controls { margin-left: auto; display: flex; gap: 8px; }
+  .btn-night, .btn-top {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.25);
+    color: #fff;
+    border-radius: 10px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all .2s;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .btn-night:hover, .btn-top:hover { background: rgba(255,255,255,.25); }
+
+  /* ── SEARCH BAR ── */
+  .search-bar {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 40px;
+    display: flex; align-items: center; gap: 12px;
+    transition: background .3s;
+  }
+  .search-bar input {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 13.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-bar input:focus { border-color: var(--accent); }
+  .search-count { font-size: 12px; color: #999; white-space: nowrap; }
+  .highlight-search { background: #fef08a; border-radius: 2px; }
+.highlight-search.hl-cur { background: #fb923c !important; color: #fff !important; outline: 2px solid #f97316; border-radius: 3px; }
+.search-nav-btn { background: var(--card-bg); color: var(--ink,#1e2a3a); border: 1px solid var(--border); border-radius: 6px; padding: 4px 11px; cursor: pointer; font-size: 14px; font-weight: 700; transition: background .15s; }
+.search-nav-btn:hover:not(:disabled) { background: #2563eb; color: #fff; border-color: #2563eb; }
+.search-nav-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+  /* ── CASE BANNER ── */
+  .case-banner {
+    margin: 40px 40px 0;
+    background: linear-gradient(135deg, #0f1f2e, #0c2d6b);
+    border-radius: 16px;
+    padding: 30px 36px;
+    color: #fff;
+    border-left: 6px solid var(--gold);
+  }
+  .case-banner .case-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 3px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .case-banner h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 12px; }
+  .case-banner p { font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.8; }
+  .case-key { margin-top: 14px; font-size: 13px; color: var(--gold); font-weight: 500; }
+
+  /* ── MAIN LAYOUT ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── SECTION HEADING ── */
+  .section-title {
+    display: flex; align-items: center; gap: 14px;
+    margin: 50px 0 24px;
+  }
+  .section-title .sec-num {
+    background: var(--ink);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    transition: background .3s;
+  }
+  .section-title h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .section-title .page-ref {
+    font-size: 12px; color: #999;
+    font-family: 'JetBrains Mono', monospace;
+    margin-left: auto;
+  }
+
+  /* ── KNOWLEDGE CARD ── */
+  .kcard {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow .2s, background .3s, border-color .3s;
+  }
+  .kcard:hover { box-shadow: 0 8px 32px rgba(15,31,46,.15); }
+
+  .kcard-header {
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 16px;
+    background: linear-gradient(to right, #f0f6ff, var(--card-bg));
+  }
+  body.night .kcard-header { background: linear-gradient(to right, #1e3a5f, var(--card-bg)); }
+  .kcard-num {
+    background: var(--ink);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 600;
+    padding: 4px 10px; border-radius: 6px;
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .kcard-title-wrap { flex: 1; }
+  .kcard-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .kcard-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* badges */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; border-radius: 12px;
+    font-size: 11.5px; font-weight: 500;
+  }
+  .badge-tier1 { background: #dbeafe; color: var(--tier1); border: 1px solid #93c5fd; }
+  .badge-tier2 { background: #fef3e2; color: var(--tier2); border: 1px solid #fcd98a; }
+  .badge-tier3 { background: #e6f7f4; color: var(--tier3); border: 1px solid #9ed9cc; }
+  .badge-page  { background: #f5f0ff; color: var(--accent4); border: 1px solid #ddd6fe; }
+  .badge-exam  { background: #fff1f2; color: var(--accent5); border: 1px solid #fecaca; }
+  .badge-year  { background: #fffbeb; color: var(--gold);    border: 1px solid #fde68a; }
+
+  .kcard-body { padding: 24px 28px; }
+
+  /* blocks inside cards */
+  .block {
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    border-radius: 10px;
+  }
+  .block:last-child { margin-bottom: 0; }
+  .block-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .block-label::before { content: ''; display: block; width: 18px; height: 2px; }
+
+  .block-analogy  { background: #fefce8; }
+  body.night .block-analogy { background: #2d2a14; }
+  .block-analogy .block-label { color: var(--gold); }
+  .block-analogy .block-label::before { background: var(--gold); }
+
+  .block-definition { background: #eff6ff; }
+  body.night .block-definition { background: #172554; }
+  .block-definition .block-label { color: var(--accent); }
+  .block-definition .block-label::before { background: var(--accent); }
+
+  .block-memory { background: #f0fdf4; }
+  body.night .block-memory { background: #14301e; }
+  .block-memory .block-label { color: var(--accent3); }
+  .block-memory .block-label::before { background: var(--accent3); }
+
+  .block-exam { background: #f5f0ff; }
+  body.night .block-exam { background: #2d1f4f; }
+  .block-exam .block-label { color: var(--accent4); }
+  .block-exam .block-label::before { background: var(--accent4); }
+
+  .block-tip { background: #fff1f2; }
+  body.night .block-tip { background: #3b1218; }
+  .block-tip .block-label { color: var(--accent5); }
+  .block-tip .block-label::before { background: var(--accent5); }
+
+  /* quote */
+  .quote {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+    line-height: 1.9;
+    margin: 12px 0;
+    position: relative;
+  }
+  .quote::before { content: '"'; font-size: 60px; color: rgba(255,255,255,.1); position: absolute; top: -6px; left: 12px; font-family: serif; line-height: 1; }
+  .quote p { position: relative; z-index: 1; }
+  .quote mark { background: #93c5fd; color: var(--ink); padding: 0 3px; border-radius: 3px; }
+
+  /* comparison table */
+  .ctable { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  .ctable th { background: var(--ink); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+  .ctable td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ctable tr:nth-child(even) td { background: var(--bg2); }
+  .ctable tr:last-child td { border-bottom: none; }
+  .ctable th:first-child { border-radius: 8px 0 0 0; }
+  .ctable th:last-child  { border-radius: 0 8px 0 0; }
+
+  /* list */
+  .kl { padding-left: 20px; }
+  .kl li { margin-bottom: 6px; }
+  .kl li::marker { color: var(--accent); }
+
+  /* keyword */
+  .kw  { background: rgba(26,86,219,.12); color: var(--accent); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw2 { background: rgba(14,124,106,.12); color: var(--accent3); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw3 { background: rgba(245,158,11,.15); color: var(--gold); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+
+  /* flow diagram */
+  .flow {
+    display: flex; align-items: stretch; gap: 0;
+    flex-wrap: wrap; margin: 14px 0;
+  }
+  .flow-step {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    flex: 1; min-width: 140px;
+    text-align: center; font-size: 13px;
+  }
+  .flow-arrow {
+    display: flex; align-items: center;
+    color: var(--accent); font-size: 20px;
+    padding: 0 6px; flex-shrink: 0;
+  }
+  .flow-step .fs-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); margin-bottom: 4px; }
+  .flow-step .fs-title { font-weight: 700; font-size: 14px; color: var(--ink); }
+  .flow-step .fs-body { font-size: 12px; color: #555; margin-top: 4px; }
+
+  /* ── LOGIC MAP ── */
+  .logic-map {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 30px 0;
+    box-shadow: var(--shadow);
+    transition: background .3s;
+  }
+  .logic-map h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px; margin-bottom: 20px;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logic-map h3::before { content: '🗺️'; }
+
+  .lm-node {
+    background: var(--bg2);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    flex: 1; min-width: 150px;
+    font-size: 13px;
+  }
+  .lm-node.green  { border-color: var(--accent3); background: #e6f7f4; }
+  .lm-node.blue   { border-color: var(--accent);  background: #eff6ff; }
+  .lm-node.yellow { border-color: var(--gold);    background: #fef9e7; }
+  .lm-node.red    { border-color: var(--accent5); background: #fff1f2; }
+  .lm-node.purple { border-color: var(--accent4); background: #f5f0ff; }
+  .lm-node .ln-title { font-weight: 700; margin-bottom: 4px; }
+
+  /* BSC 四象限 */
+  .bsc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+    font-size: 13.5px;
+  }
+  .bsc-cell {
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .bsc-f { background: #dbeafe; border: 2px solid #93c5fd; }
+  .bsc-c { background: #d1fae5; border: 2px solid #6ee7b7; }
+  .bsc-p { background: #fef3c7; border: 2px solid #fcd34d; }
+  .bsc-l { background: #f5f0ff; border: 2px solid #c4b5fd; }
+  .bsc-cell .bc-icon { font-size: 22px; margin-bottom: 6px; }
+  .bsc-cell .bc-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; color: var(--ink); }
+  .bsc-cell .bc-sub { font-size: 12.5px; color: #555; }
+  .bsc-center {
+    grid-column: 1/3;
+    text-align: center;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 700;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+  }
+
+  /* matrix box */
+  .matrix { display: grid; gap: 2px; margin: 12px 0; font-size: 13px; border-radius: 10px; overflow: hidden; }
+  .mx-cell { padding: 12px 16px; display: flex; align-items: center; justify-content: center; text-align: center; font-weight: 500; }
+  .mx-head  { background: var(--ink); color: #fff; font-weight: 600; }
+  .mx-label { background: #0c2d6b; color: #fff; font-weight: 600; }
+  .mx-c1 { background: #d1fae5; color: #065f46; }
+  .mx-c2 { background: #dbeafe; color: #1e40af; }
+  .mx-c3 { background: #fef3c7; color: #92400e; }
+  .mx-c4 { background: #fce7f3; color: #9d174d; }
+
+  /* CHAIN REVIEW */
+  .chain {
+    background: linear-gradient(135deg, #0f1f2e 0%, #0c2d6b 100%);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 50px 0 30px;
+    color: #fff;
+  }
+  .chain h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px; font-weight: 900;
+    margin-bottom: 6px;
+  }
+  .chain .chain-sub { color: rgba(255,255,255,.55); font-size: 13px; margin-bottom: 28px; }
+  .chain-flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
+  .chain-step {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    border-radius: 12px;
+    padding: 18px 20px;
+    flex: 1; min-width: 160px;
+  }
+  .chain-arrow {
+    display: flex; align-items: center;
+    color: rgba(255,255,255,.3); font-size: 22px;
+    padding: 0 6px; flex-shrink: 0;
+  }
+  .chain-step .step-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: #93c5fd; letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .chain-step .step-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .chain-step .step-body { font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.7; }
+  .chain-summary {
+    margin-top: 24px;
+    background: rgba(255,255,255,.06);
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 13.5px;
+    color: rgba(255,255,255,.85);
+    line-height: 1.9;
+    border-left: 4px solid #93c5fd;
+  }
+
+  /* QUIZ */
+  .quiz {
+    background: var(--bg2);
+    border: 2px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 40px;
+    margin: 0 0 40px;
+    transition: background .3s;
+  }
+  .quiz h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .quiz-sub { color: #888; font-size: 13px; margin-bottom: 24px; }
+  .q-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 14px;
+    transition: background .3s;
+  }
+  .q-item:last-child { margin-bottom: 0; }
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--accent); letter-spacing: 2px;
+    margin-bottom: 6px; font-weight: 600;
+  }
+  .q-text { font-weight: 500; color: var(--ink); margin-bottom: 10px; font-size: 14.5px; }
+  .q-hint {
+    font-size: 12.5px; color: #777;
+    border-top: 1px solid var(--border);
+    padding-top: 10px; margin-top: 10px;
+  }
+  .q-hint span { color: var(--accent); font-weight: 600; }
+  .q-exam { font-size: 12px; color: var(--accent5); background: #fff1f2; border-radius: 6px; padding: 2px 8px; display: inline-block; margin-bottom: 8px; }
+
+  /* details/summary collapse */
+  details { margin-bottom: 10px; }
+  details summary {
+    cursor: pointer;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--accent);
+    user-select: none;
+    transition: background .2s;
+    list-style: none;
+  }
+  details summary::before { content: '▶ '; font-size: 10px; }
+  details[open] summary::before { content: '▼ '; }
+  details summary:hover { background: var(--border); }
+  details .detail-body {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+  }
+
+  /* 30 second module */
+  .flash {
+    background: linear-gradient(135deg, #1e3a8a, #1a56db);
+    color: #fff;
+    border-radius: 16px;
+    padding: 30px 36px;
+    margin: 30px 0;
+  }
+  .flash h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 19px; font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .flash .flash-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    margin-bottom: 10px;
+  }
+  .flash .fi-num {
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,.2);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .flash .fi-text { font-size: 13.5px; color: rgba(255,255,255,.9); line-height: 1.7; }
+  .flash mark { background: #93c5fd; color: #0f1f2e; padding: 0 3px; border-radius: 2px; }
+
+  /* FOOTER */
+  .footer-bar {
+    background: var(--ink);
+    color: rgba(255,255,255,.4);
+    text-align: center; padding: 20px;
+    font-size: 12px; margin-top: 60px;
+    transition: background .3s;
+  }
+
+  /* divider */
+  .divider { border: none; border-top: 2px dashed var(--border); margin: 30px 0; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  @media(max-width: 760px) {
+    .hero { padding: 40px 20px; }
+    .hero h1 { font-size: 26px; }
+    .main { padding: 0 16px; }
+    .fixed-nav { padding: 10px 16px; }
+    .case-banner { margin: 20px 16px 0; padding: 20px; }
+    .chain { padding: 24px 20px; }
+    .quiz { padding: 24px 16px; }
+    .kcard-body { padding: 16px; }
+    .kcard-header { padding: 14px 16px; }
+    .bsc-grid { grid-template-columns: 1fr; }
+    .bsc-center { grid-column: 1; }
+    .nav-controls { display: none; }
+  }
+</style>
+
+
+<script>window._PAGE_TEXT='第十一章 · 战略实施的管理与控制 \n \n \n \n \n \n \n 第十一章 · 战略实施 \n 战略实施的 管理与控制 \n 战略再好，不落地等于零。本章解决"如何把战略变成行动"的核心问题：组织结构如何匹配战略？领导力如何驱动执行？文化如何支撑变革？如何建立战略控制系统？中南大学高频考点：企业文化功能、平衡计分卡、战略控制类型、领导力。 \n \n 📍 教材 P295–354 \n 🔥 复试高频章节 \n ✍️ 简答 · 论述 · 案例 \n ⭐ 结构追随战略 \n 🏆 2016·2018·2025考察 \n \n \n \n \n 目录 \n 章节逻辑图 \n §1 战略实施概述 \n §2 组织结构 \n §3 领导力 \n §4 企业文化 \n §5 战略控制 \n §6 平衡计分卡 \n 终极串联 \n 自我检测 \n \n 🌙 夜间模式 \n ⬆ 返回顶部 \n \n \n \n \n \n \n ↑ \n ↓ \n \n \n \n 📖 导入案例 · 战略实施失败典型 \n 诺基亚：战略清晰，实施失败——"我们并没有做错任何事，但不知为何我们输了" \n 诺基亚曾是全球手机市场霸主，2007年苹果发布iPhone，诺基亚的战略部门也预见到了智能机时代的来临，甚至内部有类似触屏手机的原型产品。但诺基亚失败了——原因不是战略制定，而是 战略实施 ：官僚化组织结构妨碍创新，中层管理者压制坏消息（"领导力缺失"），企业文化崇尚"稳定"而非"颠覆"，控制系统不能及时感知战略偏差。 \n ⚠️ 核心教训： 战略实施 = 组织结构 + 领导力 + 企业文化 + 控制系统 ，四者任何一个短板都会让最好的战略计划化为泡影。 \n \n \n \n \n 本章与其他章节的逻辑关系 \n \n \n 章节 关联逻辑 \n 第1章 战略概述 战略管理过程 = 分析→制定→ 实施→控制 ；本章是战略管理完整闭环的后半段 \n 第2–5章 战略分析 外部机会与内部能力决定了战略实施需要什么样的组织结构和文化 \n 第6–8章 战略制定 业务层/公司层/国际化战略是实施的"输入"，本章是将这些战略转化为行动的"执行手册" \n 第9–10章 战略实施（组织/人力） 第9-10章讲组织设计与人力资源配套，本章讲领导力、文化与控制——共同构成战略实施的完整体系 \n 第12章（如有） 战略控制结果反馈回战略分析，驱动下一轮战略调整——战略管理的动态循环 \n \n \n \n 📌 本章各节内部逻辑关系 \n \n \n §1 \n 战略实施概述 \n 含义·特征 制定 vs 实施 主要内容 \n \n → \n \n §2 \n 组织结构 \n 结构追随战略 5种结构类型 匹配原则 \n \n → \n \n §3 \n 领导力 \n 战略领导者 TMT特征 6大职责 \n \n → \n \n §4 \n 企业文化 \n 三层次模型 强弱文化 文化变革 \n \n → \n \n §5-6 \n 战略控制 \n 4种控制类型 平衡计分卡 控制系统设计 \n \n \n 逻辑主线： 战略实施是什么 → 结构如何支撑战略 → 领导如何驱动执行 → 文化如何塑造行为 → 控制如何保证方向 \n \n \n \n § 01 \n 战略实施概述 \n P295–302 \n \n \n \n 11.1.1 \n \n 战略实施的含义与特征 \n \n ⭐⭐⭐ 必背 \n P295-296 \n 名词解释·简答 \n 2025年考察 \n \n \n \n \n \n 📖 教材定义 \n 战略实施 是指将战略计划转化为行动的过程，即通过对企业资源（人、财、物、信息）的合理配置，借助组织结构、激励机制和企业文化等手段，使企业全体成员都致力于实现战略目标的管理过程。\n \n \n 🍰 小学生版 \n 战略制定就像"设计建筑图纸"，战略实施就像"按图纸盖房子"。图纸再完美，如果工人不对、工具不够、施工方法不当，房子也会盖歪。很多企业不是输在战略制定上，而是输在战略实施上。\n \n 战略实施的四大特征： \n \n # 特征 说明 \n ① 复杂性 涉及组织结构、人力资源、文化、控制等多个子系统的协同配套 \n ② 系统性 各实施要素相互依赖，任何一个环节的失误都会影响整体效果 \n ③ 动态性 外部环境和内部条件的变化要求战略实施方式不断调整 \n ④ 长期性 战略实施效果的显现需要时间积累，不能期望立竿见影 \n \n \n 🎯 复试回答模板 \n 定义 → 特征 → 与制定的区别 → 举例 \n "战略实施是将战略计划转化为具体行动的过程，具有复杂性、系统性、动态性和长期性四大特征。与战略制定不同，战略实施更强调执行层面，需要通过调整组织结构、激励员工、塑造文化、实施控制来保证战略目标的实现。以华为为例，其\'狼性文化\'和\'轮值CEO\'制度正是将国际化战略转化为行动的重要实施工具。" \n \n \n 📌 复试延伸问题 \n \n \n 老师可能追问：战略实施失败的主要原因有哪些？（答：目标不清晰、资源不匹配、组织阻力、文化冲突、控制缺失） \n 老师可能追问：战略实施与战略变革有何关系？（答：战略变革时，实施难度更大，需要专门的变革管理） \n 老师可能追问：结合当前数字化背景，战略实施有何新挑战？（答：跨部门协同更复杂、技术变化更快、组织灵活性要求更高） \n \n \n \n \n \n \n \n 11.1.2 \n \n 战略制定与战略实施的区别 \n \n ⭐⭐⭐ 重要 \n P296-297 \n 对比题·简答 \n \n \n \n \n \n \n 维度 \n 战略制定 \n 战略实施 \n \n 核心问题 做什么（What） 怎么做（How） \n 主要工作 分析→选择→制定计划 行动→协调→执行 \n 关注焦点 有效性（做对的事） 效率（把事做对） \n 知识要求 分析能力、判断力 激励能力、领导力 \n 时间导向 未来导向 当下与近期导向 \n 参与层级 高层为主 全员参与 \n 核心难题 信息不完整、不确定 人的阻力、资源约束 \n \n \n 🧠 助记口诀 \n 制定：分析家的天下（做什么·想清楚·少数人）；实施：行动家的战场（怎么做·干出来·全体人） \n \n \n \n \n \n 11.1.3 \n \n 战略实施的主要内容（五要素） \n \n ⭐⭐⭐⭐ 高频 \n P297-302 \n 简答·论述 \n \n \n \n \n \n 📖 五大核心内容 \n \n \n 01 \n 年度目标 \n 将长期战略目标分解为可执行的年度目标 \n \n → \n \n 02 \n 政策制定 \n 制定指导员工行为的政策和规章制度 \n \n → \n \n 03 \n 资源分配 \n 将有限资源向支持战略的方向倾斜 \n \n → \n \n 04 \n 组织结构 \n 调整组织结构以匹配战略需求 \n \n → \n \n 05 \n 激励机制 \n 建立与战略目标一致的激励与考核体系 \n \n \n \n \n 🧠 助记口诀 \n 「年（度目标）政（策）资（源）组（织）激（励）」——年政资组激，缺一不可 \n \n \n \n \n \n § 02 \n 组织结构与战略实施 \n P302–318 \n \n \n \n 11.2.1 \n \n 钱德勒命题：结构追随战略 \n \n ⭐⭐⭐⭐⭐ 核心必背 \n P302-304 \n 名词解释·简答·论述 \n 复试高频 \n \n \n \n \n \n 📖 教材原句（必背） \n 美国管理史学家 钱德勒（Chandler） 通过对杜邦、通用汽车、标准石油、西尔斯百货四家大公司的研究，提出了著名命题： 结构追随战略（Structure Follows Strategy） 。即企业随着战略的变化，其组织结构也必须随之调整——战略的改变最终必然引发组织结构的变化。 \n \n \n 🍰 小学生版 \n 你要开一家卖冰淇淋的小摊（战略），就需要一个人站着卖、一个人做冰淇淋的两人组织（结构）。后来你决定开成连锁店（战略改变），一两个人就搞不定了，需要总店、分店、配送部门（结构随之改变）。这就是"结构追随战略"。\n \n \n 📖 组织结构演变的四阶段（钱德勒） \n \n \n 阶段一 \n 单一产品·单一市场 \n → 简单结构（老板亲自管理） \n \n → \n \n 阶段二 \n 单一产品·扩大市场 \n → 职能制结构（U型） \n \n → \n \n 阶段三 \n 多产品·多市场 \n → 事业部制（M型） \n \n → \n \n 阶段四 \n 全球化·多元化 \n → 矩阵制/网络组织 \n \n \n \n \n 🎯 复试回答模板 \n 背景 → 命题内容 → 四阶段演变 → 意义 → 举例 \n "钱德勒通过对四家美国大企业的历史研究，提出了\'结构追随战略\'命题，即企业的组织结构必须随战略的变化而调整。从历史来看，企业随着战略从单一产品到多元化的演变，经历了从简单结构→职能制→事业部制→矩阵制的组织变革。这一命题的意义在于：战略管理者在制定新战略时，必须同步考虑组织结构的匹配调整，否则\'新战略穿旧衣\'将导致战略实施失败。" \n \n \n 💡 管理学联系：结构追随战略 vs 战略追随结构 \n \n 钱德勒命题的局限性： 资源基础观（RBV）认为，企业的组织能力和结构也会反过来塑造和约束战略选择，即"战略也追随结构"。两者存在辩证关系： \n \n 市场基础观（I/O观）→ 结构追随战略（外部机会驱动） \n 资源基础观（RBV）→ 战略追随结构（内部能力约束） \n \n 实践中两者相互作用，是动态循环关系。 \n \n \n \n \n \n \n 11.2.2 \n \n 五种主要组织结构类型 \n \n ⭐⭐⭐⭐⭐ 必背核心 \n P304-316 \n 简答·论述·对比 \n 历年高频 \n \n \n \n \n \n \n 结构类型 \n 适用战略 \n 优点 \n 缺点 \n 典型企业 \n \n \n 简单结构 （直线制） \n 单一产品、创业期、小规模 \n 决策灵活快速、协调成本低、责权明确 \n 高度依赖老板个人能力、规模扩大后管理超载 \n 创业公司、小微企业 \n \n \n 职能制结构 （U型） \n 单一产品扩大市场阶段、成本领先战略 \n 专业化程度高、规模经济、管理效率高 \n 跨部门协调困难、适应性差、各职能本位主义 \n 宝钢、大型专业制造商 \n \n \n 事业部制 （M型） \n 多产品多市场、相关/不相关多元化 \n 各事业部自主经营、激励充分、总部可专注战略 \n 可能产生事业部本位主义、总部控制难 \n 通用电气（GE）、三星、格力 \n \n \n 矩阵制结构 \n 需要同时兼顾产品和职能两条线（如工程项目型） \n 资源共享充分、跨职能协调好、应对复杂任务 \n 双重领导、责权不清、冲突多、管理成本高 \n 波音、麦肯锡、NASA \n \n \n 网络组织 （虚拟组织） \n 动态竞争环境、数字化时代、轻资产战略 \n 高度灵活、快速响应、降低固定成本 \n 协调难度大、忠诚度低、核心能力可能外流 \n 阿里巴巴生态、耐克（核心+外包网络） \n \n \n \n 🧠 助记口诀：五种结构记忆法 \n 「简（单）职（能）事（业）矩（阵）网（络）」 ——创业小店→大工厂→多元集团→工程项目→数字平台，依次演进\n \n \n 📊 职能制 vs 事业部制 深度对比（高频易混点） \n \n \n 维度 \n 职能制（U型） \n 事业部制（M型） \n \n 分权程度 集权，最终决策由总部统一 分权，事业部自主经营，对利润负责 \n 协调方式 纵向权力链 各事业部横向并列、内部竞争 \n 绩效评估 职能效率（成本中心） 利润/投资回报率（利润中心） \n 最适用于 成本领先战略、单一业务 多元化战略（相关/不相关） \n 主要风险 跨部门协调失败（"隔墙"） 事业部本位主义、资源重复建设 \n \n \n 📌 矩阵制结构的两难困境（深度理解） \n \n 矩阵制存在 "双线汇报" 困境：员工同时向职能部门经理和项目经理负责。这在产生协同效应的同时，也带来： \n \n 权力斗争 ：两个上司争夺同一员工的工作优先级 \n 模糊责任 ：出了问题互相推诿，"功劳分不清" \n 心理压力 ：员工面对双重命令无所适从 \n \n 应对策略： 明确哪条线有优先权（通常是项目线）；建立冲突解决机制；用共同目标和文化弱化矛盾。 \n \n \n \n \n \n \n § 03 \n 领导力与战略实施 \n P318–328 \n \n \n \n 11.3.1 \n \n 战略领导力的含义与重要性 \n \n ⭐⭐⭐⭐ 高频 \n P318-320 \n 名词解释·简答 \n \n \n \n \n \n 📖 定义 \n 战略领导力 是指高层管理者（战略领导者）有效管理和领导企业，并以此来推动企业持续成长的能力。战略领导者的核心特征是： 在不确定的环境中为组织指引方向，激励他人实现战略目标 。\n \n \n 🍰 小学生版 \n 战略领导力就像军队的将军。普通管理者是排长（带一个小队打眼前的仗），战略领导者是将军（要看整个战场的走势、决定去哪里打、怎么赢得战争）。将军厉害了，整支军队才能打胜仗。\n \n \n 📖 战略领导者 vs 一般管理者 \n \n \n 维度 \n 战略领导者 \n 一般管理者 \n \n 思维方式 全局性、长远性、系统性 局部性、短期性、专业性 \n 决策特征 在模糊环境中做高风险决策 在相对确定环境中执行决策 \n 工作重心 设定方向、配置资源、建设文化 执行计划、协调资源、解决问题 \n 问责对象 对整个企业的绩效负责 对职能/业务单元绩效负责 \n \n \n \n \n \n \n 11.3.2 \n \n 战略领导者的六大核心职责 \n \n ⭐⭐⭐⭐⭐ 必背 \n P320-325 \n 简答·论述 \n 面试高频 \n \n \n \n \n \n # 职责 核心内容 案例 \n \n ① \n 确定战略方向 \n 为企业制定长期愿景，明确使命和战略目标，指引全员行动方向 \n 乔布斯："让所有人都能使用最好的技术" \n \n \n ② \n 开发和保护核心能力 \n 识别和培育企业的核心竞争力，防止关键资源流失和被竞争对手模仿 \n 任正非坚守通信技术研发，不跨界 \n \n \n ③ \n 建立和维持有效的组织文化 \n 塑造支持战略的价值观、行为规范和组织氛围，文化是看不见的控制系统 \n 海底捞的"以人为本"服务文化 \n \n \n ④ \n 强调道德行为 \n 建立道德标准，通过自身行为示范，营造合规经营和诚信的组织氛围 \n 巴菲特"我们无法承受失去声誉的代价" \n \n \n ⑤ \n 建立组织控制系统 \n 设计能够衡量战略实施进展、及时发现偏差并纠正的控制机制 \n 平衡计分卡的四维度控制 \n \n \n ⑥ \n 培育人力资本 \n 识别、吸引、培养和留住关键人才，建设高绩效团队（TMT） \n 谷歌的"20%自由时间"培育创新人才 \n \n \n \n 🧠 助记口诀 \n 「定（方向）核（心能力）文（化）道（德）控（制）人（才）」——定核文道控人，战略领导者六大天职 \n \n \n 🎯 复试回答模板 \n 定义 → 六大职责逐一阐述 → 联系当前热点 → 总结 \n "战略领导者的职责可概括为六个维度：确定战略方向、开发核心能力、建立组织文化、强调道德行为、建立控制系统、培育人力资本。在数字化时代，战略领导者还需要具备\'数字领导力\'，能够带领组织应对技术颠覆和商业模式创新的挑战。" \n \n \n \n \n \n 11.3.3 \n \n 高层管理团队（TMT）的特征与作用 \n \n ⭐⭐⭐ 重要 \n P325-328 \n 简答 \n \n \n \n \n \n 📖 定义 \n 高层管理团队（Top Management Team, TMT） 是企业最高层的管理者集体，通常包括CEO及其直接报告的副总裁/总监级管理者。TMT的特征与构成对战略决策质量具有决定性影响。\n \n \n 📖 TMT 构成对战略的影响（上层梯队理论） \n 汉布里克（Hambrick）的 上层梯队理论（Upper Echelons Theory） 认为：企业战略是TMT成员认知、价值观和经验的反映。 \n \n TMT特征 对战略的影响 \n 异质性（多元背景）↑ 创新性决策↑，争论↑，决策速度↓ \n 同质性（相似背景）↑ 执行效率↑，创新性↓，群体思维风险↑ \n 任期长↑ 稳定性↑，变革意愿↓（"路径依赖"） \n 外部经历丰富↑ 开放性↑，国际化倾向↑ \n \n \n \n 🍰 生活案例 \n 一个足球队（TMT）里，如果全是中锋（同质），进攻厉害但防守崩盘；如果有前锋、中场、后卫、门将的组合（异质），才能打出完整战术。企业TMT也一样——多元化背景带来全面决策视角。\n \n \n \n \n \n § 04 \n 企业文化与战略实施 \n P328–340 \n \n \n \n 11.4.1 \n \n 企业文化的定义与沙因三层次模型 \n \n ⭐⭐⭐⭐⭐ 核心必背 \n P328-331 \n 名词解释·简答·论述 \n 2018·2021·面试高频 \n \n \n \n \n \n 📖 企业文化定义（教材） \n 企业文化 是指企业全体员工在长期的生产经营活动中形成的 共同价值观念、行为准则、思维方式和管理理念 的总和。它是企业独特的精神财富，是无形的竞争优势。 \n \n \n 📖 沙因（Schein）三层次模型（最重要！） \n \n \n 第一层：人工制品（Artifacts） ——表层，可见可感知 \n 企业标志、制服、办公布局、仪式、典礼、公开宣传语、口号等 \n 特点：容易观察，但含义不易理解 \n \n ↕ \n \n 第二层：价值观（Espoused Values） ——中层，可询问发现 \n 企业公开倡导的信念、原则、目标，如"诚信经营""客户第一" \n 特点：可通过访谈和文件了解，但不一定是真实行为驱动力 \n \n ↕ \n \n 第三层：基本假设（Basic Assumptions） ——深层，潜意识 \n 员工不自觉遵循的深层信念，如对人性、时间、空间的基本看法 \n 特点：最难改变，是文化的真正核心驱动力 \n \n \n \n \n 🍰 小学生版（洋葱比喻） \n 企业文化就像一个洋葱：最外层（皮）= 人工制品（能看到的东西）；中间层 = 价值观（公开说的理念）；最里层（核心）= 基本假设（大家下意识认为对的事情，不说出来但无时不在影响行为）。要改变文化，必须触及最里层，否则只是"换了外套，内心不变"。\n \n \n 🎯 复试回答模板 \n 定义 → 三层次（外→中→内）→ 各层特点 → 文化变革的难点 → 举例 \n "企业文化是企业全体员工共同的价值观念和行为准则。根据沙因的三层次模型，企业文化由外到内分为：可观察的人工制品层（如阿里的橙色工牌文化）、倡导的价值观层（如华为的\'奋斗者文化\'口号）和深层的基本假设层（华为真正相信\'只有奋斗才能生存\'的底层逻辑）。文化变革之难，正是因为最里层的基本假设根深蒂固、难以撼动。" \n \n \n \n \n \n 11.4.2 \n \n 企业文化的主要功能 \n \n ⭐⭐⭐⭐⭐ 高频必背 \n P331-334 \n 简答·论述 \n 2018·2022·面试高频 \n \n \n \n \n \n # 功能 核心解释 案例 \n \n ① \n 导向功能 \n 为员工提供统一的价值取向和行为方向，使全员朝着战略目标聚焦 \n 谷歌"不作恶"文化引导员工决策取向 \n \n \n ② \n 凝聚功能 \n 共同的价值观产生强烈的归属感，增强员工对企业的认同感和忠诚度 \n 腾讯员工对"连接一切"使命的认同感 \n \n \n ③ \n 激励功能 \n 通过精神激励，激发员工内在动力和使命感，超越单纯的薪酬激励 \n 海底捞员工的"主人翁精神" \n \n \n ④ \n 约束功能 \n 通过无形的规范和氛围约束员工行为，成为制度约束之外的软性控制系统 \n 西南航空员工不需要规定手册也知道如何服务客户 \n \n \n ⑤ \n 辐射功能 \n 企业文化向外部延伸，影响顾客、供应商、社区，塑造品牌形象和社会口碑 \n 星巴克文化打造"第三空间"品牌价值 \n \n \n \n 🧠 助记口诀 \n 「导（向）凝（聚）激（励）约（束）辐（射）」——文化五功能，导凝激约辐 \n \n \n 🎯 复试回答模板 \n 功能一 → 功能二 → … → 总结与战略联系 \n "企业文化对战略实施具有五大功能：导向（明确方向）、凝聚（增强认同）、激励（激发动力）、约束（规范行为）、辐射（塑造品牌）。从战略实施角度看，文化是\'看不见的管理系统\'，能以最低成本实现最强的行为控制——这正是韦尔奇所说的\'软的价值观是最硬的竞争力\'的含义。" \n \n \n \n \n \n 11.4.3 \n \n 强文化与弱文化 · 企业文化的变革 \n \n ⭐⭐⭐⭐ 高频 \n P334-340 \n 对比·简答·案例 \n \n \n \n \n \n 📖 强文化 vs 弱文化 \n \n \n 维度 \n 强文化 \n 弱文化 \n \n 定义 企业的核心价值观被员工 广泛认同且强烈持有 价值观分散，员工认同度低，行为规范缺乏一致性 \n 优点 凝聚力强、协调成本低、执行力高；员工归属感和忠诚度高 灵活性高，易于吸纳多元视角 \n 缺点 可能导致 群体思维 （Groupthink）、排斥异见、变革困难 执行力弱、缺乏凝聚力、战略难以落地 \n 适合情境 稳定环境、需要高度执行一致性的战略（如麦当劳标准化战略） 创业期或需要快速学习的企业 \n 典型企业 华为（奋斗者文化）、海底捞（服务文化） — \n \n \n \n 📖 企业文化变革的三种路径 \n \n \n 路径一 \n 自上而下变革 \n 领导者通过示范行为和政策指令推动文化改变（如柳传志重塑联想文化） \n \n + \n \n 路径二 \n 危机驱动变革 \n 业绩危机或外部冲击提供了打破旧文化的"解冻"机会（冰山解冻论） \n \n + \n \n 路径三 \n 渐进式变革 \n 通过招募新员工、培训、仪式活动等逐步植入新价值观（"文化基因替换"） \n \n \n \n \n 🍰 文化变革的"冰山解冻论"（勒温三阶段） \n 解冻（Unfreeze）→ 变革（Change）→ 再冻结（Refreeze） \n 就像要把一块圆形冰变成方形冰，要先把圆形冰融化（打破旧文化认知），然后塑造成方形（建立新文化），最后让它重新结冰变硬（强化新文化直到成为习惯）。\n \n \n 📌 复试延伸：企业文化与战略的四种匹配状态 \n \n \n 战略是否需要变革 文化是否支持战略 建议行动 \n 不需要 支持 保持现有文化，强化执行 \n 需要 支持 顺势推进战略变革（较易） \n 不需要 不支持 管理文化与战略的局部冲突 \n 需要 不支持 最艰难：必须同步推进战略变革和文化变革 \n \n \n \n \n \n \n \n § 05 \n 战略控制系统 \n P340–348 \n \n \n \n 11.5.1 \n \n 战略控制的含义与目的 \n \n ⭐⭐⭐⭐ 高频 \n P340-342 \n 名词解释·简答 \n \n \n \n \n \n 📖 定义 \n 战略控制 是指战略领导者通过制定标准、衡量绩效、分析偏差、采取纠偏措施，以确保战略实施按计划推进，并在环境变化时及时调整战略的管理活动。\n \n \n 📖 战略控制的过程（三步骤） \n \n \n STEP 01 \n 设定控制标准 \n 明确战略目标和绩效指标（量化 vs 质化） \n \n → \n \n STEP 02 \n 衡量实际绩效 \n 收集战略实施数据，与标准对比，发现偏差 \n \n → \n \n STEP 03 \n 分析偏差并纠偏 \n 判断偏差原因：是实施问题？还是战略本身需要调整？ \n \n \n \n \n 🍰 小学生版 \n 开车去目的地：① 设目标（目的地）；② 看地图+看仪表盘（衡量绩效）；③ 发现走偏了调方向（纠偏）。战略控制就是企业的"导航系统"，确保不偏离战略方向。\n \n \n \n \n \n 11.5.2 \n \n 四种战略控制类型（斯曾德尔和霍弗） \n \n ⭐⭐⭐⭐⭐ 核心必背 \n P342-346 \n 简答·名词解释·对比 \n 高频考点 \n \n \n \n \n \n 📖 背景 \n 斯曾德尔（Schendel）和霍弗（Hofer）将战略控制分为四种类型，按照控制的 时机 和 对象 不同进行区分，形成完整的战略控制体系。\n \n \n \n 控制类型 \n 控制对象 \n 控制时机 \n 核心含义 \n 案例 \n \n \n ① 前提控制 (Premise Control) \n 战略制定时的假设前提 \n 持续监控（贯穿实施全程） \n 检查战略所依赖的外部环境假设（如行业增长率、竞争对手行为、宏观经济）是否仍然成立 \n 如果假设"智能手机市场将快速增长"不再成立，必须调整战略 \n \n \n ② 战略监控 (Strategic Surveillance) \n 宽泛的环境信号 \n 持续扫描（开放式监控） \n 对各类信息进行广泛而非聚焦的扫描，捕捉可能影响战略的意外信号（"扫描雷达"） \n 企业情报部门持续扫描技术/政策/竞争动向 \n \n \n ③ 特别预警控制 (Special Alert Control) \n 突发重大事件 \n 事件触发（应激式） \n 针对突发危机或重大意外事件（如竞争对手并购、政策突变、自然灾害）快速重新评估战略 \n 新冠疫情突发→企业迅速启动应急战略评估 \n \n \n ④ 实施控制 (Implementation Control) \n 战略实施的具体步骤 \n 里程碑检查（阶段性） \n 通过设定里程碑，定期检查战略实施进展，判断是否按计划推进，是否需要调整 \n 季度战略回顾会议检查OKR完成情况 \n \n \n \n 🧠 助记口诀（四种控制） \n 「前（提）监（控）特（别）实（施）」——前提假设，监控雷达，特别警报，实施里程碑 \n 记忆诀窍：前提（检查假设还在不在）→监控（扫描所有信号）→特别（突发事件应急）→实施（阶段性里程碑）\n \n \n 🎯 复试回答模板 \n 背景 → 逐一阐述四种类型（控制对象+时机+含义）→ 举例 → 总结 \n "战略控制可分为四种类型：①前提控制，持续检验战略假设前提是否成立；②战略监控，宽泛扫描环境信号；③特别预警控制，针对重大突发事件快速响应；④实施控制，通过里程碑检查实施进展。四者共同构成全方位的战略控制体系——就像企业的\'免疫系统\'，能在不同层面感知威胁并做出反应。" \n \n \n 📊 四种控制类型对比表（易混点） \n \n \n 对比维度 前提控制 战略监控 特别预警 实施控制 \n 触发方式 定期检查 持续扫描 事件驱动 阶段节点 \n 关注范围 特定假设 宽泛广域 单一危机 内部执行 \n 信息来源 环境监测 各类渠道 应急情报 内部报告 \n 反应速度 中 慢（预防性） 快（应急） 中 \n 应对模式 调整战略前提 调整战略视角 启动应急预案 调整实施计划 \n \n \n \n \n \n \n \n 11.5.3 \n \n 三种控制机制：财务控制 vs 战略控制 vs 行为控制 \n \n ⭐⭐⭐⭐ 必背 \n P346-348 \n 对比·简答 \n 与第七章联动高频 \n \n \n \n \n \n \n 控制机制 \n 控制内容 \n 主要指标 \n 优点 \n 缺点 \n 适用情境 \n \n \n 财务控制 \n 绩效结果（做得怎么样） \n 利润率、ROI、ROE、现金流、EVA \n 客观可量化、易于比较评估 \n 只关注结果，无法评估过程；短期导向 \n 不相关多元化；成熟稳定业务 \n \n \n 战略控制 \n 战略方向（做了没有、做没做对） \n 市场份额、技术领先性、关键战略里程碑 \n 长期导向；支持创新和战略探索 \n 主观性强；评估成本高；周期长才见效 \n 相关多元化；需要协同的业务 \n \n \n 行为控制 \n 行为过程（怎么做的） \n 流程合规度、行为规范遵守率、文化认同度 \n 确保过程正确；降低合规风险 \n 执行成本高；容易官僚化；抑制创新 \n 高风险行业（医疗、金融）；标准化要求高的业务 \n \n \n \n 🧠 助记 \n 财务控制"看结果"；战略控制"看方向"；行为控制"看过程"——三者组合使用，形成"360°立体控制" \n \n \n \n \n \n § 06 \n 平衡计分卡（BSC） \n P348–354 \n \n \n \n 11.6.1 \n \n 平衡计分卡的含义与四个维度 \n \n ⭐⭐⭐⭐⭐ 核心必背 \n P348-352 \n 名词解释·简答·论述 \n 2016·历年高频 \n \n \n \n \n \n 📖 定义（卡普兰 & 诺顿） \n 平衡计分卡（Balanced Scorecard, BSC） 由卡普兰（Kaplan）和诺顿（Norton）于1992年提出，是一种将企业战略目标转化为可操作的 绩效衡量系统 。它从四个维度—— 财务、客户、内部流程、学习与成长 ——全面、综合地评估企业绩效，克服了单纯依赖财务指标的"短视症"。 \n \n 📊 BSC 四维度详解 \n \n 🎯 企业战略愿景与目标 BSC 的核心出发点 \n \n 💰 \n 财务维度 \n 核心问题： 股东如何看我们？ 代表指标：ROI、EVA、收入增长率、利润率 本质：企业的最终经济成果 \n \n \n 🤝 \n 客户维度 \n 核心问题： 客户如何看我们？ 代表指标：客户满意度、客户保留率、市场份额、客户获取成本 本质：创造顾客价值 \n \n \n ⚙️ \n 内部流程维度 \n 核心问题： 我们擅长什么？ 代表指标：产品质量合格率、创新产品数量、交货周期、服务响应速度 本质：内部运营效率 \n \n \n 📚 \n 学习与成长维度 \n 核心问题： 我们能否继续进步？ 代表指标：员工满意度、培训投入、员工技能提升、知识管理效果 本质：支撑未来发展的基础能力 \n \n \n \n 📖 四维度的因果逻辑链（重要！） \n \n \n 基础层 \n 学习与成长 \n 提升员工能力→建立组织学习机制 \n \n → \n \n 过程层 \n 内部流程 \n 改善内部业务流程→提高运营效率 \n \n → \n \n 市场层 \n 客户 \n 创造更好的客户价值→提高满意度和忠诚度 \n \n → \n \n 结果层 \n 财务 \n 实现优秀财务绩效→股东价值最大化 \n \n \n 📌 逻辑： 学习成长→内部流程改善→客户价值提升→财务绩效提高 ——BSC揭示了"软指标驱动硬结果"的因果链 \n \n \n 🧠 助记口诀 \n 「财（务）客（户）内（部流程）学（习成长）」——财客内学，四维平衡 \n 记忆方法：从 上往下看 （财务是结果）和从 下往上看 （学习是根基）都要懂。\n \n \n 🎯 复试回答模板 \n 背景 → 定义 → 四维度（逐一讲核心问题+指标）→ 因果链 → 意义 → 举例 \n "平衡计分卡（BSC）由卡普兰和诺顿于1992年提出，是将战略转化为可衡量绩效系统的工具。它包含四个维度：财务（股东视角）、客户（市场视角）、内部流程（运营视角）、学习与成长（发展视角）。四维度形成因果链：学习成长→流程改善→客户满意→财务成功。与传统财务考核相比，BSC解决了\'只重短期财务结果、忽视长期能力建设\'的问题。以华为为例，其考核体系将技术研发投入（学习与成长）、产品交付周期（内部流程）、客户满意度和市场份额（客户）、营收增长（财务）有机整合，正是BSC理念的体现。" \n \n \n \n \n \n 11.6.2 \n \n 平衡计分卡的"平衡"内涵与战略地图 \n \n ⭐⭐⭐ 重要 \n P352-354 \n 简答 \n \n \n \n \n \n 📖 BSC 的"平衡"体现在四个层面 \n \n 平衡维度 含义 \n 财务 vs 非财务 不只看利润，也看学习、流程、客户等非财务指标 \n 短期 vs 长期 财务是短期结果，学习成长是长期基础 \n 内部 vs 外部 内部流程代表内部视角，客户视角代表外部视角 \n 结果 vs 过程 财务是结果指标（滞后），学习与流程是过程指标（领先） \n \n \n \n 📖 战略地图（Strategy Map） \n 战略地图 是BSC的延伸工具，通过 可视化地图 展示四个维度之间的因果关系，帮助管理者理解"如何实现战略目标"的逻辑路径。 \n 战略地图将战略目标分解为：愿景 → 财务目标 → 客户目标 → 内部流程目标 → 学习成长目标，形成一张从底层能力到顶层结果的完整"战略因果图"。 \n \n \n 💡 管理学联系：BSC与KPI/OKR的区别 \n \n \n 工具 本质 特点 适用场景 \n BSC 战略绩效管理体系 四维度综合、战略导向、因果关系 战略实施全过程管控 \n KPI 关键绩效指标 聚焦结果、量化、可与薪酬挂钩 稳定业务的绩效考核 \n OKR 目标与关键成果 目标激进、过程导向、强调对齐 创新型业务、敏捷组织 \n \n 实践中三者往往结合使用：BSC构建战略框架→KPI/OKR落实具体目标。 \n \n \n \n \n \n \n 📊 \n 对比总结表（易混概念） \n \n \n \n 对比 \n \n 本章核心易混概念一览对比 \n ⭐⭐⭐⭐ 复试必看 \n \n \n \n ① 五种组织结构对比速查 \n \n 结构 别名 核心特征 最适用战略 最大风险 \n 简单结构 直线制 老板直接管所有人 创业期、单一产品 老板精力有限，规模扩大后失控 \n 职能制 U型 按职能（生产/营销/财务）分部门 成本领先、单一产品扩大市场 跨部门协调差（"部门墙"） \n 事业部制 M型 按产品/地区/客户划分独立事业部 多元化、多产品多市场 事业部本位主义、资源重复 \n 矩阵制 — 纵向职能+横向项目双重汇报 工程项目型、需要跨职能协作 双重领导、权责不清 \n 网络组织 虚拟组织 核心+外包网络，轻资产 动态环境、数字化战略 协调难，核心能力可能外流 \n \n \n ② 四种战略控制类型速查 \n \n 控制类型 一句话核心 关键词 \n 前提控制 持续检验战略的"假设前提"还成立吗？ 假设·环境变化·战略基础 \n 战略监控 广泛扫描所有可能影响战略的信号（雷达扫描） 宽泛·扫描·预防性 \n 特别预警 突发危机来临，紧急重新评估战略 突发·应急·快速响应 \n 实施控制 里程碑节点检查战略实施进展 里程碑·阶段性·内部执行 \n \n \n ③ 企业文化三层次 vs 战略控制三类型 vs BSC四维度 对比记忆 \n \n \n 文化三层次 \n \n 人工制品（表层可见） \n 价值观（中层倡导） \n 基本假设（深层潜意识） \n \n \n \n 控制三类型 \n \n 财务控制（看结果） \n 战略控制（看方向） \n 行为控制（看过程） \n \n \n \n BSC 四维度 \n \n 财务（结果层） \n 客户（市场层） \n 内部流程（过程层） \n 学习成长（基础层） \n \n \n \n \n \n \n \n 📝 \n 历年真题汇总（2016–2025） \n \n \n \n 真题 \n \n 中南大学企业管理学硕 · 本章相关历年考题 \n \n ⭐⭐⭐⭐ 复试必看 \n 2016–2025 \n \n \n \n \n \n \n 年份 \n 考查题目 \n 题型 \n 本章对应知识点 \n 重要度 \n \n \n 2016 \n 简述平衡计分卡四个维度及逻辑 \n 简答 \n §6 平衡计分卡四维度+因果链 \n ⭐⭐⭐⭐⭐ \n \n \n 2016 \n 论述企业战略与人力资源战略的匹配关系 \n 论述 \n §3 战略领导力·TMT·人力资本培育 \n ⭐⭐⭐⭐ \n \n \n 2018 \n 论述企业文化对战略实施的作用 \n 论述 \n §4 企业文化功能（五大功能） \n ⭐⭐⭐⭐⭐ \n \n \n 2019 \n 简述企业组织结构选择的原则 \n 简答 \n §2 结构追随战略+五种结构适用条件 \n ⭐⭐⭐⭐ \n \n \n 2022 \n 论述数字化转型中的战略与组织协同 \n 论述 \n §2 网络组织+§3 战略领导力 \n ⭐⭐⭐⭐ \n \n \n 2025 \n 简述战略管理过程（分析-制定-实施-控制） \n 简答 \n §1 战略实施概述+§5 战略控制 \n ⭐⭐⭐⭐⭐ \n \n \n 2025 \n 案例：某企业数字化转型失败，分析战略与人力问题 \n 案例 \n §1-§5 全章综合（战略实施失败诊断） \n ⭐⭐⭐⭐⭐ \n \n \n 面试高频 \n 如何看待企业文化与战略变革的关系？ \n 口头表达 \n §4 强弱文化·文化变革三路径 \n ⭐⭐⭐⭐⭐ \n \n \n 面试高频 \n 平衡计分卡与传统财务考核相比有何优势？ \n 口头表达 \n §6 BSC四维度·平衡内涵 \n ⭐⭐⭐⭐⭐ \n \n \n \n 📌 教材重要原句汇总（建议默写）： \n \n ① "战略实施是指将战略计划转化为行动的过程，即通过对企业资源的合理配置，借助 组织结构、激励机制和企业文化 等手段，使企业全体成员都致力于实现战略目标的管理过程。"（P295-296） \n \n \n ② 钱德勒命题： "结构追随战略（Structure Follows Strategy）" ——企业的组织结构必须随战略的变化而调整，否则组织结构将成为实现战略目标的障碍。（P302-303） \n \n \n ③ "企业文化是指企业全体员工在长期的生产经营活动中形成的 共同价值观念、行为准则、思维方式和管理理念 的总和，是企业独特的精神财富。"（P328-329） \n \n \n ④ "平衡计分卡从 财务、客户、内部流程、学习与成长 四个维度全面、综合地评估企业绩效，将企业的战略目标转化为可操作的绩效衡量系统，克服了单纯依赖财务指标的短视问题。"（P348-349） \n \n \n \n \n \n ⚡ 30秒极速复习模块 \n \n 01 \n 战略实施 = 将战略计划转化为行动的过程，特征： 复杂·系统·动态·长期 \n \n \n 02 \n 钱德勒命题 ：结构追随战略 → 四阶段演变：简单→职能→事业部→矩阵/网络 \n \n \n 03 \n 五种组织结构： 简单·职能·事业部·矩阵·网络 ——创业→扩大→多元→复杂→数字化 \n \n \n 04 \n 战略领导者六大职责： 定方向·核心能力·文化·道德·控制·人才 \n \n \n 05 \n 企业文化三层次（沙因）： 人工制品（表）→价值观（中）→基本假设（深） \n \n \n 06 \n 文化五大功能： 导向·凝聚·激励·约束·辐射 \n \n \n 07 \n 四种战略控制： 前提（假设）→监控（扫描）→特别预警（应急）→实施（里程碑） \n \n \n 08 \n 三种控制机制： 财务（结果）·战略（方向）·行为（过程） \n \n \n 09 \n BSC四维度： 财务（股东）→客户（市场）→内部流程（运营）→学习成长（基础） \n \n \n 10 \n BSC因果链： 学习成长→内部流程改善→客户满意→财务成功 （从下往上驱动） \n \n \n \n \n \n 背诵版 \n \n 复试口述版总结（背诵模板） \n ⭐⭐⭐⭐⭐ 必背 \n \n \n \n \n 🎤 复试口述版（第十一章一分钟串讲） \n 第十一章讲的是战略实施的管理与控制—— 好的战略如何真正落地执行 。 \n \n 第一，组织结构方面 ：钱德勒提出"结构追随战略"，随着战略从单一到多元演变，组织结构经历了简单→职能→事业部→矩阵→网络的演进。不同战略需要匹配不同结构——成本领先战略适合职能制，多元化战略适合事业部制。 \n \n 第二，战略领导力方面 ：战略领导者有六大核心职责，包括确定战略方向、开发核心能力、建立有效文化、强调道德行为、建立控制系统和培育人力资本。 \n \n 第三，企业文化方面 ：根据沙因的三层次模型，文化分为可见的人工制品、倡导的价值观和深层的基本假设三层。文化具有导向、凝聚、激励、约束、辐射五大功能，是战略实施的"软性控制系统"。 \n \n 第四，战略控制方面 ：斯曾德尔和霍弗将战略控制分为四种——前提控制（检验假设）、战略监控（扫描信号）、特别预警控制（应对危机）和实施控制（里程碑检查）。此外，从控制机制看，分为财务控制、战略控制和行为控制三类。 \n \n 第五，平衡计分卡（BSC） 由卡普兰和诺顿提出，从财务、客户、内部流程、学习与成长四个维度综合评估绩效，形成"学习成长→流程改善→客户满意→财务成功"的因果链，克服了单纯财务指标的短视问题。 \n \n \n \n \n \n 🔗 终极串联复习 \n 将本章所有知识点贯穿成一条逻辑链，方便最后复习 \n \n \n STEP 01 \n 战略要落地 \n 战略实施 = 把计划变成行动，特征：复杂·系统·动态·长期。失败原因：目标不清、资源不配、组织阻力、文化冲突、控制缺位 \n \n › \n \n STEP 02 \n 结构要匹配 \n 结构追随战略（钱德勒）→ 5种结构：简单→职能→事业部→矩阵→网络，依战略阶段选择 \n \n › \n \n STEP 03 \n 领导来驱动 \n 战略领导者六大职责：定方向·核心能力·文化·道德·控制·人才，TMT的多元性影响战略质量 \n \n › \n \n STEP 04 \n 文化来支撑 \n 沙因三层次：人工制品→价值观→基本假设；文化五功能：导凝激约辐；强文化利执行也碍变革 \n \n › \n \n STEP 05 \n 控制来保证 \n 四种控制：前提·监控·预警·实施；三类机制：财务·战略·行为；BSC四维度：财务→客户→流程→学习 \n \n \n \n 一句话总结： 战略实施成功的关键是 "结构匹配战略·文化支撑执行·领导力驱动变革·控制系统保驾护航" ——四者缺一不可，共同构成战略实施的"四架马车"。\n \n \n \n \n 📝 课后自我检验 \n 完成以下题目验证掌握程度，建议先合书作答 \n \n Q · 01 — 名词解释 \n 什么是战略实施？与战略制定有何区别？ \n 参考答案要点： 定义（将战略计划转化为行动）→ 特征（复杂·系统·动态·长期）→ 对比：制定关注"做什么"，实施关注"怎么做"；制定是分析家的天下，实施是行动家的战场 \n \n \n Q · 02 — 名词解释 \n 简述钱德勒命题"结构追随战略"的含义及其历史背景。 \n 关键词： 钱德勒·四家大公司·单一→多元化演变·简单→职能→事业部→矩阵结构·局限性（战略也可追随结构） \n \n \n Q · 03 — 简答 \n 真题改编 · 2018年 \n 简述企业文化对战略实施的五大功能，并各举一例说明。 \n 关键词： ① 导向功能（谷歌"不作恶"）→ ② 凝聚功能（员工归属感）→ ③ 激励功能（海底捞主人翁精神）→ ④ 约束功能（无形规范）→ ⑤ 辐射功能（星巴克"第三空间"） \n \n \n Q · 04 — 简答 \n 真题 · 2016年（考察BSC） \n 简述平衡计分卡的四个维度及其逻辑因果关系。 \n 关键词： ① 财务（股东视角）→ ② 客户（市场视角）→ ③ 内部流程（运营视角）→ ④ 学习与成长（发展基础）；因果链：学习成长→流程改善→客户满意→财务成功；"平衡"含义（四对平衡） \n \n \n Q · 05 — 对比 \n 比较职能制结构与事业部制结构的优缺点，分别适用于什么战略情境？ \n 关键对比： 职能制（U型）→集权·专业化高·跨部门协调差·适合成本领先/单一产品；事业部制（M型）→分权·利润中心·激励充分·事业部本位主义·适合多元化战略 \n \n \n Q · 06 — 简答 \n 简述斯曾德尔和霍弗提出的四种战略控制类型，并说明各自的控制时机与对象。 \n 关键词： ① 前提控制（持续·假设前提）→ ② 战略监控（持续·宽泛信号）→ ③ 特别预警（事件触发·突发危机）→ ④ 实施控制（里程碑·实施进展） \n \n \n Q · 07 — 论述 \n 2025年真题改编 \n 结合案例分析某企业数字化转型失败的原因，从战略实施的四个维度（组织结构、领导力、企业文化、战略控制）进行诊断。 \n 答题框架： ① 结构层面：是否采用了匹配数字化战略的网络/矩阵型结构？ → ② 领导力层面：领导者是否具备数字领导力？是否压制变革信号？ → ③ 文化层面：旧文化（稳定·官僚）是否阻碍了数字化创新？ → ④ 控制层面：是否建立了数字化转型的里程碑控制和BSC体系？ \n \n \n Q · 08 — 预测题 \n 沙因的企业文化三层次模型内容是什么？为什么说"文化变革是最难的战略实施任务"？ \n 关键词： 三层次（人工制品·价值观·基本假设）→ 难点：基本假设层是潜意识的、不言自明的，很难通过简单培训改变；必须通过危机驱动/长期浸润/领导示范才能触及深层文化；勒温冰山解冻三阶段 \n \n \n \n \n 📚 中南大学企业管理学硕复试笔记 · 第十一章 战略实施的管理与控制 · P295–354 · 基于蓝海林《企业战略管理》第2版 · 2016–2025真题整合版';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body id="top">
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-day">第十一章 · 战略实施</div>
+  <h1>战略实施的<span>管理与控制</span></h1>
+  <p class="hero-sub">战略再好，不落地等于零。本章解决"如何把战略变成行动"的核心问题：组织结构如何匹配战略？领导力如何驱动执行？文化如何支撑变革？如何建立战略控制系统？中南大学高频考点：企业文化功能、平衡计分卡、战略控制类型、领导力。</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📍 教材 P295–354</span>
+    <span class="hero-tag">🔥 复试高频章节</span>
+    <span class="hero-tag">✍️ 简答 · 论述 · 案例</span>
+    <span class="hero-tag">⭐ 结构追随战略</span>
+    <span class="hero-tag">🏆 2016·2018·2025考察</span>
+  </div>
+</div>
+
+<!-- ═══ FIXED TOP NAV ═══ -->
+<div class="fixed-nav" id="nav">
+  <span class="toc-label">目录</span>
+  <a href="#map">章节逻辑图</a>
+  <a href="#s1">§1 战略实施概述</a>
+  <a href="#s2">§2 组织结构</a>
+  <a href="#s3">§3 领导力</a>
+  <a href="#s4">§4 企业文化</a>
+  <a href="#s5">§5 战略控制</a>
+  <a href="#s6">§6 平衡计分卡</a>
+  <a href="#chain">终极串联</a>
+  <a href="#quiz">自我检测</a>
+  <div class="nav-controls">
+    <button class="btn-night" onclick="toggleNight()">🌙 夜间模式</button>
+    <button class="btn-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">⬆ 返回顶部</button>
+  </div>
+</div>
+
+<!-- ═══ SEARCH BAR ═══ -->
+<div class="search-bar">
+  
+  <span class="search-count" id="searchCount"></span>
+  <button class="search-nav-btn" id="srchPrev" onclick="prevResult()" disabled title="上一个 (Shift+F3)">↑</button>
+  <button class="search-nav-btn" id="srchNext" onclick="nextResult()" disabled title="下一个 (F3)">↓</button>
+</div>
+
+<!-- ═══ CASE BANNER ═══ -->
+<div class="case-banner" id="intro">
+  <div class="case-label">📖 导入案例 · 战略实施失败典型</div>
+  <h3>诺基亚：战略清晰，实施失败——"我们并没有做错任何事，但不知为何我们输了"</h3>
+  <p>诺基亚曾是全球手机市场霸主，2007年苹果发布iPhone，诺基亚的战略部门也预见到了智能机时代的来临，甚至内部有类似触屏手机的原型产品。但诺基亚失败了——原因不是战略制定，而是<strong>战略实施</strong>：官僚化组织结构妨碍创新，中层管理者压制坏消息（"领导力缺失"），企业文化崇尚"稳定"而非"颠覆"，控制系统不能及时感知战略偏差。</p>
+  <p class="case-key">⚠️ 核心教训：<strong>战略实施 = 组织结构 + 领导力 + 企业文化 + 控制系统</strong>，四者任何一个短板都会让最好的战略计划化为泡影。</p>
+</div>
+
+<!-- ═══ 逻辑关系图 ═══ -->
+<div class="main">
+<div class="logic-map" id="map">
+  <h3>本章与其他章节的逻辑关系</h3>
+  <div style="overflow-x:auto">
+  <table class="ctable" style="font-size:13px;">
+    <tr><th>章节</th><th>关联逻辑</th></tr>
+    <tr><td><strong>第1章 战略概述</strong></td><td>战略管理过程 = 分析→制定→<strong>实施→控制</strong>；本章是战略管理完整闭环的后半段</td></tr>
+    <tr><td><strong>第2–5章 战略分析</strong></td><td>外部机会与内部能力决定了战略实施需要什么样的组织结构和文化</td></tr>
+    <tr><td><strong>第6–8章 战略制定</strong></td><td>业务层/公司层/国际化战略是实施的"输入"，本章是将这些战略转化为行动的"执行手册"</td></tr>
+    <tr><td><strong>第9–10章 战略实施（组织/人力）</strong></td><td>第9-10章讲组织设计与人力资源配套，本章讲领导力、文化与控制——共同构成战略实施的完整体系</td></tr>
+    <tr><td><strong>第12章（如有）</strong></td><td>战略控制结果反馈回战略分析，驱动下一轮战略调整——战略管理的动态循环</td></tr>
+  </table>
+  </div>
+
+  <div style="height:16px"></div>
+  <h3 style="font-size:16px; margin-bottom:14px;">📌 本章各节内部逻辑关系</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="fs-num">§1</div>
+      <div class="fs-title">战略实施概述</div>
+      <div class="fs-body">含义·特征<br>制定 vs 实施<br>主要内容</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§2</div>
+      <div class="fs-title">组织结构</div>
+      <div class="fs-body">结构追随战略<br>5种结构类型<br>匹配原则</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§3</div>
+      <div class="fs-title">领导力</div>
+      <div class="fs-body">战略领导者<br>TMT特征<br>6大职责</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§4</div>
+      <div class="fs-title">企业文化</div>
+      <div class="fs-body">三层次模型<br>强弱文化<br>文化变革</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§5-6</div>
+      <div class="fs-title">战略控制</div>
+      <div class="fs-body">4种控制类型<br>平衡计分卡<br>控制系统设计</div>
+    </div>
+  </div>
+  <p style="font-size:13px; color:#666; margin-top:10px;">逻辑主线：<strong>战略实施是什么</strong> → <strong>结构如何支撑战略</strong> → <strong>领导如何驱动执行</strong> → <strong>文化如何塑造行为</strong> → <strong>控制如何保证方向</strong></p>
+</div>
+
+<!-- ════════════════════════════════
+     §1 战略实施概述
+     ════════════════════════════════ -->
+<div class="section-title" id="s1">
+  <span class="sec-num">§ 01</span>
+  <h2>战略实施概述</h2>
+  <span class="page-ref">P295–302</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.1.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略实施的含义与特征</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P295-296</span>
+        <span class="badge badge-exam">名词解释·简答</span>
+        <span class="badge badge-year">2025年考察</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材定义</div>
+      <span class="kw">战略实施</span>是指将战略计划转化为行动的过程，即通过对企业资源（人、财、物、信息）的合理配置，借助组织结构、激励机制和企业文化等手段，使企业全体成员都致力于实现战略目标的管理过程。
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版</div>
+      战略制定就像"设计建筑图纸"，战略实施就像"按图纸盖房子"。图纸再完美，如果工人不对、工具不够、施工方法不当，房子也会盖歪。很多企业不是输在战略制定上，而是输在战略实施上。
+    </div>
+    <strong>战略实施的四大特征：</strong>
+    <table class="ctable" style="margin-top:10px">
+      <tr><th>#</th><th>特征</th><th>说明</th></tr>
+      <tr><td>①</td><td><span class="kw">复杂性</span></td><td>涉及组织结构、人力资源、文化、控制等多个子系统的协同配套</td></tr>
+      <tr><td>②</td><td><span class="kw">系统性</span></td><td>各实施要素相互依赖，任何一个环节的失误都会影响整体效果</td></tr>
+      <tr><td>③</td><td><span class="kw">动态性</span></td><td>外部环境和内部条件的变化要求战略实施方式不断调整</td></tr>
+      <tr><td>④</td><td><span class="kw">长期性</span></td><td>战略实施效果的显现需要时间积累，不能期望立竿见影</td></tr>
+    </table>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <strong>定义 → 特征 → 与制定的区别 → 举例</strong><br>
+      <em>"战略实施是将战略计划转化为具体行动的过程，具有复杂性、系统性、动态性和长期性四大特征。与战略制定不同，战略实施更强调执行层面，需要通过调整组织结构、激励员工、塑造文化、实施控制来保证战略目标的实现。以华为为例，其'狼性文化'和'轮值CEO'制度正是将国际化战略转化为行动的重要实施工具。"</em>
+    </div>
+    <details>
+      <summary>📌 复试延伸问题</summary>
+      <div class="detail-body">
+        <ul class="kl">
+          <li>老师可能追问：战略实施失败的主要原因有哪些？（答：目标不清晰、资源不匹配、组织阻力、文化冲突、控制缺失）</li>
+          <li>老师可能追问：战略实施与战略变革有何关系？（答：战略变革时，实施难度更大，需要专门的变革管理）</li>
+          <li>老师可能追问：结合当前数字化背景，战略实施有何新挑战？（答：跨部门协同更复杂、技术变化更快、组织灵活性要求更高）</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.1.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略制定与战略实施的区别</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P296-297</span>
+        <span class="badge badge-exam">对比题·简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>维度</th>
+        <th style="color:#93c5fd">战略制定</th>
+        <th style="color:#6ee7b7">战略实施</th>
+      </tr>
+      <tr><td>核心问题</td><td>做什么（What）</td><td>怎么做（How）</td></tr>
+      <tr><td>主要工作</td><td>分析→选择→制定计划</td><td>行动→协调→执行</td></tr>
+      <tr><td>关注焦点</td><td>有效性（做对的事）</td><td>效率（把事做对）</td></tr>
+      <tr><td>知识要求</td><td>分析能力、判断力</td><td>激励能力、领导力</td></tr>
+      <tr><td>时间导向</td><td>未来导向</td><td>当下与近期导向</td></tr>
+      <tr><td>参与层级</td><td>高层为主</td><td>全员参与</td></tr>
+      <tr><td>核心难题</td><td>信息不完整、不确定</td><td>人的阻力、资源约束</td></tr>
+    </table>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>制定：分析家的天下（做什么·想清楚·少数人）；实施：行动家的战场（怎么做·干出来·全体人）</strong>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.1.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略实施的主要内容（五要素）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 高频</span>
+        <span class="badge badge-page">P297-302</span>
+        <span class="badge badge-exam">简答·论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 五大核心内容</div>
+      <div class="flow" style="margin-top:10px">
+        <div class="flow-step" style="background:#eff6ff; border-color:#93c5fd">
+          <div class="fs-num">01</div>
+          <div class="fs-title" style="color:var(--accent)">年度目标</div>
+          <div class="fs-body">将长期战略目标分解为可执行的年度目标</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#e6f7f4; border-color:#9ed9cc">
+          <div class="fs-num">02</div>
+          <div class="fs-title" style="color:var(--accent3)">政策制定</div>
+          <div class="fs-body">制定指导员工行为的政策和规章制度</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#fef9e7; border-color:#fcd34d">
+          <div class="fs-num">03</div>
+          <div class="fs-title" style="color:var(--gold)">资源分配</div>
+          <div class="fs-body">将有限资源向支持战略的方向倾斜</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#f5f0ff; border-color:#c4b5fd">
+          <div class="fs-num">04</div>
+          <div class="fs-title" style="color:var(--accent4)">组织结构</div>
+          <div class="fs-body">调整组织结构以匹配战略需求</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#fff1f2; border-color:#fca5a5">
+          <div class="fs-num">05</div>
+          <div class="fs-title" style="color:var(--accent5)">激励机制</div>
+          <div class="fs-body">建立与战略目标一致的激励与考核体系</div>
+        </div>
+      </div>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>「年（度目标）政（策）资（源）组（织）激（励）」——年政资组激，缺一不可</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     §2 组织结构与战略实施
+     ════════════════════════════════ -->
+<div class="section-title" id="s2">
+  <span class="sec-num">§ 02</span>
+  <h2>组织结构与战略实施</h2>
+  <span class="page-ref">P302–318</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.2.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">钱德勒命题：结构追随战略</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心必背</span>
+        <span class="badge badge-page">P302-304</span>
+        <span class="badge badge-exam">名词解释·简答·论述</span>
+        <span class="badge badge-year">复试高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材原句（必背）</div>
+      <div class="quote"><p>美国管理史学家<mark>钱德勒（Chandler）</mark>通过对杜邦、通用汽车、标准石油、西尔斯百货四家大公司的研究，提出了著名命题：<mark>结构追随战略（Structure Follows Strategy）</mark>。即企业随着战略的变化，其组织结构也必须随之调整——战略的改变最终必然引发组织结构的变化。</p></div>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版</div>
+      你要开一家卖冰淇淋的小摊（战略），就需要一个人站着卖、一个人做冰淇淋的两人组织（结构）。后来你决定开成连锁店（战略改变），一两个人就搞不定了，需要总店、分店、配送部门（结构随之改变）。这就是"结构追随战略"。
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📖 组织结构演变的四阶段（钱德勒）</div>
+      <div class="flow" style="margin-top:10px">
+        <div class="flow-step">
+          <div class="fs-num">阶段一</div>
+          <div class="fs-title">单一产品·单一市场</div>
+          <div class="fs-body">→ 简单结构（老板亲自管理）</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="fs-num">阶段二</div>
+          <div class="fs-title">单一产品·扩大市场</div>
+          <div class="fs-body">→ 职能制结构（U型）</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="fs-num">阶段三</div>
+          <div class="fs-title">多产品·多市场</div>
+          <div class="fs-body">→ 事业部制（M型）</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="fs-num">阶段四</div>
+          <div class="fs-title">全球化·多元化</div>
+          <div class="fs-body">→ 矩阵制/网络组织</div>
+        </div>
+      </div>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <strong>背景 → 命题内容 → 四阶段演变 → 意义 → 举例</strong><br>
+      <em>"钱德勒通过对四家美国大企业的历史研究，提出了'结构追随战略'命题，即企业的组织结构必须随战略的变化而调整。从历史来看，企业随着战略从单一产品到多元化的演变，经历了从简单结构→职能制→事业部制→矩阵制的组织变革。这一命题的意义在于：战略管理者在制定新战略时，必须同步考虑组织结构的匹配调整，否则'新战略穿旧衣'将导致战略实施失败。"</em>
+    </div>
+    <details>
+      <summary>💡 管理学联系：结构追随战略 vs 战略追随结构</summary>
+      <div class="detail-body">
+        <p><strong>钱德勒命题的局限性：</strong>资源基础观（RBV）认为，企业的组织能力和结构也会反过来塑造和约束战略选择，即"战略也追随结构"。两者存在辩证关系：</p>
+        <ul class="kl" style="margin-top:8px">
+          <li>市场基础观（I/O观）→ 结构追随战略（外部机会驱动）</li>
+          <li>资源基础观（RBV）→ 战略追随结构（内部能力约束）</li>
+        </ul>
+        <p style="margin-top:8px">实践中两者相互作用，是动态循环关系。</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.2.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">五种主要组织结构类型</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背核心</span>
+        <span class="badge badge-page">P304-316</span>
+        <span class="badge badge-exam">简答·论述·对比</span>
+        <span class="badge badge-year">历年高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>结构类型</th>
+        <th>适用战略</th>
+        <th>优点</th>
+        <th>缺点</th>
+        <th>典型企业</th>
+      </tr>
+      <tr>
+        <td><span class="kw">简单结构</span><br><small>（直线制）</small></td>
+        <td>单一产品、创业期、小规模</td>
+        <td>决策灵活快速、协调成本低、责权明确</td>
+        <td>高度依赖老板个人能力、规模扩大后管理超载</td>
+        <td>创业公司、小微企业</td>
+      </tr>
+      <tr>
+        <td><span class="kw">职能制结构</span><br><small>（U型）</small></td>
+        <td>单一产品扩大市场阶段、成本领先战略</td>
+        <td>专业化程度高、规模经济、管理效率高</td>
+        <td>跨部门协调困难、适应性差、各职能本位主义</td>
+        <td>宝钢、大型专业制造商</td>
+      </tr>
+      <tr>
+        <td><span class="kw">事业部制</span><br><small>（M型）</small></td>
+        <td>多产品多市场、相关/不相关多元化</td>
+        <td>各事业部自主经营、激励充分、总部可专注战略</td>
+        <td>可能产生事业部本位主义、总部控制难</td>
+        <td>通用电气（GE）、三星、格力</td>
+      </tr>
+      <tr>
+        <td><span class="kw">矩阵制结构</span></td>
+        <td>需要同时兼顾产品和职能两条线（如工程项目型）</td>
+        <td>资源共享充分、跨职能协调好、应对复杂任务</td>
+        <td>双重领导、责权不清、冲突多、管理成本高</td>
+        <td>波音、麦肯锡、NASA</td>
+      </tr>
+      <tr>
+        <td><span class="kw">网络组织</span><br><small>（虚拟组织）</small></td>
+        <td>动态竞争环境、数字化时代、轻资产战略</td>
+        <td>高度灵活、快速响应、降低固定成本</td>
+        <td>协调难度大、忠诚度低、核心能力可能外流</td>
+        <td>阿里巴巴生态、耐克（核心+外包网络）</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀：五种结构记忆法</div>
+      <strong>「简（单）职（能）事（业）矩（阵）网（络）」</strong>——创业小店→大工厂→多元集团→工程项目→数字平台，依次演进
+    </div>
+
+    <hr class="divider">
+    <strong style="font-size:14px;">📊 职能制 vs 事业部制 深度对比（高频易混点）</strong>
+    <table class="ctable" style="margin-top:10px">
+      <tr>
+        <th>维度</th>
+        <th style="color:#93c5fd">职能制（U型）</th>
+        <th style="color:#6ee7b7">事业部制（M型）</th>
+      </tr>
+      <tr><td>分权程度</td><td>集权，最终决策由总部统一</td><td>分权，事业部自主经营，对利润负责</td></tr>
+      <tr><td>协调方式</td><td>纵向权力链</td><td>各事业部横向并列、内部竞争</td></tr>
+      <tr><td>绩效评估</td><td>职能效率（成本中心）</td><td>利润/投资回报率（利润中心）</td></tr>
+      <tr><td>最适用于</td><td>成本领先战略、单一业务</td><td>多元化战略（相关/不相关）</td></tr>
+      <tr><td>主要风险</td><td>跨部门协调失败（"隔墙"）</td><td>事业部本位主义、资源重复建设</td></tr>
+    </table>
+
+    <details>
+      <summary>📌 矩阵制结构的两难困境（深度理解）</summary>
+      <div class="detail-body">
+        <p>矩阵制存在<strong>"双线汇报"</strong>困境：员工同时向职能部门经理和项目经理负责。这在产生协同效应的同时，也带来：</p>
+        <ul class="kl" style="margin-top:8px">
+          <li><strong>权力斗争</strong>：两个上司争夺同一员工的工作优先级</li>
+          <li><strong>模糊责任</strong>：出了问题互相推诿，"功劳分不清"</li>
+          <li><strong>心理压力</strong>：员工面对双重命令无所适从</li>
+        </ul>
+        <p style="margin-top:8px"><strong>应对策略：</strong>明确哪条线有优先权（通常是项目线）；建立冲突解决机制；用共同目标和文化弱化矛盾。</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     §3 领导力与战略实施
+     ════════════════════════════════ -->
+<div class="section-title" id="s3">
+  <span class="sec-num">§ 03</span>
+  <h2>领导力与战略实施</h2>
+  <span class="page-ref">P318–328</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.3.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略领导力的含义与重要性</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 高频</span>
+        <span class="badge badge-page">P318-320</span>
+        <span class="badge badge-exam">名词解释·简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 定义</div>
+      <span class="kw">战略领导力</span>是指高层管理者（战略领导者）有效管理和领导企业，并以此来推动企业持续成长的能力。战略领导者的核心特征是：<strong>在不确定的环境中为组织指引方向，激励他人实现战略目标</strong>。
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版</div>
+      战略领导力就像军队的将军。普通管理者是排长（带一个小队打眼前的仗），战略领导者是将军（要看整个战场的走势、决定去哪里打、怎么赢得战争）。将军厉害了，整支军队才能打胜仗。
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📖 战略领导者 vs 一般管理者</div>
+      <table class="ctable">
+        <tr>
+          <th>维度</th>
+          <th>战略领导者</th>
+          <th>一般管理者</th>
+        </tr>
+        <tr><td>思维方式</td><td>全局性、长远性、系统性</td><td>局部性、短期性、专业性</td></tr>
+        <tr><td>决策特征</td><td>在模糊环境中做高风险决策</td><td>在相对确定环境中执行决策</td></tr>
+        <tr><td>工作重心</td><td>设定方向、配置资源、建设文化</td><td>执行计划、协调资源、解决问题</td></tr>
+        <tr><td>问责对象</td><td>对整个企业的绩效负责</td><td>对职能/业务单元绩效负责</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.3.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略领导者的六大核心职责</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P320-325</span>
+        <span class="badge badge-exam">简答·论述</span>
+        <span class="badge badge-year">面试高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>#</th><th>职责</th><th>核心内容</th><th>案例</th></tr>
+      <tr>
+        <td>①</td>
+        <td><span class="kw">确定战略方向</span></td>
+        <td>为企业制定长期愿景，明确使命和战略目标，指引全员行动方向</td>
+        <td>乔布斯："让所有人都能使用最好的技术"</td>
+      </tr>
+      <tr>
+        <td>②</td>
+        <td><span class="kw">开发和保护核心能力</span></td>
+        <td>识别和培育企业的核心竞争力，防止关键资源流失和被竞争对手模仿</td>
+        <td>任正非坚守通信技术研发，不跨界</td>
+      </tr>
+      <tr>
+        <td>③</td>
+        <td><span class="kw">建立和维持有效的组织文化</span></td>
+        <td>塑造支持战略的价值观、行为规范和组织氛围，文化是看不见的控制系统</td>
+        <td>海底捞的"以人为本"服务文化</td>
+      </tr>
+      <tr>
+        <td>④</td>
+        <td><span class="kw">强调道德行为</span></td>
+        <td>建立道德标准，通过自身行为示范，营造合规经营和诚信的组织氛围</td>
+        <td>巴菲特"我们无法承受失去声誉的代价"</td>
+      </tr>
+      <tr>
+        <td>⑤</td>
+        <td><span class="kw">建立组织控制系统</span></td>
+        <td>设计能够衡量战略实施进展、及时发现偏差并纠正的控制机制</td>
+        <td>平衡计分卡的四维度控制</td>
+      </tr>
+      <tr>
+        <td>⑥</td>
+        <td><span class="kw">培育人力资本</span></td>
+        <td>识别、吸引、培养和留住关键人才，建设高绩效团队（TMT）</td>
+        <td>谷歌的"20%自由时间"培育创新人才</td>
+      </tr>
+    </table>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>「定（方向）核（心能力）文（化）道（德）控（制）人（才）」——定核文道控人，战略领导者六大天职</strong>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <strong>定义 → 六大职责逐一阐述 → 联系当前热点 → 总结</strong><br>
+      <em>"战略领导者的职责可概括为六个维度：确定战略方向、开发核心能力、建立组织文化、强调道德行为、建立控制系统、培育人力资本。在数字化时代，战略领导者还需要具备'数字领导力'，能够带领组织应对技术颠覆和商业模式创新的挑战。"</em>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.3.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">高层管理团队（TMT）的特征与作用</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P325-328</span>
+        <span class="badge badge-exam">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 定义</div>
+      <span class="kw">高层管理团队（Top Management Team, TMT）</span>是企业最高层的管理者集体，通常包括CEO及其直接报告的副总裁/总监级管理者。TMT的特征与构成对战略决策质量具有决定性影响。
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📖 TMT 构成对战略的影响（上层梯队理论）</div>
+      <p>汉布里克（Hambrick）的<strong>上层梯队理论（Upper Echelons Theory）</strong>认为：企业战略是TMT成员认知、价值观和经验的反映。</p>
+      <table class="ctable" style="margin-top:10px">
+        <tr><th>TMT特征</th><th>对战略的影响</th></tr>
+        <tr><td>异质性（多元背景）↑</td><td>创新性决策↑，争论↑，决策速度↓</td></tr>
+        <tr><td>同质性（相似背景）↑</td><td>执行效率↑，创新性↓，群体思维风险↑</td></tr>
+        <tr><td>任期长↑</td><td>稳定性↑，变革意愿↓（"路径依赖"）</td></tr>
+        <tr><td>外部经历丰富↑</td><td>开放性↑，国际化倾向↑</td></tr>
+      </table>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 生活案例</div>
+      一个足球队（TMT）里，如果全是中锋（同质），进攻厉害但防守崩盘；如果有前锋、中场、后卫、门将的组合（异质），才能打出完整战术。企业TMT也一样——多元化背景带来全面决策视角。
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     §4 企业文化与战略实施
+     ════════════════════════════════ -->
+<div class="section-title" id="s4">
+  <span class="sec-num">§ 04</span>
+  <h2>企业文化与战略实施</h2>
+  <span class="page-ref">P328–340</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.4.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">企业文化的定义与沙因三层次模型</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心必背</span>
+        <span class="badge badge-page">P328-331</span>
+        <span class="badge badge-exam">名词解释·简答·论述</span>
+        <span class="badge badge-year">2018·2021·面试高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 企业文化定义（教材）</div>
+      <div class="quote"><p><span class="kw">企业文化</span>是指企业全体员工在长期的生产经营活动中形成的<mark>共同价值观念、行为准则、思维方式和管理理念</mark>的总和。它是企业独特的精神财富，是无形的竞争优势。</p></div>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📖 沙因（Schein）三层次模型（最重要！）</div>
+      <div style="display:flex; flex-direction:column; gap:8px; margin-top:10px">
+        <div style="background:#fff1f2; border:2px solid #fca5a5; border-radius:10px; padding:14px 18px;">
+          <strong style="color:var(--accent5)">第一层：人工制品（Artifacts）</strong> ——表层，可见可感知<br>
+          <small style="color:#666">企业标志、制服、办公布局、仪式、典礼、公开宣传语、口号等</small><br>
+          <span style="font-size:12px; color:#999">特点：容易观察，但含义不易理解</span>
+        </div>
+        <div style="text-align:center; color:#999; font-size:18px">↕</div>
+        <div style="background:#fef3c7; border:2px solid #fcd34d; border-radius:10px; padding:14px 18px;">
+          <strong style="color:var(--gold)">第二层：价值观（Espoused Values）</strong> ——中层，可询问发现<br>
+          <small style="color:#666">企业公开倡导的信念、原则、目标，如"诚信经营""客户第一"</small><br>
+          <span style="font-size:12px; color:#999">特点：可通过访谈和文件了解，但不一定是真实行为驱动力</span>
+        </div>
+        <div style="text-align:center; color:#999; font-size:18px">↕</div>
+        <div style="background:#dbeafe; border:2px solid #93c5fd; border-radius:10px; padding:14px 18px;">
+          <strong style="color:var(--accent)">第三层：基本假设（Basic Assumptions）</strong> ——深层，潜意识<br>
+          <small style="color:#666">员工不自觉遵循的深层信念，如对人性、时间、空间的基本看法</small><br>
+          <span style="font-size:12px; color:#999">特点：最难改变，是文化的真正核心驱动力</span>
+        </div>
+      </div>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版（洋葱比喻）</div>
+      企业文化就像一个洋葱：最外层（皮）= 人工制品（能看到的东西）；中间层 = 价值观（公开说的理念）；最里层（核心）= 基本假设（大家下意识认为对的事情，不说出来但无时不在影响行为）。要改变文化，必须触及最里层，否则只是"换了外套，内心不变"。
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <strong>定义 → 三层次（外→中→内）→ 各层特点 → 文化变革的难点 → 举例</strong><br>
+      <em>"企业文化是企业全体员工共同的价值观念和行为准则。根据沙因的三层次模型，企业文化由外到内分为：可观察的人工制品层（如阿里的橙色工牌文化）、倡导的价值观层（如华为的'奋斗者文化'口号）和深层的基本假设层（华为真正相信'只有奋斗才能生存'的底层逻辑）。文化变革之难，正是因为最里层的基本假设根深蒂固、难以撼动。"</em>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.4.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">企业文化的主要功能</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高频必背</span>
+        <span class="badge badge-page">P331-334</span>
+        <span class="badge badge-exam">简答·论述</span>
+        <span class="badge badge-year">2018·2022·面试高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>#</th><th>功能</th><th>核心解释</th><th>案例</th></tr>
+      <tr>
+        <td>①</td>
+        <td><span class="kw">导向功能</span></td>
+        <td>为员工提供统一的价值取向和行为方向，使全员朝着战略目标聚焦</td>
+        <td>谷歌"不作恶"文化引导员工决策取向</td>
+      </tr>
+      <tr>
+        <td>②</td>
+        <td><span class="kw">凝聚功能</span></td>
+        <td>共同的价值观产生强烈的归属感，增强员工对企业的认同感和忠诚度</td>
+        <td>腾讯员工对"连接一切"使命的认同感</td>
+      </tr>
+      <tr>
+        <td>③</td>
+        <td><span class="kw">激励功能</span></td>
+        <td>通过精神激励，激发员工内在动力和使命感，超越单纯的薪酬激励</td>
+        <td>海底捞员工的"主人翁精神"</td>
+      </tr>
+      <tr>
+        <td>④</td>
+        <td><span class="kw">约束功能</span></td>
+        <td>通过无形的规范和氛围约束员工行为，成为制度约束之外的软性控制系统</td>
+        <td>西南航空员工不需要规定手册也知道如何服务客户</td>
+      </tr>
+      <tr>
+        <td>⑤</td>
+        <td><span class="kw">辐射功能</span></td>
+        <td>企业文化向外部延伸，影响顾客、供应商、社区，塑造品牌形象和社会口碑</td>
+        <td>星巴克文化打造"第三空间"品牌价值</td>
+      </tr>
+    </table>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>「导（向）凝（聚）激（励）约（束）辐（射）」——文化五功能，导凝激约辐</strong>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <strong>功能一 → 功能二 → … → 总结与战略联系</strong><br>
+      <em>"企业文化对战略实施具有五大功能：导向（明确方向）、凝聚（增强认同）、激励（激发动力）、约束（规范行为）、辐射（塑造品牌）。从战略实施角度看，文化是'看不见的管理系统'，能以最低成本实现最强的行为控制——这正是韦尔奇所说的'软的价值观是最硬的竞争力'的含义。"</em>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.4.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">强文化与弱文化 · 企业文化的变革</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 高频</span>
+        <span class="badge badge-page">P334-340</span>
+        <span class="badge badge-exam">对比·简答·案例</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 强文化 vs 弱文化</div>
+      <table class="ctable">
+        <tr>
+          <th>维度</th>
+          <th style="color:#93c5fd">强文化</th>
+          <th style="color:#fca5a5">弱文化</th>
+        </tr>
+        <tr><td>定义</td><td>企业的核心价值观被员工<strong>广泛认同且强烈持有</strong></td><td>价值观分散，员工认同度低，行为规范缺乏一致性</td></tr>
+        <tr><td>优点</td><td>凝聚力强、协调成本低、执行力高；员工归属感和忠诚度高</td><td>灵活性高，易于吸纳多元视角</td></tr>
+        <tr><td>缺点</td><td>可能导致<strong>群体思维</strong>（Groupthink）、排斥异见、变革困难</td><td>执行力弱、缺乏凝聚力、战略难以落地</td></tr>
+        <tr><td>适合情境</td><td>稳定环境、需要高度执行一致性的战略（如麦当劳标准化战略）</td><td>创业期或需要快速学习的企业</td></tr>
+        <tr><td>典型企业</td><td>华为（奋斗者文化）、海底捞（服务文化）</td><td>—</td></tr>
+      </table>
+    </div>
+
+    <div class="block block-definition">
+      <div class="block-label">📖 企业文化变革的三种路径</div>
+      <div class="flow" style="margin-top:8px">
+        <div class="flow-step" style="background:#dbeafe; border-color:#93c5fd; min-width:160px">
+          <div class="fs-num">路径一</div>
+          <div class="fs-title" style="color:var(--accent)">自上而下变革</div>
+          <div class="fs-body">领导者通过示范行为和政策指令推动文化改变（如柳传志重塑联想文化）</div>
+        </div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-step" style="background:#e6f7f4; border-color:#9ed9cc; min-width:160px">
+          <div class="fs-num">路径二</div>
+          <div class="fs-title" style="color:var(--accent3)">危机驱动变革</div>
+          <div class="fs-body">业绩危机或外部冲击提供了打破旧文化的"解冻"机会（冰山解冻论）</div>
+        </div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-step" style="background:#fef9e7; border-color:#fcd34d; min-width:160px">
+          <div class="fs-num">路径三</div>
+          <div class="fs-title" style="color:var(--gold)">渐进式变革</div>
+          <div class="fs-body">通过招募新员工、培训、仪式活动等逐步植入新价值观（"文化基因替换"）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block block-analogy">
+      <div class="block-label">🍰 文化变革的"冰山解冻论"（勒温三阶段）</div>
+      <strong>解冻（Unfreeze）→ 变革（Change）→ 再冻结（Refreeze）</strong><br>
+      就像要把一块圆形冰变成方形冰，要先把圆形冰融化（打破旧文化认知），然后塑造成方形（建立新文化），最后让它重新结冰变硬（强化新文化直到成为习惯）。
+    </div>
+
+    <details>
+      <summary>📌 复试延伸：企业文化与战略的四种匹配状态</summary>
+      <div class="detail-body">
+        <table class="ctable">
+          <tr><th>战略是否需要变革</th><th>文化是否支持战略</th><th>建议行动</th></tr>
+          <tr><td>不需要</td><td>支持</td><td>保持现有文化，强化执行</td></tr>
+          <tr><td>需要</td><td>支持</td><td>顺势推进战略变革（较易）</td></tr>
+          <tr><td>不需要</td><td>不支持</td><td>管理文化与战略的局部冲突</td></tr>
+          <tr><td>需要</td><td>不支持</td><td>最艰难：必须同步推进战略变革和文化变革</td></tr>
+        </table>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     §5 战略控制
+     ════════════════════════════════ -->
+<div class="section-title" id="s5">
+  <span class="sec-num">§ 05</span>
+  <h2>战略控制系统</h2>
+  <span class="page-ref">P340–348</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.5.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略控制的含义与目的</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 高频</span>
+        <span class="badge badge-page">P340-342</span>
+        <span class="badge badge-exam">名词解释·简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 定义</div>
+      <span class="kw">战略控制</span>是指战略领导者通过制定标准、衡量绩效、分析偏差、采取纠偏措施，以确保战略实施按计划推进，并在环境变化时及时调整战略的管理活动。
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📖 战略控制的过程（三步骤）</div>
+      <div class="flow" style="margin-top:8px">
+        <div class="flow-step">
+          <div class="fs-num">STEP 01</div>
+          <div class="fs-title">设定控制标准</div>
+          <div class="fs-body">明确战略目标和绩效指标（量化 vs 质化）</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="fs-num">STEP 02</div>
+          <div class="fs-title">衡量实际绩效</div>
+          <div class="fs-body">收集战略实施数据，与标准对比，发现偏差</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div class="fs-num">STEP 03</div>
+          <div class="fs-title">分析偏差并纠偏</div>
+          <div class="fs-body">判断偏差原因：是实施问题？还是战略本身需要调整？</div>
+        </div>
+      </div>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版</div>
+      开车去目的地：① 设目标（目的地）；② 看地图+看仪表盘（衡量绩效）；③ 发现走偏了调方向（纠偏）。战略控制就是企业的"导航系统"，确保不偏离战略方向。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.5.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">四种战略控制类型（斯曾德尔和霍弗）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心必背</span>
+        <span class="badge badge-page">P342-346</span>
+        <span class="badge badge-exam">简答·名词解释·对比</span>
+        <span class="badge badge-year">高频考点</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 背景</div>
+      斯曾德尔（Schendel）和霍弗（Hofer）将战略控制分为四种类型，按照控制的<strong>时机</strong>和<strong>对象</strong>不同进行区分，形成完整的战略控制体系。
+    </div>
+    <table class="ctable">
+      <tr>
+        <th>控制类型</th>
+        <th>控制对象</th>
+        <th>控制时机</th>
+        <th>核心含义</th>
+        <th>案例</th>
+      </tr>
+      <tr>
+        <td><span class="kw">① 前提控制</span><br><small>(Premise Control)</small></td>
+        <td>战略制定时的假设前提</td>
+        <td>持续监控（贯穿实施全程）</td>
+        <td>检查战略所依赖的外部环境假设（如行业增长率、竞争对手行为、宏观经济）是否仍然成立</td>
+        <td>如果假设"智能手机市场将快速增长"不再成立，必须调整战略</td>
+      </tr>
+      <tr>
+        <td><span class="kw">② 战略监控</span><br><small>(Strategic Surveillance)</small></td>
+        <td>宽泛的环境信号</td>
+        <td>持续扫描（开放式监控）</td>
+        <td>对各类信息进行广泛而非聚焦的扫描，捕捉可能影响战略的意外信号（"扫描雷达"）</td>
+        <td>企业情报部门持续扫描技术/政策/竞争动向</td>
+      </tr>
+      <tr>
+        <td><span class="kw">③ 特别预警控制</span><br><small>(Special Alert Control)</small></td>
+        <td>突发重大事件</td>
+        <td>事件触发（应激式）</td>
+        <td>针对突发危机或重大意外事件（如竞争对手并购、政策突变、自然灾害）快速重新评估战略</td>
+        <td>新冠疫情突发→企业迅速启动应急战略评估</td>
+      </tr>
+      <tr>
+        <td><span class="kw">④ 实施控制</span><br><small>(Implementation Control)</small></td>
+        <td>战略实施的具体步骤</td>
+        <td>里程碑检查（阶段性）</td>
+        <td>通过设定里程碑，定期检查战略实施进展，判断是否按计划推进，是否需要调整</td>
+        <td>季度战略回顾会议检查OKR完成情况</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀（四种控制）</div>
+      <strong>「前（提）监（控）特（别）实（施）」——前提假设，监控雷达，特别警报，实施里程碑</strong><br>
+      记忆诀窍：前提（检查假设还在不在）→监控（扫描所有信号）→特别（突发事件应急）→实施（阶段性里程碑）
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <strong>背景 → 逐一阐述四种类型（控制对象+时机+含义）→ 举例 → 总结</strong><br>
+      <em>"战略控制可分为四种类型：①前提控制，持续检验战略假设前提是否成立；②战略监控，宽泛扫描环境信号；③特别预警控制，针对重大突发事件快速响应；④实施控制，通过里程碑检查实施进展。四者共同构成全方位的战略控制体系——就像企业的'免疫系统'，能在不同层面感知威胁并做出反应。"</em>
+    </div>
+
+    <details>
+      <summary>📊 四种控制类型对比表（易混点）</summary>
+      <div class="detail-body">
+        <table class="ctable">
+          <tr><th>对比维度</th><th>前提控制</th><th>战略监控</th><th>特别预警</th><th>实施控制</th></tr>
+          <tr><td>触发方式</td><td>定期检查</td><td>持续扫描</td><td>事件驱动</td><td>阶段节点</td></tr>
+          <tr><td>关注范围</td><td>特定假设</td><td>宽泛广域</td><td>单一危机</td><td>内部执行</td></tr>
+          <tr><td>信息来源</td><td>环境监测</td><td>各类渠道</td><td>应急情报</td><td>内部报告</td></tr>
+          <tr><td>反应速度</td><td>中</td><td>慢（预防性）</td><td>快（应急）</td><td>中</td></tr>
+          <tr><td>应对模式</td><td>调整战略前提</td><td>调整战略视角</td><td>启动应急预案</td><td>调整实施计划</td></tr>
+        </table>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.5.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">三种控制机制：财务控制 vs 战略控制 vs 行为控制</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P346-348</span>
+        <span class="badge badge-exam">对比·简答</span>
+        <span class="badge badge-year">与第七章联动高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>控制机制</th>
+        <th>控制内容</th>
+        <th>主要指标</th>
+        <th>优点</th>
+        <th>缺点</th>
+        <th>适用情境</th>
+      </tr>
+      <tr>
+        <td><span class="kw">财务控制</span></td>
+        <td>绩效结果（做得怎么样）</td>
+        <td>利润率、ROI、ROE、现金流、EVA</td>
+        <td>客观可量化、易于比较评估</td>
+        <td>只关注结果，无法评估过程；短期导向</td>
+        <td>不相关多元化；成熟稳定业务</td>
+      </tr>
+      <tr>
+        <td><span class="kw">战略控制</span></td>
+        <td>战略方向（做了没有、做没做对）</td>
+        <td>市场份额、技术领先性、关键战略里程碑</td>
+        <td>长期导向；支持创新和战略探索</td>
+        <td>主观性强；评估成本高；周期长才见效</td>
+        <td>相关多元化；需要协同的业务</td>
+      </tr>
+      <tr>
+        <td><span class="kw">行为控制</span></td>
+        <td>行为过程（怎么做的）</td>
+        <td>流程合规度、行为规范遵守率、文化认同度</td>
+        <td>确保过程正确；降低合规风险</td>
+        <td>执行成本高；容易官僚化；抑制创新</td>
+        <td>高风险行业（医疗、金融）；标准化要求高的业务</td>
+      </tr>
+    </table>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记</div>
+      <strong>财务控制"看结果"；战略控制"看方向"；行为控制"看过程"——三者组合使用，形成"360°立体控制"</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     §6 平衡计分卡
+     ════════════════════════════════ -->
+<div class="section-title" id="s6">
+  <span class="sec-num">§ 06</span>
+  <h2>平衡计分卡（BSC）</h2>
+  <span class="page-ref">P348–354</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.6.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">平衡计分卡的含义与四个维度</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心必背</span>
+        <span class="badge badge-page">P348-352</span>
+        <span class="badge badge-exam">名词解释·简答·论述</span>
+        <span class="badge badge-year">2016·历年高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 定义（卡普兰 & 诺顿）</div>
+      <div class="quote"><p><span class="kw">平衡计分卡（Balanced Scorecard, BSC）</span>由卡普兰（Kaplan）和诺顿（Norton）于1992年提出，是一种将企业战略目标转化为可操作的<mark>绩效衡量系统</mark>。它从四个维度——<mark>财务、客户、内部流程、学习与成长</mark>——全面、综合地评估企业绩效，克服了单纯依赖财务指标的"短视症"。</p></div>
+    </div>
+
+    <strong style="display:block; margin-bottom:12px; font-size:14px">📊 BSC 四维度详解</strong>
+    <div class="bsc-grid">
+      <div class="bsc-center">🎯 企业战略愿景与目标<br><small style="font-weight:400; opacity:.8">BSC 的核心出发点</small></div>
+      <div class="bsc-cell bsc-f">
+        <div class="bc-icon">💰</div>
+        <div class="bc-title">财务维度</div>
+        <div class="bc-sub">核心问题：<strong>股东如何看我们？</strong><br>代表指标：ROI、EVA、收入增长率、利润率<br>本质：企业的最终经济成果</div>
+      </div>
+      <div class="bsc-cell bsc-c">
+        <div class="bc-icon">🤝</div>
+        <div class="bc-title">客户维度</div>
+        <div class="bc-sub">核心问题：<strong>客户如何看我们？</strong><br>代表指标：客户满意度、客户保留率、市场份额、客户获取成本<br>本质：创造顾客价值</div>
+      </div>
+      <div class="bsc-cell bsc-p">
+        <div class="bc-icon">⚙️</div>
+        <div class="bc-title">内部流程维度</div>
+        <div class="bc-sub">核心问题：<strong>我们擅长什么？</strong><br>代表指标：产品质量合格率、创新产品数量、交货周期、服务响应速度<br>本质：内部运营效率</div>
+      </div>
+      <div class="bsc-cell bsc-l">
+        <div class="bc-icon">📚</div>
+        <div class="bc-title">学习与成长维度</div>
+        <div class="bc-sub">核心问题：<strong>我们能否继续进步？</strong><br>代表指标：员工满意度、培训投入、员工技能提升、知识管理效果<br>本质：支撑未来发展的基础能力</div>
+      </div>
+    </div>
+
+    <div class="block block-definition">
+      <div class="block-label">📖 四维度的因果逻辑链（重要！）</div>
+      <div class="flow" style="margin-top:8px">
+        <div class="flow-step" style="background:#f5f0ff; border-color:#c4b5fd">
+          <div class="fs-num">基础层</div>
+          <div class="fs-title" style="color:var(--accent4)">学习与成长</div>
+          <div class="fs-body">提升员工能力→建立组织学习机制</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#fef3c7; border-color:#fcd34d">
+          <div class="fs-num">过程层</div>
+          <div class="fs-title" style="color:var(--gold)">内部流程</div>
+          <div class="fs-body">改善内部业务流程→提高运营效率</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#d1fae5; border-color:#6ee7b7">
+          <div class="fs-num">市场层</div>
+          <div class="fs-title" style="color:var(--accent3)">客户</div>
+          <div class="fs-body">创造更好的客户价值→提高满意度和忠诚度</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="background:#dbeafe; border-color:#93c5fd">
+          <div class="fs-num">结果层</div>
+          <div class="fs-title" style="color:var(--accent)">财务</div>
+          <div class="fs-body">实现优秀财务绩效→股东价值最大化</div>
+        </div>
+      </div>
+      <p style="font-size:13px; color:#666; margin-top:10px;">📌 逻辑：<strong>学习成长→内部流程改善→客户价值提升→财务绩效提高</strong>——BSC揭示了"软指标驱动硬结果"的因果链</p>
+    </div>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>「财（务）客（户）内（部流程）学（习成长）」——财客内学，四维平衡</strong><br>
+      记忆方法：从<strong>上往下看</strong>（财务是结果）和从<strong>下往上看</strong>（学习是根基）都要懂。
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <strong>背景 → 定义 → 四维度（逐一讲核心问题+指标）→ 因果链 → 意义 → 举例</strong><br>
+      <em>"平衡计分卡（BSC）由卡普兰和诺顿于1992年提出，是将战略转化为可衡量绩效系统的工具。它包含四个维度：财务（股东视角）、客户（市场视角）、内部流程（运营视角）、学习与成长（发展视角）。四维度形成因果链：学习成长→流程改善→客户满意→财务成功。与传统财务考核相比，BSC解决了'只重短期财务结果、忽视长期能力建设'的问题。以华为为例，其考核体系将技术研发投入（学习与成长）、产品交付周期（内部流程）、客户满意度和市场份额（客户）、营收增长（财务）有机整合，正是BSC理念的体现。"</em>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">11.6.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">平衡计分卡的"平衡"内涵与战略地图</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P352-354</span>
+        <span class="badge badge-exam">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 BSC 的"平衡"体现在四个层面</div>
+      <table class="ctable">
+        <tr><th>平衡维度</th><th>含义</th></tr>
+        <tr><td>财务 vs 非财务</td><td>不只看利润，也看学习、流程、客户等非财务指标</td></tr>
+        <tr><td>短期 vs 长期</td><td>财务是短期结果，学习成长是长期基础</td></tr>
+        <tr><td>内部 vs 外部</td><td>内部流程代表内部视角，客户视角代表外部视角</td></tr>
+        <tr><td>结果 vs 过程</td><td>财务是结果指标（滞后），学习与流程是过程指标（领先）</td></tr>
+      </table>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📖 战略地图（Strategy Map）</div>
+      <p><span class="kw">战略地图</span>是BSC的延伸工具，通过<strong>可视化地图</strong>展示四个维度之间的因果关系，帮助管理者理解"如何实现战略目标"的逻辑路径。</p>
+      <p style="margin-top:8px; font-size:13px; color:#666;">战略地图将战略目标分解为：愿景 → 财务目标 → 客户目标 → 内部流程目标 → 学习成长目标，形成一张从底层能力到顶层结果的完整"战略因果图"。</p>
+    </div>
+    <details>
+      <summary>💡 管理学联系：BSC与KPI/OKR的区别</summary>
+      <div class="detail-body">
+        <table class="ctable">
+          <tr><th>工具</th><th>本质</th><th>特点</th><th>适用场景</th></tr>
+          <tr><td><strong>BSC</strong></td><td>战略绩效管理体系</td><td>四维度综合、战略导向、因果关系</td><td>战略实施全过程管控</td></tr>
+          <tr><td><strong>KPI</strong></td><td>关键绩效指标</td><td>聚焦结果、量化、可与薪酬挂钩</td><td>稳定业务的绩效考核</td></tr>
+          <tr><td><strong>OKR</strong></td><td>目标与关键成果</td><td>目标激进、过程导向、强调对齐</td><td>创新型业务、敏捷组织</td></tr>
+        </table>
+        <p style="margin-top:8px">实践中三者往往结合使用：BSC构建战略框架→KPI/OKR落实具体目标。</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     对比总结表（易混概念）
+     ════════════════════════════════ -->
+<div class="section-title">
+  <span class="sec-num">📊</span>
+  <h2>对比总结表（易混概念）</h2>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">对比</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">本章核心易混概念一览对比</div>
+      <div class="kcard-meta"><span class="badge badge-tier1">⭐⭐⭐⭐ 复试必看</span></div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <strong style="font-size:14px; display:block; margin-bottom:10px">① 五种组织结构对比速查</strong>
+    <table class="ctable">
+      <tr><th>结构</th><th>别名</th><th>核心特征</th><th>最适用战略</th><th>最大风险</th></tr>
+      <tr><td>简单结构</td><td>直线制</td><td>老板直接管所有人</td><td>创业期、单一产品</td><td>老板精力有限，规模扩大后失控</td></tr>
+      <tr><td>职能制</td><td>U型</td><td>按职能（生产/营销/财务）分部门</td><td>成本领先、单一产品扩大市场</td><td>跨部门协调差（"部门墙"）</td></tr>
+      <tr><td>事业部制</td><td>M型</td><td>按产品/地区/客户划分独立事业部</td><td>多元化、多产品多市场</td><td>事业部本位主义、资源重复</td></tr>
+      <tr><td>矩阵制</td><td>—</td><td>纵向职能+横向项目双重汇报</td><td>工程项目型、需要跨职能协作</td><td>双重领导、权责不清</td></tr>
+      <tr><td>网络组织</td><td>虚拟组织</td><td>核心+外包网络，轻资产</td><td>动态环境、数字化战略</td><td>协调难，核心能力可能外流</td></tr>
+    </table>
+
+    <hr class="divider">
+
+    <strong style="font-size:14px; display:block; margin-bottom:10px">② 四种战略控制类型速查</strong>
+    <table class="ctable">
+      <tr><th>控制类型</th><th>一句话核心</th><th>关键词</th></tr>
+      <tr><td>前提控制</td><td>持续检验战略的"假设前提"还成立吗？</td><td>假设·环境变化·战略基础</td></tr>
+      <tr><td>战略监控</td><td>广泛扫描所有可能影响战略的信号（雷达扫描）</td><td>宽泛·扫描·预防性</td></tr>
+      <tr><td>特别预警</td><td>突发危机来临，紧急重新评估战略</td><td>突发·应急·快速响应</td></tr>
+      <tr><td>实施控制</td><td>里程碑节点检查战略实施进展</td><td>里程碑·阶段性·内部执行</td></tr>
+    </table>
+
+    <hr class="divider">
+
+    <strong style="font-size:14px; display:block; margin-bottom:10px">③ 企业文化三层次 vs 战略控制三类型 vs BSC四维度 对比记忆</strong>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:8px">
+      <div style="background:#fef9e7; border-radius:10px; padding:14px; border:2px solid #fcd34d">
+        <strong style="color:var(--gold)">文化三层次</strong>
+        <ul class="kl" style="margin-top:8px; font-size:13px">
+          <li>人工制品（表层可见）</li>
+          <li>价值观（中层倡导）</li>
+          <li>基本假设（深层潜意识）</li>
+        </ul>
+      </div>
+      <div style="background:#dbeafe; border-radius:10px; padding:14px; border:2px solid #93c5fd">
+        <strong style="color:var(--accent)">控制三类型</strong>
+        <ul class="kl" style="margin-top:8px; font-size:13px">
+          <li>财务控制（看结果）</li>
+          <li>战略控制（看方向）</li>
+          <li>行为控制（看过程）</li>
+        </ul>
+      </div>
+      <div style="background:#d1fae5; border-radius:10px; padding:14px; border:2px solid #6ee7b7">
+        <strong style="color:var(--accent3)">BSC 四维度</strong>
+        <ul class="kl" style="margin-top:8px; font-size:13px">
+          <li>财务（结果层）</li>
+          <li>客户（市场层）</li>
+          <li>内部流程（过程层）</li>
+          <li>学习成长（基础层）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     历年真题汇总
+     ════════════════════════════════ -->
+<div class="section-title">
+  <span class="sec-num">📝</span>
+  <h2>历年真题汇总（2016–2025）</h2>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">真题</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">中南大学企业管理学硕 · 本章相关历年考题</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 复试必看</span>
+        <span class="badge badge-year">2016–2025</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>年份</th>
+        <th>考查题目</th>
+        <th>题型</th>
+        <th>本章对应知识点</th>
+        <th>重要度</th>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2016</span></td>
+        <td>简述平衡计分卡四个维度及逻辑</td>
+        <td>简答</td>
+        <td>§6 平衡计分卡四维度+因果链</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2016</span></td>
+        <td>论述企业战略与人力资源战略的匹配关系</td>
+        <td>论述</td>
+        <td>§3 战略领导力·TMT·人力资本培育</td>
+        <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2018</span></td>
+        <td>论述企业文化对战略实施的作用</td>
+        <td>论述</td>
+        <td>§4 企业文化功能（五大功能）</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2019</span></td>
+        <td>简述企业组织结构选择的原则</td>
+        <td>简答</td>
+        <td>§2 结构追随战略+五种结构适用条件</td>
+        <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2022</span></td>
+        <td>论述数字化转型中的战略与组织协同</td>
+        <td>论述</td>
+        <td>§2 网络组织+§3 战略领导力</td>
+        <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2025</span></td>
+        <td>简述战略管理过程（分析-制定-实施-控制）</td>
+        <td>简答</td>
+        <td>§1 战略实施概述+§5 战略控制</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">2025</span></td>
+        <td>案例：某企业数字化转型失败，分析战略与人力问题</td>
+        <td>案例</td>
+        <td>§1-§5 全章综合（战略实施失败诊断）</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">面试高频</span></td>
+        <td>如何看待企业文化与战略变革的关系？</td>
+        <td>口头表达</td>
+        <td>§4 强弱文化·文化变革三路径</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="badge badge-year">面试高频</span></td>
+        <td>平衡计分卡与传统财务考核相比有何优势？</td>
+        <td>口头表达</td>
+        <td>§6 BSC四维度·平衡内涵</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+    </table>
+
+    <hr class="divider">
+    <strong>📌 教材重要原句汇总（建议默写）：</strong>
+    <div class="quote" style="margin-top:10px">
+      <p>① "战略实施是指将战略计划转化为行动的过程，即通过对企业资源的合理配置，借助<mark>组织结构、激励机制和企业文化</mark>等手段，使企业全体成员都致力于实现战略目标的管理过程。"（P295-296）</p>
+    </div>
+    <div class="quote" style="margin-top:10px">
+      <p>② 钱德勒命题：<mark>"结构追随战略（Structure Follows Strategy）"</mark>——企业的组织结构必须随战略的变化而调整，否则组织结构将成为实现战略目标的障碍。（P302-303）</p>
+    </div>
+    <div class="quote" style="margin-top:10px">
+      <p>③ "企业文化是指企业全体员工在长期的生产经营活动中形成的<mark>共同价值观念、行为准则、思维方式和管理理念</mark>的总和，是企业独特的精神财富。"（P328-329）</p>
+    </div>
+    <div class="quote" style="margin-top:10px">
+      <p>④ "平衡计分卡从<mark>财务、客户、内部流程、学习与成长</mark>四个维度全面、综合地评估企业绩效，将企业的战略目标转化为可操作的绩效衡量系统，克服了单纯依赖财务指标的短视问题。"（P348-349）</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     30秒复习模块
+     ════════════════════════════════ -->
+<div class="flash" id="flash">
+  <h3>⚡ 30秒极速复习模块</h3>
+  <div class="flash-item">
+    <span class="fi-num">01</span>
+    <div class="fi-text">战略实施 = 将战略计划转化为行动的过程，特征：<mark>复杂·系统·动态·长期</mark></div>
+  </div>
+  <div class="flash-item">
+    <span class="fi-num">02</span>
+    <div class="fi-text"><mark>钱德勒命题</mark>：结构追随战略 → 四阶段演变：简单→职能→事业部→矩阵/网络</div>
+  </div>
+  <div class="flash-item">
+    <span class="fi-num">03</span>
+    <div class="fi-text">五种组织结构：<mark>简单·职能·事业部·矩阵·网络</mark> ——创业→扩大→多元→复杂→数字化</div>
+  </div>
+  <div class="flash-item">
+    <span class="fi-num">04</span>
+    <div class="fi-text">战略领导者六大职责：<mark>定方向·核心能力·文化·道德·控制·人才</mark></div>
+  </div>
+  <div class="flash-item">
+    <span class="fi-num">05</span>
+    <div class="fi-text">企业文化三层次（沙因）：<mark>人工制品（表）→价值观（中）→基本假设（深）</mark></div>
+  </div>
+  <div class="flash-item">
+    <span class="fi-num">06</span>
+    <div class="fi-text">文化五大功能：<mark>导向·凝聚·激励·约束·辐射</mark></div>
+  </div>
+  <div class="flash-item">
+    <span class="fi-num">07</span>
+    <div class="fi-text">四种战略控制：<mark>前提（假设）→监控（扫描）→特别预警（应急）→实施（里程碑）</mark></div>
+  </div>
+  <div class="flash-item">
+    <span class="fi-num">08</span>
+    <div class="fi-text">三种控制机制：<mark>财务（结果）·战略（方向）·行为（过程）</mark></div>
+  </div>
+  <div class="flash-item">
+    <span class="fi-num">09</span>
+    <div class="fi-text">BSC四维度：<mark>财务（股东）→客户（市场）→内部流程（运营）→学习成长（基础）</mark></div>
+  </div>
+  <div class="flash-item">
+    <span class="fi-num">10</span>
+    <div class="fi-text">BSC因果链：<mark>学习成长→内部流程改善→客户满意→财务成功</mark>（从下往上驱动）</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     背诵版总结
+     ════════════════════════════════ -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">背诵版</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">复试口述版总结（背诵模板）</div>
+      <div class="kcard-meta"><span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背</span></div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-exam">
+      <div class="block-label">🎤 复试口述版（第十一章一分钟串讲）</div>
+      <p>第十一章讲的是战略实施的管理与控制——<strong>好的战略如何真正落地执行</strong>。</p>
+      <br>
+      <p><strong>第一，组织结构方面</strong>：钱德勒提出"结构追随战略"，随着战略从单一到多元演变，组织结构经历了简单→职能→事业部→矩阵→网络的演进。不同战略需要匹配不同结构——成本领先战略适合职能制，多元化战略适合事业部制。</p>
+      <br>
+      <p><strong>第二，战略领导力方面</strong>：战略领导者有六大核心职责，包括确定战略方向、开发核心能力、建立有效文化、强调道德行为、建立控制系统和培育人力资本。</p>
+      <br>
+      <p><strong>第三，企业文化方面</strong>：根据沙因的三层次模型，文化分为可见的人工制品、倡导的价值观和深层的基本假设三层。文化具有导向、凝聚、激励、约束、辐射五大功能，是战略实施的"软性控制系统"。</p>
+      <br>
+      <p><strong>第四，战略控制方面</strong>：斯曾德尔和霍弗将战略控制分为四种——前提控制（检验假设）、战略监控（扫描信号）、特别预警控制（应对危机）和实施控制（里程碑检查）。此外，从控制机制看，分为财务控制、战略控制和行为控制三类。</p>
+      <br>
+      <p><strong>第五，平衡计分卡（BSC）</strong>由卡普兰和诺顿提出，从财务、客户、内部流程、学习与成长四个维度综合评估绩效，形成"学习成长→流程改善→客户满意→财务成功"的因果链，克服了单纯财务指标的短视问题。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     终极串联复习
+     ════════════════════════════════ -->
+<div class="chain" id="chain">
+  <h2>🔗 终极串联复习</h2>
+  <p class="chain-sub">将本章所有知识点贯穿成一条逻辑链，方便最后复习</p>
+  <div class="chain-flow">
+    <div class="chain-step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">战略要落地</div>
+      <div class="step-body">战略实施 = 把计划变成行动，特征：复杂·系统·动态·长期。失败原因：目标不清、资源不配、组织阻力、文化冲突、控制缺位</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-title">结构要匹配</div>
+      <div class="step-body">结构追随战略（钱德勒）→ 5种结构：简单→职能→事业部→矩阵→网络，依战略阶段选择</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-title">领导来驱动</div>
+      <div class="step-body">战略领导者六大职责：定方向·核心能力·文化·道德·控制·人才，TMT的多元性影响战略质量</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 04</div>
+      <div class="step-title">文化来支撑</div>
+      <div class="step-body">沙因三层次：人工制品→价值观→基本假设；文化五功能：导凝激约辐；强文化利执行也碍变革</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 05</div>
+      <div class="step-title">控制来保证</div>
+      <div class="step-body">四种控制：前提·监控·预警·实施；三类机制：财务·战略·行为；BSC四维度：财务→客户→流程→学习</div>
+    </div>
+  </div>
+  <div class="chain-summary">
+    <strong>一句话总结：</strong>战略实施成功的关键是<mark style="background:#93c5fd; color:#0f1f2e; padding:0 4px; border-radius:3px">"结构匹配战略·文化支撑执行·领导力驱动变革·控制系统保驾护航"</mark>——四者缺一不可，共同构成战略实施的"四架马车"。
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     自我检验
+     ════════════════════════════════ -->
+<div class="quiz" id="quiz">
+  <h2>📝 课后自我检验</h2>
+  <p class="quiz-sub">完成以下题目验证掌握程度，建议先合书作答</p>
+
+  <div class="q-item">
+    <div class="q-num">Q · 01 — 名词解释</div>
+    <div class="q-text">什么是战略实施？与战略制定有何区别？</div>
+    <div class="q-hint"><span>参考答案要点：</span>定义（将战略计划转化为行动）→ 特征（复杂·系统·动态·长期）→ 对比：制定关注"做什么"，实施关注"怎么做"；制定是分析家的天下，实施是行动家的战场</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 02 — 名词解释</div>
+    <div class="q-text">简述钱德勒命题"结构追随战略"的含义及其历史背景。</div>
+    <div class="q-hint"><span>关键词：</span>钱德勒·四家大公司·单一→多元化演变·简单→职能→事业部→矩阵结构·局限性（战略也可追随结构）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 03 — 简答</div>
+    <div class="q-exam">真题改编 · 2018年</div>
+    <div class="q-text">简述企业文化对战略实施的五大功能，并各举一例说明。</div>
+    <div class="q-hint"><span>关键词：</span>① 导向功能（谷歌"不作恶"）→ ② 凝聚功能（员工归属感）→ ③ 激励功能（海底捞主人翁精神）→ ④ 约束功能（无形规范）→ ⑤ 辐射功能（星巴克"第三空间"）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 04 — 简答</div>
+    <div class="q-exam">真题 · 2016年（考察BSC）</div>
+    <div class="q-text">简述平衡计分卡的四个维度及其逻辑因果关系。</div>
+    <div class="q-hint"><span>关键词：</span>① 财务（股东视角）→ ② 客户（市场视角）→ ③ 内部流程（运营视角）→ ④ 学习与成长（发展基础）；因果链：学习成长→流程改善→客户满意→财务成功；"平衡"含义（四对平衡）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 05 — 对比</div>
+    <div class="q-text">比较职能制结构与事业部制结构的优缺点，分别适用于什么战略情境？</div>
+    <div class="q-hint"><span>关键对比：</span>职能制（U型）→集权·专业化高·跨部门协调差·适合成本领先/单一产品；事业部制（M型）→分权·利润中心·激励充分·事业部本位主义·适合多元化战略</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 06 — 简答</div>
+    <div class="q-text">简述斯曾德尔和霍弗提出的四种战略控制类型，并说明各自的控制时机与对象。</div>
+    <div class="q-hint"><span>关键词：</span>① 前提控制（持续·假设前提）→ ② 战略监控（持续·宽泛信号）→ ③ 特别预警（事件触发·突发危机）→ ④ 实施控制（里程碑·实施进展）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 07 — 论述</div>
+    <div class="q-exam">2025年真题改编</div>
+    <div class="q-text">结合案例分析某企业数字化转型失败的原因，从战略实施的四个维度（组织结构、领导力、企业文化、战略控制）进行诊断。</div>
+    <div class="q-hint"><span>答题框架：</span>① 结构层面：是否采用了匹配数字化战略的网络/矩阵型结构？ → ② 领导力层面：领导者是否具备数字领导力？是否压制变革信号？ → ③ 文化层面：旧文化（稳定·官僚）是否阻碍了数字化创新？ → ④ 控制层面：是否建立了数字化转型的里程碑控制和BSC体系？</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 08 — 预测题</div>
+    <div class="q-text">沙因的企业文化三层次模型内容是什么？为什么说"文化变革是最难的战略实施任务"？</div>
+    <div class="q-hint"><span>关键词：</span>三层次（人工制品·价值观·基本假设）→ 难点：基本假设层是潜意识的、不言自明的，很难通过简单培训改变；必须通过危机驱动/长期浸润/领导示范才能触及深层文化；勒温冰山解冻三阶段</div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<div class="footer-bar">
+  📚 中南大学企业管理学硕复试笔记 · 第十一章 战略实施的管理与控制 · P295–354 · 基于蓝海林《企业战略管理》第2版 · 2016–2025真题整合版
+</div>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script>
+// Night mode toggle
+function toggleNight() {
+  document.body.classList.toggle('night');
+  const btn = document.querySelector('.btn-night');
+  btn.textContent = document.body.classList.contains('night') ? '☀️ 日间模式' : '🌙 夜间模式';
+  // fix night mode card backgrounds
+  document.querySelectorAll('.ctable tr:nth-child(even) td').forEach(td => {
+    td.style.background = document.body.classList.contains('night') ? '#1e3a5f' : '';
+  });
+}
+
+// Search function
+function // ── Search state ──
+var _srchMatches = [], _srchIdx = -1;
+
+function _srchEsc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+function _srchClear(){
+  document.querySelectorAll('.highlight-search').forEach(function(el){
+    el.outerHTML = el.innerHTML;
+  });
+  _srchMatches=[]; _srchIdx=-1;
+}
+
+function _srchActivate(){
+  _srchMatches.forEach(function(m,i){
+    m.classList.toggle('hl-cur', i===_srchIdx);
+  });
+  var el = _srchMatches[_srchIdx];
+  if(el){
+    // Open all ancestor <details> so content is visible
+    var p = el.parentElement;
+    while(p){ if(p.tagName==='DETAILS') p.open=true; p=p.parentElement; }
+    setTimeout(function(){
+      var rect = el.getBoundingClientRect();
+      var offset = 110; // fixed topnav (~50px) + search bar (~45px) + padding
+      window.scrollTo({ top: Math.max(0, window.scrollY + rect.top - offset), behavior:'smooth' });
+    }, 50);
+  }
+  var cnt = _srchMatches.length;
+  document.getElementById('searchCount').textContent =
+    cnt > 0 ? (_srchIdx+1)+' / '+cnt+' 处' : '未找到';
+  var dis = cnt === 0;
+  var prev = document.getElementById('srchPrev');
+  var next = document.getElementById('srchNext');
+  if(prev) prev.disabled = dis;
+  if(next) next.disabled = dis;
+}
+
+
+function nextResult(){
+  if(!_srchMatches.length) return;
+  _srchIdx=(_srchIdx+1)%_srchMatches.length;
+  _srchActivate();
+}
+function prevResult(){
+  if(!_srchMatches.length) return;
+  _srchIdx=(_srchIdx-1+_srchMatches.length)%_srchMatches.length;
+  _srchActivate();
+}
+// F3 / Shift+F3 keyboard shortcut
+document.addEventListener('keydown',function(e){
+  if(e.key==='F3'){ e.preventDefault(); if(e.shiftKey) prevResult(); else nextResult(); }
+});
+</script>
+
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业战略管理 · 复试案例分析库</title>
+<style>
+  :root {
+    --bg: #f5f4f0;
+    --surface: #ffffff;
+    --surface2: #faf9f6;
+    --border: #e8e5de;
+    --accent: #c8501a;
+    --accent2: #1a6bc8;
+    --accent3: #1a9e5c;
+    --accent4: #8b4fc8;
+    --text: #1a1814;
+    --text2: #5a5650;
+    --text3: #8a8680;
+    --header-bg: #1a1814;
+    --header-text: #f5f4f0;
+    --nav-bg: #2a2520;
+    --tag-bg: #f0ece4;
+    --highlight: #fff3cd;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    font-variant-numeric: tabular-nums;
+  }
+  .dark {
+    --bg: #141210;
+    --surface: #1e1c18;
+    --surface2: #252220;
+    --border: #35322c;
+    --text: #f0ede6;
+    --text2: #b0ada6;
+    --text3: #706d66;
+    --header-bg: #0e0d0b;
+    --header-text: #f0ede6;
+    --nav-bg: #0e0d0b;
+    --tag-bg: #2a2720;
+    --highlight: #3a3210;
+    --shadow: 0 2px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 36px 40px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,80,26,0.25), transparent 70%);
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(26,107,200,0.2), transparent 70%);
+  }
+  .header-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  header h1 {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  header p {
+    font-size: 13px;
+    color: rgba(245,244,240,0.6);
+    max-width: 600px;
+  }
+  .header-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+  .header-stat {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    color: rgba(245,244,240,0.8);
+  }
+  .header-stat strong { color: #fff; font-size: 18px; display: block; }
+  .gen-date {
+    position: absolute;
+    top: 18px; right: 40px;
+    font-size: 11px;
+    color: rgba(245,244,240,0.4);
+    letter-spacing: 1px;
+  }
+
+  /* ─── TOP NAV ─── */
+  nav {
+    background: var(--nav-bg);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--accent);
+    flex-wrap: wrap;
+    min-height: 48px;
+  }
+  nav a {
+    color: rgba(245,244,240,0.65);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 14px 12px;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  nav a:hover { color: #fff; }
+  .nav-sep { color: rgba(245,244,240,0.2); font-size: 10px; }
+  .nav-controls {
+    margin-left: auto;
+    display: flex;
+    gap: 8px;
+  }
+  .btn-ctrl {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(245,244,240,0.8);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+  .btn-ctrl:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+  /* ─── SEARCH ─── */
+  .search-wrap {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  #searchInput {
+    width: 100%;
+    max-width: 500px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 14px;
+    background: var(--surface2);
+    color: var(--text);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #searchInput:focus { border-color: var(--accent); }
+  #searchCount { font-size: 12px; color: var(--text3); }
+  .filter-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-left: auto;
+  }
+  .filter-btn {
+    background: var(--tag-bg);
+    border: 1.5px solid var(--border);
+    color: var(--text2);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  /* ─── MAIN LAYOUT ─── */
+  main { max-width: 1300px; margin: 0 auto; padding: 32px 40px 80px; }
+
+  /* ─── SECTION HEADERS ─── */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 40px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .sec-head h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .sec-num {
+    background: var(--accent);
+    color: #fff;
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .sec-count {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--text3);
+    background: var(--tag-bg);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+
+  /* ─── LEGEND ─── */
+  .legend-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow);
+  }
+  .legend-box h3 { font-size: 13px; font-weight: 700; color: var(--text2); margin-bottom: 14px; letter-spacing: 1px; text-transform: uppercase; }
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+  .dot {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ─── TABLE ─── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    margin-bottom: 48px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    font-size: 14px;
+  }
+  thead tr {
+    background: var(--header-bg);
+    color: var(--header-text);
+  }
+  thead th {
+    padding: 13px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  tbody tr:hover { background: var(--surface2); }
+  tbody tr:last-child { border-bottom: none; }
+  td {
+    padding: 14px 16px;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  td:first-child { font-weight: 700; white-space: nowrap; }
+
+  /* ─── INDUSTRY BADGE ─── */
+  .ind-badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 5px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .ind-tech     { background: #dbeafe; color: #1e40af; }
+  .ind-mfg      { background: #d1fae5; color: #065f46; }
+  .ind-retail   { background: #fef3c7; color: #92400e; }
+  .ind-finance  { background: #ede9fe; color: #5b21b6; }
+  .ind-energy   { background: #dcfce7; color: #166534; }
+  .ind-food     { background: #fce7f3; color: #9d174d; }
+  .ind-auto     { background: #e0f2fe; color: #075985; }
+  .ind-logistics{ background: #fff7ed; color: #c2410c; }
+  .ind-pharma   { background: #f0fdf4; color: #15803d; }
+  .ind-telecom  { background: #f5f3ff; color: #7c3aed; }
+  .ind-media    { background: #fdf4ff; color: #a21caf; }
+  .ind-intl     { background: #f0f9ff; color: #0369a1; }
+
+  /* ─── KNOWLEDGE POINT TAGS ─── */
+  .kp-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .kp-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .kp-1 { background: #fee2e2; color: #991b1b; }
+  .kp-2 { background: #e0f2fe; color: #075985; }
+  .kp-3 { background: #d1fae5; color: #065f46; }
+  .kp-4 { background: #ede9fe; color: #5b21b6; }
+  .kp-5 { background: #fef3c7; color: #92400e; }
+
+  /* company flag */
+  .co-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text);
+    display: block;
+    line-height: 1.3;
+  }
+  .co-flag {
+    font-size: 11px;
+    color: var(--text3);
+    font-weight: 400;
+    margin-top: 2px;
+    display: block;
+  }
+  .co-cn { color: var(--accent); font-weight: 700; font-size: 10px; }
+  .co-intl { color: var(--accent2); font-weight: 700; font-size: 10px; }
+
+  .case-text {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.65;
+    max-width: 460px;
+  }
+  .case-text strong { color: var(--text); }
+
+  /* ─── STATS ROW ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .stat-card .val {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--accent);
+    display: block;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-card .lbl {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 4px;
+  }
+
+  /* ─── HIGHLIGHT ─── */
+  .hl { background: var(--highlight); padding: 1px 4px; border-radius: 3px; font-weight: 700; }
+  .hl-red { color: var(--accent); }
+  .hl-blue { color: var(--accent2); }
+
+  /* ─── KNOWLEDGE MAP ─── */
+  .kmap-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+  }
+  .kmap-box h3 { font-size: 16px; font-weight: 800; margin-bottom: 20px; }
+  .kmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .kmap-item {
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .kmap-item .km-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .kmap-item .km-cos {
+    font-size: 11px;
+    color: var(--text3);
+    line-height: 1.7;
+  }
+
+  /* ─── SEARCH HIGHLIGHT ─── */
+  .search-match { background: #ffe58f; border-radius: 2px; }
+  .hidden-row { display: none; }
+
+  /* ─── BACK TO TOP ─── */
+  #backTop {
+    position: fixed;
+    bottom: 30px; right: 30px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(200,80,26,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: all 0.2s;
+  }
+  #backTop:hover { transform: translateY(-3px); }
+  #backTop.visible { display: flex; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--header-bg);
+    color: rgba(245,244,240,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    margin-top: 60px;
+  }
+  footer strong { color: rgba(245,244,240,0.8); }
+
+  @media (max-width: 768px) {
+    header { padding: 24px 20px; }
+    nav { padding: 0 16px; }
+    main { padding: 20px 16px 60px; }
+    .search-wrap { padding: 12px 16px; flex-wrap: wrap; }
+    .filter-row { margin-left: 0; }
+  }
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body id="top">
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="gen-date">生成日期：2026-03-09</div>
+  <div class="header-tag">📚 中南大学 · 企业管理学硕复试备考</div>
+  <h1>企业战略管理 · 复试案例分析库</h1>
+  <p>精选30个真实企业案例，优先收录中国企业，每案例精准对应1–3个管理学核心知识点，助力复试案例题高分作答</p>
+  <div class="header-meta">
+    <div class="header-stat"><strong>30</strong>案例总数</div>
+    <div class="header-stat"><strong>23</strong>中国企业</div>
+    <div class="header-stat"><strong>7</strong>跨国企业</div>
+    <div class="header-stat"><strong>12</strong>覆盖行业</div>
+    <div class="header-stat"><strong>25+</strong>知识点覆盖</div>
+  </div>
+</header>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="#top">🏠 首页</a>
+  <span class="nav-sep">|</span>
+  <a href="#sec-cn">🇨🇳 中国企业</a>
+  <span class="nav-sep">|</span>
+  <a href="#sec-intl">🌐 跨国企业</a>
+  <span class="nav-sep">|</span>
+  <a href="#sec-kmap">🗂 知识点索引</a>
+  <span class="nav-sep">|</span>
+  <a href="#sec-tips">💡 答题技巧</a>
+  <div class="nav-controls">
+    <button class="btn-ctrl" onclick="toggleDark()">🌙 夜间模式</button>
+  </div>
+</nav>
+
+<!-- ══ SEARCH ══ -->
+<div class="search-wrap">
+  
+  <span id="searchCount"></span>
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterBy('all', this)">全部</button>
+    <button class="filter-btn" onclick="filterBy('cn', this)">🇨🇳 中国</button>
+    <button class="filter-btn" onclick="filterBy('intl', this)">🌐 跨国</button>
+    <button class="filter-btn" onclick="filterBy('tech', this)">科技</button>
+    <button class="filter-btn" onclick="filterBy('mfg', this)">制造</button>
+    <button class="filter-btn" onclick="filterBy('strategy', this)">竞争战略</button>
+    <button class="filter-btn" onclick="filterBy('diversify', this)">多元化</button>
+    <button class="filter-btn" onclick="filterBy('intl-strategy', this)">国际化</button>
+  </div>
+</div>
+
+<main>
+
+<!-- ══ STATS ══ -->
+<div class="stats-row">
+  <div class="stat-card"><span class="val">30</span><div class="lbl">精选企业案例</div></div>
+  <div class="stat-card"><span class="val">77%</span><div class="lbl">中国企业占比</div></div>
+  <div class="stat-card"><span class="val">12</span><div class="lbl">覆盖行业领域</div></div>
+  <div class="stat-card"><span class="val">25+</span><div class="lbl">映射管理学知识点</div></div>
+  <div class="stat-card"><span class="val">100%</span><div class="lbl">可对应历年考题</div></div>
+</div>
+
+<!-- ══ 中国企业 ══ -->
+<div class="sec-head" id="sec-cn">
+  <div class="sec-num">🇨🇳</div>
+  <h2>中国企业案例（23个）</h2>
+  <span class="sec-count">No.01 – No.23</span>
+</div>
+
+<div class="table-wrap">
+<table id="table-cn">
+  <thead>
+    <tr>
+      <th style="width:120px">企业</th>
+      <th style="width:90px">行业</th>
+      <th style="width:200px">可对应知识点</th>
+      <th>案例说明</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <!-- 01 华为 -->
+  <tr data-tags="cn tech strategy diversify">
+    <td>
+      <span class="co-name">华为</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 深圳</span>
+    </td>
+    <td><span class="ind-badge ind-tech">通信/科技</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">核心专长理论</span>
+        <span class="kp-tag kp-2">差异化战略</span>
+        <span class="kp-tag kp-3">战略承诺</span>
+      </div>
+    </td>
+    <td class="case-text">
+      华为长期将收入的<strong>10%以上投入研发</strong>，在5G通信领域积累超7万件全球专利，构建了其他企业难以复制的核心专长。面对美国制裁，华为以<strong>自研麒麟芯片和鸿蒙系统</strong>为战略承诺，坚持差异化路线。这是<strong>核心专长的四个标准（价值性、稀缺性、难以模仿性、不可替代性）</strong>的典型体现。
+    </td>
+  </tr>
+
+  <!-- 02 阿里巴巴 -->
+  <tr data-tags="cn tech diversify strategy">
+    <td>
+      <span class="co-name">阿里巴巴</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 杭州</span>
+    </td>
+    <td><span class="ind-badge ind-tech">电商/平台</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">相关多元化战略</span>
+        <span class="kp-tag kp-2">平台生态战略</span>
+        <span class="kp-tag kp-3">价值链分析</span>
+      </div>
+    </td>
+    <td class="case-text">
+      阿里从B2B电商起步，扩展到支付宝（金融）、菜鸟（物流）、阿里云（云计算）、优酷（媒体），形成相关多元化生态。各业务之间通过数据共享形成<strong>协同效应</strong>，业务扩张始终围绕"让天下没有难做的生意"这一战略承诺，是<strong>相关多元化战略协同效应</strong>的教科书级案例。
+    </td>
+  </tr>
+
+  <!-- 03 腾讯 -->
+  <tr data-tags="cn tech diversify strategy">
+    <td>
+      <span class="co-name">腾讯</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 深圳</span>
+    </td>
+    <td><span class="ind-badge ind-tech">互联网/游戏</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">战略联盟</span>
+        <span class="kp-tag kp-2">非相关多元化</span>
+        <span class="kp-tag kp-3">资源基础观</span>
+      </div>
+    </td>
+    <td class="case-text">
+      腾讯以微信为核心流量入口，通过<strong>战略投资+联盟</strong>方式布局游戏（天美工作室）、金融（微众银行）、医疗、教育等多个领域。其"连接器"战略本质是以资源入股而非控股，构建平台生态。这是<strong>战略联盟动机（获取资源、降低风险、共享市场）</strong>的典型案例。
+    </td>
+  </tr>
+
+  <!-- 04 比亚迪 -->
+  <tr data-tags="cn auto mfg strategy">
+    <td>
+      <span class="co-name">比亚迪</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 深圳</span>
+    </td>
+    <td><span class="ind-badge ind-auto">新能源汽车</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">垂直一体化战略</span>
+        <span class="kp-tag kp-2">成本领先战略</span>
+        <span class="kp-tag kp-3">动态能力</span>
+      </div>
+    </td>
+    <td class="case-text">
+      比亚迪自主掌握电池、电机、电控（"三电"技术）及芯片，实现<strong>高度垂直整合</strong>，降低对外部供应商依赖，在新能源汽车领域形成成本优势。2023年成为全球纯电汽车销量冠军。这是<strong>垂直一体化战略（后向一体化）降低交易成本、强化核心能力</strong>的典范。
+    </td>
+  </tr>
+
+  <!-- 05 格力 -->
+  <tr data-tags="cn mfg strategy">
+    <td>
+      <span class="co-name">格力电器</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 珠海</span>
+    </td>
+    <td><span class="ind-badge ind-mfg">家电制造</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">集中化战略</span>
+        <span class="kp-tag kp-2">战略承诺</span>
+        <span class="kp-tag kp-3">核心专长</span>
+      </div>
+    </td>
+    <td class="case-text">
+      格力长期专注空调领域，<strong>"专注做好空调"</strong>是其战略承诺，在空调压缩机等核心技术上形成不可替代的专长。其"聚焦单一业务"的集中化战略使其在空调细分市场全球领先。教材中多次以格力为例说明<strong>战略问题确认：是继续发挥优势还是多元化</strong>。
+    </td>
+  </tr>
+
+  <!-- 06 美团 -->
+  <tr data-tags="cn tech strategy">
+    <td>
+      <span class="co-name">美团</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 北京</span>
+    </td>
+    <td><span class="ind-badge ind-tech">本地生活服务</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-2">差异化战略</span>
+        <span class="kp-tag kp-3">商业模式创新</span>
+      </div>
+    </td>
+    <td class="case-text">
+      美团从团购起步，通过<strong>高频餐饮外卖切入，扩展到酒旅、生鲜、打车</strong>，形成本地生活"超级入口"。其差异化在于以配送网络为护城河，构建商家端+用户端的双边平台。这是<strong>差异化战略（通过服务、速度与覆盖形成差异）+ 商业模式画布</strong>的分析对象。
+    </td>
+  </tr>
+
+  <!-- 07 字节跳动 -->
+  <tr data-tags="cn tech strategy intl-strategy">
+    <td>
+      <span class="co-name">字节跳动</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 北京</span>
+    </td>
+    <td><span class="ind-badge ind-media">短视频/算法</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-2">国际化战略</span>
+        <span class="kp-tag kp-4">资源基础观</span>
+      </div>
+    </td>
+    <td class="case-text">
+      字节跳动以<strong>推荐算法为核心资源</strong>，将今日头条的算法能力复制到抖音（国内）和TikTok（海外），完成快速国际化扩张。TikTok在150余国家覆盖10亿用户，是中国互联网公司国际化最成功的案例之一。这是<strong>资源基础观（将优质资源转移到新市场）+ 国际化战略动机</strong>的典型。
+    </td>
+  </tr>
+
+  <!-- 08 海尔 -->
+  <tr data-tags="cn mfg intl-strategy strategy">
+    <td>
+      <span class="co-name">海尔</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 青岛</span>
+    </td>
+    <td><span class="ind-badge ind-mfg">家电/物联网</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">国际化战略</span>
+        <span class="kp-tag kp-2">组织结构变革</span>
+        <span class="kp-tag kp-3">战略实施</span>
+      </div>
+    </td>
+    <td class="case-text">
+      海尔采用"先难后易"国际化路径（先进入德国等高端市场建立品牌），并在内部推行<strong>"人单合一"组织模式</strong>，打破科层制，让员工成为自主经营体，通过与用户直接连接创造价值。这是<strong>国际化战略进入方式（绿地投资/本地化战略）+ 组织结构如何追随战略</strong>的双重案例。
+    </td>
+  </tr>
+
+  <!-- 09 京东 -->
+  <tr data-tags="cn tech retail logistics">
+    <td>
+      <span class="co-name">京东</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 北京</span>
+    </td>
+    <td><span class="ind-badge ind-logistics">电商/物流</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">垂直一体化</span>
+        <span class="kp-tag kp-4">竞争优势来源</span>
+      </div>
+    </td>
+    <td class="case-text">
+      京东自建物流体系（京东物流），形成"211达"等极速配送能力，构建起与阿里差异化的竞争优势。相比轻资产模式，京东选择重资产自营是<strong>后向垂直一体化</strong>的典型策略：牺牲短期利润换取长期物流控制力，体现<strong>竞争优势来源于难以模仿的能力</strong>。
+    </td>
+  </tr>
+
+  <!-- 10 小米 -->
+  <tr data-tags="cn tech strategy mfg">
+    <td>
+      <span class="co-name">小米</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 北京</span>
+    </td>
+    <td><span class="ind-badge ind-tech">消费电子/IoT</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">成本领先战略</span>
+        <span class="kp-tag kp-5">商业模式创新</span>
+      </div>
+    </td>
+    <td class="case-text">
+      小米以<strong>"硬件接近零毛利，靠软件和服务盈利"</strong>为商业模式，颠覆传统手机定价逻辑。通过极致性价比（成本领先）吸引用户，再通过MIUI系统、小米商城、小米金融等变现。这是<strong>成本领先战略（规模效应+精准供应链）+ 商业模式画布（收入来源多元化）</strong>的典范。
+    </td>
+  </tr>
+
+  <!-- 11 宁德时代 -->
+  <tr data-tags="cn mfg energy strategy">
+    <td>
+      <span class="co-name">宁德时代</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 宁德</span>
+    </td>
+    <td><span class="ind-badge ind-energy">动力电池</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">核心专长</span>
+        <span class="kp-tag kp-2">集中化战略</span>
+        <span class="kp-tag kp-3">战略联盟</span>
+      </div>
+    </td>
+    <td class="case-text">
+      宁德时代聚焦动力电池领域，通过与宝马、特斯拉、大众等全球主流车企建立<strong>战略联盟</strong>，在全球动力电池市场占据超35%份额。其核心专长在于极高的电池能量密度和规模化制造能力。这是<strong>集中化战略（专注细分领域）+ 战略联盟（共享市场资源）</strong>的典型案例。
+    </td>
+  </tr>
+
+  <!-- 12 万达 -->
+  <tr data-tags="cn diversify strategy">
+    <td>
+      <span class="co-name">万达集团</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 北京</span>
+    </td>
+    <td><span class="ind-badge ind-retail">商业地产/文娱</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">非相关多元化</span>
+        <span class="kp-tag kp-5">战略收缩</span>
+      </div>
+    </td>
+    <td class="case-text">
+      万达从住宅地产起步，扩展到商业地产、院线（万达电影）、文化旅游（万达城）、体育、酒店等非相关领域，形成庞大帝国。但2017年后因流动性危机被迫<strong>出售海外资产</strong>，战略收缩回归核心业务。这是<strong>非相关多元化风险（资金链断裂、协同效应弱）+ 战略收缩决策</strong>的典型警示案例。
+    </td>
+  </tr>
+
+  <!-- 13 中国平安 -->
+  <tr data-tags="cn finance diversify">
+    <td>
+      <span class="co-name">中国平安</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 深圳</span>
+    </td>
+    <td><span class="ind-badge ind-finance">金融/保险</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">相关多元化战略</span>
+        <span class="kp-tag kp-4">协同效应</span>
+      </div>
+    </td>
+    <td class="case-text">
+      中国平安从寿险起步，扩展到产险、银行（平安银行）、证券、信托、科技（平安好医生、陆金所）等，形成<strong>"金融+科技+医疗"综合金融生态</strong>。各业务之间客户共享、数据互通，协同效应显著。这是<strong>相关多元化（横向扩展至关联金融领域）+ 协同效应最大化</strong>的优质案例。
+    </td>
+  </tr>
+
+  <!-- 14 滴滴 -->
+  <tr data-tags="cn tech strategy">
+    <td>
+      <span class="co-name">滴滴出行</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 北京</span>
+    </td>
+    <td><span class="ind-badge ind-logistics">出行/共享经济</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-2">竞争战略</span>
+        <span class="kp-tag kp-3">战略控制</span>
+      </div>
+    </td>
+    <td class="case-text">
+      滴滴通过<strong>补贴大战打败快的、优步中国</strong>，获得市场垄断地位后面临监管压力（"滴滴顺风车"安全事件、网络安全审查），被迫暂停新用户注册、下架APP长达一年余。这是<strong>竞争战略（价格战获取规模）+ 战略控制失效（外部监管风险未纳入控制体系）</strong>的案例。
+    </td>
+  </tr>
+
+  <!-- 15 联想 -->
+  <tr data-tags="cn tech intl-strategy mfg">
+    <td>
+      <span class="co-name">联想集团</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 北京</span>
+    </td>
+    <td><span class="ind-badge ind-tech">PC/服务器</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">国际化战略（并购）</span>
+        <span class="kp-tag kp-2">战略整合</span>
+      </div>
+    </td>
+    <td class="case-text">
+      联想2005年以<strong>17.5亿美元收购IBM PC业务</strong>，成为全球PC龙头，后又收购摩托罗拉手机业务（2014）。通过并购快速获取品牌（ThinkPad）、渠道和技术，是<strong>国际化战略并购进入方式（快速获取资源）</strong>的标杆。整合过程中对文化融合的挑战也是<strong>战略实施中企业文化管理</strong>的研究对象。
+    </td>
+  </tr>
+
+  <!-- 16 蔚来汽车 -->
+  <tr data-tags="cn auto strategy">
+    <td>
+      <span class="co-name">蔚来汽车</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 上海</span>
+    </td>
+    <td><span class="ind-badge ind-auto">新能源汽车</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-2">差异化战略</span>
+        <span class="kp-tag kp-5">战略钟模型</span>
+      </div>
+    </td>
+    <td class="case-text">
+      蔚来以<strong>高端定价（30~70万元）+ 换电模式 + 用户社区（NIO House）</strong>构建差异化竞争优势，面向高端市场，提供远超传统豪华车的用户体验与服务生态。对应<strong>战略钟模型中的差异化定位（高价高价值）</strong>，以及如何通过服务创新维持溢价。
+    </td>
+  </tr>
+
+  <!-- 17 拼多多 -->
+  <tr data-tags="cn retail tech strategy">
+    <td>
+      <span class="co-name">拼多多</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 上海</span>
+    </td>
+    <td><span class="ind-badge ind-retail">社交电商</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">成本领先战略</span>
+        <span class="kp-tag kp-3">蓝海战略</span>
+      </div>
+    </td>
+    <td class="case-text">
+      拼多多进入阿里、京东主导的电商市场，避开一二线城市竞争，<strong>以"下沉市场+社交拼团"开辟新战场</strong>，用极致低价（成本领先）在三四线城市快速扩张。后又以Temu进军海外。这是<strong>蓝海战略（开辟无竞争新市场）+ 成本领先（农产品直供、压缩中间层）</strong>的典型案例。
+    </td>
+  </tr>
+
+  <!-- 18 中集集团 -->
+  <tr data-tags="cn mfg intl-strategy strategy">
+    <td>
+      <span class="co-name">中集集团</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 深圳</span>
+    </td>
+    <td><span class="ind-badge ind-logistics">集装箱/装备制造</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">成本领先战略</span>
+        <span class="kp-tag kp-4">垂直一体化</span>
+      </div>
+    </td>
+    <td class="case-text">
+      中集集团成为全球最大集装箱制造商（市占率超55%），依靠<strong>规模经济与全球布局</strong>构建成本领先优势，并通过向上延伸至钢材采购（垂直整合）进一步压缩成本。教材以中集为例说明<strong>成本领先战略的实现路径：规模经济、经验曲线、严格成本控制</strong>。
+    </td>
+  </tr>
+
+  <!-- 19 茅台 -->
+  <tr data-tags="cn food strategy">
+    <td>
+      <span class="co-name">贵州茅台</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 仁怀</span>
+    </td>
+    <td><span class="ind-badge ind-food">白酒/消费品</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">差异化战略</span>
+        <span class="kp-tag kp-2">品牌护城河</span>
+      </div>
+    </td>
+    <td class="case-text">
+      茅台以<strong>地理标志产品（赤水河畔独特环境）+ 独特酿造工艺（12987工艺）+ 国家品牌背书</strong>，构建近乎无法复制的差异化壁垒，售价高达数千元仍供不应求。其竞争优势来源于<strong>资源的稀缺性与不可复制性</strong>，是差异化战略中<strong>"无法被竞争对手模仿"</strong>的最佳案例。
+    </td>
+  </tr>
+
+  <!-- 20 顺丰 -->
+  <tr data-tags="cn logistics strategy">
+    <td>
+      <span class="co-name">顺丰控股</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 深圳</span>
+    </td>
+    <td><span class="ind-badge ind-logistics">快递/物流</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-2">差异化战略</span>
+        <span class="kp-tag kp-3">资源能力分析</span>
+      </div>
+    </td>
+    <td class="case-text">
+      顺丰在快递行业选择<strong>高端差异化路线</strong>（自有飞机机队、直营模式、当日达/次晨达），定价是其他快递2~3倍，但维持较高客户忠诚度。其核心能力是速度与可靠性，来源于自有运力（有形资源）和运营管理能力。这是<strong>差异化战略 + 资源能力分析（有形资源的战略价值）</strong>的对比案例（对比通达系成本领先）。
+    </td>
+  </tr>
+
+  <!-- 21 国家电网 -->
+  <tr data-tags="cn energy strategy">
+    <td>
+      <span class="co-name">国家电网</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 北京</span>
+    </td>
+    <td><span class="ind-badge ind-energy">电力/能源</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-4">战略环境分析</span>
+        <span class="kp-tag kp-5">绿色战略/ESG</span>
+      </div>
+    </td>
+    <td class="case-text">
+      国家电网在"碳达峰、碳中和"政策背景下，推进<strong>"能源互联网"战略转型</strong>，大力投资特高压输电、新能源消纳、智能电网等领域。这是<strong>PESTEL分析中政策（P）和生态（E）因素驱动战略转型</strong>，以及<strong>ESG战略（绿色可持续发展）</strong>的央企典型案例。
+    </td>
+  </tr>
+
+  <!-- 22 农夫山泉 -->
+  <tr data-tags="cn food retail strategy">
+    <td>
+      <span class="co-name">农夫山泉</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 杭州</span>
+    </td>
+    <td><span class="ind-badge ind-food">饮料/食品</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">差异化战略</span>
+        <span class="kp-tag kp-3">品牌战略</span>
+      </div>
+    </td>
+    <td class="case-text">
+      农夫山泉以<strong>"我们不生产水，我们只是大自然的搬运工"</strong>为差异化定位，绑定优质水源（千岛湖、长白山等）形成稀缺资源壁垒，成功将产品价格定于娃哈哈、康师傅之上。这是<strong>差异化战略（通过品牌认知与稀缺资源形成溢价能力）</strong>，以及<strong>无形资源（品牌）作为战略资产</strong>的典型案例。
+    </td>
+  </tr>
+
+  <!-- 23 中国中车 -->
+  <tr data-tags="cn mfg intl-strategy">
+    <td>
+      <span class="co-name">中国中车</span>
+      <span class="co-flag"><span class="co-cn">🇨🇳 中国</span> · 北京</span>
+    </td>
+    <td><span class="ind-badge ind-mfg">高铁/轨道装备</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">国际化战略</span>
+        <span class="kp-tag kp-2">技术追赶</span>
+      </div>
+    </td>
+    <td class="case-text">
+      中国中车通过<strong>"引进消化吸收再创新"</strong>策略，将德国、日本高铁技术转化为自主知识产权，研制出"复兴号"高速列车，再以更低价格进军国际市场（印尼雅万高铁等）。这是<strong>国际化战略中的出口+海外直接投资组合</strong>，以及<strong>动态能力（整合与重构能力）</strong>推动技术升级的典型。
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+</div>
+
+<!-- ══ 跨国企业 ══ -->
+<div class="sec-head" id="sec-intl">
+  <div class="sec-num">🌐</div>
+  <h2>跨国企业案例（7个）</h2>
+  <span class="sec-count">No.24 – No.30</span>
+</div>
+
+<div class="table-wrap">
+<table id="table-intl">
+  <thead>
+    <tr>
+      <th style="width:120px">企业</th>
+      <th style="width:90px">行业</th>
+      <th style="width:200px">可对应知识点</th>
+      <th>案例说明</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <!-- 24 苹果 -->
+  <tr data-tags="intl tech strategy">
+    <td>
+      <span class="co-name">苹果公司</span>
+      <span class="co-flag"><span class="co-intl">🇺🇸 美国</span> · 库比蒂诺</span>
+    </td>
+    <td><span class="ind-badge ind-tech">消费电子/软件</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">差异化战略</span>
+        <span class="kp-tag kp-2">价值链分析</span>
+        <span class="kp-tag kp-5">核心专长</span>
+      </div>
+    </td>
+    <td class="case-text">
+      苹果将<strong>设计创新+软硬件生态整合</strong>作为核心专长，在价值链上集中于研发设计和品牌（高价值环节），将制造外包给富士康（低价值环节）。iPad、iPhone定价远高于竞争对手但持续热销，是<strong>差异化战略（高端定位）+ 价值链活动取舍（外包非核心环节）</strong>的最佳教学案例。
+    </td>
+  </tr>
+
+  <!-- 25 三星 -->
+  <tr data-tags="intl tech mfg diversify">
+    <td>
+      <span class="co-name">三星电子</span>
+      <span class="co-flag"><span class="co-intl">🇰🇷 韩国</span> · 首尔</span>
+    </td>
+    <td><span class="ind-badge ind-tech">半导体/消费电子</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">相关多元化</span>
+        <span class="kp-tag kp-3">垂直一体化</span>
+      </div>
+    </td>
+    <td class="case-text">
+      三星从纺织起步，拓展到半导体（存储芯片）、显示面板、手机、家电，各业务高度相关（电子产业链）且<strong>高度垂直整合</strong>（自产屏幕、芯片供应自家和竞争对手苹果），形成全球最完整的电子产业生态。这是<strong>相关多元化（技术和市场协同）+ 垂直一体化（全产业链掌控）</strong>的综合案例。
+    </td>
+  </tr>
+
+  <!-- 26 特斯拉 -->
+  <tr data-tags="intl auto tech strategy">
+    <td>
+      <span class="co-name">特斯拉</span>
+      <span class="co-flag"><span class="co-intl">🇺🇸 美国</span> · 奥斯丁</span>
+    </td>
+    <td><span class="ind-badge ind-auto">新能源汽车</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-2">差异化战略</span>
+        <span class="kp-tag kp-4">动态能力</span>
+      </div>
+    </td>
+    <td class="case-text">
+      特斯拉以<strong>软件定义汽车（OTA远程更新）+ 自动驾驶数据积累</strong>构建差异化壁垒，颠覆传统汽车行业。其<strong>动态能力</strong>体现在快速将软件迭代能力移植到汽车上，并不断重构商业模式（直销、FSD订阅）。是<strong>差异化战略 + 动态能力（sensing-seizing-reconfiguring）</strong>分析的现代经典案例。
+    </td>
+  </tr>
+
+  <!-- 27 沃尔玛 -->
+  <tr data-tags="intl retail strategy">
+    <td>
+      <span class="co-name">沃尔玛</span>
+      <span class="co-flag"><span class="co-intl">🇺🇸 美国</span> · 本顿维尔</span>
+    </td>
+    <td><span class="ind-badge ind-retail">零售/超市</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">成本领先战略</span>
+        <span class="kp-tag kp-3">供应链能力</span>
+      </div>
+    </td>
+    <td class="case-text">
+      沃尔玛凭借<strong>高效供应链管理系统（与供应商实时数据共享）+ 强大采购谈判力 + 大规模物流网络</strong>，将"天天低价"实现为持续战略，而非短期促销。教材以沃尔玛为例说明<strong>成本领先战略的能力基础：供应链管理能力（经营能力）</strong>是其核心竞争优势。
+    </td>
+  </tr>
+
+  <!-- 28 麦当劳 -->
+  <tr data-tags="intl food intl-strategy strategy">
+    <td>
+      <span class="co-name">麦当劳</span>
+      <span class="co-flag"><span class="co-intl">🇺🇸 美国</span> · 芝加哥</span>
+    </td>
+    <td><span class="ind-badge ind-food">快餐/餐饮</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">国际化战略（特许经营）</span>
+        <span class="kp-tag kp-4">标准化 vs 本地化</span>
+      </div>
+    </td>
+    <td class="case-text">
+      麦当劳以<strong>特许经营（Franchising）</strong>模式实现全球扩张，核心资产是品牌标准与管理体系（而非门店本身）。同时推行"全球标准化+本地化菜单"（麦辣鸡腿堡、麦炸鸡等），平衡全球一致性与本地适应性。这是<strong>国际化战略进入方式（特许经营）+ 全球标准化与本地化权衡</strong>的教科书案例。
+    </td>
+  </tr>
+
+  <!-- 29 诺基亚 -->
+  <tr data-tags="intl tech strategy">
+    <td>
+      <span class="co-name">诺基亚</span>
+      <span class="co-flag"><span class="co-intl">🇫🇮 芬兰</span> · 埃斯波</span>
+    </td>
+    <td><span class="ind-badge ind-telecom">通信/手机</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">战略实施失败</span>
+        <span class="kp-tag kp-2">企业文化</span>
+        <span class="kp-tag kp-5">动态能力缺失</span>
+      </div>
+    </td>
+    <td class="case-text">
+      诺基亚曾掌握全球40%手机市场份额，但在iPhone冲击下迅速崩溃。原因不是未看到威胁（内部已有触屏原型机），而是<strong>组织文化恐惧失败（中层压制坏消息）、战略实施缺乏执行力、缺乏整合软件能力的动态能力</strong>。这是<strong>战略实施三大要素（组织、文化、领导力）同时失效</strong>的反面警示案例。
+    </td>
+  </tr>
+
+  <!-- 30 星巴克 -->
+  <tr data-tags="intl food retail strategy intl-strategy">
+    <td>
+      <span class="co-name">星巴克</span>
+      <span class="co-flag"><span class="co-intl">🇺🇸 美国</span> · 西雅图</span>
+    </td>
+    <td><span class="ind-badge ind-food">咖啡/零售</span></td>
+    <td>
+      <div class="kp-list">
+        <span class="kp-tag kp-1">差异化战略</span>
+        <span class="kp-tag kp-3">企业文化</span>
+        <span class="kp-tag kp-4">国际化本地化</span>
+      </div>
+    </td>
+    <td class="case-text">
+      星巴克以<strong>"第三空间"理念</strong>（家和工作场所之外的放松场所）差异化于其他咖啡馆，通过店员培训传递"体验"而非仅仅咖啡。在中国面对本土化挑战，推出专属茶类饮品与中式门店设计。这是<strong>差异化战略（体验经济）+ 企业文化作为战略实施工具 + 国际化本地化适应</strong>的综合案例。
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+</div>
+
+<!-- ══ 知识点索引 ══ -->
+<div class="sec-head" id="sec-kmap">
+  <div class="sec-num">🗂</div>
+  <h2>知识点 → 案例索引</h2>
+  <span class="sec-count">快速定位复试案例</span>
+</div>
+
+<div class="kmap-box">
+  <h3>📌 按管理学知识点查找对应案例</h3>
+  <div class="kmap-grid">
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-1">成本领先战略</span></div>
+      <div class="km-cos">比亚迪、小米、中集集团<br>沃尔玛、拼多多</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-2">差异化战略</span></div>
+      <div class="km-cos">华为、蔚来、农夫山泉<br>苹果、特斯拉、星巴克<br>顺丰、茅台</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-3">集中化战略</span></div>
+      <div class="km-cos">格力电器、宁德时代</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-4">相关多元化</span></div>
+      <div class="km-cos">阿里巴巴、中国平安<br>三星电子</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-5">非相关多元化</span></div>
+      <div class="km-cos">万达集团（含失败警示）<br>腾讯（跨行业投资）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-1">垂直一体化</span></div>
+      <div class="km-cos">比亚迪（后向）、京东（后向）<br>中集集团、三星（全链）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-2">国际化战略</span></div>
+      <div class="km-cos">海尔、联想（并购）<br>中国中车（出口+投资）<br>字节跳动、麦当劳（特许）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-3">战略联盟</span></div>
+      <div class="km-cos">腾讯（投资联盟）<br>宁德时代（供应商联盟）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-4">核心专长</span></div>
+      <div class="km-cos">华为（专利/研发）<br>格力（空调技术）<br>苹果（设计+生态）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-5">动态能力</span></div>
+      <div class="km-cos">特斯拉、中国中车<br>诺基亚（缺失反例）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-1">战略实施（组织/文化）</span></div>
+      <div class="km-cos">海尔（组织变革）<br>诺基亚（失败反例）<br>星巴克（文化管理）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-2">蓝海战略</span></div>
+      <div class="km-cos">拼多多（下沉市场）<br>美团（本地生活新市场）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-3">商业模式创新</span></div>
+      <div class="km-cos">小米（硬件免费模式）<br>美团（平台双边市场）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-4">ESG / 绿色战略</span></div>
+      <div class="km-cos">国家电网（碳中和转型）<br>比亚迪（新能源）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-5">价值链分析</span></div>
+      <div class="km-cos">苹果（外包制造）<br>顺丰（直营物流）<br>阿里巴巴（平台价值链）</div>
+    </div>
+    <div class="kmap-item">
+      <div class="km-title"><span class="kp-tag kp-1">战略承诺</span></div>
+      <div class="km-cos">华为（研发持续投入）<br>格力（聚焦空调）<br>阿里（商业使命坚守）</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 答题技巧 ══ -->
+<div class="sec-head" id="sec-tips">
+  <div class="sec-num">💡</div>
+  <h2>复试案例分析答题技巧</h2>
+</div>
+
+<div class="kmap-box">
+  <h3>📝 标准答题框架（4步法）</h3>
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:14px; margin-top:4px;">
+    <div style="background:var(--surface2); border:1.5px solid var(--border); border-radius:10px; padding:16px;">
+      <div style="font-size:22px; margin-bottom:8px;">①</div>
+      <strong style="font-size:14px;">背景描述</strong>
+      <p style="font-size:12px; color:var(--text2); margin-top:6px; line-height:1.7;">简要说明企业所在行业背景、面临的主要问题或战略决策节点（2~3句）</p>
+    </div>
+    <div style="background:var(--surface2); border:1.5px solid var(--border); border-radius:10px; padding:16px;">
+      <div style="font-size:22px; margin-bottom:8px;">②</div>
+      <strong style="font-size:14px;">战略行为描述</strong>
+      <p style="font-size:12px; color:var(--text2); margin-top:6px; line-height:1.7;">描述企业采取了什么战略行动、具体措施是什么（对应知识点的操作层面）</p>
+    </div>
+    <div style="background:var(--surface2); border:1.5px solid var(--border); border-radius:10px; padding:16px;">
+      <div style="font-size:22px; margin-bottom:8px;">③</div>
+      <strong style="font-size:14px;">理论对应</strong>
+      <p style="font-size:12px; color:var(--text2); margin-top:6px; line-height:1.7;">明确指出案例体现了哪个理论/知识点，并引用教材定义或要素（核心得分点）</p>
+    </div>
+    <div style="background:var(--surface2); border:1.5px solid var(--border); border-radius:10px; padding:16px;">
+      <div style="font-size:22px; margin-bottom:8px;">④</div>
+      <strong style="font-size:14px;">结果与启示</strong>
+      <p style="font-size:12px; color:var(--text2); margin-top:6px; line-height:1.7;">说明战略结果（成功/失败）及对其他企业的管理启示，体现高阶思维</p>
+    </div>
+  </div>
+  <div style="margin-top:20px; padding:16px; background:var(--highlight); border-radius:10px; border-left:4px solid var(--accent);">
+    <strong style="color:var(--accent)">⚠️ 重要提示：</strong>
+    <span style="font-size:13px; color:var(--text2)">复试口答案例题时，先说企业名称+行业，再按"背景→行为→理论→启示"四步展开，每步控制在2~3句，总答题时间建议2~3分钟。避免只讲故事不提理论，也避免只讲理论不举案例。</span>
+  </div>
+</div>
+
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <strong>企业战略管理 · 复试案例分析库</strong> · 中南大学企业管理学硕备考专用<br>
+  生成日期：2026-03-09 · 基于《企业战略管理（第二版）蓝海林等著》
+</footer>
+
+<!-- ══ BACK TO TOP ══ -->
+<button id="backTop" onclick="scrollToTop()">↑</button>
+
+<script>
+  // Dark mode
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+    const btn = document.querySelector('.btn-ctrl');
+    btn.textContent = document.body.classList.contains('dark') ? '☀️ 日间模式' : '🌙 夜间模式';
+  }
+
+  // Back to top
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('backTop');
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
+  // Filter
+  function filterBy(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(row => {
+      const tags = row.getAttribute('data-tags') || '';
+      if (tag === 'all' || tags.includes(tag)) {
+        row.classList.remove('hidden-row');
+      } else {
+        row.classList.add('hidden-row');
+      }
+    });
+  }
+</script>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

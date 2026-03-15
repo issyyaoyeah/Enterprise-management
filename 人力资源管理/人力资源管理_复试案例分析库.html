@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人力资源管理复试案例分析库 | 中南大学企业管理学硕</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #f5f3ee;
+    --bg2: #eeeae0;
+    --card: #ffffff;
+    --card-border: #e0dbd0;
+    --text: #1a1814;
+    --text-muted: #6b6560;
+    --accent: #b5451b;
+    --accent2: #2563a8;
+    --accent3: #1a7a4a;
+    --accent4: #7c3aad;
+    --accent5: #c27d10;
+    --tag-bg: #f0ece3;
+    --header-bg: #1a1814;
+    --header-text: #f5f3ee;
+    --shadow: 0 2px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    --radius: 12px;
+    --font-serif: 'Noto Serif SC', 'SimSun', serif;
+    --font-sans: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  }
+
+  body.dark {
+    --bg: #111010;
+    --bg2: #1a1918;
+    --card: #222120;
+    --card-border: #333230;
+    --text: #f0ece4;
+    --text-muted: #9a9590;
+    --tag-bg: #2a2826;
+    --header-bg: #0a0908;
+    --header-text: #f0ece4;
+    --shadow: 0 2px 16px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.7;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 28px 40px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 3px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .header-left h1 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--header-text);
+  }
+
+  .header-left .subtitle {
+    font-size: 0.78rem;
+    color: #a09880;
+    margin-top: 3px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .header-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .btn-icon {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--header-text);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.2s;
+  }
+  .btn-icon:hover { background: rgba(255,255,255,0.2); }
+
+  /* ===== SEARCH BAR ===== */
+  .search-bar-wrap {
+    background: var(--bg2);
+    padding: 18px 40px;
+    border-bottom: 1px solid var(--card-border);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  #searchInput {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 16px;
+    border: 1.5px solid var(--card-border);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  #searchInput:focus { border-color: var(--accent2); }
+
+  .filter-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1.5px solid var(--card-border);
+    background: var(--card);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  #searchCount {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* ===== MAIN ===== */
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 40px 80px;
+  }
+
+  /* ===== STATS BANNER ===== */
+  .stats-banner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .stat-card .num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat-card .label { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; }
+  .stat-card:nth-child(1) .num { color: var(--accent); }
+  .stat-card:nth-child(2) .num { color: var(--accent2); }
+  .stat-card:nth-child(3) .num { color: var(--accent3); }
+  .stat-card:nth-child(4) .num { color: var(--accent4); }
+
+  /* ===== SECTION HEADER ===== */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--card-border);
+  }
+  .section-header h2 {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+  .section-header .count-badge {
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.72rem;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ===== TABLE ===== */
+  .table-wrap {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+    margin-bottom: 48px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  thead tr {
+    background: var(--header-bg);
+    color: var(--header-text);
+  }
+  thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  thead th:first-child { border-radius: var(--radius) 0 0 0; }
+  thead th:last-child { border-radius: 0 var(--radius) 0 0; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--card-border);
+    transition: background 0.15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--tag-bg); }
+  tbody tr.hidden { display: none; }
+
+  td {
+    padding: 14px 16px;
+    vertical-align: top;
+  }
+
+  /* ===== COMPANY CELL ===== */
+  .company-cell {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .company-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+  .company-name {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .company-type {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* ===== INDUSTRY BADGE ===== */
+  .industry-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .ind-tech { background: #e8f0fe; color: #1a4aad; }
+  .ind-mfg { background: #e8f5e9; color: #1a7a4a; }
+  .ind-retail { background: #fff3e0; color: #c27d10; }
+  .ind-internet { background: #fce4ec; color: #b5451b; }
+  .ind-finance { background: #ede7f6; color: #7c3aad; }
+  .ind-energy { background: #e0f7fa; color: #007c91; }
+  .ind-fmcg { background: #fff8e1; color: #a06010; }
+  .ind-logistics { background: #e8eaf6; color: #3949ab; }
+  .ind-media { background: #fdf6ff; color: #8e24aa; }
+  .ind-estate { background: #f3e5f5; color: #9c27b0; }
+  .ind-auto { background: #e3f2fd; color: #1565c0; }
+  .ind-food { background: #fff9f0; color: #e65100; }
+  body.dark .ind-tech { background: #1a2a4a; color: #7ab0ff; }
+  body.dark .ind-mfg { background: #1a2e22; color: #6ecf90; }
+  body.dark .ind-retail { background: #2e2010; color: #ffb74d; }
+  body.dark .ind-internet { background: #2e1a14; color: #ff8a65; }
+  body.dark .ind-finance { background: #1e1a2e; color: #ce93d8; }
+  body.dark .ind-energy { background: #0a2428; color: #4dd0e1; }
+  body.dark .ind-fmcg { background: #2e2814; color: #ffcc80; }
+  body.dark .ind-logistics { background: #1a1c36; color: #9fa8da; }
+  body.dark .ind-media { background: #281a2e; color: #e040fb; }
+  body.dark .ind-estate { background: #2a1a2e; color: #ce93d8; }
+  body.dark .ind-auto { background: #0e1e36; color: #64b5f6; }
+  body.dark .ind-food { background: #2e1e0a; color: #ffab40; }
+
+  /* ===== KP TAGS ===== */
+  .kp-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .kp-tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    background: var(--tag-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--card-border);
+    white-space: nowrap;
+  }
+  .kp-tag.hot {
+    background: #fff0ec;
+    color: var(--accent);
+    border-color: #f5c5b5;
+  }
+  body.dark .kp-tag.hot { background: #2e1a14; border-color: #5a2a18; }
+
+  /* ===== CASE DESC ===== */
+  .case-desc {
+    color: var(--text);
+    font-size: 0.85rem;
+    line-height: 1.65;
+    max-width: 480px;
+  }
+
+  /* ===== CARDS SECTION ===== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+
+  .case-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .case-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  .case-card.hidden { display: none; }
+
+  .card-header {
+    padding: 16px 18px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .card-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card-title-area { flex: 1; }
+  .card-company {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+    font-family: var(--font-serif);
+  }
+  .card-meta {
+    display: flex;
+    gap: 8px;
+    margin-top: 5px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .card-body { padding: 14px 18px; flex: 1; }
+  .card-kps { margin-bottom: 10px; }
+  .card-kp-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .card-desc {
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: var(--text);
+  }
+
+  /* ===== KP SUMMARY SECTION ===== */
+  .kp-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .kp-summary-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+  }
+  .kp-summary-card h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .kp-summary-card h4 span {
+    font-size: 0.7rem;
+    background: var(--accent);
+    color: #fff;
+    padding: 1px 8px;
+    border-radius: 10px;
+    font-variant-numeric: tabular-nums;
+  }
+  .kp-case-list {
+    list-style: none;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .kp-case-list li { padding: 2px 0; }
+  .kp-case-list li::before { content: "• "; color: var(--accent); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--header-bg);
+    color: #888;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ===== BACK TO TOP ===== */
+  #backTop {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.2s;
+    pointer-events: none;
+    z-index: 200;
+  }
+  #backTop.visible { opacity: 1; pointer-events: auto; }
+  #backTop:hover { transform: scale(1.1); }
+
+  /* ===== HIGHLIGHT ===== */
+  mark {
+    background: #ffe066;
+    color: #1a1814;
+    padding: 1px 2px;
+    border-radius: 3px;
+  }
+  body.dark mark { background: #7a6000; color: #fff3b0; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 900px) {
+    header { padding: 16px 20px; flex-wrap: wrap; gap: 10px; }
+    .search-bar-wrap { padding: 14px 20px; }
+    main { padding: 20px 16px 60px; }
+    .stats-banner { grid-template-columns: repeat(2, 1fr); }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .header-left h1 { font-size: 1.1rem; }
+    table { font-size: 0.78rem; }
+    td { padding: 10px 10px; }
+  }
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>📚 人力资源管理 · 复试案例分析库</h1>
+    <div class="subtitle">中南大学企业管理学硕 | 颜爱民《人力资源管理》第三版 | 生成日期：2026-03-09 | 共 30 个真实企业案例</div>
+  </div>
+  <div class="header-right">
+    <button class="btn-icon" onclick="toggleView()" id="viewBtn">🃏 卡片视图</button>
+    <button class="btn-icon" onclick="toggleDark()" id="darkBtn">🌙 夜间模式</button>
+  </div>
+</header>
+
+<div class="search-bar-wrap">
+  
+  <button class="filter-btn active" data-filter="all" onclick="setFilter('all', this)">全部</button>
+  <button class="filter-btn" data-filter="招聘" onclick="setFilter('招聘', this)">招聘</button>
+  <button class="filter-btn" data-filter="培训" onclick="setFilter('培训', this)">培训</button>
+  <button class="filter-btn" data-filter="绩效" onclick="setFilter('绩效', this)">绩效</button>
+  <button class="filter-btn" data-filter="薪酬" onclick="setFilter('薪酬', this)">薪酬</button>
+  <button class="filter-btn" data-filter="激励" onclick="setFilter('激励', this)">激励</button>
+  <button class="filter-btn" data-filter="职业" onclick="setFilter('职业', this)">职业发展</button>
+  <button class="filter-btn" data-filter="文化" onclick="setFilter('文化', this)">企业文化</button>
+  <span id="searchCount">显示 30 / 30 个案例</span>
+</div>
+
+<main>
+  <!-- Stats Banner -->
+  <div class="stats-banner">
+    <div class="stat-card"><div class="num">30</div><div class="label">真实企业案例</div></div>
+    <div class="stat-card"><div class="num">22</div><div class="label">中国本土企业</div></div>
+    <div class="stat-card"><div class="num">12</div><div class="label">覆盖知识点</div></div>
+    <div class="stat-card"><div class="num">15</div><div class="label">覆盖行业</div></div>
+  </div>
+
+  <!-- Table View (default) -->
+  <div id="tableView">
+    <div class="section-header">
+      <h2>📊 案例总览表</h2>
+      <span class="count-badge" id="tableCount">30 个案例</span>
+    </div>
+    <div class="table-wrap">
+      <table id="caseTable">
+        <thead>
+          <tr>
+            <th style="width:36px;">#</th>
+            <th style="width:160px;">企业</th>
+            <th style="width:100px;">行业</th>
+            <th style="width:220px;">可对应知识点</th>
+            <th>案例说明</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Card View (hidden by default) -->
+  <div id="cardView" style="display:none;">
+    <div class="section-header">
+      <h2>🃏 案例卡片</h2>
+      <span class="count-badge" id="cardCount">30 个案例</span>
+    </div>
+    <div class="cards-grid" id="cardsGrid"></div>
+  </div>
+
+  <!-- KP Summary -->
+  <div class="section-header">
+    <h2>🗂️ 知识点 → 案例速查</h2>
+    <span class="count-badge">12 个知识点</span>
+  </div>
+  <div class="kp-summary-grid" id="kpSummaryGrid"></div>
+
+</main>
+
+<footer>
+  人力资源管理复试案例分析库 · 中南大学企业管理学硕 · 生成日期：2026-03-09
+</footer>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ===== DATA =====
+const cases = [
+  {
+    id: 1,
+    company: "华为",
+    type: "国企/民企", icon: "🔷", iconBg: "#1a4aad",
+    industry: "科技/通信", indClass: "ind-tech",
+    kps: ["战略性人才储备", "薪酬激励", "绩效管理"],
+    hotKps: ["战略性人才储备", "薪酬激励"],
+    desc: "华为实行'全员持股'激励机制，通过虚拟受限股将员工利益与企业长期发展深度绑定。同时建立完善的职业发展双通道（管理路线/技术路线），满足不同类型员工的晋升需求，有效解决技术人才'一旦晋升则脱离专业'的矛盾。其高薪酬高绩效文化成为留住顶尖人才的核心手段。"
+  },
+  {
+    id: 2,
+    company: "阿里巴巴",
+    type: "互联网", icon: "🟠", iconBg: "#e65100",
+    industry: "互联网/电商", indClass: "ind-internet",
+    kps: ["企业文化塑造", "人才招聘", "绩效考核（361法则）"],
+    hotKps: ["企业文化塑造", "绩效考核（361法则）"],
+    desc: "阿里推行'361绩效考核'，即60%员工获'达到期望'、30%获'超出期望'、10%获'未达期望'并面临淘汰。企业文化核心为'客户第一、员工第二、股东第三'，构建强烈的价值观认同体系。招聘高度重视'文化契合度'，使用'阿里味'衡量候选人与组织文化的匹配程度。"
+  },
+  {
+    id: 3,
+    company: "腾讯",
+    type: "互联网", icon: "🟦", iconBg: "#007bb5",
+    industry: "互联网/游戏", indClass: "ind-internet",
+    kps: ["人才开发与培训", "职业生涯规划", "激励机制"],
+    hotKps: ["人才开发与培训"],
+    desc: "腾讯建立'PCG学院'等内部培训体系，针对不同层级提供系统化学习路径。推行'双通道晋升体系'，技术人才可走独立的专业通道，最高可达'杰出科学家'职级，彻底解决工程师天花板问题。同时以股权激励留住核心人才，每年为优秀员工发放受限股票单位（RSU）。"
+  },
+  {
+    id: 4,
+    company: "海底捞",
+    type: "餐饮连锁", icon: "🍲", iconBg: "#c42b2b",
+    industry: "餐饮/服务", indClass: "ind-food",
+    kps: ["员工激励", "绩效管理", "企业文化"],
+    hotKps: ["员工激励", "企业文化"],
+    desc: "海底捞实行'计件工资+利润分享'模式，店长可获所管门店利润的2.8%-12.8%作为奖励，极大激发管理积极性。独特的'师徒制'培训体系确保服务标准复制传承。海底捞将员工家属纳入关怀范围，提供宿舍、子女教育补贴等，形成强烈的归属感，有效降低餐饮行业普遍偏高的员工流失率。"
+  },
+  {
+    id: 5,
+    company: "格力电器",
+    type: "制造", icon: "❄️", iconBg: "#1a7a4a",
+    industry: "家电制造", indClass: "ind-mfg",
+    kps: ["薪酬结构设计", "技能型人才激励", "员工关系"],
+    hotKps: ["薪酬结构设计"],
+    desc: "格力构建以技能等级为核心的薪酬体系，技术工人通过取得高级技工、技师、高级技师资格可获得大幅薪酬提升，最高可达一线工人平均工资的3-5倍。此外格力为员工提供住房补贴和宿舍，董明珠多次公开强调'让员工在珠海买得起房'的人才战略理念，形成制造业留人的典型范本。"
+  },
+  {
+    id: 6,
+    company: "字节跳动",
+    type: "互联网", icon: "📱", iconBg: "#ee3324",
+    industry: "互联网/AI", indClass: "ind-internet",
+    kps: ["OKR绩效管理", "人才招聘甄选", "组织文化"],
+    hotKps: ["OKR绩效管理", "人才招聘甄选"],
+    desc: "字节跳动是国内最早大规模推行OKR（目标与关键结果）的中国企业之一，强调'目标公开透明，自下而上设定'。招聘上使用结构化面试和能力模型，以'聪明、追求极致、坦诚、始终创业'为人才标准。扁平化组织结构与信息流通机制有效支撑了公司在极速扩张期的人才管理。"
+  },
+  {
+    id: 7,
+    company: "三一重工",
+    type: "制造业", icon: "🏗️", iconBg: "#2563a8",
+    industry: "工程机械", indClass: "ind-mfg",
+    kps: ["薪酬战略", "员工激励", "危机期人才保留"],
+    hotKps: ["薪酬战略", "危机期人才保留"],
+    desc: "金融危机期间，三一重工高管主动大幅降薪（董事长梁稳根领取1元年薪），同时承诺普通员工不裁员，并设立'千亿特别奖'——员工借出年终奖给公司，待公司达到千亿销售额时按5-10倍补偿。此举将激励机制与公司长期目标绑定，体现了薪酬战略服务于企业整体战略的核心思想。"
+  },
+  {
+    id: 8,
+    company: "京东物流",
+    type: "互联网/物流", icon: "📦", iconBg: "#e31837",
+    industry: "物流/电商", indClass: "ind-logistics",
+    kps: ["一线员工管理", "薪酬福利", "员工关系"],
+    hotKps: ["薪酬福利", "员工关系"],
+    desc: "京东物流实行'高底薪+绩效奖金'结构，承诺为快递员缴纳五险一金，在行业内形成差异化竞争优势，吸引大量稳定劳动力。刘强东'兄弟文化'虽饱受争议，但其核心本质是通过高于行业标准的福利待遇与情感认同构建员工忠诚度，体现了以市场供求为基础的薪酬模式与员工关系管理的结合。"
+  },
+  {
+    id: 9,
+    company: "比亚迪",
+    type: "制造/新能源", icon: "🚗", iconBg: "#1a7a4a",
+    industry: "汽车/新能源", indClass: "ind-auto",
+    kps: ["战略性人力资源规划", "工程师文化", "人才储备"],
+    hotKps: ["战略性人力资源规划", "人才储备"],
+    desc: "比亚迪以'工程师文化'著称，长期大批量校招理工科应届生，构建庞大的工程师人才库。人才规划与新能源战略高度协同——电池、芯片、电机三大技术路线均配备独立研发团队。通过内部竞争机制激活工程师潜能，形成了将人力资源规划与企业核心战略深度匹配的典型案例。"
+  },
+  {
+    id: 10,
+    company: "招商银行",
+    type: "金融", icon: "🏦", iconBg: "#e60012",
+    industry: "银行/金融", indClass: "ind-finance",
+    kps: ["360度绩效考核", "客户经理激励", "职业发展通道"],
+    hotKps: ["360度绩效考核", "职业发展通道"],
+    desc: "招商银行针对零售客户经理推行多元化绩效评估，综合考量客户满意度、资产管理规模、业务拓展和团队协作等维度，接近360度考核理念。同时设计了清晰的'理财经理-高级理财经理-私行客户经理'职业晋升通道，配合对应薪酬级别，有效激励员工长期留存并提升专业能力。"
+  },
+  {
+    id: 11,
+    company: "小米",
+    type: "互联网/制造", icon: "📲", iconBg: "#ff6900",
+    industry: "消费电子", indClass: "ind-tech",
+    kps: ["合伙人激励机制", "招聘甄选", "薪酬结构"],
+    hotKps: ["合伙人激励机制", "招聘甄选"],
+    desc: "小米创业初期雷军亲自招募'100位梦想合伙人'，以超行业水准股权吸引顶尖人才。薪酬模式采取'低于行业均值的固定工资+高于行业均值的股权期权'组合，让员工成为真正的利益共同体。'合伙人制度'本质是将核心员工从雇佣关系升级为创业伙伴关系，体现激励相容原理。"
+  },
+  {
+    id: 12,
+    company: "美团",
+    type: "互联网/生活服务", icon: "🟡", iconBg: "#f7b500",
+    industry: "互联网/O2O", indClass: "ind-internet",
+    kps: ["骑手劳动关系管理", "绩效激励", "人力资源灵活用工"],
+    hotKps: ["劳动关系管理", "灵活用工"],
+    desc: "美团外卖骑手采用'众包+专送'双轨用工模式。专送骑手享有底薪保障和社保，众包骑手灵活接单。系统化绩效管理通过算法实时追踪配送效率、差评率、准时率等KPI，奖惩机制透明。此案例可用于探讨新经济下灵活用工制度、平台经济劳动关系及算法绩效管理的边界与挑战。"
+  },
+  {
+    id: 13,
+    company: "华润集团",
+    type: "国有企业", icon: "🏢", iconBg: "#c42b2b",
+    industry: "多元化/国企", indClass: "ind-fmcg",
+    kps: ["国有企业薪酬管理", "人才培养计划", "继任者计划"],
+    hotKps: ["人才培养计划", "继任者计划"],
+    desc: "华润集团推行'管培生→骨干→高潜→接班人'四级人才梯队建设体系。集团层面设立华润学院，提供系统化领导力培训。国企背景下，薪酬受'限薪令'约束，因此更强调非经济性激励如晋升机会、平台资源和社会影响力，体现了国有企业人力资源管理的特殊挑战。"
+  },
+  {
+    id: 14,
+    company: "顺丰速运",
+    type: "物流", icon: "✈️", iconBg: "#ff5c00",
+    industry: "快递/物流", indClass: "ind-logistics",
+    kps: ["员工持股计划", "一线员工激励", "薪酬竞争力"],
+    hotKps: ["员工持股计划", "一线员工激励"],
+    desc: "顺丰上市时推行大规模员工持股计划，数万名一线快递员获得公司股份，成为快递行业少见的'员工股东'典范。王卫坚持为员工购买意外险，明确提出'把员工当人看'的管理理念，高于行业水平的薪酬与福利体系使顺丰在快递行业保持较低的员工流失率。"
+  },
+  {
+    id: 15,
+    company: "网易",
+    type: "互联网", icon: "🎮", iconBg: "#cc0000",
+    industry: "互联网/游戏", indClass: "ind-internet",
+    kps: ["员工福利管理", "工作生活平衡", "雇主品牌建设"],
+    hotKps: ["员工福利管理", "雇主品牌建设"],
+    desc: "网易以'业界良心'的超高福利著称，曾推出五险二金（额外商业险）、豪华餐厅（3-5元膳食补贴）、无限零食、带薪年假等福利。丁磊提出'员工是公司最重要的资产'，通过弹性福利制度增强吸引力。网易猪场和有机食堂更成为独特的雇主品牌符号，体现了福利作为非经济性薪酬的战略价值。"
+  },
+  {
+    id: 16,
+    company: "万科",
+    type: "房地产", icon: "🏠", iconBg: "#007c3a",
+    industry: "房地产", indClass: "ind-estate",
+    kps: ["事业合伙人制度", "薪酬激励创新", "职业经理人管理"],
+    hotKps: ["事业合伙人制度", "职业经理人管理"],
+    desc: "万科推行'事业合伙人制度'，要求核心管理层跟投所负责项目，将个人财富与项目成败直接绑定，形成强激励。同时引进郁亮等职业经理人，探索混合所有制背景下的现代企业治理。此案例体现了薪酬激励从'短期激励'向'长期激励'转型的方向，以及长期薪酬与短期薪酬的比例设计。"
+  },
+  {
+    id: 17,
+    company: "中国平安",
+    type: "金融", icon: "🛡️", iconBg: "#f87700",
+    industry: "保险/金融", indClass: "ind-finance",
+    kps: ["销售人员绩效管理", "培训体系建设", "保险代理人管理"],
+    hotKps: ["培训体系建设", "销售人员绩效管理"],
+    desc: "平安建立'平安大学'培训体系，为百万保险代理人提供标准化产品培训、销售技能培训和职业道德培训，是国内规模最大的企业大学之一。代理人薪酬全部与销售业绩挂钩（纯佣金制+团队管理津贴），属于典型的高弹性薪酬结构，激励性强但人员流失率也相对较高。"
+  },
+  {
+    id: 18,
+    company: "奇瑞汽车",
+    type: "制造/汽车", icon: "🚙", iconBg: "#003399",
+    industry: "汽车制造", indClass: "ind-auto",
+    kps: ["国有企业薪酬改革", "科技人才激励", "人才引进"],
+    hotKps: ["国有企业薪酬改革", "科技人才激励"],
+    desc: "奇瑞在国有汽车企业改革中推行市场化薪酬体系，对核心技术研发人员实行'项目奖金+股权激励'，突破国企薪酬'大锅饭'限制。同时通过'海外高层次人才引进'计划吸引归国华人工程师，建立了专门的海外人才薪酬包（包含安家费、科研经费等），体现了市场供求为基础的薪酬模式的实践应用。"
+  },
+  {
+    id: 19,
+    company: "联想集团",
+    type: "科技/制造", icon: "💻", iconBg: "#e60014",
+    industry: "PC/科技", indClass: "ind-tech",
+    kps: ["跨文化人力资源管理", "国际化并购整合", "人才本地化"],
+    hotKps: ["跨文化人力资源管理", "国际化并购整合"],
+    desc: "联想收购IBM PC事业部后面临严峻的跨文化人力资源整合挑战：如何融合中美两种迥异的管理文化、薪酬体系和绩效标准。联想采取'双轨并行→逐步融合'策略，保留原IBM员工薪酬体系，同时派遣中国管理人员担任双语联络官，最终实现文化融合。此为并购中人力整合的经典案例。"
+  },
+  {
+    id: 20,
+    company: "宁德时代（CATL）",
+    type: "制造/新能源", icon: "🔋", iconBg: "#2196f3",
+    industry: "新能源/电池", indClass: "ind-mfg",
+    kps: ["研发人才激励", "高薪吸引战略", "战略性人才储备"],
+    hotKps: ["研发人才激励", "高薪吸引战略"],
+    desc: "宁德时代以'超高薪资+股权激励'为核心招揽全球顶尖电化学、材料学和工程学人才。其应届研究生起薪长期位列全国制造业前列，通过强研发投入构建人才护城河。公司建立完善的知识产权分享机制，允许研发人员以专利参股，将知识转化为员工财富，体现了知识密集型企业的薪酬策略创新。"
+  },
+  {
+    id: 21,
+    company: "拼多多",
+    type: "互联网/电商", icon: "🛒", iconBg: "#e02020",
+    industry: "电商/互联网", indClass: "ind-internet",
+    kps: ["绩效管理争议", "加班文化与员工关系", "激励与留存"],
+    hotKps: ["绩效管理争议", "员工关系"],
+    desc: "拼多多因'大小周'（隔周双休）和高强度工作文化引发社会广泛讨论。其薪酬水平高于行业平均，以超高薪资换取员工高强度投入，属于典型的高弹性激励模式。该案例可用于探讨绩效激励的边界、工作-生活平衡对人才保留的影响，以及企业文化与员工心理健康管理的内在矛盾。"
+  },
+  {
+    id: 22,
+    company: "西门子（中国）",
+    type: "外资制造", icon: "⚙️", iconBg: "#009999",
+    industry: "工业制造/外资", indClass: "ind-mfg",
+    kps: ["人才培养体系", "职业发展规划", "领导力开发"],
+    hotKps: ["人才培养体系", "领导力开发"],
+    desc: "西门子在华建立系统化人才培养机制，通过'双元制'职业教育与企业内部培训并轨，培养应用型工程人才。领导力发展项目为高潜管理者提供轮岗、海外学习和导师辅导机会。其'全球最具吸引力雇主'战略致力于通过卓越的职业发展机会而非单一薪酬吸引人才，体现了综合性薪酬（内在薪酬+外在薪酬）的核心理念。"
+  },
+  {
+    id: 23,
+    company: "美的集团",
+    type: "家电制造", icon: "🌬️", iconBg: "#005bac",
+    industry: "家电制造", indClass: "ind-mfg",
+    kps: ["事业部制绩效考核", "管理层股权激励", "职业经理人体系"],
+    hotKps: ["事业部制绩效考核", "管理层股权激励"],
+    desc: "美的以'放权经营'的事业部制为基础，对各事业部总裁实行'利润包干+超额奖励'的绩效考核制度，赋予充分的经营自主权。方洪波接班后大力推行职业经理人文化，创始家族逐步淡出日常管理，建立了以业绩为导向的客观考核体系。管理层持股激励使职业经理人与股东利益高度统一。"
+  },
+  {
+    id: 24,
+    company: "滴滴出行",
+    type: "互联网/出行", icon: "🚕", iconBg: "#f0770d",
+    industry: "共享出行/互联网", indClass: "ind-internet",
+    kps: ["平台灵活用工", "司机激励机制", "绩效动态调整"],
+    hotKps: ["平台灵活用工", "司机激励机制"],
+    desc: "滴滴司机采用完全弹性的按单计费模式，属于典型的'高弹性薪酬结构'。通过'派单算法'控制抢单机会、'星级评分'影响收入和接单优先级，构建了算法驱动的绩效管理体系。此案例生动展示了以绩效为基础的薪酬模式在平台经济中的具体形态，及其对司机行为的激励与约束效果。"
+  },
+  {
+    id: 25,
+    company: "中粮集团",
+    type: "国有企业", icon: "🌾", iconBg: "#7c5c1a",
+    industry: "农业/食品/国企", indClass: "ind-fmcg",
+    kps: ["国企人才选拔", "干部继任计划", "组织发展"],
+    hotKps: ["国企人才选拔", "干部继任计划"],
+    desc: "中粮推行'全球化人才战略'，在全球市场招募农粮期货、供应链和品牌运营方面的专业人才。内部建立'干部选拔池'制度，高潜候选人需完成跨业务单元轮岗和海外任职后方可晋升高层。其'职业经理人+国企文化'的人才融合模式为国有企业人力资源改革提供了参考样本。"
+  },
+  {
+    id: 26,
+    company: "完美世界",
+    type: "文化/游戏", icon: "🎯", iconBg: "#8e24aa",
+    industry: "游戏/文化创意", indClass: "ind-media",
+    kps: ["创意人才管理", "项目制绩效考核", "知识型员工激励"],
+    hotKps: ["知识型员工激励", "项目制绩效考核"],
+    desc: "完美世界的游戏研发采用'项目制团队+绩效分成'模式，研发人员根据游戏上线后的实际营收获取分成奖励，将创意成果直接转化为个人收益。针对游戏策划、美术、程序等知识型员工建立分类激励机制，体现了知识型员工管理的核心——将内在激励（创作自由、成就感）与外在激励（营收分成）有机结合。"
+  },
+  {
+    id: 27,
+    company: "大疆创新（DJI）",
+    type: "科技/制造", icon: "🚁", iconBg: "#222222",
+    industry: "无人机/科技", indClass: "ind-tech",
+    kps: ["校园招聘甄选", "工程师文化激励", "试用期管理"],
+    hotKps: ["校园招聘甄选", "工程师文化激励"],
+    desc: "大疆以极具挑战性的'招聘考题'闻名，面试题难度远超行业平均水平，以此精准筛选顶尖技术人才。'不喜欢开会、不喜欢汇报、只喜欢造东西'的工程师文化形成独特雇主品牌。内部推行'海盗精神'——鼓励工程师直接质疑上级方案，以能力和逻辑说话，而非级别和资历，体现了以能力为基础的薪酬和晋升理念。"
+  },
+  {
+    id: 28,
+    company: "蒙牛乳业",
+    type: "食品制造", icon: "🥛", iconBg: "#009fe3",
+    industry: "快消/乳品", indClass: "ind-fmcg",
+    kps: ["高速扩张期人才管理", "战略性人才储备", "并购后人力整合"],
+    hotKps: ["战略性人才储备", "并购后人力整合"],
+    desc: "蒙牛在高速扩张期面临'人才跟不上战略'的典型困境：管理人才培养速度远低于业务扩张速度，不得不大量外部引进，但外部人才与企业文化融合难题频发。此案例教材中有类似警示，说明战略性人才储备必须超前规划。蒙牛后期并购雅士利等企业时的人力整合经验，也是并购重组中人力资源管理的重要参考。"
+  },
+  {
+    id: 29,
+    company: "谷歌（Google）",
+    type: "外资/互联网", icon: "🌐", iconBg: "#4285f4",
+    industry: "互联网/科技", indClass: "ind-tech",
+    kps: ["人力资源数据分析", "员工福利", "创新文化激励"],
+    hotKps: ["人力资源数据分析", "创新文化激励"],
+    desc: "谷歌通过'人才分析团队（People Analytics）'运用数据科学优化招聘决策、预测人员流失并设计激励方案，是HR数字化转型的标杆案例。'20%自由时间'制度允许工程师用20%工作时间探索自己感兴趣的项目，Gmail和Google News均诞生于此，体现了内在激励对创新型人才的激活效果。"
+  },
+  {
+    id: 30,
+    company: "胖东来",
+    type: "零售", icon: "🛍️", iconBg: "#e60012",
+    industry: "零售/商超", indClass: "ind-retail",
+    kps: ["员工关系管理", "高薪福利战略", "企业文化建设"],
+    hotKps: ["员工关系管理", "高薪福利战略"],
+    desc: "胖东来（河南许昌）以远超行业平均的薪酬和完善福利体系著称：员工月均工资6000-8000元（超同城零售业均值约2倍），强制规定员工必须休假、禁止员工带病上班，领导不得向员工借钱。于东来的'幸福企业'理念将员工幸福感置于核心，形成强烈的组织认同，成为近年中国最具影响力的零售业人力资源管理案例之一。"
+  }
+];
+
+// KP categories for filter
+const kpCategories = {
+  "招聘": ["人才招聘甄选", "校园招聘甄选", "招聘甄选", "战略性人才储备", "人才引进", "人才储备"],
+  "培训": ["人才开发与培训", "人才培养计划", "培训体系建设", "人才培养体系", "人才开发"],
+  "绩效": ["绩效管理", "绩效考核（361法则）", "360度绩效考核", "OKR绩效管理", "事业部制绩效考核", "项目制绩效考核", "绩效动态调整", "绩效管理争议", "销售人员绩效管理"],
+  "薪酬": ["薪酬激励", "薪酬结构设计", "薪酬战略", "薪酬福利", "薪酬结构", "国有企业薪酬管理", "国有企业薪酬改革", "高薪吸引战略", "高薪福利战略"],
+  "激励": ["员工激励", "激励机制", "合伙人激励机制", "员工持股计划", "管理层股权激励", "事业合伙人制度", "研发人才激励", "知识型员工激励", "科技人才激励", "司机激励机制", "一线员工激励", "工程师文化激励"],
+  "职业": ["职业生涯规划", "职业发展通道", "职业发展规划", "职业经理人管理", "职业经理人体系"],
+  "文化": ["企业文化塑造", "企业文化", "组织文化", "创新文化激励", "工程师文化激励"]
+};
+
+// Build KP → cases map
+const kpCasesMap = {};
+cases.forEach(c => {
+  c.kps.forEach(kp => {
+    if (!kpCasesMap[kp]) kpCasesMap[kp] = [];
+    kpCasesMap[kp].push(c.company);
+  });
+});
+
+// Main KP summary grouping
+const mainKPs = [
+  { name: "招聘与甄选", keys: ["招聘"] },
+  { name: "培训与开发", keys: ["培训"] },
+  { name: "绩效管理", keys: ["绩效"] },
+  { name: "薪酬管理", keys: ["薪酬"] },
+  { name: "激励机制", keys: ["激励"] },
+  { name: "职业发展", keys: ["职业"] },
+  { name: "企业文化", keys: ["文化"] },
+  { name: "员工关系", keys: ["员工关系管理", "劳动关系管理"] },
+  { name: "人力资源规划", keys: ["战略性人力资源规划", "继任者计划", "人才储备"] },
+  { name: "跨文化管理", keys: ["跨文化人力资源管理", "国际化并购整合"] },
+  { name: "灵活用工", keys: ["灵活用工", "平台灵活用工"] },
+  { name: "数字化HR", keys: ["人力资源数据分析"] }
+];
+
+let currentFilter = "all";
+let currentSearch = "";
+let currentView = "table";
+
+// ===== RENDER =====
+function renderTable() {
+  const tbody = document.getElementById("tableBody");
+  tbody.innerHTML = "";
+  cases.forEach(c => {
+    const tr = document.createElement("tr");
+    tr.dataset.company = c.company;
+    tr.dataset.industry = c.industry;
+    tr.dataset.kps = c.kps.join(" ");
+    tr.dataset.desc = c.desc;
+
+    const kpTagsHtml = c.kps.map(k =>
+      `<span class="kp-tag${c.hotKps.includes(k) ? ' hot' : ''}">${k}</span>`
+    ).join("");
+
+    tr.innerHTML = `
+      <td style="color:var(--text-muted);font-variant-numeric:tabular-nums;font-size:0.8rem">${String(c.id).padStart(2,'0')}</td>
+      <td>
+        <div class="company-cell">
+          <div class="company-icon" style="background:${c.iconBg}20;color:${c.iconBg}">${c.icon}</div>
+          <div>
+            <div class="company-name">${c.company}</div>
+            <div class="company-type">${c.type}</div>
+          </div>
+        </div>
+      </td>
+      <td><span class="industry-badge ${c.indClass}">${c.industry}</span></td>
+      <td><div class="kp-tags">${kpTagsHtml}</div></td>
+      <td><div class="case-desc">${c.desc}</div></td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderCards() {
+  const grid = document.getElementById("cardsGrid");
+  grid.innerHTML = "";
+  cases.forEach(c => {
+    const card = document.createElement("div");
+    card.className = "case-card";
+    card.dataset.company = c.company;
+    card.dataset.industry = c.industry;
+    card.dataset.kps = c.kps.join(" ");
+    card.dataset.desc = c.desc;
+
+    const kpTagsHtml = c.kps.map(k =>
+      `<span class="kp-tag${c.hotKps.includes(k) ? ' hot' : ''}">${k}</span>`
+    ).join("");
+
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-num">${String(c.id).padStart(2,'0')}</div>
+        <div class="card-title-area">
+          <div class="card-company">${c.icon} ${c.company}</div>
+          <div class="card-meta">
+            <span class="industry-badge ${c.indClass}">${c.industry}</span>
+            <span style="font-size:0.72rem;color:var(--text-muted)">${c.type}</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-kps">
+          <div class="card-kp-label">对应知识点</div>
+          <div class="kp-tags">${kpTagsHtml}</div>
+        </div>
+        <div class="card-desc">${c.desc}</div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function renderKPSummary() {
+  const grid = document.getElementById("kpSummaryGrid");
+  grid.innerHTML = "";
+  mainKPs.forEach(mk => {
+    let matchedCases = new Set();
+    cases.forEach(c => {
+      const allKpText = c.kps.join(" ");
+      const match = mk.keys.some(k => {
+        if (kpCategories[k]) {
+          return kpCategories[k].some(kk => allKpText.includes(kk));
+        }
+        return allKpText.includes(k);
+      });
+      if (match) matchedCases.add(c.company);
+    });
+    if (matchedCases.size === 0) return;
+    const card = document.createElement("div");
+    card.className = "kp-summary-card";
+    const caseList = [...matchedCases].slice(0, 8).map(n => `<li>${n}</li>`).join("");
+    const moreCount = matchedCases.size > 8 ? `…等${matchedCases.size}家` : "";
+    card.innerHTML = `
+      <h4>📌 ${mk.name} <span>${matchedCases.size} 个案例</span></h4>
+      <ul class="kp-case-list">${caseList}${moreCount ? `<li style="color:var(--text-muted)">${moreCount}</li>` : ""}</ul>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// ===== FILTER & SEARCH =====
+function setFilter(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  applyFilters();
+}
+
+
+function applyFilters() {
+  const rows = document.querySelectorAll("#tableBody tr");
+  const cards = document.querySelectorAll(".case-card");
+  let count = 0;
+
+  const allEls = currentView === "table" ? rows : cards;
+  allEls.forEach(el => {
+    const searchStr = (el.dataset.company + el.dataset.industry + el.dataset.kps + el.dataset.desc).toLowerCase();
+    const matchSearch = !currentSearch || searchStr.includes(currentSearch);
+    let matchFilter = true;
+    if (currentFilter !== "all") {
+      const filterKPs = kpCategories[currentFilter] || [];
+      matchFilter = filterKPs.some(kp => el.dataset.kps.includes(kp));
+    }
+    if (matchSearch && matchFilter) {
+      el.classList.remove("hidden");
+      count++;
+      // highlight
+      if (currentSearch) {
+        el.querySelectorAll(".case-desc,.card-desc").forEach(d => {
+          d.innerHTML = d.textContent.replace(
+            new RegExp(currentSearch.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'), 'gi'),
+            m => `<mark>${m}</mark>`
+          );
+        });
+      } else {
+        el.querySelectorAll(".case-desc,.card-desc").forEach(d => {
+          d.innerHTML = d.textContent;
+        });
+      }
+    } else {
+      el.classList.add("hidden");
+    }
+  });
+
+  document.getElementById("searchCount").textContent = `显示 ${count} / ${cases.length} 个案例`;
+  if (currentView === "table") document.getElementById("tableCount").textContent = `${count} 个案例`;
+  else document.getElementById("cardCount").textContent = `${count} 个案例`;
+}
+
+// ===== VIEW TOGGLE =====
+function toggleView() {
+  const btn = document.getElementById("viewBtn");
+  if (currentView === "table") {
+    currentView = "card";
+    document.getElementById("tableView").style.display = "none";
+    document.getElementById("cardView").style.display = "block";
+    btn.textContent = "📊 表格视图";
+  } else {
+    currentView = "table";
+    document.getElementById("tableView").style.display = "block";
+    document.getElementById("cardView").style.display = "none";
+    btn.textContent = "🃏 卡片视图";
+  }
+  applyFilters();
+}
+
+// ===== DARK MODE =====
+function toggleDark() {
+  document.body.classList.toggle("dark");
+  const btn = document.getElementById("darkBtn");
+  btn.textContent = document.body.classList.contains("dark") ? "☀️ 日间模式" : "🌙 夜间模式";
+  localStorage.setItem("darkMode", document.body.classList.contains("dark") ? "1" : "0");
+}
+
+// ===== BACK TO TOP =====
+window.addEventListener("scroll", () => {
+  const btn = document.getElementById("backTop");
+  if (window.scrollY > 300) btn.classList.add("visible");
+  else btn.classList.remove("visible");
+});
+
+// ===== INIT =====
+window.onload = () => {
+  renderTable();
+  renderCards();
+  renderKPSummary();
+  applyFilters();
+  if (localStorage.getItem("darkMode") === "1") {
+    document.body.classList.add("dark");
+    document.getElementById("darkBtn").textContent = "☀️ 日间模式";
+  }
+};
+</script>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- HL_INJECT -->
+<script>
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  var style=document.createElement('style');
+  style.textContent=
+    'mark.hl{background:#fef08a;color:#713f12;border-radius:3px;padding:0 2px;font-weight:700}'
+   +'mark.hl.cur{background:#fb923c!important;color:#fff!important;outline:2px solid #f97316}'
+   +'#hl-nav{position:fixed;bottom:22px;right:22px;z-index:9999;background:#1a2340;color:#e8ecf4;border-radius:28px;box-shadow:0 6px 24px rgba(0,0,0,.45);display:flex;align-items:center;gap:6px;padding:7px 10px 7px 15px;font-size:13px;font-family:Microsoft YaHei,PingFang SC,sans-serif;font-variant-numeric:tabular-nums;user-select:none}'
+   +'#hl-nav .hl-kw{color:#60a5fa;font-weight:700;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}'
+   +'#hl-nav .hl-cnt{color:#93c5fd;min-width:42px;text-align:center;font-weight:700}'
+   +'#hl-nav button{background:rgba(255,255,255,.12);border:none;color:#fff;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}'
+   +'#hl-nav button:hover{background:rgba(255,255,255,.28)}'
+   +'#hl-nav .hl-x{background:rgba(220,38,38,.25)!important;color:#fca5a5!important;font-size:12px}'
+   +'#hl-nav .hl-x:hover{background:rgba(220,38,38,.55)!important;color:#fff!important}';
+  document.head.appendChild(style);
+  function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+  var terms=kw.split(/\s+/).filter(Boolean);
+  var pat=new RegExp('('+terms.map(escRe).join('|')+')','gi');
+  var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+  var nodes=[];var nd;
+  while((nd=walker.nextNode())){
+    var p=nd.parentElement;if(!p)continue;
+    var tg=p.tagName;
+    if(tg==='SCRIPT'||tg==='STYLE'||tg==='NOSCRIPT')continue;
+    if(p.id==='hl-nav'||(p.closest&&p.closest('#hl-nav')))continue;
+    if(pat.test(nd.textContent))nodes.push(nd);pat.lastIndex=0;
+  }
+  var marks=[];
+  nodes.forEach(function(node){
+    var parts=node.textContent.split(pat);if(parts.length<=1)return;
+    var frag=document.createDocumentFragment();
+    parts.forEach(function(part){
+      pat.lastIndex=0;
+      if(pat.test(part)){var m=document.createElement('mark');m.className='hl';m.textContent=part;marks.push(m);frag.appendChild(m);}
+      else frag.appendChild(document.createTextNode(part));
+      pat.lastIndex=0;
+    });
+    node.parentNode.replaceChild(frag,node);
+  });
+  if(!marks.length)return;
+  var cur=0;
+  var nav=document.createElement('div');nav.id='hl-nav';
+  function go(d){
+    marks[cur].classList.remove('cur');
+    cur=(cur+d+marks.length)%marks.length;
+    marks[cur].classList.add('cur');
+    marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+    nav.querySelector('.hl-cnt').textContent=(cur+1)+' / '+marks.length;
+  }
+  function clear(){nav.remove();marks.forEach(function(m){m.parentNode&&m.parentNode.replaceChild(document.createTextNode(m.textContent),m);});}
+  nav.innerHTML='<span style="font-size:14px">&#128269;</span>'
+    +'<span class="hl-kw"></span>'
+    +'<span class="hl-cnt">1 / '+marks.length+'</span>'
+    +'<button id="hlPrev" title="上一个 (Shift+F3)">↑</button>'
+    +'<button id="hlNext" title="下一个 (F3)">↓</button>'
+    +'<button class="hl-x" id="hlClose" title="关闭">✕</button>';
+  nav.querySelector('.hl-kw').textContent=kw;
+  nav.querySelector('#hlPrev').onclick=function(){go(-1);};
+  nav.querySelector('#hlNext').onclick=function(){go(1);};
+  nav.querySelector('#hlClose').onclick=clear;
+  document.body.appendChild(nav);
+  marks[cur].classList.add('cur');
+  setTimeout(function(){marks[cur].scrollIntoView({behavior:'smooth',block:'center'});},250);
+  document.addEventListener('keydown',function(e){if(e.key==='F3'){e.preventDefault();go(e.shiftKey?-1:1);}});
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

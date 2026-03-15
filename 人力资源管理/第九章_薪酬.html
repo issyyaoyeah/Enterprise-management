@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第九章 · 薪酬</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1f2e;
+    --bg: #f0f4f8;
+    --bg2: #e1eaf2;
+    --accent: #1a56db;
+    --accent2: #f59e0b;
+    --accent3: #0e7c6a;
+    --accent4: #7c3aed;
+    --accent5: #dc2626;
+    --gold: #d97706;
+    --card-bg: #ffffff;
+    --border: #b8cfe8;
+    --tier1: #1a56db;
+    --tier2: #f59e0b;
+    --tier3: #0e7c6a;
+    --shadow: 0 4px 20px rgba(15,31,46,0.10);
+  }
+  body.night {
+    --ink: #e2e8f0;
+    --bg: #0f172a;
+    --bg2: #1e293b;
+    --card-bg: #1e293b;
+    --border: #334155;
+    --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 0 0 80px;
+    transition: background .3s, color .3s;
+    font-variant-numeric: tabular-nums;
+  }
+  .hero {
+    background: linear-gradient(135deg, #0f1f2e 0%, #0b4d3b 50%, #0e7c6a 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(60deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 22px);
+  }
+  .hero-day {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: #6ee7b7; }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,.75);
+    max-width: 700px;
+    line-height: 1.7;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .hero-tag {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,.9);
+  }
+  .fixed-nav {
+    position: sticky;
+    top: 0; z-index: 999;
+    background: var(--ink);
+    color: #fff;
+    padding: 12px 40px;
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 12px rgba(0,0,0,.3);
+    transition: background .3s;
+  }
+  body.night .fixed-nav { background: #0f172a; }
+  .toc-label { font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-right: 6px; }
+  .fixed-nav a {
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 12px;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .fixed-nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+  .nav-controls { margin-left: auto; display: flex; gap: 8px; }
+  .btn-night, .btn-top {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.25);
+    color: #fff; border-radius: 10px;
+    padding: 4px 12px; cursor: pointer;
+    font-size: 12px; transition: all .2s;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .btn-night:hover, .btn-top:hover { background: rgba(255,255,255,.25); }
+  .search-bar {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 40px;
+    display: flex; align-items: center; gap: 12px;
+    transition: background .3s;
+  }
+  .search-bar input {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 13.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    outline: none;
+    transition: border-color .2s;
+  }
+  .search-bar input:focus { border-color: var(--accent3); }
+  .search-count { font-size: 12px; color: #999; white-space: nowrap; }
+  .highlight-search { background: #6ee7b7; border-radius: 2px; }
+  .case-banner {
+    margin: 40px 40px 0;
+    background: linear-gradient(135deg, #0f1f2e, #0b4d3b);
+    border-radius: 16px;
+    padding: 30px 36px;
+    color: #fff;
+    border-left: 6px solid var(--gold);
+  }
+  .case-banner .case-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 3px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .case-banner h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 12px; }
+  .case-banner p { font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.8; }
+  .case-key { margin-top: 14px; font-size: 13px; color: var(--gold); font-weight: 500; }
+  .main { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  .section-title {
+    display: flex; align-items: center; gap: 14px;
+    margin: 50px 0 24px;
+  }
+  .section-title .sec-num {
+    background: var(--ink);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    transition: background .3s;
+  }
+  .section-title h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--ink);
+  }
+  .section-title .page-ref { font-size: 12px; color: #999; font-family: 'JetBrains Mono', monospace; margin-left: auto; }
+  .kcard {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow .2s, background .3s, border-color .3s;
+  }
+  .kcard:hover { box-shadow: 0 8px 32px rgba(15,31,46,.15); }
+  .kcard-header {
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 16px;
+    background: linear-gradient(to right, #e6f7f4, var(--card-bg));
+  }
+  body.night .kcard-header { background: linear-gradient(to right, #0b2f25, var(--card-bg)); }
+  .kcard-num {
+    background: var(--ink);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 600;
+    padding: 4px 10px; border-radius: 6px;
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .kcard-title-wrap { flex: 1; }
+  .kcard-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .kcard-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; border-radius: 12px;
+    font-size: 11.5px; font-weight: 500;
+  }
+  .badge-tier1 { background: #dbeafe; color: var(--tier1); border: 1px solid #93c5fd; }
+  .badge-tier2 { background: #fef3e2; color: var(--tier2); border: 1px solid #fcd98a; }
+  .badge-tier3 { background: #e6f7f4; color: var(--tier3); border: 1px solid #9ed9cc; }
+  .badge-page  { background: #f5f0ff; color: var(--accent4); border: 1px solid #ddd6fe; }
+  .badge-exam  { background: #fff1f2; color: var(--accent5); border: 1px solid #fecaca; }
+  .badge-year  { background: #fffbeb; color: var(--gold); border: 1px solid #fde68a; }
+  .kcard-body { padding: 24px 28px; }
+  .block {
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    border-radius: 10px;
+  }
+  .block:last-child { margin-bottom: 0; }
+  .block-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .block-label::before { content: ''; display: block; width: 18px; height: 2px; }
+  .block-analogy { background: #fefce8; }
+  body.night .block-analogy { background: #2d2a14; }
+  .block-analogy .block-label { color: var(--gold); }
+  .block-analogy .block-label::before { background: var(--gold); }
+  .block-definition { background: #eff6ff; }
+  body.night .block-definition { background: #172554; }
+  .block-definition .block-label { color: var(--accent); }
+  .block-definition .block-label::before { background: var(--accent); }
+  .block-memory { background: #f0fdf4; }
+  body.night .block-memory { background: #14301e; }
+  .block-memory .block-label { color: var(--accent3); }
+  .block-memory .block-label::before { background: var(--accent3); }
+  .block-exam { background: #f5f0ff; }
+  body.night .block-exam { background: #2d1f4f; }
+  .block-exam .block-label { color: var(--accent4); }
+  .block-exam .block-label::before { background: var(--accent4); }
+  .block-tip { background: #fff1f2; }
+  body.night .block-tip { background: #3b1218; }
+  .block-tip .block-label { color: var(--accent5); }
+  .block-tip .block-label::before { background: var(--accent5); }
+  .block-teal { background: #e6f7f4; }
+  body.night .block-teal { background: #0b2f25; }
+  .block-teal .block-label { color: var(--accent3); }
+  .block-teal .block-label::before { background: var(--accent3); }
+  .quote {
+    background: var(--ink);
+    color: #fff;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-size: 13.5px;
+    line-height: 1.9;
+    margin: 12px 0;
+    position: relative;
+  }
+  .quote::before { content: '"'; font-size: 60px; color: rgba(255,255,255,.1); position: absolute; top: -6px; left: 12px; font-family: serif; line-height: 1; }
+  .quote p { position: relative; z-index: 1; }
+  .quote mark { background: #6ee7b7; color: var(--ink); padding: 0 3px; border-radius: 3px; }
+  .ctable { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  .ctable th { background: var(--ink); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+  .ctable td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ctable tr:nth-child(even) td { background: var(--bg2); }
+  .ctable tr:last-child td { border-bottom: none; }
+  .ctable th:first-child { border-radius: 8px 0 0 0; }
+  .ctable th:last-child  { border-radius: 0 8px 0 0; }
+  .kl { padding-left: 20px; }
+  .kl li { margin-bottom: 6px; }
+  .kl li::marker { color: var(--accent3); }
+  .kw  { background: rgba(26,86,219,.12); color: var(--accent); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw2 { background: rgba(14,124,106,.12); color: var(--accent3); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw3 { background: rgba(245,158,11,.15); color: var(--gold); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw4 { background: rgba(124,58,237,.12); color: var(--accent4); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; margin: 14px 0; }
+  .flow-step {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    flex: 1; min-width: 120px;
+    text-align: center; font-size: 13px;
+  }
+  .flow-arrow { display: flex; align-items: center; color: var(--accent3); font-size: 20px; padding: 0 6px; flex-shrink: 0; }
+  .flow-step .fs-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent3); margin-bottom: 4px; }
+  .flow-step .fs-title { font-weight: 700; font-size: 14px; color: var(--ink); }
+  .flow-step .fs-body { font-size: 12px; color: #555; margin-top: 4px; }
+  .logic-map {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 30px 0;
+    box-shadow: var(--shadow);
+    transition: background .3s;
+  }
+  .logic-map h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px; margin-bottom: 20px;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .lm-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .lm-node {
+    background: var(--bg2);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    flex: 1; min-width: 150px;
+    font-size: 13px;
+  }
+  .lm-node.green  { border-color: var(--accent3); background: #e6f7f4; }
+  .lm-node.blue   { border-color: var(--accent);  background: #eff6ff; }
+  .lm-node.yellow { border-color: var(--gold);    background: #fef9e7; }
+  .lm-node.red    { border-color: var(--accent5); background: #fff1f2; }
+  .lm-node.purple { border-color: var(--accent4); background: #f5f0ff; }
+  body.night .lm-node.green  { background: #0b2f25; }
+  body.night .lm-node.blue   { background: #172554; }
+  body.night .lm-node.yellow { background: #2d2a14; }
+  body.night .lm-node.red    { background: #3b1218; }
+  body.night .lm-node.purple { background: #2d1f4f; }
+  .lm-node .ln-title { font-weight: 700; margin-bottom: 4px; }
+  .lm-arrow { color: var(--accent3); font-size: 18px; flex-shrink: 0; }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 10px 0;
+    color: var(--accent3);
+    list-style: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  details summary::before { content: '▶'; font-size: 11px; transition: transform .2s; }
+  details[open] summary::before { transform: rotate(90deg); }
+  details[open] { padding-bottom: 4px; }
+  .summary-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 28px 0;
+    box-shadow: var(--shadow);
+    transition: background .3s;
+  }
+  .summary-box h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px; margin-bottom: 18px;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .quiz-item {
+    background: var(--bg2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+    border-left: 4px solid var(--accent3);
+  }
+  .quiz-item .q-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent3); margin-bottom: 6px; }
+  .quiz-item .q-text { font-weight: 600; margin-bottom: 8px; }
+  .quiz-answer {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    margin-top: 8px;
+    border: 1px solid var(--border);
+  }
+  .quick-review {
+    background: linear-gradient(135deg, #0f1f2e, #0b4d3b);
+    color: #fff;
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin: 30px 0;
+  }
+  .quick-review h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 20px; color: #6ee7b7; }
+  .quick-review .qr-item {
+    display: flex; gap: 12px; margin-bottom: 12px;
+    font-size: 14px; line-height: 1.7;
+  }
+  .quick-review .qr-num {
+    font-family: 'JetBrains Mono', monospace;
+    color: #6ee7b7; font-size: 12px;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .exam-tag {
+    display: inline-block;
+    background: #dc2626;
+    color: #fff;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    margin: 2px 3px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media(max-width: 700px) {
+    .grid2 { grid-template-columns: 1fr; }
+    .fixed-nav { padding: 10px 16px; }
+    .main { padding: 0 16px; }
+    .hero { padding: 40px 20px 36px; }
+    .hero h1 { font-size: 26px; }
+  }
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    padding: 40px 20px 20px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .mindmap-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 24px 0;
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+  }
+  .mm-center {
+    background: linear-gradient(135deg, #0b4d3b, #0e7c6a);
+    color: #fff;
+    border-radius: 12px;
+    padding: 14px 28px;
+    display: inline-block;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .mm-branches { display: flex; flex-wrap: wrap; gap: 12px; }
+  .mm-branch {
+    background: var(--bg2);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    flex: 1; min-width: 160px;
+    font-size: 13px;
+  }
+  .mm-branch.b1 { border-color: var(--accent); }
+  .mm-branch.b2 { border-color: var(--accent3); }
+  .mm-branch.b3 { border-color: var(--gold); }
+  .mm-branch.b4 { border-color: var(--accent4); }
+  .mm-branch.b5 { border-color: var(--accent5); }
+  .mm-branch .mb-title { font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .mm-branch ul { padding-left: 16px; }
+  .mm-branch ul li { margin-bottom: 3px; font-size: 12.5px; }
+  .recite-box {
+    background: linear-gradient(135deg, #2d1f4f, #1a0e3b);
+    color: #fff;
+    border-radius: 16px;
+    padding: 32px 36px;
+    margin: 28px 0;
+  }
+  .recite-box h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; color: #c4b5fd; margin-bottom: 20px; }
+  .recite-item { margin-bottom: 16px; padding: 14px 18px; background: rgba(255,255,255,.06); border-radius: 10px; border-left: 4px solid #c4b5fd; }
+  .recite-item .ri-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #c4b5fd; margin-bottom: 6px; }
+  .recite-item .ri-text { font-size: 13.5px; line-height: 1.9; }
+  .chain-review {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 28px 0;
+    box-shadow: var(--shadow);
+  }
+  .chain-review h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; color: var(--ink); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+  .chain-step { display: flex; gap: 16px; margin-bottom: 16px; align-items: flex-start; }
+  .cs-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--accent3); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+  .cs-content { flex: 1; }
+  .cs-title { font-weight: 700; margin-bottom: 4px; }
+  .cs-body { font-size: 13.5px; color: #555; }
+  body.night .cs-body { color: #94a3b8; }
+  .template-box {
+    background: #e6f7f4;
+    border: 1.5px solid var(--accent3);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 12px 0;
+    font-size: 13.5px;
+  }
+  body.night .template-box { background: #0b2f25; }
+  .template-box .tb-title { font-weight: 700; color: var(--accent3); margin-bottom: 8px; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+  .extend-q { background: #f5f0ff; border-radius: 8px; padding: 10px 14px; margin: 6px 0; font-size: 13px; border-left: 3px solid var(--accent4); }
+  body.night .extend-q { background: #2d1f4f; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin: 14px 0; }
+  @media(max-width:700px) { .info-grid { grid-template-columns: 1fr; } }
+  .info-cell { background: var(--bg2); border-radius: 10px; padding: 14px 16px; border: 1px solid var(--border); }
+  .info-cell .ic-title { font-weight: 700; font-size: 12px; color: var(--accent3); margin-bottom: 6px; }
+  .info-cell .ic-body { font-size: 13px; }
+</style>
+
+
+<script>window._PAGE_TEXT='第九章 · 薪酬 \n \n \n \n \n \n \n 生成日期：2026-03-09 · 中南大学企业管理学硕复试 \n 第九章 · 薪酬 \n 系统掌握薪酬概念与结构、战略性薪酬管理、薪酬设计原则与方法、岗位评估、可变薪酬、福利体系等核心知识，直击复试高频考点。 \n \n 教材 P273–319 \n ★★★★★ 核心高频章 \n 2025真题直考 \n 名词解释 / 简答 / 论述 / 案例 \n \n \n \n \n 目录 \n 01 薪酬概述 \n 02 战略性薪酬 \n 03 薪酬设计 \n 04 岗位评估 \n 05 可变薪酬 \n 06 福利 \n 07 对比总结 \n 08 真题汇总 \n 09 知识串联 \n 10 快速复习 \n 11 背诵版 \n 12 自测题 \n \n 🌙 夜间 \n ↑ 顶部 \n \n \n \n \n 🔍 \n \n \n ↑ \n ↓ \n \n \n \n 📖 导入案例 \n 白秦铭的跳槽——薪酬公平与激励失效 \n 白秦铭是一家中日合资企业的顶尖销售员，连续超额完成定额，却因公司实行固定工资制（"大锅饭"）感到极度不公平。他建议改行佣金制遭拒，最终跳槽至竞争对手。这个案例深刻揭示：薪酬制度必须与员工激励需求相匹配， 内在薪酬公平性 是影响员工满意度的最直接因素。 \n 🎯 管理启示：薪酬不公平→满意度下降→优秀员工流失→竞争力削弱 \n \n \n \n \n \n \n § 逻辑结构 \n 本章知识逻辑框架 \n \n \n 第九章 薪酬 · 核心逻辑链 \n \n 📌 薪酬概述（9.1） 概念·内外在薪酬·功能·模式·影响因素·变化趋势 \n → \n 📌 战略性薪酬（9.2） 战略薪酬内涵·模型·薪酬战略构建步骤·战略导向体系 \n → \n 📌 薪酬设计（9.3） 设计原则·市场调查·结构确定（固定/浮动/短期/长期）·岗位工资设计 \n \n \n 📌 可变薪酬（9.4） 销售提成·计件工资·年薪制结构设计 \n → \n 📌 福利（9.5） 福利功能·主要形式·弹性福利·社会保险 \n → \n 📌 薪酬管理（9.1.5） 预算→结构管理→水平管理→日常管理→薪酬诊断 \n \n \n \n \n § 思维导图 \n 章节思维导图 \n \n \n 第九章 · 薪酬 \n \n \n 🔵 薪酬概念 \n \n 定义：契约交换关系 \n 内在薪酬（非经济） \n 外在薪酬（经济） \n 基本薪酬+可变薪酬+福利 \n 四大薪酬模式 \n \n \n \n 🟢 战略性薪酬 \n \n 米尔科维奇定义 \n 战略薪酬4步骤 \n 三大目标：控成本/吸人才/激励 \n 战略导向体系构建 \n \n \n \n 🟡 薪酬设计 \n \n 六大传统原则 \n 现代三原则 \n 市场薪酬调查 \n 固定vs浮动比例 \n 三种结构类型 \n \n \n \n 🟣 岗位评估 \n \n 岗位排列法 \n 岗位分类法 \n 要素计点法 \n 海氏评价系统（三因素） \n 结构参数：等级/级差/幅度 \n \n \n \n 🔴 可变薪酬与福利 \n \n 销售提成4种方式 \n 计件工资4种形式 \n 年薪制结构（月工资+福利+奖金+期权） \n 弹性福利计划 \n 五险一金 \n \n \n \n \n \n \n § 01 \n 薪酬概述 \n P273–285 \n \n \n \n \n 01 \n \n 薪酬的概念与结构（Compensation） \n \n ★★★★★ 一级重点 \n P274–276 \n 名词解释 / 简答 \n 2025真题考查 \n \n \n \n \n \n 专有名词定义（教材原意） \n 薪酬（Compensation） 是劳动者因向所在用人单位提供劳动或劳务而获得的各种形式的酬劳或酬谢。从本质上讲，薪酬是劳动者与用人单位之间 以契约为表现形式的一种交换关系 。在市场经济环境下，薪酬既是 劳动力价格的支付形式 ，又是 人力资本竞争的价格表现 。 \n \n \n 🎓 小学生版通俗解释 \n 你帮邻居浇花，邻居给你零花钱，这就是薪酬。但薪酬不只是钱——邻居还可以夸你"干得好"（内在薪酬），或者送你好吃的点心（福利薪酬）。薪酬就是"你付出劳动，我给你回报"的约定。 \n \n \n 📊 薪酬结构分类图 \n \n 一级分类 二级分类 具体内容 \n 内在薪酬（非经济） 心理性报酬 工作保障、晋升、挑战性工作、培训机会、弹性工时、身份标志、工作成绩认可 \n 外在薪酬（经济） 直接薪酬 基本薪酬、绩效薪酬、激励性薪酬、延期支付计划 \n 间接薪酬（福利） 员工保护项目、非工作薪酬、服务与津贴 \n \n 外在薪酬三要素： 基本薪酬 + 可变薪酬（激励薪酬） + 福利薪酬 \n \n \n 🧠 助记口诀 \n 薪酬两大类， 内外 要分清。内在心理报，外在有形钱。外在三要素： 基本·可变·福利 。本质是交换，契约来约定。 \n \n \n 🔗 工作特征模型（内在薪酬来源） \n 哈克曼&奥德海姆（1975）提出5个核心特征： 技能多样性 、 任务同一性 、 任务重要性 、 工作自主性 、 反馈 。当五个维度程度高时，员工心理状态改善，内在薪酬增加。 \n \n \n 复试回答模板 + 延伸追问 \n \n 复试口答模板 \n 定义 →薪酬是劳动者向用人单位提供劳务获得的各类酬劳，本质是契约交换关系。 \n 核心内容 →分为内在薪酬（非经济性，如工作保障、晋升）和外在薪酬（经济性），外在薪酬包含基本薪酬、可变薪酬和福利三部分。 \n 举例 →比如华为员工除了月薪（基本薪酬）外，还有年终奖（可变薪酬）、五险一金（福利），以及参与核心项目带来的成就感（内在薪酬）。 \n 总结 →现代薪酬管理不能只关注物质薪酬，内在薪酬对高层次知识型员工的激励同样重要。 \n \n ❓ 追问：内在薪酬和外在薪酬哪个更重要？ \n 两者相辅相成。对于基层员工，外在薪酬（工资）更直接；对于高层次知识型员工，内在薪酬（成就感、挑战性）作用更大。企业需结合员工层次设计薪酬组合。 \n ❓ 追问：薪酬与工资有何区别？ \n 工资是货币形式的劳动报酬，属薪酬的一部分；薪酬外延更广，涵盖非货币报酬、福利等。 \n \n \n \n \n \n \n 02 \n \n 四大常见薪酬模式 \n \n ★★★★★ 一级重点 \n P277–279 \n 简答 / 案例 \n 历年常考 \n \n \n \n \n \n 四大薪酬模式对比表 \n \n 薪酬模式 核心依据 工资结构 适用岗位 \n 以岗位为基础 岗位职责复杂程度、责任大小、劳动强度 传统工资结构，等级多，每级范围小 管理人员、职能岗、行政后勤、产出不能量化的生产岗 \n 以能力为基础 员工知识、技能和潜力大小 宽带工资结构 ，等级少，每级范围大 研发岗、技术岗、技术要求高的技工 \n 以绩效为基础 组织/团队/个人绩效 绩效工资为主 营销岗、产出能量化的生产岗 \n 以市场供求为基础 劳动力市场价格 随市场波动 稀缺人才、特殊技能岗位 \n \n \n \n 🎓 小学生版通俗解释 \n 假设你是一家玩具店老板，给员工发工资： \n \n 岗位模式 ：收银员就拿收银员的固定工资，修玩具的拿修玩具的工资，干啥拿啥。 \n 能力模式 ：会修更多种玩具的就拿更多，技能越多薪水越高。 \n 绩效模式 ：卖出多少玩具拿多少提成，卖得多拿得多。 \n 市场模式 ：外面玩具市场上，这个技能的人很少，你就得出高价抢人。 \n \n \n \n 🧠 助记口诀 \n 薪酬四模式： 岗（位）能（力）绩（效）市（场） 。岗位看职责，能力看技能，绩效看产出，市场看供需。 \n \n \n 复试回答模板 \n \n 复试口答模板 \n 常见薪酬模式分四种：① 以岗位为基础 ，根据岗位职责差异定薪，适合职能管理岗；② 以能力为基础 ，根据员工技能水平定薪，采用宽带结构，适合技术研发岗；③ 以绩效为基础 ，与个人或团队业绩挂钩，适合销售岗；④ 以市场供求为基础 ，参考劳动力市场价格，适合稀缺人才。企业实践中通常混合使用多种模式。 \n \n ❓ 追问：宽带薪酬有什么特点？ \n 宽带薪酬压缩传统的十几甚至二三十个工资等级为几个级别，每级浮动范围大大扩展，更强调员工技能提升而非岗位晋升，有利于扁平化组织。 \n \n \n \n \n \n \n 03 \n \n 影响薪酬水平的因素 \n \n ★★★★ 二级重点 \n P279–281 \n 简答 \n \n \n \n \n \n 两个层面的影响因素 \n \n \n 企业整体薪酬水平影响因素： \n \n 企业的 支付能力 （根本约束） \n 劳动力市场 供求关系 \n 所处 行业 的薪酬水平 \n 企业的 发展战略 \n 企业的 工会力量 \n \n \n \n 员工个人薪酬水平影响因素： \n \n 员工的 工作能力素质 （知识、技能） \n 员工所在 岗位的相对价值 \n 员工的 贡献大小 \n 员工的 工龄 \n \n \n \n \n \n ⚠️ 重要结论（必背） \n 通常情况下，影响员工薪酬满意度的 最直接因素是内部公平性 。企业应建立科学规范的岗位价值评估体系、能力评估体系和绩效考评体系，在这些基础上提供员工相对公平的薪酬水平。（P284） \n \n \n \n \n \n \n \n § 02 \n 战略性薪酬管理 \n P285–292 \n \n \n \n \n 04 \n \n 战略性薪酬管理的内涵与模型 \n \n ★★★★★ 一级重点 \n P286–291 \n 名词解释 / 论述 \n 历年高频 \n \n \n \n \n \n 专有名词定义 \n 战略性薪酬管理 是指在做薪酬决策时要对环境中的机会及威胁做出适当的回应，并且要 配合或支持组织全盘的、长期的发展方向以及目标 的薪酬决策模式。 \n 米尔科维奇（Milkovich）定义：战略性薪酬管理是 对组织绩效具有关键性的薪酬决策模式 。 \n 薪酬战略 （乔米兹-米嘉&塞瑞琴·M.威尔鲍）：在特殊条件下会对组织绩效和人力资源的有效使用产生影响的一系列重要的报酬支付选择。 \n \n \n 🎓 小学生版通俗解释 \n 传统薪酬就是"干多少活发多少钱"，大家都一样。战略性薪酬就像游戏升级：公司要往哪个方向发展，薪酬就朝哪里激励。比如公司要大力开发新产品，就给技术研发人员发更多股票期权，让大家都往这个方向使劲。 \n \n \n 📊 传统薪酬 vs 战略性薪酬对比 \n \n 维度 传统薪酬 战略性薪酬 \n 导向 内部一致性 外部市场敏感性 \n 薪酬类型 年度定期加薪 以绩效为基础的可变薪酬 \n 关系 既得权利 风险分担的伙伴关系 \n 工作 固定工作内容 弹性的贡献机会 \n 晋升 垂直晋升 横向流动 \n 保障 工作保障 就业能力 \n 贡献 个人贡献 团队贡献 \n \n \n \n 📋 制定薪酬战略的4步骤（米尔科维奇） \n \n STEP 01 评估总体战略 了解企业经营目标 \n → \n STEP 02 评估外部竞争 调查市场薪酬水平 \n → \n STEP 03 确定薪酬目标 内外部公平性目标 \n → \n STEP 04 设计薪酬体系 结构·水平·管理方式 \n \n \n \n 🎯 战略薪酬体系构建路径 \n 企业目标战略 → 业务部门战略 → 人力资源战略 → 薪酬战略 → 薪酬管理（薪酬决定+管理体系）→ 雇员态度和行为 → 竞争优势 \n \n \n 复试回答模板 + 延伸追问 \n \n 复试口答模板（论述题） \n 战略性薪酬管理是指薪酬决策要与企业战略对齐，对环境变化做出及时回应。其核心是薪酬对组织绩效具有关键影响。 \n 与传统薪酬相比，战略性薪酬：①强调外部竞争性而非内部一致性；②以绩效可变薪酬代替定期加薪；③鼓励风险分担的伙伴关系；④重视团队贡献；⑤以就业能力代替工作保障。 \n 企业构建战略导向薪酬体系，需经历评估企业战略→评估外部竞争→确定薪酬目标→设计薪酬体系四个步骤，确保薪酬支撑竞争战略实现。 \n \n ❓ 追问：为什么说薪酬管理是最困难的人力资源工作？ \n 因为薪酬决定与分配是组织与员工之间、员工与员工之间的利益冲突点，政策性强、敏感性高，既要激励员工又要控制成本，平衡各方诉求极具挑战。 \n \n \n \n \n \n \n \n § 03 \n 薪酬设计原则与结构 \n P291–296 \n \n \n \n \n 05 \n \n 薪酬设计原则（传统六原则 + 现代三原则） \n \n ★★★★★ 一级重点 \n P291–293 \n 简答 / 论述 \n 2025真题考查 \n \n \n \n \n \n 传统薪酬设计六原则 \n \n 原则 核心内涵 案例说明 \n 公平性原则 外部公平、内部公平、自身公平三维度 同等岗位同等薪酬，跨企业有竞争力 \n 竞争性原则 市场竞争力，吸引保留激励人才 互联网公司薪酬普遍高于传统行业 \n 认可性原则 员工认可接受，让员工参与薪酬决策 透明化沟通薪酬结构与决策逻辑 \n 平衡性原则 竞争力与人工成本控制之间的平衡 大型国企薪酬稳定但弹性有限 \n 激励性原则 拉开差距，向高岗位/关键人才/稀缺人才倾斜 绩效高的员工获得更高奖金 \n 战略性原则 薪酬支撑企业战略，成本领先→控成本，差异化→吸引高素质 华为技术人员高薪+期权支撑创新战略 \n \n \n \n 现代组织薪酬设计三原则 \n \n 团队原则 ：建立团队奖励计划，防止因薪酬差距过大导致低层员工心态失衡，促进团队协作。 \n 隐性报酬原则 ：重视非金钱奖励（内在附加报酬），外在金钱激励效果持续短，内在心理激励更持久。 \n 双赢原则 ：让员工参与薪酬制度制定，找到劳资双方都满意的结合点。 \n \n \n \n 🎓 小学生版解释（激励性原则） \n 如果班里所有同学考试不管100分还是60分都领同样的奖励，那努力学的同学就会觉得不值得，开始偷懒。薪酬激励性原则就是说"你考得越好，奖励越多"，这样大家才有动力。 \n \n \n 🧠 助记口诀 \n 传统六原则： 公竞认平激战 （公平竞争认可平衡激励战略）→ 谐音"弓箭人平击战"；现代三原则： 团隐双 （团队·隐性·双赢）。 \n \n \n 复试回答模板 \n \n 复试口答模板 \n 薪酬设计原则分传统和现代两类。传统六原则：公平性（三种公平）、竞争性（市场导向）、认可性（员工接受）、平衡性（成本与竞争）、激励性（拉开差距）、战略性（支撑企业战略）。现代三原则：团队原则（团队奖励）、隐性报酬原则（内在激励）、双赢原则（劳资共赢）。其中， 战略性原则 是核心，薪酬设计必须服务于企业整体战略目标。 \n \n \n \n \n \n \n \n 06 \n \n 薪酬结构的确定（固定/浮动·短期/长期·三种结构类型） \n \n ★★★★★ 一级重点 \n P295–296 \n 简答 / 案例分析 \n \n \n \n \n \n 固定薪酬 vs 浮动薪酬 \n \n 类型 主要包括 主要功能 比例规律 \n 固定薪酬 基本工资、津贴、福利 保障功能，产生安全感 职级越低，固定比例越高 \n 浮动薪酬 奖金（与绩效挂钩） 激励功能，认可工作表现 职级越高，浮动比例越高 \n \n \n \n 短期薪酬 vs 长期薪酬 \n \n 类型 主要形式 功能 比例特征 \n 短期薪酬 基本工资+短期奖金 激励年度目标实现 基层员工为主 \n 长期薪酬 员工持股、股票期权、延期支付计划 长期激励，留住核心人才 高管和核心技术人员为主 \n \n 💡 案例：美国公司总裁薪酬——基本工资21%+短期奖金27%= 短期收入48% ；股票期权36%+其他长期激励16%= 长期收入52% 。 \n \n \n 三种薪酬结构类型对比 \n \n 结构类型 特征 优点 缺点 适用情形 \n 高弹性结构 奖金为主，薪酬随绩效波动大（如计件制、提成制） 激励性强 员工安全感差 员工流动率高、工作热情低时 \n 高稳定结构 基础工资为主，与绩效关系小（如日本大公司） 安全感强 缺乏激励，人工成本高 需要稳定长期雇佣关系 \n 平衡结构 弹性+稳定兼顾 激励+安全感并存 设计复杂 大多数企业的理想选择 \n \n \n \n 🎓 小学生版解释 \n 高弹性结构像"按量计酬"：多劳多得，但一旦生病没干活就没钱；高稳定结构像"死工资"：不管你干多干少都一样，很安全但不激励；平衡结构像"底薪+奖金"：既有底线保障，又有努力奖励，大多数公司都选这个。 \n \n \n \n \n \n \n \n § 04 \n 岗位评估与工资结构设计 \n P297–306 \n \n \n \n \n 07 \n \n 岗位评估（Position Appraisal） \n \n ★★★★★ 一级重点 \n P297–303 \n 名词解释 / 简答 / 论述 \n 历年高频 \n \n \n \n \n \n 专有名词定义（教材原意） \n 岗位评估（Position Appraisal） 也被称为职位评价、岗位评价，是指在工作分析的基础上充分收集工作岗位各方面的信息，以工作岗位的工作内容和对组织的价值贡献为依据，对岗位的 责任大小、工作强度、所需任职条件等特性 进行评价，以确定岗位间相对价值的过程。其结果是形成企业内部岗位的相对价值体系，最终确定岗位的薪酬等级。（P297） \n \n \n 岗位评估三大特点（必背） \n \n 对岗位不对人 ：评估对象是客观存在的岗位，而非任职者；衡量的是岗位相对价值，非绝对价值。 \n 按标准逐一评定 ：根据预先规定的衡量标准对岗位主要影响指标逐一测定，得出各岗位量值。 \n 先分类再分级 ：先对性质相同的岗位分类，再根据评定结果划分不同等级。 \n \n \n \n 五种岗位评估方法对比 \n \n 方法 类型 核心思路 特点 \n 岗位排列法 非量化/定性 将岗位按总体价值从高到低排列 简单但主观，适合小企业 \n 岗位分类法 非量化/定性 先建立岗位等级框架再将岗位套入 适合层级分明的组织（政府机关） \n 要素比较法 量化 选基准岗位，将各岗位与基准岗位逐因素比较 精度高，操作复杂 \n 要素计点法 量化 将岗位分解为若干因素，分别赋予权重和分值，累加得总分 最常用，结果客观，工作量大 \n 海氏评价系统 量化 技能水平×解决问题能力×职务责任三因素 适合管理技术岗，国际通用 \n \n \n \n 🧩 海氏评价系统三因素（重点） \n \n \n 因素一：技能水平（Know-How） \n 完成工作所需的全部知识技能，含专业技术知识、管理技能、人际关系技能（三个子因素） \n \n \n 因素二：解决问题的能力（Problem Solving） \n 运用知识去识别、解决问题的能力，用百分比表示，分思维环境和思维难度两个子因素 \n \n \n 因素三：承担的职务责任（Accountability） \n 指职务行使者的行动对工作最终结果可能造成的影响及承担责任的大小 \n \n \n 三种岗位类型（海氏法独有）： \n \n 类型 特征 权重（技能+解决/责任） 典型岗位 \n 上山型 责任 > 技能与解决问题能力 40% / 60% 公司总裁、销售经理、生产岗 \n 平路型 技能 = 责任 50% / 50% 会计、人事等职能岗位 \n 下山型 技能 > 责任 60% / 40% 科研开发、市场分析岗 \n \n 岗位总分公式： 岗位总分 = A×(1+B)×K₁ + C×K₂ \n （A=技能要素得分；B=解决问题能力得分；C=职务责任得分；K₁/K₂=对应权重） \n \n \n 🎓 小学生版解释（岗位评估） \n 你想知道班里哪个"班委职位"最重要，于是给各个职位打分：班长要管那么多人（责任高分），学习委员要懂很多知识（技能高分），体育委员只管体育课（分数低一些）。打完分排个序，分越高的职位薪酬越高。这就是岗位评估——给岗位打分定价。 \n \n \n ⚠️ 岗位评估注意事项（4条） \n \n 评估前强调评估对象是 岗位职责 ，而非具体员工。 \n 评估因素应符合 企业经营战略 ，体现岗位特征。 \n 评估人员需对各项工作有深刻认识，需统一培训确保理解一致。 \n 可 聘请外部专家 参与，减少内部人员感情因素影响。 \n \n \n \n 复试回答模板 + 延伸追问 \n \n 复试口答模板（简答题） \n 定义 →岗位评估是在工作分析基础上，对岗位责任大小、工作强度、任职条件等进行系统评价，确定岗位间相对价值的过程。 \n 三大特点 →对岗不对人、按标准量化评估、先分类再分级。 \n 常用方法 →五种方法：岗位排列法（简单定性）、岗位分类法（等级框架）、要素比较法、要素计点法（最常用）、海氏评价系统（三因素，适合管理技术岗）。 \n 总结 →岗位评估是实现薪酬内部公平性的核心工具。 \n \n ❓ 追问：为什么说岗位评估解决的是"内部公平性"？ \n 通过岗位评估可以比较企业内部各岗位的相对重要性，得出岗位价值序列，使不同岗位之间具有纵向和横向的可比性，使岗位薪酬的设定有科学依据，从而在内部体现公平。 \n \n \n \n \n \n \n 08 \n \n 薪酬结构参数设计（等级·级差·幅度·重叠） \n \n ★★★★ 二级重点 \n P303–305 \n 简答 \n \n \n \n \n \n 四大结构参数 \n \n 参数 定义 关键数值 \n 等级数量 将岗位评估点数区间合并为若干薪酬等级 传统结构10～20级； 宽带薪酬6级或更少 \n 级差（中点差异） 相邻薪酬等级中位值之间的差距 传统结构 15%～25% ，现在有增大趋势 \n 等级幅度 同一等级内工资的浮动范围，反映个体差异 传统结构 30%～60% ，一般设5～7个档次 \n 重叠幅度 相邻等级之间工资标准的重叠量 一般为 25%～50% \n \n \n \n ⚠️ 四变量互动关系（重要！） \n 等级数量、级差、等级幅度、重叠幅度 相互依赖、相互作用 ：若要求大的级差→等级数量减少；若增加等级幅度→重叠幅度必然增大；若要求小的重叠幅度→等级宽幅缩小或增加级差。须综合考虑，找到最优平衡。 \n \n \n \n \n \n \n 09 \n \n 市场薪酬调查 \n \n ★★★★ 二级重点 \n P293–295 \n 简答 \n \n \n \n \n \n 概念与目的 \n 市场薪酬调查 是确定薪酬政策、确保薪酬 外部公平性 的依据。通过搜集信息来判断其他企业所支付的薪酬状况的系统过程。 \n 三大目的： ①调整薪酬水平；②调整薪酬结构；③了解其他企业薪酬管理的最新发展趋势。 \n \n \n 薪酬调查3步程序 \n \n STEP 01 确定调查内容 基本工资、奖金、福利、津贴等5方面 \n → \n STEP 02 实施调查 电话、问卷、访谈或委托咨询机构 \n → \n STEP 03 整理与统计 数据分析+对比本企业情况 \n \n \n \n 两种调查方法 \n \n 岗位评定法 ：对类似岗位直接调查市场价格，或采用基准岗位稳定法 \n 职业分类法 ：建立基础职业类别（行政类/管理类/生产类），调查各类别薪酬水平，可提供更多岗位信息 \n \n \n \n \n \n \n \n \n § 05 \n 可变薪酬设计 \n P306–310 \n \n \n \n \n 10 \n \n 销售提成·计件工资·年薪制 \n \n ★★★★★ 一级重点 \n P306–310 \n 简答 / 案例分析 \n 2025真题考查 \n \n \n \n \n \n 可变薪酬（Variable Pay）概念 \n 可变薪酬 又称浮动薪酬或奖金，是薪酬系统中 与绩效直接挂钩 的部分。既可基于员工个人业绩，也可基于团队或公司整体业绩。 \n \n \n 销售提成四种方式 \n \n 方式 特点 适用场景 \n 纯提成 激励最强，无收入保障，员工风险大，难管理 创业期、成长初期、资金压力大的中小企业 \n 基本工资+提成 保障基本生活，保持较强激励 大多数销售岗位最常用 \n 基本工资+团队奖励 适合市场不均衡、个人产量难区分情境 区域差异大、需要团队协作的销售 \n 工资+个人奖金 适合大客户维护，通过奖金激励客户关系质量 大客户营销、B端销售 \n \n \n \n 计件工资四种形式 \n \n 形式 核心规则 \n 直接无限计件制 上不封顶，同一单价计酬 \n 直接有限计件制 超额部分封顶，保护企业成本 \n 累进计件工资制 超额部分单价累进提高，超额越多单价越高 \n 超额计件工资制 定额内计时，超额部分计件 \n \n 💡 计件工资公式 ：员工计件工资 = 产品量 × 计件单价 \n \n \n 年薪制（重点） \n 年薪制 以年度为考核周期，根据经营者的 经营业绩、难度与风险 合理确定其年度收入。不是高薪制，不是"负盈不负亏"，而是 高激励与高风险并存 的回报机制。 \n 典型年薪制结构： 薪酬 = 月工资 + 各种福利 + 年终奖金 + 长期报酬（股权激励） \n \n 层级 组成 性质 激励类型 \n 第一层级 月工资（基本工资） 固定收入 维持因素 \n 第二层级 各种福利（津贴、住房公积金） 相对固定 保障因素 \n 第三层级 年终奖金（绩效奖金） 风险收入 中短期激励因素 \n 第四层级 长期报酬（股票、期权） 风险收入 中长期激励因素 \n \n \n \n 四大激励方法对高管的影响（重要数据） \n \n 激励方法 吸引人才 留住人才 激励工作 \n 月工资 中 中 中偏低 \n 各种福利 低 中 低 \n 年终奖金 高 较高 较高 \n 长期报酬（股权激励） 高 高 高 \n \n \n \n 🎓 小学生版解释（年薪制） \n 老板给总经理设计薪酬：每月发底薪（够生活）→年底公司赚了钱就发大奖金（激励拼命干）→再给一些公司股票期权（绑定长远利益，不能马上走）。这样总经理既有生活保障，又想短期多赚奖金，还要顾着公司长期发展——三层激励，层层递进。 \n \n \n 复试回答模板（年薪制简答） \n \n 复试口答模板 \n 年薪制是以年度为考核周期，根据经营业绩、难度与风险确定年度收入的薪酬制度，适用于中高层管理人员和核心技术人员。其特征是高激励与高风险并存。 \n 典型结构：月工资（固定，维持生活）+ 福利（保障因素）+ 年终奖金（绩效驱动，中短期激励）+ 长期报酬即股权激励（长期绑定）。 \n 从激励效果看，股权激励在吸引、留住和激励人才三方面效果最佳，因为持有等待期约束增加了离职成本，且与公司长期价值挂钩，能引导高管关注企业长远发展。 \n \n ❓ 追问：年终奖金有什么潜在问题？ \n 年终奖金可能助长员工"短期化行为"——当短期利益与长期利益冲突时，为获得年终奖可能牺牲企业长期利益。因此需配合长期报酬（股权激励）加以制衡。 \n \n \n \n \n \n \n \n § 06 \n 福利与社会保险 \n P310–318 \n \n \n \n \n 11 \n \n 福利（Benefits）与弹性福利计划 \n \n ★★★★ 二级重点 \n P310–318 \n 简答 / 案例 \n \n \n \n \n \n 福利的功能（三大功能） \n \n 吸引和保留员工 ：良好的福利可以降低员工流失率 \n 税收优惠 ：企业将部分工资转换为福利，可节省税款 \n 提高员工工作积极性 ：解除后顾之忧，提高工作效率 \n \n \n \n 弹性福利计划（Flexible Benefit Plan） \n 弹性福利计划 又称"自助餐式福利计划"，允许员工在企业提供的一定数目的福利项目菜单中，自主选择个人需要的福利组合。 \n 优点： 满足员工个性化需求，提高福利满意度；有助于控制福利成本；有利于吸引不同类型员工。 \n 缺点： 员工可能因考虑不周选择了不实用项目；行政作业繁杂；初期行政费用增加，成本不减反增；工会反对（失去与资方谈判机会）。 \n \n \n 社会保险险种（五险） \n 养老保险 · 医疗保险 · 失业保险 · 工伤保险 · 生育保险（五险）；加住房公积金 = "五险一金" \n \n \n 🎓 小学生版解释（弹性福利） \n 公司给你100块"福利券"，你可以选：50块买健身卡，30块买额外假期，20块换餐补——你按自己喜欢的来选，不用被迫接受公司统一发的东西。这就是弹性福利，就像点自助餐，在预算内自己选菜。 \n \n \n \n \n \n \n \n § 07 \n 核心易混概念对比 \n \n \n 📊 薪酬核心对比总结 \n \n 概念对 区别要点 \n 内在薪酬 vs 外在薪酬 内在=心理满足感（非经济）；外在=实际货币/福利（经济） \n 固定薪酬 vs 可变薪酬 固定=保障功能；可变=激励功能，与绩效挂钩 \n 短期薪酬 vs 长期薪酬 短期=工资+短期奖金，年度激励；长期=持股、期权，多年激励 \n 高弹性结构 vs 高稳定结构 弹=激励强安全感差；稳=安全感强激励弱 \n 岗位评估 vs 绩效评估 岗位评估=评岗不评人，定内部相对价值；绩效评估=评人的工作成果 \n 传统薪酬 vs 战略性薪酬 传统=内部一致性为主；战略=外部竞争性，与组织战略对齐 \n 宽带薪酬 vs 传统工资结构 宽带=等级少（≤6）浮动范围大，适合扁平化；传统=等级多（10-20）浮动小 \n \n \n \n \n 📋 薪酬管理五大内容 \n \n 01 薪酬预算 综合财务状况、薪酬结构、市场环境，确保成本可控 \n → \n 02 薪酬结构管理 管理薪酬构成要素及各要素比率，提高人工成本使用效率 \n → \n 03 薪酬水平管理 核心内容，平衡外部竞争力和人工成本承受力 \n → \n 04 薪酬日常管理 工资定级、工资异动（自然/考核）、薪资福利支付 \n → \n 05 薪酬诊断 满意度调查→外部调查→政策分析→结构分析→竞争性分析 \n \n \n \n \n \n \n § 08 \n 历年真题汇总（2016–2025） \n \n \n 🎯 薪酬章节历年考查记录 \n \n 年份 考查形式 考查内容 考查类型 \n 2025 笔试 薪酬激励设计要点（固定+浮动+长期） 简答 \n 2025 面试 员工体验管理（含薪酬激励视角） 口述 \n 2023 笔试 绩效管理流程与误区（涉及绩效薪酬） 简答 \n 2021 笔试 招聘渠道选择（薪酬吸引力相关） 简答 \n 2019 面试 新生代员工激励（涉及薪酬结构设计） 口述 \n 高频预测 各年 岗位评估方法（特别是海氏评价系统） 名词/简答 \n 高频预测 各年 战略性薪酬管理内涵与构建 论述 \n 高频预测 各年 年薪制结构设计原则 简答/案例 \n \n ⚠️ 注：第九章薪酬为人力资源管理核心章节，历年考查以"薪酬+绩效+激励"综合题型最为常见，2025年已直接考查薪酬激励设计要点，建议重点准备。 \n \n \n \n \n \n § 09 \n 本章知识终极串联 \n \n \n 🔗 薪酬章节逻辑链条 \n \n 1 \n \n 什么是薪酬？（基础概念） \n 薪酬是劳动者与用人单位之间的契约交换，分内在（非经济，如工作保障、挑战性）和外在（经济，基本薪酬+可变薪酬+福利）。现代管理认为不能只看物质，内在激励对知识型员工同样重要。 \n \n \n \n 2 \n \n 选什么薪酬模式？（策略选择） \n 岗位为基础（职能岗）→能力为基础（研发岗，用宽带）→绩效为基础（销售岗）→市场为基础（稀缺人才）。企业实践中通常混合使用，选择依据是岗位性质和工作产出的可量化程度。 \n \n \n \n 3 \n \n 薪酬必须与战略对齐（战略性薪酬） \n 传统薪酬重内部一致性，战略性薪酬强调外部竞争性、绩效导向、风险分担。制定路径：企业战略→业务战略→HR战略→薪酬战略→薪酬管理体系→员工行为→竞争优势。 \n \n \n \n 4 \n \n 如何设计薪酬？（技术方法） \n 遵循六大原则（公竞认平激战）→做市场薪酬调查（确保外部公平）→确定固定/浮动比例+短期/长期比例→选择结构类型（高弹性/高稳定/平衡）→进行岗位评估（确保内部公平）→设计结构参数（等级·级差·幅度·重叠）。 \n \n \n \n 5 \n \n 可变薪酬如何设计？ \n 销售岗→提成（4种方式）；生产岗→计件工资（4种形式）；高管→年薪制（月工资+福利+年终奖+长期报酬）。核心原则：高激励高风险，短期与长期激励结合，股权激励吸引/留住/激励效果最佳。 \n \n \n \n 6 \n \n 与其他章节的联系（跨章逻辑） \n 薪酬←→ 工作分析 （岗位评估的基础，第X章）；薪酬←→ 绩效管理 （绩效结果决定可变薪酬，第八章）；薪酬←→ 人力资源规划 （薪酬预算是HR计划的核心）；薪酬←→ 员工激励理论 （公平理论、期望理论解释薪酬满意度）。 \n \n \n \n \n \n \n \n § 10 \n 30秒超速复习模块 \n \n \n ⚡ 30秒核心要点速览 \n ① 薪酬本质是 契约交换 ，分 内在（非经济）+外在（经济） ，外在=基本+可变+福利。 \n ② 四大薪酬模式： 岗位（传统结构）/ 能力（宽带结构）/ 绩效（KPI挂钩）/ 市场（供求定价） \n ③ 传统设计六原则： 公竞认平激战 （公平·竞争·认可·平衡·激励·战略）；现代三原则： 团队·隐性·双赢 \n ④ 薪酬结构：职级越高→浮动比例越高；高层→长期薪酬（期权）比例越高。三种类型： 高弹/高稳/平衡 \n ⑤ 岗位评估： 对岗不对人 ，五大方法，海氏系统= 技能水平×解决问题能力×职务责任 ，三种岗位型（上山/平路/下山） \n ⑥ 年薪制结构： 月工资+福利+年终奖+股权激励 。激励效果：股权激励>年终奖>月工资>福利 \n ⑦ 战略性薪酬：薪酬决策要与 企业战略对齐 ，米尔科维奇定义=对组织绩效具有关键性的薪酬决策模式 \n ⑧ 影响薪酬满意度 最直接因素 ： 内部公平性 （必背！P284） \n \n \n \n \n \n § 11 \n 背诵版总结（适合复试口述） \n \n \n 📝 必背知识点·原句汇编 \n \n 必背原句 · P274 \n 「薪酬（Compensation）是劳动者因向所在用人单位提供劳动或劳务而获得的各种形式的酬劳或酬谢。从本质上讲，薪酬是劳动者与用人单位之间 以契约为表现形式的一种交换关系 。在市场经济环境下，薪酬既是劳动力价格的支付形式，又是人力资本竞争的价格表现。」 \n \n \n 必背原句 · P284 \n 「通常情况下，影响员工薪酬满意度的 最直接因素是内部公平性 。企业应建立科学规范的岗位价值评估体系、能力评估体系和绩效考评体系，在这些基础上提供员工相对公平的薪酬水平。」 \n \n \n 必背原句 · P286 \n 「战略性薪酬管理是指在做薪酬决策时要对环境中的机会及威胁做出适当的回应，并且要 配合或支持组织全盘的、长期的发展方向以及目标 。」 \n \n \n 必背原句 · P297 \n 「岗位评估（Position Appraisal）……是指在工作分析的基础上充分收集工作岗位各方面的信息，以工作岗位的工作内容和对组织的价值贡献为依据，对岗位的责任大小、工作强度、所需任职条件等特性进行评价，以确定 岗位间相对价值 的过程。」 \n \n \n 必背原句 · P309 \n 「年薪制不是高薪制，不是负盈不负亏的坐享其成，而是 高激励与高风险的并存 。年薪制应是一种动力和压力同在、风险和收益共生、付出和获取并存的回报机制。」 \n \n \n 口述背诵·薪酬管理是最困难的HR工作 \n 「薪酬决定与分配是组织与员工之间、员工与员工之间的利益冲突点，薪酬管理也被认为是一项 最困难、最敏感、政策性最强 的人力资源管理工作。」（P274） \n \n \n \n \n \n \n § 12 \n 自我检测（含真题 + 预测题） \n \n \n Q01 · 名词解释 · 高频考点 \n 请解释"岗位评估"的概念，并说明其三大特点。 \n 查看参考答案 \n 岗位评估是在工作分析基础上，以岗位工作内容和对组织的价值贡献为依据，对岗位责任大小、工作强度、任职条件等特性进行评价，确定岗位间相对价值的过程。三大特点：①对岗不对人（评估对象是岗位而非任职者，衡量相对价值）；②按标准量化（根据预先规定的衡量标准逐一评定）；③先分类再分级（先分类后按评定结果划分等级）。 \n \n \n \n Q02 · 简答 · 2025年真题近似 \n 请简述薪酬激励设计要点，包括固定薪酬、浮动薪酬和长期激励三个维度。 \n 查看参考答案 \n ① 固定薪酬 （基本工资+津贴+福利）：保障功能，使员工产生安全感，但比例过高会削弱激励；② 浮动薪酬 （奖金）：激励功能，与绩效挂钩，职级越高浮动比例越大；比例过大使员工缺乏安全感；③ 长期激励 （股票、期权、延期支付）：引导员工关注企业长远利益，留住核心高管和技术人才，吸引、留住、激励效果均最佳。三者最佳组合是"平衡结构"：既有稳定性保障员工基本生活，又有弹性激励员工努力，还有长期激励绑定员工与企业共同发展。 \n \n \n \n Q03 · 简答 · 高频预测 \n 传统薪酬体系与战略性薪酬管理有何区别？ \n 查看参考答案 \n 区别体现在7个维度：①传统强调内部一致性，战略强调外部市场敏感性；②传统采用年度定期加薪，战略采用绩效可变薪酬；③传统是既得权利，战略是风险分担的伙伴关系；④传统强调固定工作，战略强调弹性贡献机会；⑤传统强调垂直晋升，战略鼓励横向流动；⑥传统提供工作保障，战略强调就业能力；⑦传统关注个人贡献，战略重视团队贡献。战略性薪酬管理的核心是：薪酬必须支撑企业战略，对环境变化做出敏锐回应，对组织绩效产生关键影响。 \n \n \n \n Q04 · 论述 · 综合分析 \n 海氏评价系统（Hay System）的三个付酬因素是什么？三种岗位类型如何影响权重分配？ \n 查看参考答案 \n 三大付酬因素：① 技能水平（Know-How） ：完成工作所需全部知识技能，含专业技术、管理技能、人际技能；② 解决问题的能力（Problem Solving） ：运用知识识别解决问题的能力，以百分比表示；③ 承担的职务责任（Accountability） ：行动对工作结果可能造成的影响及责任大小。三种岗位类型及权重：①上山型（责任>技能）→权重40%/60%，典型如总裁、销售经理；②平路型（责任=技能）→权重50%/50%，典型如会计、HR；③下山型（技能>责任）→权重60%/40%，典型如科研开发、市场分析岗。总分公式：岗位总分=A×(1+B)×K₁+C×K₂。 \n \n \n \n Q05 · 案例分析 · 综合考点 \n 阅读白秦铭案例：为什么固定工资制让优秀销售员流失？企业应如何改进薪酬制度？ \n 查看参考答案 \n 流失原因分析： ①违反 激励性原则 ：固定工资无法体现白秦铭超出同行的绩效贡献，"大锅饭"压制了高绩效员工的积极性；②违反 认可性原则 ：公司不公布销售排名，白秦铭得不到应有认可，内在薪酬（身份标志、成就感）严重缺失；③违反 公平性原则 ：员工感知到内部公平性不足（贡献大但回报等同一般员工）。 改进建议： ①设计"基本工资+提成"结构，将绩效与薪酬挂钩；②建立销售绩效排名公示和荣誉表彰机制，强化内在薪酬；③结合战略性薪酬管理，设计分层分类的激励方案，避免平均主义。 \n \n \n \n Q06 · 简答 · 教材课后题 \n 年薪制的概念是什么？其结构设计应遵循哪些原则？ \n 查看参考答案 \n 概念： 年薪制以年度为考核周期，根据经营者的经营业绩、难度与风险合理确定其年度收入，适用于中高层管理和核心技术/营销人员。年薪制不是高薪制，是高激励与高风险并存的回报机制。 结构设计五原则： ①报酬与绩效挂钩，兼顾股东与员工利益；②固定收入与风险收入结合，以风险收入为主；③长期与短期业绩奖励相结合；④体现收入层级（基本工资→福利→奖金→股权激励）；⑤直接确定与间接确定相结合，固定部分直接协商，风险部分由业绩间接决定。 \n \n \n \n Q07 · 名词解释 · 预测题 \n 请解释"弹性福利计划"的概念及其优缺点。 \n 查看参考答案 \n 概念： 弹性福利计划又称"自助餐式福利计划"，允许员工在企业提供的一定数目的福利菜单中，根据个人需要自主选择福利组合，在总额限制内灵活搭配。 优点： 满足个性化需求提高满意度；有助于控制企业福利成本；吸引不同类型员工。 缺点： 员工可能选择不实用项目；工会可能反对（失去谈判筹码）；行政作业繁杂，承办人员负担大；实施初期行政费用增加，成本不减反增。 \n \n \n \n Q08 · 综合预测 · 复试热点 \n 结合新生代员工特征，如何优化薪酬激励设计？（综合应用题） \n 查看参考答案 \n 新生代员工（95后/00后）特征：重视工作意义、个人成长、灵活工作方式，物质满足后对内在薪酬更敏感。优化建议：① 强化内在薪酬 ：提供挑战性工作任务、清晰的职业发展路径、快速反馈文化，满足工作特征模型中的五个维度；② 弹性福利 ：采用自助式福利，让员工自主选择（健身卡、远程工作、弹性工时等）；③ 即时激励 ：缩短奖金周期，增加季度/月度绩效奖金，满足即时反馈需求；④ 非物质认可 ：公开表彰、荣誉体系、参与感（薪酬设计参与）；⑤ 平衡结构 ：采用平衡型薪酬结构，既提供安全感又保持激励弹性，避免过度高弹性导致不安全感。 \n \n \n \n \n \n § 跨章 \n 跨章节逻辑关联图 \n \n \n 第九章 薪酬 · 在全书中的位置 \n \n 第一章 人力资源管理概述 薪酬管理是HR六大模块之一，是实现组织目标的核心工具 \n → \n 第三章 工作分析 工作分析是岗位评估的前提和基础，为薪酬等级设计提供依据 \n → \n 第八章 绩效管理 绩效考核结果→决定可变薪酬和薪酬异动，绩效薪酬是关键纽带 \n \n \n 第九章 薪酬 ⭐ 薪酬体系：薪酬模式→战略性薪酬→设计原则→岗位评估→可变薪酬→福利 \n → \n 第十章 员工关系 薪酬公平性影响劳动关系稳定，薪酬纠纷是员工关系核心议题 \n → \n 激励理论（行为学基础） 公平理论解释薪酬满意度；期望理论解释薪酬激励效果 \n \n \n \n \n 中南大学 · 企业管理学硕复试学习笔记 · 第九章 薪酬 \n 依据《人力资源管理（第3版）》颜爱民著 · 北京大学出版社 · P273–319 \n 生成日期：2026-03-09';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero">
+  <div class="hero-day">生成日期：2026-03-09 · 中南大学企业管理学硕复试</div>
+  <h1>第九章 · <span>薪酬</span></h1>
+  <p class="hero-sub">系统掌握薪酬概念与结构、战略性薪酬管理、薪酬设计原则与方法、岗位评估、可变薪酬、福利体系等核心知识，直击复试高频考点。</p>
+  <div class="hero-tags">
+    <span class="hero-tag">教材 P273–319</span>
+    <span class="hero-tag">★★★★★ 核心高频章</span>
+    <span class="hero-tag">2025真题直考</span>
+    <span class="hero-tag">名词解释 / 简答 / 论述 / 案例</span>
+  </div>
+</div>
+
+<!-- ══ STICKY NAV ══ -->
+<nav class="fixed-nav" id="topNav">
+  <span class="toc-label">目录</span>
+  <a href="#sec-overview">01 薪酬概述</a>
+  <a href="#sec-strategic">02 战略性薪酬</a>
+  <a href="#sec-design">03 薪酬设计</a>
+  <a href="#sec-position">04 岗位评估</a>
+  <a href="#sec-variable">05 可变薪酬</a>
+  <a href="#sec-welfare">06 福利</a>
+  <a href="#sec-compare">07 对比总结</a>
+  <a href="#sec-exam">08 真题汇总</a>
+  <a href="#sec-chain">09 知识串联</a>
+  <a href="#sec-quick">10 快速复习</a>
+  <a href="#sec-recite">11 背诵版</a>
+  <a href="#sec-quiz">12 自测题</a>
+  <div class="nav-controls">
+    <button class="btn-night" onclick="toggleNight()">🌙 夜间</button>
+    <button class="btn-top" onclick="document.getElementById('topNav').scrollIntoView({behavior:'smooth'})">↑ 顶部</button>
+  </div>
+</nav>
+
+<!-- ══ SEARCH ══ -->
+<div class="search-bar">
+  <span style="font-size:13px;color:#999;">🔍</span>
+  
+  <span class="search-count" id="searchCount"></span>
+  <button class="search-nav-btn" id="srchPrev" onclick="prevResult()" disabled title="上一个 (Shift+F3)">↑</button>
+  <button class="search-nav-btn" id="srchNext" onclick="nextResult()" disabled title="下一个 (F3)">↓</button>
+</div>
+
+<!-- ══ CASE BANNER ══ -->
+<div class="case-banner">
+  <div class="case-label">📖 导入案例</div>
+  <h3>白秦铭的跳槽——薪酬公平与激励失效</h3>
+  <p>白秦铭是一家中日合资企业的顶尖销售员，连续超额完成定额，却因公司实行固定工资制（"大锅饭"）感到极度不公平。他建议改行佣金制遭拒，最终跳槽至竞争对手。这个案例深刻揭示：薪酬制度必须与员工激励需求相匹配，<strong>内在薪酬公平性</strong>是影响员工满意度的最直接因素。</p>
+  <p class="case-key">🎯 管理启示：薪酬不公平→满意度下降→优秀员工流失→竞争力削弱</p>
+</div>
+
+<!-- ══ MAIN CONTENT ══ -->
+<div class="main">
+
+<!-- ══ 本章逻辑结构图 ══ -->
+<div id="sec-overview">
+<div class="section-title">
+  <span class="sec-num">§ 逻辑结构</span>
+  <h2>本章知识逻辑框架</h2>
+</div>
+<div class="logic-map">
+  <h3>第九章 薪酬 · 核心逻辑链</h3>
+  <div class="lm-row">
+    <div class="lm-node blue"><div class="ln-title">📌 薪酬概述（9.1）</div>概念·内外在薪酬·功能·模式·影响因素·变化趋势</div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node green"><div class="ln-title">📌 战略性薪酬（9.2）</div>战略薪酬内涵·模型·薪酬战略构建步骤·战略导向体系</div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node yellow"><div class="ln-title">📌 薪酬设计（9.3）</div>设计原则·市场调查·结构确定（固定/浮动/短期/长期）·岗位工资设计</div>
+  </div>
+  <div class="lm-row" style="margin-top:8px;">
+    <div class="lm-node purple"><div class="ln-title">📌 可变薪酬（9.4）</div>销售提成·计件工资·年薪制结构设计</div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node red"><div class="ln-title">📌 福利（9.5）</div>福利功能·主要形式·弹性福利·社会保险</div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node green"><div class="ln-title">📌 薪酬管理（9.1.5）</div>预算→结构管理→水平管理→日常管理→薪酬诊断</div>
+  </div>
+</div>
+
+<!-- 思维导图 -->
+<div class="section-title">
+  <span class="sec-num">§ 思维导图</span>
+  <h2>章节思维导图</h2>
+</div>
+<div class="mindmap-container">
+  <div style="text-align:center;"><div class="mm-center">第九章 · 薪酬</div></div>
+  <div class="mm-branches">
+    <div class="mm-branch b1">
+      <div class="mb-title">🔵 薪酬概念</div>
+      <ul>
+        <li>定义：契约交换关系</li>
+        <li>内在薪酬（非经济）</li>
+        <li>外在薪酬（经济）</li>
+        <li>基本薪酬+可变薪酬+福利</li>
+        <li>四大薪酬模式</li>
+      </ul>
+    </div>
+    <div class="mm-branch b2">
+      <div class="mb-title">🟢 战略性薪酬</div>
+      <ul>
+        <li>米尔科维奇定义</li>
+        <li>战略薪酬4步骤</li>
+        <li>三大目标：控成本/吸人才/激励</li>
+        <li>战略导向体系构建</li>
+      </ul>
+    </div>
+    <div class="mm-branch b3">
+      <div class="mb-title">🟡 薪酬设计</div>
+      <ul>
+        <li>六大传统原则</li>
+        <li>现代三原则</li>
+        <li>市场薪酬调查</li>
+        <li>固定vs浮动比例</li>
+        <li>三种结构类型</li>
+      </ul>
+    </div>
+    <div class="mm-branch b4">
+      <div class="mb-title">🟣 岗位评估</div>
+      <ul>
+        <li>岗位排列法</li>
+        <li>岗位分类法</li>
+        <li>要素计点法</li>
+        <li>海氏评价系统（三因素）</li>
+        <li>结构参数：等级/级差/幅度</li>
+      </ul>
+    </div>
+    <div class="mm-branch b5">
+      <div class="mb-title">🔴 可变薪酬与福利</div>
+      <ul>
+        <li>销售提成4种方式</li>
+        <li>计件工资4种形式</li>
+        <li>年薪制结构（月工资+福利+奖金+期权）</li>
+        <li>弹性福利计划</li>
+        <li>五险一金</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════
+  KNOWLEDGE CARDS
+══════════════════════════ -->
+<div class="section-title">
+  <span class="sec-num">§ 01</span>
+  <h2>薪酬概述</h2>
+  <span class="page-ref">P273–285</span>
+</div>
+
+<!-- CARD 01: 薪酬的概念 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">01</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">薪酬的概念与结构（Compensation）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">★★★★★ 一级重点</span>
+        <span class="badge badge-page">P274–276</span>
+        <span class="badge badge-exam">名词解释 / 简答</span>
+        <span class="badge badge-year">2025真题考查</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">专有名词定义（教材原意）</div>
+      <p><span class="kw">薪酬（Compensation）</span>是劳动者因向所在用人单位提供劳动或劳务而获得的各种形式的酬劳或酬谢。从本质上讲，薪酬是劳动者与用人单位之间<span class="kw3">以契约为表现形式的一种交换关系</span>。在市场经济环境下，薪酬既是<span class="kw2">劳动力价格的支付形式</span>，又是<span class="kw2">人力资本竞争的价格表现</span>。</p>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🎓 小学生版通俗解释</div>
+      <p>你帮邻居浇花，邻居给你零花钱，这就是薪酬。但薪酬不只是钱——邻居还可以夸你"干得好"（内在薪酬），或者送你好吃的点心（福利薪酬）。薪酬就是"你付出劳动，我给你回报"的约定。</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">📊 薪酬结构分类图</div>
+      <table class="ctable">
+        <tr><th>一级分类</th><th>二级分类</th><th>具体内容</th></tr>
+        <tr><td><span class="kw4">内在薪酬（非经济）</span></td><td>心理性报酬</td><td>工作保障、晋升、挑战性工作、培训机会、弹性工时、身份标志、工作成绩认可</td></tr>
+        <tr><td rowspan="2"><span class="kw2">外在薪酬（经济）</span></td><td>直接薪酬</td><td>基本薪酬、绩效薪酬、激励性薪酬、延期支付计划</td></tr>
+        <tr><td>间接薪酬（福利）</td><td>员工保护项目、非工作薪酬、服务与津贴</td></tr>
+      </table>
+      <p style="margin-top:10px;font-size:13px;"><strong>外在薪酬三要素：</strong><span class="kw">基本薪酬</span> + <span class="kw">可变薪酬（激励薪酬）</span> + <span class="kw">福利薪酬</span></p>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🧠 助记口诀</div>
+      <p>薪酬两大类，<strong>内外</strong>要分清。内在心理报，外在有形钱。外在三要素：<strong>基本·可变·福利</strong>。本质是交换，契约来约定。</p>
+    </div>
+    <div class="block block-tip">
+      <div class="block-label">🔗 工作特征模型（内在薪酬来源）</div>
+      <p>哈克曼&奥德海姆（1975）提出5个核心特征：<span class="kw">技能多样性</span>、<span class="kw">任务同一性</span>、<span class="kw">任务重要性</span>、<span class="kw">工作自主性</span>、<span class="kw">反馈</span>。当五个维度程度高时，员工心理状态改善，内在薪酬增加。</p>
+    </div>
+    <details>
+      <summary>复试回答模板 + 延伸追问</summary>
+      <div class="template-box">
+        <div class="tb-title">复试口答模板</div>
+        <p><strong>定义</strong>→薪酬是劳动者向用人单位提供劳务获得的各类酬劳，本质是契约交换关系。</p>
+        <p><strong>核心内容</strong>→分为内在薪酬（非经济性，如工作保障、晋升）和外在薪酬（经济性），外在薪酬包含基本薪酬、可变薪酬和福利三部分。</p>
+        <p><strong>举例</strong>→比如华为员工除了月薪（基本薪酬）外，还有年终奖（可变薪酬）、五险一金（福利），以及参与核心项目带来的成就感（内在薪酬）。</p>
+        <p><strong>总结</strong>→现代薪酬管理不能只关注物质薪酬，内在薪酬对高层次知识型员工的激励同样重要。</p>
+      </div>
+      <div class="extend-q">❓ 追问：内在薪酬和外在薪酬哪个更重要？</div>
+      <p style="font-size:13px;padding:8px 0;">两者相辅相成。对于基层员工，外在薪酬（工资）更直接；对于高层次知识型员工，内在薪酬（成就感、挑战性）作用更大。企业需结合员工层次设计薪酬组合。</p>
+      <div class="extend-q">❓ 追问：薪酬与工资有何区别？</div>
+      <p style="font-size:13px;padding:8px 0;">工资是货币形式的劳动报酬，属薪酬的一部分；薪酬外延更广，涵盖非货币报酬、福利等。</p>
+    </details>
+  </div>
+</div>
+
+<!-- CARD 02: 四大薪酬模式 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">02</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">四大常见薪酬模式</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">★★★★★ 一级重点</span>
+        <span class="badge badge-page">P277–279</span>
+        <span class="badge badge-exam">简答 / 案例</span>
+        <span class="badge badge-year">历年常考</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">四大薪酬模式对比表</div>
+      <table class="ctable">
+        <tr><th>薪酬模式</th><th>核心依据</th><th>工资结构</th><th>适用岗位</th></tr>
+        <tr><td><span class="kw">以岗位为基础</span></td><td>岗位职责复杂程度、责任大小、劳动强度</td><td>传统工资结构，等级多，每级范围小</td><td>管理人员、职能岗、行政后勤、产出不能量化的生产岗</td></tr>
+        <tr><td><span class="kw">以能力为基础</span></td><td>员工知识、技能和潜力大小</td><td><span class="kw3">宽带工资结构</span>，等级少，每级范围大</td><td>研发岗、技术岗、技术要求高的技工</td></tr>
+        <tr><td><span class="kw">以绩效为基础</span></td><td>组织/团队/个人绩效</td><td>绩效工资为主</td><td>营销岗、产出能量化的生产岗</td></tr>
+        <tr><td><span class="kw">以市场供求为基础</span></td><td>劳动力市场价格</td><td>随市场波动</td><td>稀缺人才、特殊技能岗位</td></tr>
+      </table>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🎓 小学生版通俗解释</div>
+      <p>假设你是一家玩具店老板，给员工发工资：</p>
+      <ul class="kl">
+        <li><strong>岗位模式</strong>：收银员就拿收银员的固定工资，修玩具的拿修玩具的工资，干啥拿啥。</li>
+        <li><strong>能力模式</strong>：会修更多种玩具的就拿更多，技能越多薪水越高。</li>
+        <li><strong>绩效模式</strong>：卖出多少玩具拿多少提成，卖得多拿得多。</li>
+        <li><strong>市场模式</strong>：外面玩具市场上，这个技能的人很少，你就得出高价抢人。</li>
+      </ul>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <p>薪酬四模式：<strong>岗（位）能（力）绩（效）市（场）</strong>。岗位看职责，能力看技能，绩效看产出，市场看供需。</p>
+    </div>
+    <details>
+      <summary>复试回答模板</summary>
+      <div class="template-box">
+        <div class="tb-title">复试口答模板</div>
+        <p>常见薪酬模式分四种：①<strong>以岗位为基础</strong>，根据岗位职责差异定薪，适合职能管理岗；②<strong>以能力为基础</strong>，根据员工技能水平定薪，采用宽带结构，适合技术研发岗；③<strong>以绩效为基础</strong>，与个人或团队业绩挂钩，适合销售岗；④<strong>以市场供求为基础</strong>，参考劳动力市场价格，适合稀缺人才。企业实践中通常混合使用多种模式。</p>
+      </div>
+      <div class="extend-q">❓ 追问：宽带薪酬有什么特点？</div>
+      <p style="font-size:13px;padding:8px 0;">宽带薪酬压缩传统的十几甚至二三十个工资等级为几个级别，每级浮动范围大大扩展，更强调员工技能提升而非岗位晋升，有利于扁平化组织。</p>
+    </details>
+  </div>
+</div>
+
+<!-- CARD 03: 影响薪酬水平的因素 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">03</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">影响薪酬水平的因素</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">★★★★ 二级重点</span>
+        <span class="badge badge-page">P279–281</span>
+        <span class="badge badge-exam">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">两个层面的影响因素</div>
+      <div class="grid2">
+        <div>
+          <p><strong>企业整体薪酬水平影响因素：</strong></p>
+          <ul class="kl" style="margin-top:8px;">
+            <li>企业的<span class="kw">支付能力</span>（根本约束）</li>
+            <li><span class="kw">劳动力市场</span>供求关系</li>
+            <li>所处<span class="kw">行业</span>的薪酬水平</li>
+            <li>企业的<span class="kw">发展战略</span></li>
+            <li>企业的<span class="kw">工会力量</span></li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>员工个人薪酬水平影响因素：</strong></p>
+          <ul class="kl" style="margin-top:8px;">
+            <li>员工的<span class="kw2">工作能力素质</span>（知识、技能）</li>
+            <li>员工所在<span class="kw2">岗位的相对价值</span></li>
+            <li>员工的<span class="kw2">贡献大小</span></li>
+            <li>员工的<span class="kw2">工龄</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 重要结论（必背）</div>
+      <div class="quote"><p>通常情况下，影响员工薪酬满意度的<mark>最直接因素是内部公平性</mark>。企业应建立科学规范的岗位价值评估体系、能力评估体系和绩效考评体系，在这些基础上提供员工相对公平的薪酬水平。（P284）</p></div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end sec-overview -->
+
+<!-- ══ 战略性薪酬 ══ -->
+<div id="sec-strategic">
+<div class="section-title">
+  <span class="sec-num">§ 02</span>
+  <h2>战略性薪酬管理</h2>
+  <span class="page-ref">P285–292</span>
+</div>
+
+<!-- CARD 04: 战略性薪酬管理 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">04</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略性薪酬管理的内涵与模型</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">★★★★★ 一级重点</span>
+        <span class="badge badge-page">P286–291</span>
+        <span class="badge badge-exam">名词解释 / 论述</span>
+        <span class="badge badge-year">历年高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">专有名词定义</div>
+      <p><span class="kw">战略性薪酬管理</span>是指在做薪酬决策时要对环境中的机会及威胁做出适当的回应，并且要<span class="kw3">配合或支持组织全盘的、长期的发展方向以及目标</span>的薪酬决策模式。</p>
+      <p style="margin-top:10px;">米尔科维奇（Milkovich）定义：战略性薪酬管理是<span class="kw">对组织绩效具有关键性的薪酬决策模式</span>。</p>
+      <p style="margin-top:10px;"><span class="kw">薪酬战略</span>（乔米兹-米嘉&塞瑞琴·M.威尔鲍）：在特殊条件下会对组织绩效和人力资源的有效使用产生影响的一系列重要的报酬支付选择。</p>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🎓 小学生版通俗解释</div>
+      <p>传统薪酬就是"干多少活发多少钱"，大家都一样。战略性薪酬就像游戏升级：公司要往哪个方向发展，薪酬就朝哪里激励。比如公司要大力开发新产品，就给技术研发人员发更多股票期权，让大家都往这个方向使劲。</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">📊 传统薪酬 vs 战略性薪酬对比</div>
+      <table class="ctable">
+        <tr><th>维度</th><th>传统薪酬</th><th>战略性薪酬</th></tr>
+        <tr><td>导向</td><td>内部一致性</td><td>外部市场敏感性</td></tr>
+        <tr><td>薪酬类型</td><td>年度定期加薪</td><td>以绩效为基础的可变薪酬</td></tr>
+        <tr><td>关系</td><td>既得权利</td><td>风险分担的伙伴关系</td></tr>
+        <tr><td>工作</td><td>固定工作内容</td><td>弹性的贡献机会</td></tr>
+        <tr><td>晋升</td><td>垂直晋升</td><td>横向流动</td></tr>
+        <tr><td>保障</td><td>工作保障</td><td>就业能力</td></tr>
+        <tr><td>贡献</td><td>个人贡献</td><td>团队贡献</td></tr>
+      </table>
+    </div>
+    <div class="block block-teal">
+      <div class="block-label">📋 制定薪酬战略的4步骤（米尔科维奇）</div>
+      <div class="flow">
+        <div class="flow-step"><div class="fs-num">STEP 01</div><div class="fs-title">评估总体战略</div><div class="fs-body">了解企业经营目标</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-num">STEP 02</div><div class="fs-title">评估外部竞争</div><div class="fs-body">调查市场薪酬水平</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-num">STEP 03</div><div class="fs-title">确定薪酬目标</div><div class="fs-body">内外部公平性目标</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-num">STEP 04</div><div class="fs-title">设计薪酬体系</div><div class="fs-body">结构·水平·管理方式</div></div>
+      </div>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 战略薪酬体系构建路径</div>
+      <p>企业目标战略 → 业务部门战略 → 人力资源战略 → <span class="kw">薪酬战略</span> → 薪酬管理（薪酬决定+管理体系）→ 雇员态度和行为 → <span class="kw2">竞争优势</span></p>
+    </div>
+    <details>
+      <summary>复试回答模板 + 延伸追问</summary>
+      <div class="template-box">
+        <div class="tb-title">复试口答模板（论述题）</div>
+        <p>战略性薪酬管理是指薪酬决策要与企业战略对齐，对环境变化做出及时回应。其核心是薪酬对组织绩效具有关键影响。</p>
+        <p>与传统薪酬相比，战略性薪酬：①强调外部竞争性而非内部一致性；②以绩效可变薪酬代替定期加薪；③鼓励风险分担的伙伴关系；④重视团队贡献；⑤以就业能力代替工作保障。</p>
+        <p>企业构建战略导向薪酬体系，需经历评估企业战略→评估外部竞争→确定薪酬目标→设计薪酬体系四个步骤，确保薪酬支撑竞争战略实现。</p>
+      </div>
+      <div class="extend-q">❓ 追问：为什么说薪酬管理是最困难的人力资源工作？</div>
+      <p style="font-size:13px;padding:8px 0;">因为薪酬决定与分配是组织与员工之间、员工与员工之间的利益冲突点，政策性强、敏感性高，既要激励员工又要控制成本，平衡各方诉求极具挑战。</p>
+    </details>
+  </div>
+</div>
+</div><!-- end sec-strategic -->
+
+<!-- ══ 薪酬设计 ══ -->
+<div id="sec-design">
+<div class="section-title">
+  <span class="sec-num">§ 03</span>
+  <h2>薪酬设计原则与结构</h2>
+  <span class="page-ref">P291–296</span>
+</div>
+
+<!-- CARD 05: 薪酬设计原则 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">05</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">薪酬设计原则（传统六原则 + 现代三原则）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">★★★★★ 一级重点</span>
+        <span class="badge badge-page">P291–293</span>
+        <span class="badge badge-exam">简答 / 论述</span>
+        <span class="badge badge-year">2025真题考查</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">传统薪酬设计六原则</div>
+      <table class="ctable">
+        <tr><th>原则</th><th>核心内涵</th><th>案例说明</th></tr>
+        <tr><td><span class="kw">公平性原则</span></td><td>外部公平、内部公平、自身公平三维度</td><td>同等岗位同等薪酬，跨企业有竞争力</td></tr>
+        <tr><td><span class="kw">竞争性原则</span></td><td>市场竞争力，吸引保留激励人才</td><td>互联网公司薪酬普遍高于传统行业</td></tr>
+        <tr><td><span class="kw">认可性原则</span></td><td>员工认可接受，让员工参与薪酬决策</td><td>透明化沟通薪酬结构与决策逻辑</td></tr>
+        <tr><td><span class="kw">平衡性原则</span></td><td>竞争力与人工成本控制之间的平衡</td><td>大型国企薪酬稳定但弹性有限</td></tr>
+        <tr><td><span class="kw">激励性原则</span></td><td>拉开差距，向高岗位/关键人才/稀缺人才倾斜</td><td>绩效高的员工获得更高奖金</td></tr>
+        <tr><td><span class="kw">战略性原则</span></td><td>薪酬支撑企业战略，成本领先→控成本，差异化→吸引高素质</td><td>华为技术人员高薪+期权支撑创新战略</td></tr>
+      </table>
+    </div>
+    <div class="block block-teal">
+      <div class="block-label">现代组织薪酬设计三原则</div>
+      <ul class="kl">
+        <li><span class="kw2">团队原则</span>：建立团队奖励计划，防止因薪酬差距过大导致低层员工心态失衡，促进团队协作。</li>
+        <li><span class="kw2">隐性报酬原则</span>：重视非金钱奖励（内在附加报酬），外在金钱激励效果持续短，内在心理激励更持久。</li>
+        <li><span class="kw2">双赢原则</span>：让员工参与薪酬制度制定，找到劳资双方都满意的结合点。</li>
+      </ul>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🎓 小学生版解释（激励性原则）</div>
+      <p>如果班里所有同学考试不管100分还是60分都领同样的奖励，那努力学的同学就会觉得不值得，开始偷懒。薪酬激励性原则就是说"你考得越好，奖励越多"，这样大家才有动力。</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <p>传统六原则：<strong>公竞认平激战</strong>（公平竞争认可平衡激励战略）→ 谐音"弓箭人平击战"；现代三原则：<strong>团隐双</strong>（团队·隐性·双赢）。</p>
+    </div>
+    <details>
+      <summary>复试回答模板</summary>
+      <div class="template-box">
+        <div class="tb-title">复试口答模板</div>
+        <p>薪酬设计原则分传统和现代两类。传统六原则：公平性（三种公平）、竞争性（市场导向）、认可性（员工接受）、平衡性（成本与竞争）、激励性（拉开差距）、战略性（支撑企业战略）。现代三原则：团队原则（团队奖励）、隐性报酬原则（内在激励）、双赢原则（劳资共赢）。其中，<strong>战略性原则</strong>是核心，薪酬设计必须服务于企业整体战略目标。</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- CARD 06: 薪酬结构类型 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">06</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">薪酬结构的确定（固定/浮动·短期/长期·三种结构类型）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">★★★★★ 一级重点</span>
+        <span class="badge badge-page">P295–296</span>
+        <span class="badge badge-exam">简答 / 案例分析</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">固定薪酬 vs 浮动薪酬</div>
+      <table class="ctable">
+        <tr><th>类型</th><th>主要包括</th><th>主要功能</th><th>比例规律</th></tr>
+        <tr><td><span class="kw">固定薪酬</span></td><td>基本工资、津贴、福利</td><td>保障功能，产生安全感</td><td>职级越低，固定比例越高</td></tr>
+        <tr><td><span class="kw">浮动薪酬</span></td><td>奖金（与绩效挂钩）</td><td>激励功能，认可工作表现</td><td>职级越高，浮动比例越高</td></tr>
+      </table>
+    </div>
+    <div class="block block-teal">
+      <div class="block-label">短期薪酬 vs 长期薪酬</div>
+      <table class="ctable">
+        <tr><th>类型</th><th>主要形式</th><th>功能</th><th>比例特征</th></tr>
+        <tr><td><span class="kw">短期薪酬</span></td><td>基本工资+短期奖金</td><td>激励年度目标实现</td><td>基层员工为主</td></tr>
+        <tr><td><span class="kw">长期薪酬</span></td><td>员工持股、股票期权、延期支付计划</td><td>长期激励，留住核心人才</td><td>高管和核心技术人员为主</td></tr>
+      </table>
+      <p style="margin-top:8px;font-size:13px;">💡 案例：美国公司总裁薪酬——基本工资21%+短期奖金27%=<span class="kw">短期收入48%</span>；股票期权36%+其他长期激励16%=<span class="kw">长期收入52%</span>。</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">三种薪酬结构类型对比</div>
+      <table class="ctable">
+        <tr><th>结构类型</th><th>特征</th><th>优点</th><th>缺点</th><th>适用情形</th></tr>
+        <tr><td><span class="kw">高弹性结构</span></td><td>奖金为主，薪酬随绩效波动大（如计件制、提成制）</td><td>激励性强</td><td>员工安全感差</td><td>员工流动率高、工作热情低时</td></tr>
+        <tr><td><span class="kw">高稳定结构</span></td><td>基础工资为主，与绩效关系小（如日本大公司）</td><td>安全感强</td><td>缺乏激励，人工成本高</td><td>需要稳定长期雇佣关系</td></tr>
+        <tr><td><span class="kw">平衡结构</span></td><td>弹性+稳定兼顾</td><td>激励+安全感并存</td><td>设计复杂</td><td>大多数企业的理想选择</td></tr>
+      </table>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🎓 小学生版解释</div>
+      <p>高弹性结构像"按量计酬"：多劳多得，但一旦生病没干活就没钱；高稳定结构像"死工资"：不管你干多干少都一样，很安全但不激励；平衡结构像"底薪+奖金"：既有底线保障，又有努力奖励，大多数公司都选这个。</p>
+    </div>
+  </div>
+</div>
+</div><!-- end sec-design -->
+
+<!-- ══ 岗位评估 ══ -->
+<div id="sec-position">
+<div class="section-title">
+  <span class="sec-num">§ 04</span>
+  <h2>岗位评估与工资结构设计</h2>
+  <span class="page-ref">P297–306</span>
+</div>
+
+<!-- CARD 07: 岗位评估 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">07</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">岗位评估（Position Appraisal）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">★★★★★ 一级重点</span>
+        <span class="badge badge-page">P297–303</span>
+        <span class="badge badge-exam">名词解释 / 简答 / 论述</span>
+        <span class="badge badge-year">历年高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">专有名词定义（教材原意）</div>
+      <p><span class="kw">岗位评估（Position Appraisal）</span>也被称为职位评价、岗位评价，是指在工作分析的基础上充分收集工作岗位各方面的信息，以工作岗位的工作内容和对组织的价值贡献为依据，对岗位的<span class="kw3">责任大小、工作强度、所需任职条件等特性</span>进行评价，以确定岗位间相对价值的过程。其结果是形成企业内部岗位的相对价值体系，最终确定岗位的薪酬等级。（P297）</p>
+    </div>
+    <div class="block block-teal">
+      <div class="block-label">岗位评估三大特点（必背）</div>
+      <ul class="kl">
+        <li><span class="kw2">对岗位不对人</span>：评估对象是客观存在的岗位，而非任职者；衡量的是岗位相对价值，非绝对价值。</li>
+        <li><span class="kw2">按标准逐一评定</span>：根据预先规定的衡量标准对岗位主要影响指标逐一测定，得出各岗位量值。</li>
+        <li><span class="kw2">先分类再分级</span>：先对性质相同的岗位分类，再根据评定结果划分不同等级。</li>
+      </ul>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">五种岗位评估方法对比</div>
+      <table class="ctable">
+        <tr><th>方法</th><th>类型</th><th>核心思路</th><th>特点</th></tr>
+        <tr><td><span class="kw">岗位排列法</span></td><td>非量化/定性</td><td>将岗位按总体价值从高到低排列</td><td>简单但主观，适合小企业</td></tr>
+        <tr><td><span class="kw">岗位分类法</span></td><td>非量化/定性</td><td>先建立岗位等级框架再将岗位套入</td><td>适合层级分明的组织（政府机关）</td></tr>
+        <tr><td><span class="kw">要素比较法</span></td><td>量化</td><td>选基准岗位，将各岗位与基准岗位逐因素比较</td><td>精度高，操作复杂</td></tr>
+        <tr><td><span class="kw">要素计点法</span></td><td>量化</td><td>将岗位分解为若干因素，分别赋予权重和分值，累加得总分</td><td>最常用，结果客观，工作量大</td></tr>
+        <tr><td><span class="kw">海氏评价系统</span></td><td>量化</td><td>技能水平×解决问题能力×职务责任三因素</td><td>适合管理技术岗，国际通用</td></tr>
+      </table>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🧩 海氏评价系统三因素（重点）</div>
+      <div class="info-grid">
+        <div class="info-cell">
+          <div class="ic-title">因素一：技能水平（Know-How）</div>
+          <div class="ic-body">完成工作所需的全部知识技能，含专业技术知识、管理技能、人际关系技能（三个子因素）</div>
+        </div>
+        <div class="info-cell">
+          <div class="ic-title">因素二：解决问题的能力（Problem Solving）</div>
+          <div class="ic-body">运用知识去识别、解决问题的能力，用百分比表示，分思维环境和思维难度两个子因素</div>
+        </div>
+        <div class="info-cell">
+          <div class="ic-title">因素三：承担的职务责任（Accountability）</div>
+          <div class="ic-body">指职务行使者的行动对工作最终结果可能造成的影响及承担责任的大小</div>
+        </div>
+      </div>
+      <p style="margin-top:12px;"><strong>三种岗位类型（海氏法独有）：</strong></p>
+      <table class="ctable" style="margin-top:8px;">
+        <tr><th>类型</th><th>特征</th><th>权重（技能+解决/责任）</th><th>典型岗位</th></tr>
+        <tr><td><span class="kw">上山型</span></td><td>责任 > 技能与解决问题能力</td><td>40% / 60%</td><td>公司总裁、销售经理、生产岗</td></tr>
+        <tr><td><span class="kw">平路型</span></td><td>技能 = 责任</td><td>50% / 50%</td><td>会计、人事等职能岗位</td></tr>
+        <tr><td><span class="kw">下山型</span></td><td>技能 > 责任</td><td>60% / 40%</td><td>科研开发、市场分析岗</td></tr>
+      </table>
+      <p style="margin-top:10px;font-size:13px;"><strong>岗位总分公式：</strong>岗位总分 = A×(1+B)×K₁ + C×K₂</p>
+      <p style="font-size:12.5px;color:#666;">（A=技能要素得分；B=解决问题能力得分；C=职务责任得分；K₁/K₂=对应权重）</p>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🎓 小学生版解释（岗位评估）</div>
+      <p>你想知道班里哪个"班委职位"最重要，于是给各个职位打分：班长要管那么多人（责任高分），学习委员要懂很多知识（技能高分），体育委员只管体育课（分数低一些）。打完分排个序，分越高的职位薪酬越高。这就是岗位评估——给岗位打分定价。</p>
+    </div>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 岗位评估注意事项（4条）</div>
+      <ul class="kl">
+        <li>评估前强调评估对象是<span class="kw">岗位职责</span>，而非具体员工。</li>
+        <li>评估因素应符合<span class="kw3">企业经营战略</span>，体现岗位特征。</li>
+        <li>评估人员需对各项工作有深刻认识，需统一培训确保理解一致。</li>
+        <li>可<span class="kw2">聘请外部专家</span>参与，减少内部人员感情因素影响。</li>
+      </ul>
+    </div>
+    <details>
+      <summary>复试回答模板 + 延伸追问</summary>
+      <div class="template-box">
+        <div class="tb-title">复试口答模板（简答题）</div>
+        <p><strong>定义</strong>→岗位评估是在工作分析基础上，对岗位责任大小、工作强度、任职条件等进行系统评价，确定岗位间相对价值的过程。</p>
+        <p><strong>三大特点</strong>→对岗不对人、按标准量化评估、先分类再分级。</p>
+        <p><strong>常用方法</strong>→五种方法：岗位排列法（简单定性）、岗位分类法（等级框架）、要素比较法、要素计点法（最常用）、海氏评价系统（三因素，适合管理技术岗）。</p>
+        <p><strong>总结</strong>→岗位评估是实现薪酬内部公平性的核心工具。</p>
+      </div>
+      <div class="extend-q">❓ 追问：为什么说岗位评估解决的是"内部公平性"？</div>
+      <p style="font-size:13px;padding:8px 0;">通过岗位评估可以比较企业内部各岗位的相对重要性，得出岗位价值序列，使不同岗位之间具有纵向和横向的可比性，使岗位薪酬的设定有科学依据，从而在内部体现公平。</p>
+    </details>
+  </div>
+</div>
+
+<!-- CARD 08: 薪酬结构参数设计 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">08</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">薪酬结构参数设计（等级·级差·幅度·重叠）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">★★★★ 二级重点</span>
+        <span class="badge badge-page">P303–305</span>
+        <span class="badge badge-exam">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">四大结构参数</div>
+      <table class="ctable">
+        <tr><th>参数</th><th>定义</th><th>关键数值</th></tr>
+        <tr><td><span class="kw">等级数量</span></td><td>将岗位评估点数区间合并为若干薪酬等级</td><td>传统结构10～20级；<span class="kw3">宽带薪酬6级或更少</span></td></tr>
+        <tr><td><span class="kw">级差（中点差异）</span></td><td>相邻薪酬等级中位值之间的差距</td><td>传统结构<span class="kw3">15%～25%</span>，现在有增大趋势</td></tr>
+        <tr><td><span class="kw">等级幅度</span></td><td>同一等级内工资的浮动范围，反映个体差异</td><td>传统结构<span class="kw3">30%～60%</span>，一般设5～7个档次</td></tr>
+        <tr><td><span class="kw">重叠幅度</span></td><td>相邻等级之间工资标准的重叠量</td><td>一般为<span class="kw3">25%～50%</span></td></tr>
+      </table>
+    </div>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 四变量互动关系（重要！）</div>
+      <p>等级数量、级差、等级幅度、重叠幅度<span class="kw">相互依赖、相互作用</span>：若要求大的级差→等级数量减少；若增加等级幅度→重叠幅度必然增大；若要求小的重叠幅度→等级宽幅缩小或增加级差。须综合考虑，找到最优平衡。</p>
+    </div>
+  </div>
+</div>
+
+<!-- CARD 09: 市场薪酬调查 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">09</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">市场薪酬调查</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">★★★★ 二级重点</span>
+        <span class="badge badge-page">P293–295</span>
+        <span class="badge badge-exam">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">概念与目的</div>
+      <p><span class="kw">市场薪酬调查</span>是确定薪酬政策、确保薪酬<span class="kw3">外部公平性</span>的依据。通过搜集信息来判断其他企业所支付的薪酬状况的系统过程。</p>
+      <p style="margin-top:10px;"><strong>三大目的：</strong>①调整薪酬水平；②调整薪酬结构；③了解其他企业薪酬管理的最新发展趋势。</p>
+    </div>
+    <div class="block block-teal">
+      <div class="block-label">薪酬调查3步程序</div>
+      <div class="flow">
+        <div class="flow-step"><div class="fs-num">STEP 01</div><div class="fs-title">确定调查内容</div><div class="fs-body">基本工资、奖金、福利、津贴等5方面</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-num">STEP 02</div><div class="fs-title">实施调查</div><div class="fs-body">电话、问卷、访谈或委托咨询机构</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-num">STEP 03</div><div class="fs-title">整理与统计</div><div class="fs-body">数据分析+对比本企业情况</div></div>
+      </div>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">两种调查方法</div>
+      <ul class="kl">
+        <li><span class="kw2">岗位评定法</span>：对类似岗位直接调查市场价格，或采用基准岗位稳定法</li>
+        <li><span class="kw2">职业分类法</span>：建立基础职业类别（行政类/管理类/生产类），调查各类别薪酬水平，可提供更多岗位信息</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div><!-- end sec-position -->
+
+<!-- ══ 可变薪酬 ══ -->
+<div id="sec-variable">
+<div class="section-title">
+  <span class="sec-num">§ 05</span>
+  <h2>可变薪酬设计</h2>
+  <span class="page-ref">P306–310</span>
+</div>
+
+<!-- CARD 10: 可变薪酬 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">10</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">销售提成·计件工资·年薪制</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">★★★★★ 一级重点</span>
+        <span class="badge badge-page">P306–310</span>
+        <span class="badge badge-exam">简答 / 案例分析</span>
+        <span class="badge badge-year">2025真题考查</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">可变薪酬（Variable Pay）概念</div>
+      <p><span class="kw">可变薪酬</span>又称浮动薪酬或奖金，是薪酬系统中<span class="kw3">与绩效直接挂钩</span>的部分。既可基于员工个人业绩，也可基于团队或公司整体业绩。</p>
+    </div>
+    <div class="block block-teal">
+      <div class="block-label">销售提成四种方式</div>
+      <table class="ctable">
+        <tr><th>方式</th><th>特点</th><th>适用场景</th></tr>
+        <tr><td><span class="kw">纯提成</span></td><td>激励最强，无收入保障，员工风险大，难管理</td><td>创业期、成长初期、资金压力大的中小企业</td></tr>
+        <tr><td><span class="kw">基本工资+提成</span></td><td>保障基本生活，保持较强激励</td><td>大多数销售岗位最常用</td></tr>
+        <tr><td><span class="kw">基本工资+团队奖励</span></td><td>适合市场不均衡、个人产量难区分情境</td><td>区域差异大、需要团队协作的销售</td></tr>
+        <tr><td><span class="kw">工资+个人奖金</span></td><td>适合大客户维护，通过奖金激励客户关系质量</td><td>大客户营销、B端销售</td></tr>
+      </table>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">计件工资四种形式</div>
+      <table class="ctable">
+        <tr><th>形式</th><th>核心规则</th></tr>
+        <tr><td><span class="kw">直接无限计件制</span></td><td>上不封顶，同一单价计酬</td></tr>
+        <tr><td><span class="kw">直接有限计件制</span></td><td>超额部分封顶，保护企业成本</td></tr>
+        <tr><td><span class="kw">累进计件工资制</span></td><td>超额部分单价累进提高，超额越多单价越高</td></tr>
+        <tr><td><span class="kw">超额计件工资制</span></td><td>定额内计时，超额部分计件</td></tr>
+      </table>
+      <p style="margin-top:8px;font-size:13px;">💡 <strong>计件工资公式</strong>：员工计件工资 = 产品量 × 计件单价</p>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">年薪制（重点）</div>
+      <p><span class="kw">年薪制</span>以年度为考核周期，根据经营者的<span class="kw3">经营业绩、难度与风险</span>合理确定其年度收入。不是高薪制，不是"负盈不负亏"，而是<span class="kw3">高激励与高风险并存</span>的回报机制。</p>
+      <p style="margin-top:10px;"><strong>典型年薪制结构：</strong><span class="kw2">薪酬 = 月工资 + 各种福利 + 年终奖金 + 长期报酬（股权激励）</span></p>
+      <table class="ctable" style="margin-top:10px;">
+        <tr><th>层级</th><th>组成</th><th>性质</th><th>激励类型</th></tr>
+        <tr><td>第一层级</td><td>月工资（基本工资）</td><td>固定收入</td><td>维持因素</td></tr>
+        <tr><td>第二层级</td><td>各种福利（津贴、住房公积金）</td><td>相对固定</td><td>保障因素</td></tr>
+        <tr><td>第三层级</td><td>年终奖金（绩效奖金）</td><td>风险收入</td><td>中短期激励因素</td></tr>
+        <tr><td>第四层级</td><td>长期报酬（股票、期权）</td><td>风险收入</td><td>中长期激励因素</td></tr>
+      </table>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">四大激励方法对高管的影响（重要数据）</div>
+      <table class="ctable">
+        <tr><th>激励方法</th><th>吸引人才</th><th>留住人才</th><th>激励工作</th></tr>
+        <tr><td>月工资</td><td>中</td><td>中</td><td>中偏低</td></tr>
+        <tr><td>各种福利</td><td>低</td><td>中</td><td>低</td></tr>
+        <tr><td><span class="kw2">年终奖金</span></td><td>高</td><td>较高</td><td>较高</td></tr>
+        <tr><td><span class="kw2">长期报酬（股权激励）</span></td><td>高</td><td><strong>高</strong></td><td><strong>高</strong></td></tr>
+      </table>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🎓 小学生版解释（年薪制）</div>
+      <p>老板给总经理设计薪酬：每月发底薪（够生活）→年底公司赚了钱就发大奖金（激励拼命干）→再给一些公司股票期权（绑定长远利益，不能马上走）。这样总经理既有生活保障，又想短期多赚奖金，还要顾着公司长期发展——三层激励，层层递进。</p>
+    </div>
+    <details>
+      <summary>复试回答模板（年薪制简答）</summary>
+      <div class="template-box">
+        <div class="tb-title">复试口答模板</div>
+        <p>年薪制是以年度为考核周期，根据经营业绩、难度与风险确定年度收入的薪酬制度，适用于中高层管理人员和核心技术人员。其特征是高激励与高风险并存。</p>
+        <p>典型结构：月工资（固定，维持生活）+ 福利（保障因素）+ 年终奖金（绩效驱动，中短期激励）+ 长期报酬即股权激励（长期绑定）。</p>
+        <p>从激励效果看，股权激励在吸引、留住和激励人才三方面效果最佳，因为持有等待期约束增加了离职成本，且与公司长期价值挂钩，能引导高管关注企业长远发展。</p>
+      </div>
+      <div class="extend-q">❓ 追问：年终奖金有什么潜在问题？</div>
+      <p style="font-size:13px;padding:8px 0;">年终奖金可能助长员工"短期化行为"——当短期利益与长期利益冲突时，为获得年终奖可能牺牲企业长期利益。因此需配合长期报酬（股权激励）加以制衡。</p>
+    </details>
+  </div>
+</div>
+</div><!-- end sec-variable -->
+
+<!-- ══ 福利 ══ -->
+<div id="sec-welfare">
+<div class="section-title">
+  <span class="sec-num">§ 06</span>
+  <h2>福利与社会保险</h2>
+  <span class="page-ref">P310–318</span>
+</div>
+
+<!-- CARD 11: 福利 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">11</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">福利（Benefits）与弹性福利计划</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">★★★★ 二级重点</span>
+        <span class="badge badge-page">P310–318</span>
+        <span class="badge badge-exam">简答 / 案例</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">福利的功能（三大功能）</div>
+      <ul class="kl">
+        <li><span class="kw">吸引和保留员工</span>：良好的福利可以降低员工流失率</li>
+        <li><span class="kw">税收优惠</span>：企业将部分工资转换为福利，可节省税款</li>
+        <li><span class="kw">提高员工工作积极性</span>：解除后顾之忧，提高工作效率</li>
+      </ul>
+    </div>
+    <div class="block block-teal">
+      <div class="block-label">弹性福利计划（Flexible Benefit Plan）</div>
+      <p><span class="kw">弹性福利计划</span>又称"自助餐式福利计划"，允许员工在企业提供的一定数目的福利项目菜单中，自主选择个人需要的福利组合。</p>
+      <p style="margin-top:10px;"><strong>优点：</strong>满足员工个性化需求，提高福利满意度；有助于控制福利成本；有利于吸引不同类型员工。</p>
+      <p style="margin-top:8px;"><strong>缺点：</strong>员工可能因考虑不周选择了不实用项目；行政作业繁杂；初期行政费用增加，成本不减反增；工会反对（失去与资方谈判机会）。</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">社会保险险种（五险）</div>
+      <p>养老保险 · 医疗保险 · 失业保险 · 工伤保险 · 生育保险（五险）；加住房公积金 = <span class="kw3">"五险一金"</span></p>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🎓 小学生版解释（弹性福利）</div>
+      <p>公司给你100块"福利券"，你可以选：50块买健身卡，30块买额外假期，20块换餐补——你按自己喜欢的来选，不用被迫接受公司统一发的东西。这就是弹性福利，就像点自助餐，在预算内自己选菜。</p>
+    </div>
+  </div>
+</div>
+</div><!-- end sec-welfare -->
+
+<!-- ══ 对比总结表 ══ -->
+<div id="sec-compare">
+<div class="section-title">
+  <span class="sec-num">§ 07</span>
+  <h2>核心易混概念对比</h2>
+</div>
+<div class="summary-box">
+  <h3>📊 薪酬核心对比总结</h3>
+  <table class="ctable">
+    <tr><th>概念对</th><th>区别要点</th></tr>
+    <tr><td><span class="kw">内在薪酬</span> vs <span class="kw4">外在薪酬</span></td><td>内在=心理满足感（非经济）；外在=实际货币/福利（经济）</td></tr>
+    <tr><td><span class="kw">固定薪酬</span> vs <span class="kw4">可变薪酬</span></td><td>固定=保障功能；可变=激励功能，与绩效挂钩</td></tr>
+    <tr><td><span class="kw">短期薪酬</span> vs <span class="kw4">长期薪酬</span></td><td>短期=工资+短期奖金，年度激励；长期=持股、期权，多年激励</td></tr>
+    <tr><td><span class="kw">高弹性结构</span> vs <span class="kw4">高稳定结构</span></td><td>弹=激励强安全感差；稳=安全感强激励弱</td></tr>
+    <tr><td><span class="kw">岗位评估</span> vs <span class="kw4">绩效评估</span></td><td>岗位评估=评岗不评人，定内部相对价值；绩效评估=评人的工作成果</td></tr>
+    <tr><td><span class="kw">传统薪酬</span> vs <span class="kw4">战略性薪酬</span></td><td>传统=内部一致性为主；战略=外部竞争性，与组织战略对齐</td></tr>
+    <tr><td><span class="kw">宽带薪酬</span> vs <span class="kw4">传统工资结构</span></td><td>宽带=等级少（≤6）浮动范围大，适合扁平化；传统=等级多（10-20）浮动小</td></tr>
+  </table>
+</div>
+
+<!-- 薪酬管理内容 -->
+<div class="summary-box">
+  <h3>📋 薪酬管理五大内容</h3>
+  <div class="flow">
+    <div class="flow-step"><div class="fs-num">01</div><div class="fs-title">薪酬预算</div><div class="fs-body">综合财务状况、薪酬结构、市场环境，确保成本可控</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="fs-num">02</div><div class="fs-title">薪酬结构管理</div><div class="fs-body">管理薪酬构成要素及各要素比率，提高人工成本使用效率</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="fs-num">03</div><div class="fs-title">薪酬水平管理</div><div class="fs-body">核心内容，平衡外部竞争力和人工成本承受力</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="fs-num">04</div><div class="fs-title">薪酬日常管理</div><div class="fs-body">工资定级、工资异动（自然/考核）、薪资福利支付</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="fs-num">05</div><div class="fs-title">薪酬诊断</div><div class="fs-body">满意度调查→外部调查→政策分析→结构分析→竞争性分析</div></div>
+  </div>
+</div>
+</div><!-- end sec-compare -->
+
+<!-- ══ 历年真题汇总 ══ -->
+<div id="sec-exam">
+<div class="section-title">
+  <span class="sec-num">§ 08</span>
+  <h2>历年真题汇总（2016–2025）</h2>
+</div>
+<div class="summary-box">
+  <h3>🎯 薪酬章节历年考查记录</h3>
+  <table class="ctable">
+    <tr><th>年份</th><th>考查形式</th><th>考查内容</th><th>考查类型</th></tr>
+    <tr><td><span class="exam-tag">2025</span></td><td>笔试</td><td>薪酬激励设计要点（固定+浮动+长期）</td><td>简答</td></tr>
+    <tr><td><span class="exam-tag">2025</span></td><td>面试</td><td>员工体验管理（含薪酬激励视角）</td><td>口述</td></tr>
+    <tr><td><span class="exam-tag">2023</span></td><td>笔试</td><td>绩效管理流程与误区（涉及绩效薪酬）</td><td>简答</td></tr>
+    <tr><td><span class="exam-tag">2021</span></td><td>笔试</td><td>招聘渠道选择（薪酬吸引力相关）</td><td>简答</td></tr>
+    <tr><td><span class="exam-tag">2019</span></td><td>面试</td><td>新生代员工激励（涉及薪酬结构设计）</td><td>口述</td></tr>
+    <tr><td><span class="exam-tag">高频预测</span></td><td>各年</td><td>岗位评估方法（特别是海氏评价系统）</td><td>名词/简答</td></tr>
+    <tr><td><span class="exam-tag">高频预测</span></td><td>各年</td><td>战略性薪酬管理内涵与构建</td><td>论述</td></tr>
+    <tr><td><span class="exam-tag">高频预测</span></td><td>各年</td><td>年薪制结构设计原则</td><td>简答/案例</td></tr>
+  </table>
+  <p style="font-size:13px;margin-top:12px;color:#666;">⚠️ 注：第九章薪酬为人力资源管理核心章节，历年考查以"薪酬+绩效+激励"综合题型最为常见，2025年已直接考查薪酬激励设计要点，建议重点准备。</p>
+</div>
+</div><!-- end sec-exam -->
+
+<!-- ══ 知识串联 ══ -->
+<div id="sec-chain">
+<div class="section-title">
+  <span class="sec-num">§ 09</span>
+  <h2>本章知识终极串联</h2>
+</div>
+<div class="chain-review">
+  <h3>🔗 薪酬章节逻辑链条</h3>
+  <div class="chain-step">
+    <div class="cs-dot">1</div>
+    <div class="cs-content">
+      <div class="cs-title">什么是薪酬？（基础概念）</div>
+      <div class="cs-body">薪酬是劳动者与用人单位之间的契约交换，分内在（非经济，如工作保障、挑战性）和外在（经济，基本薪酬+可变薪酬+福利）。现代管理认为不能只看物质，内在激励对知识型员工同样重要。</div>
+    </div>
+  </div>
+  <div class="chain-step">
+    <div class="cs-dot">2</div>
+    <div class="cs-content">
+      <div class="cs-title">选什么薪酬模式？（策略选择）</div>
+      <div class="cs-body">岗位为基础（职能岗）→能力为基础（研发岗，用宽带）→绩效为基础（销售岗）→市场为基础（稀缺人才）。企业实践中通常混合使用，选择依据是岗位性质和工作产出的可量化程度。</div>
+    </div>
+  </div>
+  <div class="chain-step">
+    <div class="cs-dot">3</div>
+    <div class="cs-content">
+      <div class="cs-title">薪酬必须与战略对齐（战略性薪酬）</div>
+      <div class="cs-body">传统薪酬重内部一致性，战略性薪酬强调外部竞争性、绩效导向、风险分担。制定路径：企业战略→业务战略→HR战略→薪酬战略→薪酬管理体系→员工行为→竞争优势。</div>
+    </div>
+  </div>
+  <div class="chain-step">
+    <div class="cs-dot">4</div>
+    <div class="cs-content">
+      <div class="cs-title">如何设计薪酬？（技术方法）</div>
+      <div class="cs-body">遵循六大原则（公竞认平激战）→做市场薪酬调查（确保外部公平）→确定固定/浮动比例+短期/长期比例→选择结构类型（高弹性/高稳定/平衡）→进行岗位评估（确保内部公平）→设计结构参数（等级·级差·幅度·重叠）。</div>
+    </div>
+  </div>
+  <div class="chain-step">
+    <div class="cs-dot">5</div>
+    <div class="cs-content">
+      <div class="cs-title">可变薪酬如何设计？</div>
+      <div class="cs-body">销售岗→提成（4种方式）；生产岗→计件工资（4种形式）；高管→年薪制（月工资+福利+年终奖+长期报酬）。核心原则：高激励高风险，短期与长期激励结合，股权激励吸引/留住/激励效果最佳。</div>
+    </div>
+  </div>
+  <div class="chain-step">
+    <div class="cs-dot">6</div>
+    <div class="cs-content">
+      <div class="cs-title">与其他章节的联系（跨章逻辑）</div>
+      <div class="cs-body">薪酬←→<strong>工作分析</strong>（岗位评估的基础，第X章）；薪酬←→<strong>绩效管理</strong>（绩效结果决定可变薪酬，第八章）；薪酬←→<strong>人力资源规划</strong>（薪酬预算是HR计划的核心）；薪酬←→<strong>员工激励理论</strong>（公平理论、期望理论解释薪酬满意度）。</div>
+    </div>
+  </div>
+</div>
+</div><!-- end sec-chain -->
+
+<!-- ══ 30秒快速复习 ══ -->
+<div id="sec-quick">
+<div class="section-title">
+  <span class="sec-num">§ 10</span>
+  <h2>30秒超速复习模块</h2>
+</div>
+<div class="quick-review">
+  <h3>⚡ 30秒核心要点速览</h3>
+  <div class="qr-item"><span class="qr-num">①</span><span>薪酬本质是<strong>契约交换</strong>，分<strong>内在（非经济）+外在（经济）</strong>，外在=基本+可变+福利。</span></div>
+  <div class="qr-item"><span class="qr-num">②</span><span>四大薪酬模式：<strong>岗位（传统结构）/ 能力（宽带结构）/ 绩效（KPI挂钩）/ 市场（供求定价）</strong></span></div>
+  <div class="qr-item"><span class="qr-num">③</span><span>传统设计六原则：<strong>公竞认平激战</strong>（公平·竞争·认可·平衡·激励·战略）；现代三原则：<strong>团队·隐性·双赢</strong></span></div>
+  <div class="qr-item"><span class="qr-num">④</span><span>薪酬结构：职级越高→浮动比例越高；高层→长期薪酬（期权）比例越高。三种类型：<strong>高弹/高稳/平衡</strong></span></div>
+  <div class="qr-item"><span class="qr-num">⑤</span><span>岗位评估：<strong>对岗不对人</strong>，五大方法，海氏系统=<strong>技能水平×解决问题能力×职务责任</strong>，三种岗位型（上山/平路/下山）</span></div>
+  <div class="qr-item"><span class="qr-num">⑥</span><span>年薪制结构：<strong>月工资+福利+年终奖+股权激励</strong>。激励效果：股权激励>年终奖>月工资>福利</span></div>
+  <div class="qr-item"><span class="qr-num">⑦</span><span>战略性薪酬：薪酬决策要与<strong>企业战略对齐</strong>，米尔科维奇定义=对组织绩效具有关键性的薪酬决策模式</span></div>
+  <div class="qr-item"><span class="qr-num">⑧</span><span>影响薪酬满意度<strong>最直接因素</strong>：<strong>内部公平性</strong>（必背！P284）</span></div>
+</div>
+</div><!-- end sec-quick -->
+
+<!-- ══ 背诵版总结 ══ -->
+<div id="sec-recite">
+<div class="section-title">
+  <span class="sec-num">§ 11</span>
+  <h2>背诵版总结（适合复试口述）</h2>
+</div>
+<div class="recite-box">
+  <h3>📝 必背知识点·原句汇编</h3>
+
+  <div class="recite-item">
+    <div class="ri-tag">必背原句 · P274</div>
+    <div class="ri-text">「薪酬（Compensation）是劳动者因向所在用人单位提供劳动或劳务而获得的各种形式的酬劳或酬谢。从本质上讲，薪酬是劳动者与用人单位之间<mark style="background:#6ee7b7;color:#0f1f2e;border-radius:2px;">以契约为表现形式的一种交换关系</mark>。在市场经济环境下，薪酬既是劳动力价格的支付形式，又是人力资本竞争的价格表现。」</div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-tag">必背原句 · P284</div>
+    <div class="ri-text">「通常情况下，影响员工薪酬满意度的<mark style="background:#6ee7b7;color:#0f1f2e;border-radius:2px;">最直接因素是内部公平性</mark>。企业应建立科学规范的岗位价值评估体系、能力评估体系和绩效考评体系，在这些基础上提供员工相对公平的薪酬水平。」</div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-tag">必背原句 · P286</div>
+    <div class="ri-text">「战略性薪酬管理是指在做薪酬决策时要对环境中的机会及威胁做出适当的回应，并且要<mark style="background:#6ee7b7;color:#0f1f2e;border-radius:2px;">配合或支持组织全盘的、长期的发展方向以及目标</mark>。」</div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-tag">必背原句 · P297</div>
+    <div class="ri-text">「岗位评估（Position Appraisal）……是指在工作分析的基础上充分收集工作岗位各方面的信息，以工作岗位的工作内容和对组织的价值贡献为依据，对岗位的责任大小、工作强度、所需任职条件等特性进行评价，以确定<mark style="background:#6ee7b7;color:#0f1f2e;border-radius:2px;">岗位间相对价值</mark>的过程。」</div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-tag">必背原句 · P309</div>
+    <div class="ri-text">「年薪制不是高薪制，不是负盈不负亏的坐享其成，而是<mark style="background:#6ee7b7;color:#0f1f2e;border-radius:2px;">高激励与高风险的并存</mark>。年薪制应是一种动力和压力同在、风险和收益共生、付出和获取并存的回报机制。」</div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-tag">口述背诵·薪酬管理是最困难的HR工作</div>
+    <div class="ri-text">「薪酬决定与分配是组织与员工之间、员工与员工之间的利益冲突点，薪酬管理也被认为是一项<mark style="background:#6ee7b7;color:#0f1f2e;border-radius:2px;">最困难、最敏感、政策性最强</mark>的人力资源管理工作。」（P274）</div>
+  </div>
+</div>
+</div><!-- end sec-recite -->
+
+<!-- ══ 自测题 ══ -->
+<div id="sec-quiz">
+<div class="section-title">
+  <span class="sec-num">§ 12</span>
+  <h2>自我检测（含真题 + 预测题）</h2>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q01 · 名词解释 · 高频考点</div>
+  <div class="q-text">请解释"岗位评估"的概念，并说明其三大特点。</div>
+  <details><summary>查看参考答案</summary>
+  <div class="quiz-answer">岗位评估是在工作分析基础上，以岗位工作内容和对组织的价值贡献为依据，对岗位责任大小、工作强度、任职条件等特性进行评价，确定岗位间相对价值的过程。三大特点：①对岗不对人（评估对象是岗位而非任职者，衡量相对价值）；②按标准量化（根据预先规定的衡量标准逐一评定）；③先分类再分级（先分类后按评定结果划分等级）。</div>
+  </details>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q02 · 简答 · 2025年真题近似</div>
+  <div class="q-text">请简述薪酬激励设计要点，包括固定薪酬、浮动薪酬和长期激励三个维度。</div>
+  <details><summary>查看参考答案</summary>
+  <div class="quiz-answer">①<strong>固定薪酬</strong>（基本工资+津贴+福利）：保障功能，使员工产生安全感，但比例过高会削弱激励；②<strong>浮动薪酬</strong>（奖金）：激励功能，与绩效挂钩，职级越高浮动比例越大；比例过大使员工缺乏安全感；③<strong>长期激励</strong>（股票、期权、延期支付）：引导员工关注企业长远利益，留住核心高管和技术人才，吸引、留住、激励效果均最佳。三者最佳组合是"平衡结构"：既有稳定性保障员工基本生活，又有弹性激励员工努力，还有长期激励绑定员工与企业共同发展。</div>
+  </details>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q03 · 简答 · 高频预测</div>
+  <div class="q-text">传统薪酬体系与战略性薪酬管理有何区别？</div>
+  <details><summary>查看参考答案</summary>
+  <div class="quiz-answer">区别体现在7个维度：①传统强调内部一致性，战略强调外部市场敏感性；②传统采用年度定期加薪，战略采用绩效可变薪酬；③传统是既得权利，战略是风险分担的伙伴关系；④传统强调固定工作，战略强调弹性贡献机会；⑤传统强调垂直晋升，战略鼓励横向流动；⑥传统提供工作保障，战略强调就业能力；⑦传统关注个人贡献，战略重视团队贡献。战略性薪酬管理的核心是：薪酬必须支撑企业战略，对环境变化做出敏锐回应，对组织绩效产生关键影响。</div>
+  </details>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q04 · 论述 · 综合分析</div>
+  <div class="q-text">海氏评价系统（Hay System）的三个付酬因素是什么？三种岗位类型如何影响权重分配？</div>
+  <details><summary>查看参考答案</summary>
+  <div class="quiz-answer">三大付酬因素：①<strong>技能水平（Know-How）</strong>：完成工作所需全部知识技能，含专业技术、管理技能、人际技能；②<strong>解决问题的能力（Problem Solving）</strong>：运用知识识别解决问题的能力，以百分比表示；③<strong>承担的职务责任（Accountability）</strong>：行动对工作结果可能造成的影响及责任大小。三种岗位类型及权重：①上山型（责任>技能）→权重40%/60%，典型如总裁、销售经理；②平路型（责任=技能）→权重50%/50%，典型如会计、HR；③下山型（技能>责任）→权重60%/40%，典型如科研开发、市场分析岗。总分公式：岗位总分=A×(1+B)×K₁+C×K₂。</div>
+  </details>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q05 · 案例分析 · 综合考点</div>
+  <div class="q-text">阅读白秦铭案例：为什么固定工资制让优秀销售员流失？企业应如何改进薪酬制度？</div>
+  <details><summary>查看参考答案</summary>
+  <div class="quiz-answer"><strong>流失原因分析：</strong>①违反<strong>激励性原则</strong>：固定工资无法体现白秦铭超出同行的绩效贡献，"大锅饭"压制了高绩效员工的积极性；②违反<strong>认可性原则</strong>：公司不公布销售排名，白秦铭得不到应有认可，内在薪酬（身份标志、成就感）严重缺失；③违反<strong>公平性原则</strong>：员工感知到内部公平性不足（贡献大但回报等同一般员工）。<strong>改进建议：</strong>①设计"基本工资+提成"结构，将绩效与薪酬挂钩；②建立销售绩效排名公示和荣誉表彰机制，强化内在薪酬；③结合战略性薪酬管理，设计分层分类的激励方案，避免平均主义。</div>
+  </details>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q06 · 简答 · 教材课后题</div>
+  <div class="q-text">年薪制的概念是什么？其结构设计应遵循哪些原则？</div>
+  <details><summary>查看参考答案</summary>
+  <div class="quiz-answer"><strong>概念：</strong>年薪制以年度为考核周期，根据经营者的经营业绩、难度与风险合理确定其年度收入，适用于中高层管理和核心技术/营销人员。年薪制不是高薪制，是高激励与高风险并存的回报机制。<strong>结构设计五原则：</strong>①报酬与绩效挂钩，兼顾股东与员工利益；②固定收入与风险收入结合，以风险收入为主；③长期与短期业绩奖励相结合；④体现收入层级（基本工资→福利→奖金→股权激励）；⑤直接确定与间接确定相结合，固定部分直接协商，风险部分由业绩间接决定。</div>
+  </details>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q07 · 名词解释 · 预测题</div>
+  <div class="q-text">请解释"弹性福利计划"的概念及其优缺点。</div>
+  <details><summary>查看参考答案</summary>
+  <div class="quiz-answer"><strong>概念：</strong>弹性福利计划又称"自助餐式福利计划"，允许员工在企业提供的一定数目的福利菜单中，根据个人需要自主选择福利组合，在总额限制内灵活搭配。<strong>优点：</strong>满足个性化需求提高满意度；有助于控制企业福利成本；吸引不同类型员工。<strong>缺点：</strong>员工可能选择不实用项目；工会可能反对（失去谈判筹码）；行政作业繁杂，承办人员负担大；实施初期行政费用增加，成本不减反增。</div>
+  </details>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q08 · 综合预测 · 复试热点</div>
+  <div class="q-text">结合新生代员工特征，如何优化薪酬激励设计？（综合应用题）</div>
+  <details><summary>查看参考答案</summary>
+  <div class="quiz-answer">新生代员工（95后/00后）特征：重视工作意义、个人成长、灵活工作方式，物质满足后对内在薪酬更敏感。优化建议：①<strong>强化内在薪酬</strong>：提供挑战性工作任务、清晰的职业发展路径、快速反馈文化，满足工作特征模型中的五个维度；②<strong>弹性福利</strong>：采用自助式福利，让员工自主选择（健身卡、远程工作、弹性工时等）；③<strong>即时激励</strong>：缩短奖金周期，增加季度/月度绩效奖金，满足即时反馈需求；④<strong>非物质认可</strong>：公开表彰、荣誉体系、参与感（薪酬设计参与）；⑤<strong>平衡结构</strong>：采用平衡型薪酬结构，既提供安全感又保持激励弹性，避免过度高弹性导致不安全感。</div>
+  </details>
+</div>
+
+</div><!-- end sec-quiz -->
+
+<!-- 跨章逻辑图 -->
+<div class="section-title">
+  <span class="sec-num">§ 跨章</span>
+  <h2>跨章节逻辑关联图</h2>
+</div>
+<div class="logic-map">
+  <h3>第九章 薪酬 · 在全书中的位置</h3>
+  <div class="lm-row">
+    <div class="lm-node blue"><div class="ln-title">第一章 人力资源管理概述</div>薪酬管理是HR六大模块之一，是实现组织目标的核心工具</div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node green"><div class="ln-title">第三章 工作分析</div>工作分析是岗位评估的前提和基础，为薪酬等级设计提供依据</div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node yellow"><div class="ln-title">第八章 绩效管理</div>绩效考核结果→决定可变薪酬和薪酬异动，绩效薪酬是关键纽带</div>
+  </div>
+  <div class="lm-row" style="margin-top:8px;">
+    <div class="lm-node purple"><div class="ln-title">第九章 薪酬 ⭐</div>薪酬体系：薪酬模式→战略性薪酬→设计原则→岗位评估→可变薪酬→福利</div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node red"><div class="ln-title">第十章 员工关系</div>薪酬公平性影响劳动关系稳定，薪酬纠纷是员工关系核心议题</div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node green"><div class="ln-title">激励理论（行为学基础）</div>公平理论解释薪酬满意度；期望理论解释薪酬激励效果</div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<footer>
+  <p>中南大学 · 企业管理学硕复试学习笔记 · 第九章 薪酬</p>
+  <p>依据《人力资源管理（第3版）》颜爱民著 · 北京大学出版社 · P273–319</p>
+  <p>生成日期：2026-03-09</p>
+</footer>
+
+<script>
+  function toggleNight() {
+    document.body.classList.toggle('night');
+    const btn = document.querySelector('.btn-night');
+    btn.textContent = document.body.classList.contains('night') ? '☀️ 日间' : '🌙 夜间';
+  }
+
+  // ── Search state ──
+var _srchMatches = [], _srchIdx = -1;
+function _srchEsc(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+function _srchClear(){
+  document.querySelectorAll('.highlight-search').forEach(function(el){
+    var p=el.parentNode;if(!p)return;
+    p.replaceChild(document.createTextNode(el.textContent),el);p.normalize();
+  });
+  _srchMatches=[]; _srchIdx=-1;
+}
+function _srchActivate(){
+  _srchMatches.forEach(function(m,i){ m.classList.toggle('hl-cur', i===_srchIdx); });
+  var el=_srchMatches[_srchIdx];
+  if(el){
+    var p=el.parentElement;
+    while(p){ if(p.tagName==='DETAILS') p.open=true; p=p.parentElement; }
+    setTimeout(function(){
+      var rect=el.getBoundingClientRect();
+      window.scrollTo({ top: Math.max(0, window.scrollY+rect.top-110), behavior:'smooth' });
+    },50);
+  }
+  var cnt=_srchMatches.length;
+  document.getElementById('searchCount').textContent = cnt>0 ? (_srchIdx+1)+' / '+cnt+' 处' : '未找到';
+  var dis=cnt===0;
+  var pv=document.getElementById('srchPrev'); if(pv) pv.disabled=dis;
+  var nx=document.getElementById('srchNext'); if(nx) nx.disabled=dis;
+}
+function nextResult(){ if(!_srchMatches.length)return; _srchIdx=(_srchIdx+1)%_srchMatches.length; _srchActivate(); }
+function prevResult(){ if(!_srchMatches.length)return; _srchIdx=(_srchIdx-1+_srchMatches.length)%_srchMatches.length; _srchActivate(); }
+document.addEventListener('keydown',function(e){ if(e.key==='F3'){e.preventDefault();if(e.shiftKey)prevResult();else nextResult();} });
+</script>
+
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业战略管理 · 核心必备30个考点答题模板</title>
+<style>
+  :root {
+    --bg: #f5f4f0;
+    --bg2: #eceae4;
+    --surface: #ffffff;
+    --surface2: #faf9f6;
+    --border: #ddd9d0;
+    --text: #1a1814;
+    --text2: #4a4640;
+    --text3: #7a7570;
+    --accent: #c84b2f;
+    --accent2: #e07a3a;
+    --accent3: #2b6cb0;
+    --accent4: #276749;
+    --accent5: #7b3fa0;
+    --tag-bg: #fff3f0;
+    --tag-border: #f5c2b8;
+    --highlight: #fff9e6;
+    --highlight-border: #f5d76e;
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    --nav-h: 56px;
+    font-variant-numeric: tabular-nums;
+  }
+  .dark {
+    --bg: #141210;
+    --bg2: #1c1a17;
+    --surface: #242018;
+    --surface2: #1e1c18;
+    --border: #3a3630;
+    --text: #e8e4da;
+    --text2: #b8b4a8;
+    --text3: #78746a;
+    --accent: #e8634a;
+    --accent2: #f0924a;
+    --accent3: #5b9fd8;
+    --accent4: #4a9e72;
+    --accent5: #a87acc;
+    --tag-bg: #2a1a18;
+    --tag-border: #5a2a22;
+    --highlight: #2a2410;
+    --highlight-border: #7a6a20;
+    --card-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    transition: background .3s, color .3s;
+  }
+
+  /* ── NAV ─────────────────────────── */
+  header {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: var(--surface);
+    border-bottom: 2px solid var(--accent);
+    display: flex; align-items: center;
+    padding: 0 20px; gap: 12px;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: background .3s, border-color .3s;
+  }
+  .logo {
+    font-size: 17px; font-weight: 700;
+    color: var(--accent); white-space: nowrap;
+    letter-spacing: .5px;
+  }
+  .search-wrap {
+    flex: 1; max-width: 380px;
+    position: relative;
+  }
+  #searchInput {
+    width: 100%; padding: 7px 14px 7px 36px;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    background: var(--bg2);
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s, background .3s;
+  }
+  #searchInput:focus { border-color: var(--accent); }
+  .search-icon {
+    position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
+    color: var(--text3); font-size: 15px; pointer-events: none;
+  }
+  #searchCount {
+    font-size: 13px; color: var(--text3); white-space: nowrap;
+  }
+  .nav-btns { display: flex; gap: 8px; margin-left: auto; }
+  .btn {
+    padding: 6px 14px; border-radius: 6px;
+    border: 1.5px solid var(--border);
+    background: var(--surface2);
+    color: var(--text2);
+    font-size: 13px; cursor: pointer;
+    transition: all .2s;
+    font-family: inherit;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  #tocToggle { font-size: 13px; }
+
+  /* ── TOC SIDEBAR ─────────────────── */
+  #toc {
+    position: fixed; top: var(--nav-h); left: 0; bottom: 0;
+    width: 260px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 16px 0;
+    z-index: 900;
+    transform: translateX(-100%);
+    transition: transform .3s, background .3s;
+  }
+  #toc.open { transform: translateX(0); }
+  .toc-title {
+    padding: 0 16px 10px;
+    font-size: 12px; font-weight: 700;
+    color: var(--text3); letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .toc-group { margin-bottom: 8px; }
+  .toc-group-label {
+    padding: 4px 16px;
+    font-size: 11px; font-weight: 700;
+    color: var(--accent2); letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+  .toc-item {
+    display: block; padding: 5px 16px 5px 24px;
+    color: var(--text2); text-decoration: none;
+    font-size: 13px;
+    border-left: 3px solid transparent;
+    transition: all .15s;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .toc-item:hover { color: var(--accent); border-left-color: var(--accent); background: var(--bg2); }
+
+  /* ── MAIN ────────────────────────── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: calc(var(--nav-h) + 32px) 20px 80px;
+    transition: padding .3s;
+  }
+
+  /* ── PAGE HEADER ─────────────────── */
+  .page-header {
+    text-align: center;
+    padding: 40px 20px 32px;
+    background: var(--surface);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    margin-bottom: 32px;
+    box-shadow: var(--card-shadow);
+  }
+  .page-header h1 {
+    font-size: 26px; font-weight: 900;
+    color: var(--text); margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .page-header h1 span { color: var(--accent); }
+  .page-header p { color: var(--text3); font-size: 14px; }
+  .badge-row {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    justify-content: center; margin-top: 16px;
+  }
+  .badge {
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 12px; font-weight: 600;
+    background: var(--tag-bg); border: 1px solid var(--tag-border);
+    color: var(--accent);
+  }
+
+  /* ── BATCH SECTION ───────────────── */
+  .batch-section { margin-bottom: 12px; }
+  .batch-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 20px;
+    background: var(--surface);
+    border-radius: 10px 10px 0 0;
+    border: 1px solid var(--border);
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 0;
+  }
+  .batch-num {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px; flex-shrink: 0;
+  }
+  .batch-title { font-size: 15px; font-weight: 700; color: var(--text); }
+  .batch-sub { font-size: 13px; color: var(--text3); margin-left: auto; }
+
+  /* ── CARD ────────────────────────── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    transition: box-shadow .2s, background .3s;
+  }
+  .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+  .card-header {
+    padding: 16px 20px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .card-num {
+    min-width: 40px; height: 40px; border-radius: 8px;
+    background: var(--accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 15px; flex-shrink: 0;
+  }
+  .card-meta { flex: 1; }
+  .card-title { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .tag {
+    padding: 2px 9px; border-radius: 12px;
+    font-size: 11px; font-weight: 600;
+    border: 1px solid; background: transparent;
+  }
+  .tag-chapter { color: var(--accent3); border-color: var(--accent3); background: rgba(43,108,176,.07); }
+  .tag-year { color: var(--accent); border-color: var(--tag-border); background: var(--tag-bg); }
+  .tag-page { color: var(--text3); border-color: var(--border); }
+  .chevron {
+    color: var(--text3); font-size: 18px;
+    transition: transform .25s; flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .card-header.open .chevron { transform: rotate(90deg); }
+
+  .card-body { display: none; padding: 0; }
+  .card-body.open { display: block; }
+
+  /* ── SECTIONS INSIDE CARD ─────────── */
+  .section {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px; font-weight: 700;
+    color: var(--accent); letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .section-label::before {
+    content: ''; display: inline-block;
+    width: 3px; height: 14px; border-radius: 2px;
+    background: var(--accent);
+  }
+  .section p, .section li { color: var(--text2); font-size: 14.5px; }
+  .section ul { padding-left: 20px; }
+  .section ul li { margin-bottom: 4px; }
+
+  /* definition box */
+  .def-box {
+    background: var(--highlight);
+    border: 1px solid var(--highlight-border);
+    border-left: 4px solid var(--accent2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px; color: var(--text);
+    line-height: 1.75;
+  }
+
+  /* framework table */
+  .fw-table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 4px; }
+  .fw-table th {
+    background: var(--bg2); color: var(--text);
+    padding: 7px 10px; text-align: left;
+    border: 1px solid var(--border); font-weight: 700;
+  }
+  .fw-table td {
+    padding: 6px 10px; border: 1px solid var(--border);
+    color: var(--text2); vertical-align: top;
+  }
+  .fw-table tr:nth-child(even) td { background: var(--surface2); }
+
+  /* steps */
+  .steps { counter-reset: step; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+  .step-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    padding: 10px 14px;
+    background: var(--surface2);
+    border-radius: 8px; border: 1px solid var(--border);
+  }
+  .step-item::before {
+    counter-increment: step;
+    content: counter(step);
+    min-width: 26px; height: 26px; border-radius: 50%;
+    background: var(--accent3); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 13px; flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-item p { font-size: 14px; color: var(--text2); }
+
+  /* keywords */
+  .kw-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .kw {
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 13px; font-weight: 600;
+    background: var(--bg2); border: 1px solid var(--border);
+    color: var(--text2);
+  }
+  .kw.hot { background: var(--tag-bg); border-color: var(--tag-border); color: var(--accent); }
+
+  /* case box */
+  .case-box {
+    background: var(--surface2);
+    border-left: 4px solid var(--accent4);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 14px; color: var(--text2);
+  }
+  .case-box strong { color: var(--accent4); }
+
+  /* summary */
+  .summary-box {
+    background: linear-gradient(135deg, var(--surface2) 0%, var(--bg2) 100%);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14.5px; color: var(--text);
+    font-style: italic;
+  }
+
+  /* risk box */
+  .risk-box {
+    background: var(--surface2);
+    border-left: 4px solid var(--accent2);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 14px; color: var(--text2);
+  }
+
+  /* ── HIGHLIGHT ───────────────────── */
+  .hl { background: #fff3b0; color: #5a4000; border-radius: 3px; padding: 0 2px; }
+  .dark .hl { background: #4a3800; color: #ffd84a; }
+  mark.search-hl { background: #ff0; color: #000; border-radius: 2px; padding: 0 1px; }
+  .dark mark.search-hl { background: #c8a000; color: #000; }
+  .hidden { display: none !important; }
+
+  /* ── BACK TO TOP ─────────────────── */
+  #backTop {
+    position: fixed; bottom: 32px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--accent); color: #fff;
+    border: none; cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: none; align-items: center; justify-content: center;
+    transition: transform .2s, opacity .2s;
+    z-index: 800;
+  }
+  #backTop:hover { transform: translateY(-3px); }
+  #backTop.show { display: flex; }
+
+  /* ── FOOTER ──────────────────────── */
+  footer {
+    text-align: center; padding: 32px 20px;
+    color: var(--text3); font-size: 13px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── RESPONSIVE ──────────────────── */
+  @media (max-width: 640px) {
+    .logo { font-size: 14px; }
+    .batch-sub { display: none; }
+    main { padding: calc(var(--nav-h) + 16px) 12px 60px; }
+  }
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">📚 战略管理30考点</div>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    
+  </div>
+  <span id="searchCount"></span>
+  <div class="nav-btns">
+    <button class="btn" id="tocToggle">☰ 目录</button>
+    <button class="btn" id="darkToggle">🌙 夜间</button>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav id="toc">
+  <div class="toc-title">📋 考点目录</div>
+  <div class="toc-group">
+    <div class="toc-group-label">第一批 · 01–10</div>
+    <a class="toc-item" href="#kp01">01 · 差异化战略</a>
+    <a class="toc-item" href="#kp02">02 · 成本领先战略</a>
+    <a class="toc-item" href="#kp03">03 · 平衡计分卡（BSC）</a>
+    <a class="toc-item" href="#kp04">04 · 企业文化</a>
+    <a class="toc-item" href="#kp05">05 · 波特五力模型</a>
+    <a class="toc-item" href="#kp06">06 · PESTEL分析框架</a>
+    <a class="toc-item" href="#kp07">07 · 结构追随战略（钱德勒）</a>
+    <a class="toc-item" href="#kp08">08 · SWOT分析</a>
+    <a class="toc-item" href="#kp09">09 · 多元化战略</a>
+    <a class="toc-item" href="#kp10">10 · 资源基础观（RBV）</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-label">第二批 · 11–20</div>
+    <a class="toc-item" href="#kp11">11 · 蓝海战略</a>
+    <a class="toc-item" href="#kp12">12 · 价值链分析</a>
+    <a class="toc-item" href="#kp13">13 · 核心专长</a>
+    <a class="toc-item" href="#kp14">14 · 动态能力理论</a>
+    <a class="toc-item" href="#kp15">15 · BCG矩阵</a>
+    <a class="toc-item" href="#kp16">16 · 纵向一体化战略</a>
+    <a class="toc-item" href="#kp17">17 · 国际化战略类型</a>
+    <a class="toc-item" href="#kp18">18 · 战略联盟</a>
+    <a class="toc-item" href="#kp19">19 · 战略控制（四种类型）</a>
+    <a class="toc-item" href="#kp20">20 · 战略管理过程</a>
+  </div>
+  <div class="toc-group">
+    <div class="toc-group-label">第三批 · 21–30</div>
+    <a class="toc-item" href="#kp21">21 · 战略钟模型</a>
+    <a class="toc-item" href="#kp22">22 · 商业模式画布</a>
+    <a class="toc-item" href="#kp23">23 · 集中化战略（聚焦）</a>
+    <a class="toc-item" href="#kp24">24 · 战略方向四种类型</a>
+    <a class="toc-item" href="#kp25">25 · 战略承诺</a>
+    <a class="toc-item" href="#kp26">26 · 多元化程度评估与控制</a>
+    <a class="toc-item" href="#kp27">27 · 国际化动因与风险</a>
+    <a class="toc-item" href="#kp28">28 · 企业并购与PMI整合</a>
+    <a class="toc-item" href="#kp29">29 · 五种组织结构类型</a>
+    <a class="toc-item" href="#kp30">30 · 战略领导力六大职责</a>
+  </div>
+</nav>
+
+<main id="mainContent">
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <h1>企业战略管理<br><span>核心必备30个考点答题模板</span></h1>
+  <p>《企业战略管理（第二版·蓝海林）》| 中南大学企业管理学硕复试</p>
+  <div class="badge-row">
+    <span class="badge">📅 生成日期：2026-03-09</span>
+    <span class="badge">📖 共30个考点</span>
+    <span class="badge">✅ 含历年真题定位</span>
+    <span class="badge">🎯 含标准答题模板</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ BATCH 1 ══ -->
+<div class="batch-section">
+  <div class="batch-header">
+    <div class="batch-num">1</div>
+    <div class="batch-title">第一批考点 · 01–10</div>
+    <div class="batch-sub">差异化 / 成本领先 / BSC / 企业文化 / 五力 / PESTEL / 钱德勒 / SWOT / 多元化 / RBV</div>
+  </div>
+</div>
+
+<!-- KP01 -->
+<div class="card" id="kp01">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">01</div>
+    <div class="card-meta">
+      <div class="card-title">差异化战略（高差异定位战略）</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第6章 业务层战略</span>
+        <span class="tag tag-page">P148–175</span>
+        <span class="tag tag-year">【2016笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">差异化战略是指在广泛或狭窄市场上，通过建立和发挥<span class="hl">差异优势</span>，向对价格不敏感但对产品性能与质量有特殊要求的顾客提供差异化产品/服务，以获得<span class="hl">高于行业平均收益</span>的战略。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架</div>
+      <p style="margin-bottom:10px">实现差异优势的<strong>五大关键领域：</strong></p>
+      <table class="fw-table">
+        <tr><th>领域</th><th>核心内容</th></tr>
+        <tr><td>市场与消费者研究</td><td>深度洞察顾客特殊需求</td></tr>
+        <tr><td>创造新的营销概念</td><td>品牌定位、价值传递</td></tr>
+        <tr><td>全面质量管理</td><td>确保产品/服务的卓越性</td></tr>
+        <tr><td>产品/服务研究开发</td><td>持续创新，维持差异壁垒</td></tr>
+        <tr><td>发挥人才管理体制</td><td>吸引并留住创造差异的核心人才</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p>给出<strong>概念定义</strong>：广泛/狭窄市场 + 差异优势 + 价格不敏感顾客 + 高于平均收益</p></div>
+        <div class="step-item"><p>阐述<strong>核心内容</strong>：五大关键领域 + 价值活动体系 + 战略取舍</p></div>
+        <div class="step-item"><p>分析<strong>优势</strong>：进入壁垒高 + 顾客忠诚 + 五力恶化时仍可盈利</p></div>
+        <div class="step-item"><p>说明<strong>风险</strong>：定价过高 / 模仿 / 扩张弱化差异 / 难以覆盖广泛市场</p></div>
+        <div class="step-item"><p>结合<strong>案例</strong>：苹果（品牌生态溢价）或世纪金榜（七审七校）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">差异优势</span><span class="kw hot">价格不敏感</span><span class="kw hot">高于平均收益</span>
+        <span class="kw">进入壁垒</span><span class="kw">顾客忠诚</span><span class="kw">五大关键领域</span>
+        <span class="kw">战略取舍</span><span class="kw">价值活动</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>苹果公司：</strong>极致产品设计 + 生态系统 + 品牌溢价，目标顾客对价格不敏感，持续获得超额利润。<br><strong>世纪金榜：</strong>"七审七校"审校制度与杂志化编排，实施教辅行业差异化战略。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">差异化战略的本质在于"<span class="hl">取舍</span>与<span class="hl">专注</span>"——向特定顾客提供竞争对手无法复制的独特价值，核心是在价值链关键环节建立难以模仿的差异优势。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP02 -->
+<div class="card" id="kp02">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">02</div>
+    <div class="card-meta">
+      <div class="card-title">成本领先战略（低成本定位战略）</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第6章 业务层战略</span>
+        <span class="tag tag-page">P148–168</span>
+        <span class="tag tag-year">【2019笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">低成本定位战略是指在广泛或狭窄市场上，通过建立和发挥各种<span class="hl">成本优势</span>，以标准化产品服务<span class="hl">价格敏感型</span>大众顾客，力求占据低成本竞争位置，并获得高于行业平均收益的战略。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架</div>
+      <p style="margin-bottom:8px">建立成本优势的<strong>四大领域：</strong></p>
+      <table class="fw-table">
+        <tr><th>领域</th><th>核心措施</th></tr>
+        <tr><td>①生产与物流</td><td>高效率大规模低成本的生产与物流设施</td></tr>
+        <tr><td>②营销/研发/服务</td><td>将相关成本降至最低</td></tr>
+        <tr><td>③采购成本</td><td>规模采购 + 纵向整合</td></tr>
+        <tr><td>④运营与行政</td><td>职能制+集权化管理，严格控制开支</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：价格敏感型市场 + 成本优势 + 高于平均收益</p></div>
+        <div class="step-item"><p><strong>四大领域</strong>：生产物流 / 营销研发 / 采购 / 运营行政</p></div>
+        <div class="step-item"><p><strong>优势</strong>：最强进入壁垒 + 讨价还价 + 抗压 + 对抗替代品</p></div>
+        <div class="step-item"><p><strong>风险</strong>：忽视顾客需求 / 技术进步 / 易被模仿</p></div>
+        <div class="step-item"><p><strong>案例</strong>：沃尔玛或万和集团</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">成本优势</span><span class="kw hot">价格敏感型</span><span class="kw hot">规模效应</span>
+        <span class="kw">效率优先</span><span class="kw">标准化产品</span><span class="kw">四大领域</span>
+        <span class="kw">进入壁垒</span><span class="kw">全价值链成本</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>沃尔玛：</strong>大规模采购、高效物流与严格成本控制，全球零售业成本领先典范。<br><strong>万和集团：</strong>在燃气热水器行业瞄准万家乐，采取低成本定位战略。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">成本领先战略的核心逻辑是"<span class="hl">规模效应 + 效率优先</span>"，须在保证基本产品质量的前提下，系统压缩全价值链成本，同时保持顾客导向与创新能力以防御竞争风险。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP03 -->
+<div class="card" id="kp03">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">03</div>
+    <div class="card-meta">
+      <div class="card-title">平衡计分卡（BSC）</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第11章 战略实施的管理与控制</span>
+        <span class="tag tag-page">P348–354</span>
+        <span class="tag tag-year">【2016笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">平衡计分卡（BSC）是由<span class="hl">卡普兰和诺顿</span>提出的战略绩效管理工具，通过<span class="hl">财务、客户、内部流程、学习与成长</span>四个维度全面评估企业绩效，将战略目标转化为可操作的绩效衡量系统，克服了单纯依赖财务指标的短视问题。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（四维度）</div>
+      <table class="fw-table">
+        <tr><th>维度</th><th>视角</th><th>核心问题</th></tr>
+        <tr><td><strong>财务</strong></td><td>股东视角</td><td>如何看待股东？</td></tr>
+        <tr><td><strong>客户</strong></td><td>市场视角</td><td>如何被客户认知？</td></tr>
+        <tr><td><strong>内部流程</strong></td><td>运营视角</td><td>哪些流程必须做好？</td></tr>
+        <tr><td><strong>学习与成长</strong></td><td>发展视角</td><td>如何持续改进？</td></tr>
+      </table>
+      <p style="margin-top:10px; font-size:14px; color:var(--accent3);">因果链逻辑：<strong>学习与成长 → 内部流程改善 → 客户满意 → 财务成功</strong></p>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：卡普兰诺顿 + 四维度 + 战略目标转化</p></div>
+        <div class="step-item"><p><strong>四维度</strong>：财务/客户/内部流程/学习与成长，说明因果链</p></div>
+        <div class="step-item"><p><strong>优势</strong>：四对平衡（财务vs非财务、短期vs长期）+ 战略落地</p></div>
+        <div class="step-item"><p><strong>局限</strong>：设计复杂、因果关系难量化、形式主义风险</p></div>
+        <div class="step-item"><p><strong>案例</strong>：美孚石油公司（Mobil）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">四维度</span><span class="kw hot">因果链</span><span class="kw hot">战略落地</span>
+        <span class="kw">财务视角</span><span class="kw">客户视角</span><span class="kw">内部流程</span>
+        <span class="kw">学习与成长</span><span class="kw">四对平衡</span><span class="kw">绩效衡量</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>美孚石油（Mobil）：</strong>通过BSC将"成为最盈利的石油公司"战略分解为四维度具体指标，实现战略成功落地的经典案例。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">BSC的核心价值在于"<span class="hl">把战略翻译成行动</span>"——用四维度绩效指标体系构建战略实施的闭环管理，是战略控制与战略实施的重要工具。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP04 -->
+<div class="card" id="kp04">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">04</div>
+    <div class="card-meta">
+      <div class="card-title">企业文化</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第11章 战略实施的管理与控制</span>
+        <span class="tag tag-page">P328–342</span>
+        <span class="tag tag-year">【2018笔试·论述】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">企业文化是指企业全体员工在长期的生产经营活动中形成的共同<span class="hl">价值观念、行为准则、思维方式和管理理念</span>的总和，是企业独特的精神财富。（沙因：人工制品→价值观→基本假设 三层次）</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（五大功能）</div>
+      <table class="fw-table">
+        <tr><th>功能</th><th>作用说明</th></tr>
+        <tr><td><strong>导向功能</strong></td><td>引导员工行为方向</td></tr>
+        <tr><td><strong>凝聚功能</strong></td><td>增强组织向心力</td></tr>
+        <tr><td><strong>激励功能</strong></td><td>激发员工内在动力</td></tr>
+        <tr><td><strong>约束功能</strong></td><td>形成无形行为规范</td></tr>
+        <tr><td><strong>辐射功能</strong></td><td>对外传播品牌与形象</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：沙因三层次 + 共同价值观、行为准则</p></div>
+        <div class="step-item"><p><strong>五大功能</strong>：导向/凝聚/激励/约束/辐射，逐一说明</p></div>
+        <div class="step-item"><p><strong>优势</strong>：强文化支持战略实施，降低协调成本</p></div>
+        <div class="step-item"><p><strong>风险</strong>：文化惰性 / 变革代价高 / 并购文化冲突</p></div>
+        <div class="step-item"><p><strong>案例</strong>：海底捞极致服务文化 / 华为狼性文化</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">五大功能</span><span class="kw hot">沙因三层次</span><span class="kw hot">文化与战略匹配</span>
+        <span class="kw">价值观</span><span class="kw">行为准则</span><span class="kw">文化惰性</span>
+        <span class="kw">文化吃掉战略</span><span class="kw">软基础</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>海底捞：</strong>"极致服务"文化支撑差异化战略，员工主人翁精神体现激励功能。<br><strong>华为：</strong>"狼性文化"有效支撑国际化扩张战略的实施。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">企业文化是战略实施的"<span class="hl">软基础</span>"——文化与战略一致时产生强大执行力；文化与战略不匹配时，<span class="hl">文化往往比战略更强大</span>，"文化吃掉战略"。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP05 -->
+<div class="card" id="kp05">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">05</div>
+    <div class="card-meta">
+      <div class="card-title">波特五力模型</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第3章 外部环境分析（行业环境）</span>
+        <span class="tag tag-page">P60–75</span>
+        <span class="tag tag-year">【2016笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">波特五力模型是由迈克尔·波特提出的<span class="hl">行业竞争结构</span>分析框架，通过五种竞争力量判断<span class="hl">行业吸引力</span>与企业竞争地位，是外部行业环境分析的核心工具。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（五力）</div>
+      <table class="fw-table">
+        <tr><th>力量</th><th>方向</th><th>核心要素</th></tr>
+        <tr><td>①现有竞争者</td><td>横向</td><td>行业集中度、产品同质化程度、退出壁垒</td></tr>
+        <tr><td>②潜在进入者</td><td>上方威胁</td><td>进入壁垒高低（规模/品牌/资本）</td></tr>
+        <tr><td>③替代品</td><td>跨行业</td><td>替代品性价比、转换成本</td></tr>
+        <tr><td>④买方议价能力</td><td>下游</td><td>买方集中度、差异化程度、后向整合能力</td></tr>
+        <tr><td>⑤供应商议价能力</td><td>上游</td><td>供应商集中度、前向整合能力</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：波特提出 + 五种力量 + 判断行业吸引力</p></div>
+        <div class="step-item"><p><strong>逐一说明五力</strong>：名称 + 方向 + 影响因素</p></div>
+        <div class="step-item"><p><strong>优势</strong>：系统性识别竞争压力 + 战略定位依据</p></div>
+        <div class="step-item"><p><strong>局限</strong>：静态分析 + 数字经济时代局限</p></div>
+        <div class="step-item"><p><strong>案例</strong>：新能源汽车行业五力分析</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">五种竞争力量</span><span class="kw hot">行业吸引力</span><span class="kw hot">进入壁垒</span>
+        <span class="kw">议价能力</span><span class="kw">替代品威胁</span><span class="kw">行业平均利润</span>
+        <span class="kw">战略定位</span><span class="kw">竞争格局</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>新能源汽车：</strong>现有竞争激烈（比亚迪/特斯拉）；新进入者众多（小米/华为）；买方议价强（价格战）；供应商（锂矿/芯片）议价能力强——成为核心制约。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">五力模型帮助企业回答"<span class="hl">行业值不值得进入、如何在行业中定位</span>"——分析时要识别当前最强的一两股力量，有针对性地构建竞争防御。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP06 -->
+<div class="card" id="kp06">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">06</div>
+    <div class="card-meta">
+      <div class="card-title">PESTEL分析框架</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第3章 外部环境分析（宏观环境）</span>
+        <span class="tag tag-page">P50–62</span>
+        <span class="tag tag-year">【2018笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">PESTEL分析是对企业<span class="hl">宏观外部环境六个维度</span>进行系统扫描的框架，用于识别企业面临的宏观机会与威胁，是战略分析的第一步，为SWOT中的"外部机会/威胁"提供依据。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（六维度）</div>
+      <table class="fw-table">
+        <tr><th>维度</th><th>英文</th><th>核心要素</th></tr>
+        <tr><td><strong>政治</strong></td><td>Political</td><td>政策、法规、政府稳定性</td></tr>
+        <tr><td><strong>经济</strong></td><td>Economic</td><td>GDP增速、利率、汇率、通胀</td></tr>
+        <tr><td><strong>社会</strong></td><td>Social</td><td>人口结构、文化观念、生活方式</td></tr>
+        <tr><td><strong>技术</strong></td><td>Technological</td><td>技术创新、R&D投入、数字化</td></tr>
+        <tr><td><strong>环境</strong></td><td>Environmental</td><td>气候、环保法规、碳排放</td></tr>
+        <tr><td><strong>法律</strong></td><td>Legal</td><td>劳动法、知识产权、行业规制</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：宏观环境六维度 + 识别机会与威胁 + 战略分析第一步</p></div>
+        <div class="step-item"><p><strong>六维度</strong>：逐一说明P/E/S/T/E/L的含义与核心要素</p></div>
+        <div class="step-item"><p><strong>优势</strong>：系统性扫描 + 防止忽略重要变化</p></div>
+        <div class="step-item"><p><strong>局限</strong>：维度交叉 + 宏观难转化 + 过时风险</p></div>
+        <div class="step-item"><p><strong>案例</strong>：比亚迪新能源 / PESTEL多维利好叠加</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">宏观环境</span><span class="kw hot">六维度</span><span class="kw hot">机会与威胁</span>
+        <span class="kw">环境扫描</span><span class="kw">战略分析起点</span><span class="kw">与五力配合</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>比亚迪：</strong>P=政府补贴；E=油价上涨；T=电池技术突破；En=碳中和政策——多维度叠加形成历史性战略机遇。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">PESTEL是战略分析的"<span class="hl">环境扫描器</span>"，通常与<span class="hl">五力模型（行业层面）</span>和<span class="hl">SWOT（综合层面）</span>配合使用，形成完整的外部环境分析体系。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP07 -->
+<div class="card" id="kp07">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">07</div>
+    <div class="card-meta">
+      <div class="card-title">钱德勒命题：结构追随战略</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第11章 战略实施的管理与控制</span>
+        <span class="tag tag-page">P302–310</span>
+        <span class="tag tag-year">【2019笔试·简答】【复试高频】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">钱德勒通过对杜邦、通用汽车等四家大企业的历史研究，提出著名命题："<span class="hl">结构追随战略（Structure Follows Strategy）</span>"——企业组织结构必须随战略变化而调整，否则组织结构将成为战略实施的障碍。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（四阶段演变）</div>
+      <table class="fw-table">
+        <tr><th>战略阶段</th><th>对应结构</th></tr>
+        <tr><td>单一产品/市场</td><td>简单结构</td></tr>
+        <tr><td>单一产品扩大市场</td><td>职能制（U型）</td></tr>
+        <tr><td>多产品多市场</td><td>事业部制（M型）</td></tr>
+        <tr><td>全球化多元化</td><td>矩阵制/网络组织</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：钱德勒 + 四企业研究 + 结构追随战略</p></div>
+        <div class="step-item"><p><strong>四阶段</strong>：单一→简单结构→多元→事业部制等演变</p></div>
+        <div class="step-item"><p><strong>意义</strong>：战略实施的组织设计依据</p></div>
+        <div class="step-item"><p><strong>反向补充</strong>：资源基础观——组织能力也可引导战略</p></div>
+        <div class="step-item"><p><strong>案例</strong>：通用汽车斯隆改革（职能制→事业部制）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">结构追随战略</span><span class="kw hot">四阶段演变</span><span class="kw hot">事业部制</span>
+        <span class="kw">职能制</span><span class="kw">战略实施骨骼</span><span class="kw">路径依赖</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>通用汽车（斯隆）：</strong>从单一汽车扩展为多品牌后，将公司从职能制改造为事业部制（雪佛兰、别克、凯迪拉克各自独立核算），是"结构追随战略"的经典实证。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">钱德勒命题的核心启示：战略转型不能只"<span class="hl">换战略、不换结构</span>"——组织结构是战略实施的"骨骼"，战略变了，骨骼不变，新战略就无法有效落地。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP08 -->
+<div class="card" id="kp08">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">08</div>
+    <div class="card-meta">
+      <div class="card-title">SWOT分析</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第5章 战略问题的确认与基本战略选择</span>
+        <span class="tag tag-page">P135–148</span>
+        <span class="tag tag-year">【2017笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">SWOT分析是将企业内部的<span class="hl">优势（S）、劣势（W）</span>与外部环境的<span class="hl">机会（O）、威胁（T）</span>进行综合对比分析，以识别战略问题并形成战略选择方案的框架工具。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（四种战略组合）</div>
+      <table class="fw-table">
+        <tr><th>组合</th><th>策略</th><th>方向</th><th>逻辑</th></tr>
+        <tr><td><strong>SO</strong></td><td>增长型战略</td><td>扩张</td><td>利用优势抓住机会</td></tr>
+        <tr><td><strong>WO</strong></td><td>扭转型战略</td><td>补短</td><td>克服劣势利用机会</td></tr>
+        <tr><td><strong>ST</strong></td><td>多元化战略</td><td>防御</td><td>用优势应对威胁</td></tr>
+        <tr><td><strong>WT</strong></td><td>防御型战略</td><td>收缩</td><td>减少劣势回避威胁</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：内部S/W + 外部O/T + 综合对比分析</p></div>
+        <div class="step-item"><p><strong>四组合</strong>：SO/WO/ST/WT + 各自战略方向</p></div>
+        <div class="step-item"><p><strong>优势</strong>：连接内外部分析的桥梁 + 操作简便</p></div>
+        <div class="step-item"><p><strong>局限</strong>：主观性强 + 静态 + 只提供方向不能确定最优</p></div>
+        <div class="step-item"><p><strong>案例</strong>：华为2019年应对实体清单制裁（ST战略）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">SO/WO/ST/WT</span><span class="kw hot">战略问题识别</span><span class="kw hot">内外部综合</span>
+        <span class="kw">优势劣势</span><span class="kw">机会威胁</span><span class="kw">战略选择桥梁</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>华为2019：</strong>S=技术积累与海思芯片；W=供应链依赖美国；O=国内政策支持与5G机遇；T=技术封锁威胁。→ST战略：用技术优势反制威胁，加速国产替代。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">SWOT的价值不在于列清单，而在于<span class="hl">识别战略问题</span>——"最关键的匹配与错位在哪里"，帮助管理者聚焦于最重要的战略选择。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP09 -->
+<div class="card" id="kp09">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">09</div>
+    <div class="card-meta">
+      <div class="card-title">多元化战略</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第7章 公司层战略</span>
+        <span class="tag tag-page">P175–210</span>
+        <span class="tag tag-year">【2016笔试·案例】【2021笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">多元化战略是指企业向<span class="hl">原有业务以外的新行业或新市场</span>扩张，涉及多个不同业务领域的公司层战略。核心动机是利用<span class="hl">范围经济、分散风险或追求协同效应</span>。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（四种类型）</div>
+      <table class="fw-table">
+        <tr><th>类型</th><th>定义</th><th>特点</th></tr>
+        <tr><td><strong>相关多元化</strong></td><td>新业务与原有业务存在技术/市场/资源联系</td><td>协同效应强，风险相对低</td></tr>
+        <tr><td><strong>非相关多元化</strong></td><td>新业务与原有业务无明显联系</td><td>分散风险，管理难度高</td></tr>
+        <tr><td><strong>约束型</strong></td><td>所有业务共享核心资源/能力</td><td>最典型的相关多元化</td></tr>
+        <tr><td><strong>关联型</strong></td><td>业务间两两关联，但非共同核心</td><td>介于相关与非相关之间</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：新行业/新市场 + 范围经济/分散风险/协同</p></div>
+        <div class="step-item"><p><strong>四种类型</strong>：相关/非相关/约束型/关联型，逐一区分</p></div>
+        <div class="step-item"><p><strong>优势</strong>：范围经济 + 分散风险 + 扩展市场边界</p></div>
+        <div class="step-item"><p><strong>风险</strong>：多元化折价 + 资源分散 + 协同难以实现</p></div>
+        <div class="step-item"><p><strong>案例</strong>：GE过度多元化 vs 腾讯相关多元化</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">相关/非相关多元化</span><span class="kw hot">范围经济</span><span class="kw hot">协同效应</span>
+        <span class="kw">多元化折价</span><span class="kw">核心专长</span><span class="kw">约束型/关联型</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>GE：</strong>非相关多元化典范，过度多元化导致管理失控，最终大幅剥离业务回归专业化。<br><strong>腾讯：</strong>以社交为核心向游戏、金融、广告等相关领域扩张——成功的相关多元化。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">多元化战略关键问题是"<span class="hl">新业务与原有能力的关联程度</span>"——相关多元化要确保协同效应真实存在；非相关多元化须具备强大的集团管理能力，否则"<span class="hl">多元化是战略毒药</span>"。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP10 -->
+<div class="card" id="kp10">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">10</div>
+    <div class="card-meta">
+      <div class="card-title">资源基础观（RBV）</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第4章 内部环境分析</span>
+        <span class="tag tag-page">P99–112</span>
+        <span class="tag tag-year">【2022笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">资源基础观（RBV）由彭罗斯奠基、巴尼系统化，认为企业持续竞争优势来源在于其拥有的<span class="hl">有价值、稀缺、难以模仿、不可替代的资源与能力（VRIN标准）</span>，而非外部市场定位。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（资源分类 + VRIN）</div>
+      <table class="fw-table">
+        <tr><th>VRIN</th><th>含义</th><th>说明</th></tr>
+        <tr><td><strong>V - Valuable</strong></td><td>有价值</td><td>顾客认可，能创造价值</td></tr>
+        <tr><td><strong>R - Rare</strong></td><td>稀缺</td><td>竞争对手难以拥有</td></tr>
+        <tr><td><strong>I - Imperfectly imitable</strong></td><td>难以模仿</td><td>历史积累/综合性/文化嵌入</td></tr>
+        <tr><td><strong>N - Non-substitutable</strong></td><td>不可替代</td><td>无其他能力可替代</td></tr>
+      </table>
+      <p style="margin-top:8px; font-size:13.5px; color:var(--text3);">资源分类：人力资源 / 有形资源（设备/资金）/ 无形资源（品牌/技术/文化）</p>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：彭罗斯/巴尼 + 内部资源能力 + VRIN四标准</p></div>
+        <div class="step-item"><p><strong>VRIN</strong>：逐一解释四项标准含义</p></div>
+        <div class="step-item"><p><strong>优势</strong>：揭示绩效差异内在原因 + 无形资源战略价值</p></div>
+        <div class="step-item"><p><strong>局限</strong>：静态分析 + 难精确评估 + 忽视外部环境</p></div>
+        <div class="step-item"><p><strong>案例</strong>：茅台（地理/品牌/工艺满足VRIN全部标准）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">VRIN四标准</span><span class="kw hot">持续竞争优势</span><span class="kw hot">内部资源能力</span>
+        <span class="kw">彭罗斯/巴尼</span><span class="kw">无形资源</span><span class="kw">动态能力补充</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>茅台：</strong>稀缺的地理环境（赤水河水质/气候）+ 历史品牌（难以模仿）+ 特殊酿造工艺（不可替代）——完全符合VRIN四项标准，构成持续竞争优势。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">RBV的核心逻辑是"<span class="hl">企业是独特资源的集合体</span>"——战略制定应从内部出发，识别、建立、保持VRIN资源，并将其与外部机会匹配，才能形成可持续的竞争优势。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ BATCH 2 ══ -->
+<div class="batch-section" style="margin-top:32px;">
+  <div class="batch-header">
+    <div class="batch-num">2</div>
+    <div class="batch-title">第二批考点 · 11–20</div>
+    <div class="batch-sub">蓝海战略 / 价值链 / 核心专长 / 动态能力 / BCG / 纵向一体化 / 国际化类型 / 战略联盟 / 战略控制 / 战略管理过程</div>
+  </div>
+</div>
+
+<!-- KP11 -->
+<div class="card" id="kp11">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">11</div>
+    <div class="card-meta">
+      <div class="card-title">蓝海战略</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第6章 业务层战略</span>
+        <span class="tag tag-page">P168–178</span>
+        <span class="tag tag-year">【2017笔试·简答】【2022笔试·六项原则】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">蓝海战略由钱·金与莫博涅提出，是指企业超越竞争、开创<span class="hl">无竞争的全新市场空间</span>的战略。核心是<span class="hl">价值创新</span>——同时追求差异化与低成本，重构行业边界，使竞争变得无关紧要。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（"剔减增创"四动作）</div>
+      <table class="fw-table">
+        <tr><th>动作</th><th>方向</th><th>含义</th></tr>
+        <tr><td><strong>剔除</strong></td><td>↓↓</td><td>哪些行业理所当然的要素应被剔除？</td></tr>
+        <tr><td><strong>减少</strong></td><td>↓</td><td>哪些要素应大幅低于行业标准？</td></tr>
+        <tr><td><strong>增加</strong></td><td>↑</td><td>哪些要素应大幅高于行业标准？</td></tr>
+        <tr><td><strong>创造</strong></td><td>↑↑</td><td>哪些行业从未提供的要素应被创造？</td></tr>
+      </table>
+      <p style="margin-top:8px; font-size:13.5px; color:var(--accent3);">红海vs蓝海：争夺现有需求 vs 创造并开发新需求</p>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：钱·金/莫博涅 + 蓝海/红海区分 + 价值创新</p></div>
+        <div class="step-item"><p><strong>剔减增创</strong>：四动作框架，重构价值曲线</p></div>
+        <div class="step-item"><p><strong>优势</strong>：开创新市场 + 差异化与低成本双赢</p></div>
+        <div class="step-item"><p><strong>风险</strong>：蓝海快速变红海 + 执行难度高</p></div>
+        <div class="step-item"><p><strong>案例</strong>：太阳马戏团 / 老年人手机</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">价值创新</span><span class="kw hot">剔减增创</span><span class="kw hot">蓝海/红海</span>
+        <span class="kw">无竞争市场</span><span class="kw">重构价值曲线</span><span class="kw">差异化+低成本</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>太阳马戏团：</strong>降低动物表演成本、提升艺术表演价值，开创成人娱乐新市场。<br><strong>老年人手机：</strong>超大字体、简化功能、大声音量——为从未被服务的细分市场创造价值。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">蓝海战略精髓是"<span class="hl">价值创新</span>"——不是比竞争对手做得更好，而是从根本上改变顾客价值标准，使现有竞争变得无意义。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP12 -->
+<div class="card" id="kp12">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">12</div>
+    <div class="card-meta">
+      <div class="card-title">价值链分析</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第4章 内部环境分析</span>
+        <span class="tag tag-page">P108–110</span>
+        <span class="tag tag-year">【2020笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">价值链分析是迈克尔·波特开发的战略工具，通过将企业活动拆解为<span class="hl">基本活动（5项）和支持活动（4项）</span>，识别竞争优势的来源，判断<span class="hl">外包决策与战略重点</span>。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（5+4结构）</div>
+      <table class="fw-table">
+        <tr><th>类型</th><th>构成</th><th>助记</th></tr>
+        <tr><td><strong>基本活动（5项）</strong></td><td>输入物流→制造与运营→输出物流→营销和销售→服务</td><td>"输制输营服"</td></tr>
+        <tr><td><strong>支持活动（4项）</strong></td><td>企业基础设施、人力资源管理、技术开发、采购</td><td>"基人技采"</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：波特 + 基本活动/支持活动 + 识别竞争优势来源</p></div>
+        <div class="step-item"><p><strong>5+4结构</strong>：逐一列出，助记口诀"输制输营服+基人技采"</p></div>
+        <div class="step-item"><p><strong>用途</strong>：识别优势环节 + 外包决策 + 战略匹配</p></div>
+        <div class="step-item"><p><strong>局限</strong>：静态分析 + 数字化时代网络化价值体系</p></div>
+        <div class="step-item"><p><strong>案例</strong>：苹果价值链（技术开发=芯片自研是最高附加值）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">基本活动</span><span class="kw hot">支持活动</span><span class="kw hot">竞争优势来源</span>
+        <span class="kw">外包决策</span><span class="kw">输制输营服</span><span class="kw">基人技采</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>苹果：</strong>制造（富士康代工）→技术开发（A/M系列芯片自研=最高附加值环节）→营销（Think Different品牌）→服务（AppleCare）</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">价值链分析帮助企业回答"<span class="hl">价值在哪里创造、我在哪里有优势</span>"——与核心专长分析联动：价值链找关键环节→VRIN判断是否构成核心专长→形成战略选择依据。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP13 -->
+<div class="card" id="kp13">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">13</div>
+    <div class="card-meta">
+      <div class="card-title">核心专长</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第4章 内部环境分析</span>
+        <span class="tag tag-page">P110–116</span>
+        <span class="tag tag-year">【2016面试·核心竞争力】【2023笔试·关联动态能力】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">核心专长（core competence）是指能够作为企业独特且持续竞争优势来源的能力。由普拉哈拉德和哈梅尔提出，须满足<span class="hl">VRIN四项标准</span>，并需要结构、机制和文化的有机支撑。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（三种发挥路径）</div>
+      <table class="fw-table">
+        <tr><th>路径</th><th>方式</th><th>典型案例</th></tr>
+        <tr><td><strong>规模经济</strong></td><td>横向扩张，核心专长跨区域转移</td><td>麦当劳连锁扩张</td></tr>
+        <tr><td><strong>范围经济</strong></td><td>相关多元化，专长在相似领域共享</td><td>中集集团多元扩张</td></tr>
+        <tr><td><strong>降低交易成本</strong></td><td>纵向整合，专长跨行业转移</td><td>美的完整产业链</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：普拉哈拉德/哈梅尔 + VRIN标准 + 持续竞争优势</p></div>
+        <div class="step-item"><p><strong>VRIN</strong>：有价值/稀缺/难以模仿/不可替代</p></div>
+        <div class="step-item"><p><strong>三大特性</strong>：相对性 + 竞争优势组合性 + 结构机制文化支撑</p></div>
+        <div class="step-item"><p><strong>三种路径</strong>：规模经济/范围经济/降低交易成本</p></div>
+        <div class="step-item"><p><strong>案例</strong>：中集集团（范围经济路径）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">VRIN</span><span class="kw hot">三种发挥路径</span><span class="kw hot">核心刚性</span>
+        <span class="kw">结构机制文化</span><span class="kw">做专才能做长</span><span class="kw">难以模仿</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>中集集团：</strong>以标准集装箱业务形成生产/成本/质量/采购管理核心专长，判断可转移性边界后扩展至机场廊桥、特种车辆——典型范围经济路径。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">核心专长是企业战略选择的根本依据——先有清晰<span class="hl">战略定位</span>，才能针对性建立VRIN竞争优势；三种路径（规模/范围/交易成本）决定核心专长创造多大价值。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP14 -->
+<div class="card" id="kp14">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">14</div>
+    <div class="card-meta">
+      <div class="card-title">动态能力理论</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第4章 内部环境分析</span>
+        <span class="tag tag-page">P105–108</span>
+        <span class="tag tag-year">【2023笔试·简答】【2019面试·动态竞争】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">动态能力是企业四类能力中<span class="hl">最高层级</span>的能力，指企业灵活应对外部环境变化的<span class="hl">应变能力、创新能力和重组能力</span>的集合，在超竞争环境下决定基础能力能否有效发挥。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（四类能力层级）</div>
+      <table class="fw-table">
+        <tr><th>层级</th><th>能力类型</th><th>时代地位</th></tr>
+        <tr><td>第一层</td><td>管理能力（计划/组织/领导/控制）</td><td>基础（门槛）</td></tr>
+        <tr><td>第二层</td><td>经营能力（营销/财务/研发/供应链）</td><td>基础（门槛）</td></tr>
+        <tr><td>第三层</td><td>整合能力（内外部资源整合协调）</td><td>关键竞争力</td></tr>
+        <tr><td><strong>第四层</strong></td><td><strong>动态能力（应变/创新/重组）</strong></td><td><strong>最高竞争力</strong></td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：四层能力体系 + 最高层级 + 应变/创新/重组</p></div>
+        <div class="step-item"><p><strong>四层结构</strong>：管理/经营→整合→动态，说明地位演变</p></div>
+        <div class="step-item"><p><strong>价值</strong>：弥补RBV静态局限 + 动态环境持续更新优势</p></div>
+        <div class="step-item"><p><strong>局限</strong>：难以测量 + 路径依赖 + 过度调整风险</p></div>
+        <div class="step-item"><p><strong>案例</strong>：英特尔从存储器转型微处理器</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">四层能力体系</span><span class="kw hot">应变/创新/重组</span><span class="kw hot">超竞争环境</span>
+        <span class="kw">整合能力</span><span class="kw">弥补RBV静态局限</span><span class="kw">持续更新</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>英特尔：</strong>从存储芯片转型微处理器——凭借高度应变力（动态能力）和资源重组能力，在双重压力下成功转型，成为微处理器产业标准制定者。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">动态能力的核心价值：让企业不只是"<span class="hl">凭已有优势竞争</span>"，而是能够"<span class="hl">持续创造新的竞争优势</span>"——在超竞争环境下，能灵活重组资源的企业才能保持长期竞争优势。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP15 -->
+<div class="card" id="kp15">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">15</div>
+    <div class="card-meta">
+      <div class="card-title">BCG矩阵（波士顿矩阵）</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第7章 公司层战略</span>
+        <span class="tag tag-page">P196–205</span>
+        <span class="tag tag-year">【2019笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">BCG矩阵以<span class="hl">相对市场份额（横轴）</span>和<span class="hl">业务增长率（纵轴）</span>为坐标的2×2矩阵，用于分析多元化企业的业务组合，帮助总部制定<span class="hl">资源配置决策</span>。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（四象限）</div>
+      <table class="fw-table">
+        <tr><th>象限</th><th>名称</th><th>特征</th><th>战略选择</th></tr>
+        <tr><td>高增长+高份额</td><td><strong>明星</strong> ⭐</td><td>高投入高收益</td><td>继续投资，维持地位</td></tr>
+        <tr><td>高增长+低份额</td><td><strong>问题</strong> ❓</td><td>需现金，前途不明</td><td>选择性投资或放弃</td></tr>
+        <tr><td>低增长+高份额</td><td><strong>现金牛</strong> 🐄</td><td>产生大量现金</td><td>收割利润，支持其他业务</td></tr>
+        <tr><td>低增长+低份额</td><td><strong>瘦狗</strong> 🐕</td><td>收益低，前途暗淡</td><td>撤资或剥离</td></tr>
+      </table>
+      <p style="margin-top:8px; font-size:13.5px; color:var(--accent3);">理想路径：问题 → 明星 → 现金牛（现金牛产生资金支持问题与明星）</p>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：两轴坐标 + 2×2矩阵 + 业务组合分析</p></div>
+        <div class="step-item"><p><strong>四象限</strong>：明星/问题/现金牛/瘦狗，逐一说明特征与策略</p></div>
+        <div class="step-item"><p><strong>理想路径</strong>：问题→明星→现金牛</p></div>
+        <div class="step-item"><p><strong>局限</strong>：两维度过度简化 + 静态 + 瘦狗可能有协同价值</p></div>
+        <div class="step-item"><p><strong>案例</strong>：本田（摩托车现金牛→汽车明星）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">四象限</span><span class="kw hot">现金牛养明星</span><span class="kw hot">资源配置</span>
+        <span class="kw">市场份额/增长率</span><span class="kw">多元化业务组合</span><span class="kw">理想路径</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>本田：</strong>先以摩托车业务（现金牛）积累资金，等待负债率下降后再进入汽车业务（问题→明星），严格控制多元化速度与节奏的经典案例。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">BCG矩阵实践价值在于<span class="hl">资源配置优先级决策</span>——"现金牛养明星、明星护长期、问题需取舍、瘦狗早割肉"；须防止机械套用，需结合协同效应综合判断。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP16 -->
+<div class="card" id="kp16">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">16</div>
+    <div class="card-meta">
+      <div class="card-title">纵向一体化战略</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第7章 公司层战略</span>
+        <span class="tag tag-page">P183–204</span>
+        <span class="tag tag-year">【2018笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">纵向一体化是指企业通过新建或并购方式，将与主业相关的<span class="hl">上游（后向）或下游（前向）</span>价值创造活动纳入企业边界内的战略。本质是"<span class="hl">内部化市场交易</span>"。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（三优四劣）</div>
+      <table class="fw-table">
+        <tr><th>三大优点</th><th>四大局限性</th></tr>
+        <tr><td>①降低交易成本</td><td>①可能牺牲规模经济</td></tr>
+        <tr><td>②增强市场影响力</td><td>②增加代理成本与控制成本</td></tr>
+        <tr><td>③防止技术和信息外泄</td><td>③退出成本高，灵活性差</td></tr>
+        <tr><td></td><td>④可能降低技术创新能力</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：上游/下游整合 + 内部化市场交易 + 三优四劣</p></div>
+        <div class="step-item"><p><strong>三大优点</strong>：交易成本/市场影响力/信息保护</p></div>
+        <div class="step-item"><p><strong>四大局限</strong>：规模经济牺牲/代理成本/退出壁垒/创新降低</p></div>
+        <div class="step-item"><p><strong>趋势</strong>：虚拟整合取代实体纵向一体化</p></div>
+        <div class="step-item"><p><strong>案例</strong>：美的完整产业链 / 苹果虚拟整合</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">后向/前向整合</span><span class="kw hot">降低交易成本</span><span class="kw hot">内部化市场</span>
+        <span class="kw">三优四劣</span><span class="kw">虚拟整合</span><span class="kw">退出成本</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>美的：</strong>电控件→电机→压缩机→整机完整纵向产业链，掌握变频技术核心，降低交易成本。<br><strong>苹果/富士康：</strong>虚拟整合——苹果不拥有生产线，但通过供应链管理实现更高控制效率。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">纵向一体化本质是"<span class="hl">内部化市场交易</span>"——须权衡内部化带来的代理成本上升与灵活性下降；数字化时代，<span class="hl">虚拟整合往往优于实体纵向一体化</span>。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP17 -->
+<div class="card" id="kp17">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">17</div>
+    <div class="card-meta">
+      <div class="card-title">国际化战略类型</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第8章 国际化战略</span>
+        <span class="tag tag-page">P210–235</span>
+        <span class="tag tag-year">【2020笔试·简答】【2024笔试·新能源案例】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">国际化战略核心是"<span class="hl">全球整合</span>与<span class="hl">本地响应</span>"两种压力的权衡，形成三种基本类型：多国化战略、全球化战略、跨国化战略。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（三种类型）</div>
+      <table class="fw-table">
+        <tr><th>类型</th><th>整合压力</th><th>本地响应</th><th>特征</th><th>代表</th></tr>
+        <tr><td><strong>多国化</strong></td><td>低</td><td>高</td><td>各国市场自主运营</td><td>雀巢</td></tr>
+        <tr><td><strong>全球化</strong></td><td>高</td><td>低</td><td>全球统一标准</td><td>英特尔</td></tr>
+        <tr><td><strong>跨国化</strong></td><td>高</td><td>高</td><td>整合+本地响应（最难）</td><td>丰田</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：全球整合vs本地响应两种压力权衡</p></div>
+        <div class="step-item"><p><strong>三种类型</strong>：多国化/全球化/跨国化，逐一说明特征</p></div>
+        <div class="step-item"><p><strong>优势</strong>：规模经济/市场多元化/战略资产</p></div>
+        <div class="step-item"><p><strong>风险</strong>：政治/汇率/文化/管理风险</p></div>
+        <div class="step-item"><p><strong>案例</strong>：比亚迪（跨国化雏形）/华为（演进路径）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">全球整合/本地响应</span><span class="kw hot">跨国化战略</span><span class="kw hot">多国化/全球化</span>
+        <span class="kw">标准化效率</span><span class="kw">本地化适应</span><span class="kw">整合能力</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>比亚迪：</strong>欧洲市场高差异本地化配置 + 全球统一刀片电池平台——跨国化战略雏形。<br><strong>华为：</strong>低成本进入发展中国家（多国化）→逐步转向全球技术标准（全球化）。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">国际化战略核心矛盾是"<span class="hl">标准化效率 vs 本地化适应</span>"——跨国化是最高目标，需要极强的整合能力与动态能力同时应对两种压力。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP18 -->
+<div class="card" id="kp18">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">18</div>
+    <div class="card-meta">
+      <div class="card-title">战略联盟</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第9章 战略联盟、并购与重组</span>
+        <span class="tag tag-page">P237–255</span>
+        <span class="tag tag-year">【2018面试·风险管控】【2023笔试·动机与治理】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">战略联盟是两个或以上独立企业之间，为实现特定战略目标，通过契约或股权安排建立长期合作、共享资源与能力，但<span class="hl">保持各自独立法人地位</span>的合作战略。是介于纯市场交易与完全并购之间的<span class="hl">中间组织形态</span>。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（动机 + 治理类型）</div>
+      <table class="fw-table">
+        <tr><th>治理类型</th><th>紧密度</th><th>代表</th></tr>
+        <tr><td>股权式联盟（合资）</td><td>最紧密</td><td>上汽通用</td></tr>
+        <tr><td>非股权式联盟（契约）</td><td>中等</td><td>技术授权、供应链合作</td></tr>
+        <tr><td>松散合作联盟</td><td>较松散</td><td>行业协会、标准联盟</td></tr>
+      </table>
+      <p style="margin-top:8px; font-size:13.5px;">五大动机：①获取外部资源补足自身；②降低成本与风险；③进入新市场；④建立行业标准；⑤学习竞争对手能力</p>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">中间组织形态</span><span class="kw hot">机会主义风险</span><span class="kw hot">股权式/非股权式</span>
+        <span class="kw">保持独立法人</span><span class="kw">核心能力外泄</span><span class="kw">互补共赢</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>上汽×通用汽车（股权式）：</strong>上汽获技术，通用进入中国市场——互利互补。<br><strong>风险案例：</strong>早期合资"以市场换技术"——部分案例只获制造能力，核心技术仍被外方掌控。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">战略联盟价值在于"<span class="hl">用合作补足能力缺口</span>"——比并购成本低、灵活性高；关键风险是<span class="hl">机会主义行为与核心能力外泄</span>，需通过股权安排与信誉机制治理。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP19 -->
+<div class="card" id="kp19">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">19</div>
+    <div class="card-meta">
+      <div class="card-title">战略控制（四种类型）</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第11章 战略实施的管理与控制</span>
+        <span class="tag tag-page">P342–354</span>
+        <span class="tag tag-year">【2016笔试·BSC关联】【复试高频面试题】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">战略控制是通过设定评估标准，监控战略实施过程中的<span class="hl">关键假设、实施进展和环境变化</span>，发现偏差并纠正，以确保战略目标实现的管理过程。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（四种控制类型）</div>
+      <table class="fw-table">
+        <tr><th>控制类型</th><th>监控对象</th><th>触发条件</th><th>特点</th></tr>
+        <tr><td><strong>前提控制</strong></td><td>战略制定的环境假设</td><td>持续性监控</td><td>最早期预警</td></tr>
+        <tr><td><strong>战略监控</strong></td><td>可能影响战略的宽泛信号</td><td>持续性扫描</td><td>覆盖面广</td></tr>
+        <tr><td><strong>特别预警控制</strong></td><td>突发事件与危机</td><td>重大事件触发</td><td>应急机制</td></tr>
+        <tr><td><strong>实施控制</strong></td><td>战略实施的里程碑进展</td><td>按阶段评估</td><td>最常用</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：斯曾德尔/霍弗 + 四种控制类型 + 闭环管控</p></div>
+        <div class="step-item"><p><strong>四种类型</strong>：前提控制/战略监控/特别预警/实施控制，各说特点</p></div>
+        <div class="step-item"><p><strong>关系</strong>：四者构成立体防御网，配合BSC形成闭环</p></div>
+        <div class="step-item"><p><strong>案例</strong>：柯达失败（前提控制缺失）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">四种控制类型</span><span class="kw hot">前提控制</span><span class="kw hot">实施控制</span>
+        <span class="kw">特别预警</span><span class="kw">战略监控</span><span class="kw">闭环管控</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>柯达失败：</strong>胶片时代的核心假设失效（数码崛起），前提控制缺失，特别预警控制过迟，最终无力回天——是前提控制重要性的经典反面案例。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">战略控制逻辑是"<span class="hl">防患于未然</span>"——前提控制最早期、实施控制最常用、特别预警最紧急、战略监控最全面；四者缺一不可，配合BSC形成战略实施完整管控闭环。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP20 -->
+<div class="card" id="kp20">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">20</div>
+    <div class="card-meta">
+      <div class="card-title">战略管理过程</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第1章 战略管理导论</span>
+        <span class="tag tag-page">P1–30</span>
+        <span class="tag tag-year">【2025笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">战略管理过程是企业在分析内外部环境基础上，制定、实施并持续控制企业战略的<span class="hl">系统性管理循环</span>，包括战略分析→战略制定→战略实施→战略控制四阶段，是动态循环往复的管理过程。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（四阶段）</div>
+      <table class="fw-table">
+        <tr><th>阶段</th><th>核心任务</th><th>关键工具</th></tr>
+        <tr><td><strong>战略分析</strong></td><td>外部环境 + 内部环境</td><td>PESTEL、五力、SWOT、价值链、RBV</td></tr>
+        <tr><td><strong>战略制定</strong></td><td>承诺、目标、方向、选择</td><td>SWOT战略组合、战略方向四类型</td></tr>
+        <tr><td><strong>战略实施</strong></td><td>组织、领导力、文化、资源配置</td><td>钱德勒命题、BSC、组织结构设计</td></tr>
+        <tr><td><strong>战略控制</strong></td><td>监控偏差、评估与纠正</td><td>四种控制类型、BSC绩效评估</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">四阶段循环</span><span class="kw hot">动态迭代</span><span class="kw hot">闭环管理</span>
+        <span class="kw">分析→制定→实施→控制</span><span class="kw">战略落地瓶颈</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>阿里巴巴：</strong>分析（持续识别互联网机会）→制定（"让天下没有难做的生意"）→实施（多次组织架构调整）→控制（动态评估各业务进展）——经典战略管理过程全周期案例。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">战略管理过程是企业"<span class="hl">从哪里来、去哪里、怎么去、走对没有</span>"四个问题的系统回答；四阶段不是直线，而是<span class="hl">持续迭代的闭环</span>；战略实施往往比制定更难，是战略成功的真正瓶颈。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════ BATCH 3 ══ -->
+<div class="batch-section" style="margin-top:32px;">
+  <div class="batch-header">
+    <div class="batch-num">3</div>
+    <div class="batch-title">第三批考点 · 21–30</div>
+    <div class="batch-sub">战略钟 / 商业模式画布 / 集中化 / 战略方向 / 战略承诺 / 多元化控制 / 国际化动因风险 / 并购PMI / 五种结构 / 战略领导力</div>
+  </div>
+</div>
+
+<!-- KP21 -->
+<div class="card" id="kp21">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">21</div>
+    <div class="card-meta">
+      <div class="card-title">战略钟模型</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第6章 业务层战略</span>
+        <span class="tag tag-page">P163–178</span>
+        <span class="tag tag-year">【2021笔试·简答】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">战略钟模型（鲍曼）以<span class="hl">感知价值（纵轴）和价格（横轴）</span>为坐标，描绘出企业可能的八种竞争定位，形似时钟表盘，帮助企业分析哪些定位<span class="hl">可持续</span>，哪些是<span class="hl">竞争陷阱</span>。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（八种战略位置）</div>
+      <table class="fw-table">
+        <tr><th>位置</th><th>名称</th><th>价格</th><th>感知价值</th><th>可持续性</th></tr>
+        <tr><td>1</td><td>无附加价值</td><td>低</td><td>低</td><td>仅限细分市场</td></tr>
+        <tr><td>2</td><td><strong>低价策略</strong></td><td>低</td><td>中</td><td>✅ 可持续（成本领先支撑）</td></tr>
+        <tr><td>3</td><td><strong>混合策略</strong></td><td>中低</td><td>中高</td><td>✅ 可持续（最佳性价比）</td></tr>
+        <tr><td>4</td><td><strong>差异化策略</strong></td><td>中高</td><td>高</td><td>✅ 可持续（品牌溢价）</td></tr>
+        <tr><td>5</td><td><strong>聚焦差异化</strong></td><td>高</td><td>高（特定）</td><td>✅ 可持续（细分定位）</td></tr>
+        <tr><td>6</td><td>高价低值</td><td>高</td><td>低</td><td>❌ 不可持续</td></tr>
+        <tr><td>7/8</td><td>失败区</td><td>高</td><td>标准/低</td><td>❌ 不可持续</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">感知价值/价格</span><span class="kw hot">混合策略</span><span class="kw hot">竞争失败区</span>
+        <span class="kw">八种定位</span><span class="kw">时钟表盘</span><span class="kw">鲍曼</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>小米：</strong>典型混合策略（位置3）——高性价比，以规模效应控制成本。<br><strong>苹果：</strong>聚焦差异化（位置5）——高价+高感知价值，专注高端市场。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">战略钟核心贡献：揭示"<span class="hl">价格—价值感知</span>"关系——可持续定位：低价（成本领先）/高值（差异化）/两者兼有（混合）；<span class="hl">高价低值区永远是竞争陷阱</span>。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP22 -->
+<div class="card" id="kp22">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">22</div>
+    <div class="card-meta">
+      <div class="card-title">商业模式画布</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第6章 业务层战略</span>
+        <span class="tag tag-page">P170–178</span>
+        <span class="tag tag-year">【2024笔试·简答·九大模块】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">商业模式画布（奥斯特瓦德）是将企业商业模式可视化为<span class="hl">九大模块</span>的战略分析工具，系统描述企业如何创造价值、传递价值和获取价值。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（九大模块）</div>
+      <table class="fw-table">
+        <tr><th>模块</th><th>英文</th><th>核心问题</th><th>助记</th></tr>
+        <tr><td>客户细分</td><td>CS</td><td>为谁创造价值？</td><td>客</td></tr>
+        <tr><td>价值主张</td><td>VP</td><td>提供什么独特价值？</td><td>值</td></tr>
+        <tr><td>渠道通路</td><td>CH</td><td>如何触达客户？</td><td>渠</td></tr>
+        <tr><td>客户关系</td><td>CR</td><td>如何维系客户？</td><td>系</td></tr>
+        <tr><td>收入来源</td><td>RS</td><td>如何获得收入？</td><td>收</td></tr>
+        <tr><td>核心资源</td><td>KR</td><td>需要哪些关键资源？</td><td>资</td></tr>
+        <tr><td>关键业务</td><td>KA</td><td>必须做哪些核心活动？</td><td>业</td></tr>
+        <tr><td>重要合作</td><td>KP</td><td>谁是关键合作伙伴？</td><td>伙</td></tr>
+        <tr><td>成本结构</td><td>CS</td><td>主要成本来自哪里？</td><td>本</td></tr>
+      </table>
+      <p style="margin-top:8px; font-size:13.5px; color:var(--accent);">助记口诀：「客值渠系收，资业伙本」</p>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">九大模块</span><span class="kw hot">客值渠系收资业伙本</span><span class="kw hot">价值主张</span>
+        <span class="kw">轻资产平台</span><span class="kw">价值创造与获取</span><span class="kw">商业模式创新</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>Airbnb：</strong>客户细分（旅行者+房东）→价值主张（低成本本地住宿）→核心资源（房源数据库+平台）→收入（佣金）——轻资产 vs 传统酒店重资产的根本差异。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">商业模式画布价值在于梳理"<span class="hl">价值如何在企业与客户之间流动</span>"——九大模块构成相互依存的有机系统，任何一模块的创新都可能触发整体商业模式重构。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP23 -->
+<div class="card" id="kp23">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">23</div>
+    <div class="card-meta">
+      <div class="card-title">集中化战略（聚焦战略）</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第6章 业务层战略</span>
+        <span class="tag tag-page">P164–168</span>
+        <span class="tag tag-year">【复试面试高频·定位战略完整体系】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">集中化战略（聚焦战略）是波特基本定位战略第三种类型，指企业集中资源专注于<span class="hl">特定细分市场、特定顾客群体或特定地域</span>，在该狭窄市场上建立成本优势或差异优势。分为<span class="hl">低成本聚焦</span>和<span class="hl">高差异聚焦</span>两种。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（适用条件 + 两种子类型）</div>
+      <table class="fw-table">
+        <tr><th>子类型</th><th>特征</th><th>代表企业</th></tr>
+        <tr><td>低成本聚焦</td><td>在细分市场以低价获胜</td><td>春秋航空（专注价格敏感旅客）</td></tr>
+        <tr><td>高差异聚焦</td><td>在细分市场以高价值获胜</td><td>保时捷（专注高端跑车细分）</td></tr>
+      </table>
+      <p style="margin-top:8px; font-size:13.5px;">适用条件：①细分市场规模足够 ②主流对手忽视该市场 ③资源不足在宽泛市场竞争 ④细分市场有独特需求</p>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">细分市场</span><span class="kw hot">低成本聚焦/高差异聚焦</span><span class="kw hot">四种适用条件</span>
+        <span class="kw">以小搏大</span><span class="kw">深度护城河</span><span class="kw">波特第三战略</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>西南航空：</strong>聚焦价格敏感短途旅客，取消餐食、旅行社预定——典型低成本聚焦。<br><strong>红星宣纸：</strong>专注高端书画纸市场，传统工艺+地理标志保护——典型高差异聚焦。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">聚焦战略本质是"<span class="hl">把有限资源集中到最有胜算的战场</span>"——不求全行业制胜，在特定细分市场建立深不可撼的竞争优势；成功关键是<span class="hl">选对细分市场</span>，持续深化护城河。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP24 -->
+<div class="card" id="kp24">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">24</div>
+    <div class="card-meta">
+      <div class="card-title">战略方向四种类型</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第5章 战略问题的确认与基本战略选择</span>
+        <span class="tag tag-page">P147–149</span>
+        <span class="tag tag-year">【2025笔试关联】【面试高频】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">战略方向是企业基于战略承诺，确定的<span class="hl">特定发展阶段（一般3–5年）</span>的基本发展路径。教材将其划分为四种基本类型，构成2×2矩阵（行业维度×市场维度）。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（四种战略方向）</div>
+      <table class="fw-table">
+        <tr><th>行业\市场</th><th>单一市场</th><th>多个市场</th></tr>
+        <tr><td><strong>单一行业</strong></td><td>行业/市场集中战略</td><td>市场多元化战略（国际化）</td></tr>
+        <tr><td><strong>多个行业</strong></td><td>行业多元化战略</td><td>行业与市场多元化战略</td></tr>
+      </table>
+      <p style="margin-top:10px; font-size:13.5px; color:var(--accent3);">以发展态势划分：增长型 / 稳定型 / 防御型 / 收缩型</p>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">行业/市场集中</span><span class="kw hot">四种方向矩阵</span><span class="kw hot">增长/防御/收缩</span>
+        <span class="kw">2×2矩阵</span><span class="kw">战略选择起点</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>阿里巴巴：</strong>集中战略→行业多元化→行业与市场多元化，清晰展示战略方向演进。<br><strong>格力：</strong>长期坚持行业/市场集中战略，以专注取得全球空调第一。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">战略方向是"<span class="hl">选择在哪块战场竞争</span>"的根本决策——集中还是多元、本国还是跨国、增长还是收缩，直接决定资源配置优先顺序。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP25 -->
+<div class="card" id="kp25">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">25</div>
+    <div class="card-meta">
+      <div class="card-title">战略承诺</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第5章 战略问题的确认与基本战略选择</span>
+        <span class="tag tag-page">P133–148</span>
+        <span class="tag tag-year">【面试高频·宗旨愿景战略意图】【2025笔试关联】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">战略承诺是企业基于资源和能力，考虑外部环境及未来变化趋势，为实现长期战略目标而向<span class="hl">利益相关者</span>做出的长期经营承诺。是战略内容体系中<span class="hl">时间跨度最长、影响最广</span>的战略要素。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（五项核心内容）</div>
+      <table class="fw-table">
+        <tr><th>内容</th><th>说明</th><th>表述形式</th></tr>
+        <tr><td>企业经营目的（使命）</td><td>企业存在的根本理由</td><td>宗旨陈述</td></tr>
+        <tr><td>愿景</td><td>企业期望成为什么样子</td><td>长期价值取向+生动描述</td></tr>
+        <tr><td>战略意图</td><td>雄心勃勃的宏伟梦想</td><td>简洁口号（不超过三句话）</td></tr>
+        <tr><td>经营理念</td><td>经营的根本指导思想</td><td>价值观陈述</td></tr>
+        <tr><td>核心价值观</td><td>指导行为的最根本准则</td><td>简洁价值词汇</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">使命/愿景/战略意图</span><span class="kw hot">利益相关者</span><span class="kw hot">战略灵魂</span>
+        <span class="kw">核心价值观</span><span class="kw">经营理念</span><span class="kw">时间跨度最长</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>阿里巴巴：</strong>宗旨"让天下没有难做的生意"（经营目的）；愿景"构建未来商务生态系统，持续发展102年"（挑战性+价值追求）。承诺始终未变，是成功战略内核。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">战略承诺是战略的"<span class="hl">灵魂</span>"——回答"我们是谁、为何存在、向何处去"；是战略制定的<span class="hl">逻辑起点</span>，也是战略控制的<span class="hl">终极评判标准</span>。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP26 -->
+<div class="card" id="kp26">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">26</div>
+    <div class="card-meta">
+      <div class="card-title">多元化程度评估与控制</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第7章 公司层战略</span>
+        <span class="tag tag-page">P196–220</span>
+        <span class="tag tag-year">【2016笔试·案例】【2021笔试·多元化风险】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">多元化程度评估与控制要求企业在推进多元化战略时，在<span class="hl">正确动机、恰当时机、合适方式、合理速度、适度程度</span>五个维度进行系统控制，防止过度多元化折价。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（五维推进策略）</div>
+      <table class="fw-table">
+        <tr><th>维度</th><th>核心要点</th><th>典型陷阱</th></tr>
+        <tr><td>正确动机</td><td>增强竞争优势，非管理者私利</td><td>盲目追风口</td></tr>
+        <tr><td>恰当时机</td><td>主业成熟期后再多元化</td><td>过早多元化</td></tr>
+        <tr><td>合适方式</td><td>新建/并购/战略联盟权衡</td><td>过度依赖并购</td></tr>
+        <tr><td>合理速度</td><td>控制负债率，留足资源</td><td>激进同时进入多行业</td></tr>
+        <tr><td>适度程度</td><td>必须"有所不为"</td><td>多元化折价、管理失控</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">五维控制</span><span class="kw hot">多元化折价</span><span class="kw hot">有所不为</span>
+        <span class="kw">合理速度</span><span class="kw">主业成熟期</span><span class="kw">负债率控制</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>TCL（反面）：</strong>"多元化时准备不足、资源分散、战线拉得过长"——过早多元化的教训。<br><strong>本田（正面）：</strong>"成功一个再进入一个新行业"——控制多元化速度的经典。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">多元化程度控制核心是"<span class="hl">有所不为，才能有所为</span>"——相关多元化优先，不相关多元化须具备强大集团管理能力。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP27 -->
+<div class="card" id="kp27">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">27</div>
+    <div class="card-meta">
+      <div class="card-title">国际化动因与风险</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第8章 国际化战略</span>
+        <span class="tag tag-page">P210–235</span>
+        <span class="tag tag-year">【2024笔试·新能源国际化案例】【面试高频】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">国际化动因是驱动企业将经营活动扩展至本国以外的内外部原因，从<span class="hl">主要推动因素和主要限制因素</span>两个维度分析，同时面临多种特有风险需系统识别与管控。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（动因 + 风险）</div>
+      <table class="fw-table">
+        <tr><th>国际化动因（四类）</th><th>典型案例</th></tr>
+        <tr><td>市场寻求：突破本国市场饱和</td><td>华为进入发展中国家</td></tr>
+        <tr><td>效率寻求：利用海外低成本要素</td><td>富士康在越南建厂</td></tr>
+        <tr><td>资源寻求：获取稀缺资源（矿产/技术/品牌）</td><td>吉利收购沃尔沃</td></tr>
+        <tr><td>战略资产寻求：获取全球战略布局所需资源</td><td>联想收购IBM PC业务</td></tr>
+      </table>
+      <table class="fw-table" style="margin-top:8px;">
+        <tr><th>国际化主要风险（四类）</th></tr>
+        <tr><td>政治风险：政策变化、贸易壁垒、地缘政治</td></tr>
+        <tr><td>汇率风险：本币升值、外汇损失</td></tr>
+        <tr><td>文化风险：管理理念冲突、本地化失败</td></tr>
+        <tr><td>管理风险：跨国协调难、总部控制弱化</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">四类动因</span><span class="kw hot">四类风险</span><span class="kw hot">市场/效率/资源/战略资产</span>
+        <span class="kw">政治/汇率/文化/管理</span><span class="kw">走出去管得好</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>比亚迪出海：</strong>市场寻求+效率寻求；面临政治风险（欧盟反补贴调查）、文化风险（品牌认知差距）。<br><strong>TCL早期失败：</strong>低估欧洲文化差异与品牌壁垒——文化风险典型案例。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">国际化动因决定"<span class="hl">为何出海</span>"，风险识别决定"<span class="hl">能否活下来</span>"——成功的国际化战略须在市场机会、资源能力和风险承受之间找到平衡点。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP28 -->
+<div class="card" id="kp28">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">28</div>
+    <div class="card-meta">
+      <div class="card-title">企业并购与PMI整合</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第9章 战略联盟、并购与重组</span>
+        <span class="tag tag-page">P255–275</span>
+        <span class="tag tag-year">【2019面试·并购人力整合】【2024笔试·国际化案例关联】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">企业并购（M&A）是指通过购买股权或资产将目标企业纳入控制范围的战略行为。<span class="hl">并购后整合（PMI）</span>是决定并购成败的关键阶段，涉及<span class="hl">战略、组织、文化、人力四个维度</span>的整合。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（PMI四维整合）</div>
+      <table class="fw-table">
+        <tr><th>整合维度</th><th>核心任务</th><th>常见风险</th></tr>
+        <tr><td>战略整合</td><td>明确并购后战略定位与协同目标</td><td>协同效应高估，方向不清</td></tr>
+        <tr><td>组织整合</td><td>设计新组织结构，明确汇报关系</td><td>重叠部门裁撤冲突</td></tr>
+        <tr><td><strong>文化整合</strong></td><td>融合两种企业文化，建立共同价值观</td><td><strong>并购失败首要原因</strong></td></tr>
+        <tr><td>人力整合</td><td>关键人才留存、激励重构</td><td>核心人才流失</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">PMI四维整合</span><span class="kw hot">文化整合是关键</span><span class="kw hot">用资本换时间</span>
+        <span class="kw">并购溢价</span><span class="kw">协同效应</span><span class="kw">核心人才留存</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>吉利×沃尔沃（成功）：</strong>战略整合（品牌独立）+文化整合（尊重欧洲管理）+人力整合（保留工程师）——PMI经典成功案例。<br><strong>明基×西门子（失败）：</strong>低估文化差异，整合成本远超预期，以16亿亏损终止。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">并购核心逻辑是"<span class="hl">用资本换时间</span>"；PMI整合才是<span class="hl">真正的战场</span>——文化整合是最难也是最关键的维度；避免急于"强制同化"破坏被并购企业的核心价值。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP29 -->
+<div class="card" id="kp29">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">29</div>
+    <div class="card-meta">
+      <div class="card-title">五种组织结构类型</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第11章 战略实施的管理与控制</span>
+        <span class="tag tag-page">P304–320</span>
+        <span class="tag tag-year">【2025笔试关联】【面试高频·结构追随战略】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">组织结构是企业实施战略的"<span class="hl">骨骼</span>"。依据钱德勒命题，蓝海林教材详述了五种主要组织结构及其与战略的匹配关系。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（五种结构对比）</div>
+      <table class="fw-table">
+        <tr><th>结构类型</th><th>最佳匹配战略</th><th>优点</th><th>缺点</th></tr>
+        <tr><td><strong>简单结构</strong></td><td>创业期·单一产品</td><td>灵活快速</td><td>高度依赖创始人</td></tr>
+        <tr><td><strong>职能制（U型）</strong></td><td>单一业务扩张</td><td>专业化高，规模经济</td><td>跨部门协调难</td></tr>
+        <tr><td><strong>事业部制（M型）</strong></td><td>相关/非相关多元化</td><td>分权灵活，激励充分</td><td>事业部本位主义</td></tr>
+        <tr><td><strong>矩阵制</strong></td><td>复杂项目型</td><td>资源共享，跨职能协调</td><td>双重领导冲突</td></tr>
+        <tr><td><strong>网络组织</strong></td><td>动态竞争·轻资产</td><td>高灵活性，快速响应</td><td>协调难，核心能力外流</td></tr>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">五种结构</span><span class="kw hot">事业部制（M型）</span><span class="kw hot">结构追随战略</span>
+        <span class="kw">职能制（U型）</span><span class="kw">矩阵制</span><span class="kw">网络组织</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>通用汽车（斯隆）：</strong>1920年代从职能制→事业部制改革（别克/雪佛兰/凯迪拉克独立核算），历史性经典案例。<br><strong>腾讯：</strong>职能制→事业群制（BG制）→部分功能独立子公司，随多元化持续演进。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">五种结构构成从简单到复杂的演进谱系——核心原则是"<span class="hl">结构服务于战略</span>"；实践中最忌讳"<span class="hl">战略已变，结构未动</span>"，是战略实施失败的最常见原因。</div>
+    </div>
+  </div>
+</div>
+
+<!-- KP30 -->
+<div class="card" id="kp30">
+  <div class="card-header" onclick="toggleCard(this)">
+    <div class="card-num">30</div>
+    <div class="card-meta">
+      <div class="card-title">战略领导力六大职责</div>
+      <div class="card-tags">
+        <span class="tag tag-chapter">第11章 战略实施的管理与控制</span>
+        <span class="tag tag-page">P320–328</span>
+        <span class="tag tag-year">【面试高频必备】【2024笔试·AI管理变革论述关联】</span>
+      </div>
+    </div>
+    <span class="chevron">›</span>
+  </div>
+  <div class="card-body">
+    <div class="section">
+      <div class="section-label">核心定义</div>
+      <div class="def-box">战略领导力是战略领导者通过远见与决策引导企业实现战略目标的能力。蓝海林教材将其总结为<span class="hl">六大职责</span>，构成战略实施"软性力量"的核心框架。</div>
+    </div>
+    <div class="section">
+      <div class="section-label">理论框架（六大职责）</div>
+      <table class="fw-table">
+        <tr><th>序号</th><th>职责</th><th>核心内涵</th><th>典型案例</th></tr>
+        <tr><td>①</td><td><strong>确定战略方向</strong></td><td>制定长期愿景与使命，提供行动方向</td><td>任正非"全球领先电信"愿景</td></tr>
+        <tr><td>②</td><td><strong>开发和保护核心能力</strong></td><td>识别、培育、保护VRIN资源，防止外流</td><td>华为坚守通信技术研发</td></tr>
+        <tr><td>③</td><td><strong>建立和维持有效文化</strong></td><td>塑造与战略一致的价值观，文化是"看不见的控制系统"</td><td>海底捞以人为本文化</td></tr>
+        <tr><td>④</td><td><strong>强调道德行为</strong></td><td>以自身示范诚信，建立合规氛围</td><td>巴菲特"声誉是无价之宝"</td></tr>
+        <tr><td>⑤</td><td><strong>建立组织控制系统</strong></td><td>设计战略实施监控与纠偏机制</td><td>BSC四维度战略控制</td></tr>
+        <tr><td>⑥</td><td><strong>培育人力资本</strong></td><td>识别、吸引、培养、留住关键人才</td><td>谷歌"20%自由时间"</td></tr>
+      </table>
+      <p style="margin-top:8px; font-size:13.5px; color:var(--accent);">助记口诀：「定核文道控人」</p>
+    </div>
+    <div class="section">
+      <div class="section-label">答题步骤</div>
+      <div class="steps">
+        <div class="step-item"><p><strong>定义</strong>：战略领导者 + CEO/高层 + 六大职责框架</p></div>
+        <div class="step-item"><p><strong>六大职责</strong>：逐一说明①确定方向②核心能力③文化④道德⑤控制⑥人才，每项给出要点</p></div>
+        <div class="step-item"><p><strong>整合价值</strong>：六大职责相互支撑，形成战略领导力闭环</p></div>
+        <div class="step-item"><p><strong>案例</strong>：乔布斯（六大职责全面体现）</p></div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">核心关键词</div>
+      <div class="kw-cloud">
+        <span class="kw hot">六大职责</span><span class="kw hot">定核文道控人</span><span class="kw hot">战略实施第一要素</span>
+        <span class="kw">战略方向</span><span class="kw">核心能力</span><span class="kw">组织文化</span>
+        <span class="kw">道德行为</span><span class="kw">控制系统</span><span class="kw">人力资本</span>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-label">经典案例</div>
+      <div class="case-box"><strong>乔布斯全面体现六大职责：</strong><br>①确定方向（"为大众提供最好的技术"）→②保护核心能力（芯片自研、iOS封闭）→③建立文化（极致产品主义）→④道德行为（隐私保护原则）→⑤控制系统（产品发布里程碑管控）→⑥培育人才（吸引顶级工程师）</div>
+    </div>
+    <div class="section">
+      <div class="section-label">总结</div>
+      <div class="summary-box">战略领导力是战略实施成功的"<span class="hl">第一要素</span>"——方向引领行动，文化保障执行，控制纠正偏差，人才持续赋能；六大职责缺少任何一个，战略实施都将出现<span class="hl">系统性漏洞</span>。</div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- BACK TO TOP -->
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>
+  <p>企业战略管理 · 核心必备30个考点答题模板 | 生成日期：2026-03-09</p>
+  <p style="margin-top:6px; font-size:12px;">《企业战略管理（第二版）》蓝海林等编著 | 中南大学企业管理学硕复试备考</p>
+</footer>
+
+<script>
+// ── TOGGLE CARDS ─────────────────────────────────
+function toggleCard(header) {
+  const body = header.nextElementSibling;
+  header.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
+// Open first card of each batch by default
+document.querySelectorAll('.card').forEach((card, i) => {
+  if ([0,10,20].includes(i)) {
+    card.querySelector('.card-header').classList.add('open');
+    card.querySelector('.card-body').classList.add('open');
+  }
+});
+
+// ── TOC ──────────────────────────────────────────
+const tocEl = document.getElementById('toc');
+document.getElementById('tocToggle').addEventListener('click', () => {
+  tocEl.classList.toggle('open');
+});
+document.querySelectorAll('.toc-item').forEach(a => {
+  a.addEventListener('click', () => {
+    if (window.innerWidth < 900) tocEl.classList.remove('open');
+  });
+});
+
+// ── DARK MODE ────────────────────────────────────
+const darkBtn = document.getElementById('darkToggle');
+const saved = localStorage.getItem('darkMode');
+if (saved === '1') { document.body.classList.add('dark'); darkBtn.textContent = '☀️ 日间'; }
+
+darkBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  darkBtn.textContent = isDark ? '☀️ 日间' : '🌙 夜间';
+  localStorage.setItem('darkMode', isDark ? '1' : '0');
+});
+
+// ── BACK TO TOP ──────────────────────────────────
+const backBtn = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  backBtn.classList.toggle('show', window.scrollY > 400);
+});
+
+// ── SEARCH ───────────────────────────────────────
+const searchInput = document.getElementById('searchInput');
+const searchCount = document.getElementById('searchCount');
+
+function clearHighlights() {
+  document.querySelectorAll('mark.search-hl').forEach(m => {
+    const parent = m.parentNode;
+    parent.replaceChild(document.createTextNode(m.textContent), m);
+    parent.normalize();
+  });
+}
+
+function highlightText(node, term) {
+  if (node.nodeType === 3) {
+    const idx = node.textContent.toLowerCase().indexOf(term);
+    if (idx >= 0) {
+      const range = document.createRange();
+      range.setStart(node, idx);
+      range.setEnd(node, idx + term.length);
+      const mark = document.createElement('mark');
+      mark.className = 'search-hl';
+      range.surroundContents(mark);
+      return 1;
+    }
+    return 0;
+  }
+  if (node.nodeType === 1 && !['SCRIPT','STYLE','MARK'].includes(node.tagName)) {
+    let count = 0;
+    const children = Array.from(node.childNodes);
+    children.forEach(c => { count += highlightText(c, term); });
+    return count;
+  }
+  return 0;
+}
+
+searchInput.addEventListener('input', function() {
+  clearHighlights();
+  const term = this.value.trim().toLowerCase();
+  if (!term) { searchCount.textContent = ''; document.querySelectorAll('.card').forEach(c=>c.classList.remove('hidden')); return; }
+
+  let totalHits = 0;
+  let visibleCards = 0;
+  document.querySelectorAll('.card').forEach(card => {
+    const text = card.textContent.toLowerCase();
+    if (text.includes(term)) {
+      card.classList.remove('hidden');
+      visibleCards++;
+      // Open matched cards
+      const header = card.querySelector('.card-header');
+      const body = card.querySelector('.card-body');
+      header.classList.add('open');
+      body.classList.add('open');
+      totalHits += highlightText(card, term);
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+
+  searchCount.textContent = visibleCards > 0 ? `${visibleCards}个考点` : '无结果';
+});
+</script>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

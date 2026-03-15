@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第12章 · 劳动关系 | 人力资源管理复试笔记</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a0a2e;
+    --bg: #fdf6ee;
+    --bg2: #f5e8d8;
+    --accent:  #8b2fc9;
+    --accent2: #e85d26;
+    --accent3: #2563eb;
+    --accent4: #059669;
+    --accent5: #dc2626;
+    --gold: #d97706;
+    --card-bg: #ffffff;
+    --border: #d4b8f0;
+    --tier1: #8b2fc9;
+    --tier2: #e85d26;
+    --tier3: #2563eb;
+    --shadow: 0 4px 24px rgba(26,10,46,0.10);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    line-height: 1.85;
+    padding: 0 0 80px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #1a0a2e 0%, #3b0764 50%, #8b2fc9 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,.025) 0px, rgba(255,255,255,.025) 1px, transparent 1px, transparent 30px);
+  }
+  .hero::after {
+    content: '⚖';
+    position: absolute; right: 60px; bottom: 20px;
+    font-size: 120px; opacity: .06; line-height:1;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 4px;
+    color: rgba(255,255,255,.6); text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,.2);
+    padding: 3px 14px; border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 42px; font-weight: 900;
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .hero h1 span { color: #f9a8d4; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,.75); max-width: 700px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .hero-tag {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px; padding: 4px 14px;
+    font-size: 12px; color: rgba(255,255,255,.9);
+  }
+
+  /* ── STICKY NAV ── */
+  .toc {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink);
+    color: #fff;
+    padding: 14px 32px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    border-bottom: 2px solid var(--accent);
+    box-shadow: 0 2px 12px rgba(0,0,0,.3);
+  }
+  .toc-label { font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-right: 8px; white-space:nowrap; }
+  .toc a {
+    color: rgba(255,255,255,.75);
+    text-decoration: none; font-size: 12.5px;
+    padding: 3px 12px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 14px;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .toc a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 40px 28px 0; }
+  .section { margin-bottom: 60px; }
+  
+  /* ── SECTION HEADERS ── */
+  .sec-header {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--border);
+  }
+  .sec-num {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 600;
+    padding: 4px 14px; border-radius: 20px;
+    white-space: nowrap;
+  }
+  .sec-num.orange { background: var(--accent2); }
+  .sec-num.blue { background: var(--accent3); }
+  .sec-num.green { background: var(--accent4); }
+  .sec-num.red { background: var(--accent5); }
+  .sec-num.gold { background: var(--gold); }
+  .sec-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent);
+    position: relative;
+  }
+  .card.orange { border-left-color: var(--accent2); }
+  .card.blue { border-left-color: var(--accent3); }
+  .card.green { border-left-color: var(--accent4); }
+  .card.red { border-left-color: var(--accent5); }
+  .card.gold { border-left-color: var(--gold); }
+  .card-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px; font-weight: 700;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card-title .icon { font-size: 20px; }
+
+  /* ── IMPORTANCE BADGE ── */
+  .imp { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; }
+  .star { color: #f59e0b; font-size: 14px; }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block; font-size: 11px;
+    padding: 2px 10px; border-radius: 10px;
+    margin: 2px; font-weight: 500;
+  }
+  .tag-purple { background: #f3e8ff; color: #7c3aed; }
+  .tag-orange { background: #fff3e0; color: #c2410c; }
+  .tag-blue { background: #dbeafe; color: #1d4ed8; }
+  .tag-green { background: #dcfce7; color: #15803d; }
+  .tag-red { background: #fee2e2; color: #b91c1c; }
+  .tag-gold { background: #fef9c3; color: #92400e; }
+
+  /* ── CHILD EXAMPLE BOX ── */
+  .kid-box {
+    background: linear-gradient(135deg, #fdf4ff, #fce7f3);
+    border: 2px solid #d8b4fe;
+    border-radius: 12px; padding: 18px 20px;
+    margin: 14px 0;
+    position: relative;
+  }
+  .kid-box::before {
+    content: '🧒 小学生版';
+    position: absolute; top: -12px; left: 14px;
+    background: #8b2fc9; color: #fff;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 10px; border-radius: 10px;
+  }
+  .kid-box p { margin-top: 4px; font-size: 14px; line-height: 1.75; }
+
+  /* ── MNEMONIC ── */
+  .mnemonic {
+    background: linear-gradient(135deg, #fff7ed, #fef3c7);
+    border: 2px dashed #f59e0b;
+    border-radius: 10px; padding: 14px 18px;
+    margin: 12px 0;
+  }
+  .mnemonic::before {
+    content: '🔑 记忆口诀';
+    display: block;
+    font-weight: 700; font-size: 12px; color: #d97706;
+    margin-bottom: 6px;
+  }
+
+  /* ── ORIGINAL TEXT ── */
+  .orig {
+    background: #1a0a2e;
+    color: #e2d9f3;
+    border-radius: 8px; padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 13.5px;
+    border-left: 3px solid var(--accent);
+    font-style: italic;
+    line-height: 1.9;
+  }
+  .orig::before {
+    content: '📖 教材原文';
+    display: block; font-style: normal;
+    font-size: 11px; font-weight: 700;
+    color: #f9a8d4; margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  /* ── TABLE ── */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th {
+    background: var(--accent);
+    color: #fff; font-weight: 600;
+    padding: 10px 14px; text-align: left;
+  }
+  tr:nth-child(even) td { background: #f8f0ff; }
+  td { padding: 10px 14px; border-bottom: 1px solid #e9d5ff; vertical-align: top; }
+  .table-wrap { overflow-x: auto; border-radius: 10px; box-shadow: var(--shadow); }
+  th.orange { background: var(--accent2); }
+  th.blue { background: var(--accent3); }
+  th.green { background: var(--accent4); }
+  th.gold { background: var(--gold); }
+
+  /* ── EXAM QUESTION BOX ── */
+  .exam-box {
+    background: linear-gradient(135deg, #fff1f2, #fce7f3);
+    border: 1.5px solid #fca5a5;
+    border-radius: 10px; padding: 16px 20px; margin: 12px 0;
+  }
+  .exam-box .eq-title {
+    font-weight: 700; font-size: 13px;
+    color: #b91c1c; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .exam-q { 
+    background: #fff; border-radius: 8px;
+    padding: 10px 14px; margin: 6px 0;
+    border-left: 3px solid #f87171;
+    font-size: 14px;
+  }
+  .exam-year { 
+    display: inline-block;
+    background: #dc2626; color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 1px 8px; border-radius: 8px;
+    margin-right: 6px;
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+  .flow-box {
+    background: var(--accent);
+    color: #fff; font-size: 13px; font-weight: 600;
+    padding: 8px 16px; border-radius: 8px;
+    text-align: center;
+  }
+  .flow-box.o { background: var(--accent2); }
+  .flow-box.b { background: var(--accent3); }
+  .flow-box.g { background: var(--accent4); }
+  .flow-box.d { background: var(--gold); }
+  .flow-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+
+  /* ── GRID ── */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 16px 0; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 16px 0; }
+  @media (max-width: 720px) {
+    .grid2, .grid3 { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 26px; }
+    .toc { padding: 12px 16px; }
+  }
+
+  /* ── HIGHLIGHT ── */
+  .hl { background: #fef9c3; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-p { background: #f3e8ff; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-r { background: #fee2e2; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-g { background: #dcfce7; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+
+  /* ── PAGE REFS ── */
+  .pref {
+    display: inline-block;
+    background: #e0e7ff; color: #3730a3;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    padding: 1px 8px; border-radius: 6px;
+    margin-left: 6px;
+  }
+
+  /* ── LOGIC MAP ── */
+  .logic-map {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    margin: 20px 0;
+    text-align: center;
+  }
+  .lm-center {
+    background: var(--accent);
+    color: #fff; font-weight: 700;
+    font-size: 16px;
+    padding: 14px 28px; border-radius: 40px;
+    display: inline-block; margin: 0 auto 24px;
+    box-shadow: 0 4px 16px rgba(139,47,201,.3);
+  }
+  .lm-row { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 14px; }
+  .lm-node {
+    background: #f3e8ff; border: 2px solid #d8b4fe;
+    color: #5b21b6; font-weight: 600; font-size: 13px;
+    padding: 8px 18px; border-radius: 20px;
+    text-align: center;
+  }
+  .lm-node.o { background: #fff3e0; border-color: #fdba74; color: #c2410c; }
+  .lm-node.b { background: #dbeafe; border-color: #93c5fd; color: #1d4ed8; }
+  .lm-node.g { background: #dcfce7; border-color: #86efac; color: #166534; }
+  .lm-conn { font-size: 22px; color: #8b2fc9; display: flex; align-items: center; }
+
+  /* ── ALERT/TIP ── */
+  .tip {
+    display: flex; gap: 12px;
+    background: #f0fdf4; border: 1.5px solid #86efac;
+    border-radius: 10px; padding: 14px 18px; margin: 12px 0;
+    font-size: 14px;
+  }
+  .tip .tip-icon { font-size: 20px; flex-shrink: 0; }
+  .warn {
+    display: flex; gap: 12px;
+    background: #fffbeb; border: 1.5px solid #fcd34d;
+    border-radius: 10px; padding: 14px 18px; margin: 12px 0;
+    font-size: 14px;
+  }
+
+  /* ── QUIZ ── */
+  .quiz-box {
+    background: linear-gradient(135deg, #eef2ff, #dbeafe);
+    border: 1.5px solid #93c5fd;
+    border-radius: 12px; padding: 20px 24px; margin: 14px 0;
+  }
+  .quiz-box .q-title {
+    font-weight: 700; color: #1d4ed8; font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .quiz-item {
+    background: #fff; border-radius: 8px;
+    padding: 10px 14px; margin: 8px 0;
+    border-left: 3px solid #3b82f6;
+    font-size: 14px; counter-increment: quiz;
+  }
+  .quiz-item::before {
+    content: 'Q' counter(quiz) '. ';
+    font-weight: 700; color: #2563eb;
+  }
+  .quiz-box { counter-reset: quiz; }
+
+  /* ── ULTIMATE REVIEW ── */
+  .ultimate {
+    background: linear-gradient(135deg, #1a0a2e, #3b0764);
+    color: #fff; border-radius: 16px;
+    padding: 32px 36px; margin: 20px 0;
+  }
+  .ultimate h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 20px; color: #f9a8d4; }
+  .ultimate .u-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    margin: 14px 0;
+    padding: 14px 16px;
+    background: rgba(255,255,255,.08);
+    border-radius: 10px;
+    border-left: 3px solid #f9a8d4;
+  }
+  .ultimate .u-num {
+    background: #8b2fc9; color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    padding: 2px 10px; border-radius: 8px;
+    white-space: nowrap;
+  }
+  .ultimate .u-text { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,.9); }
+
+  /* ── ANSWER AREA ── */
+  .ans {
+    background: #f0fdf4; border: 1.5px solid #86efac;
+    border-radius: 8px; padding: 12px 16px; margin-top: 8px;
+    font-size: 13.5px; color: #166534;
+    display: none;
+  }
+  .toggle-btn {
+    background: none; border: 1.5px solid #86efac;
+    color: #059669; font-size: 12px; font-weight: 600;
+    padding: 3px 12px; border-radius: 8px; cursor: pointer;
+    margin-top: 6px;
+  }
+  .toggle-btn:hover { background: #dcfce7; }
+
+  /* ── COMPARISON TABLE ── */
+  .cmp-table { font-size: 13.5px; }
+  .cmp-table th { font-size: 13px; }
+  .cmp-table .y { color: #059669; font-weight: 700; }
+  .cmp-table .n { color: #dc2626; }
+  .cmp-table .m { color: #d97706; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #f5e8d8; }
+  ::-webkit-scrollbar-thumb { background: #d8b4fe; border-radius: 3px; }
+
+  /* ── NIGHT MODE BUTTON ── */
+  #night-btn {
+    position: fixed; top: 56px; right: 16px; z-index: 9000;
+    background: #1a0a2e; color: #f8d775; border: 2px solid #8b2fc9;
+    border-radius: 50%; width: 42px; height: 42px; font-size: 18px;
+    cursor: pointer; box-shadow: 0 2px 12px rgba(139,47,201,.35);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .25s, transform .15s;
+  }
+  #night-btn:hover { transform: scale(1.1); }
+
+  /* ── DARK MODE ── */
+  body.dark-mode {
+    --bg: #0f0a1e;
+    --bg2: #1a1030;
+    --card-bg: #1e1535;
+    --ink: #e8dff8;
+    --border: #3d2a6a;
+    --shadow: 0 4px 24px rgba(0,0,0,.45);
+    background: var(--bg);
+    color: var(--ink);
+  }
+  body.dark-mode .hero { background: linear-gradient(135deg, #050212 0%, #1a0a2e 50%, #3b0764 100%); }
+  body.dark-mode .toc { background: rgba(15,10,30,.97); border-bottom-color: #3d2a6a; }
+  body.dark-mode .toc a { color: #c4a9f0; }
+  body.dark-mode .toc a:hover { background: rgba(139,47,201,.35); color: #e8dff8; }
+  body.dark-mode .card { background: var(--card-bg); border-color: #3d2a6a; }
+  body.dark-mode .card.orange { border-left-color: #e85d26; background: #1e1530; }
+  body.dark-mode .card.blue { border-left-color: #2563eb; background: #101828; }
+  body.dark-mode .card.green { border-left-color: #059669; background: #0d1f18; }
+  body.dark-mode table th { background: #2a1a4a; color: #d4b8f0; }
+  body.dark-mode table td { color: #e0d4f5; }
+  body.dark-mode table tr:nth-child(even) td { background: rgba(139,47,201,.08); }
+  body.dark-mode .orig { background: rgba(139,47,201,.12); border-left-color: #8b2fc9; color: #d4b8f0; }
+  body.dark-mode .mnemonic { background: rgba(232,93,38,.12); border-left-color: #e85d26; color: #f0c4a0; }
+  body.dark-mode .logic-map { background: rgba(15,10,30,.8); border-color: #3d2a6a; }
+  body.dark-mode .flow-box { background: rgba(139,47,201,.2); color: #c4a9f0; border-color: #5a2ea0; }
+  body.dark-mode .flow-box.b { background: rgba(232,93,38,.2); border-color: #c04a20; }
+  body.dark-mode .quiz-box { background: #1a1030 !important; border-color: #3d2a6a !important; }
+  body.dark-mode .quiz-item { border-left-color: #8b2fc9; background: rgba(139,47,201,.08); color: #e0d4f5; }
+  body.dark-mode .ans { background: rgba(5,150,105,.1); border-color: #059669; color: #a7f3d0; }
+  body.dark-mode .toggle-btn { border-color: #3d9e6a; color: #6ee7b7; }
+  body.dark-mode .toggle-btn:hover { background: rgba(5,150,105,.15); }
+  body.dark-mode .exam-box { background: rgba(220,38,38,.08); border-color: #7f1d1d; }
+  body.dark-mode .exam-year { background: #7f1d1d; color: #fca5a5; }
+  body.dark-mode .sec-header { border-bottom-color: #3d2a6a; }
+  body.dark-mode .section { border-color: #2a1a4a; }
+  body.dark-mode .grid2 > div, body.dark-mode .grid3 > div { background: rgba(255,255,255,.02); }
+  body.dark-mode .table-wrap { border-color: #2a1a4a; }
+  body.dark-mode #night-btn { background: #f8d775; color: #1a0a2e; border-color: #f8d775; }
+  body.dark-mode ::-webkit-scrollbar-track { background: #0f0a1e; }
+  body.dark-mode ::-webkit-scrollbar-thumb { background: #5a2ea0; }
+
+  /* ── 30-SEC RAPID REVIEW ── */
+  .rapid-section { background: linear-gradient(135deg, #1a0a2e, #3b0764); color: #fff; border-radius: 16px; padding: 28px 32px; margin: 0 0 24px; }
+  .rapid-section .rapid-title { font-size: 22px; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .rapid-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 12px; }
+  .rapid-item { background: rgba(255,255,255,.1); border-radius: 10px; padding: 12px 16px; border-left: 3px solid #f8d775; }
+  .rapid-item .r-num { font-size: 11px; color: #d8b4fe; margin-bottom: 4px; font-weight: 600; letter-spacing: .5px; }
+  .rapid-item .r-txt { font-size: 13.5px; font-weight: 600; line-height: 1.5; }
+  body.dark-mode .rapid-section { background: linear-gradient(135deg, #050212, #1a0a2e); }
+
+  /* ── RECITATION / MEMORIZE BOX ── */
+  .recite-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid #f59e0b; border-radius: 14px; padding: 24px 28px; margin: 0 0 24px; }
+  .recite-box .recite-title { font-size: 18px; font-weight: 800; color: #92400e; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .recite-point { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+  .recite-point .rp-num { background: #d97706; color: #fff; border-radius: 50%; width: 22px; height: 22px; font-size: 12px; font-weight: 700; flex-shrink: 0; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .recite-point .rp-txt { font-size: 14px; color: #78350f; line-height: 1.6; }
+  .recite-point .rp-txt strong { color: #b45309; }
+  body.dark-mode .recite-box { background: linear-gradient(135deg, #2a1a08, #3d2510); border-color: #d97706; }
+  body.dark-mode .recite-box .recite-title { color: #fbbf24; }
+  body.dark-mode .recite-point .rp-txt { color: #fde68a; }
+  body.dark-mode .recite-point .rp-txt strong { color: #fbbf24; }
+
+  /* ── COMPARE TABLE ── */
+  .compare-section { margin: 0 0 24px; }
+  .compare-section .cmp-title { font-size: 17px; font-weight: 800; color: var(--accent); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  body.dark-mode .compare-section .cmp-title { color: #c084fc; }
+
+  /* ── INTERVIEW TEMPLATE BOX ── */
+  .itv-box { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 2px solid #059669; border-radius: 12px; padding: 18px 22px; margin-top: 16px; }
+  .itv-box .itv-title { font-size: 14px; font-weight: 800; color: #065f46; margin-bottom: 10px; }
+  .itv-box .itv-step { font-size: 13.5px; color: #047857; margin-bottom: 6px; display: flex; gap: 8px; }
+  .itv-box .itv-step .step-label { background: #059669; color: #fff; border-radius: 4px; padding: 1px 7px; font-size: 11px; font-weight: 700; flex-shrink: 0; align-self: flex-start; margin-top: 2px; }
+  .itv-followup { background: #fffbeb; border: 1.5px solid #f59e0b; border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
+  .itv-followup .fq-title { font-size: 13px; font-weight: 700; color: #92400e; margin-bottom: 8px; }
+  .itv-followup li { font-size: 13px; color: #78350f; margin-bottom: 4px; margin-left: 16px; }
+  body.dark-mode .itv-box { background: linear-gradient(135deg, #062015, #0a2e1e); border-color: #059669; }
+  body.dark-mode .itv-box .itv-title { color: #6ee7b7; }
+  body.dark-mode .itv-box .itv-step { color: #a7f3d0; }
+  body.dark-mode .itv-followup { background: #1c1505; border-color: #d97706; }
+  body.dark-mode .itv-followup .fq-title { color: #fbbf24; }
+  body.dark-mode .itv-followup li { color: #fde68a; }
+</style>
+
+
+<script>window._PAGE_TEXT='第12章 · 劳动关系 | 人力资源管理复试笔记 \n \n \n \n \n \n \n CSU · 企业管理学硕复试 · 人力资源管理第3版 颜爱民 \n 第 12 章 劳动关系 \n Labor Relations · 页码 389–419 · 涵盖劳动关系概述、西方理论、调整机制、中国发展趋势 \n \n ⭐⭐⭐ 高频考点 \n 📄 简答 + 论述 \n 🏛️ 劳动合同法 \n 🤝 集体谈判 \n ⚖️ 三方协商 \n 📋 劳动争议 \n \n \n \n \n 目录 \n 逻辑图 \n 12.1 概述 \n 12.2 西方理论 \n 12.3 调整机制 \n 12.4 发展趋势 \n 串联复习 \n 高频真题 \n 教材原句 \n 自我检验 \n \n \n \n \n \n 🗺️ 逻辑图 \n 本章整体逻辑关系 + 章节间联系 \n \n \n ▼ 本章内部逻辑关系 \n \n 第1章 HRM概述 劳动关系是HRM保障 \n → \n \n 第12章 劳动关系 HRM的保障系统 \n 贯穿：法律框架 × 权利义务 × 协商机制 \n \n ↔ \n 第8章 薪酬 薪酬是劳资冲突核心 \n \n \n 第6章 绩效管理 绩效与劳动合同挂钩 \n 第13章 战略HRM 劳动关系影响战略实施 \n 第11章 激励 激励→合作根源 \n \n ▼ 本章四节内部逻辑链 \n \n 12.1 劳动关系 是什么？ \n → \n 12.2 西方理论 为什么？ \n → \n 12.3 调整机制 怎么管？ \n → \n 12.4 中国趋势 往哪走？ \n \n 每一节都围绕"劳资关系如何平衡与协调"这一核心展开 \n \n \n \n \n \n 12.1 \n 劳动关系概述 P.390–397 \n \n \n \n \n 📌 劳动关系的含义\n ★★★★★ \n \n \n \n 劳动关系概念最早出现在 1935年7月 美国制定的《国家劳动关系法》中。 \n \n 当前主要有 3种理解 ： \n \n \n 理解层次 含义 \n ①广义劳动关系 人与人之间在劳动中发生的所有关系（含就业关系、组合关系、分配关系） \n ②雇佣关系视角 雇主/雇主组织与劳动者个人及团队的合作、冲突、力量和权变关系总和 \n ③劳资关系 就业组织中由雇佣行为产生的劳资关系 \n \n \n \n \n 本书定义（重点背诵！） \n 劳动关系主要是指企业所有者、经营管理者、普通职工及其工会组织之间在企业的生产经营活动中形成的各种权、责、利关系，主要包括： ①所有者与全体职工的关系； ②经营管理者与普通职工的关系； ③经营管理者与个人组织的关系； ④工会与职工的关系。 \n \n 🏭 想象一个工厂：老板、厂长、工人、工会……他们之间谁有什么权利，谁要履行什么义务，大家之间怎么分钱、分工——这些关系合在一起，就叫"劳动关系"！ \n \n \n \n 口诀： 权责利 + 四对关系 （所有者↔全体员工 / 管理者↔普通职工 / 管理者↔个人组织 / 工会↔职工） \n 简答题 2016-2025均可考 \n \n \n \n \n 🔧 劳动关系的构成要素\n ★★★★☆ \n \n 劳动法律关系由 3个要素 构成： \n \n \n ① 主体 \n 劳动关系的参与者 \n 狭义 员工+工会 / 管理方+雇主协会 \n 广义 还包括 政府 \n \n \n ② 内容 \n 权利与义务 \n 劳动者权利：劳动权、民主管理权、休息权、报酬权、劳动保护权、职业培训权、社会保险权、争议提请权\n \n \n ③ 客体 \n 权利义务共同指向的事物 \n 劳动时间、劳动报酬、安全卫生、劳动纪律、福利保险、教育培训、劳动环境 \n ⚠️ 劳动者人格和人身不能作为客体！ \n \n \n 要素口诀： "主—内—客" 即 谁参与（主体）→ 有什么权利义务（内容）→ 指向啥（客体） \n \n 🎮 打个比方：玩游戏要有"玩家"（主体），玩家要知道规则（内容），游戏里有什么道具可以用（客体）——三者缺一不可！ \n \n \n \n \n \n 👥 劳动关系主体详解\n ★★★★☆ \n \n \n \n \n 主体 \n 定义要点 \n 关键细节 \n \n \n 员工 \n 不具备基本经营决策权力并从属于此权力的工作者 \n 包括蓝领/医护/教师/警察/低层管理者； 不包括 自由职业者；范围：第二+第三产业 \n \n \n 员工团体（工会） \n 因共同利益、兴趣或目标组成的员工组织 \n 工会是最主要形式；职业协会是跨企业行业组织 \n \n \n 管理方 \n 法律赋予对组织所有权、具有主要经营决策权的人或团体 \n 管理方是等级制的，权力逐级递减，集中于上层 \n \n \n 雇主协会 \n 管理方团体的主要形式 \n 以行业/贸易为纽带；主要任务：集体谈判、劳动争议支持、参与立法 \n \n \n 政府 \n 广义劳动关系主体 \n 三重角色： 立法者 + 公共利益维护者 + 公共部门雇主 \n \n \n \n 💡 政府是广义劳动关系的主体，这一点常考！政府的三重角色是简答题重点。 \n \n \n \n \n ⚡ 劳动关系的表现形式：合作 & 冲突\n ★★★★★ \n \n \n \n 🤝 合作 Cooperation \n 合作是指在就业组织中，双方共同生产产品和服务，并在很大程度上遵守既定制度和规则的行为。 \n 合作的根源（两方面）： \n \n 根源 含义 \n 被迫 劳动者为谋生不得不与雇主合作；员工比雇主更依赖雇佣关系延续 \n 获得满足 ①对制度信任；②工作本身有积极意义；③管理方让步提升满意度 \n \n 合作的方式： \n \n 地区性劳资委员会 ：特定地理区域联合，不参与集体谈判，解决共同劳动力就业问题 \n 劳资联合委员会 ：工人联合会+企业联合会，处理具体细节问题 \n 企业内部合作（工厂内干预） ：集体收益分享、质量劳资联合委员会、工作生活质量计划、自我管理工作团队 \n \n \n \n ⚔️ 冲突 Conflict \n 冲突是指由于某种差异而引起的抵触、争执或争斗的对立状态。 \n 冲突的根源： \n \n 类型 内容 \n 根本根源 （4个） ①异化的合法化 ②客观的利益差异 ③雇佣关系的权力等级制度 ④劳动合同的订立和执行情况 \n 背景根源 广泛社会不平等、人力资源市场状况、工作本身的经验（更可变、取决于组织/产业/地域/国家） \n \n 冲突的形式： \n \n 类型 雇员/工会手段 雇主手段 \n 明显冲突 罢工、旷工、辞职 关闭企业、解雇 \n 潜在冲突 怠工、联合抵制、纠察、好/恶名单 黑名单、雇用替代者、复工运动、排工 \n \n \n \n \n 🏫 班级里，同学们一起完成任务叫"合作"（大家都能得奖状）；同学们为了谁当班长而争抢叫"冲突"（利益不同）。工厂里的老板和工人也一样，合作赚钱，冲突争权益！ \n \n 冲突根本根源口诀： "异利权合" （异化→利益差异→权力等级→合同执行） \n \n \n \n \n 🗂️ 劳动关系的类型（3种分类标准）\n ★★★★☆ \n \n \n \n \n 分类标准 \n 类型 \n 核心特征 \n \n \n 按力量对比 \n 均衡型 \n 双方力量相差不大，相互制衡；法律保障，工会有权了解内部信息 \n \n \n 倾斜型 \n 一方占主导支配另一方；完全市场作用下雇主处优势，雇员处劣势 \n \n \n 政府主导型 \n 政府是控制主要力量（典型：新加坡、计划经济国家） \n \n \n 按冲突与合作 （哈比森&科尔曼） \n 对抗型 \n 劳资矛盾尖锐，冲突不断（资本主义早期/产业运动时期） \n \n \n 休战型 \n 管理方视工会为"毒瘤"，无激烈运动但依赖力量对比维系 \n \n \n 和睦相处型 \n 管理方视工会为资产，善意谈判；但生产决策仍由管理方控制 \n \n \n 合作型 \n 相互信任尊重；工会参与经营；共同解决问题，提高效率 \n \n \n 按利益关系 \n 利益冲突型 \n 传统劳动关系；资本剥削劳动；阶级斗争理论；工会是对抗力量 \n \n \n 利益共同型 \n 生产资料公有制；劳动者利益由国家代表；计划经济体制的主要类型 \n \n \n 利益一体化型 \n 生产要素合作理论；没有利益冲突，企业属全体人员；雇主决策可接受 \n \n \n 利益协调型 \n 多元化观点；通过集体协商/谈判保障各自权益；工会是负责任的利益代表 \n \n \n \n 按力量分类口诀： 均衡—倾斜—政府 ；按冲突合作口诀： 对抗→休战→和睦→合作 （由激烈到和谐进化） \n \n 🎯 真题关联 \n 常考 劳动关系的类型有哪些？请按不同标准分类并说明各类型特征。（简答题） \n \n \n \n \n \n \n 12.2 \n 西方劳动关系相关理论 P.398–402 \n \n \n \n \n 🏫 当代劳动关系管理理论：四大学派\n ★★★★★ \n \n \n \n ① 新保守派（新自由派/新古典学派） \n 市场主导 \n \n ▸ 关注经济效率最大化，相信市场力量 \n ▸ 劳动关系 = 自由、平等的交换关系 \n ▸ 长期供求趋于均衡 \n ▸ 工会是负面的 ：形成垄断，干扰市场，削弱竞争力 \n ▸ 双赢：资方获高利润，雇员获高工资\n \n \n \n ② 管理主义学派（Human Resource Management） \n HRM视角 \n \n ▸ 劳资双方本质上无固有矛盾 \n ▸ 以人力资源管理 替代工会作用 ，建立"新型劳资关系" \n ▸ 重视员工需求（ 霍桑实验 支持） \n ▸ 措施：员工建议制度、业绩考评、利润分成、企业文化、信息交流\n \n \n \n ③ 正统多元学派（制度主义） \n 工会支持 \n \n ▸ 关注效率与公平的平衡 \n ▸ 工人个人力量弱，需联合→ 工会 + 集体谈判 \n ▸ 支持工人组建工会，重视工会制度 \n ▸ 关注雇主、工会和政府的组织行为\n \n \n \n ④ 自由改革主义学派 \n 战略选择 \n \n ▸ 出现于20世纪70年代 \n ▸ 多学科角度（心理学、社会学、经济学） \n ▸ 目标：使现行机制在现有体制中更好运行 \n ▸ 80年代提出 战略选择理论 ：了解三方（管理者、工会/员工、政府）战略决策才能理解劳动关系\n \n \n \n \n ⑤ 激进派（新马克思学派） \n 阶级对立 \n \n ▸ 20世纪60年代以后发展 \n ▸ "劳动"利益与"资本"利益 完全对立 \n ▸ 冲突不仅在工作场所，还扩展到宏观经济中的劳资对抗 \n ▸ 认为自由改革主义学派的政策主张作用有限\n \n \n \n 📚 把这5个学派想成5个同学对"班级矛盾"的看法： \n ①新保守派："让同学们自己解决，别老师管！" \n ②管理主义派："只要班主任好，不需要班委会（工会）！" \n ③正统多元派："同学们要联合成班委，对抗班主任的不公！" \n ④自由改革派："分析清楚为什么矛盾，再解决！" \n ⑤激进派："同学和老师天生就是对立的，没法调和！" \n \n 五大学派记忆口诀： "新保（市场）→管理（HRM）→正多（工会）→自由（战略）→激进（对立）" \n \n 🎯 真题关联 \n 高频 西方国家劳动关系的理论观点是什么？（教材习题，极可能考） \n \n \n \n \n \n ⚙️ 西方劳动关系调整机制\n ★★★★☆ \n \n 西方国家劳动关系调整的主要机制： 三方协商机制 、 集体协商制度 、 工人参与制度 \n \n \n 🏛️ 三方协商机制 \n 以市场经济为基础、民主制度为依托、合作共赢为出发点，构建政府—劳方—资方共同管理劳动关系的平台。本质：市场经济充分发展的结果。 \n 代表国家：德国（传统）、西班牙（70年代社会协商）、法国/瑞典 \n \n \n 📋 集体协商制度 \n 西方工会运动的基本形式。 最早出现于18世纪末、19世纪初英国 。二战后大规模发展，20世纪60年代各国普遍实行。目的：调解劳资冲突，促进劳资关系缓和稳定。 \n \n \n 👷 工人参与制度 \n 最早出现于19世纪末期。 1919年德国《魏玛宪法》 是第一次写入宪法。最有影响的是德国 "共决制" ——西方工人参与历史的里程碑。 \n \n \n 📌 注意重要历史节点：集体协商最早（英国18世纪末）；工人参与宪法化最早（德国1919年）；三方协商在90年代后成为世界性趋势。 \n \n \n \n \n 🇨🇳 西方劳动关系调整经验对中国的启示（4点）\n ★★★☆☆ \n \n \n 启示要点 核心内容 \n ①和谐基础 劳动关系的和谐是和谐社会的基础；劳资均衡期往往是社会和谐、国力强盛时期 \n ②民主法制 现代民主法制是实现劳动关系和谐发展的制度基础；建立劳动法、劳动合同法、社会保障法 \n ③政府干预 政府积极干预和政策引导是建立和谐劳动关系的体制保证；建立集体谈判制度、三方协商制度、争议仲裁制度 \n ④企业社会责任 将企业社会责任（CSR）作为激励企业改善劳动关系的契机；实现劳资双赢，有利宏观稳定 \n \n \n \n \n \n \n 12.3 \n 劳动关系调整 P.403–415 \n \n \n \n \n ⚖️ 法律调整\n ★★★★☆ \n \n \n \n 劳动法起源： 1802年英国《学徒与道德法》 （限制工作时间）——现代劳动关系立法起源 \n \n 中国劳动法时间线： \n \n 1996年《劳动法》开始实行 \n ↓ \n 2008年《劳动合同法》施行（更完善） \n \n \n 劳动法的两大主旨： \n \n 保护雇员/劳动者的利益 \n 所确定的劳动条件和标准是双方遵循的 最低条件和标准 \n \n \n \n 各国劳动立法三项原则： \n \n \n ① 劳动保护原则 保障劳动者基本权益\n \n \n ② 三方协调原则 劳动者/工会、雇主/雇主组织、政府协调\n \n \n ③ 国际劳动标准原则 遵循国际劳工组织规范\n \n \n \n \n \n \n \n \n 📝 劳动合同管理\n ★★★★★ \n \n 劳动合同又称劳动契约或者劳动协议，是劳动者与用人单位确立劳动关系，明确双方权利和义务的协议。 \n \n \n ⚠️ 重要条款详解（高频考点） \n \n \n ① 试用期条款 \n \n \n 规定 内容 \n 最长期限 不超过6个月 \n 试用期工资 不低于 同岗位最低档工资或合同约定工资的80%；且不低于当地最低工资标准 \n 解除条件 证明不符合录用条件，可解除， 无须支付经济补偿 \n \n \n \n 🏁 就像入学第一周是"体验期"，老师觉得你不适合可以让你回去，但不能不给你这周的零花钱！ \n \n \n \n ② 竞业禁止条款 \n 按劳动合同约定或用人单位规定，掌握商业秘密的劳动者在 终止/解除劳动合同后一定时期内 ，不得从事与用人单位相同或类似业务的竞争行为。 \n 法律规定（第23、24条）： \n \n 适用人员： 高级管理人员、高级技术人员 及其他知悉商业秘密的人员 \n 须按月给予劳动者 经济补偿 \n 劳动者违反需支付 违约金 \n \n \n 🤫 就像你从小卖部学会了秘方，走了之后2年内不能开同样的小卖部，但小卖部要给你"封口费"！ \n \n \n \n ③ 违约金条款 \n 《劳动合同法》第25条规定： 除第22条（服务期）和第23条（竞业限制）规定的情形外， 用人单位不得与劳动者约定由劳动者承担的违约金。 \n \n 🚫 公司不能随便设置"罚款"让员工走不了，除非是学了特别技能（服务期）或知道秘密（竞业限制）两种情况！ \n \n \n \n ④ 劳动合同期限 \n \n 类型 说明 \n 固定期限 约定终止时间的劳动合同 \n 无固定期限 无确定终止时间；满足法定情形时劳动者要求则必须订立 \n 以完成工作 任务为期限 以某项工作完成为合同期限 \n \n \n \n \n \n 📋 劳动合同的全生命周期 \n \n 订立 书面+签字/盖章 双方各执一份 \n → \n 生效 签字/盖章 即生效 \n → \n 变更 协商一致 书面形式 \n → \n 解除 法定条件 双方或单方 \n \n \n \n 订立原则： 平等、自愿、协商一致、合法（必须书面形式） \n 劳动者主体资格（4条件）： ①年龄≥16周岁 ②完成义务教育 ③有劳动能力 ④行为自由 \n \n \n 变更注意事项： \n \n 合同有效期内进行 \n 平等自愿、协商一致 \n 必须合法 \n 必须采用 书面形式 \n 及时进行 \n \n \n \n \n \n \n \n 🤝 三方协商\n ★★★★★ \n \n 三方协商是政府与雇主组织和劳动组织（工会）三方就劳资关系领域中的有关问题进行协商对话，消除误解，弱化有争议的问题，增加达成协议的机会，取得共同协调社会经济发展的成果。 \n \n \n 三方协商内容（9项）： \n \n ①劳动就业 ②劳动报酬 ③劳动安全卫生 \n ④工作时间和休息时间 ⑤社会保险 \n ⑥职业培训 ⑦集体合同和劳动合同 \n ⑧职工民主管理 ⑨劳动争议处理 \n \n \n 三方协商主要职能： \n \n 磋商咨询 \n + \n 谈判 \n + \n 协调仲裁 \n \n \n \n 三方协商六大原则： \n \n ①合法原则 \n ②三方参与原则（自愿、独立） \n ③平等协调原则 \n ④合作原则 \n ⑤三方利益兼顾原则 \n ⑥维护稳定原则 \n \n \n \n \n \n 三方协商机构类型 特点 代表国家 \n 常设机构 永久性协商机构 法国（经济和社会理事协会）、荷兰（社会和经济理事会）、挪威（协调委员会） \n 临时机构 有需要时召开三方会议 无常设机构的西方国家 \n 专门机构 协调委员会、劳工法院等 各国 \n \n \n 九项内容口诀： "就薪安息保训合民争" （就业/薪酬/安全/休息/保险/培训/合同/民主管理/争议） \n \n 🎯 真题关联 \n 高频 简述三方协商的重要性。（教材习题·极可能考） \n \n \n 🏛️ 三方协商就像学校、家长、学生代表三方一起开家长会！学校（政府）制定规则，家长（雇主）说企业利益，学生代表（工会）说劳动者需求，三方一起商量出大家都满意的方案！ \n \n \n \n \n \n ⚖️ 劳动争议处理制度\n ★★★★☆ \n \n 劳动争议，也称"劳动纠纷""劳资争议"，是指用人单位和劳动者在执行劳动方面的法律、法规和劳动合同、集体合同的过程中，就劳动的权利义务发生分歧而引起的争议。 \n \n \n 劳动争议的两大特点： \n \n ①主体是 劳动关系双方 （用人单位+劳动者） \n ②因执行劳动法律法规或劳动合同而引起（民事合同纠纷不算劳动争议） \n \n \n 我国劳动争议处理流程（"一调一裁两审"）： \n \n 劳动争议调解委员会（申请调解·自愿） \n ↓ 调解不成 \n 劳动争议仲裁委员会（仲裁·前置程序） \n ↓ 不服裁决 \n 人民法院（诉讼·一审+二审） \n \n ⚠️ 未经劳动仲裁，人民法院不予受理 \n \n \n 现行机制存在的问题（3个）： \n \n 问题 表现 \n 协商不对等 劳动者力量弱；工会未充分维权；缺乏法律规制 \n 调解局限性大 无强制规定；层级低；缺独立性；协议约束力不足 \n 仲裁限制过多 一裁终局范围窄；仲裁与诉讼程序脱节 \n \n \n 🏀 就像班级有矛盾，先找班主任调解（调解）→ 不行找年级组长仲裁（仲裁）→ 还不服去找校长（法院）！ \n \n \n \n \n \n \n \n 💬 集体谈判（Collective Bargaining）\n ★★★★★ \n \n 集体谈判是指雇主方和雇员代表借助谈判，旨在达成覆盖某一雇员群体的协议，以决定就业条件与待遇，协调劳动关系的一种方法。 \n 我国《集体合同规定》称为"集体协商" \n \n \n \n 集体谈判的三大特征： \n \n 法律地位平等的双方进行的谈判对抗机制 \n 既有共同利益又有利益冲突的双方进行的利益协商与沟通 \n 涉及不同的谈判级别和谈判结构（可以一对一，也可以团体对雇主） \n \n \n 集体谈判的三大功能： \n \n 功能 核心内涵 \n 经济决策功能 决定就业条件与资金分配 \n 管理功能 集体谈判是"政治制度"；集体协议是劳资立法者制定的实体法律 \n 决策功能 体现公平与民主；工人通过工会参与规则制定；限制资方单独行动自由 \n \n \n \n 集体谈判程序（三阶段）： \n \n \n ① 谈判前准备阶段 \n 拟定方案→组建谈判组织→约定时间地点→上报政府部门 \n \n ↓ \n \n ② 谈判过程阶段 \n 相互协商→可能陷入僵局→调解/仲裁/罢工等 \n \n ↓ \n \n ③ 签订集体协议阶段 \n 各自批准→双方签字→正式生效 \n \n \n \n 政府在谈判中的作用（4个）： \n \n ①制定劳动法律和基本国策 \n ②对集体谈判内容的干预（间接+直接） \n ③对集体协议实施的干预 \n ④对集体谈判进行客观指导（如工资指导线） \n \n \n \n \n 🏪 想象工厂里所有工人派代表去跟老板谈："我们要涨工资、少加班！"这就是集体谈判。工人单独谈容易被欺负，但大家联合起来谈，力量就大多了！ \n \n 三大功能口诀： "经管决" （经济决策→管理→民主决策） \n \n 🎯 真题关联 \n 高频 集体谈判的含义、特征及功能是什么？ \n \n \n \n \n \n \n 12.4 \n 中国劳动关系发展趋势 P.416–417 \n \n \n \n 🇨🇳 中国劳动关系总趋势\n ★★★★☆ \n \n 中国劳动关系的发展趋势是以劳动法律法规为依据，以劳动关系双方自主协调为基础，以实行劳动合同制度和集体合同制度为基本形式，以政府劳动保障行政部门、工会组织、企业组织三方协商为方向，以建立劳动关系宏观预警系统和完善劳动争议处理制度为保障，实现劳动关系调整机制的规范、法制化。 \n \n \n \n ① 新法背景下构建和谐劳动关系 \n \n 建立"以人为本"企业文化 \n 加强工会组织建设与集体协商谈判制度 \n 完善企业规章制度，提高劳动者素质 \n \n \n \n ② 金融危机下劳动关系调整 \n \n 充分发挥政府协调作用（产业西移、税收补贴） \n 灵活就业方式地位提升 \n 考虑扩大《劳动合同法》豁免范围（如微型企业） \n \n \n \n ③ 个别劳动关系→集体劳动关系转化 \n 个别劳动关系：个别劳动者与雇主的关系，形式上平等，实际是从属关系 \n 集体劳动关系：工会/劳动者集体与雇主/雇主组织就劳动条件进行协商形成 \n 《劳动合同法》标志着中国劳动关系的个别调整初步完成，开启了集体调整的新起点。 \n \n \n 发展趋势三关键词： "和谐—灵活—集体化" \n \n \n \n \n \n 🔥 终极 \n 终极串联复习 · 本章逻辑总图 \n \n \n 📌 本章知识串联：一条主线贯穿所有考点 \n \n 主线 \n 劳动关系的本质矛盾 （合作 vs 冲突）→ 为什么需要调整？→ 如何调整（法律/合同/三方协商/集体谈判/争议处理）→ 中国如何发展？ \n \n \n 串联① \n 合作的根源（被迫+满足） → 对应 激励理论（第11章） ：让员工满足 → 减少冲突 → 维持良好劳动关系 \n \n \n 串联② \n 冲突的根本根源 （利益差异/权力等级）→ 对应 薪酬设计（第8章） ：公平薪酬是减少劳资冲突的核心手段 \n \n \n 串联③ \n 三方协商机制 → 对应 战略人力资源管理（第13章） ：宏观劳动关系环境是战略HRM的重要约束条件 \n \n \n 串联④ \n 劳动合同管理（试用期/竞业禁止/违约金） → 对应 员工招聘（第7章） ：招募→签合同→劳动关系确立→全流程法律合规 \n \n \n 串联⑤ \n 集体谈判 → 对应 薪酬谈判 / HR职能 ：集体协议直接决定工资标准、工时、劳动条件；HRBP（2024考点）需掌握集体谈判机制 \n \n \n 考试串联 \n 论述题常考模式 ：战略 × 人力 = 劳动关系是其制度保障。数字化/AI时代（2024-2025热点）→ 新型劳动关系（灵活用工/平台经济/个体工商户）→ 个别劳动关系向集体劳动关系演进 \n \n \n \n \n 第12章 全景思维导图 \n \n 含义（3种理解） →本书定义 \n 构成要素 主体·内容·客体 \n 表现形式 合作·冲突 \n 类型划分 力量/冲突合作/利益 \n \n ↓ \n 劳动关系调整机制 \n \n 法律调整 劳动法/劳动合同法 \n 劳动合同管理 试用期/竞业禁止/违约金 \n 三方协商 政府·劳方·资方 \n 劳动争议 调解→仲裁→诉讼 \n 集体谈判 特征·功能·程序 \n \n ↓ \n \n 中国发展趋势 和谐·灵活·集体化 \n \n \n \n \n \n \n 🎯 真题 \n 本章高频知识点与历年真题汇总 \n \n \n 📊 知识点重要程度总览 \n \n \n \n 知识点 \n 重要程度 \n 题型 \n 关联年份 \n \n 劳动关系的含义与本书定义 ★★★★★ 名词解释/简答 基础必考 \n 劳动关系的构成要素（主体/内容/客体） ★★★★★ 简答 常考 \n 劳动关系的表现形式（合作与冲突） ★★★★★ 简答/论述 常考 \n 劳动关系的类型（3个标准·9个类型） ★★★★☆ 简答/比较 常考 \n 西方劳动关系管理理论五大学派 ★★★★★ 简答/论述 常考（教材习题） \n 三方协商内容、原则、职能 ★★★★★ 简答/论述 常考（教材习题） \n 劳动合同管理（三类期限/三重点条款） ★★★★★ 简答/案例分析 常考（案例题） \n 劳动争议处理机制（一调一裁两审） ★★★★☆ 简答/案例 常考 \n 集体谈判的含义、特征、功能、程序 ★★★★★ 简答/论述 常考 \n 中国劳动关系发展趋势 ★★★★☆ 论述/结合时政 2020s热点论述 \n 西方劳动关系调整机制（三方协商/集体协商/工人参与） ★★★☆☆ 简答 偶考 \n 西方经验对中国的启示（4点） ★★★☆☆ 论述 偶考 \n \n \n \n \n 📋 中南大学企业管理学硕真题（与本章相关） \n 面试高频 员工关系管理与劳动关系的关系和区别？ \n 面试 如何处理劳动关系中的利益冲突？给出具体措施（2019、2020均问到相关话题） \n 2020 远程办公常态化下劳动关系如何调整（疫情背景下劳动关系热点论述） \n 2021 ESG对企业管理的影响→延伸考点：ESG中的"S"（社会责任）包含劳动关系和员工权益保障 \n 综合 薪酬激励设计（2025考点）→ 劳动关系中薪酬是劳资冲突的核心议题，集体谈判的主要内容是工资决定 \n 预测2026 数字化/AI时代（平台经济、灵活用工）对劳动关系带来的新挑战（结合12.4发展趋势） \n 预测2026 企业如何构建和谐劳动关系？从法律、组织、文化三维度分析。 \n \n \n \n \n \n 📖 原句 \n 教材重要原句汇总（必须记忆） \n \n \n 📚 核心定义原句 \n ① 劳动关系主要是指企业所有者、经营管理者、普通职工及其工会组织之间在企业的生产经营活动中形成的各种权、责、利关系。 （P.391·本书定义·必背） \n ② 劳动关系的客体指主体的劳动权和劳动义务共同指向的事物，如劳动时间、劳动报酬、安全卫生、劳动纪律、福利保险、教育培训、劳动环境等。在我国社会主义制度下，劳动者的人格和人身不能作为劳动法律关系的客体。 （P.393·重要） \n ③ 合作是指在就业组织中，双方共同生产产品和服务，并在很大程度上遵守既定制度和规则的行为。 （P.393·合作定义） \n ④ 冲突是指由于某种差异而引起的抵触、争执或争斗的对立状态。 （P.394·冲突定义） \n ⑤ 三方协商是政府与雇主组织和劳动组织（工会）三方就劳资关系领域中的有关问题进行协商对话，消除误解，弱化有争议的问题，增加达成协议的机会，取得共同协调社会经济发展的成果。 （P.409·三方协商定义） \n ⑥ 劳动争议，也称"劳动纠纷""劳资争议"，是指用人单位和劳动者在执行劳动方面的法律、法规和劳动合同、集体合同的过程中，就劳动的权利义务发生分歧而引起的争议。劳动争议不同于民事争议，用人单位和劳动者双方存在管理和被管理关系，双方并不是处于平等主体的地位。 （P.411·劳动争议定义） \n ⑦ 集体谈判是指雇主方和雇员代表借助谈判，旨在达成覆盖某一雇员群体的协议，以决定就业条件与待遇，协调劳动关系的一种方法。 （P.413·集体谈判定义） \n ⑧ 中国劳动关系的发展趋势是以劳动法律法规为依据，以劳动关系双方自主协调为基础，以实行劳动合同制度和集体合同制度为基本形式，以政府劳动保障行政部门、工会组织、企业组织三方协商为方向，以建立劳动关系宏观预警系统和完善劳动争议处理制度为保障，实现劳动关系调整机制的规范、法制化。 （P.416·发展趋势·必背） \n ⑨ 《劳动合同法》第25条规定：除本法第22条和第23条规定的情形外，用人单位不得与劳动者约定由劳动者承担的违约金。 （P.406·违约金条款·必背） \n ⑩ 《劳动合同法》的颁布实施标志着中国劳动关系的个别调整在法律建构上已经初步完成，同时，又开启了劳动关系集体调整的新起点并为劳动关系的集体调整提供了法律基础。 （P.417·重要论断） \n \n \n \n 📖 专有名词中英对照 \n \n \n 中文 英文 一句话解释 \n 劳动关系 Labor Relations 劳资双方的权、责、利关系总和 \n 集体谈判 Collective Bargaining 雇主方与雇员代表就就业条件协议谈判 \n 三方协商 Tripartite Coordination 政府+工会+雇主组织三方协商劳动关系 \n 劳动合同 Labor Contract 劳动者与用人单位确立劳动关系的协议 \n 劳动争议 Labor Disputes 劳资双方因权利义务分歧引起的争议 \n 工会 Trade Union / Labor Union 代表员工利益的团体组织 \n 雇主协会 Employers\' Association 以行业为纽带的管理方团体 \n 竞业禁止 Non-Competition Clause 员工离职后一定期限内不得从事竞争性活动 \n \n \n \n \n \n \n \n ✏️ 检验 \n 课后自我检验 \n \n \n \n 📚 教材课后习题（P.418） \n \n 什么是劳动关系？其构成要素是什么？ \n 查看思路 ▼ \n 定义：企业所有者、经营管理者、普通职工及其工会组织之间在生产经营活动中形成的权责利关系。三要素：主体（狭义：员工+工会/管理方+雇主协会；广义加政府）、内容（权利与义务）、客体（劳动时间/报酬/安全等，不含人格人身）。 \n \n 劳动关系的表现形式有哪些？ \n 查看思路 ▼ \n 两种形式：①合作（定义+根源：被迫和获得满足+三种合作方式）；②冲突（定义+根本根源4个+背景根源+冲突形式：明显冲突和潜在冲突，分雇员和雇主两方面）。 \n \n 以劳动关系各方力量对比分类，可分为哪几个类型？ \n 查看思路 ▼ \n 三类：①均衡型（双方力量相差不大，相互制衡）；②倾斜型（一方支配另一方，完全市场下雇主处优势）；③政府主导型（政府是控制主要力量，典型：新加坡、计划经济国家）。 \n \n 西方国家劳动关系的理论观点是什么？ \n 查看思路 ▼ \n 五大学派：①新保守派（市场机制，工会负面）；②管理主义学派（HRM替代工会，霍桑实验）；③正统多元学派（工会+集体谈判维权）；④自由改革主义学派（战略选择理论）；⑤激进派（劳资利益完全对立）。 \n \n 劳动关系调整有哪些方法？ \n 查看思路 ▼ \n 四种：①法律调整（劳动法/劳动合同法）；②劳动合同管理（订立/变更/解除）；③三方协商（政府+工会+雇主组织）；④劳动争议处理（调解→仲裁→诉讼）；⑤集体谈判。 \n \n 劳动合同订立、解除及变更的含义？ \n 查看思路 ▼ \n 订立：书面形式，协商一致，双方签字/盖章，各执一份，原则：平等自愿协商一致合法。解除：依法提前终止，有条件限制，用人单位单方解除权受限制。变更：在合同有效期内对部分内容进行修改/补充/删减，须协商一致+书面形式+合法。 \n \n 简述三方协商的重要性。 \n 查看思路 ▼ \n 三方协商（政府+雇主组织+工会）的重要性：①宏观调控劳动关系的核心制度；②磋商咨询、谈判、协调仲裁三大职能；③基于六大原则（合法/三方参与/平等/合作/利益兼顾/维护稳定）运行；④是市场经济充分发展的结果，是国际工人运动的成果；⑤促进劳资关系和谐稳定，维护社会公共利益。 \n \n \n \n 🎯 典型/预测题（重点论述） \n \n \n 结合中南大学案例：某制造企业在快速扩张过程中出现大规模劳动争议，请从劳动关系的角度分析原因并提出改善建议。\n \n 查看思路 ▼ \n \n 答题框架： \n 一、原因分析（从劳动关系的表现形式/冲突根源角度）： \n ①快速扩张导致资方处主导地位（倾斜型劳动关系） \n ②劳动合同管理不规范（试用期/违约金/竞业禁止不合规） \n ③缺乏三方协商机制，劳资沟通渠道不畅 \n ④工会作用弱化，工人无法有效表达诉求 \n 二、改善建议： \n ①完善法律合规：严格执行《劳动合同法》，规范劳动合同内容 \n ②建立集体谈判制度：通过工会代表与资方定期协商工资/工时/劳动条件 \n ③完善争议处理：建立内部调解委员会，畅通申诉渠道 \n ④树立"以人为本"企业文化：将劳动关系和谐纳入企业战略 \n ⑤加强企业社会责任：把劳动者权益保障作为可持续发展的重要内容\n \n \n 论述：在数字化/AI时代，平台经济下的新型劳动关系（如外卖骑手、网约车司机）面临哪些挑战？如何完善劳动关系调整机制？\n \n 查看思路 ▼ \n \n 答题要点： \n 一、新挑战： \n ①从属关系模糊：灵活就业者与平台既有雇佣特征又有独立承包特征 \n ②劳动关系认定困难：传统劳动合同制度难以适用 \n ③集体谈判缺失：劳动者分散，无法组建有效工会 \n ④风险转移：平台将经营风险转嫁给劳动者（按单计费、无社保） \n 二、完善机制： \n ①推进立法创新：扩展劳动者认定标准，将平台就业纳入保护范围 \n ②完善社会保险：建立适应灵活就业的社保体系 \n ③创新集体谈判：探索行业层面的集体谈判制度 \n ④强化政府监管：加大对平台企业劳动用工的监管力度（对应中国发展趋势法制化方向）\n \n \n \n \n 📝 名词解释自测（各1-2分钟） \n 简要解释"集体谈判"的概念及其三大功能。 \n 什么是劳动争议？与民事争议有何区别？我国如何处理劳动争议？ \n 解释"竞业禁止"条款，并说明其适用范围和法律限制。 \n 什么是"利益协调型"劳动关系？其理论基础是什么？ \n 简述管理主义学派关于劳动关系管理的基本观点。 \n \n \n \n ⚡ 临考速记：本章20个关键数字/年份 \n \n \n \n 数字/年份 含义 \n 1935年7月 劳动关系概念最早出现（美国《国家劳动关系法》） \n 3种理解 劳动关系的理解方式 \n 3个要素 主体·内容·客体 \n 5大学派 新保守·管理主义·正统多元·自由改革·激进 \n 4个根本根源 异化·利益差异·权力等级·合同执行 \n 1802年 英国《学徒与道德法》，现代劳动立法起源 \n 1919年 德国《魏玛宪法》，工人参与权首入宪法 \n 3大西方调整机制 三方协商·集体协商·工人参与 \n 1996年 中国《劳动法》开始实行 \n 2008年 《劳动合同法》施行（共8章98条） \n \n \n \n \n 数字/年份 含义 \n 6个月 试用期最长不超过6个月 \n 80% 试用期工资不低于合同约定工资的80% \n 16周岁 劳动者最低就业年龄 \n 9项内容 三方协商的主要内容 \n 6大原则 三方协商原则（合法·参与·平等·合作·兼顾·稳定） \n 3种功能 集体谈判功能（经济决策·管理·决策） \n 3阶段 集体谈判程序（准备→过程→签约） \n 3种机制 劳动争议处理（调解·仲裁·诉讼） \n 一调一裁两审 我国劳动争议处理程序 \n 3个趋势 中国发展趋势（和谐·灵活·集体化） \n \n \n \n \n \n \n \n \n 📚 中南大学企业管理学硕复试 · 第12章 劳动关系 · 人力资源管理第3版 颜爱民主编 \n 页码：P.389–419 · 本笔记严格按教材内容编写 · 祝复试顺利！ 🎉';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="hero">
+  <div class="hero-badge">CSU · 企业管理学硕复试 · 人力资源管理第3版 颜爱民</div>
+  <h1>第 12 章 <span>劳动关系</span></h1>
+  <p class="hero-sub">Labor Relations · 页码 389–419 · 涵盖劳动关系概述、西方理论、调整机制、中国发展趋势</p>
+  <div class="hero-tags">
+    <span class="hero-tag">⭐⭐⭐ 高频考点</span>
+    <span class="hero-tag">📄 简答 + 论述</span>
+    <span class="hero-tag">🏛️ 劳动合同法</span>
+    <span class="hero-tag">🤝 集体谈判</span>
+    <span class="hero-tag">⚖️ 三方协商</span>
+    <span class="hero-tag">📋 劳动争议</span>
+    <span class="hero-tag">📅 生成日期：2026-03-11</span>
+  </div>
+</div>
+
+<!-- ═══════════════════ STICKY NAV ═══════════════════ -->
+<nav class="toc">
+  <span class="toc-label">目录</span>
+  <a href="#logic">逻辑图</a>
+  <a href="#s1">12.1 概述</a>
+  <a href="#s2">12.2 西方理论</a>
+  <a href="#s3">12.3 调整机制</a>
+  <a href="#s4">12.4 发展趋势</a>
+  <a href="#compare">对比表</a>
+  <a href="#ultimate">串联复习</a>
+  <a href="#highfreq">高频真题</a>
+  <a href="#originals">教材原句</a>
+  <a href="#rapid">30秒速记</a>
+  <a href="#recite">背诵版</a>
+  <a href="#quiz">自我检验</a>
+</nav>
+
+<!-- 夜间模式按钮 -->
+<button id="night-btn" title="切换夜间模式" onclick="toggleNight()">🌙</button>
+
+<div class="wrap">
+
+<!-- ═══════════════════ LOGIC MAP ═══════════════════ -->
+<section class="section" id="logic">
+  <div class="sec-header">
+    <span class="sec-num gold">🗺️ 逻辑图</span>
+    <h2 class="sec-title">本章整体逻辑关系 + 章节间联系</h2>
+  </div>
+
+  <div class="logic-map">
+    <div style="font-size:13px;color:#6b7280;margin-bottom:16px;">▼ 本章内部逻辑关系</div>
+    <div class="lm-row">
+      <div class="lm-node">第1章 HRM概述<br><small>劳动关系是HRM保障</small></div>
+      <div class="lm-conn">→</div>
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="lm-center">第12章 劳动关系<br>HRM的保障系统</div>
+        <div style="font-size:12px;color:#8b2fc9;margin-top:6px;">贯穿：法律框架 × 权利义务 × 协商机制</div>
+      </div>
+      <div class="lm-conn">↔</div>
+      <div class="lm-node o">第8章 薪酬<br><small>薪酬是劳资冲突核心</small></div>
+    </div>
+    <div class="lm-row" style="margin-top:10px;">
+      <div class="lm-node b">第6章 绩效管理<br><small>绩效与劳动合同挂钩</small></div>
+      <div class="lm-node g">第13章 战略HRM<br><small>劳动关系影响战略实施</small></div>
+      <div class="lm-node" style="background:#fce7f3;border-color:#f9a8d4;color:#be185d;">第11章 激励<br><small>激励→合作根源</small></div>
+    </div>
+    <div style="font-size:13px;color:#6b7280;margin:20px 0 14px;">▼ 本章四节内部逻辑链</div>
+    <div class="flow" style="justify-content:center;">
+      <div class="flow-box" style="width:130px;">12.1<br>劳动关系<br><small>是什么？</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box o" style="width:130px;">12.2<br>西方理论<br><small>为什么？</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box b" style="width:130px;">12.3<br>调整机制<br><small>怎么管？</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box g" style="width:130px;">12.4<br>中国趋势<br><small>往哪走？</small></div>
+    </div>
+    <div style="font-size:13px;color:#6b7280;margin:10px 0;">每一节都围绕"劳资关系如何平衡与协调"这一核心展开</div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 12.1 OVERVIEW ═══════════════════ -->
+<section class="section" id="s1">
+  <div class="sec-header">
+    <span class="sec-num">12.1</span>
+    <h2 class="sec-title">劳动关系概述 <span class="pref">P.390–397</span></h2>
+  </div>
+
+  <!-- 含义 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="icon">📌</span> 劳动关系的含义
+      <div class="imp"><span class="star">★★★★★</span></div>
+    </div>
+    <div class="grid2">
+      <div>
+        <p>劳动关系概念最早出现在 <span class="hl">1935年7月</span> 美国制定的《国家劳动关系法》中。</p>
+        <br>
+        <p>当前主要有 <span class="hl-p">3种理解</span>：</p>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table>
+            <tr><th>理解层次</th><th>含义</th></tr>
+            <tr><td>①广义劳动关系</td><td>人与人之间在劳动中发生的所有关系（含就业关系、组合关系、分配关系）</td></tr>
+            <tr><td>②雇佣关系视角</td><td>雇主/雇主组织与劳动者个人及团队的合作、冲突、力量和权变关系总和</td></tr>
+            <tr><td>③劳资关系</td><td>就业组织中由雇佣行为产生的劳资关系</td></tr>
+          </table>
+        </div>
+      </div>
+      <div>
+        <p><strong>本书定义（重点背诵！）</strong></p>
+        <div class="orig">劳动关系主要是指企业所有者、经营管理者、普通职工及其工会组织之间在企业的生产经营活动中形成的各种权、责、利关系，主要包括：<br>①所有者与全体职工的关系；<br>②经营管理者与普通职工的关系；<br>③经营管理者与个人组织的关系；<br>④工会与职工的关系。</div>
+        <div class="kid-box">
+          <p>🏭 想象一个工厂：老板、厂长、工人、工会……他们之间谁有什么权利，谁要履行什么义务，大家之间怎么分钱、分工——这些关系合在一起，就叫"劳动关系"！</p>
+        </div>
+      </div>
+    </div>
+    <div class="mnemonic">口诀：<strong>权责利 + 四对关系</strong>（所有者↔全体员工 / 管理者↔普通职工 / 管理者↔个人组织 / 工会↔职工）</div>
+    <div><span class="tag tag-purple">简答题</span><span class="tag tag-orange">2016-2025均可考</span></div>
+    <div class="itv-box">
+      <div class="itv-title">🎤 复试口头回答模板（定义→要素→举例→总结）</div>
+      <div class="itv-step"><span class="step-label">定义</span>劳动关系是企业所有者、经营管理者、普通职工及其工会组织之间，在生产经营中形成的权责利关系。</div>
+      <div class="itv-step"><span class="step-label">核心</span>教材采用劳资关系视角，三要素：主体（员工与管理方）、内容（权利义务）、客体（劳动时间/报酬等，人格人身不可作客体）。</div>
+      <div class="itv-step"><span class="step-label">举例</span>如华为员工与华为公司之间，围绕工资、工时、绩效形成的全套权责安排，即劳动关系的典型体现。</div>
+      <div class="itv-step"><span class="step-label">总结</span>劳动关系是HRM的法律制度基础，贯穿招募、薪酬、绩效各环节，也是构建和谐社会的重要内容。</div>
+      <div class="itv-followup">
+        <div class="fq-title">💬 复试追问预测：</div>
+        <li>劳动关系与民事合同关系有何本质区别？</li>
+        <li>政府在劳动关系中扮演什么角色？（三重角色）</li>
+        <li>中国当前劳动关系属于哪种类型？为什么向集体化方向转变？</li>
+      </div>
+    </div>
+  </div>
+
+  <!-- 构成要素 -->
+  <div class="card orange">
+    <div class="card-title">
+      <span class="icon">🔧</span> 劳动关系的构成要素
+      <div class="imp"><span class="star">★★★★☆</span></div>
+    </div>
+    <p>劳动法律关系由 <span class="hl-r">3个要素</span> 构成：</p>
+    <div class="grid3" style="margin-top:14px;">
+      <div class="card" style="border-left-color:#8b2fc9;margin:0;">
+        <strong>① 主体</strong><br>
+        <small>劳动关系的参与者</small><br><br>
+        <span class="tag tag-purple">狭义</span> 员工+工会 / 管理方+雇主协会<br>
+        <span class="tag tag-blue">广义</span> 还包括<strong>政府</strong>
+      </div>
+      <div class="card" style="border-left-color:#e85d26;margin:0;">
+        <strong>② 内容</strong><br>
+        <small>权利与义务</small><br><br>
+        劳动者权利：劳动权、民主管理权、休息权、报酬权、劳动保护权、职业培训权、社会保险权、争议提请权
+      </div>
+      <div class="card" style="border-left-color:#2563eb;margin:0;">
+        <strong>③ 客体</strong><br>
+        <small>权利义务共同指向的事物</small><br><br>
+        劳动时间、劳动报酬、安全卫生、劳动纪律、福利保险、教育培训、劳动环境<br>
+        <small class="hl-r">⚠️ 劳动者人格和人身不能作为客体！</small>
+      </div>
+    </div>
+    <div class="mnemonic">要素口诀：<strong>"主—内—客"</strong> 即 <strong>谁参与（主体）→ 有什么权利义务（内容）→ 指向啥（客体）</strong></div>
+    <div class="kid-box">
+      <p>🎮 打个比方：玩游戏要有"玩家"（主体），玩家要知道规则（内容），游戏里有什么道具可以用（客体）——三者缺一不可！</p>
+    </div>
+  </div>
+
+  <!-- 主体详解 -->
+  <div class="card blue">
+    <div class="card-title">
+      <span class="icon">👥</span> 劳动关系主体详解
+      <div class="imp"><span class="star">★★★★☆</span></div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th class="blue">主体</th>
+          <th class="blue">定义要点</th>
+          <th class="blue">关键细节</th>
+        </tr>
+        <tr>
+          <td><strong>员工</strong></td>
+          <td>不具备基本经营决策权力并从属于此权力的工作者</td>
+          <td>包括蓝领/医护/教师/警察/低层管理者；<span class="hl-r">不包括</span>自由职业者；范围：第二+第三产业</td>
+        </tr>
+        <tr>
+          <td><strong>员工团体（工会）</strong></td>
+          <td>因共同利益、兴趣或目标组成的员工组织</td>
+          <td>工会是最主要形式；职业协会是跨企业行业组织</td>
+        </tr>
+        <tr>
+          <td><strong>管理方</strong></td>
+          <td>法律赋予对组织所有权、具有主要经营决策权的人或团体</td>
+          <td>管理方是等级制的，权力逐级递减，集中于上层</td>
+        </tr>
+        <tr>
+          <td><strong>雇主协会</strong></td>
+          <td>管理方团体的主要形式</td>
+          <td>以行业/贸易为纽带；主要任务：集体谈判、劳动争议支持、参与立法</td>
+        </tr>
+        <tr>
+          <td><strong>政府</strong></td>
+          <td>广义劳动关系主体</td>
+          <td>三重角色：<span class="hl">立法者</span>+<span class="hl">公共利益维护者</span>+<span class="hl">公共部门雇主</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="tip"><span class="tip-icon">💡</span><span>政府是广义劳动关系的主体，这一点常考！政府的三重角色是简答题重点。</span></div>
+  </div>
+
+  <!-- 表现形式 -->
+  <div class="card green">
+    <div class="card-title">
+      <span class="icon">⚡</span> 劳动关系的表现形式：合作 & 冲突
+      <div class="imp"><span class="star">★★★★★</span></div>
+    </div>
+    <div class="grid2">
+      <div>
+        <h4 style="color:#059669;margin-bottom:10px;">🤝 合作 Cooperation</h4>
+        <div class="orig" style="font-size:13px;">合作是指在就业组织中，双方共同生产产品和服务，并在很大程度上遵守既定制度和规则的行为。</div>
+        <p><strong>合作的根源（两方面）：</strong></p>
+        <table style="margin-top:8px;font-size:13px;">
+          <tr><th>根源</th><th>含义</th></tr>
+          <tr><td>被迫</td><td>劳动者为谋生不得不与雇主合作；员工比雇主更依赖雇佣关系延续</td></tr>
+          <tr><td>获得满足</td><td>①对制度信任；②工作本身有积极意义；③管理方让步提升满意度</td></tr>
+        </table>
+        <p style="margin-top:10px;"><strong>合作的方式：</strong></p>
+        <ul style="margin-left:16px;font-size:13.5px;">
+          <li><strong>地区性劳资委员会</strong>：特定地理区域联合，不参与集体谈判，解决共同劳动力就业问题</li>
+          <li><strong>劳资联合委员会</strong>：工人联合会+企业联合会，处理具体细节问题</li>
+          <li><strong>企业内部合作（工厂内干预）</strong>：集体收益分享、质量劳资联合委员会、工作生活质量计划、自我管理工作团队</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="color:#dc2626;margin-bottom:10px;">⚔️ 冲突 Conflict</h4>
+        <div class="orig" style="font-size:13px;">冲突是指由于某种差异而引起的抵触、争执或争斗的对立状态。</div>
+        <p><strong>冲突的根源：</strong></p>
+        <table style="margin-top:8px;font-size:13px;">
+          <tr><th>类型</th><th>内容</th></tr>
+          <tr><td><strong>根本根源</strong><br>（4个）</td><td>①异化的合法化<br>②客观的利益差异<br>③雇佣关系的权力等级制度<br>④劳动合同的订立和执行情况</td></tr>
+          <tr><td><strong>背景根源</strong></td><td>广泛社会不平等、人力资源市场状况、工作本身的经验（更可变、取决于组织/产业/地域/国家）</td></tr>
+        </table>
+        <p style="margin-top:10px;"><strong>冲突的形式：</strong></p>
+        <table style="font-size:12.5px;">
+          <tr><th>类型</th><th>雇员/工会手段</th><th>雇主手段</th></tr>
+          <tr><td>明显冲突</td><td>罢工、旷工、辞职</td><td>关闭企业、解雇</td></tr>
+          <tr><td>潜在冲突</td><td>怠工、联合抵制、纠察、好/恶名单</td><td>黑名单、雇用替代者、复工运动、排工</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="kid-box">
+      <p>🏫 班级里，同学们一起完成任务叫"合作"（大家都能得奖状）；同学们为了谁当班长而争抢叫"冲突"（利益不同）。工厂里的老板和工人也一样，合作赚钱，冲突争权益！</p>
+    </div>
+    <div class="mnemonic">冲突根本根源口诀：<strong>"异利权合"</strong>（异化→利益差异→权力等级→合同执行）</div>
+  </div>
+
+  <!-- 劳动关系类型 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="icon">🗂️</span> 劳动关系的类型（3种分类标准）
+      <div class="imp"><span class="star">★★★★☆</span></div>
+    </div>
+    <div class="table-wrap">
+      <table class="cmp-table">
+        <tr>
+          <th>分类标准</th>
+          <th>类型</th>
+          <th>核心特征</th>
+        </tr>
+        <tr>
+          <td rowspan="3"><strong>按力量对比</strong></td>
+          <td>均衡型</td>
+          <td>双方力量相差不大，相互制衡；法律保障，工会有权了解内部信息</td>
+        </tr>
+        <tr>
+          <td>倾斜型</td>
+          <td>一方占主导支配另一方；完全市场作用下雇主处优势，雇员处劣势</td>
+        </tr>
+        <tr>
+          <td>政府主导型</td>
+          <td>政府是控制主要力量（典型：新加坡、计划经济国家）</td>
+        </tr>
+        <tr>
+          <td rowspan="4"><strong>按冲突与合作<br>（哈比森&科尔曼）</strong></td>
+          <td>对抗型</td>
+          <td>劳资矛盾尖锐，冲突不断（资本主义早期/产业运动时期）</td>
+        </tr>
+        <tr>
+          <td>休战型</td>
+          <td>管理方视工会为"毒瘤"，无激烈运动但依赖力量对比维系</td>
+        </tr>
+        <tr>
+          <td>和睦相处型</td>
+          <td>管理方视工会为资产，善意谈判；但生产决策仍由管理方控制</td>
+        </tr>
+        <tr>
+          <td>合作型</td>
+          <td>相互信任尊重；工会参与经营；共同解决问题，提高效率</td>
+        </tr>
+        <tr>
+          <td rowspan="4"><strong>按利益关系</strong></td>
+          <td>利益冲突型</td>
+          <td>传统劳动关系；资本剥削劳动；阶级斗争理论；工会是对抗力量</td>
+        </tr>
+        <tr>
+          <td>利益共同型</td>
+          <td>生产资料公有制；劳动者利益由国家代表；计划经济体制的主要类型</td>
+        </tr>
+        <tr>
+          <td>利益一体化型</td>
+          <td>生产要素合作理论；没有利益冲突，企业属全体人员；雇主决策可接受</td>
+        </tr>
+        <tr>
+          <td>利益协调型</td>
+          <td>多元化观点；通过集体协商/谈判保障各自权益；工会是负责任的利益代表</td>
+        </tr>
+      </table>
+    </div>
+    <div class="mnemonic">按力量分类口诀：<strong>均衡—倾斜—政府</strong>；按冲突合作口诀：<strong>对抗→休战→和睦→合作</strong>（由激烈到和谐进化）</div>
+    <div class="exam-box">
+      <div class="eq-title">🎯 真题关联</div>
+      <div class="exam-q"><span class="exam-year">常考</span>劳动关系的类型有哪些？请按不同标准分类并说明各类型特征。（简答题）</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 12.2 WESTERN THEORIES ═══════════════════ -->
+<section class="section" id="s2">
+  <div class="sec-header">
+    <span class="sec-num orange">12.2</span>
+    <h2 class="sec-title">西方劳动关系相关理论 <span class="pref">P.398–402</span></h2>
+  </div>
+
+  <!-- 4大学派 -->
+  <div class="card orange">
+    <div class="card-title">
+      <span class="icon">🏫</span> 当代劳动关系管理理论：四大学派
+      <div class="imp"><span class="star">★★★★★</span></div>
+    </div>
+    <div class="grid2">
+      <div class="card" style="border-left-color:#8b2fc9;margin:0;">
+        <strong>① 新保守派（新自由派/新古典学派）</strong>
+        <span class="tag tag-purple">市场主导</span>
+        <p style="font-size:13.5px;margin-top:8px;">
+          ▸ 关注经济效率最大化，相信市场力量<br>
+          ▸ 劳动关系 = 自由、平等的交换关系<br>
+          ▸ 长期供求趋于均衡<br>
+          ▸ <span class="hl-r">工会是负面的</span>：形成垄断，干扰市场，削弱竞争力<br>
+          ▸ 双赢：资方获高利润，雇员获高工资
+        </p>
+      </div>
+      <div class="card" style="border-left-color:#e85d26;margin:0;">
+        <strong>② 管理主义学派（Human Resource Management）</strong>
+        <span class="tag tag-orange">HRM视角</span>
+        <p style="font-size:13.5px;margin-top:8px;">
+          ▸ 劳资双方本质上无固有矛盾<br>
+          ▸ 以人力资源管理<span class="hl">替代工会作用</span>，建立"新型劳资关系"<br>
+          ▸ 重视员工需求（<strong>霍桑实验</strong>支持）<br>
+          ▸ 措施：员工建议制度、业绩考评、利润分成、企业文化、信息交流
+        </p>
+      </div>
+      <div class="card" style="border-left-color:#2563eb;margin:0;">
+        <strong>③ 正统多元学派（制度主义）</strong>
+        <span class="tag tag-blue">工会支持</span>
+        <p style="font-size:13.5px;margin-top:8px;">
+          ▸ 关注效率与公平的平衡<br>
+          ▸ 工人个人力量弱，需联合→<span class="hl">工会 + 集体谈判</span><br>
+          ▸ 支持工人组建工会，重视工会制度<br>
+          ▸ 关注雇主、工会和政府的组织行为
+        </p>
+      </div>
+      <div class="card" style="border-left-color:#059669;margin:0;">
+        <strong>④ 自由改革主义学派</strong>
+        <span class="tag tag-green">战略选择</span>
+        <p style="font-size:13.5px;margin-top:8px;">
+          ▸ 出现于20世纪70年代<br>
+          ▸ 多学科角度（心理学、社会学、经济学）<br>
+          ▸ 目标：使现行机制在现有体制中更好运行<br>
+          ▸ 80年代提出<strong>战略选择理论</strong>：了解三方（管理者、工会/员工、政府）战略决策才能理解劳动关系
+        </p>
+      </div>
+    </div>
+    <div class="card" style="border-left-color:#dc2626;margin-top:14px;">
+      <strong>⑤ 激进派（新马克思学派）</strong>
+      <span class="tag tag-red">阶级对立</span>
+      <p style="font-size:13.5px;margin-top:8px;">
+        ▸ 20世纪60年代以后发展<br>
+        ▸ "劳动"利益与"资本"利益<span class="hl-r">完全对立</span><br>
+        ▸ 冲突不仅在工作场所，还扩展到宏观经济中的劳资对抗<br>
+        ▸ 认为自由改革主义学派的政策主张作用有限
+      </p>
+    </div>
+    <div class="kid-box">
+      <p>📚 把这5个学派想成5个同学对"班级矛盾"的看法：<br>
+      ①新保守派："让同学们自己解决，别老师管！"<br>
+      ②管理主义派："只要班主任好，不需要班委会（工会）！"<br>
+      ③正统多元派："同学们要联合成班委，对抗班主任的不公！"<br>
+      ④自由改革派："分析清楚为什么矛盾，再解决！"<br>
+      ⑤激进派："同学和老师天生就是对立的，没法调和！"</p>
+    </div>
+    <div class="mnemonic">五大学派记忆口诀：<strong>"新保（市场）→管理（HRM）→正多（工会）→自由（战略）→激进（对立）"</strong></div>
+    <div class="exam-box">
+      <div class="eq-title">🎯 真题关联</div>
+      <div class="exam-q"><span class="exam-year">高频</span>西方国家劳动关系的理论观点是什么？（教材习题，极可能考）</div>
+    </div>
+  </div>
+
+  <!-- 西方调整机制 -->
+  <div class="card blue">
+    <div class="card-title">
+      <span class="icon">⚙️</span> 西方劳动关系调整机制
+      <div class="imp"><span class="star">★★★★☆</span></div>
+    </div>
+    <p>西方国家劳动关系调整的主要机制：<span class="hl-p">三方协商机制</span>、<span class="hl-p">集体协商制度</span>、<span class="hl-p">工人参与制度</span></p>
+    <div class="grid3" style="margin-top:14px;">
+      <div>
+        <h5 style="color:#8b2fc9;">🏛️ 三方协商机制</h5>
+        <p style="font-size:13.5px;">以市场经济为基础、民主制度为依托、合作共赢为出发点，构建政府—劳方—资方共同管理劳动关系的平台。本质：市场经济充分发展的结果。</p>
+        <p style="font-size:12.5px;color:#6b7280;margin-top:6px;">代表国家：德国（传统）、西班牙（70年代社会协商）、法国/瑞典</p>
+      </div>
+      <div>
+        <h5 style="color:#2563eb;">📋 集体协商制度</h5>
+        <p style="font-size:13.5px;">西方工会运动的基本形式。<span class="hl">最早出现于18世纪末、19世纪初英国</span>。二战后大规模发展，20世纪60年代各国普遍实行。目的：调解劳资冲突，促进劳资关系缓和稳定。</p>
+      </div>
+      <div>
+        <h5 style="color:#059669;">👷 工人参与制度</h5>
+        <p style="font-size:13.5px;">最早出现于19世纪末期。<span class="hl">1919年德国《魏玛宪法》</span>是第一次写入宪法。最有影响的是德国<strong>"共决制"</strong>——西方工人参与历史的里程碑。</p>
+      </div>
+    </div>
+    <div class="tip"><span class="tip-icon">📌</span><span>注意重要历史节点：集体协商最早（英国18世纪末）；工人参与宪法化最早（德国1919年）；三方协商在90年代后成为世界性趋势。</span></div>
+  </div>
+
+  <!-- 西方经验对中国启示 -->
+  <div class="card green">
+    <div class="card-title">
+      <span class="icon">🇨🇳</span> 西方劳动关系调整经验对中国的启示（4点）
+      <div class="imp"><span class="star">★★★☆☆</span></div>
+    </div>
+    <table style="font-size:14px;">
+      <tr><th class="green">启示要点</th><th class="green">核心内容</th></tr>
+      <tr><td>①和谐基础</td><td>劳动关系的和谐是和谐社会的基础；劳资均衡期往往是社会和谐、国力强盛时期</td></tr>
+      <tr><td>②民主法制</td><td>现代民主法制是实现劳动关系和谐发展的制度基础；建立劳动法、劳动合同法、社会保障法</td></tr>
+      <tr><td>③政府干预</td><td>政府积极干预和政策引导是建立和谐劳动关系的体制保证；建立集体谈判制度、三方协商制度、争议仲裁制度</td></tr>
+      <tr><td>④企业社会责任</td><td>将企业社会责任（CSR）作为激励企业改善劳动关系的契机；实现劳资双赢，有利宏观稳定</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════ 12.3 ADJUSTMENT ═══════════════════ -->
+<section class="section" id="s3">
+  <div class="sec-header">
+    <span class="sec-num blue">12.3</span>
+    <h2 class="sec-title">劳动关系调整 <span class="pref">P.403–415</span></h2>
+  </div>
+
+  <!-- 法律调整 -->
+  <div class="card blue">
+    <div class="card-title">
+      <span class="icon">⚖️</span> 法律调整
+      <div class="imp"><span class="star">★★★★☆</span></div>
+    </div>
+    <div class="grid2">
+      <div>
+        <p><strong>劳动法起源：</strong><span class="hl">1802年英国《学徒与道德法》</span>（限制工作时间）——现代劳动关系立法起源</p>
+        <br>
+        <p><strong>中国劳动法时间线：</strong></p>
+        <div class="flow" style="flex-direction:column;align-items:flex-start;gap:6px;">
+          <div class="flow-box" style="font-size:13px;">1996年《劳动法》开始实行</div>
+          <div class="flow-arrow" style="transform:rotate(90deg)">↓</div>
+          <div class="flow-box b" style="font-size:13px;">2008年《劳动合同法》施行（更完善）</div>
+        </div>
+        <br>
+        <p><strong>劳动法的两大主旨：</strong></p>
+        <ul style="margin-left:16px;font-size:13.5px;">
+          <li>保护雇员/劳动者的利益</li>
+          <li>所确定的劳动条件和标准是双方遵循的<span class="hl">最低条件和标准</span></li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>各国劳动立法三项原则：</strong></p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
+          <div style="background:#f3e8ff;padding:10px 14px;border-radius:8px;border-left:3px solid #8b2fc9;font-size:13.5px;">
+            <strong>① 劳动保护原则</strong><br>保障劳动者基本权益
+          </div>
+          <div style="background:#fff3e0;padding:10px 14px;border-radius:8px;border-left:3px solid #e85d26;font-size:13.5px;">
+            <strong>② 三方协调原则</strong><br>劳动者/工会、雇主/雇主组织、政府协调
+          </div>
+          <div style="background:#dbeafe;padding:10px 14px;border-radius:8px;border-left:3px solid #2563eb;font-size:13.5px;">
+            <strong>③ 国际劳动标准原则</strong><br>遵循国际劳工组织规范
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 劳动合同管理 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="icon">📝</span> 劳动合同管理
+      <div class="imp"><span class="star">★★★★★</span></div>
+    </div>
+    <div class="orig">劳动合同又称劳动契约或者劳动协议，是劳动者与用人单位确立劳动关系，明确双方权利和义务的协议。</div>
+    
+    <!-- 劳动合同内容重点条款 -->
+    <p style="font-weight:700;margin:14px 0 10px;">⚠️ 重要条款详解（高频考点）</p>
+    <div class="grid2">
+      <div class="card" style="border-left-color:#8b2fc9;margin:0;padding:16px;">
+        <strong>① 试用期条款</strong>
+        <div class="table-wrap" style="margin-top:8px;">
+          <table style="font-size:12.5px;">
+            <tr><th>规定</th><th>内容</th></tr>
+            <tr><td>最长期限</td><td>不超过6个月</td></tr>
+            <tr><td>试用期工资</td><td><span class="hl-r">不低于</span>同岗位最低档工资或合同约定工资的80%；且不低于当地最低工资标准</td></tr>
+            <tr><td>解除条件</td><td>证明不符合录用条件，可解除，<span class="hl-r">无须支付经济补偿</span></td></tr>
+          </table>
+        </div>
+        <div class="kid-box" style="margin-top:8px;">
+          <p>🏁 就像入学第一周是"体验期"，老师觉得你不适合可以让你回去，但不能不给你这周的零花钱！</p>
+        </div>
+      </div>
+      <div class="card" style="border-left-color:#e85d26;margin:0;padding:16px;">
+        <strong>② 竞业禁止条款</strong>
+        <p style="font-size:13.5px;margin-top:8px;">按劳动合同约定或用人单位规定，掌握商业秘密的劳动者在<span class="hl">终止/解除劳动合同后一定时期内</span>，不得从事与用人单位相同或类似业务的竞争行为。</p>
+        <p style="font-size:13px;margin-top:8px;"><strong>法律规定（第23、24条）：</strong></p>
+        <ul style="font-size:12.5px;margin-left:14px;">
+          <li>适用人员：<span class="hl">高级管理人员、高级技术人员</span>及其他知悉商业秘密的人员</li>
+          <li>须按月给予劳动者<span class="hl">经济补偿</span></li>
+          <li>劳动者违反需支付<span class="hl">违约金</span></li>
+        </ul>
+        <div class="kid-box" style="margin-top:8px;">
+          <p>🤫 就像你从小卖部学会了秘方，走了之后2年内不能开同样的小卖部，但小卖部要给你"封口费"！</p>
+        </div>
+      </div>
+      <div class="card" style="border-left-color:#2563eb;margin:0;padding:16px;">
+        <strong>③ 违约金条款</strong>
+        <p style="font-size:13.5px;margin-top:8px;"><strong>《劳动合同法》第25条规定：</strong>除第22条（服务期）和第23条（竞业限制）规定的情形外，<span class="hl-r">用人单位不得与劳动者约定由劳动者承担的违约金。</span></p>
+        <div class="kid-box" style="margin-top:8px;">
+          <p>🚫 公司不能随便设置"罚款"让员工走不了，除非是学了特别技能（服务期）或知道秘密（竞业限制）两种情况！</p>
+        </div>
+      </div>
+      <div class="card" style="border-left-color:#059669;margin:0;padding:16px;">
+        <strong>④ 劳动合同期限</strong>
+        <table style="font-size:12.5px;margin-top:8px;">
+          <tr><th class="green">类型</th><th class="green">说明</th></tr>
+          <tr><td>固定期限</td><td>约定终止时间的劳动合同</td></tr>
+          <tr><td>无固定期限</td><td>无确定终止时间；满足法定情形时劳动者要求则必须订立</td></tr>
+          <tr><td>以完成工作<br>任务为期限</td><td>以某项工作完成为合同期限</td></tr>
+        </table>
+      </div>
+    </div>
+    
+    <!-- 劳动合同订立/生效/解除/变更 -->
+    <p style="font-weight:700;margin:18px 0 10px;">📋 劳动合同的全生命周期</p>
+    <div class="flow">
+      <div class="flow-box" style="width:120px;font-size:13px;">订立<br><small>书面+签字/盖章<br>双方各执一份</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box b" style="width:100px;font-size:13px;">生效<br><small>签字/盖章<br>即生效</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box o" style="width:120px;font-size:13px;">变更<br><small>协商一致<br>书面形式</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="background:#dc2626;width:120px;font-size:13px;">解除<br><small>法定条件<br>双方或单方</small></div>
+    </div>
+    <div class="grid2" style="margin-top:12px;">
+      <div>
+        <p><strong>订立原则：</strong>平等、自愿、协商一致、合法（必须书面形式）</p>
+        <p><strong>劳动者主体资格（4条件）：</strong>①年龄≥16周岁 ②完成义务教育 ③有劳动能力 ④行为自由</p>
+      </div>
+      <div>
+        <p><strong>变更注意事项：</strong></p>
+        <ul style="font-size:13.5px;margin-left:14px;">
+          <li>合同有效期内进行</li>
+          <li>平等自愿、协商一致</li>
+          <li>必须合法</li>
+          <li>必须采用<span class="hl">书面形式</span></li>
+          <li>及时进行</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三方协商 -->
+  <div class="card orange">
+    <div class="card-title">
+      <span class="icon">🤝</span> 三方协商
+      <div class="imp"><span class="star">★★★★★</span></div>
+    </div>
+    <div class="orig">三方协商是政府与雇主组织和劳动组织（工会）三方就劳资关系领域中的有关问题进行协商对话，消除误解，弱化有争议的问题，增加达成协议的机会，取得共同协调社会经济发展的成果。</div>
+    <div class="grid2" style="margin-top:14px;">
+      <div>
+        <p><strong>三方协商内容（9项）：</strong></p>
+        <ul style="font-size:13.5px;margin-left:14px;">
+          <li>①劳动就业 ②劳动报酬 ③劳动安全卫生</li>
+          <li>④工作时间和休息时间 ⑤社会保险</li>
+          <li>⑥职业培训 ⑦集体合同和劳动合同</li>
+          <li>⑧职工民主管理 ⑨劳动争议处理</li>
+        </ul>
+        <br>
+        <p><strong>三方协商主要职能：</strong></p>
+        <div class="flow">
+          <div class="flow-box o" style="font-size:13px;">磋商咨询</div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-box" style="font-size:13px;">谈判</div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-box b" style="font-size:13px;">协调仲裁</div>
+        </div>
+      </div>
+      <div>
+        <p><strong>三方协商六大原则：</strong></p>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px;">
+          <div class="tag tag-purple" style="display:block;padding:6px 12px;">①合法原则</div>
+          <div class="tag tag-orange" style="display:block;padding:6px 12px;">②三方参与原则（自愿、独立）</div>
+          <div class="tag tag-blue" style="display:block;padding:6px 12px;">③平等协调原则</div>
+          <div class="tag tag-green" style="display:block;padding:6px 12px;">④合作原则</div>
+          <div class="tag tag-gold" style="display:block;padding:6px 12px;">⑤三方利益兼顾原则</div>
+          <div class="tag tag-red" style="display:block;padding:6px 12px;">⑥维护稳定原则</div>
+        </div>
+      </div>
+    </div>
+    <div class="table-wrap" style="margin-top:14px;">
+      <table>
+        <tr><th>三方协商机构类型</th><th>特点</th><th>代表国家</th></tr>
+        <tr><td>常设机构</td><td>永久性协商机构</td><td>法国（经济和社会理事协会）、荷兰（社会和经济理事会）、挪威（协调委员会）</td></tr>
+        <tr><td>临时机构</td><td>有需要时召开三方会议</td><td>无常设机构的西方国家</td></tr>
+        <tr><td>专门机构</td><td>协调委员会、劳工法院等</td><td>各国</td></tr>
+      </table>
+    </div>
+    <div class="mnemonic">九项内容口诀：<strong>"就薪安息保训合民争"</strong>（就业/薪酬/安全/休息/保险/培训/合同/民主管理/争议）</div>
+    <div class="exam-box">
+      <div class="eq-title">🎯 真题关联</div>
+      <div class="exam-q"><span class="exam-year">高频</span>简述三方协商的重要性。（教材习题·极可能考）</div>
+    </div>
+    <div class="kid-box">
+      <p>🏛️ 三方协商就像学校、家长、学生代表三方一起开家长会！学校（政府）制定规则，家长（雇主）说企业利益，学生代表（工会）说劳动者需求，三方一起商量出大家都满意的方案！</p>
+    </div>
+  </div>
+
+  <!-- 劳动争议 -->
+  <div class="card green">
+    <div class="card-title">
+      <span class="icon">⚖️</span> 劳动争议处理制度
+      <div class="imp"><span class="star">★★★★☆</span></div>
+    </div>
+    <div class="orig">劳动争议，也称"劳动纠纷""劳资争议"，是指用人单位和劳动者在执行劳动方面的法律、法规和劳动合同、集体合同的过程中，就劳动的权利义务发生分歧而引起的争议。</div>
+    <div class="grid2">
+      <div>
+        <p><strong>劳动争议的两大特点：</strong></p>
+        <ul style="font-size:13.5px;margin-left:14px;margin-top:8px;">
+          <li>①主体是<span class="hl">劳动关系双方</span>（用人单位+劳动者）</li>
+          <li>②因执行劳动法律法规或劳动合同而引起（民事合同纠纷不算劳动争议）</li>
+        </ul>
+        <br>
+        <p><strong>我国劳动争议处理流程（"一调一裁两审"）：</strong></p>
+        <div class="flow" style="flex-direction:column;align-items:flex-start;gap:4px;margin-top:8px;">
+          <div class="flow-box g" style="font-size:12px;width:100%;">劳动争议调解委员会（申请调解·自愿）</div>
+          <div class="flow-arrow">↓ 调解不成</div>
+          <div class="flow-box o" style="font-size:12px;width:100%;">劳动争议仲裁委员会（仲裁·前置程序）</div>
+          <div class="flow-arrow">↓ 不服裁决</div>
+          <div class="flow-box" style="font-size:12px;width:100%;background:#dc2626;">人民法院（诉讼·一审+二审）</div>
+        </div>
+        <p style="font-size:12.5px;color:#6b7280;margin-top:6px;">⚠️ 未经劳动仲裁，人民法院不予受理</p>
+      </div>
+      <div>
+        <p><strong>现行机制存在的问题（3个）：</strong></p>
+        <table style="font-size:13px;margin-top:8px;">
+          <tr><th>问题</th><th>表现</th></tr>
+          <tr><td>协商不对等</td><td>劳动者力量弱；工会未充分维权；缺乏法律规制</td></tr>
+          <tr><td>调解局限性大</td><td>无强制规定；层级低；缺独立性；协议约束力不足</td></tr>
+          <tr><td>仲裁限制过多</td><td>一裁终局范围窄；仲裁与诉讼程序脱节</td></tr>
+        </table>
+        <div class="kid-box" style="margin-top:8px;">
+          <p>🏀 就像班级有矛盾，先找班主任调解（调解）→ 不行找年级组长仲裁（仲裁）→ 还不服去找校长（法院）！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 集体谈判 -->
+  <div class="card">
+    <div class="card-title">
+      <span class="icon">💬</span> 集体谈判（Collective Bargaining）
+      <div class="imp"><span class="star">★★★★★</span></div>
+    </div>
+    <div class="orig">集体谈判是指雇主方和雇员代表借助谈判，旨在达成覆盖某一雇员群体的协议，以决定就业条件与待遇，协调劳动关系的一种方法。</div>
+    <p style="font-size:13px;color:#6b7280;margin:6px 0;">我国《集体合同规定》称为"集体协商"</p>
+    
+    <div class="grid2" style="margin-top:14px;">
+      <div>
+        <p><strong>集体谈判的三大特征：</strong></p>
+        <ol style="font-size:13.5px;margin-left:16px;margin-top:8px;">
+          <li>法律地位平等的双方进行的谈判对抗机制</li>
+          <li>既有共同利益又有利益冲突的双方进行的利益协商与沟通</li>
+          <li>涉及不同的谈判级别和谈判结构（可以一对一，也可以团体对雇主）</li>
+        </ol>
+        <br>
+        <p><strong>集体谈判的三大功能：</strong></p>
+        <table style="font-size:13px;margin-top:8px;">
+          <tr><th>功能</th><th>核心内涵</th></tr>
+          <tr><td>经济决策功能</td><td>决定就业条件与资金分配</td></tr>
+          <tr><td>管理功能</td><td>集体谈判是"政治制度"；集体协议是劳资立法者制定的实体法律</td></tr>
+          <tr><td>决策功能</td><td>体现公平与民主；工人通过工会参与规则制定；限制资方单独行动自由</td></tr>
+        </table>
+      </div>
+      <div>
+        <p><strong>集体谈判程序（三阶段）：</strong></p>
+        <div class="flow" style="flex-direction:column;align-items:flex-start;gap:6px;margin-top:8px;">
+          <div class="flow-box" style="font-size:13px;width:100%;">
+            ① 谈判前准备阶段<br>
+            <small>拟定方案→组建谈判组织→约定时间地点→上报政府部门</small>
+          </div>
+          <div class="flow-arrow" style="transform:rotate(90deg)">↓</div>
+          <div class="flow-box b" style="font-size:13px;width:100%;">
+            ② 谈判过程阶段<br>
+            <small>相互协商→可能陷入僵局→调解/仲裁/罢工等</small>
+          </div>
+          <div class="flow-arrow" style="transform:rotate(90deg)">↓</div>
+          <div class="flow-box g" style="font-size:13px;width:100%;">
+            ③ 签订集体协议阶段<br>
+            <small>各自批准→双方签字→正式生效</small>
+          </div>
+        </div>
+        <br>
+        <p><strong>政府在谈判中的作用（4个）：</strong></p>
+        <ul style="font-size:13px;margin-left:14px;">
+          <li>①制定劳动法律和基本国策</li>
+          <li>②对集体谈判内容的干预（间接+直接）</li>
+          <li>③对集体协议实施的干预</li>
+          <li>④对集体谈判进行客观指导（如工资指导线）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="kid-box">
+      <p>🏪 想象工厂里所有工人派代表去跟老板谈："我们要涨工资、少加班！"这就是集体谈判。工人单独谈容易被欺负，但大家联合起来谈，力量就大多了！</p>
+    </div>
+    <div class="mnemonic">三大功能口诀：<strong>"经管决"</strong>（经济决策→管理→民主决策）</div>
+    <div class="exam-box">
+      <div class="eq-title">🎯 真题关联</div>
+      <div class="exam-q"><span class="exam-year">高频</span>集体谈判的含义、特征及功能是什么？</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 12.4 CHINA TRENDS ═══════════════════ -->
+<section class="section" id="s4">
+  <div class="sec-header">
+    <span class="sec-num green">12.4</span>
+    <h2 class="sec-title">中国劳动关系发展趋势 <span class="pref">P.416–417</span></h2>
+  </div>
+
+  <div class="card green">
+    <div class="card-title">
+      <span class="icon">🇨🇳</span> 中国劳动关系总趋势
+      <div class="imp"><span class="star">★★★★☆</span></div>
+    </div>
+    <div class="orig">中国劳动关系的发展趋势是以劳动法律法规为依据，以劳动关系双方自主协调为基础，以实行劳动合同制度和集体合同制度为基本形式，以政府劳动保障行政部门、工会组织、企业组织三方协商为方向，以建立劳动关系宏观预警系统和完善劳动争议处理制度为保障，实现劳动关系调整机制的规范、法制化。</div>
+    
+    <div class="grid3" style="margin-top:16px;">
+      <div class="card" style="border-left-color:#059669;margin:0;padding:16px;">
+        <strong>① 新法背景下构建和谐劳动关系</strong>
+        <ul style="font-size:13px;margin-top:8px;margin-left:14px;">
+          <li>建立"以人为本"企业文化</li>
+          <li>加强工会组织建设与集体协商谈判制度</li>
+          <li>完善企业规章制度，提高劳动者素质</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color:#2563eb;margin:0;padding:16px;">
+        <strong>② 金融危机下劳动关系调整</strong>
+        <ul style="font-size:13px;margin-top:8px;margin-left:14px;">
+          <li>充分发挥政府协调作用（产业西移、税收补贴）</li>
+          <li>灵活就业方式地位提升</li>
+          <li>考虑扩大《劳动合同法》豁免范围（如微型企业）</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color:#8b2fc9;margin:0;padding:16px;">
+        <strong>③ 个别劳动关系→集体劳动关系转化</strong>
+        <p style="font-size:13px;margin-top:8px;">个别劳动关系：个别劳动者与雇主的关系，形式上平等，实际是从属关系</p>
+        <p style="font-size:13px;">集体劳动关系：工会/劳动者集体与雇主/雇主组织就劳动条件进行协商形成</p>
+        <div class="orig" style="font-size:12px;margin-top:6px;">《劳动合同法》标志着中国劳动关系的个别调整初步完成，开启了集体调整的新起点。</div>
+      </div>
+    </div>
+    <div class="mnemonic">发展趋势三关键词：<strong>"和谐—灵活—集体化"</strong></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ULTIMATE REVIEW ═══════════════════ -->
+<section class="section" id="ultimate">
+  <div class="sec-header">
+    <span class="sec-num" style="background:linear-gradient(90deg,#8b2fc9,#e85d26);">🔥 终极</span>
+    <h2 class="sec-title">终极串联复习 · 本章逻辑总图</h2>
+  </div>
+
+  <div class="ultimate">
+    <h3>📌 本章知识串联：一条主线贯穿所有考点</h3>
+    <div class="u-item">
+      <span class="u-num">主线</span>
+      <div class="u-text"><strong>劳动关系的本质矛盾</strong>（合作 vs 冲突）→ 为什么需要调整？→ 如何调整（法律/合同/三方协商/集体谈判/争议处理）→ 中国如何发展？</div>
+    </div>
+    <div class="u-item">
+      <span class="u-num">串联①</span>
+      <div class="u-text"><strong>合作的根源（被迫+满足）</strong> → 对应 <strong>激励理论（第11章）</strong>：让员工满足 → 减少冲突 → 维持良好劳动关系</div>
+    </div>
+    <div class="u-item">
+      <span class="u-num">串联②</span>
+      <div class="u-text"><strong>冲突的根本根源</strong>（利益差异/权力等级）→ 对应 <strong>薪酬设计（第8章）</strong>：公平薪酬是减少劳资冲突的核心手段</div>
+    </div>
+    <div class="u-item">
+      <span class="u-num">串联③</span>
+      <div class="u-text"><strong>三方协商机制</strong> → 对应 <strong>战略人力资源管理（第13章）</strong>：宏观劳动关系环境是战略HRM的重要约束条件</div>
+    </div>
+    <div class="u-item">
+      <span class="u-num">串联④</span>
+      <div class="u-text"><strong>劳动合同管理（试用期/竞业禁止/违约金）</strong> → 对应 <strong>员工招聘（第7章）</strong>：招募→签合同→劳动关系确立→全流程法律合规</div>
+    </div>
+    <div class="u-item">
+      <span class="u-num">串联⑤</span>
+      <div class="u-text"><strong>集体谈判</strong> → 对应 <strong>薪酬谈判 / HR职能</strong>：集体协议直接决定工资标准、工时、劳动条件；HRBP（2024考点）需掌握集体谈判机制</div>
+    </div>
+    <div class="u-item">
+      <span class="u-num">考试串联</span>
+      <div class="u-text"><strong>论述题常考模式</strong>：战略 × 人力 = 劳动关系是其制度保障。数字化/AI时代（2024-2025热点）→ 新型劳动关系（灵活用工/平台经济/个体工商户）→ 个别劳动关系向集体劳动关系演进</div>
+    </div>
+  </div>
+
+  <!-- 整体知识图 -->
+  <div class="logic-map">
+    <div style="font-size:14px;font-weight:700;color:#8b2fc9;margin-bottom:16px;">第12章 全景思维导图</div>
+    <div class="lm-row">
+      <div class="lm-node" style="background:#f3e8ff;border-color:#d8b4fe;">含义（3种理解）<br>→本书定义</div>
+      <div class="lm-node o">构成要素<br>主体·内容·客体</div>
+      <div class="lm-node b">表现形式<br>合作·冲突</div>
+      <div class="lm-node g">类型划分<br>力量/冲突合作/利益</div>
+    </div>
+    <div style="font-size:22px;color:#8b2fc9;margin:10px 0;">↓</div>
+    <div class="lm-center">劳动关系调整机制</div>
+    <div class="lm-row">
+      <div class="lm-node">法律调整<br>劳动法/劳动合同法</div>
+      <div class="lm-node o">劳动合同管理<br>试用期/竞业禁止/违约金</div>
+      <div class="lm-node b">三方协商<br>政府·劳方·资方</div>
+      <div class="lm-node g">劳动争议<br>调解→仲裁→诉讼</div>
+      <div class="lm-node" style="background:#fce7f3;border-color:#f9a8d4;color:#be185d;">集体谈判<br>特征·功能·程序</div>
+    </div>
+    <div style="font-size:22px;color:#8b2fc9;margin:10px 0;">↓</div>
+    <div class="lm-row">
+      <div class="lm-node b">中国发展趋势<br>和谐·灵活·集体化</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ HIGH FREQ EXAM ═══════════════════ -->
+<section class="section" id="highfreq">
+  <div class="sec-header">
+    <span class="sec-num red">🎯 真题</span>
+    <h2 class="sec-title">本章高频知识点与历年真题汇总</h2>
+  </div>
+
+  <div class="card red">
+    <div class="card-title"><span class="icon">📊</span> 知识点重要程度总览</div>
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>知识点</th>
+          <th>重要程度</th>
+          <th>题型</th>
+          <th>关联年份</th>
+        </tr>
+        <tr><td>劳动关系的含义与本书定义</td><td>★★★★★</td><td>名词解释/简答</td><td>基础必考</td></tr>
+        <tr><td>劳动关系的构成要素（主体/内容/客体）</td><td>★★★★★</td><td>简答</td><td>常考</td></tr>
+        <tr><td>劳动关系的表现形式（合作与冲突）</td><td>★★★★★</td><td>简答/论述</td><td>常考</td></tr>
+        <tr><td>劳动关系的类型（3个标准·9个类型）</td><td>★★★★☆</td><td>简答/比较</td><td>常考</td></tr>
+        <tr><td>西方劳动关系管理理论五大学派</td><td>★★★★★</td><td>简答/论述</td><td>常考（教材习题）</td></tr>
+        <tr><td>三方协商内容、原则、职能</td><td>★★★★★</td><td>简答/论述</td><td>常考（教材习题）</td></tr>
+        <tr><td>劳动合同管理（三类期限/三重点条款）</td><td>★★★★★</td><td>简答/案例分析</td><td>常考（案例题）</td></tr>
+        <tr><td>劳动争议处理机制（一调一裁两审）</td><td>★★★★☆</td><td>简答/案例</td><td>常考</td></tr>
+        <tr><td>集体谈判的含义、特征、功能、程序</td><td>★★★★★</td><td>简答/论述</td><td>常考</td></tr>
+        <tr><td>中国劳动关系发展趋势</td><td>★★★★☆</td><td>论述/结合时政</td><td>2020s热点论述</td></tr>
+        <tr><td>西方劳动关系调整机制（三方协商/集体协商/工人参与）</td><td>★★★☆☆</td><td>简答</td><td>偶考</td></tr>
+        <tr><td>西方经验对中国的启示（4点）</td><td>★★★☆☆</td><td>论述</td><td>偶考</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="exam-box" style="margin-top:20px;">
+    <div class="eq-title">📋 中南大学企业管理学硕真题（与本章相关）</div>
+    <div class="exam-q"><span class="exam-year">面试高频</span>员工关系管理与劳动关系的关系和区别？</div>
+    <div class="exam-q"><span class="exam-year">面试</span>如何处理劳动关系中的利益冲突？给出具体措施（2019、2020均问到相关话题）</div>
+    <div class="exam-q"><span class="exam-year">2020</span>远程办公常态化下劳动关系如何调整（疫情背景下劳动关系热点论述）</div>
+    <div class="exam-q"><span class="exam-year">2021</span>ESG对企业管理的影响→延伸考点：ESG中的"S"（社会责任）包含劳动关系和员工权益保障</div>
+    <div class="exam-q"><span class="exam-year">综合</span>薪酬激励设计（2025考点）→ 劳动关系中薪酬是劳资冲突的核心议题，集体谈判的主要内容是工资决定</div>
+    <div class="exam-q"><span class="exam-year">预测2026</span>数字化/AI时代（平台经济、灵活用工）对劳动关系带来的新挑战（结合12.4发展趋势）</div>
+    <div class="exam-q"><span class="exam-year">预测2026</span>企业如何构建和谐劳动关系？从法律、组织、文化三维度分析。</div>
+  </div>
+</section>
+
+<!-- ═══════════════════ ORIGINAL SENTENCES ═══════════════════ -->
+<section class="section" id="originals">
+  <div class="sec-header">
+    <span class="sec-num" style="background:#1a0a2e;">📖 原句</span>
+    <h2 class="sec-title">教材重要原句汇总（必须记忆）</h2>
+  </div>
+
+  <div class="card" style="border-left-color:#1a0a2e;">
+    <div class="card-title"><span class="icon">📚</span> 核心定义原句</div>
+
+    <div class="orig">① 劳动关系主要是指企业所有者、经营管理者、普通职工及其工会组织之间在企业的生产经营活动中形成的各种权、责、利关系。<span style="color:#f9a8d4;font-size:12px;">（P.391·本书定义·必背）</span></div>
+
+    <div class="orig">② 劳动关系的客体指主体的劳动权和劳动义务共同指向的事物，如劳动时间、劳动报酬、安全卫生、劳动纪律、福利保险、教育培训、劳动环境等。在我国社会主义制度下，劳动者的人格和人身不能作为劳动法律关系的客体。<span style="color:#f9a8d4;font-size:12px;">（P.393·重要）</span></div>
+
+    <div class="orig">③ 合作是指在就业组织中，双方共同生产产品和服务，并在很大程度上遵守既定制度和规则的行为。<span style="color:#f9a8d4;font-size:12px;">（P.393·合作定义）</span></div>
+
+    <div class="orig">④ 冲突是指由于某种差异而引起的抵触、争执或争斗的对立状态。<span style="color:#f9a8d4;font-size:12px;">（P.394·冲突定义）</span></div>
+
+    <div class="orig">⑤ 三方协商是政府与雇主组织和劳动组织（工会）三方就劳资关系领域中的有关问题进行协商对话，消除误解，弱化有争议的问题，增加达成协议的机会，取得共同协调社会经济发展的成果。<span style="color:#f9a8d4;font-size:12px;">（P.409·三方协商定义）</span></div>
+
+    <div class="orig">⑥ 劳动争议，也称"劳动纠纷""劳资争议"，是指用人单位和劳动者在执行劳动方面的法律、法规和劳动合同、集体合同的过程中，就劳动的权利义务发生分歧而引起的争议。劳动争议不同于民事争议，用人单位和劳动者双方存在管理和被管理关系，双方并不是处于平等主体的地位。<span style="color:#f9a8d4;font-size:12px;">（P.411·劳动争议定义）</span></div>
+
+    <div class="orig">⑦ 集体谈判是指雇主方和雇员代表借助谈判，旨在达成覆盖某一雇员群体的协议，以决定就业条件与待遇，协调劳动关系的一种方法。<span style="color:#f9a8d4;font-size:12px;">（P.413·集体谈判定义）</span></div>
+
+    <div class="orig">⑧ 中国劳动关系的发展趋势是以劳动法律法规为依据，以劳动关系双方自主协调为基础，以实行劳动合同制度和集体合同制度为基本形式，以政府劳动保障行政部门、工会组织、企业组织三方协商为方向，以建立劳动关系宏观预警系统和完善劳动争议处理制度为保障，实现劳动关系调整机制的规范、法制化。<span style="color:#f9a8d4;font-size:12px;">（P.416·发展趋势·必背）</span></div>
+
+    <div class="orig">⑨ 《劳动合同法》第25条规定：除本法第22条和第23条规定的情形外，用人单位不得与劳动者约定由劳动者承担的违约金。<span style="color:#f9a8d4;font-size:12px;">（P.406·违约金条款·必背）</span></div>
+
+    <div class="orig">⑩ 《劳动合同法》的颁布实施标志着中国劳动关系的个别调整在法律建构上已经初步完成，同时，又开启了劳动关系集体调整的新起点并为劳动关系的集体调整提供了法律基础。<span style="color:#f9a8d4;font-size:12px;">（P.417·重要论断）</span></div>
+  </div>
+
+  <!-- 名词解释汇总 -->
+  <div class="card orange" style="margin-top:20px;">
+    <div class="card-title"><span class="icon">📖</span> 专有名词中英对照</div>
+    <div class="table-wrap">
+      <table>
+        <tr><th class="orange">中文</th><th class="orange">英文</th><th class="orange">一句话解释</th></tr>
+        <tr><td>劳动关系</td><td>Labor Relations</td><td>劳资双方的权、责、利关系总和</td></tr>
+        <tr><td>集体谈判</td><td>Collective Bargaining</td><td>雇主方与雇员代表就就业条件协议谈判</td></tr>
+        <tr><td>三方协商</td><td>Tripartite Coordination</td><td>政府+工会+雇主组织三方协商劳动关系</td></tr>
+        <tr><td>劳动合同</td><td>Labor Contract</td><td>劳动者与用人单位确立劳动关系的协议</td></tr>
+        <tr><td>劳动争议</td><td>Labor Disputes</td><td>劳资双方因权利义务分歧引起的争议</td></tr>
+        <tr><td>工会</td><td>Trade Union / Labor Union</td><td>代表员工利益的团体组织</td></tr>
+        <tr><td>雇主协会</td><td>Employers' Association</td><td>以行业为纽带的管理方团体</td></tr>
+        <tr><td>竞业禁止</td><td>Non-Competition Clause</td><td>员工离职后一定期限内不得从事竞争性活动</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ SELF QUIZ ═══════════════════ -->
+<section class="section" id="quiz">
+  <div class="sec-header">
+    <span class="sec-num blue">✏️ 检验</span>
+    <h2 class="sec-title">课后自我检验</h2>
+  </div>
+
+  <!-- 教材习题 -->
+  <div class="quiz-box">
+    <div class="q-title">📚 教材课后习题（P.418）</div>
+    
+    <div class="quiz-item">什么是劳动关系？其构成要素是什么？</div>
+    <button class="toggle-btn" onclick="toggleAns(this)">查看思路 ▼</button>
+    <div class="ans">定义：企业所有者、经营管理者、普通职工及其工会组织之间在生产经营活动中形成的权责利关系。三要素：主体（狭义：员工+工会/管理方+雇主协会；广义加政府）、内容（权利与义务）、客体（劳动时间/报酬/安全等，不含人格人身）。</div>
+    
+    <div class="quiz-item">劳动关系的表现形式有哪些？</div>
+    <button class="toggle-btn" onclick="toggleAns(this)">查看思路 ▼</button>
+    <div class="ans">两种形式：①合作（定义+根源：被迫和获得满足+三种合作方式）；②冲突（定义+根本根源4个+背景根源+冲突形式：明显冲突和潜在冲突，分雇员和雇主两方面）。</div>
+    
+    <div class="quiz-item">以劳动关系各方力量对比分类，可分为哪几个类型？</div>
+    <button class="toggle-btn" onclick="toggleAns(this)">查看思路 ▼</button>
+    <div class="ans">三类：①均衡型（双方力量相差不大，相互制衡）；②倾斜型（一方支配另一方，完全市场下雇主处优势）；③政府主导型（政府是控制主要力量，典型：新加坡、计划经济国家）。</div>
+    
+    <div class="quiz-item">西方国家劳动关系的理论观点是什么？</div>
+    <button class="toggle-btn" onclick="toggleAns(this)">查看思路 ▼</button>
+    <div class="ans">五大学派：①新保守派（市场机制，工会负面）；②管理主义学派（HRM替代工会，霍桑实验）；③正统多元学派（工会+集体谈判维权）；④自由改革主义学派（战略选择理论）；⑤激进派（劳资利益完全对立）。</div>
+    
+    <div class="quiz-item">劳动关系调整有哪些方法？</div>
+    <button class="toggle-btn" onclick="toggleAns(this)">查看思路 ▼</button>
+    <div class="ans">四种：①法律调整（劳动法/劳动合同法）；②劳动合同管理（订立/变更/解除）；③三方协商（政府+工会+雇主组织）；④劳动争议处理（调解→仲裁→诉讼）；⑤集体谈判。</div>
+    
+    <div class="quiz-item">劳动合同订立、解除及变更的含义？</div>
+    <button class="toggle-btn" onclick="toggleAns(this)">查看思路 ▼</button>
+    <div class="ans">订立：书面形式，协商一致，双方签字/盖章，各执一份，原则：平等自愿协商一致合法。解除：依法提前终止，有条件限制，用人单位单方解除权受限制。变更：在合同有效期内对部分内容进行修改/补充/删减，须协商一致+书面形式+合法。</div>
+    
+    <div class="quiz-item">简述三方协商的重要性。</div>
+    <button class="toggle-btn" onclick="toggleAns(this)">查看思路 ▼</button>
+    <div class="ans">三方协商（政府+雇主组织+工会）的重要性：①宏观调控劳动关系的核心制度；②磋商咨询、谈判、协调仲裁三大职能；③基于六大原则（合法/三方参与/平等/合作/利益兼顾/维护稳定）运行；④是市场经济充分发展的结果，是国际工人运动的成果；⑤促进劳资关系和谐稳定，维护社会公共利益。</div>
+  </div>
+
+  <!-- 真题+典型题 -->
+  <div class="quiz-box" style="background:linear-gradient(135deg,#fff1f2,#fce7f3);border-color:#fca5a5;">
+    <div class="q-title" style="color:#b91c1c;">🎯 典型/预测题（重点论述）</div>
+    
+    <div class="quiz-item" style="border-left-color:#dc2626;">
+      结合中南大学案例：某制造企业在快速扩张过程中出现大规模劳动争议，请从劳动关系的角度分析原因并提出改善建议。
+    </div>
+    <button class="toggle-btn" onclick="toggleAns(this)">查看思路 ▼</button>
+    <div class="ans">
+      <strong>答题框架：</strong><br>
+      一、原因分析（从劳动关系的表现形式/冲突根源角度）：<br>
+      ①快速扩张导致资方处主导地位（倾斜型劳动关系）<br>
+      ②劳动合同管理不规范（试用期/违约金/竞业禁止不合规）<br>
+      ③缺乏三方协商机制，劳资沟通渠道不畅<br>
+      ④工会作用弱化，工人无法有效表达诉求<br><br>
+      二、改善建议：<br>
+      ①完善法律合规：严格执行《劳动合同法》，规范劳动合同内容<br>
+      ②建立集体谈判制度：通过工会代表与资方定期协商工资/工时/劳动条件<br>
+      ③完善争议处理：建立内部调解委员会，畅通申诉渠道<br>
+      ④树立"以人为本"企业文化：将劳动关系和谐纳入企业战略<br>
+      ⑤加强企业社会责任：把劳动者权益保障作为可持续发展的重要内容
+    </div>
+
+    <div class="quiz-item" style="border-left-color:#dc2626;">
+      论述：在数字化/AI时代，平台经济下的新型劳动关系（如外卖骑手、网约车司机）面临哪些挑战？如何完善劳动关系调整机制？
+    </div>
+    <button class="toggle-btn" onclick="toggleAns(this)">查看思路 ▼</button>
+    <div class="ans">
+      <strong>答题要点：</strong><br>
+      一、新挑战：<br>
+      ①从属关系模糊：灵活就业者与平台既有雇佣特征又有独立承包特征<br>
+      ②劳动关系认定困难：传统劳动合同制度难以适用<br>
+      ③集体谈判缺失：劳动者分散，无法组建有效工会<br>
+      ④风险转移：平台将经营风险转嫁给劳动者（按单计费、无社保）<br><br>
+      二、完善机制：<br>
+      ①推进立法创新：扩展劳动者认定标准，将平台就业纳入保护范围<br>
+      ②完善社会保险：建立适应灵活就业的社保体系<br>
+      ③创新集体谈判：探索行业层面的集体谈判制度<br>
+      ④强化政府监管：加大对平台企业劳动用工的监管力度（对应中国发展趋势法制化方向）
+    </div>
+  </div>
+
+  <!-- 名词解释自测 -->
+  <div class="quiz-box">
+    <div class="q-title">📝 名词解释自测（各1-2分钟）</div>
+    <div class="quiz-item">简要解释"集体谈判"的概念及其三大功能。</div>
+    <div class="quiz-item">什么是劳动争议？与民事争议有何区别？我国如何处理劳动争议？</div>
+    <div class="quiz-item">解释"竞业禁止"条款，并说明其适用范围和法律限制。</div>
+    <div class="quiz-item">什么是"利益协调型"劳动关系？其理论基础是什么？</div>
+    <div class="quiz-item">简述管理主义学派关于劳动关系管理的基本观点。</div>
+  </div>
+
+  <!-- 快速记忆表格 -->
+  <div class="card" style="margin-top:20px;">
+    <div class="card-title"><span class="icon">⚡</span> 临考速记：本章20个关键数字/年份</div>
+    <div class="grid2">
+      <div class="table-wrap">
+        <table style="font-size:13px;">
+          <tr><th>数字/年份</th><th>含义</th></tr>
+          <tr><td class="hl">1935年7月</td><td>劳动关系概念最早出现（美国《国家劳动关系法》）</td></tr>
+          <tr><td class="hl">3种理解</td><td>劳动关系的理解方式</td></tr>
+          <tr><td class="hl">3个要素</td><td>主体·内容·客体</td></tr>
+          <tr><td class="hl">5大学派</td><td>新保守·管理主义·正统多元·自由改革·激进</td></tr>
+          <tr><td class="hl">4个根本根源</td><td>异化·利益差异·权力等级·合同执行</td></tr>
+          <tr><td class="hl">1802年</td><td>英国《学徒与道德法》，现代劳动立法起源</td></tr>
+          <tr><td class="hl">1919年</td><td>德国《魏玛宪法》，工人参与权首入宪法</td></tr>
+          <tr><td class="hl">3大西方调整机制</td><td>三方协商·集体协商·工人参与</td></tr>
+          <tr><td class="hl">1996年</td><td>中国《劳动法》开始实行</td></tr>
+          <tr><td class="hl">2008年</td><td>《劳动合同法》施行（共8章98条）</td></tr>
+        </table>
+      </div>
+      <div class="table-wrap">
+        <table style="font-size:13px;">
+          <tr><th>数字/年份</th><th>含义</th></tr>
+          <tr><td class="hl">6个月</td><td>试用期最长不超过6个月</td></tr>
+          <tr><td class="hl">80%</td><td>试用期工资不低于合同约定工资的80%</td></tr>
+          <tr><td class="hl">16周岁</td><td>劳动者最低就业年龄</td></tr>
+          <tr><td class="hl">9项内容</td><td>三方协商的主要内容</td></tr>
+          <tr><td class="hl">6大原则</td><td>三方协商原则（合法·参与·平等·合作·兼顾·稳定）</td></tr>
+          <tr><td class="hl">3种功能</td><td>集体谈判功能（经济决策·管理·决策）</td></tr>
+          <tr><td class="hl">3阶段</td><td>集体谈判程序（准备→过程→签约）</td></tr>
+          <tr><td class="hl">3种机制</td><td>劳动争议处理（调解·仲裁·诉讼）</td></tr>
+          <tr><td class="hl">一调一裁两审</td><td>我国劳动争议处理程序</td></tr>
+          <tr><td class="hl">3个趋势</td><td>中国发展趋势（和谐·灵活·集体化）</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- end .wrap -->
+
+<!-- ══════════ COMPARE SECTION (outside wrap for full-width) ══════════ -->
+<div class="wrap">
+
+<!-- ═══ 对比表格：易混概念辨析 ═══ -->
+<section class="section" id="compare">
+  <div class="sec-header">
+    <span class="sec-num" style="background:linear-gradient(90deg,#2563eb,#059669);">🆚 对比</span>
+    <h2 class="sec-title">易混概念对比辨析</h2>
+  </div>
+
+  <!-- 对比1：集体谈判 vs 三方协商 -->
+  <div class="card blue" style="margin-bottom:20px;">
+    <div class="card-title"><span class="icon">🆚</span> 集体谈判 vs 三方协商（最高频易混点）</div>
+    <div class="table-wrap">
+      <table class="cmp-table">
+        <tr><th>对比维度</th><th>集体谈判 Collective Bargaining</th><th>三方协商 Tripartite Coordination</th></tr>
+        <tr><td><strong>参与主体</strong></td><td class="m">雇主方 + 雇员代表（双方）</td><td class="y">政府 + 雇主组织 + 工会（三方）</td></tr>
+        <tr><td><strong>核心目的</strong></td><td class="m">就业条件、工资待遇等达成协议</td><td class="y">就劳动关系领域重大问题协商对话</td></tr>
+        <tr><td><strong>层级</strong></td><td class="m">企业/行业层面</td><td class="y">国家/宏观层面</td></tr>
+        <tr><td><strong>结果形式</strong></td><td class="m">集体协议（具法律效力）</td><td class="y">咨询意见 / 政策建议 / 协调结果</td></tr>
+        <tr><td><strong>政府角色</strong></td><td class="m">间接干预（制定法律/指导线）</td><td class="y">直接参与协商</td></tr>
+        <tr><td><strong>记忆方法</strong></td><td class="m">劳资双方"谈价格"</td><td class="y">三方共同"定规则"</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 对比2：劳动争议 vs 民事争议 -->
+  <div class="card green" style="margin-bottom:20px;">
+    <div class="card-title"><span class="icon">🆚</span> 劳动争议 vs 民事争议（常考名词辨析）</div>
+    <div class="table-wrap">
+      <table class="cmp-table">
+        <tr><th>对比维度</th><th>劳动争议</th><th>民事争议</th></tr>
+        <tr><td><strong>主体关系</strong></td><td class="m">管理与被管理关系（<span class="n">不平等</span>）</td><td class="y">平等主体之间</td></tr>
+        <tr><td><strong>前提条件</strong></td><td class="m">必须存在劳动关系</td><td class="y">一般民事法律关系即可</td></tr>
+        <tr><td><strong>解决途径</strong></td><td class="m">调解→<span class="hl">仲裁（前置）</span>→诉讼</td><td class="y">可直接诉讼</td></tr>
+        <tr><td><strong>仲裁要求</strong></td><td class="m"><span class="n">必须先经劳动仲裁</span></td><td class="y">仲裁可选择，无强制前置</td></tr>
+        <tr><td><strong>典型例子</strong></td><td class="m">工资拖欠、非法解雇</td><td class="y">合同违约、侵权赔偿</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 对比3：五大学派核心立场 -->
+  <div class="card" style="margin-bottom:20px;">
+    <div class="card-title"><span class="icon">🆚</span> 西方五大学派对"工会"态度对比</div>
+    <div class="table-wrap">
+      <table class="cmp-table">
+        <tr><th>学派</th><th>对工会的态度</th><th>核心逻辑</th><th>记忆词</th></tr>
+        <tr><td><strong>新保守派</strong></td><td class="n">反对（负面）</td><td>工会造成垄断，破坏市场机制</td><td>市场万能</td></tr>
+        <tr><td><strong>管理主义</strong></td><td class="m">替代（HRM替代）</td><td>HRM能满足员工需求，无需工会</td><td>霍桑实验</td></tr>
+        <tr><td><strong>正统多元</strong></td><td class="y">支持（积极）</td><td>工人力量弱，须联合，工会维权</td><td>制度主义</td></tr>
+        <tr><td><strong>自由改革</strong></td><td class="m">中立（战略视角）</td><td>三方战略决策共同决定劳动关系</td><td>战略选择</td></tr>
+        <tr><td><strong>激进派</strong></td><td class="m">不够（对抗工具）</td><td>劳资根本对立，工会是斗争手段</td><td>阶级对立</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 对比4：三类劳动合同 -->
+  <div class="card orange">
+    <div class="card-title"><span class="icon">🆚</span> 三类劳动合同期限对比</div>
+    <div class="table-wrap">
+      <table class="cmp-table">
+        <tr><th>类型</th><th>定义</th><th>适用情景</th><th>特别注意</th></tr>
+        <tr><td><strong>固定期限</strong></td><td>约定起止时间</td><td>一般雇佣关系</td><td>到期可续签</td></tr>
+        <tr><td><strong>无固定期限</strong></td><td>无确定终止时间</td><td>长期合作/特殊情形</td><td><span class="n">连续工作≥10年，或连续2次固定期限后续签，劳动者要求必须签</span></td></tr>
+        <tr><td><strong>以完成任务为期限</strong></td><td>以某项工作完成为终止</td><td>项目制工作</td><td>任务完成即终止，无"到期"概念</td></tr>
+      </table>
+    </div>
+    <div class="mnemonic">三类合同口诀：<strong>"固定—无固定—任务"</strong>，无固定期限的触发条件是重点考查对象！</div>
+  </div>
+</section>
+
+<!-- ═══ 30秒极速复习 ═══ -->
+<section class="section" id="rapid">
+  <div class="sec-header">
+    <span class="sec-num" style="background:linear-gradient(90deg,#e85d26,#dc2626);">⚡ 30秒</span>
+    <h2 class="sec-title">30秒极速复习模块</h2>
+  </div>
+  <div class="rapid-section">
+    <div class="rapid-title">⚡ 考前30秒 · 第12章最核心知识速查</div>
+    <div class="rapid-grid">
+      <div class="rapid-item">
+        <div class="r-num">📌 劳动关系本书定义</div>
+        <div class="r-txt">企业所有者、经营管理者、职工及工会之间的<strong>权责利关系</strong></div>
+      </div>
+      <div class="rapid-item">
+        <div class="r-num">🔧 三要素</div>
+        <div class="r-txt"><strong>主体</strong>（劳资双方） + <strong>内容</strong>（权利义务） + <strong>客体</strong>（劳动时间/报酬等，人格人身不可作客体）</div>
+      </div>
+      <div class="rapid-item">
+        <div class="r-num">⚡ 表现形式</div>
+        <div class="r-txt"><strong>合作</strong>（被迫+满足）与<strong>冲突</strong>（根本根源4个：异化·利益差异·权力等级·合同执行）</div>
+      </div>
+      <div class="rapid-item">
+        <div class="r-num">🗂️ 类型分类</div>
+        <div class="r-txt">按力量（均衡/倾斜/政府）；按冲突合作（对抗→休战→和睦→合作）；按利益（冲突/共同/一体化/协调）</div>
+      </div>
+      <div class="rapid-item">
+        <div class="r-num">🏫 五大学派</div>
+        <div class="r-txt"><strong>新保（市场）→管理（HRM）→正多（工会）→自由（战略）→激进（对立）</strong></div>
+      </div>
+      <div class="rapid-item">
+        <div class="r-num">🤝 三方协商9项内容</div>
+        <div class="r-txt">口诀：<strong>"就薪安息保训合民争"</strong></div>
+      </div>
+      <div class="rapid-item">
+        <div class="r-num">📝 劳动合同试用期</div>
+        <div class="r-txt">最长<strong>6个月</strong>；工资≥<strong>80%</strong>；不合格可解除，<strong>无需</strong>经济补偿</div>
+      </div>
+      <div class="rapid-item">
+        <div class="r-num">💬 集体谈判三大功能</div>
+        <div class="r-txt"><strong>经济决策</strong>（资金分配）+ <strong>管理</strong>（立法效力）+ <strong>决策</strong>（公平民主）</div>
+      </div>
+      <div class="rapid-item">
+        <div class="r-num">⚖️ 劳动争议程序</div>
+        <div class="r-txt"><strong>一调一裁两审</strong>：调解→<strong>仲裁（前置必须）</strong>→一审→二审</div>
+      </div>
+      <div class="rapid-item">
+        <div class="r-num">🇨🇳 中国发展趋势</div>
+        <div class="r-txt">三关键词：<strong>"和谐—灵活—集体化"</strong>；《劳动合同法》开启集体调整新起点</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 背诵版总结 ═══ -->
+<section class="section" id="recite">
+  <div class="sec-header">
+    <span class="sec-num" style="background:linear-gradient(90deg,#d97706,#f59e0b);">📖 背诵</span>
+    <h2 class="sec-title">背诵版总结（适合复试口述）</h2>
+  </div>
+  <div class="recite-box">
+    <div class="recite-title">📖 第12章 劳动关系 · 复试口述版总结</div>
+
+    <div class="recite-point">
+      <div class="rp-num">1</div>
+      <div class="rp-txt"><strong>劳动关系的定义：</strong>本书将劳动关系定义为企业所有者、经营管理者、普通职工及其工会之间在生产经营中形成的<strong>权责利关系</strong>。三要素：主体（劳资双方）、内容（权利义务）、客体（劳动时间/报酬等；人格人身不可作客体）。</div>
+    </div>
+
+    <div class="recite-point">
+      <div class="rp-num">2</div>
+      <div class="rp-txt"><strong>表现形式：</strong>劳动关系有<strong>合作与冲突</strong>两种表现形式。合作根源分被迫和获得满足两类；冲突根本根源4个：异化的合法化、客观利益差异、权力等级制度、合同执行分歧（口诀：<strong>异利权合</strong>）。</div>
+    </div>
+
+    <div class="recite-point">
+      <div class="rp-num">3</div>
+      <div class="rp-txt"><strong>劳动关系类型：</strong>可按三个标准分类：①力量对比（均衡/倾斜/政府主导）；②冲突合作程度（对抗→休战→和睦→合作，由激烈到和谐）；③利益关系（冲突/共同/一体化/协调型）。</div>
+    </div>
+
+    <div class="recite-point">
+      <div class="rp-num">4</div>
+      <div class="rp-txt"><strong>西方五大理论学派：</strong>①新保守派（市场机制，反工会）；②管理主义学派（HRM替代工会，霍桑实验）；③正统多元学派（工会+集体谈判）；④自由改革主义（战略选择理论）；⑤激进派（劳资根本对立）。口诀：<strong>新保→管理→正多→自由→激进</strong>。</div>
+    </div>
+
+    <div class="recite-point">
+      <div class="rp-num">5</div>
+      <div class="rp-txt"><strong>调整机制：</strong>我国劳动关系调整的主要方式包括法律调整（劳动法/劳动合同法）、劳动合同管理、三方协商、劳动争议处理和集体谈判五大手段。</div>
+    </div>
+
+    <div class="recite-point">
+      <div class="rp-num">6</div>
+      <div class="rp-txt"><strong>三方协商要点：</strong>政府+雇主组织+工会三方，9项内容（口诀：<strong>就薪安息保训合民争</strong>），6大原则，3大职能（磋商咨询/谈判/协调仲裁）。</div>
+    </div>
+
+    <div class="recite-point">
+      <div class="rp-num">7</div>
+      <div class="rp-txt"><strong>劳动合同关键条款：</strong>试用期最长6个月，工资≥80%，不合格可解除无须补偿；竞业禁止适用高管/技术/知秘人员，须按月补偿；违约金只能约定两种情形（服务期/竞业禁止），其余不得约定。</div>
+    </div>
+
+    <div class="recite-point">
+      <div class="rp-num">8</div>
+      <div class="rp-txt"><strong>集体谈判：</strong>雇主方+雇员代表双方谈判，三大功能（经济决策/管理/决策，口诀：<strong>经管决</strong>），三阶段程序（准备→谈判→签约）。我国称"集体协商"。</div>
+    </div>
+
+    <div class="recite-point">
+      <div class="rp-num">9</div>
+      <div class="rp-txt"><strong>劳动争议处理：</strong>程序"<strong>一调一裁两审</strong>"：调解委员会→仲裁委员会（前置必须）→法院一审→二审。劳动争议与民事争议的核心区别：劳资之间不平等，仲裁是诉讼的强制前置程序。</div>
+    </div>
+
+    <div class="recite-point">
+      <div class="rp-num">10</div>
+      <div class="rp-txt"><strong>中国发展趋势：</strong>以法律为依据，以自主协调为基础，以劳动合同制度和集体合同制度为形式，三方协商为方向，宏观预警和争议处理为保障。三关键词：<strong>和谐—灵活—集体化</strong>。《劳动合同法》标志着个别调整完成，开启集体调整新起点。</div>
+    </div>
+  </div>
+
+  <!-- 管理学联系模块 -->
+  <div class="card" style="margin-top:16px;">
+    <div class="card-title"><span class="icon">🔗</span> 本章与其他章节的管理学联系（复试高分点）</div>
+    <div class="table-wrap">
+      <table style="font-size:13.5px;">
+        <tr><th>本章知识点</th><th>联系章节</th><th>逻辑关系</th></tr>
+        <tr><td><span class="hl">合作的根源（满足感）</span></td><td>第11章 激励理论</td><td>员工激励→增强合作意愿→减少劳资冲突</td></tr>
+        <tr><td><span class="hl">冲突的根源（利益差异）</span></td><td>第8章 薪酬管理</td><td>公平薪酬设计→缩小利益差异→减少冲突</td></tr>
+        <tr><td><span class="hl">劳动合同管理</span></td><td>第7章 员工招募</td><td>招募→签合同→确立劳动关系→全流程合规</td></tr>
+        <tr><td><span class="hl">三方协商机制</span></td><td>第13章 战略HRM</td><td>宏观劳动关系环境是战略HRM的重要外部约束</td></tr>
+        <tr><td><span class="hl">集体谈判功能</span></td><td>第8章 薪酬管理</td><td>集体协议直接决定工资标准，HRBP需掌握谈判机制</td></tr>
+        <tr><td><span class="hl">劳动关系和谐化</span></td><td>第1章 HRM概述</td><td>和谐劳动关系是HRM系统的制度保障与基础</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div><!-- end second wrap -->
+
+<!-- ══ FOOTER ══ -->
+<div style="background:var(--ink);color:rgba(255,255,255,.5);text-align:center;padding:20px;font-size:13px;margin-top:40px;">
+  <p>📚 中南大学企业管理学硕复试 · 第12章 劳动关系 · 人力资源管理第3版 颜爱民主编</p>
+  <p style="margin-top:4px;">页码：P.389–419 · 本笔记严格按教材内容编写 · 祝复试顺利！ 🎉</p>
+  <p style="margin-top:6px;color:rgba(255,255,255,.35);">生成日期：2026-03-11</p>
+</div>
+
+<script>
+function toggleAns(btn) {
+  const ans = btn.nextElementSibling;
+  if (ans.style.display === 'block') {
+    ans.style.display = 'none';
+    btn.textContent = '查看思路 ▼';
+  } else {
+    ans.style.display = 'block';
+    btn.textContent = '收起 ▲';
+  }
+}
+
+function toggleNight() {
+  const body = document.body;
+  const btn = document.getElementById('night-btn');
+  body.classList.toggle('dark-mode');
+  if (body.classList.contains('dark-mode')) {
+    btn.textContent = '☀️';
+    btn.title = '切换日间模式';
+    localStorage.setItem('ch12-darkmode', '1');
+  } else {
+    btn.textContent = '🌙';
+    btn.title = '切换夜间模式';
+    localStorage.setItem('ch12-darkmode', '0');
+  }
+}
+
+// Restore preference on load
+(function() {
+  try {
+    if (localStorage.getItem('ch12-darkmode') === '1') {
+      document.body.classList.add('dark-mode');
+      const btn = document.getElementById('night-btn');
+      if (btn) { btn.textContent = '☀️'; }
+    }
+  } catch(e) {}
+})();
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

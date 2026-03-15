@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第七章 员工招聘 | 中南大学企业管理复试笔记</title>
+<style>
+/* ===== CSS变量：夜间模式系统 ===== */
+:root {
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-header: linear-gradient(135deg, #004d40 0%, #00695c 50%, #00897b 100%);
+  --bg-nav: #004d40;
+  --bg-nav-hover: #00695c;
+  --bg-table-head: #e0f2f1;
+  --bg-table-alt: #f5fafa;
+  --bg-tag: #e0f2f1;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a6a;
+  --text-nav: #ffffff;
+  --text-muted: #6b7280;
+  --border-color: #e2e8f0;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.14);
+  --highlight-yellow: #fff8e1;
+  --highlight-border: #ffc107;
+  --card-border: #e2e8f0;
+  --mindmap-bg: #f0faf8;
+  --btn-bg: #00695c;
+  --btn-text: #fff;
+  --accordion-bg: #f0f4f8;
+  --tag-exam: #fff3e0;
+  --tag-exam-border: #ff9800;
+  --code-bg: #f1f3f4;
+}
+body.dark-mode {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: #1c2333;
+  --bg-header: linear-gradient(135deg, #001a16 0%, #00261f 50%, #003028 100%);
+  --bg-nav: #001a16;
+  --bg-nav-hover: #00261f;
+  --bg-table-head: #0d2a24;
+  --bg-table-alt: #111d1a;
+  --bg-tag: #0d2a24;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-nav: #e6edf3;
+  --text-muted: #6e7681;
+  --border-color: #30363d;
+  --shadow: 0 2px 12px rgba(0,0,0,0.4);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.5);
+  --highlight-yellow: #2d2416;
+  --highlight-border: #b8860b;
+  --card-border: #30363d;
+  --mindmap-bg: #0d1f1b;
+  --btn-bg: #00261f;
+  --btn-text: #c9d1d9;
+  --accordion-bg: #161b22;
+  --tag-exam: #1e1500;
+  --tag-exam-border: #b8860b;
+  --code-bg: #1c2333;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  line-height: 1.7;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 顶部固定导航 ===== */
+#top-nav {
+  position: fixed; top:0; left:0; right:0;
+  background: var(--bg-nav);
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.nav-inner {
+  max-width: 1200px; margin:0 auto;
+  display:flex; align-items:center; flex-wrap:wrap;
+  padding: 6px 16px; gap:4px;
+}
+.nav-title {
+  color: #fff; font-size:1rem; font-weight:700;
+  margin-right:12px; white-space:nowrap;
+}
+.nav-item {
+  color: var(--text-nav); text-decoration:none;
+  font-size:0.78rem; padding:3px 8px; border-radius:4px;
+  transition:background 0.2s;
+}
+.nav-item:hover { background: var(--bg-nav-hover); }
+.nav-btn {
+  background: rgba(255,255,255,0.15); border:none;
+  color: #fff; cursor:pointer; padding:4px 10px;
+  border-radius:4px; font-size:0.78rem; margin-left:auto;
+  white-space:nowrap;
+}
+.search-bar {
+  display:flex; align-items:center; gap:4px;
+}
+.search-bar input {
+  padding:3px 8px; border-radius:4px; border:1px solid rgba(255,255,255,0.3);
+  background:rgba(255,255,255,0.1); color:#fff; font-size:0.78rem;
+  width:120px; outline:none;
+}
+.search-bar input::placeholder { color:rgba(255,255,255,0.5); }
+.search-bar button {
+  background:rgba(255,255,255,0.15); border:none; color:#fff;
+  padding:3px 8px; border-radius:4px; cursor:pointer; font-size:0.78rem;
+}
+
+
+/* ===== 页头 ===== */
+.page-header {
+  background: var(--bg-header);
+  color:#fff; padding:80px 20px 40px;
+  text-align:center;
+}
+.page-header h1 { font-size:2.2rem; font-weight:800; margin-bottom:8px; }
+.page-header .subtitle { font-size:1rem; opacity:0.85; margin-bottom:6px; }
+.page-header .gen-date { font-size:0.82rem; opacity:0.7; }
+.header-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:14px; }
+.header-tag {
+  background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.3);
+  padding:3px 10px; border-radius:20px; font-size:0.78rem;
+}
+
+/* ===== 主内容 ===== */
+main { max-width:1100px; margin:0 auto; padding:30px 16px 80px; }
+
+/* ===== 章节区块 ===== */
+.section-box {
+  background: var(--bg-card);
+  border:1px solid var(--card-border);
+  border-radius:12px; padding:24px;
+  margin-bottom:24px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s;
+}
+.section-box:hover { box-shadow: var(--shadow-hover); }
+.section-title {
+  font-size:1.3rem; font-weight:700;
+  color: var(--text-primary); margin-bottom:16px;
+  display:flex; align-items:center; gap:10px;
+  padding-bottom:10px; border-bottom:2px solid var(--border-color);
+}
+.section-icon { font-size:1.4rem; }
+
+/* ===== 逻辑关系图 ===== */
+.logic-flow {
+  background: var(--mindmap-bg);
+  border:1px solid var(--border-color);
+  border-radius:10px; padding:20px;
+  display:flex; flex-wrap:wrap;
+  align-items:center; justify-content:center; gap:8px;
+}
+.flow-item {
+  background: var(--btn-bg); color:#fff;
+  padding:8px 14px; border-radius:8px;
+  font-size:0.88rem; font-weight:600;
+  text-align:center; min-width:90px;
+}
+.flow-arrow { font-size:1.4rem; color:var(--text-muted); }
+.flow-sub {
+  background: var(--bg-table-head); color:var(--text-primary);
+  padding:5px 10px; border-radius:6px; font-size:0.8rem;
+}
+
+/* ===== 思维导图 ===== */
+.mindmap {
+  background: var(--mindmap-bg);
+  border:1px solid var(--border-color);
+  border-radius:10px; padding:20px;
+  font-size:0.85rem;
+}
+.mm-root {
+  text-align:center; margin-bottom:16px;
+  font-size:1.1rem; font-weight:800;
+  background: var(--btn-bg); color:#fff;
+  display:inline-block; padding:8px 20px; border-radius:30px;
+}
+.mm-branches {
+  display:flex; flex-wrap:wrap; gap:12px; justify-content:center;
+}
+.mm-branch {
+  background: var(--bg-card);
+  border:2px solid var(--btn-bg);
+  border-radius:10px; padding:10px 14px;
+  min-width:150px;
+}
+.mm-branch-title {
+  font-weight:700; color: var(--btn-bg);
+  margin-bottom:6px; font-size:0.9rem;
+}
+.mm-leaf {
+  font-size:0.78rem; color:var(--text-secondary);
+  padding:2px 0; display:flex; align-items:flex-start; gap:4px;
+}
+.mm-leaf::before { content:'•'; color:var(--btn-bg); flex-shrink:0; }
+
+/* ===== 知识卡片 ===== */
+.knowledge-section { margin-bottom:20px; }
+.kcard {
+  background: var(--bg-card);
+  border:1px solid var(--card-border);
+  border-left:5px solid var(--btn-bg);
+  border-radius:10px; padding:20px;
+  margin-bottom:16px; box-shadow: var(--shadow);
+}
+.kcard-header {
+  display:flex; flex-wrap:wrap; align-items:center;
+  gap:8px; margin-bottom:14px;
+}
+.kcard-title { font-size:1.1rem; font-weight:800; }
+.badge {
+  padding:2px 8px; border-radius:12px;
+  font-size:0.72rem; font-weight:600; white-space:nowrap;
+}
+.badge-star { background:#fff8e1; color:#e65100; border:1px solid #ffcc02; }
+.badge-prob { background:#e8f5e9; color:#1b5e20; border:1px solid #66bb6a; }
+.badge-type { background:#e3f2fd; color:#0d47a1; border:1px solid #42a5f5; }
+.badge-page { background:#f3e5f5; color:#4a148c; border:1px solid #ab47bc; }
+
+.kcard details { margin-top:8px; }
+.kcard summary {
+  cursor:pointer; user-select:none;
+  font-weight:600; font-size:0.9rem;
+  padding:6px 10px;
+  background: var(--accordion-bg);
+  border-radius:6px; list-style:none;
+  display:flex; align-items:center; gap:6px;
+  transition:background 0.2s;
+}
+.kcard summary:hover { background: var(--bg-table-head); }
+.kcard summary::before { content:'▶'; font-size:0.7rem; transition:transform 0.2s; }
+.kcard details[open] summary::before { transform:rotate(90deg); }
+
+.kcard-body { padding:10px 0 4px; }
+.kcard-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:10px; }
+@media(max-width:640px){ .kcard-row { grid-template-columns:1fr; } }
+
+.info-box {
+  background: var(--accordion-bg);
+  border:1px solid var(--border-color);
+  border-radius:8px; padding:10px 12px;
+}
+.info-box-title {
+  font-size:0.75rem; font-weight:700;
+  color:var(--btn-bg); margin-bottom:5px;
+  text-transform:uppercase; letter-spacing:0.5px;
+}
+.info-box p, .info-box li { font-size:0.85rem; color:var(--text-secondary); line-height:1.6; }
+.info-box ul { padding-left:14px; }
+
+.highlight-box {
+  background: var(--highlight-yellow);
+  border-left:4px solid var(--highlight-border);
+  padding:8px 12px; border-radius:0 6px 6px 0;
+  font-size:0.85rem; margin:8px 0;
+}
+.keyword { color:#d32f2f; font-weight:700; }
+.keyword-green { color:#1b5e20; font-weight:700; }
+.keyword-blue { color:#0d47a1; font-weight:700; }
+
+.formula-box {
+  background: var(--code-bg);
+  border:1px solid var(--border-color);
+  border-radius:6px; padding:10px 14px;
+  font-family: monospace; font-size:0.85rem;
+  margin:6px 0; color:var(--text-primary);
+}
+
+.exam-tag {
+  display:inline-block;
+  background: var(--tag-exam);
+  border:1px solid var(--tag-exam-border);
+  color: #bf360c; padding:2px 8px;
+  border-radius:4px; font-size:0.72rem;
+  margin:2px 3px;
+}
+
+/* ===== 表格 ===== */
+.table-wrap { overflow-x:auto; margin:12px 0; }
+table {
+  width:100%; border-collapse:collapse;
+  font-size:0.85rem;
+}
+th {
+  background: var(--bg-table-head);
+  color:var(--text-primary); font-weight:700;
+  padding:9px 12px; border:1px solid var(--border-color);
+  text-align:left;
+}
+td {
+  padding:8px 12px; border:1px solid var(--border-color);
+  vertical-align:top; color:var(--text-secondary);
+}
+tr:nth-child(even) td { background: var(--bg-table-alt); }
+tr:hover td { background: var(--bg-table-head); }
+
+/* ===== 真题卡片 ===== */
+.exam-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; }
+.exam-card {
+  background: var(--bg-card);
+  border:1px solid var(--card-border);
+  border-radius:10px; padding:14px;
+  box-shadow: var(--shadow);
+}
+.exam-year {
+  font-size:0.75rem; font-weight:700;
+  background: var(--btn-bg); color:#fff;
+  padding:2px 8px; border-radius:4px;
+  display:inline-block; margin-bottom:8px;
+}
+.exam-q { font-size:0.88rem; color:var(--text-primary); font-weight:600; margin-bottom:4px; }
+.exam-type { font-size:0.75rem; color:var(--text-muted); }
+
+/* ===== 30秒模块 ===== */
+.quick-box {
+  background: linear-gradient(135deg, var(--btn-bg), #26a69a);
+  color:#fff; border-radius:12px; padding:20px;
+  margin-bottom:24px;
+}
+.quick-box h3 { font-size:1.1rem; margin-bottom:12px; }
+.quick-items { display:flex; flex-wrap:wrap; gap:8px; }
+.quick-item {
+  background:rgba(255,255,255,0.15);
+  border:1px solid rgba(255,255,255,0.25);
+  padding:5px 12px; border-radius:20px; font-size:0.82rem;
+}
+
+/* ===== 背诵版总结 ===== */
+.recite-box {
+  background: var(--bg-card);
+  border:2px solid var(--btn-bg);
+  border-radius:12px; padding:20px;
+  margin-bottom:24px;
+}
+.recite-box h3 { color:var(--btn-bg); font-size:1.1rem; margin-bottom:12px; }
+.recite-item {
+  display:flex; gap:10px; align-items:flex-start;
+  margin-bottom:8px; font-size:0.88rem;
+}
+.recite-num {
+  background:var(--btn-bg); color:#fff;
+  width:22px; height:22px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.7rem; font-weight:700; flex-shrink:0;
+}
+
+/* ===== 对比表 ===== */
+.compare-card {
+  background: var(--bg-card);
+  border:1px solid var(--card-border);
+  border-radius:10px; padding:16px;
+  box-shadow: var(--shadow);
+}
+
+/* ===== 自我检测 ===== */
+.test-list { list-style:none; padding:0; }
+.test-list li {
+  padding:8px 12px; border-bottom:1px solid var(--border-color);
+  font-size:0.88rem;
+}
+.test-list li:last-child { border-bottom:none; }
+.test-list li::before { content:'□ '; font-size:1rem; color:var(--btn-bg); }
+
+/* ===== 返回顶部 ===== */
+#back-top {
+  position:fixed; bottom:30px; right:24px;
+  background: var(--btn-bg); color:#fff;
+  width:44px; height:44px; border-radius:50%;
+  border:none; cursor:pointer; font-size:1.2rem;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  transition:all 0.3s; z-index:999;
+  display:flex; align-items:center; justify-content:center;
+}
+#back-top:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,0,0,0.3); }
+
+/* ===== 页脚 ===== */
+footer {
+  text-align:center; padding:20px;
+  font-size:0.8rem; color:var(--text-muted);
+  border-top:1px solid var(--border-color);
+}
+
+/* ===== 联系框 ===== */
+.link-box {
+  background: var(--bg-card); border:1px solid var(--card-border);
+  border-radius:8px; padding:12px 14px; margin:6px 0;
+  font-size:0.85rem;
+}
+.link-box .lk-title { font-weight:700; color:var(--btn-bg); margin-bottom:4px; }
+</style>
+
+
+<script>window._PAGE_TEXT='第七章 员工招聘 | 中南大学企业管理复试笔记 \n \n \n \n \n \n \n 📚 第七章·员工招聘 \n 逻辑图 \n 思维导图 \n 招聘概述 \n 招聘渠道 \n 招聘计划 \n 选拔录用 \n 面试法 \n 测试法 \n 评价中心 \n 对比表 \n 真题 \n 30秒 \n 检测 \n \n \n \n \n 🌙 夜间 \n \n \n \n \n 第七章 员工招聘 \n 《人力资源管理（第3版）》颜爱民 | 中南大学企业管理复试笔记 \n 生成日期：2026-03-09 \n \n 📖 教材页码：P199–235 \n ⭐ 考察频率：高频 \n 🎯 真题年份：2016·2019·2021·2024 \n 🔑 关键术语：Recruitment / Assessment Center / LGD \n \n \n \n \n \n 🔗 本章逻辑关系图 \n \n 人力资源规划 需求预测 \n → \n 招募 渠道选择 \n → \n 招聘计划 规模/范围/时间 \n → \n 初步筛选 简历/申请表 \n → \n 选拔录用 面试/测试 \n → \n 录用决策 淘汰式/补偿式 \n → \n 招聘评估 成本效益 \n \n \n 📌 内部来源：晋升、轮换、公告 \n 📌 外部来源：校园、猎头、网络、人才市场 \n 📌 选拔方法：面试 / 笔试 / 评价中心 / 工作样本 \n 📌 录用策略：多重淘汰式 vs 补偿式 \n \n \n \n \n 🗺️ 章节思维导图 \n \n \n 第七章 员工招聘 \n \n \n \n 🏠 7.1 招聘概述 \n 招聘的定义与意义 \n 招聘的原则 \n 招聘程序（4步） \n 影响招聘的因素 \n \n \n 📡 7.2 招聘实施 \n 内部渠道 vs 外部渠道 \n 招聘计划（规模/范围/时间/预算） \n 求职申请表设计 \n 招聘评估（成本/数量/质量） \n \n \n 🌐 7.3 网络招聘 \n 五种模式 \n 移动/社交/垂直/分类 \n 海外招聘 \n \n \n 🎯 7.4 选拔录用 \n 含义与意义 \n 7项系统标准 \n 6步选拔程序 \n 面试法（结构/非结构/混合） \n 测试法（知识/能力/性格） \n 评价中心（LGD/公文处理） \n 录用决策（多重淘汰/补偿） \n \n \n \n \n \n \n 📋 核心知识点卡片 \n \n \n \n 💡 知识点1：员工招聘（Recruitment） \n P199 \n ★★★★★ 重要 \n ★★★★★ 高概率 \n 名词解释·简答 \n \n \n 📌 必背原句： 员工招聘是组织为了发展的需要，通过 多种方式 吸引足够数量的合乎要求的 应聘者 ，以便从中选拔出适合组织及职位需要的人员的过程。\n \n \n \n 📖 教材定义 \n 招聘是组织通过多种方式吸引足够数量的合乎要求的应聘者，再从中选拔出符合组织及职位需要的人员的过程。包含 招募 和 选拔录用 两个环节。 \n \n \n 🎒 小学生版解释 \n 就像学校选运动会选手：先让全校同学都来报名（招募），然后通过体能测试、比赛把真正合适的人选出来（选拔）。招聘就是公司找新员工的整个过程。 \n \n \n \n 📝 专有名词解释 · 助记口诀 · 案例 · 真题 \n \n \n \n 🔤 专有名词英文 \n Recruitment ：招聘（包含招募+选拔全过程） \n Selection ：选拔录用（从候选人中择优） \n Internal Recruitment ：内部招聘 \n External Recruitment ：外部招聘 \n \n \n 🎵 助记口诀 \n 招聘 = 招募 + 选拔 \n 招募：吸引足够多的人来应聘（网撒得广） \n 选拔：从中挑出最合适的人（鱼要选精） \n 口诀： 先广撒网·再精挑选 \n \n \n \n 🏢 企业案例 \n 华为每年校园招聘：①在全国顶尖高校发布招聘广告（招募阶段，广撒网）→ ②简历筛选（初步选拔）→ ③笔试+技术面试+HR面试（深度选拔）→ ④发放offer（录用决策）。整个过程就是完整的员工招聘。 \n \n \n 【2016复试面试】如何识别高潜人才 \n 【2021笔试】招聘渠道选择与效果评估 \n \n \n 🎤 复试回答模板 \n 定义： 员工招聘是企业通过多种方式吸引足够数量的合格应聘者，并从中选拔出符合职位要求人员的过程。 \n 核心内容： 包括招募（扩大候选人池）和选拔录用（择优决策）两个核心环节。 \n 举例： 以华为校招为例，先通过多渠道广泛招募，再经笔试、面试逐轮筛选录用。 \n 总结： 高质量招聘应做到"既无遗漏符合要求的人，也无错误录用不符合要求的人"。 \n \n \n 🔗 管理学联系 \n 招聘是 人力资源规划 （第六章）的下游执行环节；招聘质量直接影响 绩效管理 （第八章）和 培训开发 的成本；与 工作分析 （第五章）密切关联——任职资格来源于工作说明书。 \n \n \n \n \n \n \n \n 💡 知识点2：招聘来源——内部 vs 外部 \n P202–211 \n ★★★★★ 重要 \n ★★★★★ 高概率 \n 简答·对比 \n \n \n 📌 内部渠道： 晋升 、工作轮换；外部渠道：员工推荐、中介机构、 校园招聘 、广告、 网络招聘 、海外招聘\n \n \n \n \n 维度 内部招聘 外部招聘 \n \n \n 定义 从企业内部现有员工中选拔（晋升/轮换） 从企业外部吸引候选人 \n 主要方式 内部公告、绩效档案、晋升、轮换 校招、猎头、网络、广告、人才市场 \n 优点 ✅ 了解员工信息可靠 ✅ 激励现有员工 ✅ 成本低、适应快 ✅ 降低选拔风险 ✅ 带来新思想新方法 ✅ 候选人范围广 ✅ 有利于引进高素质人才 \n 缺点 ❌ "近亲繁殖"，缺乏创新 ❌ 引发内部竞争矛盾 ❌ 候选人范围窄 ❌ 成本高（广告/猎头费） ❌ 适应期长 ❌ 信息不对称风险 ❌ 可能影响员工士气 \n 适用场景 高层管理职位、有晋升体系的大企业 新兴企业、需要新技能新血液的岗位 \n \n \n \n \n 📝 各种外部渠道详解 · 助记 · 案例 \n \n \n \n \n 外部渠道 特点 适用岗位 \n \n \n 校园招聘 针对应届生，成本低，需培训 管培生、基础岗 \n 猎头公司 成本高，但定向精准，保密性好 高级管理、稀缺技术 \n 人才市场 大量候选人，速度快 中基层岗位 \n 网络招聘 覆盖广、成本低，信息真实性待核 各类岗位 \n 员工推荐 可靠性较高，速途网"金锄头奖"为例 专业性强的岗位 \n 海外招聘 人才质量高，但核查难、手续繁 高端技术/管理人才 \n \n \n \n \n 🎵 助记口诀 \n 内部：晋升轮换工作调；外部：校猎市网员推海（校园·猎头·市场·网络·员工推荐·海外） \n \n \n 🏢 企业案例（速途网） \n 速途网设立" 金锄头奖 "——员工推荐新人成功后奖励200元/人，大力提倡内部推荐，同时结合智联招聘、前程无忧等网络平台进行外部招聘，并通过微信朋友圈进行自媒体招聘。 \n \n 【2021笔试】招聘渠道选择与效果评估 \n 【教材习题3】比较内部外部来源优缺点 \n \n 🎤 复试回答模板 \n 定义+分类： 招聘渠道分内部（晋升、轮换）和外部（校招、猎头、网络等）两类。 \n 对比： 内部招聘成本低、风险小，但易"近亲繁殖"；外部招聘带来新鲜血液，但成本高、适应期长。 \n 选择原则： 企业应根据岗位层级、急迫程度、劳动力市场状况综合选择，通常两者结合使用。 \n \n \n \n \n \n \n \n 💡 知识点3：员工招聘计划的制订 \n P215–219 \n ★★★★ 较重要 \n ★★★ 一般 \n 简答 \n \n \n 📌 招聘计划四要素： 规模 （金字塔模型）、 范围 （劳动力市场）、 时间 （时间线规划）、 预算 （人工+业务+其他）\n \n \n \n 📐 金字塔模型（确定招聘规模） \n 将招聘过程分为若干阶段，以各阶段参与人数与通过比例逆向推算所需总应聘人数。 \n 示例： 招聘10名销售员 → 需试用50人 → 需参加测试150人 → 需提交申请200人 → 招聘规模=200人 \n \n \n 💰 招聘成本构成 \n \n 直接成本： 招募费用、选拔费用、安置费用 \n 间接成本： 内部提升费用、工作流动费用 \n 招聘单位成本 = 招聘总成本 ÷ 实际录用人数 \n \n \n \n \n 📝 招聘评估公式 · 完整内容 \n \n \n 📊 招聘评估公式（★★★ 必背） \n \n 📌 总成本效用 = 录用人数 / 招聘总成本 \n 📌 招募成本效用 = 应聘人数 / 招募期间的费用 \n 📌 选拔成本效用 = 被选中人数 / 选拔期间的费用 \n 📌 人员录用效用 = 正式录用的人数 / 录用期间的费用 \n 📌 招聘收益成本比 = 所有新员工为组织创造的总价值 / 招聘总成本 \n 📌 录用比 = 录用人数 / 应聘人数 × 100% \n 📌 招聘完成比 = 录用人数 / 计划招聘人数 × 100% \n 📌 应聘比 = 应聘人数 / 计划招聘人数 × 100% \n \n 💡 解读 \n 招聘完成比 ≥ 100%：完成招聘任务；应聘比越大，说明招聘信息发布效果越好；招聘收益成本比越高，说明招聘越有效。 \n \n \n \n \n \n \n \n 💡 知识点4：选拔录用（人员甄选） \n P224–233 \n ★★★★★ 重要 \n ★★★★★ 高概率 \n 名词解释·简答·论述 \n \n \n 📌 必背原句： 选拔录用也叫 人员甄选 ，是指通过运用一定的工具和手段对已经招募到的求职者进行 鉴别和考察 ，区分他们的人格特点与知识技能水平， 预测他们的未来工作绩效 ，从而最终挑选出企业所需要的、恰当的职位空缺填补者。\n \n \n \n 🔑 三个要点（教材原文） \n \n ① 评价知识/能力/个性 + 预测未来绩效 （后者更重要） \n ② 以 空缺职位任职资格 为依据 \n ③ 由 HR部门和直线部门共同 完成，最终决策由 直线部门 做出 \n \n \n \n 📋 选拔录用的6步程序 \n \n ① 审核工作申请表和简历 \n ② 选拔测试和面试 \n ③ 背景调查 \n ④ 体检 \n ⑤ 试用期考察 \n ⑥ 正式录用决策 \n \n \n \n \n 📝 录用决策策略 · 完整解析 \n \n \n \n \n 录用策略 含义 特点 适用场景 \n \n \n \n 多重淘汰式 \n 每种测试都是淘汰性的，应聘者必须在每项都达标，依次淘汰 \n 标准严格，层层过滤；效率高 \n 应聘人数多、岗位要求全面 \n \n \n 补偿式 \n 不同测试成绩可互补，按加权总分决策 \n 灵活，某项弱可被其他项补偿 \n 多维度岗位，注重综合素质 \n \n \n \n \n \n 🎵 助记口诀 \n 多重淘汰： 关关难过关关过 （每关都不能输） \n 补偿式： 东方不亮西方亮 （一弱可以被他强补偿） \n \n 【教材习题4】比较各种招聘筛选方法的优缺点 \n \n \n \n \n \n \n 💡 知识点5：面试法（Interview） \n P226–229 \n ★★★★★ 重要 \n ★★★★★ 高概率 \n 名词解释·简答 \n \n \n 📌 面试是通过 供需双方正式交谈 ，以便企业客观了解应聘者的业务知识水平、外貌风度、工作经验、求职动机等信息的过程。\n \n \n \n \n 分类维度 类型 特点 \n \n \n \n 按 提问方式 （最常考） \n 结构式面试 （Structured Interview） \n 预先设计全部问题，逐一提问；系统全面但程式化，不够灵活 \n \n \n 非结构式面试 \n 随机发问，无固定程序；灵活深入但缺乏全面性 \n \n \n — \n 混合式面试 （最常用） \n 结合两者之长，取长补短，是实践中最常用的方式 \n \n \n 按 效果 \n 初步面试 \n 增进双方了解；应聘者补充书面材料，企业介绍职位情况 \n \n \n 诊断面试 \n 测试实际能力与潜力；深层信息交换 \n \n \n 按 参与人员 \n 个别面试 \n 1对1，亲密深入，易受主观因素干扰 \n \n \n 小组面试 \n 2~3人考官小组，多角度考察，克服个人偏见 \n \n \n 集体面试 \n 多名应聘者同时面试，效率高；适合发现领导力 \n \n \n 按 组织形式 \n 压力面试 \n 给应聘者意外"一击"；测应变、抗压能力；用于销售/公关/高管 \n \n \n BD面试 （行为描述面试） \n 基于行为连贯性原理；了解过去经历预测未来行为 \n \n \n 能力面试 （STAR法） \n 找Situation情景→Task任务→Action行动→Result结果 \n \n \n \n \n \n 📝 面试程序·提问技巧·助记·案例 \n \n \n \n 面试阶段 主要工作 \n \n ① 面试前准备 确定目的；阅读申请表；制定提纲；确定时间地点；制定评价表 \n ② 开始阶段 创造和谐气氛；寒暄问候；消除紧张情绪 \n ③ 正式面试 结构式/非结构式/混合式提问；从多角度了解应聘者 \n ④ 结束阶段 友好结束；整理记录；填写评价表；做出总体评价 \n \n \n \n \n 🎵 助记口诀 \n 面试基本功： 问·听·观·评 \n 面试三类： 结构非结混合、初步诊断深浅、个别小组集体、压力BD能力 \n STAR法： 情（Situation）·任（Task）·动（Action）·果（Result） \n \n \n 🏢 企业案例 \n 阿里巴巴校招采用 集体面试+压力面试 ：先让多名候选人围绕案例讨论（集体面试），考官突然质疑某人观点（压力面试），以观察其应变能力和沟通风格。 \n \n 【教材习题5】面试基本步骤及技巧 \n \n 🎤 复试延伸追问 \n ① 结构式面试和非结构式面试哪种效度更高？（答：结构式效度高，更客观标准） \n ② 什么是行为描述面试？基于什么理论？（答：基于行为连贯性原理，过去行为预测未来） \n ③ STAR法包含哪四个要素？（答：情景S·任务T·行动A·结果R） \n \n \n \n \n \n \n \n 💡 知识点6：测试法——人员素质测评 \n P229–232 \n ★★★★ 较重要 \n ★★★★ 较高概率 \n 名词解释·简答 \n \n \n 📌 选拔测试是运用 各种科学或经验的方法 对应聘者进行评价，从而挑选出那些符合职位要求的人员的过程。\n \n \n \n \n 测试类型 测试内容 代表工具/方法 优缺点 \n \n \n \n 知识测试 \n 衡量应聘者是否具备职位要求的专业知识 \n 笔试、专业考试 \n ✅操作简单成本低；❌主要考察记忆能力，对实际工作能力考察不足 \n \n \n 能力测试 （一般/特殊） \n 衡量是否具备职位所需能力；GATB测9种能力 \n GATB（一般能力倾向测验）包括G/V/N/Q/S/P/K/F/M \n ✅预测性强；❌需要专业施测人员 \n \n \n 性格测试 \n 了解性格类型，判断岗位匹配度 \n 自陈式：16PF、MMPI、EPPS；投射式：罗夏墨渍、TAT \n ✅深度了解性格；❌可被伪装，需专业解读 \n \n \n 兴趣测试 \n 了解职业兴趣，预测工作投入程度 \n 斯通-坎贝尔测试 \n ✅了解工作动机；❌兴趣不等于能力 \n \n \n 工作样本测试 \n 要求完成职位实际任务，直接衡量绩效 \n 打字测速、驾驶测试 \n ✅效度高，难造假；❌成本高，不适合长周期任务 \n \n \n \n \n \n 📝 应用测试的三大要求 \n \n \n ⚠️ 应用测试法的基本要求（教材原文） \n \n ① 保护应聘者隐私 ：未征得同意不得公布测试结果，未通过者应退还报告 \n ② 有严格的程序 ：施测人员须经专业培训，必要时请专业人员协助 \n ③ 测试结果不能作为唯一评定依据 ：应与面试、笔试等方法结合使用 \n \n \n \n 🎵 助记口诀 \n 测试法口诀： 知能性兴样（知识·能力·性格·兴趣·工作样本） → 层层深入，由外到内 \n 应用三要求： 保护隐私·严格程序·不唯一 \n \n \n \n \n \n \n \n 💡 知识点7：评价中心（Assessment Center） \n P231–232 \n ★★★★★ 重要 \n ★★★★★ 高概率 \n 名词解释·简答·案例 \n \n \n 📌 评价中心测试就是通过 情景模拟 的方法来对应聘者做出评价，使用 模拟的 （而非实际的）工作任务进行测试。\n \n \n \n 🔍 主要方法 \n \n 无领导小组讨论（LGD） ：几人组成小组，无指定主持人，讨论议题并给出决策，评委在旁观察 \n 公文处理 ：假设应聘者已从事该职位，处理一篮子文件（信函/备忘录/报告/电话记录等） \n 管理游戏 ：模拟管理情景 \n 角色扮演 ：扮演特定职位角色 \n 演讲 ：考察表达与逻辑 \n 案例分析 ：分析解决复杂问题 \n \n \n \n 🆚 评价中心 vs 工作样本测试 \n \n 对比点 工作样本测试 评价中心 \n 任务性质 实际工作任务 模拟工作任务 \n 效度 较高（直接测量） 较高（情景接近） \n 适用岗位 技术类岗位 管理类岗位 \n \n \n \n \n 📝 无领导小组讨论（LGD）详解 \n \n \n 📖 LGD定义（教材原文） \n 无领导小组讨论（Leaderless Group Discussion，LGD）：把几个应聘者组成一个小组，给他们提供一个议题，事先 不指定主持人 ，让他们通过小组讨论的方式在限定的时间内给出一个决策， 评委在旁边观察 所有应聘者的行为表现并做出评价。 \n \n \n ✅ 可评价的维度 \n \n 语言表达能力 \n 分析归纳能力 \n 说服能力 \n 协调组织能力 \n 集体意识 \n \n \n \n 📖 公文处理（In-basket）流程 \n ① 假设应聘者已从事该职位 → ② 给予一篮子文件（信函/备忘录/报告/电话记录/上级指示/下级请示）→ ③ 在规定时间条件下处理并说明理由 → ④ 评估规划/决策/分析判断能力 \n \n \n 🏢 企业案例 \n 某大型国企招聘管理培训生：先让5名候选人讨论"如何应对工厂环保政策收紧"的议题，不指定主持人，评委从旁观察谁能 主动引领讨论、逻辑清晰、能说服他人、照顾到每位成员意见 ，以此评判领导潜力。这就是LGD的典型应用。 \n \n 【高频复试面试题】评价中心的方法有哪些？ \n 【教材习题1】初步筛选的方法有哪些？ \n \n 🎤 复试回答模板 \n 定义： 评价中心是通过情景模拟方法评价应聘者的选拔工具，使用模拟（而非实际）工作任务。 \n 主要方法： 包括无领导小组讨论、公文处理、管理游戏、角色扮演、演讲、案例分析等。 \n LGD特点： 无指定主持人，通过自然呈现观察领导力、协调力、表达力等综合素质。 \n 适用： 尤其适合管理类岗位的高层次人才选拔，效度较高。 \n 延伸： 评价中心与工作样本测试的区别在于任务的虚实（模拟vs实际）。 \n \n \n 🔗 管理学联系 \n 评价中心与 胜任力模型 （2017笔试）密切相关——LGD、公文处理等方法正是用于检验胜任力的工具。也与 绩效管理 中的360度评估方法论相通。 \n \n \n \n \n \n \n \n 💡 知识点8：网络招聘（Online Recruitment） \n P211–215 \n ★★★ 重要 \n ★★★ 一般 \n 名词解释·简答 \n \n \n 📌 网络招聘五种模式： ①传统网站 ②移动招聘 ③社交招聘 ④垂直招聘 ⑤分类信息 \n \n \n \n 模式 特点 代表平台 \n \n ①传统招聘网站 发布职位为主，大量简历资源 前程无忧、智联招聘 \n ②移动招聘 手机端，碎片化，私密性强；PC端优先 前程无忧APP \n ③社交招聘 双向互动，多角度了解；不是职位广告vs简历 LinkedIn、人和网 \n ④垂直招聘 爬虫搜集职位，核心是搜索，无自有数据库 职友集、淘职网 \n ⑤分类信息 定位基层/蓝领，广告费/会员费为主 58同城、赶集网 \n \n \n \n \n 📝 网络招聘优缺点 \n \n \n \n ✅ 网络招聘优点 \n \n 覆盖面广，信息传播快 \n 成本相对较低 \n 候选人可以24小时申请 \n 信息筛选自动化程度高 \n \n \n \n ❌ 网络招聘缺点 \n \n 简历信息真实性难以核查 \n 海量简历筛选工作量大 \n 数字鸿沟导致部分群体无法触达 \n 无法全面评估综合素质 \n \n \n \n \n \n \n \n \n \n ⚖️ 对比总结表（易混概念） \n \n ① 面试类型全景对比 \n \n \n 类型 关键特征 适用 优点 缺点 \n \n 结构式 预设全部问题 标准化岗位 系统全面、效率高 程式化、不灵活 \n 非结构式 随机发问 创意类岗位 灵活深入 缺乏全面性 \n 混合式 两者结合 大多数岗位 取长补短 对考官要求高 \n 压力面试 意外攻击性提问 销售/公关/高管 测应变抗压力 影响候选人体验 \n BD面试 行为连贯性原理 有经验的岗位 预测未来行为 需应聘者有相关经历 \n 能力面试(STAR) 情景-任务-行动-结果 综合能力岗 客观量化 需要精心设计问题 \n \n \n \n \n \n ② 内部 vs 外部招聘对比速查 \n \n \n 内部招聘 外部招聘 \n \n 成本 低 高 \n 信息可靠性 高（熟悉员工） 低（信息不对称） \n 激励效果 激励现有员工晋升 可能打击老员工积极性 \n 创新性 低（"近亲繁殖"） 高（带来新思想） \n 适应期 短（熟悉企业文化） 长（需要磨合） \n 候选人范围 窄 广 \n \n \n \n \n \n ③ 选拔录用各方法综合对比 \n \n \n 方法 测量内容 效度 成本 主要问题 \n \n 简历/申请表筛选 基本资格 低 极低 信息可能不实 \n 知识笔试 专业知识 中 低 只测记忆，不测实际能力 \n 结构化面试 综合素质 中高 中 受主观因素影响 \n 工作样本测试 实际工作绩效 高 高 不适合长周期任务 \n 评价中心 综合管理能力 高 高 耗时耗力，需专业评委 \n 心理测试（16PF等） 性格/能力 中 中 可被伪装，不能作为唯一依据 \n \n \n \n \n \n \n \n 📝 历年真题汇总（2016–2025） \n \n \n 2016 复试面试 \n 如何在招聘中识别高潜力人才？ \n 🎤 面试专业题 \n \n \n 2017 面试 \n 胜任力模型的构建流程（与招聘选拔紧密关联） \n 📝 简答 \n \n \n 2019 面试 \n 并购中的人力整合（招聘/选拔延伸） \n 🎤 面试专业题 \n \n \n 2021 笔试 \n 简述招聘渠道选择与效果评估（★★★★★ 原题） \n 📝 简答题 \n \n \n 2024 面试 \n HRBP角色与能力要求（涉及招聘模块） \n 🎤 面试专业题 \n \n \n 教材习题1 \n 对应聘者进行初步筛选的方法有哪些？各有何特点？ \n 📝 简答（高频预测） \n \n \n 教材习题2 \n 招聘工作一般应遵循怎样的程序？ \n 📝 简答（高频预测） \n \n \n 教材习题3 \n 比较招聘内部来源和外部来源的优、缺点 \n 📝 对比题（高频） \n \n \n 教材习题5 \n 简述面试的基本步骤及技巧 \n 📝 简答（高频预测） \n \n \n 预测题 \n 什么是评价中心？其主要方法有哪些？（LGD/公文处理） \n 📝 名词解释+简答 ★★★★★ \n \n \n 预测题 \n 什么是行为描述面试（BD面试）？其理论基础是什么？ \n 📝 名词解释 ★★★★ \n \n \n 预测题 \n 试述无领导小组讨论（LGD）的特点与评价维度 \n 📝 简答 ★★★★★ \n \n \n \n 📊 招聘相关公式考察预测 \n \n \n 公式 含义 考察可能性 \n \n 录用比 = 录用人数/应聘人数×100% 录用率 ★★★ \n 招聘完成比 = 录用人数/计划招聘人数×100% 完成度 ★★★★ \n 招聘收益成本比 = 新员工创造总价值/招聘总成本 投入产出 ★★★★ \n 招聘单位成本 = 招聘总成本/实际录用人数 每人招聘成本 ★★★ \n \n \n \n \n \n \n \n 🧵 本章知识终极串联 \n \n \n 人力资源规划（需求）→ 明确岗位要求（工作分析） → 确定招募策略（内部/外部）→ 制订招聘计划（规模/范围/时间/预算）→ 实施招募（渠道/广告/申请表）→ 初步筛选（简历/申请表）→ 深度选拔（面试/测试/评价中心）→ 录用决策（多重淘汰/补偿式）→ 招聘评估（成本效益/数量质量）\n \n \n 📌 关键工具：金字塔模型（确定规模） \n 📌 关键工具：STAR法（能力面试） \n 📌 关键工具：LGD（管理岗选拔） \n 📌 关键公式：招聘收益成本比 \n \n \n \n 🔗 跨章节联系 \n \n \n ← 第五章 工作分析 \n 工作描述书和任职资格说明书是招聘的 起点 和依据，决定招聘的标准。 \n \n \n ← 第六章 人力资源规划 \n 人力资源供需预测决定 招聘需求 的数量和时间安排。 \n \n \n → 第八章 绩效管理 \n 招聘质量直接影响员工绩效，选拔标准应与绩效考核指标 保持一致 。 \n \n \n → 第九章 培训开发 \n 选拔质量差会增加培训成本；胜任力模型连接招聘选拔与培训体系。 \n \n \n \n \n \n \n ⚡ 30秒超速复习模块 \n \n 招聘 = 招募 + 选拔 \n 内部：晋升/轮换 \n 外部：校猎市网员推海 \n 计划4要素：规模/范围/时间/预算 \n 金字塔模型=确定规模 \n 选拔6步程序 \n 最终录用决策→直线部门 \n 面试3类：结构/非结/混合 \n BD面试=行为连贯性原理 \n STAR=情·任·动·果 \n 评价中心=情景模拟 \n LGD=无领导小组讨论 \n 录用决策：淘汰式vs补偿式 \n 测试法：知能性兴样 \n 心理测试不能作为唯一依据 \n 招聘收益成本比越高越好 \n \n \n \n \n 🎤 背诵版总结（适合复试口述） \n \n 1 \n 员工招聘定义： 组织通过多种方式吸引足够数量合格应聘者，并从中选拔符合职位需要人员的过程，包含招募和选拔两个核心环节。 \n \n \n 2 \n 招聘来源： 内部（晋升、轮换）优点是成本低、激励员工、信息可靠；外部（校招、猎头、网络等）优点是带来新思想、候选人范围广；两者各有优缺点，企业应根据职位性质综合运用。 \n \n \n 3 \n 招聘计划四要素： 规模（金字塔模型）、范围（劳动力市场特征）、时间（时间线规划）、预算（人工费+业务费+其他费）。 \n \n \n 4 \n 选拔录用含义： 人员甄选，通过工具手段鉴别考察已招募的求职者，评价其知识能力人格并预测未来绩效，最终确定录用人员。最终录用决策由直线部门作出。 \n \n \n 5 \n 面试分类（3维度）： ①按提问方式：结构式（全面但程式化）、非结构式（灵活但不全面）、混合式（最常用）；②按组织形式：压力面试、BD行为描述面试、能力面试（STAR法）；③按人员：个别、小组、集体。 \n \n \n 6 \n 评价中心： 通过情景模拟评价应聘者，使用模拟（非实际）工作任务。主要方法：无领导小组讨论（LGD）、公文处理、管理游戏、角色扮演等。LGD通过不指定主持人的小组讨论观察综合管理能力。 \n \n \n 7 \n 录用决策策略： 多重淘汰式（关关必过，层层筛选）vs补偿式（综合加权，东方不亮西方亮）。实践中多种方法结合使用，提高录用决策的科学性。 \n \n \n 8 \n 招聘评估： 成本效益评估（招聘收益成本比越高越好）+ 数量评估（录用比/招聘完成比/应聘比）+ 质量评估（录用者实际工作绩效）。 \n \n \n \n \n ✅ 课后自我检测 \n 📚 教材课后题（必做） \n \n 对应聘者进行初步筛选的方法有哪些？各有何特点？ \n 招聘工作一般应遵循怎样的程序？ \n 试比较招聘的内部来源和外部来源的优、缺点。 \n 试比较各种招聘筛选方法的优、缺点。 \n 简述面试的基本步骤及技巧。 \n \n 🎯 历年真题练习 \n \n 【2021】简述招聘渠道选择与效果评估（要求写出主要渠道类型及评估指标公式） \n 【2016复试面试】如何在招聘中识别高潜力人才？ \n \n 🔮 预测题（重点准备） \n \n 什么是评价中心？无领导小组讨论（LGD）有何特点？可以评价哪些维度？ \n 什么是行为描述面试（BD面试）？其理论基础是什么？STAR法如何运用？ \n 简述选拔录用的含义及录用决策的两种主要策略，并比较其优缺点。 \n 员工招聘中如何进行招聘成本效益评估？请写出主要评估公式。 \n 结合互联网时代背景，企业应如何设计有效的网络招聘策略？（结合案例） \n 论述内外部招聘渠道的优缺点，企业应如何根据岗位特征选择合适的招聘渠道？ \n \n \n \n \n ↑ \n \n 第七章 员工招聘 | 《人力资源管理（第3版）》颜爱民 | 中南大学企业管理硕士复试学习笔记 \n 生成日期：2026-03-09 | 页码范围：P199–235';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ===== 顶部固定导航 ===== -->
+<nav id="top-nav">
+  <div class="nav-inner">
+    <span class="nav-title">📚 第七章·员工招聘</span>
+    <a class="nav-item" href="#sec-logic">逻辑图</a>
+    <a class="nav-item" href="#sec-mindmap">思维导图</a>
+    <a class="nav-item" href="#sec-k1">招聘概述</a>
+    <a class="nav-item" href="#sec-k2">招聘渠道</a>
+    <a class="nav-item" href="#sec-k3">招聘计划</a>
+    <a class="nav-item" href="#sec-k4">选拔录用</a>
+    <a class="nav-item" href="#sec-k5">面试法</a>
+    <a class="nav-item" href="#sec-k6">测试法</a>
+    <a class="nav-item" href="#sec-k7">评价中心</a>
+    <a class="nav-item" href="#sec-compare">对比表</a>
+    <a class="nav-item" href="#sec-exam">真题</a>
+    <a class="nav-item" href="#sec-quick">30秒</a>
+    <a class="nav-item" href="#sec-test">检测</a>
+    <div class="search-bar">
+      
+      
+    </div>
+    <button class="nav-btn" onclick="toggleDark()">🌙 夜间</button>
+  </div>
+</nav>
+
+<!-- ===== 页头 ===== -->
+<header class="page-header">
+  <h1>第七章 员工招聘</h1>
+  <div class="subtitle">《人力资源管理（第3版）》颜爱民 | 中南大学企业管理复试笔记</div>
+  <div class="gen-date">生成日期：2026-03-09</div>
+  <div class="header-tags">
+    <span class="header-tag">📖 教材页码：P199–235</span>
+    <span class="header-tag">⭐ 考察频率：高频</span>
+    <span class="header-tag">🎯 真题年份：2016·2019·2021·2024</span>
+    <span class="header-tag">🔑 关键术语：Recruitment / Assessment Center / LGD</span>
+  </div>
+</header>
+
+<main>
+
+<!-- ===== 1. 本章逻辑关系图 ===== -->
+<div class="section-box" id="sec-logic">
+  <div class="section-title"><span class="section-icon">🔗</span>本章逻辑关系图</div>
+  <div class="logic-flow">
+    <div class="flow-item">人力资源规划<br><span style="font-size:0.7rem;font-weight:400">需求预测</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">招募<br><span style="font-size:0.7rem;font-weight:400">渠道选择</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">招聘计划<br><span style="font-size:0.7rem;font-weight:400">规模/范围/时间</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">初步筛选<br><span style="font-size:0.7rem;font-weight:400">简历/申请表</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">选拔录用<br><span style="font-size:0.7rem;font-weight:400">面试/测试</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">录用决策<br><span style="font-size:0.7rem;font-weight:400">淘汰式/补偿式</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item">招聘评估<br><span style="font-size:0.7rem;font-weight:400">成本效益</span></div>
+  </div>
+  <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
+    <div class="flow-sub">📌 内部来源：晋升、轮换、公告</div>
+    <div class="flow-sub">📌 外部来源：校园、猎头、网络、人才市场</div>
+    <div class="flow-sub">📌 选拔方法：面试 / 笔试 / 评价中心 / 工作样本</div>
+    <div class="flow-sub">📌 录用策略：多重淘汰式 vs 补偿式</div>
+  </div>
+</div>
+
+<!-- ===== 2. 章节思维导图 ===== -->
+<div class="section-box" id="sec-mindmap">
+  <div class="section-title"><span class="section-icon">🗺️</span>章节思维导图</div>
+  <div class="mindmap">
+    <div style="text-align:center;margin-bottom:16px">
+      <span class="mm-root">第七章 员工招聘</span>
+    </div>
+    <div class="mm-branches">
+      <div class="mm-branch">
+        <div class="mm-branch-title">🏠 7.1 招聘概述</div>
+        <div class="mm-leaf">招聘的定义与意义</div>
+        <div class="mm-leaf">招聘的原则</div>
+        <div class="mm-leaf">招聘程序（4步）</div>
+        <div class="mm-leaf">影响招聘的因素</div>
+      </div>
+      <div class="mm-branch">
+        <div class="mm-branch-title">📡 7.2 招聘实施</div>
+        <div class="mm-leaf">内部渠道 vs 外部渠道</div>
+        <div class="mm-leaf">招聘计划（规模/范围/时间/预算）</div>
+        <div class="mm-leaf">求职申请表设计</div>
+        <div class="mm-leaf">招聘评估（成本/数量/质量）</div>
+      </div>
+      <div class="mm-branch">
+        <div class="mm-branch-title">🌐 7.3 网络招聘</div>
+        <div class="mm-leaf">五种模式</div>
+        <div class="mm-leaf">移动/社交/垂直/分类</div>
+        <div class="mm-leaf">海外招聘</div>
+      </div>
+      <div class="mm-branch">
+        <div class="mm-branch-title">🎯 7.4 选拔录用</div>
+        <div class="mm-leaf">含义与意义</div>
+        <div class="mm-leaf">7项系统标准</div>
+        <div class="mm-leaf">6步选拔程序</div>
+        <div class="mm-leaf">面试法（结构/非结构/混合）</div>
+        <div class="mm-leaf">测试法（知识/能力/性格）</div>
+        <div class="mm-leaf">评价中心（LGD/公文处理）</div>
+        <div class="mm-leaf">录用决策（多重淘汰/补偿）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 知识卡片区 ===== -->
+<div class="section-box" id="sec-k1">
+  <div class="section-title"><span class="section-icon">📋</span>核心知识点卡片</div>
+
+  <!-- 知识点1：招聘的定义 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-title">💡 知识点1：员工招聘（Recruitment）</span>
+      <span class="badge badge-page">P199</span>
+      <span class="badge badge-star">★★★★★ 重要</span>
+      <span class="badge badge-prob">★★★★★ 高概率</span>
+      <span class="badge badge-type">名词解释·简答</span>
+    </div>
+    <div class="highlight-box">
+      📌 <strong>必背原句：</strong>员工招聘是组织为了发展的需要，通过<span class="keyword">多种方式</span>吸引足够数量的合乎要求的<span class="keyword">应聘者</span>，以便从中选拔出适合组织及职位需要的人员的过程。
+    </div>
+    <div class="kcard-row">
+      <div class="info-box">
+        <div class="info-box-title">📖 教材定义</div>
+        <p>招聘是组织通过多种方式吸引足够数量的合乎要求的应聘者，再从中选拔出符合组织及职位需要的人员的过程。包含<span class="keyword">招募</span>和<span class="keyword">选拔录用</span>两个环节。</p>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">🎒 小学生版解释</div>
+        <p>就像学校选运动会选手：先让全校同学都来报名（招募），然后通过体能测试、比赛把真正合适的人选出来（选拔）。招聘就是公司找新员工的整个过程。</p>
+      </div>
+    </div>
+    <details>
+      <summary>📝 专有名词解释 · 助记口诀 · 案例 · 真题</summary>
+      <div class="kcard-body">
+        <div class="kcard-row">
+          <div class="info-box">
+            <div class="info-box-title">🔤 专有名词英文</div>
+            <p><strong>Recruitment</strong>：招聘（包含招募+选拔全过程）</p>
+            <p><strong>Selection</strong>：选拔录用（从候选人中择优）</p>
+            <p><strong>Internal Recruitment</strong>：内部招聘</p>
+            <p><strong>External Recruitment</strong>：外部招聘</p>
+          </div>
+          <div class="info-box">
+            <div class="info-box-title">🎵 助记口诀</div>
+            <p><strong>招聘 = 招募 + 选拔</strong></p>
+            <p>招募：吸引足够多的人来应聘（网撒得广）</p>
+            <p>选拔：从中挑出最合适的人（鱼要选精）</p>
+            <p>口诀：<span class="keyword">先广撒网·再精挑选</span></p>
+          </div>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🏢 企业案例</div>
+          <p>华为每年校园招聘：①在全国顶尖高校发布招聘广告（招募阶段，广撒网）→ ②简历筛选（初步选拔）→ ③笔试+技术面试+HR面试（深度选拔）→ ④发放offer（录用决策）。整个过程就是完整的员工招聘。</p>
+        </div>
+        <div style="margin-top:8px">
+          <span class="exam-tag">【2016复试面试】如何识别高潜人才</span>
+          <span class="exam-tag">【2021笔试】招聘渠道选择与效果评估</span>
+        </div>
+        <div class="info-box" style="margin-top:8px;background:var(--highlight-yellow)">
+          <div class="info-box-title">🎤 复试回答模板</div>
+          <p><strong>定义：</strong>员工招聘是企业通过多种方式吸引足够数量的合格应聘者，并从中选拔出符合职位要求人员的过程。</p>
+          <p><strong>核心内容：</strong>包括招募（扩大候选人池）和选拔录用（择优决策）两个核心环节。</p>
+          <p><strong>举例：</strong>以华为校招为例，先通过多渠道广泛招募，再经笔试、面试逐轮筛选录用。</p>
+          <p><strong>总结：</strong>高质量招聘应做到"既无遗漏符合要求的人，也无错误录用不符合要求的人"。</p>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🔗 管理学联系</div>
+          <p>招聘是<strong>人力资源规划</strong>（第六章）的下游执行环节；招聘质量直接影响<strong>绩效管理</strong>（第八章）和<strong>培训开发</strong>的成本；与<strong>工作分析</strong>（第五章）密切关联——任职资格来源于工作说明书。</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 知识点2：招聘来源（内部/外部） -->
+  <div class="kcard" id="sec-k2">
+    <div class="kcard-header">
+      <span class="kcard-title">💡 知识点2：招聘来源——内部 vs 外部</span>
+      <span class="badge badge-page">P202–211</span>
+      <span class="badge badge-star">★★★★★ 重要</span>
+      <span class="badge badge-prob">★★★★★ 高概率</span>
+      <span class="badge badge-type">简答·对比</span>
+    </div>
+    <div class="highlight-box">
+      📌 内部渠道：<span class="keyword">晋升</span>、工作轮换；外部渠道：员工推荐、中介机构、<span class="keyword">校园招聘</span>、广告、<span class="keyword">网络招聘</span>、海外招聘
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>维度</th><th>内部招聘</th><th>外部招聘</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>定义</strong></td><td>从企业内部现有员工中选拔（晋升/轮换）</td><td>从企业外部吸引候选人</td></tr>
+          <tr><td><strong>主要方式</strong></td><td>内部公告、绩效档案、晋升、轮换</td><td>校招、猎头、网络、广告、人才市场</td></tr>
+          <tr><td><strong>优点</strong></td><td>✅ 了解员工信息可靠<br>✅ 激励现有员工<br>✅ 成本低、适应快<br>✅ 降低选拔风险</td><td>✅ 带来新思想新方法<br>✅ 候选人范围广<br>✅ 有利于引进高素质人才</td></tr>
+          <tr><td><strong>缺点</strong></td><td>❌ "近亲繁殖"，缺乏创新<br>❌ 引发内部竞争矛盾<br>❌ 候选人范围窄</td><td>❌ 成本高（广告/猎头费）<br>❌ 适应期长<br>❌ 信息不对称风险<br>❌ 可能影响员工士气</td></tr>
+          <tr><td><strong>适用场景</strong></td><td>高层管理职位、有晋升体系的大企业</td><td>新兴企业、需要新技能新血液的岗位</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details>
+      <summary>📝 各种外部渠道详解 · 助记 · 案例</summary>
+      <div class="kcard-body">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>外部渠道</th><th>特点</th><th>适用岗位</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>校园招聘</strong></td><td>针对应届生，成本低，需培训</td><td>管培生、基础岗</td></tr>
+              <tr><td><strong>猎头公司</strong></td><td>成本高，但定向精准，保密性好</td><td>高级管理、稀缺技术</td></tr>
+              <tr><td><strong>人才市场</strong></td><td>大量候选人，速度快</td><td>中基层岗位</td></tr>
+              <tr><td><strong>网络招聘</strong></td><td>覆盖广、成本低，信息真实性待核</td><td>各类岗位</td></tr>
+              <tr><td><strong>员工推荐</strong></td><td>可靠性较高，速途网"金锄头奖"为例</td><td>专业性强的岗位</td></tr>
+              <tr><td><strong>海外招聘</strong></td><td>人才质量高，但核查难、手续繁</td><td>高端技术/管理人才</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🎵 助记口诀</div>
+          <p>内部：晋升轮换工作调；外部：校猎市网员推海（校园·猎头·市场·网络·员工推荐·海外）</p>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🏢 企业案例（速途网）</div>
+          <p>速途网设立"<span class="keyword">金锄头奖</span>"——员工推荐新人成功后奖励200元/人，大力提倡内部推荐，同时结合智联招聘、前程无忧等网络平台进行外部招聘，并通过微信朋友圈进行自媒体招聘。</p>
+        </div>
+        <span class="exam-tag">【2021笔试】招聘渠道选择与效果评估</span>
+        <span class="exam-tag">【教材习题3】比较内部外部来源优缺点</span>
+        <div class="info-box" style="margin-top:8px;background:var(--highlight-yellow)">
+          <div class="info-box-title">🎤 复试回答模板</div>
+          <p><strong>定义+分类：</strong>招聘渠道分内部（晋升、轮换）和外部（校招、猎头、网络等）两类。</p>
+          <p><strong>对比：</strong>内部招聘成本低、风险小，但易"近亲繁殖"；外部招聘带来新鲜血液，但成本高、适应期长。</p>
+          <p><strong>选择原则：</strong>企业应根据岗位层级、急迫程度、劳动力市场状况综合选择，通常两者结合使用。</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 知识点3：招聘计划 -->
+  <div class="kcard" id="sec-k3">
+    <div class="kcard-header">
+      <span class="kcard-title">💡 知识点3：员工招聘计划的制订</span>
+      <span class="badge badge-page">P215–219</span>
+      <span class="badge badge-star">★★★★ 较重要</span>
+      <span class="badge badge-prob">★★★ 一般</span>
+      <span class="badge badge-type">简答</span>
+    </div>
+    <div class="highlight-box">
+      📌 招聘计划四要素：<span class="keyword">规模</span>（金字塔模型）、<span class="keyword">范围</span>（劳动力市场）、<span class="keyword">时间</span>（时间线规划）、<span class="keyword">预算</span>（人工+业务+其他）
+    </div>
+    <div class="kcard-row">
+      <div class="info-box">
+        <div class="info-box-title">📐 金字塔模型（确定招聘规模）</div>
+        <p>将招聘过程分为若干阶段，以各阶段参与人数与通过比例逆向推算所需总应聘人数。</p>
+        <p><strong>示例：</strong>招聘10名销售员 → 需试用50人 → 需参加测试150人 → 需提交申请200人 → 招聘规模=200人</p>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">💰 招聘成本构成</div>
+        <ul>
+          <li><strong>直接成本：</strong>招募费用、选拔费用、安置费用</li>
+          <li><strong>间接成本：</strong>内部提升费用、工作流动费用</li>
+          <li><strong>招聘单位成本</strong> = 招聘总成本 ÷ 实际录用人数</li>
+        </ul>
+      </div>
+    </div>
+    <details>
+      <summary>📝 招聘评估公式 · 完整内容</summary>
+      <div class="kcard-body">
+        <div class="info-box">
+          <div class="info-box-title">📊 招聘评估公式（★★★ 必背）</div>
+        </div>
+        <div class="formula-box">📌 总成本效用 = 录用人数 / 招聘总成本</div>
+        <div class="formula-box">📌 招募成本效用 = 应聘人数 / 招募期间的费用</div>
+        <div class="formula-box">📌 选拔成本效用 = 被选中人数 / 选拔期间的费用</div>
+        <div class="formula-box">📌 人员录用效用 = 正式录用的人数 / 录用期间的费用</div>
+        <div class="formula-box">📌 招聘收益成本比 = 所有新员工为组织创造的总价值 / 招聘总成本</div>
+        <div class="formula-box">📌 录用比 = 录用人数 / 应聘人数 × 100%</div>
+        <div class="formula-box">📌 招聘完成比 = 录用人数 / 计划招聘人数 × 100%</div>
+        <div class="formula-box">📌 应聘比 = 应聘人数 / 计划招聘人数 × 100%</div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">💡 解读</div>
+          <p>招聘完成比 ≥ 100%：完成招聘任务；应聘比越大，说明招聘信息发布效果越好；招聘收益成本比越高，说明招聘越有效。</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 知识点4：选拔录用 -->
+  <div class="kcard" id="sec-k4">
+    <div class="kcard-header">
+      <span class="kcard-title">💡 知识点4：选拔录用（人员甄选）</span>
+      <span class="badge badge-page">P224–233</span>
+      <span class="badge badge-star">★★★★★ 重要</span>
+      <span class="badge badge-prob">★★★★★ 高概率</span>
+      <span class="badge badge-type">名词解释·简答·论述</span>
+    </div>
+    <div class="highlight-box">
+      📌 <strong>必背原句：</strong>选拔录用也叫<span class="keyword">人员甄选</span>，是指通过运用一定的工具和手段对已经招募到的求职者进行<span class="keyword">鉴别和考察</span>，区分他们的人格特点与知识技能水平，<span class="keyword">预测他们的未来工作绩效</span>，从而最终挑选出企业所需要的、恰当的职位空缺填补者。
+    </div>
+    <div class="kcard-row">
+      <div class="info-box">
+        <div class="info-box-title">🔑 三个要点（教材原文）</div>
+        <ul>
+          <li>① 评价知识/能力/个性 + <strong>预测未来绩效</strong>（后者更重要）</li>
+          <li>② 以<strong>空缺职位任职资格</strong>为依据</li>
+          <li>③ 由<strong>HR部门和直线部门共同</strong>完成，最终决策由<strong>直线部门</strong>做出</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">📋 选拔录用的6步程序</div>
+        <ul>
+          <li>① 审核工作申请表和简历</li>
+          <li>② 选拔测试和面试</li>
+          <li>③ 背景调查</li>
+          <li>④ 体检</li>
+          <li>⑤ 试用期考察</li>
+          <li>⑥ 正式录用决策</li>
+        </ul>
+      </div>
+    </div>
+    <details>
+      <summary>📝 录用决策策略 · 完整解析</summary>
+      <div class="kcard-body">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>录用策略</th><th>含义</th><th>特点</th><th>适用场景</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>多重淘汰式</strong></td>
+                <td>每种测试都是淘汰性的，应聘者必须在每项都达标，依次淘汰</td>
+                <td>标准严格，层层过滤；效率高</td>
+                <td>应聘人数多、岗位要求全面</td>
+              </tr>
+              <tr>
+                <td><strong>补偿式</strong></td>
+                <td>不同测试成绩可互补，按加权总分决策</td>
+                <td>灵活，某项弱可被其他项补偿</td>
+                <td>多维度岗位，注重综合素质</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🎵 助记口诀</div>
+          <p>多重淘汰：<span class="keyword">关关难过关关过</span>（每关都不能输）</p>
+          <p>补偿式：<span class="keyword">东方不亮西方亮</span>（一弱可以被他强补偿）</p>
+        </div>
+        <span class="exam-tag">【教材习题4】比较各种招聘筛选方法的优缺点</span>
+      </div>
+    </details>
+  </div>
+
+  <!-- 知识点5：面试法 -->
+  <div class="kcard" id="sec-k5">
+    <div class="kcard-header">
+      <span class="kcard-title">💡 知识点5：面试法（Interview）</span>
+      <span class="badge badge-page">P226–229</span>
+      <span class="badge badge-star">★★★★★ 重要</span>
+      <span class="badge badge-prob">★★★★★ 高概率</span>
+      <span class="badge badge-type">名词解释·简答</span>
+    </div>
+    <div class="highlight-box">
+      📌 面试是通过<span class="keyword">供需双方正式交谈</span>，以便企业客观了解应聘者的业务知识水平、外貌风度、工作经验、求职动机等信息的过程。
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>分类维度</th><th>类型</th><th>特点</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="2">按<strong>提问方式</strong>（最常考）</td>
+            <td><strong>结构式面试</strong>（Structured Interview）</td>
+            <td>预先设计全部问题，逐一提问；系统全面但程式化，不够灵活</td>
+          </tr>
+          <tr>
+            <td><strong>非结构式面试</strong></td>
+            <td>随机发问，无固定程序；灵活深入但缺乏全面性</td>
+          </tr>
+          <tr>
+            <td>—</td>
+            <td><strong>混合式面试</strong>（最常用）</td>
+            <td>结合两者之长，取长补短，是实践中最常用的方式</td>
+          </tr>
+          <tr>
+            <td rowspan="2">按<strong>效果</strong></td>
+            <td><strong>初步面试</strong></td>
+            <td>增进双方了解；应聘者补充书面材料，企业介绍职位情况</td>
+          </tr>
+          <tr>
+            <td><strong>诊断面试</strong></td>
+            <td>测试实际能力与潜力；深层信息交换</td>
+          </tr>
+          <tr>
+            <td rowspan="3">按<strong>参与人员</strong></td>
+            <td><strong>个别面试</strong></td>
+            <td>1对1，亲密深入，易受主观因素干扰</td>
+          </tr>
+          <tr>
+            <td><strong>小组面试</strong></td>
+            <td>2~3人考官小组，多角度考察，克服个人偏见</td>
+          </tr>
+          <tr>
+            <td><strong>集体面试</strong></td>
+            <td>多名应聘者同时面试，效率高；适合发现领导力</td>
+          </tr>
+          <tr>
+            <td rowspan="3">按<strong>组织形式</strong></td>
+            <td><strong>压力面试</strong></td>
+            <td>给应聘者意外"一击"；测应变、抗压能力；用于销售/公关/高管</td>
+          </tr>
+          <tr>
+            <td><strong>BD面试</strong>（行为描述面试）</td>
+            <td>基于行为连贯性原理；了解过去经历预测未来行为</td>
+          </tr>
+          <tr>
+            <td><strong>能力面试</strong>（STAR法）</td>
+            <td>找Situation情景→Task任务→Action行动→Result结果</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details>
+      <summary>📝 面试程序·提问技巧·助记·案例</summary>
+      <div class="kcard-body">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>面试阶段</th><th>主要工作</th></tr></thead>
+            <tbody>
+              <tr><td>① <strong>面试前准备</strong></td><td>确定目的；阅读申请表；制定提纲；确定时间地点；制定评价表</td></tr>
+              <tr><td>② <strong>开始阶段</strong></td><td>创造和谐气氛；寒暄问候；消除紧张情绪</td></tr>
+              <tr><td>③ <strong>正式面试</strong></td><td>结构式/非结构式/混合式提问；从多角度了解应聘者</td></tr>
+              <tr><td>④ <strong>结束阶段</strong></td><td>友好结束；整理记录；填写评价表；做出总体评价</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🎵 助记口诀</div>
+          <p>面试基本功：<span class="keyword">问·听·观·评</span></p>
+          <p>面试三类：<span class="keyword">结构非结混合、初步诊断深浅、个别小组集体、压力BD能力</span></p>
+          <p>STAR法：<span class="keyword">情（Situation）·任（Task）·动（Action）·果（Result）</span></p>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🏢 企业案例</div>
+          <p>阿里巴巴校招采用<strong>集体面试+压力面试</strong>：先让多名候选人围绕案例讨论（集体面试），考官突然质疑某人观点（压力面试），以观察其应变能力和沟通风格。</p>
+        </div>
+        <span class="exam-tag">【教材习题5】面试基本步骤及技巧</span>
+        <div class="info-box" style="margin-top:8px;background:var(--highlight-yellow)">
+          <div class="info-box-title">🎤 复试延伸追问</div>
+          <p>① 结构式面试和非结构式面试哪种效度更高？（答：结构式效度高，更客观标准）</p>
+          <p>② 什么是行为描述面试？基于什么理论？（答：基于行为连贯性原理，过去行为预测未来）</p>
+          <p>③ STAR法包含哪四个要素？（答：情景S·任务T·行动A·结果R）</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 知识点6：测试法 -->
+  <div class="kcard" id="sec-k6">
+    <div class="kcard-header">
+      <span class="kcard-title">💡 知识点6：测试法——人员素质测评</span>
+      <span class="badge badge-page">P229–232</span>
+      <span class="badge badge-star">★★★★ 较重要</span>
+      <span class="badge badge-prob">★★★★ 较高概率</span>
+      <span class="badge badge-type">名词解释·简答</span>
+    </div>
+    <div class="highlight-box">
+      📌 选拔测试是运用<span class="keyword">各种科学或经验的方法</span>对应聘者进行评价，从而挑选出那些符合职位要求的人员的过程。
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>测试类型</th><th>测试内容</th><th>代表工具/方法</th><th>优缺点</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>知识测试</strong></td>
+            <td>衡量应聘者是否具备职位要求的专业知识</td>
+            <td>笔试、专业考试</td>
+            <td>✅操作简单成本低；❌主要考察记忆能力，对实际工作能力考察不足</td>
+          </tr>
+          <tr>
+            <td><strong>能力测试</strong>（一般/特殊）</td>
+            <td>衡量是否具备职位所需能力；GATB测9种能力</td>
+            <td>GATB（一般能力倾向测验）包括G/V/N/Q/S/P/K/F/M</td>
+            <td>✅预测性强；❌需要专业施测人员</td>
+          </tr>
+          <tr>
+            <td><strong>性格测试</strong></td>
+            <td>了解性格类型，判断岗位匹配度</td>
+            <td>自陈式：16PF、MMPI、EPPS；投射式：罗夏墨渍、TAT</td>
+            <td>✅深度了解性格；❌可被伪装，需专业解读</td>
+          </tr>
+          <tr>
+            <td><strong>兴趣测试</strong></td>
+            <td>了解职业兴趣，预测工作投入程度</td>
+            <td>斯通-坎贝尔测试</td>
+            <td>✅了解工作动机；❌兴趣不等于能力</td>
+          </tr>
+          <tr>
+            <td><strong>工作样本测试</strong></td>
+            <td>要求完成职位实际任务，直接衡量绩效</td>
+            <td>打字测速、驾驶测试</td>
+            <td>✅效度高，难造假；❌成本高，不适合长周期任务</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details>
+      <summary>📝 应用测试的三大要求</summary>
+      <div class="kcard-body">
+        <div class="info-box">
+          <div class="info-box-title">⚠️ 应用测试法的基本要求（教材原文）</div>
+          <ul>
+            <li>① <strong>保护应聘者隐私</strong>：未征得同意不得公布测试结果，未通过者应退还报告</li>
+            <li>② <strong>有严格的程序</strong>：施测人员须经专业培训，必要时请专业人员协助</li>
+            <li>③ <strong>测试结果不能作为唯一评定依据</strong>：应与面试、笔试等方法结合使用</li>
+          </ul>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🎵 助记口诀</div>
+          <p>测试法口诀：<span class="keyword">知能性兴样（知识·能力·性格·兴趣·工作样本）</span>→ 层层深入，由外到内</p>
+          <p>应用三要求：<span class="keyword">保护隐私·严格程序·不唯一</span></p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 知识点7：评价中心 -->
+  <div class="kcard" id="sec-k7">
+    <div class="kcard-header">
+      <span class="kcard-title">💡 知识点7：评价中心（Assessment Center）</span>
+      <span class="badge badge-page">P231–232</span>
+      <span class="badge badge-star">★★★★★ 重要</span>
+      <span class="badge badge-prob">★★★★★ 高概率</span>
+      <span class="badge badge-type">名词解释·简答·案例</span>
+    </div>
+    <div class="highlight-box">
+      📌 评价中心测试就是通过<span class="keyword">情景模拟</span>的方法来对应聘者做出评价，使用<span class="keyword">模拟的</span>（而非实际的）工作任务进行测试。
+    </div>
+    <div class="kcard-row">
+      <div class="info-box">
+        <div class="info-box-title">🔍 主要方法</div>
+        <ul>
+          <li><strong>无领导小组讨论（LGD）</strong>：几人组成小组，无指定主持人，讨论议题并给出决策，评委在旁观察</li>
+          <li><strong>公文处理</strong>：假设应聘者已从事该职位，处理一篮子文件（信函/备忘录/报告/电话记录等）</li>
+          <li><strong>管理游戏</strong>：模拟管理情景</li>
+          <li><strong>角色扮演</strong>：扮演特定职位角色</li>
+          <li><strong>演讲</strong>：考察表达与逻辑</li>
+          <li><strong>案例分析</strong>：分析解决复杂问题</li>
+        </ul>
+      </div>
+      <div class="info-box">
+        <div class="info-box-title">🆚 评价中心 vs 工作样本测试</div>
+        <table style="font-size:0.82rem;width:100%">
+          <tr><th>对比点</th><th>工作样本测试</th><th>评价中心</th></tr>
+          <tr><td>任务性质</td><td>实际工作任务</td><td>模拟工作任务</td></tr>
+          <tr><td>效度</td><td>较高（直接测量）</td><td>较高（情景接近）</td></tr>
+          <tr><td>适用岗位</td><td>技术类岗位</td><td>管理类岗位</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <details>
+      <summary>📝 无领导小组讨论（LGD）详解</summary>
+      <div class="kcard-body">
+        <div class="info-box">
+          <div class="info-box-title">📖 LGD定义（教材原文）</div>
+          <p>无领导小组讨论（Leaderless Group Discussion，LGD）：把几个应聘者组成一个小组，给他们提供一个议题，事先<strong>不指定主持人</strong>，让他们通过小组讨论的方式在限定的时间内给出一个决策，<strong>评委在旁边观察</strong>所有应聘者的行为表现并做出评价。</p>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">✅ 可评价的维度</div>
+          <ul>
+            <li>语言表达能力</li>
+            <li>分析归纳能力</li>
+            <li>说服能力</li>
+            <li>协调组织能力</li>
+            <li>集体意识</li>
+          </ul>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">📖 公文处理（In-basket）流程</div>
+          <p>① 假设应聘者已从事该职位 → ② 给予一篮子文件（信函/备忘录/报告/电话记录/上级指示/下级请示）→ ③ 在规定时间条件下处理并说明理由 → ④ 评估规划/决策/分析判断能力</p>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🏢 企业案例</div>
+          <p>某大型国企招聘管理培训生：先让5名候选人讨论"如何应对工厂环保政策收紧"的议题，不指定主持人，评委从旁观察谁能<strong>主动引领讨论、逻辑清晰、能说服他人、照顾到每位成员意见</strong>，以此评判领导潜力。这就是LGD的典型应用。</p>
+        </div>
+        <span class="exam-tag">【高频复试面试题】评价中心的方法有哪些？</span>
+        <span class="exam-tag">【教材习题1】初步筛选的方法有哪些？</span>
+        <div class="info-box" style="margin-top:8px;background:var(--highlight-yellow)">
+          <div class="info-box-title">🎤 复试回答模板</div>
+          <p><strong>定义：</strong>评价中心是通过情景模拟方法评价应聘者的选拔工具，使用模拟（而非实际）工作任务。</p>
+          <p><strong>主要方法：</strong>包括无领导小组讨论、公文处理、管理游戏、角色扮演、演讲、案例分析等。</p>
+          <p><strong>LGD特点：</strong>无指定主持人，通过自然呈现观察领导力、协调力、表达力等综合素质。</p>
+          <p><strong>适用：</strong>尤其适合管理类岗位的高层次人才选拔，效度较高。</p>
+          <p><strong>延伸：</strong>评价中心与工作样本测试的区别在于任务的虚实（模拟vs实际）。</p>
+        </div>
+        <div class="info-box" style="margin-top:8px">
+          <div class="info-box-title">🔗 管理学联系</div>
+          <p>评价中心与<strong>胜任力模型</strong>（2017笔试）密切相关——LGD、公文处理等方法正是用于检验胜任力的工具。也与<strong>绩效管理</strong>中的360度评估方法论相通。</p>
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- 知识点8：网络招聘 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-title">💡 知识点8：网络招聘（Online Recruitment）</span>
+      <span class="badge badge-page">P211–215</span>
+      <span class="badge badge-star">★★★ 重要</span>
+      <span class="badge badge-prob">★★★ 一般</span>
+      <span class="badge badge-type">名词解释·简答</span>
+    </div>
+    <div class="highlight-box">
+      📌 网络招聘五种模式：<span class="keyword">①传统网站 ②移动招聘 ③社交招聘 ④垂直招聘 ⑤分类信息</span>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>模式</th><th>特点</th><th>代表平台</th></tr></thead>
+        <tbody>
+          <tr><td><strong>①传统招聘网站</strong></td><td>发布职位为主，大量简历资源</td><td>前程无忧、智联招聘</td></tr>
+          <tr><td><strong>②移动招聘</strong></td><td>手机端，碎片化，私密性强；PC端优先</td><td>前程无忧APP</td></tr>
+          <tr><td><strong>③社交招聘</strong></td><td>双向互动，多角度了解；不是职位广告vs简历</td><td>LinkedIn、人和网</td></tr>
+          <tr><td><strong>④垂直招聘</strong></td><td>爬虫搜集职位，核心是搜索，无自有数据库</td><td>职友集、淘职网</td></tr>
+          <tr><td><strong>⑤分类信息</strong></td><td>定位基层/蓝领，广告费/会员费为主</td><td>58同城、赶集网</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <details>
+      <summary>📝 网络招聘优缺点</summary>
+      <div class="kcard-body">
+        <div class="kcard-row">
+          <div class="info-box">
+            <div class="info-box-title">✅ 网络招聘优点</div>
+            <ul>
+              <li>覆盖面广，信息传播快</li>
+              <li>成本相对较低</li>
+              <li>候选人可以24小时申请</li>
+              <li>信息筛选自动化程度高</li>
+            </ul>
+          </div>
+          <div class="info-box">
+            <div class="info-box-title">❌ 网络招聘缺点</div>
+            <ul>
+              <li>简历信息真实性难以核查</li>
+              <li>海量简历筛选工作量大</li>
+              <li>数字鸿沟导致部分群体无法触达</li>
+              <li>无法全面评估综合素质</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+
+</div><!-- end section-box -->
+
+<!-- ===== 对比总结表 ===== -->
+<div class="section-box" id="sec-compare">
+  <div class="section-title"><span class="section-icon">⚖️</span>对比总结表（易混概念）</div>
+
+  <div class="compare-card" style="margin-bottom:16px">
+    <h4 style="color:var(--btn-bg);margin-bottom:10px">① 面试类型全景对比</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>类型</th><th>关键特征</th><th>适用</th><th>优点</th><th>缺点</th></tr></thead>
+        <tbody>
+          <tr><td>结构式</td><td>预设全部问题</td><td>标准化岗位</td><td>系统全面、效率高</td><td>程式化、不灵活</td></tr>
+          <tr><td>非结构式</td><td>随机发问</td><td>创意类岗位</td><td>灵活深入</td><td>缺乏全面性</td></tr>
+          <tr><td>混合式</td><td>两者结合</td><td>大多数岗位</td><td>取长补短</td><td>对考官要求高</td></tr>
+          <tr><td>压力面试</td><td>意外攻击性提问</td><td>销售/公关/高管</td><td>测应变抗压力</td><td>影响候选人体验</td></tr>
+          <tr><td>BD面试</td><td>行为连贯性原理</td><td>有经验的岗位</td><td>预测未来行为</td><td>需应聘者有相关经历</td></tr>
+          <tr><td>能力面试(STAR)</td><td>情景-任务-行动-结果</td><td>综合能力岗</td><td>客观量化</td><td>需要精心设计问题</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="compare-card" style="margin-bottom:16px">
+    <h4 style="color:var(--btn-bg);margin-bottom:10px">② 内部 vs 外部招聘对比速查</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>内部招聘</th><th>外部招聘</th></tr></thead>
+        <tbody>
+          <tr><td>成本</td><td>低</td><td>高</td></tr>
+          <tr><td>信息可靠性</td><td>高（熟悉员工）</td><td>低（信息不对称）</td></tr>
+          <tr><td>激励效果</td><td>激励现有员工晋升</td><td>可能打击老员工积极性</td></tr>
+          <tr><td>创新性</td><td>低（"近亲繁殖"）</td><td>高（带来新思想）</td></tr>
+          <tr><td>适应期</td><td>短（熟悉企业文化）</td><td>长（需要磨合）</td></tr>
+          <tr><td>候选人范围</td><td>窄</td><td>广</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="compare-card">
+    <h4 style="color:var(--btn-bg);margin-bottom:10px">③ 选拔录用各方法综合对比</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>方法</th><th>测量内容</th><th>效度</th><th>成本</th><th>主要问题</th></tr></thead>
+        <tbody>
+          <tr><td>简历/申请表筛选</td><td>基本资格</td><td>低</td><td>极低</td><td>信息可能不实</td></tr>
+          <tr><td>知识笔试</td><td>专业知识</td><td>中</td><td>低</td><td>只测记忆，不测实际能力</td></tr>
+          <tr><td>结构化面试</td><td>综合素质</td><td>中高</td><td>中</td><td>受主观因素影响</td></tr>
+          <tr><td>工作样本测试</td><td>实际工作绩效</td><td>高</td><td>高</td><td>不适合长周期任务</td></tr>
+          <tr><td>评价中心</td><td>综合管理能力</td><td>高</td><td>高</td><td>耗时耗力，需专业评委</td></tr>
+          <tr><td>心理测试（16PF等）</td><td>性格/能力</td><td>中</td><td>中</td><td>可被伪装，不能作为唯一依据</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 历年真题汇总 ===== -->
+<div class="section-box" id="sec-exam">
+  <div class="section-title"><span class="section-icon">📝</span>历年真题汇总（2016–2025）</div>
+  <div class="exam-grid">
+
+    <div class="exam-card">
+      <div class="exam-year">2016 复试面试</div>
+      <div class="exam-q">如何在招聘中识别高潜力人才？</div>
+      <div class="exam-type">🎤 面试专业题</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">2017 面试</div>
+      <div class="exam-q">胜任力模型的构建流程（与招聘选拔紧密关联）</div>
+      <div class="exam-type">📝 简答</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">2019 面试</div>
+      <div class="exam-q">并购中的人力整合（招聘/选拔延伸）</div>
+      <div class="exam-type">🎤 面试专业题</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">2021 笔试</div>
+      <div class="exam-q">简述招聘渠道选择与效果评估（★★★★★ 原题）</div>
+      <div class="exam-type">📝 简答题</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">2024 面试</div>
+      <div class="exam-q">HRBP角色与能力要求（涉及招聘模块）</div>
+      <div class="exam-type">🎤 面试专业题</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">教材习题1</div>
+      <div class="exam-q">对应聘者进行初步筛选的方法有哪些？各有何特点？</div>
+      <div class="exam-type">📝 简答（高频预测）</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">教材习题2</div>
+      <div class="exam-q">招聘工作一般应遵循怎样的程序？</div>
+      <div class="exam-type">📝 简答（高频预测）</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">教材习题3</div>
+      <div class="exam-q">比较招聘内部来源和外部来源的优、缺点</div>
+      <div class="exam-type">📝 对比题（高频）</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">教材习题5</div>
+      <div class="exam-q">简述面试的基本步骤及技巧</div>
+      <div class="exam-type">📝 简答（高频预测）</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">预测题</div>
+      <div class="exam-q">什么是评价中心？其主要方法有哪些？（LGD/公文处理）</div>
+      <div class="exam-type">📝 名词解释+简答 ★★★★★</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">预测题</div>
+      <div class="exam-q">什么是行为描述面试（BD面试）？其理论基础是什么？</div>
+      <div class="exam-type">📝 名词解释 ★★★★</div>
+    </div>
+
+    <div class="exam-card">
+      <div class="exam-year">预测题</div>
+      <div class="exam-q">试述无领导小组讨论（LGD）的特点与评价维度</div>
+      <div class="exam-type">📝 简答 ★★★★★</div>
+    </div>
+
+  </div>
+
+  <div class="section-box" style="margin-top:16px;padding:16px">
+    <h4 style="color:var(--btn-bg);margin-bottom:10px">📊 招聘相关公式考察预测</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>公式</th><th>含义</th><th>考察可能性</th></tr></thead>
+        <tbody>
+          <tr><td>录用比 = 录用人数/应聘人数×100%</td><td>录用率</td><td>★★★</td></tr>
+          <tr><td>招聘完成比 = 录用人数/计划招聘人数×100%</td><td>完成度</td><td>★★★★</td></tr>
+          <tr><td>招聘收益成本比 = 新员工创造总价值/招聘总成本</td><td>投入产出</td><td>★★★★</td></tr>
+          <tr><td>招聘单位成本 = 招聘总成本/实际录用人数</td><td>每人招聘成本</td><td>★★★</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 本章终极串联 ===== -->
+<div class="section-box">
+  <div class="section-title"><span class="section-icon">🧵</span>本章知识终极串联</div>
+  <div style="background:var(--mindmap-bg);border:1px solid var(--border-color);border-radius:10px;padding:16px">
+    <div style="text-align:center;font-weight:800;font-size:1rem;margin-bottom:12px;color:var(--btn-bg)">
+      人力资源规划（需求）→ 明确岗位要求（工作分析） → 确定招募策略（内部/外部）→ 制订招聘计划（规模/范围/时间/预算）→ 实施招募（渠道/广告/申请表）→ 初步筛选（简历/申请表）→ 深度选拔（面试/测试/评价中心）→ 录用决策（多重淘汰/补偿式）→ 招聘评估（成本效益/数量质量）
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px">
+      <span style="background:var(--btn-bg);color:#fff;padding:4px 12px;border-radius:6px;font-size:0.82rem">📌 关键工具：金字塔模型（确定规模）</span>
+      <span style="background:var(--btn-bg);color:#fff;padding:4px 12px;border-radius:6px;font-size:0.82rem">📌 关键工具：STAR法（能力面试）</span>
+      <span style="background:var(--btn-bg);color:#fff;padding:4px 12px;border-radius:6px;font-size:0.82rem">📌 关键工具：LGD（管理岗选拔）</span>
+      <span style="background:var(--btn-bg);color:#fff;padding:4px 12px;border-radius:6px;font-size:0.82rem">📌 关键公式：招聘收益成本比</span>
+    </div>
+  </div>
+  <div class="info-box" style="margin-top:12px">
+    <div class="info-box-title">🔗 跨章节联系</div>
+    <div class="kcard-row">
+      <div class="link-box">
+        <div class="lk-title">← 第五章 工作分析</div>
+        <p>工作描述书和任职资格说明书是招聘的<strong>起点</strong>和依据，决定招聘的标准。</p>
+      </div>
+      <div class="link-box">
+        <div class="lk-title">← 第六章 人力资源规划</div>
+        <p>人力资源供需预测决定<strong>招聘需求</strong>的数量和时间安排。</p>
+      </div>
+      <div class="link-box">
+        <div class="lk-title">→ 第八章 绩效管理</div>
+        <p>招聘质量直接影响员工绩效，选拔标准应与绩效考核指标<strong>保持一致</strong>。</p>
+      </div>
+      <div class="link-box">
+        <div class="lk-title">→ 第九章 培训开发</div>
+        <p>选拔质量差会增加培训成本；胜任力模型连接招聘选拔与培训体系。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 30秒复习模块 ===== -->
+<div class="quick-box" id="sec-quick">
+  <h3>⚡ 30秒超速复习模块</h3>
+  <div class="quick-items">
+    <span class="quick-item">招聘 = 招募 + 选拔</span>
+    <span class="quick-item">内部：晋升/轮换</span>
+    <span class="quick-item">外部：校猎市网员推海</span>
+    <span class="quick-item">计划4要素：规模/范围/时间/预算</span>
+    <span class="quick-item">金字塔模型=确定规模</span>
+    <span class="quick-item">选拔6步程序</span>
+    <span class="quick-item">最终录用决策→直线部门</span>
+    <span class="quick-item">面试3类：结构/非结/混合</span>
+    <span class="quick-item">BD面试=行为连贯性原理</span>
+    <span class="quick-item">STAR=情·任·动·果</span>
+    <span class="quick-item">评价中心=情景模拟</span>
+    <span class="quick-item">LGD=无领导小组讨论</span>
+    <span class="quick-item">录用决策：淘汰式vs补偿式</span>
+    <span class="quick-item">测试法：知能性兴样</span>
+    <span class="quick-item">心理测试不能作为唯一依据</span>
+    <span class="quick-item">招聘收益成本比越高越好</span>
+  </div>
+</div>
+
+<!-- ===== 背诵版总结 ===== -->
+<div class="recite-box">
+  <h3>🎤 背诵版总结（适合复试口述）</h3>
+  <div class="recite-item">
+    <div class="recite-num">1</div>
+    <div><strong>员工招聘定义：</strong>组织通过多种方式吸引足够数量合格应聘者，并从中选拔符合职位需要人员的过程，包含招募和选拔两个核心环节。</div>
+  </div>
+  <div class="recite-item">
+    <div class="recite-num">2</div>
+    <div><strong>招聘来源：</strong>内部（晋升、轮换）优点是成本低、激励员工、信息可靠；外部（校招、猎头、网络等）优点是带来新思想、候选人范围广；两者各有优缺点，企业应根据职位性质综合运用。</div>
+  </div>
+  <div class="recite-item">
+    <div class="recite-num">3</div>
+    <div><strong>招聘计划四要素：</strong>规模（金字塔模型）、范围（劳动力市场特征）、时间（时间线规划）、预算（人工费+业务费+其他费）。</div>
+  </div>
+  <div class="recite-item">
+    <div class="recite-num">4</div>
+    <div><strong>选拔录用含义：</strong>人员甄选，通过工具手段鉴别考察已招募的求职者，评价其知识能力人格并预测未来绩效，最终确定录用人员。最终录用决策由直线部门作出。</div>
+  </div>
+  <div class="recite-item">
+    <div class="recite-num">5</div>
+    <div><strong>面试分类（3维度）：</strong>①按提问方式：结构式（全面但程式化）、非结构式（灵活但不全面）、混合式（最常用）；②按组织形式：压力面试、BD行为描述面试、能力面试（STAR法）；③按人员：个别、小组、集体。</div>
+  </div>
+  <div class="recite-item">
+    <div class="recite-num">6</div>
+    <div><strong>评价中心：</strong>通过情景模拟评价应聘者，使用模拟（非实际）工作任务。主要方法：无领导小组讨论（LGD）、公文处理、管理游戏、角色扮演等。LGD通过不指定主持人的小组讨论观察综合管理能力。</div>
+  </div>
+  <div class="recite-item">
+    <div class="recite-num">7</div>
+    <div><strong>录用决策策略：</strong>多重淘汰式（关关必过，层层筛选）vs补偿式（综合加权，东方不亮西方亮）。实践中多种方法结合使用，提高录用决策的科学性。</div>
+  </div>
+  <div class="recite-item">
+    <div class="recite-num">8</div>
+    <div><strong>招聘评估：</strong>成本效益评估（招聘收益成本比越高越好）+ 数量评估（录用比/招聘完成比/应聘比）+ 质量评估（录用者实际工作绩效）。</div>
+  </div>
+</div>
+
+<!-- ===== 自我检测 ===== -->
+<div class="section-box" id="sec-test">
+  <div class="section-title"><span class="section-icon">✅</span>课后自我检测</div>
+  <h4 style="color:var(--btn-bg);margin-bottom:10px">📚 教材课后题（必做）</h4>
+  <ul class="test-list">
+    <li>对应聘者进行初步筛选的方法有哪些？各有何特点？</li>
+    <li>招聘工作一般应遵循怎样的程序？</li>
+    <li>试比较招聘的内部来源和外部来源的优、缺点。</li>
+    <li>试比较各种招聘筛选方法的优、缺点。</li>
+    <li>简述面试的基本步骤及技巧。</li>
+  </ul>
+  <h4 style="color:var(--btn-bg);margin:14px 0 10px">🎯 历年真题练习</h4>
+  <ul class="test-list">
+    <li>【2021】简述招聘渠道选择与效果评估（要求写出主要渠道类型及评估指标公式）</li>
+    <li>【2016复试面试】如何在招聘中识别高潜力人才？</li>
+  </ul>
+  <h4 style="color:var(--btn-bg);margin:14px 0 10px">🔮 预测题（重点准备）</h4>
+  <ul class="test-list">
+    <li>什么是评价中心？无领导小组讨论（LGD）有何特点？可以评价哪些维度？</li>
+    <li>什么是行为描述面试（BD面试）？其理论基础是什么？STAR法如何运用？</li>
+    <li>简述选拔录用的含义及录用决策的两种主要策略，并比较其优缺点。</li>
+    <li>员工招聘中如何进行招聘成本效益评估？请写出主要评估公式。</li>
+    <li>结合互联网时代背景，企业应如何设计有效的网络招聘策略？（结合案例）</li>
+    <li>论述内外部招聘渠道的优缺点，企业应如何根据岗位特征选择合适的招聘渠道？</li>
+  </ul>
+</div>
+
+</main>
+
+<!-- 返回顶部按钮 -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<footer>
+  <p>第七章 员工招聘 | 《人力资源管理（第3版）》颜爱民 | 中南大学企业管理硕士复试学习笔记</p>
+  <p style="margin-top:4px">生成日期：2026-03-09 | 页码范围：P199–235</p>
+</footer>
+
+<script>
+// ===== 夜间模式 =====
+function toggleDark() {
+  const body = document.body;
+  const btn = document.querySelector('.nav-btn[onclick="toggleDark()"]');
+  if (body.classList.contains('dark-mode')) {
+    body.classList.remove('dark-mode');
+    btn.textContent = '🌙 夜间';
+    localStorage.setItem('darkMode', 'off');
+  } else {
+    body.classList.add('dark-mode');
+    btn.textContent = '☀️ 日间';
+    localStorage.setItem('darkMode', 'on');
+  }
+}
+if (localStorage.getItem('darkMode') === 'on') {
+  document.body.classList.add('dark-mode');
+  const btn = document.querySelector('.nav-btn[onclick="toggleDark()"]');
+  if (btn) btn.textContent = '☀️ 日间';
+}
+
+
+// ===== 返回顶部按钮显示/隐藏 =====
+const backBtn = document.getElementById('back-top');
+backBtn.style.opacity = '0';
+backBtn.style.transition = 'opacity 0.3s';
+window.addEventListener('scroll', function() {
+  backBtn.style.opacity = window.scrollY > 300 ? '1' : '0';
+});
+
+// ===== 导航高亮当前节 =====
+const sections = document.querySelectorAll('[id^="sec-"]');
+const navItems = document.querySelectorAll('.nav-item');
+window.addEventListener('scroll', function() {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navItems.forEach(item => {
+    item.style.background = '';
+    if (item.getAttribute('href') === '#' + current) {
+      item.style.background = 'rgba(255,255,255,0.2)';
+    }
+  });
+});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

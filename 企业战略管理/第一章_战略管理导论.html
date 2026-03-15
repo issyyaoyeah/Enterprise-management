@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第一章 · 战略管理导论 | 企业战略管理复试笔记</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1f2e;
+    --bg: #f0f4f7;
+    --bg2: #e1eaf0;
+    --accent:  #1560bd;
+    --accent2: #f59e0b;
+    --accent3: #0e7c6a;
+    --accent4: #7c3aed;
+    --accent5: #dc2626;
+    --gold: #d97706;
+    --card-bg: #ffffff;
+    --border: #b8cfe0;
+    --tier1: #1560bd;
+    --tier2: #f59e0b;
+    --tier3: #0e7c6a;
+    --shadow: 0 4px 20px rgba(15,31,46,0.10);
+  }
+  body.dark {
+    --ink: #e8edf2;
+    --bg: #0d1520;
+    --bg2: #162133;
+    --card-bg: #1a2840;
+    --border: #2a4060;
+    --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 0 0 80px;
+    transition: background .3s, color .3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0a1628 0%, #0f2d5a 50%, #1560bd 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(60deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 22px);
+  }
+  .hero-day { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 4px; color: rgba(255,255,255,.6); text-transform: uppercase; margin-bottom: 12px; }
+  .hero h1 { font-family: 'Noto Serif SC', serif; font-size: 38px; font-weight: 900; line-height: 1.2; margin-bottom: 16px; }
+  .hero h1 span { color: #93c5fd; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,.75); max-width: 750px; line-height: 1.7; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .hero-tag { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: rgba(255,255,255,.9); }
+
+  /* ── STICKY NAV ── */
+  .sticky-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink);
+    color: #fff;
+    padding: 14px 40px;
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 12px rgba(0,0,0,.3);
+  }
+  .toc-label { font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-right: 6px; }
+  .sticky-nav a { color: rgba(255,255,255,.75); text-decoration: none; font-size: 12.5px; padding: 3px 11px; border: 1px solid rgba(255,255,255,.2); border-radius: 12px; transition: all .2s; white-space: nowrap; }
+  .sticky-nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+  .nav-tools { margin-left: auto; display: flex; gap: 8px; }
+  .nav-tools button { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); color: #fff; padding: 4px 12px; border-radius: 10px; cursor: pointer; font-size: 12px; transition: .2s; }
+  .nav-tools button:hover { background: rgba(255,255,255,.25); }
+
+  /* ── SEARCH BAR ── */
+  .search-bar {
+    background: #1a2840;
+    padding: 14px 40px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .search-bar input {
+    flex: 1; max-width: 400px;
+    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+    color: #fff; padding: 8px 16px; border-radius: 20px; font-size: 13px;
+    outline: none;
+  }
+  .search-bar input::placeholder { color: rgba(255,255,255,.4); }
+  .search-info { color: rgba(255,255,255,.5); font-size: 12px; }
+  .highlight-search { background: #fde68a; color: #1a0000; border-radius: 2px; padding: 0 2px; }
+
+  /* ── CASE BANNER ── */
+  .case-banner {
+    margin: 40px 40px 0;
+    background: linear-gradient(135deg, #0a1628, #0f2d5a);
+    border-radius: 16px; padding: 30px 36px;
+    color: #fff; border-left: 6px solid var(--gold);
+  }
+  .case-banner .case-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .case-banner h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 12px; }
+  .case-banner p { font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.8; }
+  .case-key { margin-top: 14px; font-size: 13px; color: var(--gold); font-weight: 500; }
+
+  /* ── MAIN LAYOUT ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── SECTION HEADING ── */
+  .section-title { display: flex; align-items: center; gap: 14px; margin: 50px 0 24px; }
+  .section-title .sec-num { background: var(--ink); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 14px; border-radius: 6px; letter-spacing: 1px; }
+  .section-title h2 { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 700; color: var(--ink); }
+  .section-title .page-ref { font-size: 12px; color: #999; font-family: 'JetBrains Mono', monospace; margin-left: auto; }
+
+  /* ── KNOWLEDGE CARD ── */
+  .kcard { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 28px; overflow: hidden; box-shadow: var(--shadow); transition: box-shadow .2s; }
+  .kcard:hover { box-shadow: 0 8px 32px rgba(15,31,46,.15); }
+  .kcard-header { padding: 20px 28px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 16px; background: linear-gradient(to right, #f0f6ff, var(--card-bg)); }
+  .kcard-num { background: var(--ink); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px; flex-shrink: 0; margin-top: 3px; }
+  .kcard-title-wrap { flex: 1; }
+  .kcard-title { font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .kcard-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 12px; font-size: 11.5px; font-weight: 500; }
+  .badge-tier1 { background: #e6f0ff; color: var(--tier1); border: 1px solid #9ec5ff; }
+  .badge-tier2 { background: #fef3e2; color: var(--tier2); border: 1px solid #fcd98a; }
+  .badge-tier3 { background: #e6f7f4; color: var(--tier3); border: 1px solid #9ed9cc; }
+  .badge-page  { background: #f5f0ff; color: var(--accent4); border: 1px solid #ddd6fe; }
+  .badge-exam  { background: #fff1f2; color: var(--accent5); border: 1px solid #fecaca; }
+  .badge-year  { background: #fffbeb; color: var(--gold);    border: 1px solid #fde68a; }
+
+  .kcard-body { padding: 24px 28px; }
+
+  .block { margin-bottom: 20px; padding: 16px 20px; border-radius: 10px; }
+  .block:last-child { margin-bottom: 0; }
+  .block-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .block-label::before { content: ''; display: block; width: 18px; height: 2px; }
+  .block-analogy  { background: #fefce8; }
+  .block-analogy .block-label { color: var(--gold); }
+  .block-analogy .block-label::before { background: var(--gold); }
+  .block-definition { background: #eff6ff; }
+  .block-definition .block-label { color: var(--accent); }
+  .block-definition .block-label::before { background: var(--accent); }
+  .block-memory { background: #f0fdf4; }
+  .block-memory .block-label { color: var(--accent3); }
+  .block-memory .block-label::before { background: var(--accent3); }
+  .block-exam { background: #f5f0ff; }
+  .block-exam .block-label { color: var(--accent4); }
+  .block-exam .block-label::before { background: var(--accent4); }
+  .block-tip { background: #fff1f2; }
+  .block-tip .block-label { color: var(--accent5); }
+  .block-tip .block-label::before { background: var(--accent5); }
+  .block-template { background: #e0f7f4; border-left: 4px solid var(--accent3); }
+  .block-template .block-label { color: var(--accent3); }
+  .block-template .block-label::before { background: var(--accent3); }
+
+  .quote { background: var(--ink); color: #fff; border-radius: 10px; padding: 16px 20px; font-size: 13.5px; line-height: 1.9; margin: 12px 0; position: relative; }
+  .quote::before { content: '"'; font-size: 60px; color: rgba(255,255,255,.1); position: absolute; top: -6px; left: 12px; font-family: serif; line-height: 1; }
+  .quote p { position: relative; z-index: 1; }
+  .quote mark { background: #93c5fd; color: var(--ink); padding: 0 3px; border-radius: 3px; }
+
+  .ctable { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  .ctable th { background: var(--ink); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+  .ctable td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ctable tr:nth-child(even) td { background: var(--bg2); }
+  .ctable tr:last-child td { border-bottom: none; }
+  .ctable th:first-child { border-radius: 8px 0 0 0; }
+  .ctable th:last-child  { border-radius: 0 8px 0 0; }
+
+  .kl { padding-left: 20px; }
+  .kl li { margin-bottom: 6px; }
+  .kl li::marker { color: var(--accent); }
+
+  .kw  { background: rgba(21,96,189,.12); color: var(--accent); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw2 { background: rgba(14,124,106,.12); color: var(--accent3); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw3 { background: rgba(245,158,11,.15); color: var(--gold); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw4 { background: rgba(220,38,38,.12); color: var(--accent5); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+
+  /* flow */
+  .flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; margin: 14px 0; }
+  .flow-step { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; flex: 1; min-width: 120px; text-align: center; font-size: 13px; }
+  .flow-arrow { display: flex; align-items: center; color: var(--accent); font-size: 20px; padding: 0 6px; flex-shrink: 0; }
+  .flow-step .fs-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); margin-bottom: 4px; }
+  .flow-step .fs-title { font-weight: 700; font-size: 14px; color: var(--ink); }
+  .flow-step .fs-body { font-size: 12px; color: #555; margin-top: 4px; }
+
+  /* logic map */
+  .logic-map { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin: 30px 0; box-shadow: var(--shadow); }
+  .logic-map h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; margin-bottom: 20px; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+  .lm-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .lm-node { background: var(--bg2); border: 2px solid var(--border); border-radius: 10px; padding: 10px 16px; flex: 1; min-width: 150px; font-size: 13px; }
+  .lm-node.blue   { border-color: var(--accent);  background: #eff6ff; }
+  .lm-node.green  { border-color: var(--accent3); background: #e6f7f4; }
+  .lm-node.yellow { border-color: var(--gold);    background: #fef9e7; }
+  .lm-node.red    { border-color: var(--accent5); background: #fff1f2; }
+  .lm-node.purple { border-color: var(--accent4); background: #f5f0ff; }
+  .lm-node .ln-title { font-weight: 700; margin-bottom: 4px; }
+
+  /* VUCA card */
+  .vuca-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+  .vuca-item { border-radius: 12px; padding: 16px 18px; }
+  .vuca-v { background: #eff6ff; border-left: 4px solid var(--accent); }
+  .vuca-u { background: #fff7ed; border-left: 4px solid var(--accent2); }
+  .vuca-c { background: #f0fdf4; border-left: 4px solid var(--accent3); }
+  .vuca-a { background: #fdf4ff; border-left: 4px solid var(--accent4); }
+  .vuca-letter { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 900; opacity: .15; float: right; line-height: 1; }
+  .vuca-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .vuca-sub { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .vuca-body { font-size: 13px; line-height: 1.7; }
+
+  /* model compare */
+  .model-compare { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 14px 0; }
+  .model-box { border-radius: 12px; padding: 16px; text-align: center; }
+  .model-io { background: #eff6ff; border: 2px solid var(--accent); }
+  .model-rv { background: #e6f7f4; border: 2px solid var(--accent3); }
+  .model-ib { background: #fef9e7; border: 2px solid var(--gold); }
+  .model-name { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+  .model-en { font-size: 11px; color: #888; font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; }
+  .model-focus { font-size: 12.5px; line-height: 1.6; }
+  .model-core { font-size: 22px; margin-bottom: 6px; }
+
+  /* strategy levels */
+  .levels { display: grid; grid-template-rows: auto auto auto; gap: 8px; margin: 14px 0; }
+  .level-row { border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 16px; }
+  .level-1 { background: linear-gradient(to right, #1560bd, #2d7bd6); color: #fff; }
+  .level-2 { background: linear-gradient(to right, #0e7c6a, #1a9c8a); color: #fff; }
+  .level-3 { background: linear-gradient(to right, #7c3aed, #9d5cf7); color: #fff; }
+  .level-num { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 900; opacity: .5; }
+  .level-content { flex: 1; }
+  .level-name { font-weight: 700; font-size: 15px; }
+  .level-en { font-size: 11px; opacity: .7; margin-bottom: 4px; }
+  .level-desc { font-size: 13px; opacity: .85; }
+  .level-exam { background: rgba(255,255,255,.2); border-radius: 6px; padding: 2px 8px; font-size: 11.5px; margin-left: auto; }
+
+  /* chain review */
+  .chain { background: linear-gradient(135deg, #0a1628 0%, #0f2d5a 100%); border-radius: 20px; padding: 40px; margin: 50px 0 30px; color: #fff; }
+  .chain h2 { font-family: 'Noto Serif SC', serif; font-size: 24px; font-weight: 900; margin-bottom: 6px; }
+  .chain .chain-sub { color: rgba(255,255,255,.55); font-size: 13px; margin-bottom: 28px; }
+  .chain-flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
+  .chain-step { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 18px 20px; flex: 1; min-width: 150px; }
+  .chain-arrow { display: flex; align-items: center; color: rgba(255,255,255,.3); font-size: 22px; padding: 0 6px; flex-shrink: 0; }
+  .chain-step .step-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #93c5fd; letter-spacing: 2px; margin-bottom: 8px; }
+  .chain-step .step-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .chain-step .step-body { font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.7; }
+  .chain-summary { margin-top: 24px; background: rgba(255,255,255,.06); border-radius: 10px; padding: 18px 22px; font-size: 13.5px; color: rgba(255,255,255,.85); line-height: 1.9; border-left: 4px solid #93c5fd; }
+
+  /* quick review */
+  .quick-review { background: linear-gradient(135deg, #0e7c6a, #0a5c4e); border-radius: 16px; padding: 32px; margin: 30px 0; color: #fff; }
+  .quick-review h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 6px; }
+  .quick-review .qr-sub { color: rgba(255,255,255,.6); font-size: 12px; margin-bottom: 20px; }
+  .qr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .qr-item { background: rgba(255,255,255,.1); border-radius: 10px; padding: 12px 16px; }
+  .qr-item .qr-n { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,.5); letter-spacing: 2px; margin-bottom: 4px; }
+  .qr-item .qr-t { font-weight: 700; font-size: 13.5px; margin-bottom: 4px; }
+  .qr-item .qr-b { font-size: 12px; color: rgba(255,255,255,.75); }
+
+  /* recitation box */
+  .recite { background: var(--card-bg); border: 2px solid var(--accent); border-radius: 16px; padding: 28px; margin: 30px 0; }
+  .recite h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; color: var(--accent); margin-bottom: 6px; }
+  .recite-sub { color: #888; font-size: 12px; margin-bottom: 16px; }
+  .recite-item { background: var(--bg2); border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
+  .recite-item:last-child { margin-bottom: 0; }
+  .recite-item .ri-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
+  .recite-item .ri-text { font-size: 13.5px; line-height: 1.8; }
+  .recite-item .ri-text strong { color: var(--accent5); }
+
+  /* exam section */
+  .exam-section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin: 30px 0; box-shadow: var(--shadow); }
+  .exam-section h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; color: var(--ink); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .exam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; margin-top: 16px; }
+  .exam-item { background: var(--bg2); border-radius: 10px; padding: 14px 16px; border-left: 4px solid var(--accent5); }
+  .exam-item .ei-year { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent5); letter-spacing: 2px; margin-bottom: 6px; }
+  .exam-item .ei-q { font-size: 13.5px; font-weight: 500; margin-bottom: 6px; }
+  .exam-item .ei-type { font-size: 11px; background: #fff1f2; color: var(--accent5); border-radius: 4px; padding: 1px 7px; display: inline-block; }
+
+  /* quiz */
+  .quiz { background: var(--bg2); border: 2px solid var(--border); border-radius: 20px; padding: 36px 40px; margin: 0 0 40px; }
+  .quiz h2 { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .quiz-sub { color: #888; font-size: 13px; margin-bottom: 24px; }
+  .q-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; }
+  .q-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 2px; margin-bottom: 6px; font-weight: 600; }
+  .q-text { font-weight: 500; color: var(--ink); margin-bottom: 10px; font-size: 14.5px; }
+  .q-hint { font-size: 12.5px; color: #777; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 10px; }
+  .q-hint span { color: var(--accent); font-weight: 600; }
+  .q-exam { font-size: 12px; color: var(--accent5); background: #fff1f2; border-radius: 6px; padding: 2px 8px; display: inline-block; margin-bottom: 8px; }
+
+  details summary { cursor: pointer; font-weight: 600; color: var(--accent); padding: 4px 0; user-select: none; }
+  details summary:hover { opacity: .8; }
+  details[open] summary { margin-bottom: 10px; }
+
+  .divider { border: none; border-top: 2px dashed var(--border); margin: 30px 0; }
+
+  .footer-bar { background: var(--ink); color: rgba(255,255,255,.4); text-align: center; padding: 20px; font-size: 12px; margin-top: 60px; }
+
+  /* back to top */
+  #backTop { position: fixed; bottom: 30px; right: 30px; width: 44px; height: 44px; background: var(--accent); color: #fff; border: none; border-radius: 50%; font-size: 20px; cursor: pointer; box-shadow: 0 4px 16px rgba(21,96,189,.4); z-index: 200; display: none; align-items: center; justify-content: center; transition: .2s; }
+  #backTop:hover { transform: translateY(-3px); }
+
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  @media(max-width: 760px) {
+    .hero { padding: 40px 20px; } .hero h1 { font-size: 28px; }
+    .main { padding: 0 20px; } .sticky-nav { padding: 12px 20px; }
+    .case-banner { margin: 20px 20px 0; padding: 20px; }
+    .chain { padding: 24px 20px; } .quiz { padding: 24px 20px; }
+    .kcard-body { padding: 18px 16px; } .kcard-header { padding: 16px 18px; }
+    .vuca-grid { grid-template-columns: 1fr; }
+    .model-compare { grid-template-columns: 1fr; }
+    .levels { grid-template-columns: 1fr; }
+    .search-bar { padding: 12px 20px; }
+  }
+</style>
+
+
+<script>window._PAGE_TEXT='第一章 · 战略管理导论 | 企业战略管理复试笔记 \n \n \n \n \n \n \n Day 1 · 第一章 \n 战略管理 导论 \n 从苏宁电器的战略演进出发，理解VUCA时代企业环境特征、战略决策三类型（战略承诺/决策/行动）、明茨伯格5P理论、IO与RBV两大思维模式，把握企业战略管理全过程框架。中南大学2025年笔试考察"战略管理过程"，本章是整本书的逻辑起点。 \n \n 📍 教材 P1–28 \n 🔥 2025真题：战略管理过程 \n ✍️ 简答 · 论述 · 面试 \n ⭐ VUCA · 5P · IO/RBV \n 🏆 2022资源基础观高频 \n \n \n \n \n 目录 \n 逻辑图 \n 导入案例 \n §1 企业环境 \n §2 战略决策 \n §3 思维模式 \n §4 管理过程 \n 对比表 \n 历年真题 \n 终极串联 \n 30秒复习 \n 背诵版 \n 自我检测 \n \n 🌙 夜间 \n 🔍 搜索 \n \n \n \n \n \n 输入关键词高亮显示匹配内容 \n \n \n \n 📖 导入案例 · P4-5 \n 苏宁电器的战略演进：动态应对，持续转型 \n 1990年起步于南京一家空调小店 → 1993–1998年专注空调批发连续6年全国第一 → 1996年率先从批发向连锁零售转型 → 2000年大规模综合家电连锁扩张 → 2011年提出"2010–2020国际化发展战略"，线上线下双网络布局 → 2013年更名苏宁云商，联合阿里巴巴、万达战略合作，积极布局物流。 \n 🎯 教材总结：苏宁战略演进 = 企业运用战略管理手段 动态应对各种环境变化 的过程。无论是主动还是被动，都是企业战略制定的有机组成部分。 \n \n \n \n \n 🗺️ 本章与其他章节的逻辑关系 \n \n \n 章节 关联逻辑 \n \n 第1章（本章）战略管理导论 整本书的 逻辑起点 ——搭建环境→战略→管理的基本框架，定义VUCA、两种思维模式、三层战略、管理过程 \n 第2章 企业战略管理者 战略管理主体是谁？CEO的角色与挑战——是第1章"战略管理活动"的实施主体 \n 第3章 外部环境分析 本章定义了"外部环境"的概念和VUCA特征，第3章是对其具体分析方法（PESTEL、五力）的深化 \n 第4章 内部环境分析 本章提出RBV（资源基础模式）思维，第4章深入分析资源、能力、核心专长 \n 第6–8章 战略选择 本章定义战略三层次（公司/业务/职能），后续章节各自深化各层战略内容 \n 第9章 战略实施 本章界定"战略管理过程"（制定→实施→评价控制），第9章是对"实施"环节的深化 \n \n \n 📌 本章各节内部逻辑关系 \n \n §1 企业所处环境 VUCA特征 中国情境 \n → \n §2 战略决策 承诺/决策/行动 5P理论 战略定义 \n → \n §3 决策思维模式 IO模式 RBV模式 制度基础观 \n → \n §4 管理过程 战略制定 实施 评价控制 \n \n 主线： 环境变了（VUCA）→ 决策也要变（三类型）→ 思维方式要变（RBV优先）→ 管理过程也要动态（静+动结合） \n \n \n \n § 01 \n 企业所处的环境 \n P5–12 \n \n \n \n \n 1.1 \n \n 推动环境变化的主要因素 \n \n ⭐⭐⭐ 理解 \n P6–8 \n 面试考察 \n \n \n \n \n \n 🍎 小学生版 \n 想象地球是个大教室，所有小朋友（企业）都在一起上课。是什么让这个教室越来越"乱"？两件大事： ①科技越来越厉害（技术进步） ，手机、AI改变了所有人的生活； ②全球越来越"连在一起"（全球化） ，中国卖东西给美国，美国卖东西给全世界。这两件事让教室变大了，规则也更复杂了。\n \n \n 📘 教材定义 \n 推动全球企业环境不断变化的 主要因素 ：首先是 技术进步 ，其次是在技术进步推动下出现的 全球化趋势 。两者共同作用使企业经营环境从相对静态和简单，向相对 动态和复杂 转变。 \n \n \n 🧠 助记口诀 \n "技术+全球化 = 动态复杂化" \n 口诀： 技术进步冲在前，全球化跟在后面跑，两股合力推环境，动态复杂逃不了。 \n \n \n 因素 影响机制 典型例子 \n 技术进步 新技术创造新行业、颠覆旧行业，压缩反应时间 AI颠覆传统制造业；移动互联网颠覆零售（苏宁案例） \n 经济全球化 市场趋同、贸易壁垒降低、跨国竞争加剧、制度差异逐步消失 中国加入WTO；跨国企业本土化战略 \n 中国特殊性 渐进式、放权式、实验式经济转型，制度环境高度不确定 政策时强时弱；地方保护造成市场分割 \n \n \n \n \n \n \n 1.2 \n \n VUCA时代——企业经营环境的四大特征 \n \n ⭐⭐⭐⭐⭐ 核心 \n P8–10 \n 简答·论述·面试 \n ★★★★★ 高概率 \n \n \n \n \n \n 🍎 小学生版 \n 你在下棋，以前对手出棋慢（静态），你有时间想清楚怎么走。现在： \n ①对手出棋越来越 快 （动态性/Volatility） \n ②你猜不到对手下一步要干嘛（不确定性/Uncertainty） \n ③棋盘越来越大，棋子越来越多（复杂性/Complexity） \n ④有时你甚至看不清棋盘上有几个棋子（模糊性/Ambiguity） \n 这就是"VUCA时代"——下棋越来越难，企业经营也越来越难！\n \n \n 📘 教材定义 \n 由于技术进步与经济全球化速度明显加快，新技术、新行业、新商业模式层出不穷，导致当今企业所嵌入的经营环境面临众多不确定性和不可预见性因素，正在步入所谓的 "乌卡"（VUCA）时代 ，即企业经营环境越来越具备动态性(volatility)、不确定性(uncertainty)、复杂性(complexity)和模糊性(ambiguity)的特征。 \n \n \n \n V \n 动态性 Volatility \n 英文全称：volatility \n \n 指①环境变化的 速度、幅度和广度 ；②企业间竞争互动的速度、范围和水平；③速度和创新影响竞争优势构建的程度。 \n 📌 案例：IBM 1986年《财富》连续四年榜首 → 1995年跌至第281位 \n \n \n \n U \n 不确定性 Uncertainty \n 英文全称：uncertainty \n \n 指环境变化的 方向、趋势、速度与结果难以预料和把握 的程度。动态性越高，不确定性越高，预测难度越大。 \n 📌 案例：贸易保护主义随时出现；新技术在何时以何方式改变行业无法预测 \n \n \n \n C \n 复杂性 Complexity \n 英文全称：complexity \n \n 指环境中影响企业行为的 维度与要素数目多 ，且要素之间关系复杂。企业须同时应对国内外两个层面、适应多种制度体系。 \n 📌 案例：中国企业同时面对国内监管+WTO规则+国际竞争对手 \n \n \n \n A \n 模糊性 Ambiguity \n 英文全称：ambiguity \n \n 指环境中影响企业行为的因素 不能被准确认定 ，或具体机制和路径 不能被清楚了解 的程度。①行业边界模糊；②国家/区域边界弱化；③外部环境因素难以区分。 \n 📌 案例：互联网平台跨界颠覆传统行业（谁是竞争对手？） \n \n \n \n \n 🧠 助记口诀 \n "乌卡时代快难多糊" \n V=快（变化快）、U=难（方向难猜）、C=多（要素多复杂）、A=糊（边界模糊） \n 口诀： 乌龟跑快方向难猜，棋子多了棋盘糊面 ——V U C A \n \n \n 📝 复试回答模板 \n 问：请简述VUCA时代企业经营环境的特征。 \n 【定义】 随着技术进步与经济全球化加快，企业经营环境进入"VUCA时代"，具备四大特征： \n 【核心内容】 ① 动态性 ——环境变化速度加快，竞争优势难以持续；② 不确定性 ——变化方向和结果难以预测；③ 复杂性 ——影响因素多且关系复杂；④ 模糊性 ——行业和国家边界越来越不清晰。 \n 【举例】 以中国为例，渐进、放权、实验式的经济转型使上述四种特征更为突出，制度环境频繁变化，企业战略管理面临更大挑战。 \n 【总结】 这四种特征相互联系，共同挑战了传统理性主义战略管理理论，要求企业战略管理理论和实践进行相应调整。 \n \n \n ⚠️ 复试延伸问题 \n \n VUCA对传统理性主义战略管理理论提出了哪些挑战？ \n 中国企业经营环境在VUCA基础上还有哪些特殊性？ \n 企业应如何在VUCA环境中制定有效战略？ \n \n \n \n \n \n \n \n 1.3 \n \n 中国企业经营环境的情境特征 \n \n ⭐⭐⭐⭐ 较高 \n P10–12 \n 面试高频 \n \n \n \n \n \n 🍎 小学生版 \n 如果说全世界是一个学校，中国是一个很特别的同学。别人家的规则是统一的，中国的规则是"一边走一边定的"（渐进式），有的地方有特殊政策（放权式），有的试点成功才推广（实验式）。这让在中国经营的企业比其他地方更难适应，因为规则老在变、地方不一样、政府影响大。\n \n \n 特征 内涵 对企业的影响 \n 转型经济 从计划经济向市场经济转型，尚未完成 制度环境高频率、高不确定性变化 \n 渐进式改革 非系统设计整体推进，而是逐步放开 政策时有时无，企业无法稳定预期 \n 放权式改革 向地方放权，干部任免制+GDP考核制 区域竞争+地方保护造成市场分割 \n 实验式改革 先给特定地区/行业特殊政策，再推广 差异化制度安排，多重制度环境 \n \n \n 🔍 展开：中国情境造成的三种"两难选择"（考试高频） \n \n 两难①：市场 vs 政府 — 完成转型的国家靠市场；中国企业还要关注政府关系，两难选择 \n 两难②：资源优势 vs 制度套利 — 成熟市场靠资源能力；中国少数企业可不靠优势利用市场不完善获益，导致战略思维两难 \n 两难③：遵从制度 vs 弹性应对 — 过早遵从或完全不遵从都难以持续发展，尺度把握困难 \n \n \n \n \n \n \n § 02 \n 企业的战略决策 \n P12–24 \n \n \n \n \n 2.1 \n \n 战略决策的基本特征与性质 \n \n ⭐⭐⭐⭐ 较高 \n P12–15 \n 名词解释·简答 \n \n \n \n \n \n 📘 专有名词：战略决策 \n 战略决策 是指对企业 长期发展产生重大影响 的重大、长期和根本性决策。一般具有三大特征： \n \n 重大、长期和根本性决策 （经营范围、市场范围、竞争定位、重大投资融资等） \n 非常规或创新的决策 （无规可循，需高层管理者判断并程序化） \n 针对主要竞争对手的对抗性/博弈性决策 （随市场集中度提高而重要） \n \n \n \n 🍎 小学生版 \n 班长（CEO）要做两类决定：一类是"期末我们班要向哪个方向发展"（战略决策，很重要，影响很长），另一类是"今天晚自习谁擦黑板"（日常决策，不重要，很短期）。战略决策就是那些影响全班未来很长时间的大决定。\n \n \n 环境 战略决策性质 \n 相对静态环境 事前、主动、理性决策（理性主义流派观点） \n 相对动态环境（当前） 事前主动+ 事中反应性 ；主要理性+ 非理性因素并存 \n \n \n \n \n \n \n 2.2 \n \n 战略决策的三种类型：承诺 · 决策 · 行动 \n \n ⭐⭐⭐⭐⭐ 核心 \n P13–15 \n 简答·论述·面试 \n ★★★★★ 超高频 \n \n \n \n \n \n 🍎 小学生版类比 \n 你要参加马拉松（企业经营）： \n 战略承诺 = 你决定"我这辈子就要当马拉松冠军"（20年大志向，价值选择，不轻易改变） \n 战略决策 = 你制定"今年备战计划：每天跑10km，参加5场比赛"（3–5年科学计划，理性分析） \n 战略行动 = 你今天实际怎么跑：看到坡就加速，看到弯道就减速（具体应变行动，快速创新）\n \n \n \n ① \n \n Strategic Commitment / 价值驱动型决策 \n 战略承诺 \n 对企业长期发展产生重大影响，需持续努力实现；依据 价值选择 而非理性分析；时间跨度一般20年以上；以宗旨/意图形式广泛传播，接受内外监督 \n \n 长期·价值·坚持 \n \n \n ② \n \n Strategic Decision / 决策驱动型决策 \n 战略决策（狭义） \n 在战略承诺约束下，依据 科学/理性分析 做出；时间跨度3–5年；核心内容：增长/稳定/防御、行业选择、竞争定位等 \n \n 中期·理性·科学 \n \n \n ③ \n \n Strategic Action / 行动驱动型决策 \n 战略行动 \n 依据 行动需要 做出；强调针对性、对抗性、博弈性；要求速度、创新、意外性；负责人可相机调整，不违反中长期战略 \n \n 短期·行动·创新 \n \n \n \n 🧠 助记口诀 \n "承诺值→决策析→行动快" \n 承诺靠 价值 （Values），决策靠 理性 （Analysis），行动靠 速度 （Speed） \n 口诀： 价值承诺二十年，理性决策三至五，行动迅速富创新 \n \n \n 📝 复试回答模板 \n 问：请区分战略承诺、战略决策和战略行动。 \n 在动态复杂环境中，企业战略决策可分为三种类型： \n ①战略承诺 （价值驱动）：基于企业价值追求做出长期（20年以上）的根本性决策，具有坚定性，以宗旨陈述形式传播，如华为"不上市、专注技术"。 \n ②战略决策 （决策驱动）：在战略承诺约束下，基于科学理性分析做出的中期（3–5年）战略选择，如选择是否实施多元化、选择进入哪个市场。 \n ③战略行动 （行动驱动）：基于行动需要，在竞争互动中表现出速度和创新的具体战略行动，负责人可相机调整。 \n 三者相互依托：承诺为决策提供约束，决策为行动提供方向，行动实现决策，最终兑现承诺。 \n \n \n \n \n \n \n 2.3 \n \n 明茨伯格战略5P理论——战略的五种内涵 \n \n ⭐⭐⭐⭐⭐ 核心 \n P15–17 \n 名词解释·简答·面试 \n ★★★★★ 超高频 \n \n \n \n \n \n 📘 专有名词：5P理论 \n 著名战略管理学者 明茨伯格（Mintzberg） 在总结20世纪企业战略管理思想演变的基础上，提出了有关企业战略性质的 5P理论 ，即计划（plan）、模式（pattern）、定位（position）、愿景/期望（perspective）、计谋（ploy）。 \n \n \n 🍎 小学生版（用踢球比喻5P） \n 一支足球队的"战略"可以是： \n ① 计划（Plan） = 赛前教练定好打法："上半场防守，下半场反击" \n ② 模式（Pattern） = 不管教练说什么，这支队一贯喜欢打长传冲吊 \n ③ 定位（Position） = 我们是"防守反击型球队"（市场定位） \n ④ 愿景（Perspective） = "我们追求美丽足球、永远不放弃的精神" \n ⑤ 计谋（Ploy） = "故意让对方看见我们在练角球，其实是迷惑他们"\n \n \n P 中文 核心含义 代表流派 适用环境 \n Plan 计划 战略是事前、主动、理性的长期计划，包括目标和实施路径 理性主义（设计/计划/定位学派） 相对静态环境 \n Pattern 模式 战略是企业基于历史传统和价值理念形成的行为模式 非理性主义 动态环境（事中决策） \n Position 定位 战略是企业在行业、市场、顾客诉求、经营方式上的定位，比具体目标更稳定 非理性主义 动态环境 \n Perspective 愿景/期望 战略本质是价值选择，是组织整体的价值追求和愿景 非理性主义 高度动态环境 \n Ploy 计谋 战略是博弈性计谋，目的是预测、控制竞争对手反应，迫使对手按己方意愿行动 竞争互动理论 高竞争互动 \n \n \n 🧠 助记口诀 \n "5P = 计谋 计划 模式 定愿" \n Plan（计划）— Pattern（模式）— Position（定位）— Perspective（愿景）— Ploy（计谋） \n 口诀： 计划前，模式跟，位置摆好有愿景，最后出招用计谋 \n \n \n 📝 复试回答模板 \n 问：请简述明茨伯格战略5P理论。 \n 明茨伯格在总结多种战略流派的基础上，从五个视角界定企业战略：① 计划 ——战略是事前理性决策的行动方案；② 模式 ——战略是企业行为的一致性模式，包括应急战略；③ 定位 ——战略是企业在市场中的特定定位；④ 愿景/期望 ——战略是价值追求，赋予坚守承诺的动力；⑤ 计谋 ——战略是竞争中迷惑、预测、控制对手的博弈手段。这五种视角相互补充，"计划"体现最基本内涵，其余四者是在动态复杂环境下的必要补充。 \n \n \n \n \n \n \n 2.4 \n \n 企业战略的定义与内涵（教材定义） \n \n ⭐⭐⭐⭐⭐ 核心 \n P17–19 \n 名词解释·背诵 \n \n \n \n \n \n 📘 需背诵教材原句 \n 企业战略是企业在动态适应和利用环境变化的过程中，为建立、保持和发挥竞争优势而采取的一系列长期、重大和根本性的决策或者行动，这些决策或者行动之间具有一定的一致性和连续性。 \n \n \n 要点 解释 \n ① 动态适应和利用 既适应又利用，被动+主动，包括事前和事中决策 \n ② 建立、保持、发挥竞争优势 这是企业战略的 核心目的 \n ③ 长期、重大和根本性 区别于日常经营决策 \n ④ 一致性和连续性 战略内部协调，不能朝令夕改 \n ⑤ 包括三类决策 价值驱动（承诺）+决策驱动（理性）+行动驱动 \n \n \n 🍎 小学生版 \n 企业战略就是：在不断变化的环境中，为了比对手更厉害（竞争优势），做出的一系列重大的、长远的、前后一致的大决定。就像一艘船的"航行计划"——目标明确、路线一贯、能够随浪调整，但始终朝着终点前进。\n \n \n 🔍 展开：战略的三种分类方式 \n \n 分类角度 类型 说明 \n 实施主体 公司层/经营层/职能层 三层战略体系，层级越高越宏观 \n 时间长短 短期（<1年）/中期（1-5年）/长期（5-10年） 对应不同精度的规划 \n 战略功能 增长型/稳定型/收缩型/组合型 增长型含强化、一体化、多元化 \n \n \n \n \n \n \n § 03 \n 企业战略决策的思维模式 \n P19–24 \n \n \n \n \n 3.1 \n \n 三大战略思维模式：IO · RBV · IBV 对比 \n \n ⭐⭐⭐⭐⭐ 核心 \n P19–24 \n 简答·论述·名词解释 \n 【2022笔试】资源基础观RBV \n \n \n \n \n \n 🍎 小学生版三种思维方式 \n 你要开一家奶茶店赚钱，三种思路： \n IO（产业组织） ：找最赚钱的奶茶街（行业），先选地段，再想我能不能做。 \n RBV（资源基础） ：我有独家秘方（核心资源），找适合我秘方发挥的地段。 \n IBV（制度基础） ：政府今年扶持哪个街区/对什么行业有优惠（制度），我顺势而为。\n \n \n \n 🏭 \n 产业组织模式（IO） \n Industrial Organization Model = 市场基础模式（MBV） \n \n 核心： 行业选择决定盈利 \n 逻辑： 不同行业→稳定盈利差异→进入高盈利行业 \n 代表人： 迈克尔·波特 \n 分析工具： 五力模型 \n 适用： 市场机会多、竞争不激烈\n \n \n \n 💎 \n 资源基础模式（RBV） \n Resource-Based View = 资源基础观 \n \n 核心： 企业独特资源能力决定盈利 \n 逻辑： 异质性资源→竞争优势→持续高收益 \n 关键： 资源的VRIO（价值、稀缺、难模仿、有组织） \n 适用： 市场机会少、竞争激烈（本书主要框架）\n \n \n \n 🏛️ \n 制度基础模式（IBV） \n Institution-Based View = 战略"第三只脚" \n \n 核心： 正式/非正式制度约束影响战略 \n 逻辑： 制度↔组织互动→影响战略选择 \n 三大支柱： 规制支柱/规范支柱/认知支柱 \n 适用： 转型经济、新兴市场（中国情境！）\n \n \n \n \n 维度 IO模式 RBV模式 IBV模式 \n 分析起点 外部行业结构 内部资源能力 制度环境 \n 盈利来源 行业平均盈利水平 企业异质性资源 制度套利+合法性收益 \n 战略逻辑 进入高盈利行业 发挥核心专长 顺应/影响制度安排 \n 主要局限 忽视企业内部差异；机会导向易多元化 忽视外部机会；资源静态 理论体系尚不完善 \n 中国适用性 80–90年代机会期 当前首选，构建核心专长 中国转型特殊情境 \n \n \n 📘 需背诵：教材对RBV的立场 \n 本书以 资源基础的战略思维模式 布局构架，希望企业战略管理者在完成外部环境分析后，能基于 核心专长的建立、保持和发挥 做出合适的战略选择。 \n \n \n 📝 复试回答模板：简述资源基础观（RBV） \n 【定义】 资源基础观（Resource-Based View，RBV）认为企业内部的异质性资源和能力是企业获取持续竞争优势和高于社会平均收益的主要来源。 \n 【核心内容】 ①企业间资源存在异质性（不同质、不完全流动）；②只有同时具备价值性、稀缺性、难以模仿性和不可替代性（VRIO）的资源才能成为持续竞争优势的来源；③战略制定应以核心专长为出发点。 \n 【与IO对比】 IO模式从外部行业出发（机会导向），RBV从内部资源出发（能力导向），二者互补，教材以RBV为主框架。 \n 【举例】 格力电器坚持专注空调、持续研发技术，以技术资源为核心专长，是典型的RBV实践。 \n \n \n ⚠️ 易混对比：产业组织 vs 资源基础 \n \n IO ："先外后内"——先选好行业，再整合资源。口诀：选对赛道，再备马 \n RBV ："先内后外"——先看自己有什么，再找能发挥的赛道。口诀：练好马，再选赛道 \n IBV ："内外+制度"——既看资源和行业，也看政策制度。口诀：政策红利别错过 \n \n \n \n \n \n \n § 04 \n 企业战略管理的过程 \n P24–28 \n \n \n \n \n 4.1 \n \n 企业战略管理的定义与三层次 \n \n ⭐⭐⭐⭐⭐ 核心 \n P24–26 \n 名词解释·背诵 \n 【2025笔试】战略管理过程 \n \n \n \n \n \n 📘 需背诵：企业战略管理定义 \n 企业战略管理就是运用管理的计划、组织、领导和控制等手段对企业的一系列重大、长期和根本性决策的制定、实施和过程进行管理的活动。 \n \n \n 🍎 小学生版 \n 战略管理就是：帮助企业的"大决定"顺利落地的全套管理工作。不光是想好了（制定），还要做到（实施），还要检查对不对（评价控制）。\n \n \n \n L1 \n \n Corporate-Level Strategy \n 公司层战略 \n 行业多元化和市场多元化企业的总部战略；目标：ROA/ROE最大化；核心：多行业与多市场组合的经营和管理 例：苏宁集团决定进入哪些业务领域 \n \n 集团总部 \n \n \n L2 \n \n Business-Level Strategy（竞争战略） \n 业务层战略 \n 单一行业/市场经营单位的战略；目标：市场占有率和利润最大化；核心：目标市场选择、竞争定位、价值创造活动组合 例：美的家用空调事业部确定细分市场和竞争优势 \n \n 单一业务 \n \n \n L3 \n \n Functional-Level Strategy \n 职能层战略 \n 企业内部职能部门战略；目标：提高职能活动有效性和效率；属于费用/成本中心，支撑公司层和业务层战略 例：苏宁进入娱乐业，HR部门制定相应人力资源战略 \n \n 职能部门 \n \n \n \n 🧠 助记口诀 \n 三层战略： "公→业→职" （由高到低，由宏观到微观） \n 公司层管"进哪"，业务层管"怎么竞争"，职能层管"怎么支撑" \n 口诀： 公司决定进哪场，业务决定怎么打，职能支撑保后勤 \n \n \n \n \n \n \n 4.2 \n \n 企业战略管理过程模型（制定→实施→评价控制） \n \n ⭐⭐⭐⭐⭐ 核心 \n P25–28 \n 简答·论述·背诵 \n 【2025笔试】战略管理过程 \n \n \n \n \n \n 🍎 小学生版 \n 战略管理就像"做一道大菜"： \n 战略制定 = 选菜谱（分析环境，定目标和方案） \n 战略实施 = 按菜谱下锅炒（把计划变成行动） \n 战略评价与控制 = 试吃+调味（检查效果，不对就调整）\n \n \n \n STEP 1 \n 战略制定 \n ①战略意图 ②使命陈述 ③战略目标 ④企业战略 基础：外部+内部环境分析；社会责任/价值观 \n \n → \n \n STEP 2 \n 战略实施 \n ①目标分解 ②计划体系 ③职能战略 ④管理支持 （组织/机制/人员/文化） \n \n → \n \n STEP 3 \n 战略评价与控制 \n ①评价系统 ②控制机制 ③激励机制 ④应急计划 → 调整或开始新一轮制定 \n \n \n \n 📘 静态 vs 动态环境下的战略过程差异 \n \n 维度 相对静态环境 相对动态环境（当前） \n 战略性质 "点"或"静态"决策 "静态+动态"结合 \n 制定内容 准确预测+数量化目标+预定全部行动 宏观定位+战略意图+动态调整空间 \n 三阶段关系 严格前后相连、头尾相接 制定→实施→控制交织并行 \n 最终战略 "计划好的战略"就是"实现的战略" "实现的战略" = 预设战略 + 应变创新战略 \n \n \n \n 📘 动态环境下战略管理三原则（需背诵） \n ①承诺坚定 ——保证战略行为的连续性； ②决策科学 ——保证战略行为的正确性； ③行动迅速和富于创新 ——保证战略行动的效率。 \n \n \n 📝 复试回答模板：简述企业战略管理过程 \n 【定义】 企业战略管理是对企业重大、长期和根本性决策的制定、实施和评价控制进行管理的全过程活动。 \n 【三阶段】 ① 战略制定 ：基于外部与内部环境分析（SWOT逻辑），结合社会责任和价值观，确定战略意图、使命、目标和具体战略；② 战略实施 ：目标分解→计划体系→职能战略→管理支持（组织/机制/文化）；③ 战略评价与控制 ：构建评价系统，实施控制机制和激励机制，制定应急计划，必要时调整或启动新一轮制定。 \n 【动态特点】 在动态复杂环境下，三阶段不是严格线性关系，"实现的战略"是"预设战略"与"应变创新战略"的结合，要求战略管理者坚持"承诺坚定、决策科学、行动迅速"三原则。 \n \n \n \n \n \n 对比 \n 本章易混概念对比总结表 \n \n \n \n 对比①：理性主义 vs 非理性主义流派 \n \n 维度 理性主义流派 非理性主义流派 \n 适用环境 相对静态、简单 相对动态、复杂 \n 决策性质 事前、主动、理性 事中、被动、非理性因素并存 \n 目标作用 定量化目标是核心，必须严格实现 过于定量化目标反而限制应变 \n 代表 波特（五力、定位） 明茨伯格（5P、模式） \n 教材立场 基础框架，部分保留 补充和完善理性主义不足 \n \n \n 对比②：三种战略决策类型 \n \n 类型 时间跨度 决策依据 典型内容 关键词 \n 战略承诺 20年以上 价值选择 经营目的、经营范围、经营方式、资源投入方向 坚定、宗旨、价值 \n 战略决策 3–5年 理性分析 增长/稳定/防御、行业选择、竞争定位 科学、中期、理性 \n 战略行动 1年内/即时 行动需要 跨年度/跨部门重大行动方案，竞争博弈 速度、创新、博弈 \n \n \n 对比③：三层战略体系 \n \n 层次 主体 核心目标 核心问题 类比 \n 公司层战略 集团总部/母公司 ROA/ROE最大化 进入/退出哪些行业和市场？如何组合管理？ 集团CEO决策 \n 业务层战略 单一SBU/子公司 市场份额+利润最大化 如何在特定行业竞争？选什么目标市场？ 事业部总经理 \n 职能层战略 职能部门 提高有效性和效率 如何支撑上级战略？职能资源如何配置？ HR/财务/营销部门 \n \n \n 对比④：明茨伯格5P核心对比 \n \n 5P 核心问题 决策基础 记忆关键词 \n Plan（计划） 我们打算怎么做？ 理性+事前 蓝图、预定 \n Pattern（模式） 我们一贯是怎么做的？ 历史+惯性 传统、应急 \n Position（定位） 我们在市场上是什么位置？ 市场分析 市场位置、差异化 \n Perspective（愿景） 我们为什么而存在？ 价值+使命 使命、信仰 \n Ploy（计谋） 如何击败竞争对手？ 博弈+竞争 出奇制胜 \n \n \n \n \n \n 🏆 历年真题汇总（与本章相关） \n 第一章作为导论，直接考察频率适中，但概念会渗透在其他章节的答题中 \n \n \n 【2025年笔试】 \n 简述战略管理过程（分析-制定-实施-控制） \n 简答题 \n \n \n 【2022年笔试】 \n 简述资源基础观（RBV） \n 简答题 \n \n \n 【2019年笔试】 \n 论述大数据对企业战略决策的影响 \n 论述题 \n \n \n 【2017年笔试】 \n 论述数字化转型对企业战略与人力的影响 \n 论述题 \n \n \n 【2016年面试】 \n 如何看待核心竞争力（与RBV密切相关） \n 面试题 \n \n \n 【历年面试】 \n 企业生命周期各阶段战略（与战略管理过程相关） \n 面试题 \n \n \n \n 📌 预测题（2026复试高概率） \n \n 请简述在VUCA时代背景下企业战略管理面临的主要挑战（★★★★★） \n 请比较产业组织模式与资源基础模式的异同（★★★★★） \n 请阐述明茨伯格的战略5P理论（★★★★） \n 结合中国情境，谈谈制度基础观对企业战略选择的影响（★★★★） \n 请说明战略承诺、战略决策与战略行动的区别与联系（★★★★） \n \n \n \n \n \n 🔗 本章知识终极串联 \n 掌握这条主线，第一章就通关了 \n \n \n STEP 01 \n 环境变了 \n 技术进步+全球化 → VUCA时代（V动态/U不确定/C复杂/A模糊）；中国还有转型经济特殊性 → 挑战传统理性主义战略管理 \n \n → \n \n STEP 02 \n 决策也要变 \n 战略决策 = 战略承诺（价值，20年）+ 战略决策（理性，3-5年）+ 战略行动（速度，即时）；5P理论：计划/模式/定位/愿景/计谋 \n \n → \n \n STEP 03 \n 思维要变 \n 从IO（机会→进行业）→ RBV（核心专长→找赛道）→ IBV（制度约束）；教材以RBV为主框架 \n \n → \n \n STEP 04 \n 管理过程动态化 \n 三层战略（公司/业务/职能）+ 三阶段管理（制定→实施→评价控制）+ 三原则（承诺坚定/决策科学/行动迅速） \n \n \n \n 🎯 一句话总结： 环境动态复杂（VUCA）→ 需要三类决策整合（承诺+决策+行动）→ 思维模式首选RBV（核心专长优先）→ 全过程动态管理（制定→实施→评控）+ 三原则保驾护航。苏宁电器的案例完整体现了这一主线。\n \n \n \n \n ⚡ 30秒复习模块 \n 考前翻这里——最核心的8个知识点 \n \n \n 核心1 \n VUCA = 4特征 \n 动态/不确定/复杂/模糊 ← 技术进步+全球化驱动 \n \n \n 核心2 \n 战略决策3类型 \n 战略承诺（价值，20年+）→ 战略决策（理性，3-5年）→ 战略行动（速度，即时） \n \n \n 核心3 \n 明茨伯格5P \n 计划/模式/定位/愿景/计谋 ← 记"计模位愿谋" \n \n \n 核心4 \n 企业战略定义 \n 动态适应→建立保持发挥竞争优势→长期重大根本性决策→一致性连续性 \n \n \n 核心5 \n IO vs RBV \n IO：先选行业（外→内）；RBV：先看资源（内→外）；教材用RBV框架 \n \n \n 核心6 \n 三层战略 \n 公司层（多元化组合）→业务层（单行业竞争）→职能层（支撑） \n \n \n 核心7 \n 战略管理过程 \n 制定（意图→使命→目标→战略）→实施（目标分解→计划→职能→管理）→评价控制 \n \n \n 核心8 \n 动态管理三原则 \n 承诺坚定（连续性）+ 决策科学（正确性）+ 行动迅速/创新（效率） \n \n \n \n \n \n 📣 背诵版总结（复试口述版） \n 面试前重点背诵这些，按照"定义→内容→举例→总结"答 \n \n 背诵点1：VUCA时代 \n 由于 技术进步与经济全球化 加快，企业经营环境进入VUCA时代，具备 动态性、不确定性、复杂性和模糊性 四大特征。中国因处于经济转型期，渐进式改革使上述特征更加突出，给企业战略管理带来更大挑战。 \n \n \n 背诵点2：三种战略决策类型 \n 企业战略决策包括三种类型：① 战略承诺 ——基于价值选择的长期（20年以上）根本性决策，需以宗旨陈述传播并接受监督；② 战略决策 ——在承诺约束下基于理性分析做出的中期（3-5年）决策；③ 战略行动 ——基于行动需要、强调速度和创新的短期具体决策。三者相互依托，缺一不可。 \n \n \n 背诵点3：企业战略定义（原句） \n 企业战略是企业在动态适应和利用环境变化的过程中，为建立、保持和发挥竞争优势而采取的一系列长期、重大和根本性的决策或者行动，这些决策或者行动之间具有一定的一致性和连续性。 \n \n \n 背诵点4：明茨伯格5P理论 \n 明茨伯格提出企业战略有五种内涵：① 计划 （事前理性行动方案）；② 模式 （历史行为模式）；③ 定位 （市场定位）；④ 愿景/期望 （价值追求）；⑤ 计谋 （竞争博弈手段）。"计划"是基本内涵，其余四种是在动态环境下的必要补充。 \n \n \n 背诵点5：IO vs RBV（核心区别） \n 产业组织模式（IO） 认为企业盈利主要取决于行业结构，战略核心是选择并进入高盈利行业（波特五力分析）。 资源基础模式（RBV） 认为企业盈利取决于企业自身异质性资源和能力（核心专长），战略核心是建立发挥和强化竞争优势。本教材以RBV为主框架，同时整合IBV（制度基础观）——特别适用于中国转型经济情境。 \n \n \n 背诵点6：战略管理过程三阶段 \n 企业战略管理包括三个阶段：① 战略制定 ——基于内外部环境分析，确定战略意图、使命、目标和战略；② 战略实施 ——目标分解，构建计划体系，制定职能战略，提供组织/机制/人员/文化等管理支持；③ 战略评价与控制 ——建立评价系统和控制机制，及时调整并制定应急计划。在动态环境下，最终实现的战略是预设战略与应变创新战略的有机结合。动态管理三原则： 承诺坚定、决策科学、行动迅速和富于创新 。 \n \n \n \n \n ✏️ 自我检测 \n 包含教材思考题、历年真题和预测题 \n \n 题目 01 · 教材思考题 \n 简述企业经营环境的一般特征（VUCA），以及中国企业经营环境的特殊情境特征。 \n 提示： 先答VUCA四大特征（各1-2句），再答中国特有情境（转型经济、渐进/放权/实验式改革、三种两难选择） \n \n \n 题目 02 · 教材思考题 \n 企业战略的概念内涵、性质和特点是什么？ \n 提示： 引用教材定义原句，解释五个要点（动态适应、竞争优势、长期重大根本、三类决策并存、一致连续性） \n \n \n 题目 03 · 教材思考题 + 2022真题 \n 产业组织模式和资源基础模式的区别与联系是什么？ \n 【2022笔试】简述资源基础观（RBV） \n 提示： 分析起点/盈利来源/战略逻辑三维度对比；联系在于二者互补，本书以RBV为主；举例：苏宁早期用IO（抓机会），后期要靠RBV（核心专长） \n \n \n 题目 04 · 2025真题重点 \n 请简述企业战略管理的过程（分析-制定-实施-控制），并说明在动态复杂环境下该过程有何特点。 \n 【2025笔试】战略管理过程 \n 提示： 三阶段各自的主要内容（制定：四要素；实施：四内容；评控：四机制）+ 动态环境特点（预设+应变 = 实现战略；三原则） \n \n \n 题目 05 · 面试高频 \n 请结合一家企业的案例，说明战略承诺、战略决策和战略行动在企业战略中各自发挥的作用。 \n 提示： 推荐用华为案例：承诺（"聚焦主赛道，技术立司，永不上市"）→ 决策（5G投资，进入企业B端市场）→ 行动（每年开发布会，针对竞争对手的具体应对） \n \n \n 题目 06 · 预测题 \n 制度基础观（IBV）是如何影响企业战略选择的？请结合中国企业经营情境说明。 \n 提示： IBV三大支柱（规制/规范/认知）→ 制度对组织有影响，组织也能影响制度（双向互动）→ 中国情境：政策红利（电动汽车补贴）影响战略选择；制度不确定导致战略波动 \n \n \n 题目 07 · 教材思考题 \n 在动态和复杂的环境下，企业战略不同层次（公司层/业务层/职能层）的主要内容及其相互关系是什么？ \n 提示： 三层各自的主体、目标、核心内容 → 关系：高层约束低层（公司层战略为业务层提供方向）；低层支撑高层（职能战略支撑公司/业务战略实现）；不是简单叠加，而是有机整合 \n \n \n \n \n \n 第一章 · 战略管理导论 | 《企业战略管理（第2版）》蓝海林等编著 | 中南大学企业管理学硕复试笔记\n \n \n ↑';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-day">Day 1 · 第一章</div>
+  <h1>战略管理<span>导论</span></h1>
+  <p class="hero-sub">从苏宁电器的战略演进出发，理解VUCA时代企业环境特征、战略决策三类型（战略承诺/决策/行动）、明茨伯格5P理论、IO与RBV两大思维模式，把握企业战略管理全过程框架。中南大学2025年笔试考察"战略管理过程"，本章是整本书的逻辑起点。</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📍 教材 P1–28</span>
+    <span class="hero-tag">🔥 2025真题：战略管理过程</span>
+    <span class="hero-tag">✍️ 简答 · 论述 · 面试</span>
+    <span class="hero-tag">⭐ VUCA · 5P · IO/RBV</span>
+    <span class="hero-tag">🏆 2022资源基础观高频</span>
+  </div>
+</div>
+
+<!-- ═══ STICKY NAV ═══ -->
+<div class="sticky-nav" id="top">
+  <span class="toc-label">目录</span>
+  <a href="#map">逻辑图</a>
+  <a href="#intro">导入案例</a>
+  <a href="#s1">§1 企业环境</a>
+  <a href="#s2">§2 战略决策</a>
+  <a href="#s3">§3 思维模式</a>
+  <a href="#s4">§4 管理过程</a>
+  <a href="#compare">对比表</a>
+  <a href="#exam">历年真题</a>
+  <a href="#chain">终极串联</a>
+  <a href="#quick">30秒复习</a>
+  <a href="#recite">背诵版</a>
+  <a href="#quiz">自我检测</a>
+  <div class="nav-tools">
+    <button onclick="toggleDark()">🌙 夜间</button>
+    <button onclick="document.getElementById('searchSection').style.display = document.getElementById('searchSection').style.display==='none'?'flex':'none'">🔍 搜索</button>
+  </div>
+</div>
+
+<!-- ═══ SEARCH ═══ -->
+<div class="search-bar" id="searchSection" style="display:none">
+  
+  <span class="search-info" id="searchInfo">输入关键词高亮显示匹配内容</span>
+</div>
+
+<!-- ═══ CASE BANNER ═══ -->
+<div class="case-banner" id="intro">
+  <div class="case-label">📖 导入案例 · P4-5</div>
+  <h3>苏宁电器的战略演进：动态应对，持续转型</h3>
+  <p>1990年起步于南京一家空调小店 → 1993–1998年专注空调批发连续6年全国第一 → 1996年率先从批发向连锁零售转型 → 2000年大规模综合家电连锁扩张 → 2011年提出"2010–2020国际化发展战略"，线上线下双网络布局 → 2013年更名苏宁云商，联合阿里巴巴、万达战略合作，积极布局物流。</p>
+  <p class="case-key">🎯 教材总结：苏宁战略演进 = 企业运用战略管理手段<strong>动态应对各种环境变化</strong>的过程。无论是主动还是被动，都是企业战略制定的有机组成部分。</p>
+</div>
+
+<!-- ═══ 逻辑关系图 ═══ -->
+<div class="main">
+<div class="logic-map" id="map">
+  <h3>🗺️ 本章与其他章节的逻辑关系</h3>
+  <table class="ctable" style="font-size:13px;">
+    <tr>
+      <th>章节</th><th>关联逻辑</th>
+    </tr>
+    <tr><td><strong>第1章（本章）战略管理导论</strong></td><td>整本书的<strong>逻辑起点</strong>——搭建环境→战略→管理的基本框架，定义VUCA、两种思维模式、三层战略、管理过程</td></tr>
+    <tr><td><strong>第2章 企业战略管理者</strong></td><td>战略管理主体是谁？CEO的角色与挑战——是第1章"战略管理活动"的实施主体</td></tr>
+    <tr><td><strong>第3章 外部环境分析</strong></td><td>本章定义了"外部环境"的概念和VUCA特征，第3章是对其具体分析方法（PESTEL、五力）的深化</td></tr>
+    <tr><td><strong>第4章 内部环境分析</strong></td><td>本章提出RBV（资源基础模式）思维，第4章深入分析资源、能力、核心专长</td></tr>
+    <tr><td><strong>第6–8章 战略选择</strong></td><td>本章定义战略三层次（公司/业务/职能），后续章节各自深化各层战略内容</td></tr>
+    <tr><td><strong>第9章 战略实施</strong></td><td>本章界定"战略管理过程"（制定→实施→评价控制），第9章是对"实施"环节的深化</td></tr>
+  </table>
+
+  <div style="height:16px"></div>
+  <h3 style="font-size:16px;margin-bottom:14px;">📌 本章各节内部逻辑关系</h3>
+  <div class="flow">
+    <div class="flow-step"><div class="fs-num">§1</div><div class="fs-title">企业所处环境</div><div class="fs-body">VUCA特征<br>中国情境</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="fs-num">§2</div><div class="fs-title">战略决策</div><div class="fs-body">承诺/决策/行动<br>5P理论<br>战略定义</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="fs-num">§3</div><div class="fs-title">决策思维模式</div><div class="fs-body">IO模式<br>RBV模式<br>制度基础观</div></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step"><div class="fs-num">§4</div><div class="fs-title">管理过程</div><div class="fs-body">战略制定<br>实施<br>评价控制</div></div>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:10px;">主线：<strong>环境变了（VUCA）→ 决策也要变（三类型）→ 思维方式要变（RBV优先）→ 管理过程也要动态（静+动结合）</strong></p>
+</div>
+
+<!-- ════════════════════════════
+     §1  企业所处的环境
+     ════════════════════════════ -->
+<div class="section-title" id="s1">
+  <span class="sec-num">§ 01</span>
+  <h2>企业所处的环境</h2>
+  <span class="page-ref">P5–12</span>
+</div>
+
+<!-- 1.1 推动环境变化的主要因素 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">1.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">推动环境变化的主要因素</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 理解</span>
+        <span class="badge badge-page">P6–8</span>
+        <span class="badge badge-exam">面试考察</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版</div>
+      想象地球是个大教室，所有小朋友（企业）都在一起上课。是什么让这个教室越来越"乱"？两件大事：<strong>①科技越来越厉害（技术进步）</strong>，手机、AI改变了所有人的生活；<strong>②全球越来越"连在一起"（全球化）</strong>，中国卖东西给美国，美国卖东西给全世界。这两件事让教室变大了，规则也更复杂了。
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📘 教材定义</div>
+      <p>推动全球企业环境不断变化的<strong>主要因素</strong>：首先是<span class="kw">技术进步</span>，其次是在技术进步推动下出现的<span class="kw">全球化趋势</span>。两者共同作用使企业经营环境从相对静态和简单，向相对<strong>动态和复杂</strong>转变。</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>"技术+全球化 = 动态复杂化"</strong><br>
+      口诀：<em>技术进步冲在前，全球化跟在后面跑，两股合力推环境，动态复杂逃不了。</em></p>
+    </div>
+    <table class="ctable">
+      <tr><th>因素</th><th>影响机制</th><th>典型例子</th></tr>
+      <tr><td><strong>技术进步</strong></td><td>新技术创造新行业、颠覆旧行业，压缩反应时间</td><td>AI颠覆传统制造业；移动互联网颠覆零售（苏宁案例）</td></tr>
+      <tr><td><strong>经济全球化</strong></td><td>市场趋同、贸易壁垒降低、跨国竞争加剧、制度差异逐步消失</td><td>中国加入WTO；跨国企业本土化战略</td></tr>
+      <tr><td><strong>中国特殊性</strong></td><td>渐进式、放权式、实验式经济转型，制度环境高度不确定</td><td>政策时强时弱；地方保护造成市场分割</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 1.2 VUCA ── 核心高频考点 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">1.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">VUCA时代——企业经营环境的四大特征</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心</span>
+        <span class="badge badge-page">P8–10</span>
+        <span class="badge badge-exam">简答·论述·面试</span>
+        <span class="badge badge-year">★★★★★ 高概率</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版</div>
+      你在下棋，以前对手出棋慢（静态），你有时间想清楚怎么走。现在：<br>
+      ①对手出棋越来越<strong>快</strong>（动态性/Volatility）<br>
+      ②你猜不到对手下一步要干嘛（不确定性/Uncertainty）<br>
+      ③棋盘越来越大，棋子越来越多（复杂性/Complexity）<br>
+      ④有时你甚至看不清棋盘上有几个棋子（模糊性/Ambiguity）<br>
+      这就是"VUCA时代"——下棋越来越难，企业经营也越来越难！
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📘 教材定义</div>
+      <div class="quote"><p>由于技术进步与经济全球化速度明显加快，新技术、新行业、新商业模式层出不穷，导致当今企业所嵌入的经营环境面临众多不确定性和不可预见性因素，正在步入所谓的<mark>"乌卡"（VUCA）时代</mark>，即企业经营环境越来越具备动态性(volatility)、不确定性(uncertainty)、复杂性(complexity)和模糊性(ambiguity)的特征。</p></div>
+    </div>
+
+    <div class="vuca-grid">
+      <div class="vuca-item vuca-v">
+        <div class="vuca-letter">V</div>
+        <div class="vuca-title">动态性 Volatility</div>
+        <div class="vuca-sub">英文全称：volatility</div>
+        <div class="vuca-body">
+          指①环境变化的<strong>速度、幅度和广度</strong>；②企业间竞争互动的速度、范围和水平；③速度和创新影响竞争优势构建的程度。<br><br>
+          <em>📌 案例：IBM 1986年《财富》连续四年榜首 → 1995年跌至第281位</em>
+        </div>
+      </div>
+      <div class="vuca-item vuca-u">
+        <div class="vuca-letter">U</div>
+        <div class="vuca-title">不确定性 Uncertainty</div>
+        <div class="vuca-sub">英文全称：uncertainty</div>
+        <div class="vuca-body">
+          指环境变化的<strong>方向、趋势、速度与结果难以预料和把握</strong>的程度。动态性越高，不确定性越高，预测难度越大。<br><br>
+          <em>📌 案例：贸易保护主义随时出现；新技术在何时以何方式改变行业无法预测</em>
+        </div>
+      </div>
+      <div class="vuca-item vuca-c">
+        <div class="vuca-letter">C</div>
+        <div class="vuca-title">复杂性 Complexity</div>
+        <div class="vuca-sub">英文全称：complexity</div>
+        <div class="vuca-body">
+          指环境中影响企业行为的<strong>维度与要素数目多</strong>，且要素之间关系复杂。企业须同时应对国内外两个层面、适应多种制度体系。<br><br>
+          <em>📌 案例：中国企业同时面对国内监管+WTO规则+国际竞争对手</em>
+        </div>
+      </div>
+      <div class="vuca-item vuca-a">
+        <div class="vuca-letter">A</div>
+        <div class="vuca-title">模糊性 Ambiguity</div>
+        <div class="vuca-sub">英文全称：ambiguity</div>
+        <div class="vuca-body">
+          指环境中影响企业行为的因素<strong>不能被准确认定</strong>，或具体机制和路径<strong>不能被清楚了解</strong>的程度。①行业边界模糊；②国家/区域边界弱化；③外部环境因素难以区分。<br><br>
+          <em>📌 案例：互联网平台跨界颠覆传统行业（谁是竞争对手？）</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>"乌卡时代快难多糊"</strong><br>
+      V=快（变化快）、U=难（方向难猜）、C=多（要素多复杂）、A=糊（边界模糊）<br>
+      口诀：<em>乌龟跑快方向难猜，棋子多了棋盘糊面</em>——V U C A</p>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">📝 复试回答模板</div>
+      <p><strong>问：请简述VUCA时代企业经营环境的特征。</strong></p>
+      <p><strong>【定义】</strong>随着技术进步与经济全球化加快，企业经营环境进入"VUCA时代"，具备四大特征：</p>
+      <p><strong>【核心内容】</strong>①<span class="kw">动态性</span>——环境变化速度加快，竞争优势难以持续；②<span class="kw">不确定性</span>——变化方向和结果难以预测；③<span class="kw">复杂性</span>——影响因素多且关系复杂；④<span class="kw">模糊性</span>——行业和国家边界越来越不清晰。</p>
+      <p><strong>【举例】</strong>以中国为例，渐进、放权、实验式的经济转型使上述四种特征更为突出，制度环境频繁变化，企业战略管理面临更大挑战。</p>
+      <p><strong>【总结】</strong>这四种特征相互联系，共同挑战了传统理性主义战略管理理论，要求企业战略管理理论和实践进行相应调整。</p>
+    </div>
+
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 复试延伸问题</div>
+      <ul class="kl">
+        <li>VUCA对传统理性主义战略管理理论提出了哪些挑战？</li>
+        <li>中国企业经营环境在VUCA基础上还有哪些特殊性？</li>
+        <li>企业应如何在VUCA环境中制定有效战略？</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 1.3 中国情境特征 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">1.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">中国企业经营环境的情境特征</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 较高</span>
+        <span class="badge badge-page">P10–12</span>
+        <span class="badge badge-exam">面试高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版</div>
+      如果说全世界是一个学校，中国是一个很特别的同学。别人家的规则是统一的，中国的规则是"一边走一边定的"（渐进式），有的地方有特殊政策（放权式），有的试点成功才推广（实验式）。这让在中国经营的企业比其他地方更难适应，因为规则老在变、地方不一样、政府影响大。
+    </div>
+    <table class="ctable">
+      <tr><th>特征</th><th>内涵</th><th>对企业的影响</th></tr>
+      <tr><td><strong>转型经济</strong></td><td>从计划经济向市场经济转型，尚未完成</td><td>制度环境高频率、高不确定性变化</td></tr>
+      <tr><td><strong>渐进式改革</strong></td><td>非系统设计整体推进，而是逐步放开</td><td>政策时有时无，企业无法稳定预期</td></tr>
+      <tr><td><strong>放权式改革</strong></td><td>向地方放权，干部任免制+GDP考核制</td><td>区域竞争+地方保护造成市场分割</td></tr>
+      <tr><td><strong>实验式改革</strong></td><td>先给特定地区/行业特殊政策，再推广</td><td>差异化制度安排，多重制度环境</td></tr>
+    </table>
+    <details>
+      <summary>🔍 展开：中国情境造成的三种"两难选择"（考试高频）</summary>
+      <ul class="kl" style="margin-top:10px">
+        <li><strong>两难①：市场 vs 政府</strong> — 完成转型的国家靠市场；中国企业还要关注政府关系，两难选择</li>
+        <li><strong>两难②：资源优势 vs 制度套利</strong> — 成熟市场靠资源能力；中国少数企业可不靠优势利用市场不完善获益，导致战略思维两难</li>
+        <li><strong>两难③：遵从制度 vs 弹性应对</strong> — 过早遵从或完全不遵从都难以持续发展，尺度把握困难</li>
+      </ul>
+    </details>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     §2  企业的战略决策
+     ════════════════════════════ -->
+<div class="section-title" id="s2">
+  <span class="sec-num">§ 02</span>
+  <h2>企业的战略决策</h2>
+  <span class="page-ref">P12–24</span>
+</div>
+
+<!-- 2.1 战略决策的性质 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">2.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略决策的基本特征与性质</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 较高</span>
+        <span class="badge badge-page">P12–15</span>
+        <span class="badge badge-exam">名词解释·简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📘 专有名词：战略决策</div>
+      <p><span class="kw">战略决策</span>是指对企业<strong>长期发展产生重大影响</strong>的重大、长期和根本性决策。一般具有三大特征：</p>
+      <ul class="kl" style="margin-top:8px">
+        <li><strong>重大、长期和根本性决策</strong>（经营范围、市场范围、竞争定位、重大投资融资等）</li>
+        <li><strong>非常规或创新的决策</strong>（无规可循，需高层管理者判断并程序化）</li>
+        <li><strong>针对主要竞争对手的对抗性/博弈性决策</strong>（随市场集中度提高而重要）</li>
+      </ul>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版</div>
+      班长（CEO）要做两类决定：一类是"期末我们班要向哪个方向发展"（战略决策，很重要，影响很长），另一类是"今天晚自习谁擦黑板"（日常决策，不重要，很短期）。战略决策就是那些影响全班未来很长时间的大决定。
+    </div>
+    <table class="ctable">
+      <tr><th>环境</th><th>战略决策性质</th></tr>
+      <tr><td><strong>相对静态环境</strong></td><td>事前、主动、理性决策（理性主义流派观点）</td></tr>
+      <tr><td><strong>相对动态环境（当前）</strong></td><td>事前主动+<strong>事中反应性</strong>；主要理性+<strong>非理性因素并存</strong></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- 2.2 三种战略决策类型 ── 核心考点 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">2.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">战略决策的三种类型：承诺 · 决策 · 行动</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心</span>
+        <span class="badge badge-page">P13–15</span>
+        <span class="badge badge-exam">简答·论述·面试</span>
+        <span class="badge badge-year">★★★★★ 超高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版类比</div>
+      你要参加马拉松（企业经营）：<br>
+      <strong>战略承诺</strong> = 你决定"我这辈子就要当马拉松冠军"（20年大志向，价值选择，不轻易改变）<br>
+      <strong>战略决策</strong> = 你制定"今年备战计划：每天跑10km，参加5场比赛"（3–5年科学计划，理性分析）<br>
+      <strong>战略行动</strong> = 你今天实际怎么跑：看到坡就加速，看到弯道就减速（具体应变行动，快速创新）
+    </div>
+
+    <div class="levels">
+      <div class="level-row level-1">
+        <div class="level-num">①</div>
+        <div class="level-content">
+          <div class="level-en">Strategic Commitment / 价值驱动型决策</div>
+          <div class="level-name">战略承诺</div>
+          <div class="level-desc">对企业长期发展产生重大影响，需持续努力实现；依据<strong>价值选择</strong>而非理性分析；时间跨度一般20年以上；以宗旨/意图形式广泛传播，接受内外监督</div>
+        </div>
+        <div class="level-exam">长期·价值·坚持</div>
+      </div>
+      <div class="level-row level-2">
+        <div class="level-num">②</div>
+        <div class="level-content">
+          <div class="level-en">Strategic Decision / 决策驱动型决策</div>
+          <div class="level-name">战略决策（狭义）</div>
+          <div class="level-desc">在战略承诺约束下，依据<strong>科学/理性分析</strong>做出；时间跨度3–5年；核心内容：增长/稳定/防御、行业选择、竞争定位等</div>
+        </div>
+        <div class="level-exam">中期·理性·科学</div>
+      </div>
+      <div class="level-row level-3">
+        <div class="level-num">③</div>
+        <div class="level-content">
+          <div class="level-en">Strategic Action / 行动驱动型决策</div>
+          <div class="level-name">战略行动</div>
+          <div class="level-desc">依据<strong>行动需要</strong>做出；强调针对性、对抗性、博弈性；要求速度、创新、意外性；负责人可相机调整，不违反中长期战略</div>
+        </div>
+        <div class="level-exam">短期·行动·创新</div>
+      </div>
+    </div>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>"承诺值→决策析→行动快"</strong><br>
+      承诺靠<strong>价值</strong>（Values），决策靠<strong>理性</strong>（Analysis），行动靠<strong>速度</strong>（Speed）<br>
+      口诀：<em>价值承诺二十年，理性决策三至五，行动迅速富创新</em></p>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">📝 复试回答模板</div>
+      <p><strong>问：请区分战略承诺、战略决策和战略行动。</strong></p>
+      <p>在动态复杂环境中，企业战略决策可分为三种类型：<br>
+      <strong>①战略承诺</strong>（价值驱动）：基于企业价值追求做出长期（20年以上）的根本性决策，具有坚定性，以宗旨陈述形式传播，如华为"不上市、专注技术"。<br>
+      <strong>②战略决策</strong>（决策驱动）：在战略承诺约束下，基于科学理性分析做出的中期（3–5年）战略选择，如选择是否实施多元化、选择进入哪个市场。<br>
+      <strong>③战略行动</strong>（行动驱动）：基于行动需要，在竞争互动中表现出速度和创新的具体战略行动，负责人可相机调整。<br>
+      三者相互依托：承诺为决策提供约束，决策为行动提供方向，行动实现决策，最终兑现承诺。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2.3 明茨伯格5P ── 高频 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">2.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">明茨伯格战略5P理论——战略的五种内涵</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心</span>
+        <span class="badge badge-page">P15–17</span>
+        <span class="badge badge-exam">名词解释·简答·面试</span>
+        <span class="badge badge-year">★★★★★ 超高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📘 专有名词：5P理论</div>
+      <p>著名战略管理学者<span class="kw">明茨伯格（Mintzberg）</span>在总结20世纪企业战略管理思想演变的基础上，提出了有关企业战略性质的<span class="kw">5P理论</span>，即计划（plan）、模式（pattern）、定位（position）、愿景/期望（perspective）、计谋（ploy）。</p>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版（用踢球比喻5P）</div>
+      一支足球队的"战略"可以是：<br>
+      ①<strong>计划（Plan）</strong> = 赛前教练定好打法："上半场防守，下半场反击"<br>
+      ②<strong>模式（Pattern）</strong> = 不管教练说什么，这支队一贯喜欢打长传冲吊<br>
+      ③<strong>定位（Position）</strong> = 我们是"防守反击型球队"（市场定位）<br>
+      ④<strong>愿景（Perspective）</strong> = "我们追求美丽足球、永远不放弃的精神"<br>
+      ⑤<strong>计谋（Ploy）</strong> = "故意让对方看见我们在练角球，其实是迷惑他们"
+    </div>
+    <table class="ctable">
+      <tr><th>P</th><th>中文</th><th>核心含义</th><th>代表流派</th><th>适用环境</th></tr>
+      <tr><td><strong>Plan</strong></td><td>计划</td><td>战略是事前、主动、理性的长期计划，包括目标和实施路径</td><td>理性主义（设计/计划/定位学派）</td><td>相对静态环境</td></tr>
+      <tr><td><strong>Pattern</strong></td><td>模式</td><td>战略是企业基于历史传统和价值理念形成的行为模式</td><td>非理性主义</td><td>动态环境（事中决策）</td></tr>
+      <tr><td><strong>Position</strong></td><td>定位</td><td>战略是企业在行业、市场、顾客诉求、经营方式上的定位，比具体目标更稳定</td><td>非理性主义</td><td>动态环境</td></tr>
+      <tr><td><strong>Perspective</strong></td><td>愿景/期望</td><td>战略本质是价值选择，是组织整体的价值追求和愿景</td><td>非理性主义</td><td>高度动态环境</td></tr>
+      <tr><td><strong>Ploy</strong></td><td>计谋</td><td>战略是博弈性计谋，目的是预测、控制竞争对手反应，迫使对手按己方意愿行动</td><td>竞争互动理论</td><td>高竞争互动</td></tr>
+    </table>
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>"5P = 计谋 计划 模式 定愿"</strong><br>
+      Plan（计划）— Pattern（模式）— Position（定位）— Perspective（愿景）— Ploy（计谋）<br>
+      口诀：<em>计划前，模式跟，位置摆好有愿景，最后出招用计谋</em></p>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">📝 复试回答模板</div>
+      <p><strong>问：请简述明茨伯格战略5P理论。</strong></p>
+      <p>明茨伯格在总结多种战略流派的基础上，从五个视角界定企业战略：①<strong>计划</strong>——战略是事前理性决策的行动方案；②<strong>模式</strong>——战略是企业行为的一致性模式，包括应急战略；③<strong>定位</strong>——战略是企业在市场中的特定定位；④<strong>愿景/期望</strong>——战略是价值追求，赋予坚守承诺的动力；⑤<strong>计谋</strong>——战略是竞争中迷惑、预测、控制对手的博弈手段。这五种视角相互补充，"计划"体现最基本内涵，其余四者是在动态复杂环境下的必要补充。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 2.4 企业战略定义 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">2.4</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">企业战略的定义与内涵（教材定义）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心</span>
+        <span class="badge badge-page">P17–19</span>
+        <span class="badge badge-exam">名词解释·背诵</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📘 需背诵教材原句</div>
+      <div class="quote"><p><mark>企业战略是企业在动态适应和利用环境变化的过程中，为建立、保持和发挥竞争优势而采取的一系列长期、重大和根本性的决策或者行动，这些决策或者行动之间具有一定的一致性和连续性。</mark></p></div>
+    </div>
+    <table class="ctable">
+      <tr><th>要点</th><th>解释</th></tr>
+      <tr><td>①<strong>动态适应和利用</strong></td><td>既适应又利用，被动+主动，包括事前和事中决策</td></tr>
+      <tr><td>②<strong>建立、保持、发挥竞争优势</strong></td><td>这是企业战略的<strong>核心目的</strong></td></tr>
+      <tr><td>③<strong>长期、重大和根本性</strong></td><td>区别于日常经营决策</td></tr>
+      <tr><td>④<strong>一致性和连续性</strong></td><td>战略内部协调，不能朝令夕改</td></tr>
+      <tr><td>⑤<strong>包括三类决策</strong></td><td>价值驱动（承诺）+决策驱动（理性）+行动驱动</td></tr>
+    </table>
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版</div>
+      企业战略就是：在不断变化的环境中，为了比对手更厉害（竞争优势），做出的一系列重大的、长远的、前后一致的大决定。就像一艘船的"航行计划"——目标明确、路线一贯、能够随浪调整，但始终朝着终点前进。
+    </div>
+    <details>
+      <summary>🔍 展开：战略的三种分类方式</summary>
+      <table class="ctable" style="margin-top:10px">
+        <tr><th>分类角度</th><th>类型</th><th>说明</th></tr>
+        <tr><td><strong>实施主体</strong></td><td>公司层/经营层/职能层</td><td>三层战略体系，层级越高越宏观</td></tr>
+        <tr><td><strong>时间长短</strong></td><td>短期（&lt;1年）/中期（1-5年）/长期（5-10年）</td><td>对应不同精度的规划</td></tr>
+        <tr><td><strong>战略功能</strong></td><td>增长型/稳定型/收缩型/组合型</td><td>增长型含强化、一体化、多元化</td></tr>
+      </table>
+    </details>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     §3  企业战略决策的思维模式
+     ════════════════════════════ -->
+<div class="section-title" id="s3">
+  <span class="sec-num">§ 03</span>
+  <h2>企业战略决策的思维模式</h2>
+  <span class="page-ref">P19–24</span>
+</div>
+
+<!-- 3.1 三大模式对比 ── 超高频 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">3.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">三大战略思维模式：IO · RBV · IBV 对比</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心</span>
+        <span class="badge badge-page">P19–24</span>
+        <span class="badge badge-exam">简答·论述·名词解释</span>
+        <span class="badge badge-year">【2022笔试】资源基础观RBV</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版三种思维方式</div>
+      你要开一家奶茶店赚钱，三种思路：<br>
+      <strong>IO（产业组织）</strong>：找最赚钱的奶茶街（行业），先选地段，再想我能不能做。<br>
+      <strong>RBV（资源基础）</strong>：我有独家秘方（核心资源），找适合我秘方发挥的地段。<br>
+      <strong>IBV（制度基础）</strong>：政府今年扶持哪个街区/对什么行业有优惠（制度），我顺势而为。
+    </div>
+
+    <div class="model-compare">
+      <div class="model-box model-io">
+        <div class="model-core">🏭</div>
+        <div class="model-name">产业组织模式（IO）</div>
+        <div class="model-en">Industrial Organization Model<br>= 市场基础模式（MBV）</div>
+        <div class="model-focus">
+          <strong>核心：</strong>行业选择决定盈利<br>
+          <strong>逻辑：</strong>不同行业→稳定盈利差异→进入高盈利行业<br>
+          <strong>代表人：</strong>迈克尔·波特<br>
+          <strong>分析工具：</strong>五力模型<br>
+          <strong>适用：</strong>市场机会多、竞争不激烈
+        </div>
+      </div>
+      <div class="model-box model-rv">
+        <div class="model-core">💎</div>
+        <div class="model-name">资源基础模式（RBV）</div>
+        <div class="model-en">Resource-Based View<br>= 资源基础观</div>
+        <div class="model-focus">
+          <strong>核心：</strong>企业独特资源能力决定盈利<br>
+          <strong>逻辑：</strong>异质性资源→竞争优势→持续高收益<br>
+          <strong>关键：</strong>资源的VRIO（价值、稀缺、难模仿、有组织）<br>
+          <strong>适用：</strong>市场机会少、竞争激烈（本书主要框架）
+        </div>
+      </div>
+      <div class="model-box model-ib">
+        <div class="model-core">🏛️</div>
+        <div class="model-name">制度基础模式（IBV）</div>
+        <div class="model-en">Institution-Based View<br>= 战略"第三只脚"</div>
+        <div class="model-focus">
+          <strong>核心：</strong>正式/非正式制度约束影响战略<br>
+          <strong>逻辑：</strong>制度↔组织互动→影响战略选择<br>
+          <strong>三大支柱：</strong>规制支柱/规范支柱/认知支柱<br>
+          <strong>适用：</strong>转型经济、新兴市场（中国情境！）
+        </div>
+      </div>
+    </div>
+
+    <table class="ctable">
+      <tr><th>维度</th><th>IO模式</th><th>RBV模式</th><th>IBV模式</th></tr>
+      <tr><td><strong>分析起点</strong></td><td>外部行业结构</td><td>内部资源能力</td><td>制度环境</td></tr>
+      <tr><td><strong>盈利来源</strong></td><td>行业平均盈利水平</td><td>企业异质性资源</td><td>制度套利+合法性收益</td></tr>
+      <tr><td><strong>战略逻辑</strong></td><td>进入高盈利行业</td><td>发挥核心专长</td><td>顺应/影响制度安排</td></tr>
+      <tr><td><strong>主要局限</strong></td><td>忽视企业内部差异；机会导向易多元化</td><td>忽视外部机会；资源静态</td><td>理论体系尚不完善</td></tr>
+      <tr><td><strong>中国适用性</strong></td><td>80–90年代机会期</td><td>当前首选，构建核心专长</td><td>中国转型特殊情境</td></tr>
+    </table>
+
+    <div class="block block-definition">
+      <div class="block-label">📘 需背诵：教材对RBV的立场</div>
+      <div class="quote"><p>本书以<mark>资源基础的战略思维模式</mark>布局构架，希望企业战略管理者在完成外部环境分析后，能基于<mark>核心专长的建立、保持和发挥</mark>做出合适的战略选择。</p></div>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">📝 复试回答模板：简述资源基础观（RBV）</div>
+      <p><strong>【定义】</strong>资源基础观（Resource-Based View，RBV）认为企业内部的异质性资源和能力是企业获取持续竞争优势和高于社会平均收益的主要来源。</p>
+      <p><strong>【核心内容】</strong>①企业间资源存在异质性（不同质、不完全流动）；②只有同时具备价值性、稀缺性、难以模仿性和不可替代性（VRIO）的资源才能成为持续竞争优势的来源；③战略制定应以核心专长为出发点。</p>
+      <p><strong>【与IO对比】</strong>IO模式从外部行业出发（机会导向），RBV从内部资源出发（能力导向），二者互补，教材以RBV为主框架。</p>
+      <p><strong>【举例】</strong>格力电器坚持专注空调、持续研发技术，以技术资源为核心专长，是典型的RBV实践。</p>
+    </div>
+
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 易混对比：产业组织 vs 资源基础</div>
+      <ul class="kl">
+        <li><strong>IO</strong>："先外后内"——先选好行业，再整合资源。口诀：选对赛道，再备马</li>
+        <li><strong>RBV</strong>："先内后外"——先看自己有什么，再找能发挥的赛道。口诀：练好马，再选赛道</li>
+        <li><strong>IBV</strong>："内外+制度"——既看资源和行业，也看政策制度。口诀：政策红利别错过</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     §4  企业战略管理的过程
+     ════════════════════════════ -->
+<div class="section-title" id="s4">
+  <span class="sec-num">§ 04</span>
+  <h2>企业战略管理的过程</h2>
+  <span class="page-ref">P24–28</span>
+</div>
+
+<!-- 4.1 战略管理定义 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">4.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">企业战略管理的定义与三层次</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心</span>
+        <span class="badge badge-page">P24–26</span>
+        <span class="badge badge-exam">名词解释·背诵</span>
+        <span class="badge badge-year">【2025笔试】战略管理过程</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📘 需背诵：企业战略管理定义</div>
+      <div class="quote"><p><mark>企业战略管理就是运用管理的计划、组织、领导和控制等手段对企业的一系列重大、长期和根本性决策的制定、实施和过程进行管理的活动。</mark></p></div>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版</div>
+      战略管理就是：帮助企业的"大决定"顺利落地的全套管理工作。不光是想好了（制定），还要做到（实施），还要检查对不对（评价控制）。
+    </div>
+
+    <div class="levels">
+      <div class="level-row level-1">
+        <div class="level-num">L1</div>
+        <div class="level-content">
+          <div class="level-en">Corporate-Level Strategy</div>
+          <div class="level-name">公司层战略</div>
+          <div class="level-desc">行业多元化和市场多元化企业的总部战略；目标：ROA/ROE最大化；核心：多行业与多市场组合的经营和管理<br><em>例：苏宁集团决定进入哪些业务领域</em></div>
+        </div>
+        <div class="level-exam">集团总部</div>
+      </div>
+      <div class="level-row level-2">
+        <div class="level-num">L2</div>
+        <div class="level-content">
+          <div class="level-en">Business-Level Strategy（竞争战略）</div>
+          <div class="level-name">业务层战略</div>
+          <div class="level-desc">单一行业/市场经营单位的战略；目标：市场占有率和利润最大化；核心：目标市场选择、竞争定位、价值创造活动组合<br><em>例：美的家用空调事业部确定细分市场和竞争优势</em></div>
+        </div>
+        <div class="level-exam">单一业务</div>
+      </div>
+      <div class="level-row level-3">
+        <div class="level-num">L3</div>
+        <div class="level-content">
+          <div class="level-en">Functional-Level Strategy</div>
+          <div class="level-name">职能层战略</div>
+          <div class="level-desc">企业内部职能部门战略；目标：提高职能活动有效性和效率；属于费用/成本中心，支撑公司层和业务层战略<br><em>例：苏宁进入娱乐业，HR部门制定相应人力资源战略</em></div>
+        </div>
+        <div class="level-exam">职能部门</div>
+      </div>
+    </div>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <p>三层战略：<strong>"公→业→职"</strong>（由高到低，由宏观到微观）<br>
+      公司层管"进哪"，业务层管"怎么竞争"，职能层管"怎么支撑"<br>
+      口诀：<em>公司决定进哪场，业务决定怎么打，职能支撑保后勤</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- 4.2 战略管理过程模型 ── 2025考点 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">4.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">企业战略管理过程模型（制定→实施→评价控制）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心</span>
+        <span class="badge badge-page">P25–28</span>
+        <span class="badge badge-exam">简答·论述·背诵</span>
+        <span class="badge badge-year">【2025笔试】战略管理过程</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-analogy">
+      <div class="block-label">🍎 小学生版</div>
+      战略管理就像"做一道大菜"：<br>
+      <strong>战略制定</strong> = 选菜谱（分析环境，定目标和方案）<br>
+      <strong>战略实施</strong> = 按菜谱下锅炒（把计划变成行动）<br>
+      <strong>战略评价与控制</strong> = 试吃+调味（检查效果，不对就调整）
+    </div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="fs-num">STEP 1</div>
+        <div class="fs-title">战略制定</div>
+        <div class="fs-body">①战略意图<br>②使命陈述<br>③战略目标<br>④企业战略<br><br><em>基础：外部+内部环境分析；社会责任/价值观</em></div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 2</div>
+        <div class="fs-title">战略实施</div>
+        <div class="fs-body">①目标分解<br>②计划体系<br>③职能战略<br>④管理支持<br><br><em>（组织/机制/人员/文化）</em></div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 3</div>
+        <div class="fs-title">战略评价与控制</div>
+        <div class="fs-body">①评价系统<br>②控制机制<br>③激励机制<br>④应急计划<br><br><em>→ 调整或开始新一轮制定</em></div>
+      </div>
+    </div>
+
+    <div class="block block-definition">
+      <div class="block-label">📘 静态 vs 动态环境下的战略过程差异</div>
+      <table class="ctable">
+        <tr><th>维度</th><th>相对静态环境</th><th>相对动态环境（当前）</th></tr>
+        <tr><td>战略性质</td><td>"点"或"静态"决策</td><td>"静态+动态"结合</td></tr>
+        <tr><td>制定内容</td><td>准确预测+数量化目标+预定全部行动</td><td>宏观定位+战略意图+动态调整空间</td></tr>
+        <tr><td>三阶段关系</td><td>严格前后相连、头尾相接</td><td>制定→实施→控制交织并行</td></tr>
+        <tr><td>最终战略</td><td>"计划好的战略"就是"实现的战略"</td><td>"实现的战略" = 预设战略 + 应变创新战略</td></tr>
+      </table>
+    </div>
+
+    <div class="block block-definition">
+      <div class="block-label">📘 动态环境下战略管理三原则（需背诵）</div>
+      <div class="quote"><p><mark>①承诺坚定</mark>——保证战略行为的连续性；<mark>②决策科学</mark>——保证战略行为的正确性；<mark>③行动迅速和富于创新</mark>——保证战略行动的效率。</p></div>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">📝 复试回答模板：简述企业战略管理过程</div>
+      <p><strong>【定义】</strong>企业战略管理是对企业重大、长期和根本性决策的制定、实施和评价控制进行管理的全过程活动。</p>
+      <p><strong>【三阶段】</strong>①<strong>战略制定</strong>：基于外部与内部环境分析（SWOT逻辑），结合社会责任和价值观，确定战略意图、使命、目标和具体战略；②<strong>战略实施</strong>：目标分解→计划体系→职能战略→管理支持（组织/机制/文化）；③<strong>战略评价与控制</strong>：构建评价系统，实施控制机制和激励机制，制定应急计划，必要时调整或启动新一轮制定。</p>
+      <p><strong>【动态特点】</strong>在动态复杂环境下，三阶段不是严格线性关系，"实现的战略"是"预设战略"与"应变创新战略"的结合，要求战略管理者坚持"承诺坚定、决策科学、行动迅速"三原则。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════
+     对比总结表
+     ════════════════════ -->
+<div class="section-title" id="compare">
+  <span class="sec-num">对比</span>
+  <h2>本章易混概念对比总结表</h2>
+</div>
+
+<div class="kcard">
+  <div class="kcard-body">
+    <h4 style="font-family:'Noto Serif SC',serif;margin-bottom:12px;color:var(--ink);">对比①：理性主义 vs 非理性主义流派</h4>
+    <table class="ctable">
+      <tr><th>维度</th><th>理性主义流派</th><th>非理性主义流派</th></tr>
+      <tr><td><strong>适用环境</strong></td><td>相对静态、简单</td><td>相对动态、复杂</td></tr>
+      <tr><td><strong>决策性质</strong></td><td>事前、主动、理性</td><td>事中、被动、非理性因素并存</td></tr>
+      <tr><td><strong>目标作用</strong></td><td>定量化目标是核心，必须严格实现</td><td>过于定量化目标反而限制应变</td></tr>
+      <tr><td><strong>代表</strong></td><td>波特（五力、定位）</td><td>明茨伯格（5P、模式）</td></tr>
+      <tr><td><strong>教材立场</strong></td><td>基础框架，部分保留</td><td>补充和完善理性主义不足</td></tr>
+    </table>
+
+    <hr class="divider">
+    <h4 style="font-family:'Noto Serif SC',serif;margin-bottom:12px;color:var(--ink);">对比②：三种战略决策类型</h4>
+    <table class="ctable">
+      <tr><th>类型</th><th>时间跨度</th><th>决策依据</th><th>典型内容</th><th>关键词</th></tr>
+      <tr><td><span class="kw">战略承诺</span></td><td>20年以上</td><td>价值选择</td><td>经营目的、经营范围、经营方式、资源投入方向</td><td>坚定、宗旨、价值</td></tr>
+      <tr><td><span class="kw2">战略决策</span></td><td>3–5年</td><td>理性分析</td><td>增长/稳定/防御、行业选择、竞争定位</td><td>科学、中期、理性</td></tr>
+      <tr><td><span class="kw3">战略行动</span></td><td>1年内/即时</td><td>行动需要</td><td>跨年度/跨部门重大行动方案，竞争博弈</td><td>速度、创新、博弈</td></tr>
+    </table>
+
+    <hr class="divider">
+    <h4 style="font-family:'Noto Serif SC',serif;margin-bottom:12px;color:var(--ink);">对比③：三层战略体系</h4>
+    <table class="ctable">
+      <tr><th>层次</th><th>主体</th><th>核心目标</th><th>核心问题</th><th>类比</th></tr>
+      <tr><td><span class="kw">公司层战略</span></td><td>集团总部/母公司</td><td>ROA/ROE最大化</td><td>进入/退出哪些行业和市场？如何组合管理？</td><td>集团CEO决策</td></tr>
+      <tr><td><span class="kw2">业务层战略</span></td><td>单一SBU/子公司</td><td>市场份额+利润最大化</td><td>如何在特定行业竞争？选什么目标市场？</td><td>事业部总经理</td></tr>
+      <tr><td><span class="kw3">职能层战略</span></td><td>职能部门</td><td>提高有效性和效率</td><td>如何支撑上级战略？职能资源如何配置？</td><td>HR/财务/营销部门</td></tr>
+    </table>
+
+    <hr class="divider">
+    <h4 style="font-family:'Noto Serif SC',serif;margin-bottom:12px;color:var(--ink);">对比④：明茨伯格5P核心对比</h4>
+    <table class="ctable">
+      <tr><th>5P</th><th>核心问题</th><th>决策基础</th><th>记忆关键词</th></tr>
+      <tr><td><strong>Plan（计划）</strong></td><td>我们打算怎么做？</td><td>理性+事前</td><td>蓝图、预定</td></tr>
+      <tr><td><strong>Pattern（模式）</strong></td><td>我们一贯是怎么做的？</td><td>历史+惯性</td><td>传统、应急</td></tr>
+      <tr><td><strong>Position（定位）</strong></td><td>我们在市场上是什么位置？</td><td>市场分析</td><td>市场位置、差异化</td></tr>
+      <tr><td><strong>Perspective（愿景）</strong></td><td>我们为什么而存在？</td><td>价值+使命</td><td>使命、信仰</td></tr>
+      <tr><td><strong>Ploy（计谋）</strong></td><td>如何击败竞争对手？</td><td>博弈+竞争</td><td>出奇制胜</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════
+     历年真题汇总
+     ════════════════════ -->
+<div class="exam-section" id="exam">
+  <h3>🏆 历年真题汇总（与本章相关）</h3>
+  <p style="font-size:13px;color:#888;margin-bottom:16px;">第一章作为导论，直接考察频率适中，但概念会渗透在其他章节的答题中</p>
+  <div class="exam-grid">
+    <div class="exam-item">
+      <div class="ei-year">【2025年笔试】</div>
+      <div class="ei-q">简述战略管理过程（分析-制定-实施-控制）</div>
+      <div class="ei-type">简答题</div>
+    </div>
+    <div class="exam-item">
+      <div class="ei-year">【2022年笔试】</div>
+      <div class="ei-q">简述资源基础观（RBV）</div>
+      <div class="ei-type">简答题</div>
+    </div>
+    <div class="exam-item">
+      <div class="ei-year">【2019年笔试】</div>
+      <div class="ei-q">论述大数据对企业战略决策的影响</div>
+      <div class="ei-type">论述题</div>
+    </div>
+    <div class="exam-item">
+      <div class="ei-year">【2017年笔试】</div>
+      <div class="ei-q">论述数字化转型对企业战略与人力的影响</div>
+      <div class="ei-type">论述题</div>
+    </div>
+    <div class="exam-item">
+      <div class="ei-year">【2016年面试】</div>
+      <div class="ei-q">如何看待核心竞争力（与RBV密切相关）</div>
+      <div class="ei-type">面试题</div>
+    </div>
+    <div class="exam-item">
+      <div class="ei-year">【历年面试】</div>
+      <div class="ei-q">企业生命周期各阶段战略（与战略管理过程相关）</div>
+      <div class="ei-type">面试题</div>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;padding:16px;background:var(--bg2);border-radius:10px;">
+    <p style="font-size:13px;font-weight:600;color:var(--accent);margin-bottom:8px;">📌 预测题（2026复试高概率）</p>
+    <ul class="kl" style="font-size:13.5px">
+      <li>请简述在VUCA时代背景下企业战略管理面临的主要挑战（★★★★★）</li>
+      <li>请比较产业组织模式与资源基础模式的异同（★★★★★）</li>
+      <li>请阐述明茨伯格的战略5P理论（★★★★）</li>
+      <li>结合中国情境，谈谈制度基础观对企业战略选择的影响（★★★★）</li>
+      <li>请说明战略承诺、战略决策与战略行动的区别与联系（★★★★）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════════════════
+     终极串联
+     ════════════════════ -->
+<div class="chain" id="chain">
+  <h2>🔗 本章知识终极串联</h2>
+  <p class="chain-sub">掌握这条主线，第一章就通关了</p>
+  <div class="chain-flow">
+    <div class="chain-step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">环境变了</div>
+      <div class="step-body">技术进步+全球化 → VUCA时代（V动态/U不确定/C复杂/A模糊）；中国还有转型经济特殊性 → 挑战传统理性主义战略管理</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-title">决策也要变</div>
+      <div class="step-body">战略决策 = 战略承诺（价值，20年）+ 战略决策（理性，3-5年）+ 战略行动（速度，即时）；5P理论：计划/模式/定位/愿景/计谋</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-title">思维要变</div>
+      <div class="step-body">从IO（机会→进行业）→ RBV（核心专长→找赛道）→ IBV（制度约束）；教材以RBV为主框架</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 04</div>
+      <div class="step-title">管理过程动态化</div>
+      <div class="step-body">三层战略（公司/业务/职能）+ 三阶段管理（制定→实施→评价控制）+ 三原则（承诺坚定/决策科学/行动迅速）</div>
+    </div>
+  </div>
+  <div class="chain-summary">
+    <strong>🎯 一句话总结：</strong>环境动态复杂（VUCA）→ 需要三类决策整合（承诺+决策+行动）→ 思维模式首选RBV（核心专长优先）→ 全过程动态管理（制定→实施→评控）+ 三原则保驾护航。苏宁电器的案例完整体现了这一主线。
+  </div>
+</div>
+
+<!-- ════════════════════
+     30秒复习
+     ════════════════════ -->
+<div class="quick-review" id="quick">
+  <h3>⚡ 30秒复习模块</h3>
+  <p class="qr-sub">考前翻这里——最核心的8个知识点</p>
+  <div class="qr-grid">
+    <div class="qr-item">
+      <div class="qr-n">核心1</div>
+      <div class="qr-t">VUCA = 4特征</div>
+      <div class="qr-b">动态/不确定/复杂/模糊 ← 技术进步+全球化驱动</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-n">核心2</div>
+      <div class="qr-t">战略决策3类型</div>
+      <div class="qr-b">战略承诺（价值，20年+）→ 战略决策（理性，3-5年）→ 战略行动（速度，即时）</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-n">核心3</div>
+      <div class="qr-t">明茨伯格5P</div>
+      <div class="qr-b">计划/模式/定位/愿景/计谋 ← 记"计模位愿谋"</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-n">核心4</div>
+      <div class="qr-t">企业战略定义</div>
+      <div class="qr-b">动态适应→建立保持发挥竞争优势→长期重大根本性决策→一致性连续性</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-n">核心5</div>
+      <div class="qr-t">IO vs RBV</div>
+      <div class="qr-b">IO：先选行业（外→内）；RBV：先看资源（内→外）；教材用RBV框架</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-n">核心6</div>
+      <div class="qr-t">三层战略</div>
+      <div class="qr-b">公司层（多元化组合）→业务层（单行业竞争）→职能层（支撑）</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-n">核心7</div>
+      <div class="qr-t">战略管理过程</div>
+      <div class="qr-b">制定（意图→使命→目标→战略）→实施（目标分解→计划→职能→管理）→评价控制</div>
+    </div>
+    <div class="qr-item">
+      <div class="qr-n">核心8</div>
+      <div class="qr-t">动态管理三原则</div>
+      <div class="qr-b">承诺坚定（连续性）+ 决策科学（正确性）+ 行动迅速/创新（效率）</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════
+     背诵版总结
+     ════════════════════ -->
+<div class="recite" id="recite">
+  <h3>📣 背诵版总结（复试口述版）</h3>
+  <p class="recite-sub">面试前重点背诵这些，按照"定义→内容→举例→总结"答</p>
+
+  <div class="recite-item">
+    <div class="ri-label">背诵点1：VUCA时代</div>
+    <div class="ri-text">由于<strong>技术进步与经济全球化</strong>加快，企业经营环境进入VUCA时代，具备<strong>动态性、不确定性、复杂性和模糊性</strong>四大特征。中国因处于经济转型期，渐进式改革使上述特征更加突出，给企业战略管理带来更大挑战。</div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-label">背诵点2：三种战略决策类型</div>
+    <div class="ri-text">企业战略决策包括三种类型：①<strong>战略承诺</strong>——基于价值选择的长期（20年以上）根本性决策，需以宗旨陈述传播并接受监督；②<strong>战略决策</strong>——在承诺约束下基于理性分析做出的中期（3-5年）决策；③<strong>战略行动</strong>——基于行动需要、强调速度和创新的短期具体决策。三者相互依托，缺一不可。</div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-label">背诵点3：企业战略定义（原句）</div>
+    <div class="ri-text"><strong>企业战略是企业在动态适应和利用环境变化的过程中，为建立、保持和发挥竞争优势而采取的一系列长期、重大和根本性的决策或者行动，这些决策或者行动之间具有一定的一致性和连续性。</strong></div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-label">背诵点4：明茨伯格5P理论</div>
+    <div class="ri-text">明茨伯格提出企业战略有五种内涵：①<strong>计划</strong>（事前理性行动方案）；②<strong>模式</strong>（历史行为模式）；③<strong>定位</strong>（市场定位）；④<strong>愿景/期望</strong>（价值追求）；⑤<strong>计谋</strong>（竞争博弈手段）。"计划"是基本内涵，其余四种是在动态环境下的必要补充。</div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-label">背诵点5：IO vs RBV（核心区别）</div>
+    <div class="ri-text"><strong>产业组织模式（IO）</strong>认为企业盈利主要取决于行业结构，战略核心是选择并进入高盈利行业（波特五力分析）。<strong>资源基础模式（RBV）</strong>认为企业盈利取决于企业自身异质性资源和能力（核心专长），战略核心是建立发挥和强化竞争优势。本教材以RBV为主框架，同时整合IBV（制度基础观）——特别适用于中国转型经济情境。</div>
+  </div>
+
+  <div class="recite-item">
+    <div class="ri-label">背诵点6：战略管理过程三阶段</div>
+    <div class="ri-text">企业战略管理包括三个阶段：①<strong>战略制定</strong>——基于内外部环境分析，确定战略意图、使命、目标和战略；②<strong>战略实施</strong>——目标分解，构建计划体系，制定职能战略，提供组织/机制/人员/文化等管理支持；③<strong>战略评价与控制</strong>——建立评价系统和控制机制，及时调整并制定应急计划。在动态环境下，最终实现的战略是预设战略与应变创新战略的有机结合。动态管理三原则：<strong>承诺坚定、决策科学、行动迅速和富于创新</strong>。</div>
+  </div>
+</div>
+
+<!-- ════════════════════
+     自我检测
+     ════════════════════ -->
+<div class="quiz" id="quiz">
+  <h2>✏️ 自我检测</h2>
+  <p class="quiz-sub">包含教材思考题、历年真题和预测题</p>
+
+  <div class="q-item">
+    <div class="q-num">题目 01 · 教材思考题</div>
+    <div class="q-text">简述企业经营环境的一般特征（VUCA），以及中国企业经营环境的特殊情境特征。</div>
+    <div class="q-hint"><span>提示：</span>先答VUCA四大特征（各1-2句），再答中国特有情境（转型经济、渐进/放权/实验式改革、三种两难选择）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">题目 02 · 教材思考题</div>
+    <div class="q-text">企业战略的概念内涵、性质和特点是什么？</div>
+    <div class="q-hint"><span>提示：</span>引用教材定义原句，解释五个要点（动态适应、竞争优势、长期重大根本、三类决策并存、一致连续性）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">题目 03 · 教材思考题 + 2022真题</div>
+    <div class="q-text">产业组织模式和资源基础模式的区别与联系是什么？</div>
+    <div class="q-exam">【2022笔试】简述资源基础观（RBV）</div>
+    <div class="q-hint"><span>提示：</span>分析起点/盈利来源/战略逻辑三维度对比；联系在于二者互补，本书以RBV为主；举例：苏宁早期用IO（抓机会），后期要靠RBV（核心专长）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">题目 04 · 2025真题重点</div>
+    <div class="q-text">请简述企业战略管理的过程（分析-制定-实施-控制），并说明在动态复杂环境下该过程有何特点。</div>
+    <div class="q-exam">【2025笔试】战略管理过程</div>
+    <div class="q-hint"><span>提示：</span>三阶段各自的主要内容（制定：四要素；实施：四内容；评控：四机制）+ 动态环境特点（预设+应变 = 实现战略；三原则）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">题目 05 · 面试高频</div>
+    <div class="q-text">请结合一家企业的案例，说明战略承诺、战略决策和战略行动在企业战略中各自发挥的作用。</div>
+    <div class="q-hint"><span>提示：</span>推荐用华为案例：承诺（"聚焦主赛道，技术立司，永不上市"）→ 决策（5G投资，进入企业B端市场）→ 行动（每年开发布会，针对竞争对手的具体应对）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">题目 06 · 预测题</div>
+    <div class="q-text">制度基础观（IBV）是如何影响企业战略选择的？请结合中国企业经营情境说明。</div>
+    <div class="q-hint"><span>提示：</span>IBV三大支柱（规制/规范/认知）→ 制度对组织有影响，组织也能影响制度（双向互动）→ 中国情境：政策红利（电动汽车补贴）影响战略选择；制度不确定导致战略波动</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">题目 07 · 教材思考题</div>
+    <div class="q-text">在动态和复杂的环境下，企业战略不同层次（公司层/业务层/职能层）的主要内容及其相互关系是什么？</div>
+    <div class="q-hint"><span>提示：</span>三层各自的主体、目标、核心内容 → 关系：高层约束低层（公司层战略为业务层提供方向）；低层支撑高层（职能战略支撑公司/业务战略实现）；不是简单叠加，而是有机整合</div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer-bar">
+  第一章 · 战略管理导论 | 《企业战略管理（第2版）》蓝海林等编著 | 中南大学企业管理学硕复试笔记
+</div>
+
+<!-- ═══ Back to Top ═══ -->
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Dark mode
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+}
+if(localStorage.getItem('darkMode')==='true') document.body.classList.add('dark');
+
+// Back to top
+window.addEventListener('scroll',()=>{
+  const btn = document.getElementById('backTop');
+  btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+});
+
+// Search
+// ── Search state ──
+var _srchMatches=[], _srchIdx=-1;
+function _srchEsc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function _srchClear(){
+  document.querySelectorAll('.highlight-search').forEach(function(el){
+    var p=el.parentNode;if(!p)return;
+    p.replaceChild(document.createTextNode(el.textContent),el);p.normalize();
+  });
+  _srchMatches=[];_srchIdx=-1;
+}
+function _srchActivate(){
+  _srchMatches.forEach(function(m,i){m.classList.toggle('hl-cur',i===_srchIdx);});
+  var el=_srchMatches[_srchIdx];
+  if(el){
+    var p=el.parentElement;
+    while(p){if(p.tagName==='DETAILS')p.open=true;p=p.parentElement;}
+    setTimeout(function(){
+      var rect=el.getBoundingClientRect();
+      window.scrollTo({top:Math.max(0,window.scrollY+rect.top-110),behavior:'smooth'});
+    },50);
+  }
+  var cnt=_srchMatches.length;
+  document.getElementById('searchCount').textContent=cnt>0?(_srchIdx+1)+' / '+cnt+' 处':'未找到';
+  var dis=cnt===0;
+  var pv=document.getElementById('srchPrev');if(pv)pv.disabled=dis;
+  var nx=document.getElementById('srchNext');if(nx)nx.disabled=dis;
+}
+function nextResult(){if(!_srchMatches.length)return;_srchIdx=(_srchIdx+1)%_srchMatches.length;_srchActivate();}
+function prevResult(){if(!_srchMatches.length)return;_srchIdx=(_srchIdx-1+_srchMatches.length)%_srchMatches.length;_srchActivate();}
+document.addEventListener('keydown',function(e){if(e.key==='F3'){e.preventDefault();if(e.shiftKey)prevResult();else nextResult();}});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

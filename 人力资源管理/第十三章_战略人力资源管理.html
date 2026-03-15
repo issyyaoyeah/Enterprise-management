@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十三章 · 战略人力资源管理</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1f2e;
+    --bg: #f0f4fa;
+    --bg2: #e1e8f5;
+    --accent:  #1a4fa0;
+    --accent2: #f59e0b;
+    --accent3: #10b981;
+    --accent4: #7c3aed;
+    --accent5: #dc2626;
+    --gold: #d97706;
+    --card-bg: #ffffff;
+    --border: #c3cfe8;
+    --tier1: #1a4fa0;
+    --tier2: #f59e0b;
+    --tier3: #10b981;
+    --shadow: 0 4px 20px rgba(15,31,46,0.10);
+  }
+  .dark-mode {
+    --ink: #e8edf5;
+    --bg: #0d1b2e;
+    --bg2: #1a2a40;
+    --card-bg: #1e3050;
+    --border: #2a4060;
+    --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    padding: 0 0 80px;
+    transition: background .3s, color .3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, #0f1f2e 0%, #0a2563 50%, #1a4fa0 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(60deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 22px);
+  }
+  .hero-day {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .hero h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: #93c5fd; }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,.75);
+    max-width: 700px;
+    line-height: 1.7;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .hero-tag {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,.9);
+  }
+
+  /* ── FIXED TOP NAV ── */
+  .top-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--ink);
+    color: #fff;
+    padding: 14px 40px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .toc-label { font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-right: 6px; }
+  .top-nav a {
+    color: rgba(255,255,255,.75);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 3px 11px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 12px;
+    transition: all .2s;
+  }
+  .top-nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+  .nav-btn {
+    margin-left: auto;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    padding: 5px 14px;
+    cursor: pointer;
+    font-size: 12px;
+    color: rgba(255,255,255,.9);
+    transition: all .2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,.2); }
+  .search-bar {
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    color: #fff;
+    outline: none;
+    width: 180px;
+    transition: width .3s;
+  }
+  .search-bar::placeholder { color: rgba(255,255,255,.4); }
+  .search-bar:focus { width: 240px; background: rgba(255,255,255,.15); }
+
+  /* ── MAIN ── */
+  .main { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+  /* ── SECTION HEADING ── */
+  .section-title {
+    display: flex; align-items: center; gap: 14px;
+    margin: 50px 0 24px;
+  }
+  .section-title .sec-num {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    letter-spacing: 1px;
+  }
+  .section-title h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--ink);
+  }
+  .section-title .page-ref {
+    font-size: 12px; color: #999;
+    font-family: 'JetBrains Mono', monospace;
+    margin-left: auto;
+  }
+
+  /* ── KNOWLEDGE CARD ── */
+  .kcard {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: box-shadow .2s;
+  }
+  .kcard:hover { box-shadow: 0 8px 32px rgba(15,31,46,.15); }
+  .kcard-header {
+    padding: 20px 28px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 16px;
+    background: linear-gradient(to right, #f0f4fb, var(--card-bg));
+  }
+  .dark-mode .kcard-header { background: linear-gradient(to right, #1a2a40, var(--card-bg)); }
+  .kcard-num {
+    background: var(--accent);
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 600;
+    padding: 4px 10px; border-radius: 6px;
+    flex-shrink: 0; margin-top: 3px;
+  }
+  .kcard-title-wrap { flex: 1; }
+  .kcard-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .kcard-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* badges */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; border-radius: 12px;
+    font-size: 11.5px; font-weight: 500;
+  }
+  .badge-tier1 { background: #e8f0fd; color: var(--tier1); border: 1px solid #a8c0f0; }
+  .badge-tier2 { background: #fef3e2; color: var(--tier2); border: 1px solid #fcd98a; }
+  .badge-tier3 { background: #ecfdf5; color: var(--tier3); border: 1px solid #6ee7b7; }
+  .badge-page  { background: #f5f0ff; color: var(--accent4); border: 1px solid #ddd6fe; }
+  .badge-exam  { background: #fff1f2; color: var(--accent5); border: 1px solid #fecaca; }
+  .badge-year  { background: #fffbeb; color: var(--gold);    border: 1px solid #fde68a; }
+
+  .kcard-body { padding: 24px 28px; }
+
+  /* details/summary */
+  details { margin: 14px 0; }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--accent);
+    padding: 10px 16px;
+    background: var(--bg2);
+    border-radius: 8px;
+    list-style: none;
+    display: flex; align-items: center; gap: 8px;
+    transition: background .2s;
+    user-select: none;
+  }
+  .dark-mode summary { background: #1a2a40; }
+  summary:hover { background: var(--border); }
+  summary::before { content: '▶'; font-size: 10px; transition: transform .2s; }
+  details[open] summary::before { transform: rotate(90deg); }
+  details > *:not(summary) { padding: 16px 20px; }
+
+  /* ── TABLES ── */
+  .ctable { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 16px 0; }
+  .ctable th {
+    background: var(--accent); color: #fff;
+    padding: 10px 14px; text-align: left;
+    font-weight: 600;
+  }
+  .ctable td { padding: 9px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ctable tr:hover td { background: var(--bg2); }
+  .ctable tr:last-child td { border-bottom: none; }
+
+  /* ── HIGHLIGHT ── */
+  .hl { background: #fef9c3; color: #92400e; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .dark-mode .hl { background: #451a03; color: #fcd34d; }
+  .hl-blue { background: #dbeafe; color: #1e40af; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-green { background: #d1fae5; color: #065f46; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-red { background: #fee2e2; color: #991b1b; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+  .hl-purple { background: #ede9fe; color: #5b21b6; padding: 1px 4px; border-radius: 3px; font-weight: 600; }
+
+  /* ── FLOW / LOGIC DIAGRAM ── */
+  .flow {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: 10px; margin: 16px 0; padding: 20px;
+    background: var(--bg2); border-radius: 12px;
+  }
+  .dark-mode .flow { background: #1a2a40; }
+  .flow-box {
+    background: var(--card-bg);
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-size: 13.5px; font-weight: 600;
+    text-align: center; min-width: 100px;
+  }
+  .flow-arrow { color: var(--accent2); font-size: 20px; font-weight: bold; }
+
+  /* ── MIND MAP / TREE ── */
+  .mindmap { padding: 20px; background: var(--bg2); border-radius: 12px; margin: 16px 0; }
+  .dark-mode .mindmap { background: #1a2a40; }
+  .mm-root {
+    background: var(--accent); color: #fff;
+    padding: 10px 20px; border-radius: 8px;
+    font-weight: 700; font-size: 15px;
+    display: inline-block; margin-bottom: 20px;
+  }
+  .mm-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+  .mm-branch {
+    background: var(--card-bg);
+    border: 2px solid var(--accent);
+    border-radius: 8px;
+    padding: 8px 16px; font-size: 13px; font-weight: 600;
+    position: relative;
+  }
+  .mm-leaf {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 12px; font-size: 12px;
+  }
+  .dark-mode .mm-leaf { background: #0d1b2e; }
+
+  /* ── QUOTE / ORIGINAL TEXT ── */
+  .quote-box {
+    border-left: 4px solid var(--accent2);
+    background: linear-gradient(to right, #fffbeb, var(--card-bg));
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+    font-style: italic;
+    font-size: 14px;
+    color: #6b5c35;
+  }
+  .dark-mode .quote-box { background: linear-gradient(to right, #451a03, var(--card-bg)); color: #fcd34d; }
+
+  /* ── EXAM TAG ── */
+  .exam-tag {
+    display: inline-block;
+    background: #fee2e2; color: #991b1b;
+    border: 1px solid #fca5a5;
+    border-radius: 6px; padding: 2px 8px;
+    font-size: 11px; font-weight: 700;
+    margin: 2px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── TEMPLATE BOX ── */
+  .template-box {
+    background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+    border: 1px solid #bfdbfe;
+    border-radius: 12px; padding: 20px 24px; margin: 14px 0;
+  }
+  .dark-mode .template-box { background: linear-gradient(135deg, #1e3a5f, #1a3a28); border-color: #2a4060; }
+  .template-box h4 { color: var(--accent); font-size: 14px; margin-bottom: 10px; }
+
+  /* ── MEMORIZE BOX ── */
+  .memo-box {
+    background: linear-gradient(135deg, #fef9c3, #fff7ed);
+    border: 1px solid #fde68a;
+    border-radius: 10px; padding: 14px 20px; margin: 12px 0;
+    font-size: 14px;
+  }
+  .dark-mode .memo-box { background: linear-gradient(135deg, #451a03, #2d1500); }
+  .memo-box .memo-label { font-weight: 700; color: var(--gold); margin-bottom: 6px; }
+
+  /* ── KID BOX ── */
+  .kid-box {
+    background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+    border: 1px solid #6ee7b7;
+    border-radius: 10px; padding: 14px 20px; margin: 12px 0;
+  }
+  .dark-mode .kid-box { background: linear-gradient(135deg, #022c22, #052e16); }
+  .kid-box .kid-label { font-weight: 700; color: #065f46; margin-bottom: 6px; }
+  .dark-mode .kid-box .kid-label { color: #6ee7b7; }
+
+  /* ── CASE BOX ── */
+  .case-box {
+    background: linear-gradient(to right, #0f1f2e, #0a2563);
+    border-radius: 14px; padding: 24px 28px; margin: 14px 0; color: #fff;
+    border-left: 5px solid var(--accent2);
+  }
+  .case-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--accent2); margin-bottom: 8px; text-transform: uppercase; }
+  .case-box p { font-size: 13.5px; color: rgba(255,255,255,.82); line-height: 1.8; }
+
+  /* ── 30-SEC REVIEW ── */
+  .review-30 {
+    background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%);
+    color: #fff; border-radius: 16px; padding: 30px;
+    margin: 30px 0;
+  }
+  .review-30 h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 16px; }
+  .review-item { display: flex; align-items: flex-start; gap: 10px; margin: 8px 0; font-size: 14px; }
+  .review-num { background: rgba(255,255,255,.25); border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+
+  /* ── RECITE BOX ── */
+  .recite-box {
+    background: var(--ink); color: #fff;
+    border-radius: 16px; padding: 28px 32px; margin: 20px 0;
+  }
+  .recite-box h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; color: #93c5fd; margin-bottom: 20px; }
+  .recite-item { margin: 12px 0; font-size: 14px; line-height: 1.9; color: rgba(255,255,255,.88); }
+  .recite-item strong { color: #fcd34d; }
+
+  /* ── SELF-TEST ── */
+  .test-box { background: var(--card-bg); border: 2px solid var(--accent); border-radius: 14px; padding: 24px; margin: 20px 0; }
+  .test-q { margin: 14px 0; padding: 14px; background: var(--bg2); border-radius: 8px; font-size: 14px; }
+  .dark-mode .test-q { background: #1a2a40; }
+  .test-q strong { color: var(--accent); }
+
+  /* ── SEARCH HIGHLIGHT ── */
+  .search-match { background: #fef08a; color: #713f12; border-radius: 2px; }
+
+  /* ── BACK TO TOP ── */
+  #back-top {
+    position: fixed; bottom: 30px; right: 30px;
+    background: var(--accent); color: #fff;
+    width: 46px; height: 46px; border-radius: 50%;
+    border: none; cursor: pointer;
+    font-size: 20px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(26,79,160,.4);
+    transition: transform .2s, opacity .2s;
+    opacity: 0; pointer-events: none;
+  }
+  #back-top.show { opacity: 1; pointer-events: all; }
+  #back-top:hover { transform: translateY(-3px); }
+
+  /* ── GRID 2 ── */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:760px){ .grid2 { grid-template-columns: 1fr; } .hero { padding: 36px 20px 30px; } .main { padding: 0 16px; } .top-nav { padding: 12px 16px; } }
+
+  /* ── VRIN CARD ── */
+  .vrin-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin: 16px 0; }
+  @media(max-width:760px){ .vrin-grid { grid-template-columns: 1fr 1fr; } }
+  .vrin-card {
+    background: var(--card-bg); border-radius: 12px; padding: 18px;
+    border-top: 4px solid var(--accent); text-align: center;
+    box-shadow: var(--shadow);
+  }
+  .vrin-card:nth-child(1){ border-color: #1a4fa0; }
+  .vrin-card:nth-child(2){ border-color: #10b981; }
+  .vrin-card:nth-child(3){ border-color: #f59e0b; }
+  .vrin-card:nth-child(4){ border-color: #dc2626; }
+  .vrin-letter { font-size: 32px; font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+  .vrin-card:nth-child(1) .vrin-letter { color: #1a4fa0; }
+  .vrin-card:nth-child(2) .vrin-letter { color: #10b981; }
+  .vrin-card:nth-child(3) .vrin-letter { color: #f59e0b; }
+  .vrin-card:nth-child(4) .vrin-letter { color: #dc2626; }
+
+  /* mode-evolution */
+  .mode-timeline {
+    display: flex; flex-direction: column; gap: 0; margin: 16px 0;
+    border-left: 3px solid var(--accent); padding-left: 24px;
+  }
+  .mode-item { position: relative; padding: 16px 0; }
+  .mode-item::before {
+    content: '';
+    position: absolute; left: -30px; top: 24px;
+    width: 14px; height: 14px;
+    background: var(--accent); border-radius: 50%;
+    border: 3px solid var(--card-bg);
+  }
+  .mode-title { font-weight: 700; color: var(--accent); font-size: 15px; margin-bottom: 6px; }
+  .mode-sub { font-size: 13px; color: #666; }
+  .dark-mode .mode-sub { color: #8fa3bb; }
+
+  /* chapter relation diagram */
+  .relation-diagram {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+    margin: 16px 0; padding: 24px; background: var(--bg2); border-radius: 16px;
+  }
+  .dark-mode .relation-diagram { background: #1a2a40; }
+  .rel-box {
+    background: var(--card-bg); border-radius: 10px; padding: 14px;
+    border: 1px solid var(--border); text-align: center; font-size: 13px;
+  }
+  .rel-box.center { background: var(--accent); color: #fff; border-color: var(--accent); grid-column: 2; }
+  .rel-arrow { text-align: center; font-size: 20px; color: var(--accent2); }
+
+  p { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 10px; }
+  li { margin-bottom: 5px; }
+  h4 { font-size: 14px; font-weight: 700; color: var(--accent); margin: 14px 0 8px; }
+  h5 { font-size: 13px; font-weight: 700; color: var(--ink); margin: 10px 0 6px; }
+</style>
+
+
+<script>window._PAGE_TEXT='第十三章 · 战略人力资源管理 \n \n \n \n \n \n \n 中南大学企业管理学硕复试 · 人力资源管理（颜爱民 第3版） \n 第十三章 战略人力资源管理 \n 将人力资源管理提升到战略高度，探讨SHRM理论基础、人力资源战略选择与演进模式，以及外包、并购、能力建设三大实践应用。 \n \n P423–P450 \n ★★★★★ 高频考点 \n 2016笔试·企业战略与HR战略匹配 \n VRIN模型 \n 五种战略模式演进 \n HR外包 / 并购整合 \n \n \n \n \n 目录 \n 13.1 概述 \n 13.2.1 环境基础 \n 13.2.2 资源基础 \n 13.3 人力资源战略 \n 13.3.2 模式演进 \n 13.4 实践应用 \n 对比表 \n 历年真题 \n 30秒复习 \n 背诵版 \n 自我检测 \n \n 🌙 夜间模式 \n \n \n \n \n \n STRUCT \n 本章逻辑结构图 \n \n \n \n \n 战略人力资源管理（SHRM） \n \n \n 13.1 SHRM概述 理论发展·含义·特征 \n → \n 13.2 理论基础 环境基础 / 资源基础 \n → \n 13.3 HR战略 选择思路·模式演进 \n → \n 13.4 实践应用 外包·并购·能力建设 \n \n \n 与其他章节的逻辑关系 \n \n \n 第1-2章 \n HRM基础理论 \n ↓ 提供理论背景 \n \n \n 第13章 战略人力资源管理 \n SHRM核心 \n \n \n 第14章 \n 国际人力资源管理 \n ← SHRM全球化延伸 \n \n \n 第3章 \n 人力资源规划 \n ↑ HR战略具体落实 \n \n \n 战略管理 \n 波特五力/SWOT 竞争优势理论 \n \n \n 第5-12章 \n 招聘·培训·绩效·薪酬 \n ↑ SHRM职能实践 \n \n \n \n \n \n MAP \n 章节思维导图 \n \n \n 第13章 战略人力资源管理 \n \n \n 📖 13.1 概述\n \n 理论发展历程 \n SHRM含义（5共识） \n SHRM特征（4点） \n \n \n \n 🌍 13.2 理论基础\n \n 环境基础→纵横匹配 \n 资源基础→VRIN \n 整合模型 \n \n \n \n 📋 13.3 HR战略\n \n 三种选择思路 \n 竞争战略匹配 \n HR类型×战略 \n 五种模式演进 \n \n \n \n 🔧 13.4 应用\n \n HR外包（4类型） \n 企业并购整合 \n HR能力建设 \n \n \n \n \n \n \n 13.1 \n 战略人力资源管理概述 \n P423–P427 \n \n \n \n \n K-01 \n \n SHRM理论的产生与发展 \n \n 重要度 ★★★ \n 考察概率 ★★★ \n P423–P425 \n 简答 / 论述 \n \n \n \n \n \n 📖 专有名词解释 · 理论演进脉络 \n \n \n 时间 学者/著作 核心贡献 \n \n 1982年 Tichy / Fombrum / Devanna 最早提出SHRM理论，将HRM与企业战略相联系 \n 1984年 Beer等《管理人力资本》 HRM综合组织行为学+劳工关系+人事行政，强调HRM系统整合 \n 20世纪90年代 Wernerfelt / Barney 资源基础观（RBV） 引入HRM：人力资源→持续竞争优势 \n 1990年 Prahalad / Hamel 核心能力理论 ：集体学识，协调多种技能，难以模仿 \n 1997年 Teece等 动态能力理论 ：随环境变化获取、整合、利用资源的能力 \n \n \n \n \n \n 🧒 小学生版解释 \n 以前老板觉得员工只是打工的，叫来就来叫走就走。后来聪明的管理学家发现， 真正厉害的公司，都是因为有了厉害的人才变厉害的！ 于是大家开始研究怎么把"管人"这件事和"公司大战略"结合起来——这就是战略人力资源管理。\n \n \n 🎯 助记口诀 \n "1982年提战略，1984年搞整合，90年代资源观，能力理论压轴场"\n \n \n \n \n \n \n K-02 \n \n 战略人力资源管理（SHRM）的含义与特征 \n \n 重要度 ★★★★★ \n 考察概率 ★★★★★ \n P425–P427 \n 名词解释 / 简答 \n 必考 \n \n \n \n \n \n 📖 SHRM五大含义共识 \n \n \n HRM方法与企业战略理论结合 ，强调战略性与整体性 \n 强调 HR在获取竞争优势 中的重要地位 \n 强调HRM与企业 高绩效目标的直接关系 \n 强调通过HR战略与规划 有效整合内外部HR \n 强调通过 组织学习 提高HR对环境的适应性 \n \n \n \n \n 🔑 SHRM四大特征 \n \n \n 特征 传统HRM SHRM \n \n 人的重要性 人是成本/要素 人是战略性资源 \n 参与决策 执行决策 直接参与组织决策制定 \n 直线功能 人事行政为主 直线管理功能强化 \n 角色转变 被动响应型 积极制定者与执行人 \n \n \n \n \n \n 🎤 复试回答模板 \n 定义 ：SHRM是将人力资源管理与企业战略相结合的一种管理思想，通过与组织战略目标一致的人力资源管理来获得竞争优势，且这种竞争优势难以被模仿、相对持久。 \n 核心内容 ：强调5个共识 → 战略结合、竞争优势、高绩效、整合HR、组织学习 \n 举例 ：华为"以奋斗者为本"的HR战略直接支撑其技术创新战略 \n 总结 ：SHRM的本质是将"人"从成本变为战略资源，从执行者变为战略参与者。\n \n \n 🔍 复试延伸问题 \n \n SHRM与传统HRM的本质区别是什么？ \n 为什么说HR是企业持续竞争优势的来源？ \n SHRM在实践中如何落地？ \n \n \n \n 📌 教材原句 ：战略人力资源管理是将人力资源管理与企业战略相结合的一种管理思想，在企业中通过与组织战略目标一致的人力资源管理来获得竞争优势，且这种竞争优势是不易被竞争对手模仿的、相对持久的。\n \n \n \n \n \n 13.2.1 \n 以环境为基础的战略人力资源管理 \n P428–P432 \n \n \n \n \n K-03 \n \n 企业战略基本概念体系 \n \n 重要度 ★★★★ \n 考察概率 ★★★ \n P428–P430 \n 名词解释 \n \n \n \n \n \n 概念 英文 含义 \n \n 愿景 Vision 企业对未来发展方向的构想，核心是"我们想成为什么" \n 使命 Mission 企业存在的根本目的，核心是"我们为谁服务，做什么" \n 目标 Objective 具体、可量化的战略实现指标 \n 竞争优势（外生） — 以环境为基础，波特五力模型、SWOT \n 竞争优势（内生） — 以资源为基础，VRIN四条件 \n \n \n \n 📐 纵向匹配 vs 横向匹配 \n \n \n HR战略 \n ⟺ \n 企业战略 \n ⟺ \n 组织结构/文化 \n ⟺ \n HR职能活动 \n \n 纵向匹配（垂直一致） ：HR战略↔企业战略↔组织结构文化↔HR各职能，形成上下贯通的战略链 \n 横向匹配（水平一致） ：HR各职能之间（招聘、培训、绩效、薪酬）相互协调，避免"各说各话" \n \n \n \n 🧒 小学生版解释 \n 就像踢足球， 纵向匹配 是说教练（战略）、队长（HR战略）、球员（HR职能）要上下一心； 横向匹配 是说前锋、中场、后卫要相互配合，不能各打各的。\n \n \n \n \n \n 13.2.2 \n 以资源为基础的战略人力资源管理（VRIN） \n P432–P436 \n \n \n \n K-04 \n \n 资源基础论 & VRIN四条件 \n \n 重要度 ★★★★★ \n 考察概率 ★★★★★ \n P432–P435 \n 名词解释 / 简答 / 论述 \n 高频必考 \n 【2019考研】 \n \n \n \n \n \n 📖 资源基础论核心观点 \n \n 资源基础论（RBV，Penrose 1959 → Wernerfelt 1984 → Barney 1991）认为： 企业是资源的集合体 ，资源的异质性是竞争优势的根本来源。 \n 人力资源满足资源基础论对战略性资源的要求，因此可以成为企业 持续竞争优势 的来源。 \n \n \n \n \n V \n 价值性 \n Value 降低成本或增加利润，帮助企业获取竞争优势 \n \n \n R \n 稀缺性 \n Rarity 非所有竞争者普遍拥有；高素质人才服从正态分布 \n \n \n I \n 难以模仿 \n Inimitability 路径依赖性 + 因果关系模糊性（黑箱效应） \n \n \n N \n 难以替代 \n Non-substitutability 人力资源价值可转移到新技术，不被技术所替代 \n \n \n \n 💡 微软案例：人力资源价值量化 \n \n 📊 微软2001年案例 \n 公司市值 3,560亿美元 \n − 固定资本 300亿美元 \n − 品牌资本 300亿美元 \n = 人力资源价值 = 2,960亿美元 \n 这说明对于知识型企业而言，人力资源是最重要的战略性资产，其价值远超有形资产。 \n \n \n \n 🎤 复试回答模板：为什么人力资源满足VRIN？ \n 价值性 ：优秀员工能直接为客户创造价值、降低成本、推动创新。 \n 稀缺性 ：高素质人才的能力服从正态分布，顶尖人才永远稀缺（报酬递增资源）。 \n 难以模仿 ：①路径依赖——企业人才成长与企业历史路径绑定；②因果模糊——人力资源管理对绩效的影响是"黑箱"，竞争对手无法完全复制。 \n 难以替代 ：技术创新不能真正替代人，人的学习能力使其价值可迁移到新领域。\n \n \n 🎯 助记口诀 \n VRIN = 有价值·很稀缺·难模仿·难替代 \n "微软市值减资本，人力资本占大头"\n \n \n 📌 教材原句 ：路径依赖性是指企业人力资源的成长和积累是和企业成长过程或路径相关的，这种过程对于每一个企业来说都是独特的，一个企业不太可能重复其他企业的这个过程。\n \n \n \n \n \n \n K-05 \n \n 战略人力资源管理整合分析模型 \n \n 重要度 ★★★★ \n 考察概率 ★★★★ \n P433–P434 \n 论述 / 对比 \n \n \n \n \n \n 比较维度 环境基础观 资源基础观 \n \n 对HR的假设 同质资源（可随时获取） 异质战略性资源 \n HR战略与企业战略关系 HR战略是企业战略的 支撑子系统 （单向） 两者相互影响（ 双向 ） \n 竞争优势来源 外部环境定位（波特） 内部资源禀赋（Barney） \n HR的战略地位 支持与执行 形成与驱动战略 \n \n \n \n 整合观点 ：现实中，每个企业都需要 同时根据外部环境与内部资源 做出战略选择，两者相互补充，不可偏废。\n \n \n \n \n \n 13.3 \n 人力资源战略 \n P434–P441 \n \n \n \n \n K-06 \n \n 人力资源战略的概念与地位 \n \n 重要度 ★★★★★ \n 考察概率 ★★★★ \n P434–P435 \n 名词解释 / 简答 \n \n \n \n \n \n 📌 教材原句（必背） ：人力资源战略是指为成功实施企业的整体经营战略，在战略人力资源管理思想与方法指导下，以保证企业当前及未来人力资源配置的均衡、有效为标准，以维持和提高企业竞争优势为目的而制定的企业人力资源管理的战略性方针、原则和计划。\n \n \n 🏛️ 人力资源战略的三重地位 \n \n \n ①战略性标志 有无HR战略 是否具备战略性 \n + \n ②职能战略核心 HR战略支撑 技术/生产/营销 \n + \n ③既是结果也是手段 SHRM思想产物 也是实现目标的途径 \n \n \n \n \n \n \n \n \n K-07 \n \n 人力资源战略选择的三种思路 \n \n 重要度 ★★★★ \n 考察概率 ★★★★ \n P435–P436 \n 名词解释 / 简答 / 对比 \n \n \n \n \n \n 方法 英文 核心思想 优点 局限 \n \n \n 最佳实践法 \n Best Practice \n 存在一套普遍最优的HR管理实践（16种），采用即获高绩效 \n 简单易用，有参照标准 \n 机械匹配，忽视企业差异 \n \n \n 最佳适配法 \n Best Fit \n 不存在固定最优，HR战略必须适配企业竞争战略 \n 强调情境匹配，灵活性高 \n 环境变化快时难以跟上 \n \n \n 最佳结构法 \n Best Configuration \n HR实践不是简单相加，要形成相互支撑的整体结构（内部一致性） \n 强调系统协同效应 \n 如何组合仍需探索 \n \n \n \n \n 🧒 小学生版解释 \n 最佳实践法 ：就像"抄作业"，用别人已经证明好用的方法。 \n 最佳适配法 ：就像"量体裁衣"，适合自己的才是最好的。 \n 最佳结构法 ：就像"搭积木"，单块积木不算，要拼成一个整体才有用。\n \n \n 🎯 助记 \n 实践-适配-结构 = 抄作业-量体裁衣-搭积木 \n \n \n \n \n \n \n K-08 \n \n 企业竞争战略与人力资源战略的匹配 \n \n 重要度 ★★★★★ \n 考察概率 ★★★★★ \n P436–P438 \n 论述 / 案例 \n 【2016笔试】 \n \n \n \n \n \n 竞争战略 特点 HR战略重点 \n \n \n 低成本战略 \n 技术稳定，市场成熟，重视短期目标与员工稳定 \n \n • 技能高度专业化 \n • 外部招募+内部培训 \n • 内部晋升制度 \n • 业绩为中心的绩效系统 \n • 内部一致性薪酬体系\n \n \n \n 差异化战略 \n 处于成长和创新过程中，靠独特产品开拓市场 \n \n • 灵活的工作说明书 \n • 重视外部招聘 \n • 宽广职业发展通道 \n • 强化协作能力培训 \n • 结果导向+团队绩效指标 \n • 关注外部公平性薪酬\n \n \n \n 集中化战略 \n 聚焦特定市场/客户群 \n 结合前两种战略特点灵活配置 \n \n \n \n \n 🎤 复试回答模板（2016真题） \n 第一步：阐明波特三大竞争战略内涵 （低成本、差异化、集中化） \n 第二步：说明匹配原则 ——HR战略必须配合企业战略，服务于战略目标实现 \n 第三步：分别说明低成本→HR战略、差异化→HR战略的具体特点 （重点：招聘、培训、绩效、薪酬四个模块的差异） \n 第四步：举例 ——富士康（低成本）vs 华为/苹果（差异化）的HR战略对比 \n \n \n 企业案例 \n 富士康（低成本战略） ：大规模标准化生产，HR战略强调专业化分工、稳定用工、计件薪酬、严格绩效考核。 \n 华为（差异化战略） ：持续技术创新，HR战略强调"以奋斗者为本"、高薪吸引顶尖人才、内部创业机制、创新文化培育。 \n \n \n \n \n \n \n K-09 \n \n 企业人力资源四种类型与战略匹配 \n \n 重要度 ★★★★ \n 考察概率 ★★★★ \n P437–P439 \n 简答 / 案例 \n \n \n \n \n 根据 价值性 （高/低）× 专用性 （高/低）两个维度，将HR分为四类： \n \n 类型 价值性 专用性 代表人员 HR战略 \n \n \n 战略型 \n 高 高 \n 核心技术研发、关键市场开发人员 \n 长期聘用、内部培养与提升、参与管理 \n \n \n 通用型 \n 高 低 \n 财会、法律、HR、IT等职能人员 \n 外部招聘为主，可建立长期雇佣关系 \n \n \n 独特性 \n 低 高 \n 基础研究人员、程序员（不直接创造客户价值） \n 考虑价值/成本平衡，可考虑外包/战略联盟 \n \n \n 辅助性 \n 低 低 \n 普通文秘、勤杂人员 \n 临时雇用、外包、员工租赁，降低成本 \n \n \n \n \n 🧒 小学生版解释 \n 就像一支足球队： 战略型 =梅西（花多少钱都要留）； 通用型 =可以从市场买到的优秀球员； 独特性 =专打某种特殊战术的球员； 辅助性 =球童（找人顶替很容易）。\n \n \n \n \n \n 13.3.2 \n 人力资源战略模式的演进 \n P439–P442 \n \n \n \n K-10 \n \n 五种HR战略模式演进（分离→单向→双向→一体化→驱动） \n \n 重要度 ★★★★★ \n 考察概率 ★★★★★ \n P439–P441 \n 论述 / 比较 / 案例 \n 必考重点 \n \n \n \n \n \n \n ① 分离模式（Separation Model） \n 战略与人员管理相对分离；人员=随时可获取的生产要素；HR部门只做行政（考勤、档案、合同）；适用于早期中小企业 \n HR角色：例行管理者 \n \n \n ② 单向适配模式（One-way Fit Model） \n HR部门配合战略实施；员工从"成本"变为"资源"；HR职能整合（选人育人用人留人）；HR部门仍只是战略执行角色 \n HR角色：战略实施者 \n \n \n ③ 双向适配模式（Two-way Fit Model） \n HR部门开始影响企业战略的制定；战略制定需要考虑人的因素；HR部门=企业商业伙伴；也叫"对话模式" \n HR角色：商业伙伴 \n \n \n ④ 一体化模式（Holistic Model） \n 企业战略与HR战略融为一体；联系纽带=公司共同愿景；多方位、动态、持续的一体化联系；HR部门既独立发挥作用，又相互协调 \n HR角色：战略参与者 \n \n \n ⑤ 驱动模式（HR-driven Model） \n 人力资源成为企业最关键的战略资源；HR部门既是战略实施者，更是战略驱动者；强调HR的灵活性与战略柔性；是SHRM发展的方向 \n HR角色：战略驱动者 \n \n \n \n 📊 五种模式对比表 \n \n \n 模式 战略与HR关系 HR部门角色 对HR的看法 适用情境 \n \n 分离 完全分离 行政管理者 成本费用 初创/中小企业 \n 单向适配 HR服从战略 战略实施者 资源/工具 竞争加剧期 \n 双向适配 互相影响 商业伙伴 战略性资源 成长型企业 \n 一体化 融为一体 战略参与者 竞争优势核心 成熟大型企业 \n 驱动 HR驱动战略 战略驱动者 最关键战略资源 动态竞争环境 \n \n \n \n \n \n 🎤 复试回答模板 \n SHRM模式演进反映了HR从"成本中心"向"价值中心"的转变，也体现了企业对人力资源战略地位认识的深化。 \n 核心逻辑是： 分离（人是成本）→单向（人是资源）→双向（人影响战略）→一体化（人战略融合）→驱动（人驱动战略） \n \n \n HL公司案例 \n 民营企业HL公司从初创时的 分离模式 （人事部门做行政），随企业发展尝试向 单向适配 过渡（更名人力资源部），但受现有HR素质限制，实际仅能充当战略执行角色。企业目标是向 双向适配 （商业伙伴）迈进，最终实现 驱动模式 。 \n \n \n 🎯 助记口诀 \n "分离→单向→双向→一体→驱动" \n "打工仔→执行者→合伙人→融合者→领路人"\n \n \n \n \n \n 13.4 \n 战略人力资源管理思想的应用 \n P442–P450 \n \n \n \n \n K-11 \n \n 人力资源管理外包（HR Outsourcing） \n \n 重要度 ★★★★★ \n 考察概率 ★★★★ \n P442–P445 \n 名词解释 / 简答 / 案例 \n \n \n \n \n 外包 ：企业根据总体战略需要，整合外部高价值专业化资源，降低成本、提高效率、增强环境应变能力的管理模式。 \n 理论基础： 资源基础论 ——企业集中关注核心资源，外包非关键职能。 \n 外包或内部化的两个判断维度： 价值性 （高→内部化）+ 稀缺性/专用性 （高→内部化） \n \n 📊 HR外包的四种类型 \n \n \n 类型 价值性 专用性 代表活动 决策 \n \n \n 传统型 \n 高 低 \n 人事代理、中层以下招聘 \n 外包 （日益标准化，外部可获取） \n \n \n 外围型 \n 低 低 \n 日常培训、员工活动 \n 外包 （外部服务已标准化） \n \n \n 独特型 \n 低 高 \n 新员工入职培训、企业文化建设 \n 内部化 （需深入了解公司内部） \n \n \n 核心型 \n 高 高 \n 战略规划、信息系统、核心员工管理 \n 内部化 （涉及企业机密与竞争力） \n \n \n \n \n \n \n X公司案例（汽车租赁） \n 2000人规模，HR部门仅4人。 已外包 ：人事代理、驾驶员招聘、日常培训（传统型+外围型）。 未外包 ：HR信息系统、绩效管理、HR战略规划、薪酬、新员工培训（核心型+独特型）。 \n \n \n 🧒 小学生版解释 \n 就像开餐厅：有的事自己做（招牌菜的秘方绝不外包），有的事找外面做（清洁卫生、送餐外卖）。 核心的自己留着，普通的交给专业公司做 ，这样既省钱效率又高。\n \n \n \n \n \n \n K-12 \n \n 企业并购（M&A）与战略人力资源管理 \n \n 重要度 ★★★★ \n 考察概率 ★★★★ \n P444–P446 \n 论述 / 案例 \n 【2019面试】 \n \n \n \n \n 并购 （Mergers & Acquisitions）：组织为获取竞争优势所采取的变革模式，可直接获得竞争所需战略性资源。 \n 并购成败的关键： 人力资源整合 ——并购中"人"往往是失败的主要原因。 \n \n 📋 并购三阶段的HR管理 \n \n \n 阶段 HR工作重点 \n \n \n 并购前规划筹备 \n 评估被并购方HR适应性；找出关键人才并提前沟通；预测员工可能的反应；尽早做HR详细调查 \n \n \n 并购谈判阶段 \n 管理文化冲突准备；制定组织架构方案；选拔整合经理；制订人员选拔与裁减计划 \n \n \n 并购后整合阶段 \n 关注员工情绪变化；整合企业文化价值；人事选拔调整（体现公平竞争）；选好时机公布HR政策 \n \n \n \n \n \n \n 📋 联想并购案例 \n 2004年联想收购某知名PC厂商业务，实现国际化战略目标。 并购目标之一即为获取国际化经营人才 。整合原则："坦诚、尊重和妥协"。关键措施：①宣布目标公司员工薪酬三年不变；②制定详细人力资源发展计划；③留用目标公司PC高层管理人员。面临挑战：中美文化冲突（个人主义vs执行文化）、员工归属感不强。 \n \n \n \n \n \n \n K-13 \n \n 人力资源能力与战略人力资源管理 \n \n 重要度 ★★★★ \n 考察概率 ★★★ \n P446–P447 \n 名词解释 / 简答 \n \n \n \n \n 人力资源能力（HR Competence） ：驱动员工产生高工作绩效的各种个性特征的集合，是判断能否胜任工作和取得绩效的起点，也是企业竞争力的基础和竞争优势的源泉。 \n \n 能力类型 含义 特点 \n \n \n 任职能力 \n 担任某一角色必须具备的知识、技能、经验、素质与行为的总和 \n 任职能力提升→适岗率提高→组织简化→成本降低 \n \n \n 职业化行为能力 \n 与本行业特定行为规范相吻合的职业素质和技能 \n 三层含义：①职业素质（动机/个性）②专业知识技能 ③行业行为规范 \n \n \n \n \n 📌 SHRM在HR能力方面的两个关注重点：① 任职能力与职业化行为能力均衡发展 ，适应战略要求；② 提高HR能力的VRIN属性 （价值、稀缺、难模仿、难替代）。\n \n \n \n \n \n COMP \n 易混概念对比总结 \n \n \n 对比1：传统HRM vs SHRM \n \n 维度 传统HRM SHRM \n \n 对人的认知 成本/工具 战略性资源 \n 时间导向 短期 长期 \n 角色 被动响应 积极主导 \n 与战略关系 服从战略 驱动战略 \n 绩效关注 个体效率 组织竞争优势 \n \n \n 对比2：环境基础 vs 资源基础 \n \n 维度 环境基础观 资源基础观 \n \n 竞争优势来源 外部定位（波特） 内部资源（VRIN） \n HR假设 同质资源 异质战略性资源 \n HR战略地位 支持子系统 双向影响战略 \n 关注重点 匹配·适配 独特·难模仿 \n \n \n 对比3：最佳实践 vs 最佳适配 vs 最佳结构 \n \n 维度 最佳实践法 最佳适配法 最佳结构法 \n \n 核心假设 存在普遍最优做法 适合环境的才是最优 整体系统优于单项之和 \n 关键词 普遍性、相加性 情境性、适配性 整体性、内部一致性 \n 优势 简单有参照 灵活有针对性 强调协同效应 \n 局限 机械套用，忽视差异 难跟上快速变化 如何组合仍待探索 \n \n \n \n \n \n EXAM \n 历年真题汇总 \n \n \n \n 年份/场次 题目 题型 对应知识点 \n \n \n 【2016笔试】 \n 论述企业战略与人力资源战略的匹配关系 \n 论述题 \n K-08 竞争战略×HR战略匹配 \n \n \n 【2016案例】 \n 某制造企业多元化扩张失败，分析战略失误与人力配置问题 \n 案例分析 \n K-08 / K-09 \n \n \n 【2019面试】 \n 并购中的人力整合 \n 面试题 \n K-12 企业并购HR整合 \n \n \n 【历年考研】 \n 简述资源基础观（RBV） \n 简答 \n K-04 VRIN四条件 \n \n \n 【预测2025】 \n 试分析五种HR战略模式的演进逻辑及其现实意义 \n 论述 \n K-10 五种模式演进 \n \n \n 【预测2025】 \n 什么是人力资源管理外包？如何决策外包与内部化？ \n 简答/案例 \n K-11 HR外包 \n \n \n 【预测2025】 \n SHRM与传统HRM的本质区别是什么？ \n 名词解释/简答 \n K-02 SHRM含义特征 \n \n \n \n \n \n \n CHAIN \n 本章知识终极串联 \n \n \n \n \n 竞争激烈，如何持续赢？ \n \n ↓ \n \n 外部视角： 波特竞争战略 （低成本/差异化） \n + \n 内部视角： 资源基础论 （VRIN人力资源） \n → \n SHRM整合模型 \n \n ↓ \n \n 制定人力资源战略 （三种思路） \n → \n 匹配竞争战略 （低成本/差异化） \n → \n 针对HR四种类型 （战略/通用/独特/辅助） \n \n ↓ \n \n 分离模式 \n → \n 单向适配 \n → \n 双向适配 \n → \n 一体化 \n → \n 驱动模式 \n \n ↓ \n \n 应用① HR外包（4类） \n + \n 应用② 企业并购整合 \n + \n 应用③ HR能力建设 \n \n \n \n \n \n ⚡ 30秒超速复习模块 \n 1 SHRM = HRM + 企业战略，HR从成本→战略资源，从执行→驱动 \n 2 理论基础：环境基础（波特/匹配）+ 资源基础（VRIN/竞争优势） \n 3 VRIN = 价值(V) + 稀缺(R) + 难模仿(I) + 难替代(N)，人力资源满足四条件 \n 4 HR战略选择：最佳实践（抄）/ 最佳适配（量体裁衣）/ 最佳结构（搭积木） \n 5 低成本战略→专业化稳定HR；差异化战略→创新灵活HR \n 6 HR四类型：战略型（高价高专）/ 通用型（高价低专）/ 独特型（低价高专）/ 辅助型（低价低专） \n 7 五模式演进：分离→单向→双向→一体化→驱动（行政→执行→伙伴→融合→驱动） \n 8 HR外包四类：传统型+外围型可外包；独特型+核心型内部化 \n 9 并购三阶段：规划筹备（评估HR）→谈判（管文化冲突）→整合（安抚+公平选拔） \n 10 HR能力 = 任职能力 + 职业化行为能力，均需VRIN化以支撑竞争优势 \n \n \n \n 📚 背诵版总结（复试口述版） \n \n SHRM定义 ：战略人力资源管理是将HRM与企业战略相结合的管理思想，通过与战略目标一致的HRM获得 不易模仿、相对持久 的竞争优势。\n \n \n SHRM特征（4点） ：①人的重要性进一步加强；②HR直接参与组织决策；③HR直线功能强化；④从被动响应型转变为积极制定者与执行人。\n \n \n VRIN四条件 ：人力资源具有 价值性 （降成本增利润）、 稀缺性 （正态分布顶端人才永远稀缺）、 难以模仿性 （路径依赖+因果模糊）、 难以替代性 （学习能力使价值迁移）。\n \n \n HR战略三思路 ：最佳实践法（普遍最优实践）、最佳适配法（适配竞争战略）、最佳结构法（内部一致性协同）。\n \n \n 五种模式演进 ：分离（行政）→单向适配（执行）→双向适配（伙伴）→一体化（融合）→驱动模式（驱动）。\n \n \n HR外包判断 ：高价值+高专用→内部化（核心型）；低价值+低专用→外包（外围型）；高价值+低专用→外包（传统型）；低价值+高专用→内部化（独特型）。\n \n \n 并购HR整合三阶段 ：①规划筹备：评估、调查关键人才；②谈判：管理文化冲突、制定人员方案；③整合：安抚情绪、公平公正选拔、适时公布政策。\n \n \n \n \n TEST \n 课后自我检测 \n \n \n 📝 教材课后题 \n Q1. 什么叫战略人力资源管理？（名词解释） \n Q2. 概括说明战略人力资源管理的主要理论基础。（简答） \n Q3. 如何区分以环境为基础的SHRM和以资源为基础的SHRM？（对比论述） \n Q4. 试分析不同企业战略下人力资源战略的特征。（论述） \n Q5. 比较不同战略人力资源管理模式的演进。（论述） \n 🔥 历年真题 \n 【2016笔试】 论述企业战略与人力资源战略的匹配关系（论述题） \n 【2019面试】 并购中的人力整合（口头简答） \n 💡 预测题 \n 预测题1： 试述资源基础观视角下人力资源成为持续竞争优势来源的逻辑依据（VRIN）。 \n 预测题2： 请结合案例，分析人力资源战略从分离模式向驱动模式演进的条件与路径。 \n 预测题3： 某科技公司采用差异化竞争战略，请设计其人力资源战略的核心要素（招聘、培训、绩效、薪酬）。 \n 预测题4： 人力资源管理外包的决策依据是什么？哪些HR职能适合外包，哪些不适合？请说明理由。 \n 预测题5： 企业在实施并购战略时，人力资源部门应在哪些方面发挥作用？ \n \n \n \n ↑';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body id="top">
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero">
+  <div class="hero-day">中南大学企业管理学硕复试 · 人力资源管理（颜爱民 第3版）</div>
+  <h1>第十三章<br><span>战略人力资源管理</span></h1>
+  <p class="hero-sub">将人力资源管理提升到战略高度，探讨SHRM理论基础、人力资源战略选择与演进模式，以及外包、并购、能力建设三大实践应用。</p>
+  <div class="hero-tags">
+    <span class="hero-tag">P423–P450</span>
+    <span class="hero-tag">★★★★★ 高频考点</span>
+    <span class="hero-tag">2016笔试·企业战略与HR战略匹配</span>
+    <span class="hero-tag">VRIN模型</span>
+    <span class="hero-tag">五种战略模式演进</span>
+    <span class="hero-tag">HR外包 / 并购整合</span>
+  </div>
+</div>
+
+<!-- ══════════ TOP NAV ══════════ -->
+<nav class="top-nav" id="nav-top">
+  <span class="toc-label">目录</span>
+  <a href="#sec-overview">13.1 概述</a>
+  <a href="#sec-env">13.2.1 环境基础</a>
+  <a href="#sec-rbv">13.2.2 资源基础</a>
+  <a href="#sec-strategy">13.3 人力资源战略</a>
+  <a href="#sec-modes">13.3.2 模式演进</a>
+  <a href="#sec-app">13.4 实践应用</a>
+  <a href="#sec-contrast">对比表</a>
+  <a href="#sec-exam">历年真题</a>
+  <a href="#sec-review">30秒复习</a>
+  <a href="#sec-recite">背诵版</a>
+  <a href="#sec-test">自我检测</a>
+  
+  <button class="nav-btn" onclick="toggleDark()">🌙 夜间模式</button>
+</nav>
+
+<!-- ══════════ MAIN ══════════ -->
+<div class="main">
+
+  <!-- ── 本章逻辑结构 ── -->
+  <div class="section-title" id="sec-structure">
+    <span class="sec-num">STRUCT</span>
+    <h2>本章逻辑结构图</h2>
+  </div>
+
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:28px;box-shadow:var(--shadow);">
+    <div class="flow" style="flex-direction:column;align-items:flex-start;gap:6px;">
+      <div style="text-align:center;width:100%;margin-bottom:10px;">
+        <div class="flow-box" style="display:inline-block;background:var(--accent);color:#fff;min-width:200px;">战略人力资源管理（SHRM）</div>
+      </div>
+      <div class="flow" style="background:transparent;padding:0;justify-content:center;width:100%;gap:8px;">
+        <div class="flow-box" style="border-color:#10b981;font-size:12px;">13.1 SHRM概述<br><small style="font-weight:400">理论发展·含义·特征</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="border-color:#f59e0b;font-size:12px;">13.2 理论基础<br><small style="font-weight:400">环境基础 / 资源基础</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="border-color:#7c3aed;font-size:12px;">13.3 HR战略<br><small style="font-weight:400">选择思路·模式演进</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="border-color:#dc2626;font-size:12px;">13.4 实践应用<br><small style="font-weight:400">外包·并购·能力建设</small></div>
+      </div>
+    </div>
+
+    <h4 style="margin-top:20px;">与其他章节的逻辑关系</h4>
+    <div class="relation-diagram" style="grid-template-columns:repeat(3,1fr);">
+      <div class="rel-box">
+        <strong>第1-2章</strong><br>
+        <small>HRM基础理论</small><br>
+        <span style="color:var(--accent2);">↓ 提供理论背景</span>
+      </div>
+      <div class="rel-box center">
+        <strong>第13章</strong><br>战略人力资源管理<br>
+        <small>SHRM核心</small>
+      </div>
+      <div class="rel-box">
+        <strong>第14章</strong><br>
+        <small>国际人力资源管理</small><br>
+        <span style="color:var(--accent2);">← SHRM全球化延伸</span>
+      </div>
+      <div class="rel-box">
+        <strong>第3章</strong><br>
+        <small>人力资源规划</small><br>
+        <span style="color:var(--accent2);">↑ HR战略具体落实</span>
+      </div>
+      <div class="rel-box" style="border-color:var(--accent3);">
+        <strong>战略管理</strong><br>
+        <small>波特五力/SWOT<br>竞争优势理论</small>
+      </div>
+      <div class="rel-box">
+        <strong>第5-12章</strong><br>
+        <small>招聘·培训·绩效·薪酬</small><br>
+        <span style="color:var(--accent2);">↑ SHRM职能实践</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 章节思维导图 ── -->
+  <div class="section-title">
+    <span class="sec-num">MAP</span>
+    <h2>章节思维导图</h2>
+  </div>
+  <div class="mindmap">
+    <div class="mm-root">第13章 战略人力资源管理</div>
+    <div class="mm-row">
+      <div class="mm-branch" style="border-color:#1a4fa0;">
+        📖 13.1 概述
+        <div class="mm-row" style="margin-top:8px;">
+          <span class="mm-leaf">理论发展历程</span>
+          <span class="mm-leaf">SHRM含义（5共识）</span>
+          <span class="mm-leaf">SHRM特征（4点）</span>
+        </div>
+      </div>
+      <div class="mm-branch" style="border-color:#10b981;">
+        🌍 13.2 理论基础
+        <div class="mm-row" style="margin-top:8px;">
+          <span class="mm-leaf">环境基础→纵横匹配</span>
+          <span class="mm-leaf">资源基础→VRIN</span>
+          <span class="mm-leaf">整合模型</span>
+        </div>
+      </div>
+      <div class="mm-branch" style="border-color:#7c3aed;">
+        📋 13.3 HR战略
+        <div class="mm-row" style="margin-top:8px;">
+          <span class="mm-leaf">三种选择思路</span>
+          <span class="mm-leaf">竞争战略匹配</span>
+          <span class="mm-leaf">HR类型×战略</span>
+          <span class="mm-leaf">五种模式演进</span>
+        </div>
+      </div>
+      <div class="mm-branch" style="border-color:#dc2626;">
+        🔧 13.4 应用
+        <div class="mm-row" style="margin-top:8px;">
+          <span class="mm-leaf">HR外包（4类型）</span>
+          <span class="mm-leaf">企业并购整合</span>
+          <span class="mm-leaf">HR能力建设</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 13.1 SHRM概述 ══════════ -->
+  <div class="section-title" id="sec-overview">
+    <span class="sec-num">13.1</span>
+    <h2>战略人力资源管理概述</h2>
+    <span class="page-ref">P423–P427</span>
+  </div>
+
+  <!-- K01: 理论发展 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-01</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">SHRM理论的产生与发展</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★</span>
+          <span class="badge badge-page">P423–P425</span>
+          <span class="badge badge-exam">简答 / 论述</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <details>
+        <summary>📖 专有名词解释 · 理论演进脉络</summary>
+        <div>
+          <table class="ctable">
+            <thead><tr><th>时间</th><th>学者/著作</th><th>核心贡献</th></tr></thead>
+            <tbody>
+              <tr><td><span class="hl">1982年</span></td><td>Tichy / Fombrum / Devanna</td><td>最早提出SHRM理论，将HRM与企业战略相联系</td></tr>
+              <tr><td>1984年</td><td>Beer等《管理人力资本》</td><td>HRM综合组织行为学+劳工关系+人事行政，强调HRM系统整合</td></tr>
+              <tr><td>20世纪90年代</td><td>Wernerfelt / Barney</td><td><span class="hl-blue">资源基础观（RBV）</span>引入HRM：人力资源→持续竞争优势</td></tr>
+              <tr><td>1990年</td><td>Prahalad / Hamel</td><td><span class="hl-green">核心能力理论</span>：集体学识，协调多种技能，难以模仿</td></tr>
+              <tr><td>1997年</td><td>Teece等</td><td><span class="hl-purple">动态能力理论</span>：随环境变化获取、整合、利用资源的能力</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <div class="kid-box">
+        <div class="kid-label">🧒 小学生版解释</div>
+        以前老板觉得员工只是打工的，叫来就来叫走就走。后来聪明的管理学家发现，<strong>真正厉害的公司，都是因为有了厉害的人才变厉害的！</strong> 于是大家开始研究怎么把"管人"这件事和"公司大战略"结合起来——这就是战略人力资源管理。
+      </div>
+
+      <div class="memo-box">
+        <div class="memo-label">🎯 助记口诀</div>
+        "1982年提战略，1984年搞整合，90年代资源观，能力理论压轴场"
+      </div>
+    </div>
+  </div>
+
+  <!-- K02: SHRM含义 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-02</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">战略人力资源管理（SHRM）的含义与特征</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★★</span>
+          <span class="badge badge-page">P425–P427</span>
+          <span class="badge badge-exam">名词解释 / 简答</span>
+          <span class="badge badge-year">必考</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <details open>
+        <summary>📖 SHRM五大含义共识</summary>
+        <div>
+          <ol>
+            <li><span class="hl">HRM方法与企业战略理论结合</span>，强调战略性与整体性</li>
+            <li>强调<span class="hl-blue">HR在获取竞争优势</span>中的重要地位</li>
+            <li>强调HRM与企业<span class="hl-green">高绩效目标的直接关系</span></li>
+            <li>强调通过HR战略与规划<span class="hl">有效整合内外部HR</span></li>
+            <li>强调通过<span class="hl-purple">组织学习</span>提高HR对环境的适应性</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>🔑 SHRM四大特征</summary>
+        <div>
+          <table class="ctable">
+            <thead><tr><th>特征</th><th>传统HRM</th><th>SHRM</th></tr></thead>
+            <tbody>
+              <tr><td><span class="hl">人的重要性</span></td><td>人是成本/要素</td><td>人是战略性资源</td></tr>
+              <tr><td><span class="hl-blue">参与决策</span></td><td>执行决策</td><td>直接参与组织决策制定</td></tr>
+              <tr><td><span class="hl-green">直线功能</span></td><td>人事行政为主</td><td>直线管理功能强化</td></tr>
+              <tr><td><span class="hl-purple">角色转变</span></td><td>被动响应型</td><td>积极制定者与执行人</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <div class="template-box">
+        <h4>🎤 复试回答模板</h4>
+        <strong>定义</strong>：SHRM是将人力资源管理与企业战略相结合的一种管理思想，通过与组织战略目标一致的人力资源管理来获得竞争优势，且这种竞争优势难以被模仿、相对持久。<br><br>
+        <strong>核心内容</strong>：强调5个共识 → 战略结合、竞争优势、高绩效、整合HR、组织学习<br><br>
+        <strong>举例</strong>：华为"以奋斗者为本"的HR战略直接支撑其技术创新战略<br><br>
+        <strong>总结</strong>：SHRM的本质是将"人"从成本变为战略资源，从执行者变为战略参与者。
+      </div>
+
+      <div class="template-box" style="border-color:#fcd34d;">
+        <h4>🔍 复试延伸问题</h4>
+        <ul>
+          <li>SHRM与传统HRM的本质区别是什么？</li>
+          <li>为什么说HR是企业持续竞争优势的来源？</li>
+          <li>SHRM在实践中如何落地？</li>
+        </ul>
+      </div>
+
+      <div class="quote-box">
+        📌 <strong>教材原句</strong>：战略人力资源管理是将人力资源管理与企业战略相结合的一种管理思想，在企业中通过与组织战略目标一致的人力资源管理来获得竞争优势，且这种竞争优势是不易被竞争对手模仿的、相对持久的。
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 13.2 理论基础 ══════════ -->
+  <div class="section-title" id="sec-env">
+    <span class="sec-num">13.2.1</span>
+    <h2>以环境为基础的战略人力资源管理</h2>
+    <span class="page-ref">P428–P432</span>
+  </div>
+
+  <!-- K03: 企业战略概念 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-03</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">企业战略基本概念体系</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★</span>
+          <span class="badge badge-page">P428–P430</span>
+          <span class="badge badge-exam">名词解释</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <table class="ctable">
+        <thead><tr><th>概念</th><th>英文</th><th>含义</th></tr></thead>
+        <tbody>
+          <tr><td><span class="hl">愿景</span></td><td>Vision</td><td>企业对未来发展方向的构想，核心是"我们想成为什么"</td></tr>
+          <tr><td><span class="hl-blue">使命</span></td><td>Mission</td><td>企业存在的根本目的，核心是"我们为谁服务，做什么"</td></tr>
+          <tr><td><span class="hl-green">目标</span></td><td>Objective</td><td>具体、可量化的战略实现指标</td></tr>
+          <tr><td>竞争优势（外生）</td><td>—</td><td>以环境为基础，波特五力模型、SWOT</td></tr>
+          <tr><td>竞争优势（内生）</td><td>—</td><td>以资源为基础，VRIN四条件</td></tr>
+        </tbody>
+      </table>
+
+      <details>
+        <summary>📐 纵向匹配 vs 横向匹配</summary>
+        <div>
+          <div class="flow">
+            <div class="flow-box" style="font-size:12px;">HR战略</div>
+            <div class="flow-arrow">⟺</div>
+            <div class="flow-box" style="font-size:12px;">企业战略</div>
+            <div class="flow-arrow">⟺</div>
+            <div class="flow-box" style="font-size:12px;">组织结构/文化</div>
+            <div class="flow-arrow">⟺</div>
+            <div class="flow-box" style="font-size:12px;">HR职能活动</div>
+          </div>
+          <p style="margin-top:6px;"><strong>纵向匹配（垂直一致）</strong>：HR战略↔企业战略↔组织结构文化↔HR各职能，形成上下贯通的战略链</p>
+          <p><strong>横向匹配（水平一致）</strong>：HR各职能之间（招聘、培训、绩效、薪酬）相互协调，避免"各说各话"</p>
+        </div>
+      </details>
+
+      <div class="kid-box">
+        <div class="kid-label">🧒 小学生版解释</div>
+        就像踢足球，<strong>纵向匹配</strong>是说教练（战略）、队长（HR战略）、球员（HR职能）要上下一心；<strong>横向匹配</strong>是说前锋、中场、后卫要相互配合，不能各打各的。
+      </div>
+    </div>
+  </div>
+
+  <!-- K04: 资源基础论 VRIN -->
+  <div class="section-title" id="sec-rbv">
+    <span class="sec-num">13.2.2</span>
+    <h2>以资源为基础的战略人力资源管理（VRIN）</h2>
+    <span class="page-ref">P432–P436</span>
+  </div>
+
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-04</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">资源基础论 & VRIN四条件</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★★</span>
+          <span class="badge badge-page">P432–P435</span>
+          <span class="badge badge-exam">名词解释 / 简答 / 论述</span>
+          <span class="badge badge-year">高频必考</span>
+          <span class="exam-tag">【2019考研】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <details open>
+        <summary>📖 资源基础论核心观点</summary>
+        <div>
+          <p>资源基础论（RBV，Penrose 1959 → Wernerfelt 1984 → Barney 1991）认为：<span class="hl">企业是资源的集合体</span>，资源的异质性是竞争优势的根本来源。</p>
+          <p>人力资源满足资源基础论对战略性资源的要求，因此可以成为企业<span class="hl-green">持续竞争优势</span>的来源。</p>
+        </div>
+      </details>
+
+      <div class="vrin-grid">
+        <div class="vrin-card">
+          <div class="vrin-letter">V</div>
+          <div style="font-weight:700;margin:8px 0 4px;">价值性</div>
+          <div style="font-size:12px;">Value<br>降低成本或增加利润，帮助企业获取竞争优势</div>
+        </div>
+        <div class="vrin-card">
+          <div class="vrin-letter">R</div>
+          <div style="font-weight:700;margin:8px 0 4px;">稀缺性</div>
+          <div style="font-size:12px;">Rarity<br>非所有竞争者普遍拥有；高素质人才服从正态分布</div>
+        </div>
+        <div class="vrin-card">
+          <div class="vrin-letter">I</div>
+          <div style="font-weight:700;margin:8px 0 4px;">难以模仿</div>
+          <div style="font-size:12px;">Inimitability<br>路径依赖性 + 因果关系模糊性（黑箱效应）</div>
+        </div>
+        <div class="vrin-card">
+          <div class="vrin-letter">N</div>
+          <div style="font-weight:700;margin:8px 0 4px;">难以替代</div>
+          <div style="font-size:12px;">Non-substitutability<br>人力资源价值可转移到新技术，不被技术所替代</div>
+        </div>
+      </div>
+
+      <details>
+        <summary>💡 微软案例：人力资源价值量化</summary>
+        <div class="case-box">
+          <div class="case-label">📊 微软2001年案例</div>
+          <p>公司市值 <strong>3,560亿美元</strong><br>
+          − 固定资本 300亿美元<br>
+          − 品牌资本 300亿美元<br>
+          = <strong style="color:#fcd34d;">人力资源价值 = 2,960亿美元</strong></p>
+          <p style="margin-top:12px;">这说明对于知识型企业而言，人力资源是最重要的战略性资产，其价值远超有形资产。</p>
+        </div>
+      </details>
+
+      <div class="template-box">
+        <h4>🎤 复试回答模板：为什么人力资源满足VRIN？</h4>
+        <strong>价值性</strong>：优秀员工能直接为客户创造价值、降低成本、推动创新。<br>
+        <strong>稀缺性</strong>：高素质人才的能力服从正态分布，顶尖人才永远稀缺（报酬递增资源）。<br>
+        <strong>难以模仿</strong>：①路径依赖——企业人才成长与企业历史路径绑定；②因果模糊——人力资源管理对绩效的影响是"黑箱"，竞争对手无法完全复制。<br>
+        <strong>难以替代</strong>：技术创新不能真正替代人，人的学习能力使其价值可迁移到新领域。
+      </div>
+
+      <div class="memo-box">
+        <div class="memo-label">🎯 助记口诀</div>
+        <span class="hl">VRIN = 有价值·很稀缺·难模仿·难替代</span><br>
+        "微软市值减资本，人力资本占大头"
+      </div>
+
+      <div class="quote-box">
+        📌 <strong>教材原句</strong>：路径依赖性是指企业人力资源的成长和积累是和企业成长过程或路径相关的，这种过程对于每一个企业来说都是独特的，一个企业不太可能重复其他企业的这个过程。
+      </div>
+    </div>
+  </div>
+
+  <!-- K05: 整合模型 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-05</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">战略人力资源管理整合分析模型</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★</span>
+          <span class="badge badge-page">P433–P434</span>
+          <span class="badge badge-exam">论述 / 对比</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <table class="ctable">
+        <thead><tr><th>比较维度</th><th>环境基础观</th><th>资源基础观</th></tr></thead>
+        <tbody>
+          <tr><td>对HR的假设</td><td>同质资源（可随时获取）</td><td><span class="hl">异质战略性资源</span></td></tr>
+          <tr><td>HR战略与企业战略关系</td><td>HR战略是企业战略的<span class="hl-red">支撑子系统</span>（单向）</td><td>两者相互影响（<span class="hl-green">双向</span>）</td></tr>
+          <tr><td>竞争优势来源</td><td>外部环境定位（波特）</td><td>内部资源禀赋（Barney）</td></tr>
+          <tr><td>HR的战略地位</td><td>支持与执行</td><td>形成与驱动战略</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:14px;padding:16px;background:var(--bg2);border-radius:10px;">
+        <strong>整合观点</strong>：现实中，每个企业都需要<span class="hl">同时根据外部环境与内部资源</span>做出战略选择，两者相互补充，不可偏废。
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 13.3 人力资源战略 ══════════ -->
+  <div class="section-title" id="sec-strategy">
+    <span class="sec-num">13.3</span>
+    <h2>人力资源战略</h2>
+    <span class="page-ref">P434–P441</span>
+  </div>
+
+  <!-- K06: HR战略概念 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-06</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">人力资源战略的概念与地位</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★</span>
+          <span class="badge badge-page">P434–P435</span>
+          <span class="badge badge-exam">名词解释 / 简答</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <div class="quote-box">
+        📌 <strong>教材原句（必背）</strong>：人力资源战略是指为成功实施企业的整体经营战略，在战略人力资源管理思想与方法指导下，以保证企业当前及未来人力资源配置的均衡、有效为标准，以维持和提高企业竞争优势为目的而制定的企业人力资源管理的战略性方针、原则和计划。
+      </div>
+      <details>
+        <summary>🏛️ 人力资源战略的三重地位</summary>
+        <div>
+          <div class="flow">
+            <div class="flow-box" style="font-size:12px;border-color:#1a4fa0;">①战略性标志<br><small>有无HR战略<br>是否具备战略性</small></div>
+            <div class="flow-arrow">+</div>
+            <div class="flow-box" style="font-size:12px;border-color:#10b981;">②职能战略核心<br><small>HR战略支撑<br>技术/生产/营销</small></div>
+            <div class="flow-arrow">+</div>
+            <div class="flow-box" style="font-size:12px;border-color:#f59e0b;">③既是结果也是手段<br><small>SHRM思想产物<br>也是实现目标的途径</small></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- K07: 三种选择思路 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-07</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">人力资源战略选择的三种思路</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★</span>
+          <span class="badge badge-page">P435–P436</span>
+          <span class="badge badge-exam">名词解释 / 简答 / 对比</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <table class="ctable">
+        <thead><tr><th>方法</th><th>英文</th><th>核心思想</th><th>优点</th><th>局限</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="hl">最佳实践法</span></td>
+            <td>Best Practice</td>
+            <td>存在一套普遍最优的HR管理实践（16种），采用即获高绩效</td>
+            <td>简单易用，有参照标准</td>
+            <td>机械匹配，忽视企业差异</td>
+          </tr>
+          <tr>
+            <td><span class="hl-blue">最佳适配法</span></td>
+            <td>Best Fit</td>
+            <td>不存在固定最优，HR战略必须适配企业竞争战略</td>
+            <td>强调情境匹配，灵活性高</td>
+            <td>环境变化快时难以跟上</td>
+          </tr>
+          <tr>
+            <td><span class="hl-green">最佳结构法</span></td>
+            <td>Best Configuration</td>
+            <td>HR实践不是简单相加，要形成相互支撑的整体结构（内部一致性）</td>
+            <td>强调系统协同效应</td>
+            <td>如何组合仍需探索</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="kid-box">
+        <div class="kid-label">🧒 小学生版解释</div>
+        <strong>最佳实践法</strong>：就像"抄作业"，用别人已经证明好用的方法。<br>
+        <strong>最佳适配法</strong>：就像"量体裁衣"，适合自己的才是最好的。<br>
+        <strong>最佳结构法</strong>：就像"搭积木"，单块积木不算，要拼成一个整体才有用。
+      </div>
+
+      <div class="memo-box">
+        <div class="memo-label">🎯 助记</div>
+        <span class="hl">实践-适配-结构 = 抄作业-量体裁衣-搭积木</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- K08: 竞争战略与HR战略匹配 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-08</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">企业竞争战略与人力资源战略的匹配</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★★</span>
+          <span class="badge badge-page">P436–P438</span>
+          <span class="badge badge-exam">论述 / 案例</span>
+          <span class="exam-tag">【2016笔试】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <table class="ctable">
+        <thead><tr><th>竞争战略</th><th>特点</th><th>HR战略重点</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="hl">低成本战略</span></td>
+            <td>技术稳定，市场成熟，重视短期目标与员工稳定</td>
+            <td>
+              • 技能高度专业化<br>
+              • 外部招募+内部培训<br>
+              • 内部晋升制度<br>
+              • 业绩为中心的绩效系统<br>
+              • 内部一致性薪酬体系
+            </td>
+          </tr>
+          <tr>
+            <td><span class="hl-blue">差异化战略</span></td>
+            <td>处于成长和创新过程中，靠独特产品开拓市场</td>
+            <td>
+              • 灵活的工作说明书<br>
+              • 重视外部招聘<br>
+              • 宽广职业发展通道<br>
+              • 强化协作能力培训<br>
+              • 结果导向+团队绩效指标<br>
+              • 关注外部公平性薪酬
+            </td>
+          </tr>
+          <tr>
+            <td><span class="hl-green">集中化战略</span></td>
+            <td>聚焦特定市场/客户群</td>
+            <td>结合前两种战略特点灵活配置</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="template-box">
+        <h4>🎤 复试回答模板（2016真题）</h4>
+        <p><strong>第一步：阐明波特三大竞争战略内涵</strong>（低成本、差异化、集中化）</p>
+        <p><strong>第二步：说明匹配原则</strong>——HR战略必须配合企业战略，服务于战略目标实现</p>
+        <p><strong>第三步：分别说明低成本→HR战略、差异化→HR战略的具体特点</strong>（重点：招聘、培训、绩效、薪酬四个模块的差异）</p>
+        <p><strong>第四步：举例</strong>——富士康（低成本）vs 华为/苹果（差异化）的HR战略对比</p>
+      </div>
+
+      <div class="case-box">
+        <div class="case-label">企业案例</div>
+        <p><strong>富士康（低成本战略）</strong>：大规模标准化生产，HR战略强调专业化分工、稳定用工、计件薪酬、严格绩效考核。</p>
+        <p style="margin-top:8px;"><strong>华为（差异化战略）</strong>：持续技术创新，HR战略强调"以奋斗者为本"、高薪吸引顶尖人才、内部创业机制、创新文化培育。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- K09: HR类型矩阵 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-09</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">企业人力资源四种类型与战略匹配</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★</span>
+          <span class="badge badge-page">P437–P439</span>
+          <span class="badge badge-exam">简答 / 案例</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <p>根据<span class="hl">价值性</span>（高/低）× <span class="hl-blue">专用性</span>（高/低）两个维度，将HR分为四类：</p>
+
+      <table class="ctable">
+        <thead><tr><th>类型</th><th>价值性</th><th>专用性</th><th>代表人员</th><th>HR战略</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="hl">战略型</span></td>
+            <td>高</td><td>高</td>
+            <td>核心技术研发、关键市场开发人员</td>
+            <td>长期聘用、内部培养与提升、参与管理</td>
+          </tr>
+          <tr>
+            <td><span class="hl-blue">通用型</span></td>
+            <td>高</td><td>低</td>
+            <td>财会、法律、HR、IT等职能人员</td>
+            <td>外部招聘为主，可建立长期雇佣关系</td>
+          </tr>
+          <tr>
+            <td><span class="hl-purple">独特性</span></td>
+            <td>低</td><td>高</td>
+            <td>基础研究人员、程序员（不直接创造客户价值）</td>
+            <td>考虑价值/成本平衡，可考虑外包/战略联盟</td>
+          </tr>
+          <tr>
+            <td><span class="hl-green">辅助性</span></td>
+            <td>低</td><td>低</td>
+            <td>普通文秘、勤杂人员</td>
+            <td>临时雇用、外包、员工租赁，降低成本</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="kid-box">
+        <div class="kid-label">🧒 小学生版解释</div>
+        就像一支足球队：<strong>战略型</strong>=梅西（花多少钱都要留）；<strong>通用型</strong>=可以从市场买到的优秀球员；<strong>独特性</strong>=专打某种特殊战术的球员；<strong>辅助性</strong>=球童（找人顶替很容易）。
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 13.3.2 五种模式演进 ══════════ -->
+  <div class="section-title" id="sec-modes">
+    <span class="sec-num">13.3.2</span>
+    <h2>人力资源战略模式的演进</h2>
+    <span class="page-ref">P439–P442</span>
+  </div>
+
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-10</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">五种HR战略模式演进（分离→单向→双向→一体化→驱动）</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★★</span>
+          <span class="badge badge-page">P439–P441</span>
+          <span class="badge badge-exam">论述 / 比较 / 案例</span>
+          <span class="badge badge-year">必考重点</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <div class="mode-timeline">
+        <div class="mode-item">
+          <div class="mode-title">① 分离模式（Separation Model）</div>
+          <div class="mode-sub">战略与人员管理相对分离；人员=随时可获取的生产要素；HR部门只做行政（考勤、档案、合同）；适用于早期中小企业</div>
+          <div style="margin-top:6px;"><span class="badge badge-tier2">HR角色：例行管理者</span></div>
+        </div>
+        <div class="mode-item">
+          <div class="mode-title">② 单向适配模式（One-way Fit Model）</div>
+          <div class="mode-sub">HR部门配合战略实施；员工从"成本"变为"资源"；HR职能整合（选人育人用人留人）；HR部门仍只是战略执行角色</div>
+          <div style="margin-top:6px;"><span class="badge badge-tier2">HR角色：战略实施者</span></div>
+        </div>
+        <div class="mode-item">
+          <div class="mode-title">③ 双向适配模式（Two-way Fit Model）</div>
+          <div class="mode-sub">HR部门开始影响企业战略的制定；战略制定需要考虑人的因素；HR部门=企业商业伙伴；也叫"对话模式"</div>
+          <div style="margin-top:6px;"><span class="badge badge-tier3">HR角色：商业伙伴</span></div>
+        </div>
+        <div class="mode-item">
+          <div class="mode-title">④ 一体化模式（Holistic Model）</div>
+          <div class="mode-sub">企业战略与HR战略融为一体；联系纽带=公司共同愿景；多方位、动态、持续的一体化联系；HR部门既独立发挥作用，又相互协调</div>
+          <div style="margin-top:6px;"><span class="badge badge-tier3">HR角色：战略参与者</span></div>
+        </div>
+        <div class="mode-item">
+          <div class="mode-title">⑤ 驱动模式（HR-driven Model）</div>
+          <div class="mode-sub">人力资源成为企业最关键的战略资源；HR部门既是战略实施者，更是战略驱动者；强调HR的灵活性与战略柔性；是SHRM发展的方向</div>
+          <div style="margin-top:6px;"><span class="badge badge-tier1">HR角色：战略驱动者</span></div>
+        </div>
+      </div>
+
+      <details>
+        <summary>📊 五种模式对比表</summary>
+        <div>
+          <table class="ctable">
+            <thead><tr><th>模式</th><th>战略与HR关系</th><th>HR部门角色</th><th>对HR的看法</th><th>适用情境</th></tr></thead>
+            <tbody>
+              <tr><td>分离</td><td>完全分离</td><td>行政管理者</td><td>成本费用</td><td>初创/中小企业</td></tr>
+              <tr><td>单向适配</td><td>HR服从战略</td><td>战略实施者</td><td>资源/工具</td><td>竞争加剧期</td></tr>
+              <tr><td>双向适配</td><td>互相影响</td><td>商业伙伴</td><td>战略性资源</td><td>成长型企业</td></tr>
+              <tr><td>一体化</td><td>融为一体</td><td>战略参与者</td><td>竞争优势核心</td><td>成熟大型企业</td></tr>
+              <tr><td>驱动</td><td>HR驱动战略</td><td>战略驱动者</td><td>最关键战略资源</td><td>动态竞争环境</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <div class="template-box">
+        <h4>🎤 复试回答模板</h4>
+        <p>SHRM模式演进反映了HR从"成本中心"向"价值中心"的转变，也体现了企业对人力资源战略地位认识的深化。</p>
+        <p>核心逻辑是：<span class="hl">分离（人是成本）→单向（人是资源）→双向（人影响战略）→一体化（人战略融合）→驱动（人驱动战略）</span></p>
+      </div>
+
+      <div class="case-box">
+        <div class="case-label">HL公司案例</div>
+        <p>民营企业HL公司从初创时的<strong>分离模式</strong>（人事部门做行政），随企业发展尝试向<strong>单向适配</strong>过渡（更名人力资源部），但受现有HR素质限制，实际仅能充当战略执行角色。企业目标是向<strong>双向适配</strong>（商业伙伴）迈进，最终实现<strong>驱动模式</strong>。</p>
+      </div>
+
+      <div class="memo-box">
+        <div class="memo-label">🎯 助记口诀</div>
+        <span class="hl">"分离→单向→双向→一体→驱动"</span><br>
+        "打工仔→执行者→合伙人→融合者→领路人"
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 13.4 实践应用 ══════════ -->
+  <div class="section-title" id="sec-app">
+    <span class="sec-num">13.4</span>
+    <h2>战略人力资源管理思想的应用</h2>
+    <span class="page-ref">P442–P450</span>
+  </div>
+
+  <!-- K11: HR外包 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-11</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">人力资源管理外包（HR Outsourcing）</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★</span>
+          <span class="badge badge-page">P442–P445</span>
+          <span class="badge badge-exam">名词解释 / 简答 / 案例</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <p><span class="hl">外包</span>：企业根据总体战略需要，整合外部高价值专业化资源，降低成本、提高效率、增强环境应变能力的管理模式。</p>
+      <p>理论基础：<span class="hl-blue">资源基础论</span>——企业集中关注核心资源，外包非关键职能。</p>
+      <p>外包或内部化的两个判断维度：<span class="hl">价值性</span>（高→内部化）+ <span class="hl-green">稀缺性/专用性</span>（高→内部化）</p>
+
+      <details open>
+        <summary>📊 HR外包的四种类型</summary>
+        <div>
+          <table class="ctable">
+            <thead><tr><th>类型</th><th>价值性</th><th>专用性</th><th>代表活动</th><th>决策</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="hl">传统型</span></td>
+                <td>高</td><td>低</td>
+                <td>人事代理、中层以下招聘</td>
+                <td><span class="hl-red">外包</span>（日益标准化，外部可获取）</td>
+              </tr>
+              <tr>
+                <td><span class="hl-blue">外围型</span></td>
+                <td>低</td><td>低</td>
+                <td>日常培训、员工活动</td>
+                <td><span class="hl-red">外包</span>（外部服务已标准化）</td>
+              </tr>
+              <tr>
+                <td><span class="hl-purple">独特型</span></td>
+                <td>低</td><td>高</td>
+                <td>新员工入职培训、企业文化建设</td>
+                <td><span class="hl-green">内部化</span>（需深入了解公司内部）</td>
+              </tr>
+              <tr>
+                <td><span class="hl">核心型</span></td>
+                <td>高</td><td>高</td>
+                <td>战略规划、信息系统、核心员工管理</td>
+                <td><span class="hl-green">内部化</span>（涉及企业机密与竞争力）</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <div class="case-box">
+        <div class="case-label">X公司案例（汽车租赁）</div>
+        <p>2000人规模，HR部门仅4人。<strong>已外包</strong>：人事代理、驾驶员招聘、日常培训（传统型+外围型）。<strong>未外包</strong>：HR信息系统、绩效管理、HR战略规划、薪酬、新员工培训（核心型+独特型）。</p>
+      </div>
+
+      <div class="kid-box">
+        <div class="kid-label">🧒 小学生版解释</div>
+        就像开餐厅：有的事自己做（招牌菜的秘方绝不外包），有的事找外面做（清洁卫生、送餐外卖）。<strong>核心的自己留着，普通的交给专业公司做</strong>，这样既省钱效率又高。
+      </div>
+    </div>
+  </div>
+
+  <!-- K12: 企业并购 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-12</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">企业并购（M&A）与战略人力资源管理</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★★</span>
+          <span class="badge badge-page">P444–P446</span>
+          <span class="badge badge-exam">论述 / 案例</span>
+          <span class="exam-tag">【2019面试】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <p><span class="hl">并购</span>（Mergers & Acquisitions）：组织为获取竞争优势所采取的变革模式，可直接获得竞争所需战略性资源。</p>
+      <p>并购成败的关键：<span class="hl-red">人力资源整合</span>——并购中"人"往往是失败的主要原因。</p>
+
+      <details>
+        <summary>📋 并购三阶段的HR管理</summary>
+        <div>
+          <table class="ctable">
+            <thead><tr><th>阶段</th><th>HR工作重点</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="hl">并购前规划筹备</span></td>
+                <td>评估被并购方HR适应性；找出关键人才并提前沟通；预测员工可能的反应；尽早做HR详细调查</td>
+              </tr>
+              <tr>
+                <td><span class="hl-blue">并购谈判阶段</span></td>
+                <td>管理文化冲突准备；制定组织架构方案；选拔整合经理；制订人员选拔与裁减计划</td>
+              </tr>
+              <tr>
+                <td><span class="hl-green">并购后整合阶段</span></td>
+                <td>关注员工情绪变化；整合企业文化价值；人事选拔调整（体现公平竞争）；选好时机公布HR政策</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+      <div class="case-box">
+        <div class="case-label">📋 联想并购案例</div>
+        <p>2004年联想收购某知名PC厂商业务，实现国际化战略目标。<strong>并购目标之一即为获取国际化经营人才</strong>。整合原则："坦诚、尊重和妥协"。关键措施：①宣布目标公司员工薪酬三年不变；②制定详细人力资源发展计划；③留用目标公司PC高层管理人员。面临挑战：中美文化冲突（个人主义vs执行文化）、员工归属感不强。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- K13: HR能力建设 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">K-13</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">人力资源能力与战略人力资源管理</div>
+        <div class="kcard-meta">
+          <span class="badge badge-tier1">重要度 ★★★★</span>
+          <span class="badge badge-tier2">考察概率 ★★★</span>
+          <span class="badge badge-page">P446–P447</span>
+          <span class="badge badge-exam">名词解释 / 简答</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <p><span class="hl">人力资源能力（HR Competence）</span>：驱动员工产生高工作绩效的各种个性特征的集合，是判断能否胜任工作和取得绩效的起点，也是企业竞争力的基础和竞争优势的源泉。</p>
+
+      <table class="ctable">
+        <thead><tr><th>能力类型</th><th>含义</th><th>特点</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="hl">任职能力</span></td>
+            <td>担任某一角色必须具备的知识、技能、经验、素质与行为的总和</td>
+            <td>任职能力提升→适岗率提高→组织简化→成本降低</td>
+          </tr>
+          <tr>
+            <td><span class="hl-blue">职业化行为能力</span></td>
+            <td>与本行业特定行为规范相吻合的职业素质和技能</td>
+            <td>三层含义：①职业素质（动机/个性）②专业知识技能 ③行业行为规范</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quote-box">
+        📌 SHRM在HR能力方面的两个关注重点：①<strong>任职能力与职业化行为能力均衡发展</strong>，适应战略要求；②<strong>提高HR能力的VRIN属性</strong>（价值、稀缺、难模仿、难替代）。
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 对比表 ══════════ -->
+  <div class="section-title" id="sec-contrast">
+    <span class="sec-num">COMP</span>
+    <h2>易混概念对比总结</h2>
+  </div>
+
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:28px;box-shadow:var(--shadow);">
+    <h4>对比1：传统HRM vs SHRM</h4>
+    <table class="ctable">
+      <thead><tr><th>维度</th><th>传统HRM</th><th>SHRM</th></tr></thead>
+      <tbody>
+        <tr><td>对人的认知</td><td>成本/工具</td><td><span class="hl">战略性资源</span></td></tr>
+        <tr><td>时间导向</td><td>短期</td><td>长期</td></tr>
+        <tr><td>角色</td><td>被动响应</td><td><span class="hl-green">积极主导</span></td></tr>
+        <tr><td>与战略关系</td><td>服从战略</td><td><span class="hl-blue">驱动战略</span></td></tr>
+        <tr><td>绩效关注</td><td>个体效率</td><td>组织竞争优势</td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="margin-top:20px;">对比2：环境基础 vs 资源基础</h4>
+    <table class="ctable">
+      <thead><tr><th>维度</th><th>环境基础观</th><th>资源基础观</th></tr></thead>
+      <tbody>
+        <tr><td>竞争优势来源</td><td>外部定位（波特）</td><td><span class="hl">内部资源（VRIN）</span></td></tr>
+        <tr><td>HR假设</td><td>同质资源</td><td><span class="hl-blue">异质战略性资源</span></td></tr>
+        <tr><td>HR战略地位</td><td>支持子系统</td><td><span class="hl-green">双向影响战略</span></td></tr>
+        <tr><td>关注重点</td><td>匹配·适配</td><td>独特·难模仿</td></tr>
+      </tbody>
+    </table>
+
+    <h4 style="margin-top:20px;">对比3：最佳实践 vs 最佳适配 vs 最佳结构</h4>
+    <table class="ctable">
+      <thead><tr><th>维度</th><th>最佳实践法</th><th>最佳适配法</th><th>最佳结构法</th></tr></thead>
+      <tbody>
+        <tr><td>核心假设</td><td>存在普遍最优做法</td><td>适合环境的才是最优</td><td>整体系统优于单项之和</td></tr>
+        <tr><td>关键词</td><td>普遍性、相加性</td><td>情境性、适配性</td><td>整体性、内部一致性</td></tr>
+        <tr><td>优势</td><td>简单有参照</td><td>灵活有针对性</td><td>强调协同效应</td></tr>
+        <tr><td>局限</td><td>机械套用，忽视差异</td><td>难跟上快速变化</td><td>如何组合仍待探索</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════ 历年真题 ══════════ -->
+  <div class="section-title" id="sec-exam">
+    <span class="sec-num">EXAM</span>
+    <h2>历年真题汇总</h2>
+  </div>
+
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:28px;box-shadow:var(--shadow);">
+    <table class="ctable">
+      <thead><tr><th>年份/场次</th><th>题目</th><th>题型</th><th>对应知识点</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="exam-tag">【2016笔试】</span></td>
+          <td>论述企业战略与人力资源战略的匹配关系</td>
+          <td>论述题</td>
+          <td>K-08 竞争战略×HR战略匹配</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">【2016案例】</span></td>
+          <td>某制造企业多元化扩张失败，分析战略失误与人力配置问题</td>
+          <td>案例分析</td>
+          <td>K-08 / K-09</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">【2019面试】</span></td>
+          <td>并购中的人力整合</td>
+          <td>面试题</td>
+          <td>K-12 企业并购HR整合</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">【历年考研】</span></td>
+          <td>简述资源基础观（RBV）</td>
+          <td>简答</td>
+          <td>K-04 VRIN四条件</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">【预测2025】</span></td>
+          <td>试分析五种HR战略模式的演进逻辑及其现实意义</td>
+          <td>论述</td>
+          <td>K-10 五种模式演进</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">【预测2025】</span></td>
+          <td>什么是人力资源管理外包？如何决策外包与内部化？</td>
+          <td>简答/案例</td>
+          <td>K-11 HR外包</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">【预测2025】</span></td>
+          <td>SHRM与传统HRM的本质区别是什么？</td>
+          <td>名词解释/简答</td>
+          <td>K-02 SHRM含义特征</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════ 本章终极串联 ══════════ -->
+  <div class="section-title">
+    <span class="sec-num">CHAIN</span>
+    <h2>本章知识终极串联</h2>
+  </div>
+
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:28px;box-shadow:var(--shadow);">
+    <div class="flow" style="flex-direction:column;gap:8px;">
+      <div style="text-align:center;">
+        <div class="flow-box" style="background:var(--accent);color:#fff;display:inline-block;">竞争激烈，如何持续赢？</div>
+      </div>
+      <div class="flow-arrow" style="text-align:center;">↓</div>
+      <div class="flow" style="background:transparent;padding:0;justify-content:center;">
+        <div class="flow-box" style="border-color:#10b981;font-size:12px;">外部视角：<br>波特竞争战略<br>（低成本/差异化）</div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-box" style="border-color:#7c3aed;font-size:12px;">内部视角：<br>资源基础论<br>（VRIN人力资源）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="border-color:#f59e0b;font-size:12px;background:#fffbeb;">SHRM整合模型</div>
+      </div>
+      <div class="flow-arrow" style="text-align:center;">↓</div>
+      <div class="flow" style="background:transparent;padding:0;justify-content:center;">
+        <div class="flow-box" style="font-size:12px;border-color:#1a4fa0;">制定人力资源战略<br>（三种思路）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="font-size:12px;border-color:#dc2626;">匹配竞争战略<br>（低成本/差异化）</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="font-size:12px;border-color:#10b981;">针对HR四种类型<br>（战略/通用/独特/辅助）</div>
+      </div>
+      <div class="flow-arrow" style="text-align:center;">↓</div>
+      <div class="flow" style="background:transparent;padding:0;justify-content:center;">
+        <div class="flow-box" style="font-size:12px;">分离模式</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="font-size:12px;">单向适配</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="font-size:12px;">双向适配</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="font-size:12px;">一体化</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box" style="font-size:12px;background:var(--accent);color:#fff;">驱动模式</div>
+      </div>
+      <div class="flow-arrow" style="text-align:center;">↓</div>
+      <div class="flow" style="background:transparent;padding:0;justify-content:center;">
+        <div class="flow-box" style="border-color:#10b981;font-size:12px;">应用①<br>HR外包（4类）</div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-box" style="border-color:#f59e0b;font-size:12px;">应用②<br>企业并购整合</div>
+        <div class="flow-arrow">+</div>
+        <div class="flow-box" style="border-color:#7c3aed;font-size:12px;">应用③<br>HR能力建设</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 30秒复习 ══════════ -->
+  <div class="review-30" id="sec-review">
+    <h3>⚡ 30秒超速复习模块</h3>
+    <div class="review-item"><div class="review-num">1</div><div>SHRM = HRM + 企业战略，HR从成本→战略资源，从执行→驱动</div></div>
+    <div class="review-item"><div class="review-num">2</div><div>理论基础：环境基础（波特/匹配）+ 资源基础（VRIN/竞争优势）</div></div>
+    <div class="review-item"><div class="review-num">3</div><div>VRIN = 价值(V) + 稀缺(R) + 难模仿(I) + 难替代(N)，人力资源满足四条件</div></div>
+    <div class="review-item"><div class="review-num">4</div><div>HR战略选择：最佳实践（抄）/ 最佳适配（量体裁衣）/ 最佳结构（搭积木）</div></div>
+    <div class="review-item"><div class="review-num">5</div><div>低成本战略→专业化稳定HR；差异化战略→创新灵活HR</div></div>
+    <div class="review-item"><div class="review-num">6</div><div>HR四类型：战略型（高价高专）/ 通用型（高价低专）/ 独特型（低价高专）/ 辅助型（低价低专）</div></div>
+    <div class="review-item"><div class="review-num">7</div><div>五模式演进：分离→单向→双向→一体化→驱动（行政→执行→伙伴→融合→驱动）</div></div>
+    <div class="review-item"><div class="review-num">8</div><div>HR外包四类：传统型+外围型可外包；独特型+核心型内部化</div></div>
+    <div class="review-item"><div class="review-num">9</div><div>并购三阶段：规划筹备（评估HR）→谈判（管文化冲突）→整合（安抚+公平选拔）</div></div>
+    <div class="review-item"><div class="review-num">10</div><div>HR能力 = 任职能力 + 职业化行为能力，均需VRIN化以支撑竞争优势</div></div>
+  </div>
+
+  <!-- ══════════ 背诵版 ══════════ -->
+  <div class="recite-box" id="sec-recite">
+    <h3>📚 背诵版总结（复试口述版）</h3>
+
+    <div class="recite-item">
+      <strong>SHRM定义</strong>：战略人力资源管理是将HRM与企业战略相结合的管理思想，通过与战略目标一致的HRM获得<strong>不易模仿、相对持久</strong>的竞争优势。
+    </div>
+    <div class="recite-item">
+      <strong>SHRM特征（4点）</strong>：①人的重要性进一步加强；②HR直接参与组织决策；③HR直线功能强化；④从被动响应型转变为积极制定者与执行人。
+    </div>
+    <div class="recite-item">
+      <strong>VRIN四条件</strong>：人力资源具有<strong>价值性</strong>（降成本增利润）、<strong>稀缺性</strong>（正态分布顶端人才永远稀缺）、<strong>难以模仿性</strong>（路径依赖+因果模糊）、<strong>难以替代性</strong>（学习能力使价值迁移）。
+    </div>
+    <div class="recite-item">
+      <strong>HR战略三思路</strong>：最佳实践法（普遍最优实践）、最佳适配法（适配竞争战略）、最佳结构法（内部一致性协同）。
+    </div>
+    <div class="recite-item">
+      <strong>五种模式演进</strong>：分离（行政）→单向适配（执行）→双向适配（伙伴）→一体化（融合）→驱动模式（驱动）。
+    </div>
+    <div class="recite-item">
+      <strong>HR外包判断</strong>：高价值+高专用→内部化（核心型）；低价值+低专用→外包（外围型）；高价值+低专用→外包（传统型）；低价值+高专用→内部化（独特型）。
+    </div>
+    <div class="recite-item">
+      <strong>并购HR整合三阶段</strong>：①规划筹备：评估、调查关键人才；②谈判：管理文化冲突、制定人员方案；③整合：安抚情绪、公平公正选拔、适时公布政策。
+    </div>
+  </div>
+
+  <!-- ══════════ 自我检测 ══════════ -->
+  <div class="section-title" id="sec-test">
+    <span class="sec-num">TEST</span>
+    <h2>课后自我检测</h2>
+  </div>
+
+  <div class="test-box">
+    <h4 style="margin-bottom:14px;">📝 教材课后题</h4>
+    <div class="test-q"><strong>Q1.</strong> 什么叫战略人力资源管理？（名词解释）</div>
+    <div class="test-q"><strong>Q2.</strong> 概括说明战略人力资源管理的主要理论基础。（简答）</div>
+    <div class="test-q"><strong>Q3.</strong> 如何区分以环境为基础的SHRM和以资源为基础的SHRM？（对比论述）</div>
+    <div class="test-q"><strong>Q4.</strong> 试分析不同企业战略下人力资源战略的特征。（论述）</div>
+    <div class="test-q"><strong>Q5.</strong> 比较不同战略人力资源管理模式的演进。（论述）</div>
+
+    <h4 style="margin: 20px 0 14px;">🔥 历年真题</h4>
+    <div class="test-q"><strong>【2016笔试】</strong> 论述企业战略与人力资源战略的匹配关系（论述题）</div>
+    <div class="test-q"><strong>【2019面试】</strong> 并购中的人力整合（口头简答）</div>
+
+    <h4 style="margin: 20px 0 14px;">💡 预测题</h4>
+    <div class="test-q"><strong>预测题1：</strong> 试述资源基础观视角下人力资源成为持续竞争优势来源的逻辑依据（VRIN）。</div>
+    <div class="test-q"><strong>预测题2：</strong> 请结合案例，分析人力资源战略从分离模式向驱动模式演进的条件与路径。</div>
+    <div class="test-q"><strong>预测题3：</strong> 某科技公司采用差异化竞争战略，请设计其人力资源战略的核心要素（招聘、培训、绩效、薪酬）。</div>
+    <div class="test-q"><strong>预测题4：</strong> 人力资源管理外包的决策依据是什么？哪些HR职能适合外包，哪些不适合？请说明理由。</div>
+    <div class="test-q"><strong>预测题5：</strong> 企业在实施并购战略时，人力资源部门应在哪些方面发挥作用？</div>
+  </div>
+
+</div><!-- /main -->
+
+<!-- ══════════ BACK TO TOP ══════════ -->
+<button id="back-top" onclick="scrollToTop()" title="返回顶部">↑</button>
+
+<script>
+// ── DARK MODE ──
+function toggleDark(){
+  document.body.classList.toggle('dark-mode');
+  const btn = document.querySelector('.nav-btn');
+  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ 日间模式' : '🌙 夜间模式';
+}
+
+// ── BACK TO TOP ──
+window.addEventListener('scroll', () => {
+  const btn = document.getElementById('back-top');
+  btn.classList.toggle('show', window.scrollY > 400);
+});
+function scrollToTop(){ window.scrollTo({top: 0, behavior: 'smooth'}); }
+
+// ── SEARCH ──
+let prevTerm = '';
+
+// Sticky nav active link
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('[id^="sec-"]');
+  const navLinks = document.querySelectorAll('.top-nav a');
+  let current = '';
+  sections.forEach(s => {
+    if(window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.background = a.getAttribute('href') === '#'+current ? 'rgba(255,255,255,.2)' : '';
+  });
+});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

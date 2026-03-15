@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>核心必背30考点 | 人力资源管理复试宝典</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  :root {
+    --bg: #f7f4ef;
+    --bg-card: #ffffff;
+    --bg-nav: #1a1a2e;
+    --text: #1a1a2e;
+    --text-muted: #6b6b8a;
+    --accent1: #c0392b;
+    --accent2: #2980b9;
+    --accent3: #27ae60;
+    --accent4: #8e44ad;
+    --accent5: #d35400;
+    --border: #e0dbd2;
+    --tag-bg: #eef2ff;
+    --tag-text: #3730a3;
+    --highlight: #fef3c7;
+    --highlight-border: #f59e0b;
+    --shadow: 0 4px 24px rgba(26,26,46,0.08);
+    --shadow-hover: 0 8px 32px rgba(26,26,46,0.16);
+    --nav-h: 60px;
+    --radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  body.dark {
+    --bg: #0f0f1a;
+    --bg-card: #1a1a2e;
+    --bg-nav: #0a0a14;
+    --text: #e8e6f0;
+    --text-muted: #9090b0;
+    --border: #2a2a42;
+    --tag-bg: #2a2a42;
+    --tag-text: #a5b4fc;
+    --highlight: #2d2a1a;
+    --highlight-border: #d97706;
+    --shadow: 0 4px 24px rgba(0,0,0,0.4);
+    --shadow-hover: 0 8px 32px rgba(0,0,0,0.6);
+    --bg-card: #181828;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-variant-numeric: tabular-nums;
+    transition: background 0.4s, color 0.4s;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    height: var(--nav-h);
+    background: var(--bg-nav);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    transition: background 0.4s;
+  }
+
+  .nav-brand {
+    color: #fff;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .nav-brand span { color: #f59e0b; }
+
+  .nav-controls { display: flex; gap: 10px; align-items: center; }
+
+  .nav-search {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 6px 14px;
+    color: #fff;
+    font-size: 13px;
+    width: 180px;
+    outline: none;
+    transition: var(--transition);
+  }
+  .nav-search::placeholder { color: rgba(255,255,255,0.5); }
+  .nav-search:focus { width: 220px; background: rgba(255,255,255,0.15); border-color: #f59e0b; }
+
+  .btn-icon {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 6px 10px;
+    transition: var(--transition);
+  }
+  .btn-icon:hover { background: rgba(255,255,255,0.2); }
+
+  .nav-jumper {
+    display: flex; gap: 6px; align-items: center;
+    overflow-x: auto; max-width: 400px;
+  }
+  .nav-jumper::-webkit-scrollbar { display: none; }
+
+  .batch-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 11px;
+    padding: 4px 10px;
+    white-space: nowrap;
+    transition: var(--transition);
+  }
+  .batch-btn:hover { background: rgba(245,158,11,0.3); border-color: #f59e0b; color: #f59e0b; }
+
+  /* ─── HERO ─── */
+  .hero {
+    margin-top: var(--nav-h);
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 50%, #1a1a2e 100%);
+    padding: 64px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(24px, 5vw, 42px);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .hero-title em {
+    color: #f59e0b;
+    font-style: normal;
+  }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .hero-meta {
+    display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .hero-stat .n { font-size: 28px; font-weight: 700; color: #f59e0b; }
+  .hero-stat .l { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+
+  /* ─── BATCH HEADERS ─── */
+  .batch-section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .batch-header {
+    margin: 48px 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .batch-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .batch-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .batch-pill {
+    background: var(--accent1);
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* ─── CARD ─── */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+  .card:hover { box-shadow: var(--shadow-hover); }
+
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .card-num {
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: #fff;
+  }
+
+  .card-header-text { flex: 1; min-width: 0; }
+
+  .card-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .card-meta {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  }
+
+  .tag {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  .tag.chapter { background: #fef3c7; color: #92400e; }
+  .tag.page { background: #d1fae5; color: #065f46; }
+  .tag.type { background: #ede9fe; color: #5b21b6; }
+  .tag.year { background: #fee2e2; color: #991b1b; }
+
+  body.dark .tag { background: #252538; color: #a5b4fc; }
+  body.dark .tag.chapter { background: #2d2410; color: #fbbf24; }
+  body.dark .tag.page { background: #0d2d1e; color: #34d399; }
+  body.dark .tag.type { background: #1e1a30; color: #c4b5fd; }
+  body.dark .tag.year { background: #2d1010; color: #f87171; }
+
+  .expand-icon {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 18px;
+    transition: transform 0.3s;
+    margin-top: 2px;
+  }
+
+  .card.open .expand-icon { transform: rotate(180deg); }
+
+  .card-body {
+    display: none;
+    padding: 0 24px 24px;
+  }
+
+  .card.open .card-body { display: block; }
+
+  /* ─── SECTION ROWS ─── */
+  .section {
+    margin-top: 18px;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .def-box {
+    background: var(--highlight);
+    border-left: 3px solid var(--highlight-border);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text);
+  }
+
+  body.dark .def-box {
+    background: rgba(245,158,11,0.08);
+    border-color: #d97706;
+  }
+
+  /* ─── TABLE ─── */
+  .tbl-wrap { overflow-x: auto; margin-top: 8px; border-radius: 8px; border: 1px solid var(--border); }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    background: var(--bg-nav);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.7;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+  body.dark tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  /* ─── STEPS ─── */
+  .steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    flex: 1 1 200px;
+    font-size: 13px;
+  }
+
+  .step-num {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--accent2);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+
+  /* ─── KEYWORDS ─── */
+  .keywords {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+  }
+
+  .kw {
+    background: linear-gradient(135deg, var(--accent2), var(--accent4));
+    color: #fff;
+    font-size: 12px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* ─── CASE BOX ─── */
+  .case-box {
+    background: linear-gradient(135deg, rgba(39,174,96,0.06), rgba(41,128,185,0.06));
+    border: 1px solid rgba(39,174,96,0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    line-height: 1.85;
+    margin-top: 8px;
+  }
+
+  .case-icon { font-size: 16px; margin-right: 6px; }
+
+  /* ─── SUMMARY BOX ─── */
+  .summary-box {
+    background: linear-gradient(135deg, rgba(192,57,43,0.06), rgba(142,68,173,0.06));
+    border: 1px solid rgba(192,57,43,0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    line-height: 1.85;
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* ─── QUICK REVIEW ─── */
+  .quick-review-section {
+    max-width: 960px;
+    margin: 48px auto;
+    padding: 0 20px;
+  }
+
+  .quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .quick-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+  }
+
+  .quick-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+
+  .quick-num { font-size: 11px; color: var(--text-muted); font-weight: 500; margin-bottom: 4px; }
+
+  .quick-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-family: 'Noto Serif SC', serif;
+  }
+
+  .quick-body {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-block-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent1);
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  /* ─── SEARCH HIGHLIGHT ─── */
+  mark.hl {
+    background: #fef08a;
+    color: #713f12;
+    border-radius: 3px;
+    padding: 1px 3px;
+  }
+  body.dark mark.hl { background: #a16207; color: #fef9c3; }
+
+  /* ─── BACK TO TOP ─── */
+  #btt {
+    position: fixed;
+    bottom: 28px; right: 28px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--bg-nav);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: var(--transition);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 999;
+  }
+  #btt:hover { transform: translateY(-3px); background: var(--accent1); }
+  #btt.show { display: flex; }
+
+  /* ─── FOUND NONE ─── */
+  .no-results {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 15px;
+    display: none;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg-nav);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    margin-top: 60px;
+    transition: background 0.4s;
+  }
+
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ─── COLORS FOR CARDS ─── */
+  .c1 { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+  .c2 { background: linear-gradient(135deg, #2980b9, #3498db); }
+  .c3 { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+  .c4 { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+  .c5 { background: linear-gradient(135deg, #d35400, #e67e22); }
+  .c6 { background: linear-gradient(135deg, #16a085, #1abc9c); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 640px) {
+    .nav-jumper { display: none; }
+    .nav-search { width: 120px; }
+    .hero { padding: 40px 16px 32px; }
+    .batch-section { padding: 0 12px; }
+    .card-header { padding: 16px 16px 12px; }
+    .card-body { padding: 0 16px 16px; }
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    nav, #btt { display: none !important; }
+    .card-body { display: block !important; }
+    .expand-icon { display: none; }
+    body { margin-top: 0; }
+    .hero { margin-top: 0; }
+  }
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-brand">人力资源管理 <span>30核心考点</span></div>
+  <div class="nav-jumper">
+    <button class="batch-btn" onclick="scrollToId('batch1')">第一梯队</button>
+    <button class="batch-btn" onclick="scrollToId('batch2')">第二梯队</button>
+    <button class="batch-btn" onclick="scrollToId('batch3')">第三梯队</button>
+    <button class="batch-btn" onclick="scrollToId('quick-review')">速记总览</button>
+  </div>
+  <div class="nav-controls">
+    
+    <button class="btn-icon" onclick="toggleAll(true)" title="展开全部">⊞</button>
+    <button class="btn-icon" onclick="toggleAll(false)" title="折叠全部">⊟</button>
+    <button class="btn-icon" onclick="toggleDark()" id="darkBtn" title="夜间模式">🌙</button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <div class="hero-title">核心必背 <em>30</em> 考点</div>
+  <div class="hero-sub">《人力资源管理·第三版》颜爱民 ｜ 中南大学企业管理复试宝典</div>
+  <div class="hero-meta">
+    <div class="hero-stat"><div class="n">30</div><div class="l">核心考点</div></div>
+    <div class="hero-stat"><div class="n">3</div><div class="l">重要梯队</div></div>
+    <div class="hero-stat"><div class="n">10</div><div class="l">考查年份</div></div>
+    <div class="hero-stat"><div class="n">2026</div><div class="l">复试目标年份</div></div>
+  </div>
+</div>
+
+<!-- ═══ BATCH 1 ═══ -->
+<div class="batch-section" id="batch1">
+  <div class="batch-header">
+    <div class="batch-label">🔴 第一梯队：必考核心（#01–#10）</div>
+    <div class="batch-pill">绩效·薪酬·培训·招聘·战略HRM</div>
+  </div>
+
+  <!-- #01 -->
+  <div class="card" id="c01">
+    <div class="card-header" onclick="toggleCard('c01')">
+      <div class="card-num c1">01</div>
+      <div class="card-header-text">
+        <div class="card-title">绩效管理循环（PDCA四阶段）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第8章 绩效管理</span>
+          <span class="tag page">P238–245</span>
+          <span class="tag type">论述 / 简答</span>
+          <span class="tag year">⭐⭐⭐⭐⭐ 必考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">绩效管理是通过制定绩效目标、实施绩效跟踪、开展绩效评价和绩效反馈，<strong>持续提升员工和组织绩效水平</strong>的系统过程。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 四阶段理论框架（PDCA）</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>阶段</th><th>名称</th><th>核心动作</th></tr>
+          <tr><td>P</td><td>绩效计划 Plan</td><td>管理者与员工共同制定绩效目标（SMART原则），签订绩效合同</td></tr>
+          <tr><td>D</td><td>绩效实施 Do</td><td>管理者持续辅导与沟通，员工执行任务，收集绩效数据</td></tr>
+          <tr><td>C</td><td>绩效评价 Check</td><td>采用量表法、360度等方法对员工绩效进行考核打分</td></tr>
+          <tr><td>A</td><td>绩效反馈 Action</td><td>绩效面谈，反馈结果，指出改进方向，将结果用于薪酬/晋升/培训</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 关键词</div>
+        <div class="keywords">
+          <span class="kw">SMART目标</span><span class="kw">绩效合同</span><span class="kw">过程辅导</span><span class="kw">绩效面谈</span><span class="kw">闭环管理</span><span class="kw">持续改进</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 企业案例</div>
+        <div class="case-box"><span class="case-icon">🏢</span><strong>华为</strong>采用"三层目标分解+季度绩效跟踪+年度述职"体系，将战略目标层层拆解至个人，绩效结果直接与奖金和职级晋升挂钩，有效推动战略落地。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">⑤ 一句总结</div>
+        <div class="summary-box">绩效管理的本质不是"考核工具"而是"管理语言"——计划是起点，反馈是闭环，持续改进是目的。四阶段缺一不可，管理者与员工共同参与是成功的关键。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #02 -->
+  <div class="card" id="c02">
+    <div class="card-header" onclick="toggleCard('c02')">
+      <div class="card-num c2">02</div>
+      <div class="card-header-text">
+        <div class="card-title">绩效评价方法（五种）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第8章 绩效管理</span>
+          <span class="tag page">P250–265</span>
+          <span class="tag type">名词解释 / 论述</span>
+          <span class="tag year">⭐⭐⭐⭐⭐ 必考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">绩效评价方法是指对员工工作表现进行<strong>系统测量和判断</strong>所采用的技术手段，不同方法适用于不同岗位和评价目的。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 五种方法对比</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>方法</th><th>核心逻辑</th><th>优点</th><th>缺点</th><th>适用场景</th></tr>
+          <tr><td>图尺度量表法</td><td>按维度打分</td><td>简单易操作</td><td>主观性强</td><td>大规模员工</td></tr>
+          <tr><td>关键事件法</td><td>记录典型行为</td><td>有据可查</td><td>耗时费力</td><td>管理岗位</td></tr>
+          <tr><td>目标管理（MBO）</td><td>目标完成度评价</td><td>结果导向</td><td>忽略过程</td><td>销售/项目岗位</td></tr>
+          <tr><td>360度反馈</td><td>多主体全方位评价</td><td>全面客观</td><td>成本高·人际干扰</td><td>管理人员</td></tr>
+          <tr><td>排序法</td><td>员工相互比较排名</td><td>区分度高</td><td>制造内部竞争</td><td>绩效强制分布</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 关键词</div>
+        <div class="keywords">
+          <span class="kw">月晕效应</span><span class="kw">信效度</span><span class="kw">360度反馈</span><span class="kw">MBO</span><span class="kw">强制分布</span><span class="kw">组合使用</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 案例</div>
+        <div class="case-box"><span class="case-icon">🏢</span><strong>字节跳动</strong>采用OKR与360度反馈相结合：OKR聚焦目标达成，360度反馈评价领导力与协作，互补弥补单一方法缺陷。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">⑤ 一句总结</div>
+        <div class="summary-box">没有完美的评价方法，关键是"方法与岗位匹配、多元互补、结果公正透明"。选择方法前需明确评价目的。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #03 -->
+  <div class="card" id="c03">
+    <div class="card-header" onclick="toggleCard('c03')">
+      <div class="card-num c3">03</div>
+      <div class="card-header-text">
+        <div class="card-title">KPI与OKR的区别</div>
+        <div class="card-meta">
+          <span class="tag chapter">第8章 绩效管理</span>
+          <span class="tag page">P255–260</span>
+          <span class="tag type">对比论述</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">
+          <strong>KPI</strong>（关键绩效指标）：从企业战略目标分解出的可量化指标，结果与薪酬<strong>直接挂钩</strong>。<br>
+          <strong>OKR</strong>（目标与关键结果）：员工自主设定挑战性目标，聚焦方向与成长，<strong>通常不直接与薪酬挂钩</strong>。
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 核心区别</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>维度</th><th>KPI</th><th>OKR</th></tr>
+          <tr><td>目标来源</td><td>自上而下分解</td><td>上下结合，员工参与</td></tr>
+          <tr><td>目标性质</td><td>保底性·可达成</td><td>挑战性·鼓励失败</td></tr>
+          <tr><td>薪酬挂钩</td><td>直接挂钩</td><td>通常不直接挂钩</td></tr>
+          <tr><td>适用场景</td><td>流程稳定·结果可量化</td><td>创新业务·知识型员工</td></tr>
+          <tr><td>核心功能</td><td>绩效考核</td><td>方向对齐+自我驱动</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 关键词</div>
+        <div class="keywords">
+          <span class="kw">量化指标</span><span class="kw">挑战性目标</span><span class="kw">自我驱动</span><span class="kw">短期行为</span><span class="kw">互补融合</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 案例</div>
+        <div class="case-box"><span class="case-icon">🏢</span><strong>谷歌</strong>将OKR用于战略对齐，要求目标完成率60–70%为理想；<strong>百度</strong>销售团队则坚持KPI确保营收目标刚性执行。两者可组合使用。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">⑤ 一句总结</div>
+        <div class="summary-box">KPI是"管结果的尺"，OKR是"指方向的灯"。用OKR定方向、用KPI量结果，形成互补闭环。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #04 -->
+  <div class="card" id="c04">
+    <div class="card-header" onclick="toggleCard('c04')">
+      <div class="card-num c4">04</div>
+      <div class="card-header-text">
+        <div class="card-title">绩效评价者误差（六种）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第8章 绩效管理</span>
+          <span class="tag page">P260–265</span>
+          <span class="tag type">名词解释 / 简答</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">绩效评价者误差是指由于评价者<strong>主观因素</strong>导致评价结果系统性偏离员工真实绩效水平的现象。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 六种误差</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>误差类型</th><th>含义</th><th>举例</th></tr>
+          <tr><td>晕轮效应</td><td>以某一突出特征代替整体评价</td><td>员工形象好→各项均高分</td></tr>
+          <tr><td>近因效应</td><td>过分看重最近表现，忽视全年</td><td>年末冲刺→年度高分</td></tr>
+          <tr><td>趋中倾向</td><td>评分集中于中间段，回避极端</td><td>所有人打3分（5分制）</td></tr>
+          <tr><td>对比效应</td><td>受前一被评者影响相对高低</td><td>前人差→后人显得优秀</td></tr>
+          <tr><td>宽厚偏差</td><td>倾向于给所有人偏高评价</td><td>好好先生型管理者</td></tr>
+          <tr><td>严格偏差</td><td>倾向于给所有人偏低评价</td><td>高标准管理者压分</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 改进措施</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div>对评价者进行专项培训</div>
+          <div class="step-item"><div class="step-num">2</div>采用行为锚定量表（BARS）</div>
+          <div class="step-item"><div class="step-num">3</div>引入360度多主体评价</div>
+          <div class="step-item"><div class="step-num">4</div>强制分布避免趋中</div>
+          <div class="step-item"><div class="step-num">5</div>定期校正审核评价结果</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">⑤ 一句总结</div>
+        <div class="summary-box">好的绩效评价体系应通过"标准清晰+多元主体+结果校准"三重机制最大限度降低人为误差。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #05 -->
+  <div class="card" id="c05">
+    <div class="card-header" onclick="toggleCard('c05')">
+      <div class="card-num c5">05</div>
+      <div class="card-header-text">
+        <div class="card-title">薪酬的四种基础模式</div>
+        <div class="card-meta">
+          <span class="tag chapter">第9章 薪酬</span>
+          <span class="tag page">P275–285</span>
+          <span class="tag type">对比论述</span>
+          <span class="tag year">⭐⭐⭐⭐⭐ 必考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">薪酬模式是指企业确定员工薪酬水平的<strong>基础依据</strong>，不同模式体现了不同的薪酬哲学，直接影响员工行为与组织文化。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 四种模式对比</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>模式</th><th>定义</th><th>优点</th><th>缺点</th><th>适用条件</th></tr>
+          <tr><td>以岗位为基础</td><td>按岗位价值定薪</td><td>公平·结构清晰</td><td>忽视个体差异</td><td>大型稳定企业</td></tr>
+          <tr><td>以能力为基础</td><td>按员工能力/技能定薪</td><td>激励成长</td><td>能力难量化</td><td>技术密集型企业</td></tr>
+          <tr><td>以绩效为基础</td><td>按业绩结果定薪</td><td>激励性强·公平</td><td>短期行为风险</td><td>销售/项目类岗位</td></tr>
+          <tr><td>以市场供求为基础</td><td>按市场价格定薪</td><td>外部竞争力强</td><td>内部公平性差</td><td>引进稀缺人才</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 关键词</div>
+        <div class="keywords">
+          <span class="kw">内部公平</span><span class="kw">外部竞争力</span><span class="kw">个人公平</span><span class="kw">三轨复合</span><span class="kw">岗位+绩效+市场</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 案例</div>
+        <div class="case-box"><span class="case-icon">🏢</span><strong>华为</strong>以岗位价值评估为基础（定级），结合绩效系数浮动（奖金），再以市场对标保持外部竞争力，形成"岗位+绩效+市场"三轨复合模式。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">⑤ 一句总结</div>
+        <div class="summary-box">薪酬模式的核心是"三个公平"：内部公平让员工服气，外部竞争力让人才进得来，激励性让员工愿意拼。三者平衡是薪酬设计的核心命题。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #06 -->
+  <div class="card" id="c06">
+    <div class="card-header" onclick="toggleCard('c06')">
+      <div class="card-num c6">06</div>
+      <div class="card-header-text">
+        <div class="card-title">薪酬结构设计（内外部公平）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第9章 薪酬</span>
+          <span class="tag page">P280–295</span>
+          <span class="tag type">简答 / 论述</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">薪酬结构是指员工薪酬的构成要素（基本工资、绩效奖金、福利、长期激励等）及各要素所占比例的组合安排。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 设计三原则</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div><div><strong>内部公平性</strong>：通过岗位价值评估确定内部薪酬等级体系（排列法/分类法/要素计点法）</div></div>
+          <div class="step-item"><div class="step-num">2</div><div><strong>外部竞争力</strong>：定期开展薪酬市场调查，确定企业薪酬定位（领先/跟随/滞后市场）</div></div>
+          <div class="step-item"><div class="step-num">3</div><div><strong>激励性</strong>：固定薪酬提供安全感，浮动薪酬激励高绩效，长期激励绑定核心人才</div></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 薪酬构成链</div>
+        <div class="def-box" style="font-family:monospace; font-size:13px;">基本工资（保障）→ 绩效奖金（短期激励）→ 福利津贴（保障补充）→ 长期激励（股权/期权·战略绑定）</div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 案例</div>
+        <div class="case-box"><span class="case-icon">🏢</span>某互联网公司初级工程师"70%固定+30%绩效"；高管"40%固定+30%绩效+30%股权"，体现"层级越高、长期激励比例越大"的薪酬哲学。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">⑤ 一句总结</div>
+        <div class="summary-box">好的薪酬结构应做到"内部公平让员工服气，外部竞争力让人才进得来，激励性让员工愿意拼"。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #07 -->
+  <div class="card" id="c07">
+    <div class="card-header" onclick="toggleCard('c07')">
+      <div class="card-num c1">07</div>
+      <div class="card-header-text">
+        <div class="card-title">培训需求分析三个层次（TNA）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第10章 人力资源开发与培训</span>
+          <span class="tag page">P330–345</span>
+          <span class="tag type">简答 / 论述</span>
+          <span class="tag year">⭐⭐⭐⭐⭐ 必考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">培训需求分析（TNA）是在培训前识别<strong>"应具备能力"与"实际能力"之间的差距</strong>，从而确定培训目标、内容和对象的过程。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 三个层次</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>层次</th><th>分析内容</th><th>分析方法</th><th>回答的问题</th></tr>
+          <tr><td>组织层面</td><td>战略目标·组织效能·文化氛围</td><td>资料分析·管理层访谈</td><td>企业整体需要什么培训？</td></tr>
+          <tr><td>岗位/任务层面</td><td>岗位职责·任务要求·胜任力标准</td><td>工作分析·观察·任务清单</td><td>该岗位需要什么知识技能？</td></tr>
+          <tr><td>人员层面</td><td>员工现有能力vs岗位要求的差距</td><td>绩效评估·问卷·测试·360度</td><td>谁需要培训？需要什么培训？</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 关键词</div>
+        <div class="keywords">
+          <span class="kw">能力差距</span><span class="kw">组织层</span><span class="kw">岗位层</span><span class="kw">人员层</span><span class="kw">对症下药</span><span class="kw">ROI</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 案例</div>
+        <div class="case-box"><span class="case-icon">🏪</span>某零售企业新零售转型期：组织层分析→战略需要数字化运营能力；岗位层→店长需掌握数据分析工具；人员层→对现有店长能力测评。最终设计精准培训，转化率显著提升。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">⑤ 一句总结</div>
+        <div class="summary-box">三层次由宏观到微观层层递进，缺少任一层次都会导致培训方向偏差或资源错配。培训需求分析是"培训投资回报率"的起点。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #08 -->
+  <div class="card" id="c08">
+    <div class="card-header" onclick="toggleCard('c08')">
+      <div class="card-num c2">08</div>
+      <div class="card-header-text">
+        <div class="card-title">六种员工甄选方法</div>
+        <div class="card-meta">
+          <span class="tag chapter">第7章 员工招聘</span>
+          <span class="tag page">P210–235</span>
+          <span class="tag type">名词解释 / 论述</span>
+          <span class="tag year">⭐⭐⭐⭐⭐ 必考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">员工甄选是从应聘者中筛选出最符合岗位要求者的过程，综合评估候选人的<strong>知识、技能、能力和人格特征（KSAOs）</strong>。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 六种方法</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>方法</th><th>核心机制</th><th>优点</th><th>缺点</th><th>适用岗位</th></tr>
+          <tr><td>结构化面试</td><td>标准化问题+评分表</td><td>信效度高·公平</td><td>准备成本高</td><td>各类管理岗位</td></tr>
+          <tr><td>笔试/知识测试</td><td>专业知识考察</td><td>客观·批量筛选</td><td>只测显性知识</td><td>技术/专业岗位</td></tr>
+          <tr><td>心理测试</td><td>性格/能力/兴趣测量</td><td>深层特征识别</td><td>易造假·隐私问题</td><td>销售/管理岗位</td></tr>
+          <tr><td>工作样本测试</td><td>完成实际工作任务</td><td>预测效度最高</td><td>成本高·周期长</td><td>技能型岗位</td></tr>
+          <tr><td>评价中心</td><td>情景模拟综合评估</td><td>全面立体</td><td>成本极高</td><td>高管/管培生</td></tr>
+          <tr><td>背景调查</td><td>核实过往经历</td><td>验证真实性</td><td>信息获取有限</td><td>各类重要岗位</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 关键词</div>
+        <div class="keywords">
+          <span class="kw">KSAOs</span><span class="kw">信效度</span><span class="kw">STAR法</span><span class="kw">预测效度</span><span class="kw">由宽到窄</span><span class="kw">组合使用</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 案例</div>
+        <div class="case-box"><span class="case-icon">📋</span>某咨询公司管培生招聘："笔试（案例分析）→结构化面试（STAR法）→无领导小组讨论→高管终面"四轮组合，从知识、逻辑、协作、价值观四维度全面评估。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">⑤ 一句总结</div>
+        <div class="summary-box">甄选方法的组合逻辑是"由宽到窄、由表及里"——先用低成本方法批量筛选，再用高信效度方法精准评估。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #09 -->
+  <div class="card" id="c09">
+    <div class="card-header" onclick="toggleCard('c09')">
+      <div class="card-num c3">09</div>
+      <div class="card-header-text">
+        <div class="card-title">人力资源战略与企业战略匹配</div>
+        <div class="card-meta">
+          <span class="tag chapter">第2章 人力资源管理战略</span>
+          <span class="tag page">P25–50</span>
+          <span class="tag type">论述 / 案例</span>
+          <span class="tag year">⭐⭐⭐⭐⭐ 必考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">人力资源战略与企业战略的匹配，是指HRM活动（招聘、培训、绩效、薪酬等）服务并支撑企业整体战略目标，形成<strong>纵向一致性与横向整合性</strong>。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 两个维度</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>匹配类型</th><th>含义</th><th>典型示例</th></tr>
+          <tr><td>纵向匹配（垂直整合）</td><td>HRM战略与企业竞争战略对齐</td><td>成本领先战略→效率导向HRM；差异化战略→创新导向HRM</td></tr>
+          <tr><td>横向匹配（水平整合）</td><td>各HRM模块内部一致</td><td>招聘标准与绩效指标、培训内容与发展目标相互协调</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 案例</div>
+        <div class="case-box"><span class="case-icon">🏢</span><strong>华为</strong>向软件和服务转型时：大规模引进软件研发人才（招聘匹配）、建立"技术专家"职业通道（薪酬匹配）、开展软件工程培训（培训匹配）。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 一句总结</div>
+        <div class="summary-box">战略是"想去哪里"，人力资源战略是"靠什么人去、怎么激励他们去"。二者匹配是战略落地的根本保障。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #10 -->
+  <div class="card" id="c10">
+    <div class="card-header" onclick="toggleCard('c10')">
+      <div class="card-num c4">10</div>
+      <div class="card-header-text">
+        <div class="card-title">胜任力模型（冰山模型）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第3章 / 第7章</span>
+          <span class="tag page">P60–80</span>
+          <span class="tag type">名词解释 / 论述</span>
+          <span class="tag year">⭐⭐⭐⭐⭐ 必考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">胜任力（Competency）是指能将某一工作中<strong>表现优异者与表现一般者区别开来</strong>的个人深层特征，包括知识、技能、自我概念、特质和动机等。由麦克利兰（McClelland）1973年提出。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 冰山模型结构</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>位置</th><th>要素</th><th>特点</th></tr>
+          <tr><td>水面以上（可见）</td><td>知识 Knowledge / 技能 Skill</td><td>易观察、易培训</td></tr>
+          <tr><td>水面以下（隐藏）</td><td>社会角色 / 自我概念 / 人格特质 / 动机</td><td>难改变，是区分优秀与普通者的关键</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 构建流程（5步）</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div>确定研究目标岗位</div>
+          <div class="step-item"><div class="step-num">2</div>选取绩优/普通两组样本</div>
+          <div class="step-item"><div class="step-num">3</div>实施行为事件访谈（BEI）</div>
+          <div class="step-item"><div class="step-num">4</div>编码分析提取胜任力要素</div>
+          <div class="step-item"><div class="step-num">5</div>建立胜任力模型并验证</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 案例</div>
+        <div class="case-box"><span class="case-icon">🏦</span>某银行建立客户经理胜任力模型，发现顶尖与普通者的差距不在专业知识（可培训），而在于"成就动机强+主动服务意识"（难改变的深层特质）。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">⑤ 一句总结</div>
+        <div class="summary-box">冰山模型的核心洞见："看得见的素质易教，看不见的特质才是真正的选才标准。"招聘要识别水面以下，培训聚焦水面以上。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BATCH 2 ═══ -->
+<div class="batch-section" id="batch2">
+  <div class="batch-header">
+    <div class="batch-label">🟡 第二梯队：高频重点（#11–#20）</div>
+    <div class="batch-pill">评价中心·培训评估·职业发展·招聘·HRBP</div>
+  </div>
+
+  <!-- #11 -->
+  <div class="card" id="c11">
+    <div class="card-header" onclick="toggleCard('c11')">
+      <div class="card-num c2">11</div>
+      <div class="card-header-text">
+        <div class="card-title">评价中心技术</div>
+        <div class="card-meta">
+          <span class="tag chapter">第7章 员工招聘</span>
+          <span class="tag page">P228–233</span>
+          <span class="tag type">名词解释 / 简答</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">评价中心是通过<strong>多种情景模拟方法</strong>，由多名评价者对被测者行为表现进行系统观察和综合评价的人才测评技术。它不是物理场所，而是一套标准化的评价程序。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 四种核心方法</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>方法</th><th>操作要点</th><th>评价维度</th></tr>
+          <tr><td>无领导小组讨论（LGD）</td><td>多人小组，无指定主持人，限时讨论得出结论</td><td>语言表达·分析归纳·说服力·协调</td></tr>
+          <tr><td>公文处理（In-basket）</td><td>假设任职后处理一篮子文件</td><td>规划能力·决策能力·优先级管理</td></tr>
+          <tr><td>管理游戏</td><td>模拟商业决策场景，团队竞争</td><td>竞争意识·团队合作·战略思维</td></tr>
+          <tr><td>角色扮演</td><td>模拟真实工作情境（谈判·客诉处理）</td><td>沟通能力·情绪管理·人际技巧</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">评价中心通过"多方法+多评价者+多维度"综合评估，信效度远高于单一面试，特别适合评估管理岗位综合素质和领导潜力。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #12 -->
+  <div class="card" id="c12">
+    <div class="card-header" onclick="toggleCard('c12')">
+      <div class="card-num c3">12</div>
+      <div class="card-header-text">
+        <div class="card-title">柯克帕特里克培训评估四层次</div>
+        <div class="card-meta">
+          <span class="tag chapter">第10章 培训</span>
+          <span class="tag page">P355–370</span>
+          <span class="tag type">名词解释 / 简答</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">柯克帕特里克（Kirkpatrick）四层次模型是评估培训效果的经典框架，从反应→学习→行为→结果，层层递进，层级越高说明培训价值越大，但评估难度也越高。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 四个层次</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>层次</th><th>名称</th><th>评估内容</th><th>评估方法</th></tr>
+          <tr><td>Level 1</td><td>反应层（Reaction）</td><td>学员对培训的满意度</td><td>培训后问卷调查</td></tr>
+          <tr><td>Level 2</td><td>学习层（Learning）</td><td>知识/技能/态度的获取程度</td><td>培训前后测试对比</td></tr>
+          <tr><td>Level 3</td><td>行为层（Behavior）</td><td>培训后工作行为是否改变</td><td>3–6个月后的绩效观察/360度反馈</td></tr>
+          <tr><td>Level 4</td><td>结果层（Results）</td><td>培训对组织绩效的贡献</td><td>ROI分析·业务数据对比</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 关键词</div>
+        <div class="keywords">
+          <span class="kw">反应层</span><span class="kw">学习层</span><span class="kw">行为层</span><span class="kw">结果层</span><span class="kw">培训ROI</span>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 一句总结</div>
+        <div class="summary-box">多数企业只做Level 1满意度调查，停留表面；真正有价值的评估应追踪到Level 3行为改变和Level 4业务成果。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #13 -->
+  <div class="card" id="c13">
+    <div class="card-header" onclick="toggleCard('c13')">
+      <div class="card-num c4">13</div>
+      <div class="card-header-text">
+        <div class="card-title">职业锚理论（六种类型）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第11章 职业生涯管理</span>
+          <span class="tag page">P370–385</span>
+          <span class="tag type">名词解释 / 简答</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">职业锚（Career Anchor）是由施恩（Schein）提出的概念，指个人在工作中无论如何都不愿放弃的<strong>核心价值观、动机和能力的组合</strong>，是个体职业选择的稳定内驱力。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 六种（八种）类型</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>类型</th><th>核心驱动</th><th>适合职业方向</th></tr>
+          <tr><td>技术/职能型</td><td>专注某一领域成为专家</td><td>技术专家·学者·专业顾问</td></tr>
+          <tr><td>管理型</td><td>渴望承担管理职责，整合他人</td><td>高管·管理者·CEO</td></tr>
+          <tr><td>安全/稳定型</td><td>追求稳定·可预期的工作环境</td><td>政府机关·国企·大型稳定企业</td></tr>
+          <tr><td>创业型</td><td>渴望创建属于自己的事业</td><td>创业者·内部创业·项目负责人</td></tr>
+          <tr><td>自主/独立型</td><td>厌恶组织束缚，追求自由</td><td>自由职业·咨询师·独立顾问</td></tr>
+          <tr><td>服务/奉献型</td><td>以服务他人/社会为目标</td><td>公益·教育·医疗·社会工作</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">职业锚帮助HR理解员工真正在乎什么——用职业锚匹配岗位，既能留住人才，也能让员工真正投入。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #14 -->
+  <div class="card" id="c14">
+    <div class="card-header" onclick="toggleCard('c14')">
+      <div class="card-num c5">14</div>
+      <div class="card-header-text">
+        <div class="card-title">职业生涯发展阶段理论</div>
+        <div class="card-meta">
+          <span class="tag chapter">第11章 职业生涯管理</span>
+          <span class="tag page">P375–392</span>
+          <span class="tag type">简答 / 论述</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">职业生涯发展理论（萨帕Super）将职业生涯分为多个阶段，每个阶段有不同的发展任务与挑战，HR应针对不同阶段员工提供差异化支持。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 四个阶段</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>阶段</th><th>年龄</th><th>核心任务</th><th>HR策略</th></tr>
+          <tr><td>探索阶段</td><td>15–24岁</td><td>探索职业选择，建立自我概念</td><td>职业测评·实习机会·职业规划辅导</td></tr>
+          <tr><td>建立阶段</td><td>25–44岁</td><td>在选定领域站稳脚跟、晋升发展</td><td>快速晋升通道·挑战性任务·导师制</td></tr>
+          <tr><td>维持阶段</td><td>45–60岁</td><td>巩固成就，防止职业高原</td><td>横向发展·新职责·知识传承</td></tr>
+          <tr><td>下降阶段</td><td>60岁以上</td><td>逐渐退出，知识传递</td><td>弹性工作·退休过渡·经验传承计划</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">职业生涯管理的核心是"在对的阶段给对的支持"——HR不是一视同仁，而是因人因阶段而异地帮助员工成长。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #15 -->
+  <div class="card" id="c15">
+    <div class="card-header" onclick="toggleCard('c15')">
+      <div class="card-num c6">15</div>
+      <div class="card-header-text">
+        <div class="card-title">内外部招聘的优缺点对比</div>
+        <div class="card-meta">
+          <span class="tag chapter">第7章 员工招聘</span>
+          <span class="tag page">P200–215</span>
+          <span class="tag type">对比简答</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 对比</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>维度</th><th>内部招聘</th><th>外部招聘</th></tr>
+          <tr><td>优点</td><td>了解企业文化·激励现有员工·成本低·适应快</td><td>带来新思想·打破内部固化·补充稀缺能力</td></tr>
+          <tr><td>缺点</td><td>近亲繁殖·引发落选者不满·思维局限</td><td>成本高·适应期长·风险大·可能影响内部士气</td></tr>
+          <tr><td>适用场景</td><td>战略连续性强·内部人才储备充足</td><td>战略转型·核心能力缺口·创新需求强</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 一句总结</div>
+        <div class="summary-box">内外部招聘没有绝对优劣，关键是根据岗位性质、战略需求和内部人才储备情况灵活组合——"内升为主，外引补缺"是多数成熟企业的实践策略。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #16 -->
+  <div class="card" id="c16">
+    <div class="card-header" onclick="toggleCard('c16')">
+      <div class="card-num c1">16</div>
+      <div class="card-header-text">
+        <div class="card-title">绩效反馈面谈（STAR/BEI方法）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第8章 绩效管理</span>
+          <span class="tag page">P265–275</span>
+          <span class="tag type">简答 / 案例</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">绩效反馈面谈是绩效管理PDCA循环中"A（Action）"阶段的核心活动，通过结构化对话将绩效评价结果传达给员工，共同制定改进计划，是绩效管理系统的"最后一公里"。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 三种面谈类型</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>类型</th><th>管理者姿态</th><th>适用情境</th></tr>
+          <tr><td>告知-说服型</td><td>我告诉你评价结果，说服你接受</td><td>高绩效员工，结果无争议</td></tr>
+          <tr><td>告知-倾听型</td><td>告知结果，听取员工反应</td><td>中等绩效员工，有解释空间</td></tr>
+          <tr><td>解决问题型</td><td>共同探讨问题根源和改进方案</td><td>低绩效员工，需深度改进</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ STAR反馈法</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">S</div>Situation：描述具体情境</div>
+          <div class="step-item"><div class="step-num">T</div>Task：说明任务要求</div>
+          <div class="step-item"><div class="step-num">A</div>Action：描述员工行为</div>
+          <div class="step-item"><div class="step-num">R</div>Result：说明行为结果/影响</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 一句总结</div>
+        <div class="summary-box">绩效面谈不是"宣判"，而是"对话"。好的面谈让员工既了解结果，又明白方向，愿意改进。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #17 -->
+  <div class="card" id="c17">
+    <div class="card-header" onclick="toggleCard('c17')">
+      <div class="card-num c2">17</div>
+      <div class="card-header-text">
+        <div class="card-title">薪酬管理目标（三公平）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第9章 薪酬</span>
+          <span class="tag page">P270–280</span>
+          <span class="tag type">简答</span>
+          <span class="tag year">⭐⭐⭐ 常考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 三公平框架</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>公平类型</th><th>含义</th><th>实现工具</th></tr>
+          <tr><td>内部公平</td><td>同一组织内不同岗位薪酬差距合理</td><td>岗位价值评估（要素计点法）</td></tr>
+          <tr><td>外部公平（竞争力）</td><td>薪酬水平与市场同类岗位相当</td><td>薪酬市场调查、薪酬定位策略</td></tr>
+          <tr><td>个人公平</td><td>同岗位员工因绩效/能力不同获得差异化薪酬</td><td>绩效薪酬、宽带薪酬</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 一句总结</div>
+        <div class="summary-box">薪酬管理的三公平是彼此制衡的——单纯追求内部公平会失去外部竞争力，单纯追求外部市场会破坏内部平衡，最优解是动态平衡三者。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #18 -->
+  <div class="card" id="c18">
+    <div class="card-header" onclick="toggleCard('c18')">
+      <div class="card-num c3">18</div>
+      <div class="card-header-text">
+        <div class="card-title">HRBP角色定位</div>
+        <div class="card-meta">
+          <span class="tag chapter">第1章 / 第2章</span>
+          <span class="tag page">P15–30</span>
+          <span class="tag type">简答 / 论述</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">HRBP（HR Business Partner，人力资源业务伙伴）是战略性HRM的核心实践者，深度嵌入业务部门，以"战略伙伴+变革推动者+员工倡导者+行政专家"四角色，将HR专业能力转化为业务价值。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 尤里奇四角色模型</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>角色</th><th>关注焦点</th><th>典型活动</th></tr>
+          <tr><td>战略伙伴</td><td>战略执行</td><td>参与业务战略制定·人才战略规划</td></tr>
+          <tr><td>变革推动者</td><td>组织变革</td><td>推动文化变革·组织重构·转型管理</td></tr>
+          <tr><td>员工倡导者</td><td>员工体验</td><td>倾听员工声音·调解劳资关系·提升敬业度</td></tr>
+          <tr><td>行政专家</td><td>运营效率</td><td>流程优化·HR系统建设·降本增效</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">HRBP的价值在于"把HR专业能力翻译成业务语言"——不是坐在HR部门等业务来找你，而是主动坐到业务前线提供战略支持。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #19 -->
+  <div class="card" id="c19">
+    <div class="card-header" onclick="toggleCard('c19')">
+      <div class="card-num c4">19</div>
+      <div class="card-header-text">
+        <div class="card-title">人力资源规划（供需预测方法）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第6章 人力资源规划</span>
+          <span class="tag page">P88–115</span>
+          <span class="tag type">简答 / 论述</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">人力资源规划是根据企业战略目标，预测未来人力资源的<strong>需求（何时需要什么样的人）</strong>与<strong>供给（内外部能提供多少）</strong>，并制定措施消除差距的过程。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 需求预测方法</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>方法</th><th>原理</th><th>适用</th></tr>
+          <tr><td>德尔菲法</td><td>专家多轮匿名判断，汇聚意见</td><td>长期·战略性岗位预测</td></tr>
+          <tr><td>回归分析法</td><td>找业务量与人员数量的统计关系</td><td>人员与业务量相关性强</td></tr>
+          <tr><td>工作研究法</td><td>根据工作量/标准工时计算所需人数</td><td>操作类·生产型岗位</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 供给预测工具</div>
+        <div class="def-box"><strong>马尔科夫矩阵</strong>：追踪不同岗位员工在特定时期内流动的概率（晋升/平调/离职/留任），预测各岗位未来的供给量。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 一句总结</div>
+        <div class="summary-box">人力资源规划是"提前布局"——需求预测告诉我们"要什么人"，供给预测告诉我们"有没有人"，差距分析驱动招聘/培训/裁员决策。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #20 -->
+  <div class="card" id="c20">
+    <div class="card-header" onclick="toggleCard('c20')">
+      <div class="card-num c5">20</div>
+      <div class="card-header-text">
+        <div class="card-title">绩效与薪酬挂钩机制</div>
+        <div class="card-meta">
+          <span class="tag chapter">第8章+第9章</span>
+          <span class="tag page">P275–310</span>
+          <span class="tag type">论述 / 案例</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">绩效薪酬是指将员工的薪酬水平与其绩效结果直接关联的薪酬机制，体现<strong>"按结果付报酬"</strong>的分配哲学，以绩效差异化实现薪酬激励效果。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 挂钩类型</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>类型</th><th>定义</th><th>适用场景</th></tr>
+          <tr><td>绩效奖金</td><td>年度/季度绩效系数×基准奖金</td><td>通用型，各类岗位</td></tr>
+          <tr><td>计件/佣金</td><td>直接与产量/销售额挂钩</td><td>生产型·销售型岗位</td></tr>
+          <tr><td>利润分享</td><td>员工分享组织超额利润</td><td>企业整体激励</td></tr>
+          <tr><td>长期激励（股权）</td><td>绩效触发股权奖励，锁定期3–5年</td><td>核心管理人员·高潜人才</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 案例</div>
+        <div class="case-box"><span class="case-icon">🏭</span><strong>三一重工</strong>经济危机期间高管自愿降薪（最高90%），同时承诺"千亿特别奖"，将当下薪酬牺牲与长期绩效目标相绑定，有效维护员工士气。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 一句总结</div>
+        <div class="summary-box">绩效薪酬设计须遵循"激励要到位、指标要合理、系统要公平"三原则，通过短期+长期组合激励实现可持续高绩效。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BATCH 3 ═══ -->
+<div class="batch-section" id="batch3">
+  <div class="batch-header">
+    <div class="batch-label">🟢 第三梯队：常考考点（#21–#30）</div>
+    <div class="batch-pill">EAP·组织结构·新生代·工作分析·劳动合同·数字化HR</div>
+  </div>
+
+  <!-- #21 -->
+  <div class="card" id="c21">
+    <div class="card-header" onclick="toggleCard('c21')">
+      <div class="card-num c6">21</div>
+      <div class="card-header-text">
+        <div class="card-title">员工援助计划（EAP）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第9章 薪酬（福利部分）</span>
+          <span class="tag page">P315–316</span>
+          <span class="tag type">名词解释</span>
+          <span class="tag year">⭐⭐⭐ 常考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">员工援助计划（EAP）是企业为帮助员工解决个人问题而设立的<strong>治疗性福利措施</strong>，针对酗酒、心理压力、家庭问题等，向员工提供专业咨询和援助的系统性服务。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 三种运作形式</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>形式</th><th>说明</th><th>适用</th></tr>
+          <tr><td>内部型</td><td>企业内部专职人员提供援助</td><td>大型企业</td></tr>
+          <tr><td>外包型</td><td>委托外部专业机构提供EAP服务</td><td>中型企业</td></tr>
+          <tr><td>联合型</td><td>多家企业共同出资，集中资源</td><td>中小企业联盟</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">EAP体现了"整体人"管理理念——投资员工心理健康，本质上是投资企业的人力资本质量。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #22 -->
+  <div class="card" id="c22">
+    <div class="card-header" onclick="toggleCard('c22')">
+      <div class="card-num c1">22</div>
+      <div class="card-header-text">
+        <div class="card-title">组织结构五种类型</div>
+        <div class="card-meta">
+          <span class="tag chapter">第5章 组织设计</span>
+          <span class="tag page">P130–155</span>
+          <span class="tag type">对比论述</span>
+          <span class="tag year">⭐⭐⭐ 常考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 五种结构对比</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>类型</th><th>核心特征</th><th>优点</th><th>缺点</th><th>适用阶段</th></tr>
+          <tr><td>直线制</td><td>老板直接管所有人，扁平无中间层</td><td>决策快·权责明确</td><td>规模扩大后管理超载</td><td>创业期·小微企业</td></tr>
+          <tr><td>职能制（U型）</td><td>按职能（生产·营销·财务）分部门</td><td>专业化高·规模经济</td><td>跨部门协调差·本位主义</td><td>成本领先·单一产品</td></tr>
+          <tr><td>事业部制（M型）</td><td>按产品/地区/客户划分自主事业部</td><td>分权·激励·利润中心</td><td>事业部本位·资源重复</td><td>多元化·多产品</td></tr>
+          <tr><td>矩阵制</td><td>纵向职能+横向项目，双线汇报</td><td>资源共享·跨职能协作</td><td>双重领导·权责不清</td><td>工程项目·高技术</td></tr>
+          <tr><td>网络组织</td><td>核心能力自留+外包网络，轻资产</td><td>高度灵活·低固定成本</td><td>协调难·核心能力外流</td><td>数字化·动态竞争</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 助记口诀</div>
+        <div class="def-box">「直（线）职（能）事（业）矩（阵）网（络）」——创业小店→大工厂→多元集团→工程公司→数字平台</div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">钱德勒命题："结构追随战略（Structure Follows Strategy）"——战略调整时，组织结构必须相应匹配。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #23 -->
+  <div class="card" id="c23">
+    <div class="card-header" onclick="toggleCard('c23')">
+      <div class="card-num c2">23</div>
+      <div class="card-header-text">
+        <div class="card-title">新生代员工（Z世代）管理策略</div>
+        <div class="card-meta">
+          <span class="tag chapter">第11章 员工关系管理</span>
+          <span class="tag page">P390–410</span>
+          <span class="tag type">论述 / 案例</span>
+          <span class="tag year">⭐⭐⭐ 常考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 四大特征与管理启示</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>特征</th><th>管理启示</th></tr>
+          <tr><td>追求意义感·拒绝"内卷"</td><td>强调工作意义与社会价值</td></tr>
+          <tr><td>扁平化·反等级</td><td>减少命令式管理，增加参与式管理</td></tr>
+          <tr><td>即时反馈·认可>薪酬</td><td>频繁小激励优于年终大奖</td></tr>
+          <tr><td>数字原住民·学习快</td><td>给予技术自主权，避免过度监控</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 四大管理策略</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div>意义管理：将个人工作与企业使命连接</div>
+          <div class="step-item"><div class="step-num">2</div>参与式管理：给予更多决策参与权和自主权</div>
+          <div class="step-item"><div class="step-num">3</div>即时认可机制：建立及时正向反馈文化</div>
+          <div class="step-item"><div class="step-num">4</div>成长型激励：以学习机会·晋升通道为核心</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">管理新生代员工的核心是"从管控转向赋能"——少规则约束，多意义赋予；少监督考核，多信任授权。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #24 -->
+  <div class="card" id="c24">
+    <div class="card-header" onclick="toggleCard('c24')">
+      <div class="card-num c3">24</div>
+      <div class="card-header-text">
+        <div class="card-title">战略性人力资源管理（SHRM）转型</div>
+        <div class="card-meta">
+          <span class="tag chapter">第1章 / 第2章</span>
+          <span class="tag page">P1–25</span>
+          <span class="tag type">论述</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">战略性人力资源管理（SHRM）是指将HRM活动与企业战略目标<strong>系统性整合</strong>，使人力资源成为企业竞争优势来源的管理理念与实践体系。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 传统人事管理 vs SHRM</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>维度</th><th>传统人事管理</th><th>战略性HRM</th></tr>
+          <tr><td>角色定位</td><td>行政支持·成本中心</td><td>战略伙伴·价值创造中心</td></tr>
+          <tr><td>关注重点</td><td>员工个人事务·合规</td><td>组织能力·人才战略·绩效</td></tr>
+          <tr><td>时间导向</td><td>短期·事后处理</td><td>长期·前瞻性规划</td></tr>
+          <tr><td>人才观</td><td>员工=成本</td><td>员工=资产·人力资本</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">SHRM转型的本质是HR价值观的根本转变：从"管好人"到"用好人才创造价值"。HR需要用数据说话、用业务思维提问、用战略视角规划人才。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #25 -->
+  <div class="card" id="c25">
+    <div class="card-header" onclick="toggleCard('c25')">
+      <div class="card-num c4">25</div>
+      <div class="card-header-text">
+        <div class="card-title">战略性人才储备与九宫格</div>
+        <div class="card-meta">
+          <span class="tag chapter">第6章 / 第7章</span>
+          <span class="tag page">P100–120</span>
+          <span class="tag type">论述 / 案例</span>
+          <span class="tag year">⭐⭐⭐ 常考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">战略性人才储备是提前识别、吸引、培育和保留具有战略价值的关键人才，建立人才梯队以确保组织持续竞争能力的<strong>前瞻性人力资源管理实践</strong>。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 九宫格人才盘点</div>
+        <div class="def-box">以"绩效"（高/中/低）为横轴，"潜力"（高/中/低）为纵轴，形成9个象限：<br>
+        • 高绩效高潜力→"明星"（重点培养·加速晋升）<br>
+        • 高绩效低潜力→"中坚"（稳定激励）<br>
+        • 低绩效高潜力→"潜力股"（加强辅导）<br>
+        • 低绩效低潜力→"问题员工"（改进或退出）</div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 案例</div>
+        <div class="case-box"><span class="case-icon">⚡</span><strong>GE</strong>每年进行全公司"C-Session"人才评审，用九宫格盘点关键人才，为每个高管职位储备2–3名候选人，被称为"全球最大的高管培训基地"。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #26 -->
+  <div class="card" id="c26">
+    <div class="card-header" onclick="toggleCard('c26')">
+      <div class="card-num c5">26</div>
+      <div class="card-header-text">
+        <div class="card-title">工作分析（职务分析）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第4章 工作分析与设计</span>
+          <span class="tag page">P60–85</span>
+          <span class="tag type">名词解释 / 简答</span>
+          <span class="tag year">⭐⭐⭐⭐ 高频</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">工作分析（Job Analysis）是通过系统收集和分析岗位信息，确定每个岗位的工作内容、职责权限、工作条件以及任职资格要求的过程，是<strong>人力资源管理一切活动的"基础工程"</strong>。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 两大产出</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>产出文件</th><th>内容</th><th>用途</th></tr>
+          <tr><td>工作说明书（职位描述）</td><td>工作内容·职责·权限·绩效标准</td><td>招聘广告·岗位评价·绩效考核</td></tr>
+          <tr><td>工作规范（任职资格）</td><td>学历·经验·技能·胜任力要求</td><td>招聘筛选·培训需求·薪酬定级</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 六种分析方法</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>方法</th><th>优缺点</th></tr>
+          <tr><td>问卷调查法</td><td>高效·批量；真实性存疑</td></tr>
+          <tr><td>访谈法</td><td>信息深入；耗时费力</td></tr>
+          <tr><td>观察法</td><td>客观；不适合脑力劳动岗位</td></tr>
+          <tr><td>工作日志法</td><td>真实；主观性强</td></tr>
+          <tr><td>关键事件法</td><td>区分度高；收集周期长</td></tr>
+          <tr><td>PAQ职位分析问卷</td><td>客观可比较；不适合创新型岗位</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 一句总结</div>
+        <div class="summary-box">工作分析是"一切HR管理的起点"——不做工作分析，就不知道招什么人、培训什么、考核什么、怎么定薪。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #27 -->
+  <div class="card" id="c27">
+    <div class="card-header" onclick="toggleCard('c27')">
+      <div class="card-num c6">27</div>
+      <div class="card-header-text">
+        <div class="card-title">劳动合同管理</div>
+        <div class="card-meta">
+          <span class="tag chapter">第12章 劳动关系管理</span>
+          <span class="tag page">P415–440</span>
+          <span class="tag type">简答 / 名词解释</span>
+          <span class="tag year">⭐⭐⭐ 常考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 三种合同类型</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>类型</th><th>特征</th><th>适用情形</th></tr>
+          <tr><td>固定期限</td><td>有明确起止日期</td><td>大多数普通岗位</td></tr>
+          <tr><td>无固定期限</td><td>无终止日期，持续至法定条件</td><td>连续签订两次固定期限合同后·工作满10年</td></tr>
+          <tr><td>以完成工作为期限</td><td>以任务完成为合同终止条件</td><td>项目制·临时性任务</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 解除与经济补偿</div>
+        <div class="def-box">
+          协商解除：双方协商一致，用人单位支付经济补偿金<br>
+          用人单位单方解除：①严重违纪（不赔偿）；②经济性裁员（提前30日通知+赔偿）<br>
+          <strong>经济补偿金标准</strong>：每满1年工龄补偿1个月工资，最多12个月
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">劳动合同管理的核心是"合规优先·风险前置"——从签约·变更·解除·终止全生命周期合规管理，既保护劳动者权益，也防范企业法律风险。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #28 -->
+  <div class="card" id="c28">
+    <div class="card-header" onclick="toggleCard('c28')">
+      <div class="card-num c1">28</div>
+      <div class="card-header-text">
+        <div class="card-title">员工满意度与敬业度</div>
+        <div class="card-meta">
+          <span class="tag chapter">第11章 员工关系管理</span>
+          <span class="tag page">P395–415</span>
+          <span class="tag type">名词解释 / 对比</span>
+          <span class="tag year">⭐⭐⭐ 常考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心对比</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>维度</th><th>员工满意度</th><th>员工敬业度</th></tr>
+          <tr><td>本质</td><td>感受评价（我满不满意？）</td><td>投入状态（我愿不愿意多付出？）</td></tr>
+          <tr><td>预测效力</td><td>预测离职</td><td>预测绩效和创新</td></tr>
+          <tr><td>关键区别</td><td>满意≠高绩效（可能"混日子"）</td><td>敬业→主动贡献→高绩效</td></tr>
+          <tr><td>测量工具</td><td>员工满意度调查（ESS）</td><td>盖洛普Q12问卷</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 案例</div>
+        <div class="case-box"><span class="case-icon">🍜</span><strong>海底捞</strong>通过将员工视为家人（子女教育报销·父母补贴·住房保障），实现了行业最高的员工敬业度和最低的离职率。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">满意度是"不走的理由"，敬业度是"拼命干的动力"。HR目标不是让员工"不离职"，而是让员工"愿意发挥最大潜能"。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #29 -->
+  <div class="card" id="c29">
+    <div class="card-header" onclick="toggleCard('c29')">
+      <div class="card-num c2">29</div>
+      <div class="card-header-text">
+        <div class="card-title">继任计划（接班人计划）</div>
+        <div class="card-meta">
+          <span class="tag chapter">第6章 人力资源规划</span>
+          <span class="tag page">P100–110</span>
+          <span class="tag type">简答 / 论述</span>
+          <span class="tag year">⭐⭐⭐ 常考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">继任计划是企业针对关键职位，提前系统识别、评估和培养潜在接班人，确保关键岗位出现空缺时能够快速、平稳填补的<strong>前瞻性人才管理机制</strong>。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 五步流程</div>
+        <div class="steps">
+          <div class="step-item"><div class="step-num">1</div>识别关键岗位（对战略影响最大的岗位）</div>
+          <div class="step-item"><div class="step-num">2</div>识别候选人（高潜力·高绩效员工）</div>
+          <div class="step-item"><div class="step-num">3</div>能力差距评估（对比岗位要求与候选人现有能力）</div>
+          <div class="step-item"><div class="step-num">4</div>制定个性化发展计划（轮岗·导师·挑战性项目）</div>
+          <div class="step-item"><div class="step-num">5</div>跟踪评估与动态更新</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 一句总结</div>
+        <div class="summary-box">继任计划的终极目标是"让组织的关键能力不依赖于某一个不可替代的人"。好的继任计划是动态活的系统，而非静态文件。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- #30 -->
+  <div class="card" id="c30">
+    <div class="card-header" onclick="toggleCard('c30')">
+      <div class="card-num c3">30</div>
+      <div class="card-header-text">
+        <div class="card-title">数字化人力资源管理趋势</div>
+        <div class="card-meta">
+          <span class="tag chapter">第1章 / 第14章</span>
+          <span class="tag page">P1–20 / P450–465</span>
+          <span class="tag type">论述 / 趋势预测</span>
+          <span class="tag year">⭐⭐⭐ 常考</span>
+        </div>
+      </div>
+      <div class="expand-icon">▾</div>
+    </div>
+    <div class="card-body">
+      <div class="section">
+        <div class="section-label">① 核心定义</div>
+        <div class="def-box">数字化人力资源管理是运用大数据、AI、云计算等技术，对HR各模块进行智能化改造，实现HR决策从<strong>"经验驱动"向"数据驱动"</strong>转型的管理范式变革。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">② 数字化对HR六大模块的改变</div>
+        <div class="tbl-wrap"><table>
+          <tr><th>模块</th><th>传统方式</th><th>数字化方式</th></tr>
+          <tr><td>招聘</td><td>简历人工筛选</td><td>AI简历解析·人才画像匹配</td></tr>
+          <tr><td>培训</td><td>集中课堂培训</td><td>在线平台·AI个性化推荐</td></tr>
+          <tr><td>绩效</td><td>年度考核·纸质表格</td><td>实时绩效追踪·数据可视化</td></tr>
+          <tr><td>薪酬</td><td>人工计算·错误率高</td><td>系统自动计算·市场数据实时比对</td></tr>
+          <tr><td>员工关系</td><td>被动处理投诉</td><td>情绪识别·预测性离职分析</td></tr>
+          <tr><td>人力规划</td><td>经验判断·马尔科夫</td><td>AI供需预测·岗位图谱</td></tr>
+        </table></div>
+      </div>
+      <div class="section">
+        <div class="section-label">③ 案例</div>
+        <div class="case-box"><span class="case-icon">🤖</span><strong>阿里巴巴</strong>"阿里HR"系统实现全流程数字化管理，双11前通过预测模型提前识别"离职高风险"员工并触发干预措施，离职率下降超过15%。</div>
+      </div>
+      <div class="section">
+        <div class="section-label">④ 一句总结</div>
+        <div class="summary-box">数字化HR的本质不是"用技术替代人"，而是"让HR有更多时间做真正有人性温度的事"——将重复性事务交给算法，将战略思考还给HR人员。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ QUICK REVIEW ═══ -->
+<div class="quick-review-section" id="quick-review">
+  <div class="section-block-title">⚡ 30秒速记总览</div>
+  <div class="quick-grid" id="quickGrid">
+    <!-- Generated by JS -->
+  </div>
+</div>
+
+<div class="no-results" id="noResults">🔍 未找到匹配的考点，请尝试其他关键词</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <strong>核心必背30考点 | 人力资源管理·第三版（颜爱民）</strong><br>
+  中南大学企业管理复试备考资料 ｜ 生成日期：2026-03-09
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ─── QUICK REVIEW DATA ───
+const qrData = [
+  {n:'01',t:'绩效管理PDCA',b:'计划→实施→评价→反馈，四阶段闭环，SMART目标，持续改进'},
+  {n:'02',t:'绩效评价五方法',b:'量表/关键事件/MBO/360度/排序，组合使用，方法与岗位匹配'},
+  {n:'03',t:'KPI vs OKR',b:'KPI管结果挂薪酬，OKR指方向不挂钩，互补融合最优'},
+  {n:'04',t:'评价者六种误差',b:'晕轮/近因/趋中/对比/宽厚/严格，培训+BARS+多主体+校准'},
+  {n:'05',t:'薪酬四种模式',b:'岗位/能力/绩效/市场，三轨复合：岗位+绩效+市场'},
+  {n:'06',t:'薪酬结构设计',b:'内部公平+外部竞争力+激励性，基本工资→绩效→福利→股权'},
+  {n:'07',t:'培训需求分析TNA',b:'三层次：组织层→岗位层→人员层，确定差距，对症下药'},
+  {n:'08',t:'六种甄选方法',b:'结构化面试/笔试/心理测试/工作样本/评价中心/背调，由宽到窄'},
+  {n:'09',t:'HR战略与企业战略匹配',b:'纵向匹配（HRM与竞争战略）+横向匹配（各模块内部一致）'},
+  {n:'10',t:'冰山模型（胜任力）',b:'水面上：知识技能（易培）；水面下：动机特质（难改，是选才关键）'},
+  {n:'11',t:'评价中心',b:'LGD无领导+公文处理+管理游戏+角色扮演，多方法多评价者'},
+  {n:'12',t:'柯氏四层次',b:'反应→学习→行为→结果，层级越高价值越大但越难评估'},
+  {n:'13',t:'职业锚（施恩）',b:'技术/管理/安全/创业/自主/服务，核心价值观+动机+能力组合'},
+  {n:'14',t:'职业生涯四阶段',b:'探索→建立→维持→下降，HR针对不同阶段差异化支持'},
+  {n:'15',t:'内外部招聘对比',b:'内部：激励·低成本·适应快；外部：新思想·新能力·高成本'},
+  {n:'16',t:'绩效反馈面谈',b:'三类型：告知说服/告知倾听/解决问题；STAR反馈法'},
+  {n:'17',t:'薪酬三公平',b:'内部公平（岗位评估）+外部竞争力（市场调查）+个人公平（绩效差异）'},
+  {n:'18',t:'HRBP四角色',b:'战略伙伴+变革推动者+员工倡导者+行政专家（尤里奇模型）'},
+  {n:'19',t:'人力资源规划',b:'需求预测（德尔菲/回归/工作研究）+供给预测（马尔科夫矩阵）'},
+  {n:'20',t:'绩效薪酬挂钩',b:'绩效奖金/计件/利润分享/股权，短期+长期组合，防短期行为'},
+  {n:'21',t:'员工援助计划EAP',b:'内部/外包/联合三种形式，心理+财务+职业+家庭咨询，整体人理念'},
+  {n:'22',t:'组织结构五类型',b:'直线→职能→事业部→矩阵→网络，结构追随战略（钱德勒）'},
+  {n:'23',t:'新生代员工管理',b:'意义管理+参与式管理+即时认可+成长型激励，从管控转赋能'},
+  {n:'24',t:'SHRM战略性转型',b:'从成本中心→战略伙伴，员工=资产，纵向匹配+横向整合'},
+  {n:'25',t:'人才储备九宫格',b:'绩效×潜力九象限：明星/中坚/潜力股/问题员工，动态更新'},
+  {n:'26',t:'工作分析',b:'产出：工作说明书+工作规范；方法：问卷/访谈/观察/PAQ，HR基础工程'},
+  {n:'27',t:'劳动合同管理',b:'固定/无固定/任务期限三类型，经济补偿金：1年=1个月工资，最多12个月'},
+  {n:'28',t:'满意度vs敬业度',b:'满意=不走的理由；敬业=拼命干的动力；盖洛普Q12测敬业度'},
+  {n:'29',t:'继任计划',b:'5步：关键岗位→候选人→差距评估→发展计划→跟踪更新；动态活系统'},
+  {n:'30',t:'数字化HR',b:'AI招聘/在线培训/实时绩效/预测离职，从经验驱动→数据驱动'},
+];
+
+const qg = document.getElementById('quickGrid');
+qrData.forEach(d => {
+  const el = document.createElement('div');
+  el.className = 'quick-card';
+  el.innerHTML = `<div class="quick-num">#${d.n}</div><div class="quick-title">${d.t}</div><div class="quick-body">${d.b}</div>`;
+  el.onclick = () => { document.getElementById('c'+d.n)?.scrollIntoView({behavior:'smooth', block:'start'}); };
+  el.style.cursor = 'pointer';
+  qg.appendChild(el);
+});
+
+// ─── TOGGLE CARD ───
+function toggleCard(id) {
+  const c = document.getElementById(id);
+  c.classList.toggle('open');
+}
+
+function toggleAll(open) {
+  document.querySelectorAll('.card').forEach(c => {
+    if (open) c.classList.add('open');
+    else c.classList.remove('open');
+  });
+}
+
+// ─── DARK MODE ───
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  document.getElementById('darkBtn').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+}
+if (localStorage.getItem('dark') === '1') {
+  document.body.classList.add('dark');
+  document.getElementById('darkBtn').textContent = '☀️';
+}
+
+// ─── BACK TO TOP ───
+window.addEventListener('scroll', () => {
+  document.getElementById('btt').classList.toggle('show', window.scrollY > 400);
+});
+
+function scrollToId(id) {
+  document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+}
+
+
+function highlightText(el, q) {
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+  const nodes = [];
+  let n;
+  while (n = walker.nextNode()) nodes.push(n);
+  nodes.forEach(node => {
+    const idx = node.textContent.toLowerCase().indexOf(q);
+    if (idx === -1 || node.parentElement.tagName === 'MARK') return;
+    const before = node.textContent.slice(0, idx);
+    const match = node.textContent.slice(idx, idx + q.length);
+    const after = node.textContent.slice(idx + q.length);
+    const frag = document.createDocumentFragment();
+    if (before) frag.appendChild(document.createTextNode(before));
+    const mark = document.createElement('mark');
+    mark.className = 'hl';
+    mark.textContent = match;
+    frag.appendChild(mark);
+    if (after) frag.appendChild(document.createTextNode(after));
+    node.parentNode.replaceChild(frag, node);
+  });
+}
+</script>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

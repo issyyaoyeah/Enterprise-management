@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中南大学企业管理学硕 · 人力资源管理真题分析</title>
+<style>
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --nav: #1a2340;
+  --accent: #2563eb;
+  --accent2: #e53e3e;
+  --accent3: #16a34a;
+  --accent4: #d97706;
+  --text: #1e293b;
+  --text2: #64748b;
+  --border: #e2e8f0;
+  --tag1: #dbeafe;
+  --tag1t: #1d4ed8;
+  --tag2: #fce7f3;
+  --tag2t: #9d174d;
+  --tag3: #dcfce7;
+  --tag3t: #166534;
+  --tag4: #fef3c7;
+  --tag4t: #92400e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Microsoft YaHei','PingFang SC',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;font-variant-numeric:tabular-nums}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--nav);padding:0 24px;display:flex;align-items:center;gap:4px;height:52px;overflow-x:auto;white-space:nowrap}
+nav .brand{font-size:13px;font-weight:700;color:#fff;margin-right:16px;flex-shrink:0}
+nav a{color:rgba(255,255,255,.75);font-size:12.5px;padding:6px 12px;border-radius:6px;transition:.2s;flex-shrink:0}
+nav a:hover{background:rgba(255,255,255,.15);color:#fff}
+.nav-btn{margin-left:auto;background:var(--accent);color:#fff!important;border-radius:6px;padding:5px 14px!important;font-size:12px!important;cursor:pointer;flex-shrink:0}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#1a2340 0%,#2563eb 100%);color:#fff;padding:48px 32px 40px;text-align:center}
+.hero h1{font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:.5px}
+.hero p{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:16px}
+.hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.htag{background:rgba(255,255,255,.15);color:#fff;font-size:11.5px;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.25)}
+
+/* MAIN */
+.main{max-width:960px;margin:0 auto;padding:28px 16px 60px}
+
+/* SECTION */
+.sec{margin-bottom:32px}
+.sec-hd{display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:var(--card);border:1px solid var(--border);border-radius:12px 12px 0 0;padding:16px 20px;user-select:none;transition:.2s}
+.sec-hd:hover{background:#f8faff}
+.sec-hd.closed{border-radius:12px}
+.sec-title{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--text)}
+.sec-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.ic1{background:#dbeafe}.ic2{background:#dcfce7}.ic3{background:#fef3c7}.ic4{background:#fce7f3}
+.chevron{font-size:16px;color:var(--text2);transition:transform .3s}
+.chevron.open{transform:rotate(180deg)}
+.sec-body{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 12px 12px;padding:20px;display:block}
+.sec-body.hidden{display:none}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f1f5f9;color:var(--text2);font-weight:600;padding:9px 12px;text-align:left;border-bottom:2px solid var(--border)}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#f8faff}
+
+/* BADGES */
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.b1{background:var(--tag1);color:var(--tag1t)}
+.b2{background:var(--tag2);color:var(--tag2t)}
+.b3{background:var(--tag3);color:var(--tag3t)}
+.b4{background:var(--tag4);color:var(--tag4t)}
+.bred{background:#fee2e2;color:#991b1b}
+.bpurple{background:#ede9fe;color:#5b21b6}
+
+/* PROGRESS BAR */
+.bar-wrap{display:flex;align-items:center;gap:8px;min-width:140px}
+.bar{height:7px;border-radius:4px;background:var(--border);flex:1}
+.bar-fill{height:100%;border-radius:4px;transition:width .5s ease}
+.bar-label{font-size:12px;color:var(--text2);white-space:nowrap}
+
+/* RULE CARDS */
+.rule-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.rule-card{border:1px solid var(--border);border-radius:10px;padding:14px 16px;background:#fafbff}
+.rule-num{font-size:11px;font-weight:800;color:var(--accent);margin-bottom:4px}
+.rule-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px}
+.rule-body{font-size:12.5px;color:var(--text2);line-height:1.65}
+
+/* 30 POINTS */
+.tier-hd{font-size:12px;font-weight:700;padding:8px 14px;border-radius:8px;margin:16px 0 10px;display:flex;align-items:center;gap:6px}
+.t-red{background:#fee2e2;color:#991b1b}
+.t-orange{background:#fef3c7;color:#92400e}
+.t-green{background:#dcfce7;color:#166534}
+.points-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:8px}
+.pt-card{border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:var(--card);transition:.15s}
+.pt-card:hover{border-color:#93c5fd;background:#f0f6ff}
+.pt-num{font-size:11px;color:var(--text2);margin-bottom:2px}
+.pt-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px}
+.pt-meta{font-size:11.5px;color:var(--text2)}
+.pt-stars{color:#f59e0b;font-size:12px;margin-top:4px}
+
+/* PREDICTION */
+.pred-list{display:flex;flex-direction:column;gap:10px}
+.pred-card{border-left:4px solid var(--accent);background:var(--card);border:1px solid var(--border);border-left-width:4px;border-radius:0 8px 8px 0;padding:14px 16px;transition:.15s}
+.pred-card:hover{background:#f0f6ff}
+.pred-card.high{border-left-color:#e53e3e}
+.pred-card.medhigh{border-left-color:#d97706}
+.pred-card.med{border-left-color:#16a34a}
+.pred-top{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.pred-q{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.5}
+.pred-meta{font-size:12px;color:var(--text2);margin-top:4px}
+.prob-wrap{display:flex;align-items:center;gap:8px;margin-top:8px}
+.prob-bar{height:6px;border-radius:3px;background:var(--border);flex:1}
+.prob-fill{height:100%;border-radius:3px}
+.fill-red{background:#e53e3e}.fill-orange{background:#d97706}.fill-green{background:#16a34a}
+
+/* SUMMARY BAR */
+.stat-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
+.stat-box{flex:1;min-width:120px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center}
+.stat-num{font-size:26px;font-weight:800;color:var(--accent)}
+.stat-label{font-size:11.5px;color:var(--text2);margin-top:2px}
+
+/* BACK TOP */
+#btt{position:fixed;right:20px;bottom:24px;background:var(--accent);color:#fff;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:18px;display:none;box-shadow:0 4px 12px rgba(37,99,235,.4);z-index:200}
+
+/* DARK MODE */
+body.dark{--bg:#111827;--card:#1e293b;--text:#e2e8f0;--text2:#94a3b8;--border:#334155;--tag1:#1e3a5f;--tag1t:#93c5fd;--tag3:#14532d;--tag3t:#86efac;--tag4:#451a03;--tag4t:#fcd34d}
+body.dark nav{background:#0f172a}
+body.dark .sec-hd:hover{background:#253148}
+body.dark .rule-card{background:#253148}
+body.dark .pt-card:hover{background:#253148;border-color:#3b82f6}
+body.dark .pred-card:hover{background:#253148}
+body.dark th{background:#253148}
+body.dark tr:hover td{background:#253148}
+body.dark .stat-box{background:#253148}
+
+@media(max-width:640px){
+  .hero{padding:32px 16px 28px}
+  .hero h1{font-size:19px}
+  .stat-box{min-width:100px}
+  nav{padding:0 12px}
+}
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body id="top">
+
+<nav>
+  <span class="brand">📚 中南大学 · 人力资源管理真题分析</span>
+  <a href="#s1">高频考点</a>
+  <a href="#s2">命题规律</a>
+  <a href="#s3">核心30点</a>
+  <a href="#s4">2026预测</a>
+  <span class="nav-btn" onclick="toggleDark()">🌙 夜间</span>
+</nav>
+
+<div class="hero">
+  <h1>中南大学企业管理学硕 · 人力资源管理</h1>
+  <p>真题分析报告（2016–2025）· 颜爱民《人力资源管理（第3版）》· 生成日期：2026-03-09</p>
+  <div class="hero-tags">
+    <span class="htag">📊 10年真题</span>
+    <span class="htag">🎯 高频考点排名</span>
+    <span class="htag">📋 命题规律10条</span>
+    <span class="htag">💡 核心30考点</span>
+    <span class="htag">🔮 2026命题预测</span>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- STAT BAR -->
+<div class="stat-row">
+  <div class="stat-box"><div class="stat-num">10</div><div class="stat-label">年份跨度</div></div>
+  <div class="stat-box"><div class="stat-num">30</div><div class="stat-label">笔试考点</div></div>
+  <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">高频章节</div></div>
+  <div class="stat-box"><div class="stat-num">10</div><div class="stat-label">2026预测题</div></div>
+  <div class="stat-box"><div class="stat-num" style="color:#e53e3e">第8章</div><div class="stat-label">最高频章节</div></div>
+</div>
+
+<!-- ==================== S1 高频考点 ==================== -->
+<div class="sec" id="s1">
+  <div class="sec-hd" onclick="toggle(this)">
+    <div class="sec-title">
+      <div class="sec-icon ic1">📊</div>
+      高频考点统计排名
+    </div>
+    <span class="chevron open">▾</span>
+  </div>
+  <div class="sec-body">
+    <table>
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>章节</th>
+          <th>核心知识点</th>
+          <th>出现次数</th>
+          <th>常见题型</th>
+          <th>重要度</th>
+          <th>频率</th>
+        </tr>
+      </thead>
+      <tbody id="freq-table">
+        <tr>
+          <td><strong>1</strong></td>
+          <td><span class="badge bred">第8章 绩效管理</span></td>
+          <td>绩效管理流程·KPI/OKR·评价方法·评价者误差·绩效反馈</td>
+          <td><strong>6次</strong></td>
+          <td><span class="badge b1">简答</span> <span class="badge b2">论述</span> <span class="badge b4">面试</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:100%;background:#e53e3e"></div></div><span class="bar-label">6/10年</span></div></td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><span class="badge b4">第9章 薪酬</span></td>
+          <td>薪酬结构·四种薪酬模式·薪酬管理7目标·激励性薪酬</td>
+          <td><strong>5次</strong></td>
+          <td><span class="badge b1">简答</span> <span class="badge b4">面试</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:83%;background:#d97706"></div></div><span class="bar-label">5/10年</span></div></td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td><span class="badge b3">第10章 培训</span></td>
+          <td>培训需求分析三层次·培训方法·职业生涯规划·柯氏评估</td>
+          <td><strong>5次</strong></td>
+          <td><span class="badge b1">简答</span> <span class="badge b4">面试</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:83%;background:#16a34a"></div></div><span class="bar-label">5/10年</span></div></td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td><span class="badge b1">第7章 招聘</span></td>
+          <td>招聘渠道·甄选六种方法·评价中心技术·胜任力识别</td>
+          <td><strong>4次</strong></td>
+          <td><span class="badge b1">简答</span> <span class="badge bpurple">案例</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:66%;background:#2563eb"></div></div><span class="bar-label">4/10年</span></div></td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td><span class="badge b2">第2章 战略HRM</span></td>
+          <td>人力资源战略与企业战略匹配·HRBP三支柱</td>
+          <td><strong>4次</strong></td>
+          <td><span class="badge b2">论述</span> <span class="badge b1">简答</span></td>
+          <td>⭐⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:66%;background:#7c3aed"></div></div><span class="bar-label">4/10年</span></div></td>
+        </tr>
+        <tr>
+          <td><strong>6</strong></td>
+          <td><span class="badge b4">第5章 组织设计</span></td>
+          <td>组织结构五类型·扁平化·敏捷组织·组织文化变革</td>
+          <td><strong>4次</strong></td>
+          <td><span class="badge b1">简答</span> <span class="badge b4">面试</span></td>
+          <td>⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:66%;background:#0891b2"></div></div><span class="bar-label">4/10年</span></div></td>
+        </tr>
+        <tr>
+          <td><strong>7</strong></td>
+          <td><span class="badge b3">第11章 员工关系</span></td>
+          <td>新生代管理·员工心理健康·EAP·员工体验·员工满意度</td>
+          <td><strong>4次</strong></td>
+          <td><span class="badge b4">面试</span> <span class="badge b2">论述</span></td>
+          <td>⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:66%;background:#059669"></div></div><span class="bar-label">4/10年</span></div></td>
+        </tr>
+        <tr>
+          <td><strong>8</strong></td>
+          <td><span class="badge bpurple">第3章 胜任力</span></td>
+          <td>胜任力模型·冰山模型·BEI行为事件访谈·模型构建流程</td>
+          <td><strong>3次</strong></td>
+          <td><span class="badge b1">简答</span> <span class="badge b2">论述</span></td>
+          <td>⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:50%;background:#7c3aed"></div></div><span class="bar-label">3/10年</span></div></td>
+        </tr>
+        <tr>
+          <td><strong>9</strong></td>
+          <td><span class="badge b1">第6章 人力资源规划</span></td>
+          <td>供需预测方法·继任计划·人才梯队搭建</td>
+          <td><strong>3次</strong></td>
+          <td><span class="badge b1">简答</span> <span class="badge b4">面试</span></td>
+          <td>⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:50%;background:#2563eb"></div></div><span class="bar-label">3/10年</span></div></td>
+        </tr>
+        <tr>
+          <td><strong>10</strong></td>
+          <td><span class="badge b4">第1章 HRM概论</span></td>
+          <td>战略性HRM特征·HRBP·数字化HR趋势</td>
+          <td><strong>3次</strong></td>
+          <td><span class="badge b2">论述</span> <span class="badge b4">面试</span></td>
+          <td>⭐⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:50%;background:#d97706"></div></div><span class="bar-label">3/10年</span></div></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><span class="badge b3">第4章 人力资源获取</span></td>
+          <td>并购人力整合·战略性人才储备</td>
+          <td>2次</td>
+          <td><span class="badge b4">面试</span></td>
+          <td>⭐⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:33%;background:#16a34a"></div></div><span class="bar-label">2/10年</span></div></td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><span class="badge b2">第12章 劳动关系</span></td>
+          <td>劳动合同·离职管理·劳动争议</td>
+          <td>1次</td>
+          <td><span class="badge b4">面试</span></td>
+          <td>⭐⭐</td>
+          <td><div class="bar-wrap"><div class="bar"><div class="bar-fill" style="width:16%;background:#94a3b8"></div></div><span class="bar-label">1/10年</span></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== S2 命题规律 ==================== -->
+<div class="sec" id="s2">
+  <div class="sec-hd" onclick="toggle(this)">
+    <div class="sec-title">
+      <div class="sec-icon ic2">🔍</div>
+      命题规律总结（10条）
+    </div>
+    <span class="chevron open">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="rule-grid">
+      <div class="rule-card">
+        <div class="rule-num">规律 01</div>
+        <div class="rule-title">🔴 绩效管理是"必考之王"</div>
+        <div class="rule-body">10年中6年直接考察，从KPI/OKR到绩效反馈面谈，从评价方法到绩效误区。备考需达到Level 4深度，能进行案例分析。</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">规律 02</div>
+        <div class="rule-title">🔴 薪酬管理几乎每年必出</div>
+        <div class="rule-body">薪酬结构设计、四种模式比较（岗位/能力/绩效/市场）为核心。2025年再次直接考察，预计2026延续。</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">规律 03</div>
+        <div class="rule-title">🟠 招聘与培训题型互补</div>
+        <div class="rule-body">招聘考"识别高潜·渠道选择·评价中心"；培训考"需求分析三层次·职业锚"。两者合计占约30%试题。</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">规律 04</div>
+        <div class="rule-title">🟠 战略HRM是论述题首选</div>
+        <div class="rule-body">"战略匹配""HRBP角色"每隔2–3年出现一次高分论述题，往往是人力资源部分最高分值题目。</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">规律 05</div>
+        <div class="rule-title">🟡 热点导向明显</div>
+        <div class="rule-body">每年结合当年热点命题：疫情→远程办公；碳中和→ESG；AI→数字化HR。2026年热点：AI+可持续+员工体验。</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">规律 06</div>
+        <div class="rule-title">🟡 面试题必须结合案例</div>
+        <div class="rule-body">面试专业题100%要求"结合实际/案例分析"，纯概念背诵无法高分。需准备华为/海底捞/字节跳动等2–3个经典案例。</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">规律 07</div>
+        <div class="rule-title">🟢 简答题考"流程与步骤"</div>
+        <div class="rule-body">简答题偏好操作性流程，如"招聘渠道选择步骤""培训需求分析方法"。答题需要有清晰的条目化结构，忌大段叙述。</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">规律 08</div>
+        <div class="rule-title">🟢 论述题考"影响关系"</div>
+        <div class="rule-body">论述题偏好"X对Y的影响/作用/关系"，如"战略匹配关系""数字化对HRM影响"。需理论框架+案例论证。</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">规律 09</div>
+        <div class="rule-title">🔵 胜任力和组织设计周期性出现</div>
+        <div class="rule-body">每3–4年出现一次。2017年考胜任力，2021–2022连续考组织设计。预计2026年有相关考察概率约40%。</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-num">规律 10</div>
+        <div class="rule-title">🔵 近3年持续热点：新生代·数字化</div>
+        <div class="rule-body">2023–2025年面试几乎每年出现"新生代激励""数字化人才培养""组织韧性"。2026年预计延续，必须重点准备。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== S3 核心30考点 ==================== -->
+<div class="sec" id="s3">
+  <div class="sec-hd" onclick="toggle(this)">
+    <div class="sec-title">
+      <div class="sec-icon ic3">💡</div>
+      核心必背30个考点（覆盖约80%试题）
+    </div>
+    <span class="chevron open">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="tier-hd t-red">🔴 第一梯队：必考核心（10个）— 每个都要达到 Level 4 深度</div>
+    <div class="points-grid">
+      <div class="pt-card"><div class="pt-num">第8章 · #01</div><div class="pt-name">绩效管理循环（PDCA四阶段）</div><div class="pt-meta">计划→实施→评估→反馈，各阶段管理者/员工任务</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第8章 · #02</div><div class="pt-name">绩效评价方法（5种）</div><div class="pt-meta">量表法·关键事件·目标管理·360度·排序法优缺点对比</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第8章 · #03</div><div class="pt-name">KPI 与 OKR 的区别</div><div class="pt-meta">定义·适用场景·优缺点对比·互补关系，2018年真题</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第8章 · #04</div><div class="pt-name">绩效评价者误差（6种）</div><div class="pt-meta">晕轮效应·近因效应·趋中倾向·对比效应·宽厚/严格偏差</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第9章 · #05</div><div class="pt-name">薪酬的四种基础模式</div><div class="pt-meta">岗位·能力·绩效·市场四模式，各自优缺点与适用条件</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第9章 · #06</div><div class="pt-name">薪酬结构设计（内外公平）</div><div class="pt-meta">内部公平（岗位评估）+外部竞争力（市场调查）+激励性</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第10章 · #07</div><div class="pt-name">培训需求分析三个层次</div><div class="pt-meta">组织层·岗位/任务层·人员层，各层分析内容与方法</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第7章 · #08</div><div class="pt-name">六种员工甄选方法</div><div class="pt-meta">面试·笔试·心理测试·工作样本·评价中心·背景调查</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第2章 · #09</div><div class="pt-name">人力资源战略与企业战略匹配</div><div class="pt-meta">整合逻辑·纵向匹配·横向整合，2016年论述真题</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第3章 · #10</div><div class="pt-name">胜任力模型（冰山模型）</div><div class="pt-meta">定义·冰山六层结构·BEI访谈法·模型构建五步骤</div><div class="pt-stars">⭐⭐⭐⭐⭐ <span class="badge bred">必考</span></div></div>
+    </div>
+
+    <div class="tier-hd t-orange">🟠 第二梯队：高频重点（10个）— Level 3–4 熟练</div>
+    <div class="points-grid">
+      <div class="pt-card"><div class="pt-num">第7章 · #11</div><div class="pt-name">评价中心技术</div><div class="pt-meta">无领导小组讨论·公文处理·角色扮演·管理游戏</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+      <div class="pt-card"><div class="pt-num">第10章 · #12</div><div class="pt-name">柯克帕特里克四级培训评估</div><div class="pt-meta">反应层·学习层·行为层·结果层，各层评估方法与工具</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+      <div class="pt-card"><div class="pt-num">第10章 · #13</div><div class="pt-name">职业锚理论（施恩8种）</div><div class="pt-meta">技术·管理·安全·创业·自主·服务·挑战·生活方式锚</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+      <div class="pt-card"><div class="pt-num">第10章 · #14</div><div class="pt-name">职业生涯规划五阶段</div><div class="pt-meta">探索·确立·发展·维持·衰退，各阶段HR管理任务</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+      <div class="pt-card"><div class="pt-num">第7章 · #15</div><div class="pt-name">内外部招聘比较</div><div class="pt-meta">内招：优缺点+适用；外招：优缺点+适用；组合策略</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+      <div class="pt-card"><div class="pt-num">第8章 · #16</div><div class="pt-name">绩效反馈面谈技巧</div><div class="pt-meta">面谈前准备·三种面谈类型·沟通技巧·STAR法则应用</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+      <div class="pt-card"><div class="pt-num">第9章 · #17</div><div class="pt-name">薪酬管理的7个目标</div><div class="pt-meta">支持战略·强化价值观·吸引人才·激励·开发·协调·控本</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+      <div class="pt-card"><div class="pt-num">第2章 · #18</div><div class="pt-name">HRBP三支柱模型</div><div class="pt-meta">COE（专家中心）·SSC（共享服务）·HRBP定义与分工</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+      <div class="pt-card"><div class="pt-num">第6章 · #19</div><div class="pt-name">人力资源规划供需预测方法</div><div class="pt-meta">需求预测（回归·趋势·德尔菲）·供给预测（内外部分析）</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+      <div class="pt-card"><div class="pt-num">第8+9章 · #20</div><div class="pt-name">绩效薪酬（绩效与薪酬挂钩）</div><div class="pt-meta">挂钩逻辑·激励效果·设计原则·风险防控，2019年面试</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">高频</span></div></div>
+    </div>
+
+    <div class="tier-hd t-green">🟡 第三梯队：常考（10个）— Level 2–3 理解+熟练</div>
+    <div class="points-grid">
+      <div class="pt-card"><div class="pt-num">第11章 · #21</div><div class="pt-name">员工援助计划（EAP）</div><div class="pt-meta">定义·内容·实施步骤·心理健康管理，2020年热点</div><div class="pt-stars">⭐⭐⭐ <span class="badge b3">常考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第5章 · #22</div><div class="pt-name">组织结构五种类型</div><div class="pt-meta">直线·职能·直线职能·事业部·矩阵，各自适用条件</div><div class="pt-stars">⭐⭐⭐ <span class="badge b3">常考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第11章 · #23</div><div class="pt-name">新生代员工管理策略</div><div class="pt-meta">95后/00后特征·激励策略·管理挑战，2023·2025热点</div><div class="pt-stars">⭐⭐⭐ <span class="badge b3">常考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第1章 · #24</div><div class="pt-name">人力资源管理战略性转型</div><div class="pt-meta">从行政管理→战略伙伴的转变历程，战略性HRM五特征</div><div class="pt-stars">⭐⭐⭐ <span class="badge b3">常考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第7章 · #25</div><div class="pt-name">战略性人才储备</div><div class="pt-meta">定义·重要性·内外部储备方式·与人力规划关系</div><div class="pt-stars">⭐⭐⭐ <span class="badge b3">常考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第4章 · #26</div><div class="pt-name">工作分析（职务分析）</div><div class="pt-meta">工作说明书·职务规范·分析方法（观察·访谈·问卷）</div><div class="pt-stars">⭐⭐⭐ <span class="badge b3">常考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第12章 · #27</div><div class="pt-name">劳动合同管理</div><div class="pt-meta">劳动合同要素·签订·变更·解除·终止的法律规定</div><div class="pt-stars">⭐⭐ <span class="badge b1">偶考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第11章 · #28</div><div class="pt-name">员工满意度与敬业度</div><div class="pt-meta">满意度调查方法·驱动因素·与绩效关系·员工体验</div><div class="pt-stars">⭐⭐⭐ <span class="badge b3">常考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第6章 · #29</div><div class="pt-name">继任计划（接班人计划）</div><div class="pt-meta">定义·实施步骤·与人才梯队建设关系·关键岗位识别</div><div class="pt-stars">⭐⭐⭐ <span class="badge b3">常考</span></div></div>
+      <div class="pt-card"><div class="pt-num">第1+14章 · #30</div><div class="pt-name">数字化人力资源管理趋势</div><div class="pt-meta">AI在HRM中应用·数字化转型·HRIS·数字化人才画像</div><div class="pt-stars">⭐⭐⭐⭐ <span class="badge b4">近年热点</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== S4 2026预测 ==================== -->
+<div class="sec" id="s4">
+  <div class="sec-hd" onclick="toggle(this)">
+    <div class="sec-title">
+      <div class="sec-icon ic4">🔮</div>
+      2026复试命题预测（10题）
+    </div>
+    <span class="chevron open">▾</span>
+  </div>
+  <div class="sec-body">
+    <div class="pred-list">
+
+      <div class="pred-card high">
+        <div class="pred-top">
+          <span class="badge bred">①</span>
+          <span class="badge b1">简答 / 论述</span>
+          <span class="badge b3">第8章</span>
+        </div>
+        <div class="pred-q">简述绩效管理的完整流程，并分析绩效管理常见误区及改进策略</div>
+        <div class="pred-meta">📌 对应知识点：绩效管理循环·评价者误差六种·绩效反馈面谈</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-red" style="width:95%"></div></div>
+          <span class="badge bred">95% 极高</span>
+        </div>
+      </div>
+
+      <div class="pred-card high">
+        <div class="pred-top">
+          <span class="badge bred">②</span>
+          <span class="badge b1">简答</span>
+          <span class="badge b4">第9章</span>
+        </div>
+        <div class="pred-q">简述薪酬体系设计的基本原则及四种薪酬模式的适用条件与优缺点比较</div>
+        <div class="pred-meta">📌 对应知识点：薪酬模式四种·内外部公平·薪酬管理7目标</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-red" style="width:92%"></div></div>
+          <span class="badge bred">92% 极高</span>
+        </div>
+      </div>
+
+      <div class="pred-card high">
+        <div class="pred-top">
+          <span class="badge bred">③</span>
+          <span class="badge b2">论述</span>
+          <span class="badge b1">第1章</span>
+        </div>
+        <div class="pred-q">论述AI与数字化背景下人力资源管理的变革趋势与挑战（结合企业案例）</div>
+        <div class="pred-meta">📌 对应知识点：战略性HRM转型·HRBP三支柱·数字化HR·人才画像</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-red" style="width:90%"></div></div>
+          <span class="badge bred">90% 极高</span>
+        </div>
+      </div>
+
+      <div class="pred-card medhigh">
+        <div class="pred-top">
+          <span class="badge b4">④</span>
+          <span class="badge b1">简答</span>
+          <span class="badge b3">第10章</span>
+        </div>
+        <div class="pred-q">简述培训需求分析的三个层次及各层次的主要分析内容与方法</div>
+        <div class="pred-meta">📌 对应知识点：组织层·岗位层·人员层分析，需求分析方法</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-orange" style="width:80%"></div></div>
+          <span class="badge b4">80% 高</span>
+        </div>
+      </div>
+
+      <div class="pred-card medhigh">
+        <div class="pred-top">
+          <span class="badge b4">⑤</span>
+          <span class="badge b1">简答</span>
+          <span class="badge bpurple">第3+7章</span>
+        </div>
+        <div class="pred-q">简述胜任力模型的内涵及构建流程，说明其在员工招聘中的具体应用</div>
+        <div class="pred-meta">📌 对应知识点：冰山模型·BEI行为事件访谈·构建五步骤·评价中心</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-orange" style="width:78%"></div></div>
+          <span class="badge b4">78% 高</span>
+        </div>
+      </div>
+
+      <div class="pred-card medhigh">
+        <div class="pred-top">
+          <span class="badge b4">⑥</span>
+          <span class="badge bpurple">案例分析</span>
+          <span class="badge bred">第8章综合</span>
+        </div>
+        <div class="pred-q">案例：某企业绩效管理失效，从设计与执行角度分析原因并提出改进建议</div>
+        <div class="pred-meta">📌 对应知识点：绩效管理全流程·评价误差·绩效面谈·绩效薪酬联动</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-orange" style="width:75%"></div></div>
+          <span class="badge b4">75% 高</span>
+        </div>
+      </div>
+
+      <div class="pred-card medhigh">
+        <div class="pred-top">
+          <span class="badge b4">⑦</span>
+          <span class="badge b1">简答</span>
+          <span class="badge b1">第2章</span>
+        </div>
+        <div class="pred-q">简述HRBP的角色定位与核心能力，分析其在企业数字化转型中的价值</div>
+        <div class="pred-meta">📌 对应知识点：HRBP三支柱·战略性HRM·业务伙伴角色定位</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-orange" style="width:75%"></div></div>
+          <span class="badge b4">75% 高</span>
+        </div>
+      </div>
+
+      <div class="pred-card medhigh">
+        <div class="pred-top">
+          <span class="badge b4">⑧</span>
+          <span class="badge b2">论述</span>
+          <span class="badge b3">第11章</span>
+        </div>
+        <div class="pred-q">论述新生代员工（Z世代）的工作特征及组织应采取的有效激励管理策略</div>
+        <div class="pred-meta">📌 对应知识点：新生代特征·激励理论·薪酬激励·非物质激励·员工体验</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-orange" style="width:72%"></div></div>
+          <span class="badge b4">72% 高</span>
+        </div>
+      </div>
+
+      <div class="pred-card med">
+        <div class="pred-top">
+          <span class="badge b3">⑨</span>
+          <span class="badge b1">简答</span>
+          <span class="badge b3">第10章</span>
+        </div>
+        <div class="pred-q">简述员工职业发展通道设计的基本思路，说明职业锚理论的应用价值</div>
+        <div class="pred-meta">📌 对应知识点：职业生涯规划五阶段·施恩8种职业锚·双通道设计</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-green" style="width:60%"></div></div>
+          <span class="badge b3">60% 中高</span>
+        </div>
+      </div>
+
+      <div class="pred-card med">
+        <div class="pred-top">
+          <span class="badge b3">⑩</span>
+          <span class="badge bpurple">案例分析</span>
+          <span class="badge b4">第7+9+14章</span>
+        </div>
+        <div class="pred-q">案例：某企业国际化过程中出现人力整合困难，从文化整合、人才保留、薪酬设计角度分析</div>
+        <div class="pred-meta">📌 对应知识点：并购人力整合·跨文化管理·薪酬设计·国际人力资源管理</div>
+        <div class="prob-wrap">
+          <div class="prob-bar"><div class="prob-fill fill-green" style="width:55%"></div></div>
+          <span class="badge b3">55% 中高</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:24px 0 8px;color:var(--text2);font-size:12px;border-top:1px solid var(--border)">
+  📚 中南大学企业管理学硕复试笔记 · 颜爱民《人力资源管理（第3版）》· 2016–2025真题分析版 · 生成日期：2026-03-09
+</div>
+
+</div><!-- end main -->
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggle(hd){
+  const body=hd.nextElementSibling;
+  const chev=hd.querySelector('.chevron');
+  const isOpen=!body.classList.contains('hidden');
+  if(isOpen){body.classList.add('hidden');chev.classList.remove('open');hd.classList.add('closed')}
+  else{body.classList.remove('hidden');chev.classList.add('open');hd.classList.remove('closed')}
+}
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  const btn=document.querySelector('.nav-btn');
+  btn.textContent=document.body.classList.contains('dark')?'☀️ 日间':'🌙 夜间';
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('btt').style.display=window.scrollY>300?'block':'none';
+});
+// animate bars on load
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.bar-fill,.prob-fill').forEach(el=>{
+    const w=el.style.width;el.style.width='0';
+    setTimeout(()=>{el.style.width=w},200);
+  });
+});
+</script>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

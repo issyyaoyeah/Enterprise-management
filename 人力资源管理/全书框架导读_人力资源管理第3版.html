@@ -1,0 +1,1866 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《人力资源管理（第3版）》全书框架导读 · 颜爱民</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f1f2e;
+  --bg: #f0f4f8;
+  --bg2: #e1eaf2;
+  --accent: #1a56db;
+  --accent2: #f59e0b;
+  --accent3: #0e7c6a;
+  --accent4: #7c3aed;
+  --accent5: #dc2626;
+  --card-bg: #ffffff;
+  --border: #b8cfe8;
+  --shadow: 0 4px 20px rgba(15,31,46,0.10);
+  --part1: #1a56db;
+  --part2: #0e7c6a;
+  --part3: #7c3aed;
+}
+body.night {
+  --ink: #e2e8f0;
+  --bg: #0f172a;
+  --bg2: #1e293b;
+  --card-bg: #1e293b;
+  --border: #334155;
+  --shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  padding: 0 0 80px;
+  transition: background .3s, color .3s;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #0a0f1e 0%, #0c2055 40%, #1a56db 100%);
+  color: #fff;
+  padding: 70px 40px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(55deg,rgba(255,255,255,.02) 0px,rgba(255,255,255,.02) 1px,transparent 1px,transparent 28px);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,179,237,.12) 0%, transparent 70%);
+  top: -200px; right: -100px;
+  pointer-events: none;
+}
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,.55);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 900;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+.hero h1 em { color: #93c5fd; font-style: normal; }
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,.75);
+  max-width: 680px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,.65);
+  font-family: 'JetBrains Mono', monospace;
+}
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* ── FIXED NAV ── */
+.fixed-nav {
+  position: sticky; top: 0; z-index: 999;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 54px;
+  transition: background .3s;
+}
+.nav-links {
+  display: flex; gap: 0; overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration: none;
+  opacity: .7;
+  white-space: nowrap;
+  border-radius: 6px;
+  transition: opacity .2s, background .2s;
+}
+.nav-links a:hover { opacity: 1; background: var(--bg2); }
+.nav-controls { display: flex; gap: 8px; }
+.btn-ctrl {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: 'Noto Sans SC', sans-serif;
+  transition: background .2s;
+  white-space: nowrap;
+}
+.btn-ctrl:hover { background: var(--border); }
+
+/* ── SEARCH BAR ── */
+.search-bar {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 40px;
+  display: flex; align-items: center; gap: 12px;
+}
+.search-bar input {
+  flex: 1;
+  max-width: 500px;
+  padding: 9px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  outline: none;
+  transition: border .2s;
+}
+.search-bar input:focus { border-color: var(--accent); }
+.search-count { font-size: 13px; color: #888; }
+mark { background: #fef08a; color: #0f1f2e; border-radius: 2px; }
+
+/* ── MAIN LAYOUT ── */
+.main { max-width: 1200px; margin: 0 auto; padding: 40px 40px 0; }
+
+/* ── PART HEADER ── */
+.part-header {
+  margin: 48px 0 24px;
+  display: flex; align-items: center; gap: 20px;
+}
+.part-badge {
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 1px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.part-1 .part-badge { background: var(--part1); }
+.part-2 .part-badge { background: var(--part2); }
+.part-3 .part-badge { background: var(--part3); }
+.part-desc {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.6;
+}
+body.night .part-desc { color: #94a3b8; }
+
+/* ── CHAPTER GRID ── */
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+/* ── CHAPTER CARD ── */
+.chapter-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: box-shadow .2s, transform .2s;
+}
+.chapter-card:hover {
+  box-shadow: 0 8px 32px rgba(15,31,46,.15);
+  transform: translateY(-2px);
+}
+.card-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+}
+.card-chapter-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.card-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.card-badges { display: flex; flex-wrap: wrap; gap: 6px; flex-shrink: 0; }
+.badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-theory { background: #dbeafe; color: #1d4ed8; }
+.badge-practice { background: #d1fae5; color: #065f46; }
+.badge-frontier { background: #ede9fe; color: #5b21b6; }
+.badge-hot { background: #fee2e2; color: #991b1b; }
+body.night .badge-theory { background: #1e3a5f; color: #93c5fd; }
+body.night .badge-practice { background: #064e3b; color: #6ee7b7; }
+body.night .badge-frontier { background: #3b0764; color: #c4b5fd; }
+body.night .badge-hot { background: #450a0a; color: #fca5a5; }
+
+.card-body { padding: 20px 24px; }
+
+/* ── LOGIC BOX ── */
+.logic-box {
+  background: var(--bg2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.logic-box strong { color: var(--accent); }
+.logic-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #888;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* ── STRUCTURE TREE ── */
+.tree { font-size: 13px; line-height: 1.9; }
+.tree-root {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+.tree-l1 { padding-left: 16px; color: var(--ink); }
+.tree-l2 { padding-left: 32px; color: #64748b; font-size: 12.5px; }
+body.night .tree-l2 { color: #94a3b8; }
+.tree-l1::before { content: '├─ '; color: #94a3b8; }
+.tree-l1:last-child::before { content: '└─ '; color: #94a3b8; }
+.tree-l2::before { content: '│  ├─ '; color: #cbd5e1; }
+
+/* ── FLOW DIAGRAM ── */
+.flow-wrap { display: flex; flex-direction: column; gap: 0; align-items: flex-start; }
+.flow-step {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px;
+}
+.flow-box {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background .3s;
+}
+.flow-arrow {
+  display: flex; align-items: center;
+  padding: 0 12px;
+  color: var(--border);
+  font-size: 18px;
+}
+.flow-desc {
+  font-size: 11.5px;
+  color: #888;
+  padding-left: 6px;
+}
+.flow-row {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 4px;
+  margin: 2px 0;
+}
+.flow-connector {
+  width: 2px; height: 16px;
+  background: var(--border);
+  margin-left: 30px;
+}
+
+/* ── COLLAPSIBLE SECTIONS ── */
+details { margin-top: 14px; }
+summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  list-style: none;
+  display: flex; align-items: center; gap: 8px;
+}
+summary::before {
+  content: '▶';
+  font-size: 10px;
+  transition: transform .2s;
+}
+details[open] summary::before { transform: rotate(90deg); }
+.detail-inner { padding: 10px 0 4px; }
+
+/* ── MIND MAP ── */
+.mindmap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12.5px;
+}
+.mm-center {
+  background: linear-gradient(135deg, var(--accent), #3b82f6);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-block;
+  margin-bottom: 6px;
+  align-self: flex-start;
+}
+.mm-branch {
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.mm-node {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.mm-leaves {
+  display: flex; flex-wrap: wrap; gap: 5px; align-items: center;
+}
+.mm-leaf {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 9px;
+  font-size: 11.5px;
+  color: #64748b;
+}
+body.night .mm-leaf { color: #94a3b8; }
+
+/* ── EXAM TAGS ── */
+.exam-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.exam-tag {
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.exam-high { background: #fee2e2; color: #dc2626; border: 1px solid #fca5a5; }
+.exam-mid { background: #fef3c7; color: #d97706; border: 1px solid #fde68a; }
+.exam-low { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+body.night .exam-high { background: #450a0a; color: #fca5a5; }
+body.night .exam-mid { background: #451a03; color: #fbbf24; }
+body.night .exam-low { background: #052e16; color: #86efac; }
+
+/* ── CHAPTER LINKS ── */
+.chapter-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 16px;
+  padding: 9px 18px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity .2s;
+}
+.chapter-link:hover { opacity: .85; }
+.chapter-link.disabled {
+  background: var(--bg2);
+  color: #888;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── BOOK OVERVIEW ── */
+.overview-section {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 40px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow);
+}
+.overview-section h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+.overview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.overview-part {
+  border-radius: 12px;
+  padding: 20px;
+  border: 1.5px solid;
+}
+.overview-part.p1 { border-color: #93c5fd; background: #eff6ff; }
+.overview-part.p2 { border-color: #6ee7b7; background: #f0fdf4; }
+.overview-part.p3 { border-color: #c4b5fd; background: #faf5ff; }
+body.night .overview-part.p1 { background: #1e3a5f; border-color: #1d4ed8; }
+body.night .overview-part.p2 { background: #064e3b; border-color: #065f46; }
+body.night .overview-part.p3 { background: #3b0764; border-color: #5b21b6; }
+.overview-part h3 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.overview-part p { font-size: 13px; color: #64748b; line-height: 1.6; }
+body.night .overview-part p { color: #94a3b8; }
+.overview-part ul { list-style: none; margin-top: 8px; }
+.overview-part ul li { font-size: 12.5px; color: #64748b; padding: 2px 0; }
+body.night .overview-part ul li { color: #94a3b8; }
+.overview-part ul li::before { content: '→ '; color: #94a3b8; }
+
+/* ── BIG FLOW DIAGRAM ── */
+.book-flow {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px 40px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow);
+}
+.book-flow h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.bflow-row {
+  display: flex; align-items: center; gap: 0; flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.bflow-box {
+  border-radius: 10px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid;
+  white-space: nowrap;
+  text-align: center;
+  min-width: 110px;
+}
+.bflow-box.theory { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; }
+.bflow-box.practice { background: #f0fdf4; border-color: #6ee7b7; color: #065f46; }
+.bflow-box.frontier { background: #faf5ff; border-color: #c4b5fd; color: #5b21b6; }
+body.night .bflow-box.theory { background: #1e3a5f; border-color: #1d4ed8; color: #93c5fd; }
+body.night .bflow-box.practice { background: #064e3b; border-color: #065f46; color: #6ee7b7; }
+body.night .bflow-box.frontier { background: #3b0764; border-color: #5b21b6; color: #c4b5fd; }
+.bflow-arr {
+  font-size: 20px; padding: 0 10px; color: #94a3b8;
+}
+.bflow-sub {
+  font-size: 12px; color: #888; margin-left: 4px;
+}
+
+/* ── COMPLETION STATUS ── */
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+.status-item {
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center;
+  border: 1.5px solid var(--border);
+  font-size: 12px;
+}
+.status-done { background: #d1fae5; border-color: #6ee7b7; }
+.status-pending { background: var(--bg2); }
+body.night .status-done { background: #064e3b; border-color: #065f46; }
+.status-num { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 700; }
+.status-done .status-num { color: #065f46; }
+body.night .status-done .status-num { color: #6ee7b7; }
+.status-check { font-size: 11px; margin-top: 2px; }
+.status-done .status-check::after { content: ' ✓'; color: #065f46; }
+body.night .status-done .status-check::after { color: #6ee7b7; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .main { padding: 24px 20px 0; }
+  .chapter-grid { grid-template-columns: 1fr; }
+  .overview-grid { grid-template-columns: 1fr; }
+  .hero { padding: 40px 20px 40px; }
+  .hero h1 { font-size: 28px; }
+  .status-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 13px;
+  color: #888;
+  margin-top: 60px;
+  border-top: 1px solid var(--border);
+}
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body id="top">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">中南大学 · 企业管理学硕复试备考资料</div>
+  <h1>《人力资源管理》<em>全书框架导读</em></h1>
+  <p class="hero-sub">颜爱民主编 · 第三版 · 北京大学出版社 ｜ 覆盖全部14章，整合2016–2025年中南大学真题，适合跨考生系统建立知识框架</p>
+  <div class="hero-meta">
+    <span>📚 共14章</span>
+    <span>📋 三大部分</span>
+    <span>🎯 含真题标注</span>
+    <span>📅 生成日期：2026-03-09</span>
+  </div>
+</div>
+
+<!-- FIXED NAV -->
+<div class="fixed-nav">
+  <div class="nav-links">
+    <a href="#top">首页</a>
+    <a href="#overview">全书概览</a>
+    <a href="#bookflow">逻辑主线</a>
+    <a href="#part1">第一部分</a>
+    <a href="#part2">第二部分</a>
+    <a href="#part3">第三部分</a>
+  </div>
+  <div class="nav-controls">
+    <button class="btn-ctrl" onclick="toggleNight()">🌙 夜间</button>
+    <button class="btn-ctrl" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">⬆ 顶部</button>
+  </div>
+</div>
+
+<!-- SEARCH BAR -->
+<div class="search-bar">
+  
+  <span class="search-count" id="searchCount"></span>
+</div>
+
+<div class="main">
+
+<!-- ── BOOK OVERVIEW ── -->
+<div class="overview-section" id="overview">
+  <h2>📖 全书整体结构与逻辑</h2>
+
+  <div style="background:var(--bg2);border-radius:12px;padding:18px 22px;margin-bottom:24px;font-size:14px;line-height:1.8;">
+    <strong>一句话理解这本书：</strong>先搞清楚「人力资源管理是什么、为什么要这样管」（理论基础），再学「具体怎么招人、考核、发工资」（实务操作），最后了解「最新的战略视角和全球化趋势」（前沿动态）。<br>
+    <strong>小学生版类比：</strong>就像开一家餐厅——先学「餐厅的经营理念和为什么要请厨师」（第一部分），再学「怎么招厨师、怎么给厨师打分、怎么定工资」（第二部分），最后学「大型连锁餐厅是怎么做人才战略和海外扩张的」（第三部分）。
+  </div>
+
+  <div class="overview-grid">
+    <div class="overview-part p1">
+      <h3>🔵 第一部分 · 理论基础篇（第1–4章）</h3>
+      <p>为整个HRM奠定经济学、组织学、文化学理论基础。回答"为什么要这样管人"。</p>
+      <ul>
+        <li>第1章：HRM概述（是什么）</li>
+        <li>第2章：经济理论基础（劳动力、人力资本）</li>
+        <li>第3章：组织视角（组织结构对HRM的影响）</li>
+        <li>第4章：文化视角（中国文化与HRM）</li>
+      </ul>
+    </div>
+    <div class="overview-part p2">
+      <h3>🟢 第二部分 · 实务操作篇（第5–12章）</h3>
+      <p>按HRM职能模块展开，回答"怎么管人"。是复试考察的最核心部分。</p>
+      <ul>
+        <li>第5章：人力资源规划（统率全局）</li>
+        <li>第6章：工作分析（基础工具）</li>
+        <li>第7章：员工招聘（获取人才）</li>
+        <li>第8章：绩效管理（评价人才）</li>
+        <li>第9章：薪酬（激励人才）</li>
+        <li>第10章：培训与开发（发展人才）</li>
+        <li>第11章：激励（激发活力）</li>
+        <li>第12章：劳动关系（保障底线）</li>
+      </ul>
+    </div>
+    <div class="overview-part p3">
+      <h3>🟣 第三部分 · 前沿动态篇（第13–14章）</h3>
+      <p>提升至战略与全球视野，回答"未来怎么管人"。</p>
+      <ul>
+        <li>第13章：战略HRM（与企业战略融合）</li>
+        <li>第14章：国际HRM（跨国管理）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;">
+    <div style="font-size:13px;color:#888;margin-bottom:10px;">📊 章节笔记完成进度</div>
+    <div class="status-grid">
+      <div class="status-item status-pending"><div class="status-num">01</div><div class="status-check">概述</div></div>
+      <div class="status-item status-done"><div class="status-num">02</div><div class="status-check">经济理论</div></div>
+      <div class="status-item status-done"><div class="status-num">03</div><div class="status-check">组织</div></div>
+      <div class="status-item status-done"><div class="status-num">04</div><div class="status-check">文化</div></div>
+      <div class="status-item status-done"><div class="status-num">05</div><div class="status-check">规划</div></div>
+      <div class="status-item status-pending"><div class="status-num">06</div><div class="status-check">工作分析</div></div>
+      <div class="status-item status-done"><div class="status-num">07</div><div class="status-check">招聘</div></div>
+      <div class="status-item status-pending"><div class="status-num">08</div><div class="status-check">绩效</div></div>
+      <div class="status-item status-done"><div class="status-num">09</div><div class="status-check">薪酬</div></div>
+      <div class="status-item status-pending"><div class="status-num">10</div><div class="status-check">培训</div></div>
+      <div class="status-item status-pending"><div class="status-num">11</div><div class="status-check">激励</div></div>
+      <div class="status-item status-done"><div class="status-num">12</div><div class="status-check">劳动关系</div></div>
+      <div class="status-item status-done"><div class="status-num">13</div><div class="status-check">战略HRM</div></div>
+      <div class="status-item status-done"><div class="status-num">14</div><div class="status-check">国际HRM</div></div>
+    </div>
+    <div style="font-size:12px;color:#888;margin-top:8px;">✓ = 已完成详细笔记 ｜ 空白 = 待完成</div>
+  </div>
+</div>
+
+<!-- ── BOOK LOGIC FLOW ── -->
+<div class="book-flow" id="bookflow">
+  <h2>🧭 全书知识逻辑主线</h2>
+  <div style="font-size:13.5px;line-height:1.8;margin-bottom:20px;color:#64748b;">
+    本书的逻辑是：先建立<strong style="color:var(--part1)">认知框架</strong>→再掌握<strong style="color:var(--part2)">实务技能</strong>→最后提升<strong style="color:var(--part3)">战略视野</strong>。三部分层层递进，缺一不可。
+  </div>
+
+  <!-- 横向大流程 -->
+  <div class="bflow-row" style="margin-bottom:24px;">
+    <div class="bflow-box theory">人力资源<br>是什么<br><span style="font-size:11px;font-weight:400">第1章</span></div>
+    <div class="bflow-arr">→</div>
+    <div class="bflow-box theory">为什么要<br>这样管<br><span style="font-size:11px;font-weight:400">第2–4章</span></div>
+    <div class="bflow-arr">→</div>
+    <div class="bflow-box practice">如何<br>规划配置<br><span style="font-size:11px;font-weight:400">第5–6章</span></div>
+    <div class="bflow-arr">→</div>
+    <div class="bflow-box practice">如何<br>获取人才<br><span style="font-size:11px;font-weight:400">第7章</span></div>
+    <div class="bflow-arr">→</div>
+    <div class="bflow-box practice">如何<br>用好人才<br><span style="font-size:11px;font-weight:400">第8–11章</span></div>
+    <div class="bflow-arr">→</div>
+    <div class="bflow-box practice">如何<br>保障关系<br><span style="font-size:11px;font-weight:400">第12章</span></div>
+    <div class="bflow-arr">→</div>
+    <div class="bflow-box frontier">战略与<br>全球视角<br><span style="font-size:11px;font-weight:400">第13–14章</span></div>
+  </div>
+
+  <!-- 实务操作详细流程 -->
+  <div style="background:var(--bg2);border-radius:12px;padding:20px 24px;margin-bottom:20px;">
+    <div style="font-size:12px;font-weight:700;letter-spacing:2px;color:#888;margin-bottom:14px;">第二部分实务逻辑链（核心考点）</div>
+    <div class="bflow-row" style="flex-wrap:wrap;gap:6px;">
+      <div class="bflow-box practice" style="min-width:90px;font-size:12px;padding:8px 12px;">人力资源规划<br><span style="font-size:10px;color:#888">统率全局</span></div>
+      <div class="bflow-arr">↓</div>
+      <div class="bflow-box practice" style="min-width:90px;font-size:12px;padding:8px 12px;">工作分析<br><span style="font-size:10px;color:#888">明确岗位</span></div>
+      <div class="bflow-arr">↓</div>
+      <div class="bflow-box practice" style="min-width:90px;font-size:12px;padding:8px 12px;">员工招聘<br><span style="font-size:10px;color:#888">引入人才</span></div>
+      <div class="bflow-arr">↓</div>
+      <div class="bflow-box practice" style="min-width:90px;font-size:12px;padding:8px 12px;">绩效管理<br><span style="font-size:10px;color:#888">评价表现</span></div>
+      <div class="bflow-arr">↓</div>
+      <div class="bflow-box practice" style="min-width:90px;font-size:12px;padding:8px 12px;">薪酬管理<br><span style="font-size:10px;color:#888">价值回报</span></div>
+      <div class="bflow-arr">↓</div>
+      <div class="bflow-box practice" style="min-width:90px;font-size:12px;padding:8px 12px;">培训开发<br><span style="font-size:10px;color:#888">持续成长</span></div>
+      <div class="bflow-arr">↓</div>
+      <div class="bflow-box practice" style="min-width:90px;font-size:12px;padding:8px 12px;">激励<br><span style="font-size:10px;color:#888">激发活力</span></div>
+      <div class="bflow-arr">↓</div>
+      <div class="bflow-box practice" style="min-width:90px;font-size:12px;padding:8px 12px;">劳动关系<br><span style="font-size:10px;color:#888">维护稳定</span></div>
+    </div>
+    <div style="font-size:12px;color:#888;margin-top:12px;">💡 这八个模块形成完整的「人才生命周期管理」闭环，从进入→使用→激励→留用→保障，环环相扣。</div>
+  </div>
+</div>
+
+<!-- ═══════════════ 第一部分 ═══════════════ -->
+<div class="part-header part-1" id="part1">
+  <div class="part-badge">PART · 01</div>
+  <div class="part-desc">
+    <strong>理论基础篇（第1–4章）</strong> · 为什么要这样管人？——从人力资源的定义出发，建立经济学、组织学、文化学的认知基础。这部分是整本书的"地基"，是跨考生最容易忽视但对答题深度至关重要的章节。
+  </div>
+</div>
+<div class="chapter-grid">
+
+<!-- CH01 -->
+<div class="chapter-card" id="ch01">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 01</div>
+      <div class="card-title">人力资源管理概述</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-theory">理论基础</span>
+      <span class="badge badge-hot">高频考点</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      这是整本书的<strong>入口章节</strong>，解决"人力资源管理是什么"的根本问题。就像新员工入职第一天要了解公司是做什么的一样，第1章告诉我们HRM的定义、历史、特征和发展趋势。<br>
+      <strong>前接：</strong>无（全书起点） ｜ <strong>后启：</strong>第2章开始建立理论基础
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第1章 人力资源管理概述</div>
+          <div class="tree-l1">1. 人力资源的概念与特征</div>
+          <div class="tree-l2">人力资源的定义（劳动能力的载体）</div>
+          <div class="tree-l2">人力资源的特征（能动性/时效性/再生性/社会性/智力性）</div>
+          <div class="tree-l1">2. 人力资源管理的发展沿革</div>
+          <div class="tree-l2">人事管理 → 人力资源管理 → 战略人力资源管理</div>
+          <div class="tree-l2">科学管理阶段 / 人际关系阶段 / 系统阶段</div>
+          <div class="tree-l1">3. 人力资源管理的职能与模型</div>
+          <div class="tree-l2">六大职能：规划/招聘/绩效/薪酬/培训/劳动关系</div>
+          <div class="tree-l2">密歇根模型 / 哈佛模型</div>
+          <div class="tree-l1">4. 中国HRM特征与发展趋势</div>
+          <div class="tree-l2">本土特色 / 国际化趋势</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🌊 知识展开逻辑流程</summary>
+      <div class="detail-inner">
+        <div class="flow-wrap">
+          <div class="flow-row">
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">界定概念<br><span style="font-size:11px">人力资源是什么</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">梳理历史<br><span style="font-size:11px">HRM如何演变</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">明确职能<br><span style="font-size:11px">HRM做什么</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">展望趋势<br><span style="font-size:11px">未来走向哪里</span></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🧠 章节思维导图</summary>
+      <div class="detail-inner">
+        <div class="mindmap">
+          <div class="mm-center">第1章：HRM概述</div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#eff6ff;border-color:#93c5fd">概念特征</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">定义</span><span class="mm-leaf">能动性</span><span class="mm-leaf">时效性</span><span class="mm-leaf">再生性</span><span class="mm-leaf">社会性</span>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#eff6ff;border-color:#93c5fd">历史演变</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">人事管理</span><span class="mm-leaf">HRM</span><span class="mm-leaf">战略HRM</span>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#eff6ff;border-color:#93c5fd">管理职能</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">规划</span><span class="mm-leaf">招聘</span><span class="mm-leaf">绩效</span><span class="mm-leaf">薪酬</span><span class="mm-leaf">培训</span><span class="mm-leaf">劳动关系</span>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#eff6ff;border-color:#93c5fd">理论模型</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">密歇根模型</span><span class="mm-leaf">哈佛模型</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 名词解释：人力资源</span>
+      <span class="exam-high">★★★★ 简答：HRM六大职能</span>
+      <span class="exam-mid">★★★ 论述：HRM发展趋势</span>
+    </div>
+    <a href="#" class="chapter-link disabled">📄 详细笔记（待生成）</a>
+  </div>
+</div>
+
+<!-- CH02 -->
+<div class="chapter-card" id="ch02">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 02</div>
+      <div class="card-title">人力资源相关经济理论</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-theory">理论基础</span>
+      <span class="badge badge-hot">高频考点</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      第2章是全书的<strong>经济学理论地基</strong>，回答"为什么人力资源值得投资、雇佣关系为什么会出现效率问题"。<strong>三大理论</strong>（劳动经济学、人力资本、委托代理）是后续所有实务操作的理论依据。<br>
+      <strong>前接：</strong>第1章定义HRM ｜ <strong>后启：</strong>第3章从组织视角深化
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第2章 人力资源相关经济理论</div>
+          <div class="tree-l1">1. 劳动经济学理论</div>
+          <div class="tree-l2">劳动力市场供求分析</div>
+          <div class="tree-l2">工资决定理论（均衡工资/效率工资）</div>
+          <div class="tree-l1">2. 人力资本理论（舒尔茨/贝克尔）</div>
+          <div class="tree-l2">人力资本投资（教育/培训/健康）</div>
+          <div class="tree-l2">一般培训 vs 专用培训</div>
+          <div class="tree-l1">3. 委托—代理理论</div>
+          <div class="tree-l2">信息不对称问题</div>
+          <div class="tree-l2">逆向选择 / 道德风险</div>
+          <div class="tree-l2">解决机制：激励相容 / 监督</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🌊 知识展开逻辑流程</summary>
+      <div class="detail-inner">
+        <div class="flow-wrap">
+          <div class="flow-row">
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">劳动力市场<br><span style="font-size:11px">供求决定工资</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">人力资本<br><span style="font-size:11px">投资产生回报</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">委托代理<br><span style="font-size:11px">信息不对称问题</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">激励机制设计<br><span style="font-size:11px">解决代理问题</span></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🧠 章节思维导图</summary>
+      <div class="detail-inner">
+        <div class="mindmap">
+          <div class="mm-center">第2章：经济理论基础</div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#eff6ff;border-color:#93c5fd">劳动经济学</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">劳动力供求</span><span class="mm-leaf">均衡工资</span><span class="mm-leaf">效率工资</span>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#eff6ff;border-color:#93c5fd">人力资本</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">舒尔茨</span><span class="mm-leaf">贝克尔</span><span class="mm-leaf">一般培训</span><span class="mm-leaf">专用培训</span>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#eff6ff;border-color:#93c5fd">委托代理</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">信息不对称</span><span class="mm-leaf">逆向选择</span><span class="mm-leaf">道德风险</span><span class="mm-leaf">激励相容</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 论述：人力资本理论及意义</span>
+      <span class="exam-high">★★★★★ 名词：委托代理/逆向选择/道德风险</span>
+      <span class="exam-mid">★★★ 简答：一般培训与专用培训区别</span>
+    </div>
+    <a href="#" class="chapter-link" style="background:var(--part1)">📄 查看详细笔记（已完成）</a>
+  </div>
+</div>
+
+<!-- CH03 -->
+<div class="chapter-card" id="ch03">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 03</div>
+      <div class="card-title">组织与人力资源管理</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-theory">理论基础</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      第3章从<strong>组织视角</strong>看HRM，探讨人性假设、个体差异、群体特征和组织结构如何影响人力资源管理方式。是"因地制宜管人"的理论支撑。<br>
+      <strong>前接：</strong>第2章经济学理论 ｜ <strong>后启：</strong>第4章文化视角进一步深化
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第3章 组织与人力资源管理</div>
+          <div class="tree-l1">1. 人性假设与HRM</div>
+          <div class="tree-l2">X理论 / Y理论 / Z理论</div>
+          <div class="tree-l2">超Y理论 / 复杂人假设</div>
+          <div class="tree-l1">2. 个体差异与HRM</div>
+          <div class="tree-l2">个体特征（能力/气质/个性/价值观）</div>
+          <div class="tree-l2">个体差异对管理的影响</div>
+          <div class="tree-l1">3. 群体特征与HRM</div>
+          <div class="tree-l2">群体规范 / 群体凝聚力</div>
+          <div class="tree-l2">团队管理</div>
+          <div class="tree-l1">4. 组织结构与HRM</div>
+          <div class="tree-l2">直线型/职能型/矩阵型/事业部制</div>
+          <div class="tree-l2">不同组织结构对应不同HRM方式</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🌊 知识展开逻辑流程</summary>
+      <div class="detail-inner">
+        <div class="flow-wrap">
+          <div class="flow-row">
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">人性假设<br><span style="font-size:11px">管理哲学基础</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">个体差异<br><span style="font-size:11px">因人而异管理</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">群体动态<br><span style="font-size:11px">团队管理</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#93c5fd;background:#eff6ff">组织结构<br><span style="font-size:11px">匹配管理模式</span></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 简答：X理论与Y理论对比</span>
+      <span class="exam-mid">★★★ 论述：组织结构对HRM的影响</span>
+      <span class="exam-low">★★ 名词：群体凝聚力</span>
+    </div>
+    <a href="#" class="chapter-link" style="background:var(--part1)">📄 查看详细笔记（已完成）</a>
+  </div>
+</div>
+
+<!-- CH04 -->
+<div class="chapter-card" id="ch04">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 04</div>
+      <div class="card-title">文化与人力资源管理</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-theory">理论基础</span>
+      <span class="badge badge-hot">创新章节</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      第4章是本书<strong>最具创新性</strong>的章节，从中国传统文化（儒道法兵）和现代文化角度分析HRM。这是颜爱民教授本土化HRM研究的重要体现，中南大学复试常考此章。<br>
+      <strong>前接：</strong>第3章组织视角 ｜ <strong>后启：</strong>第5章开始实务操作篇
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第4章 文化与人力资源管理</div>
+          <div class="tree-l1">1. 文化的概念与功能</div>
+          <div class="tree-l2">文化定义 / 企业文化</div>
+          <div class="tree-l2">文化对行为的影响机制</div>
+          <div class="tree-l1">2. 中国传统文化与HRM</div>
+          <div class="tree-l2">儒家文化（仁/义/礼/智/信）</div>
+          <div class="tree-l2">道家文化（无为而治）</div>
+          <div class="tree-l2">法家文化（法治/激励惩罚）</div>
+          <div class="tree-l2">兵家文化（战略思想）</div>
+          <div class="tree-l1">3. 经济模式文化与HRM</div>
+          <div class="tree-l2">自然经济/工业经济/知识经济文化</div>
+          <div class="tree-l1">4. 中国现代转型文化与HRM</div>
+          <div class="tree-l2">转型期文化特征对HRM的影响</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 论述：中国传统文化对HRM的影响</span>
+      <span class="exam-high">★★★★ 简答：儒家文化与HRM</span>
+      <span class="exam-mid">★★★ 案例：某企业文化与管理方式</span>
+    </div>
+    <a href="#" class="chapter-link" style="background:var(--part1)">📄 查看详细笔记（已完成）</a>
+  </div>
+</div>
+
+</div><!-- /chapter-grid part1 -->
+
+<!-- ═══════════════ 第二部分 ═══════════════ -->
+<div class="part-header part-2" id="part2">
+  <div class="part-badge">PART · 02</div>
+  <div class="part-desc">
+    <strong>实务操作篇（第5–12章）</strong> · 怎么管人？——按照HRM职能模块展开，从规划→分析→招聘→绩效→薪酬→培训→激励→劳动关系，构成完整的人才管理闭环。<strong>这是复试考察最密集的部分，占历年真题70%以上。</strong>
+  </div>
+</div>
+<div class="chapter-grid">
+
+<!-- CH05 -->
+<div class="chapter-card" id="ch05">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 05</div>
+      <div class="card-title">人力资源规划</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-practice">实务操作</span>
+      <span class="badge badge-hot">高频考点</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      人力资源规划是实务操作的<strong>统率与起点</strong>，就像盖楼前要先画图纸。它为后续的招聘、绩效、薪酬等所有工作定方向、定数量。<br>
+      <strong>前接：</strong>第4章理论支撑 ｜ <strong>后启：</strong>第6章工作分析（执行基础）
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第5章 人力资源规划</div>
+          <div class="tree-l1">1. 人力资源规划概述</div>
+          <div class="tree-l2">定义 / 分类（战略/战术/操作）</div>
+          <div class="tree-l2">人力资源规划的作用</div>
+          <div class="tree-l1">2. 人力资源需求预测</div>
+          <div class="tree-l2">定性方法（德尔菲法/管理判断法）</div>
+          <div class="tree-l2">定量方法（回归分析/比率法）</div>
+          <div class="tree-l1">3. 人力资源供给预测</div>
+          <div class="tree-l2">内部供给预测（技能清单/人员替换图）</div>
+          <div class="tree-l2">外部供给预测</div>
+          <div class="tree-l1">4. 供需平衡分析</div>
+          <div class="tree-l2">供不应求→招聘/晋升/培训</div>
+          <div class="tree-l2">供过于求→裁员/冻结/早退</div>
+          <div class="tree-l1">5. 人力资源规划的编制与评估</div>
+          <div class="tree-l2">HR信息系统（HRIS）</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🌊 知识展开逻辑流程</summary>
+      <div class="detail-inner">
+        <div class="flow-wrap">
+          <div class="flow-row">
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">战略目标<br><span style="font-size:11px">企业需要什么人</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">需求预测<br><span style="font-size:11px">要多少人</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">供给预测<br><span style="font-size:11px">有多少人可用</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">供需平衡<br><span style="font-size:11px">缺口或富余</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">编制规划<br><span style="font-size:11px">行动方案</span></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 名词：人力资源规划/德尔菲法</span>
+      <span class="exam-high">★★★★★ 简答：需求预测方法比较</span>
+      <span class="exam-mid">★★★ 论述：供需平衡的应对策略</span>
+    </div>
+    <a href="#" class="chapter-link" style="background:var(--part2)">📄 查看详细笔记（已完成）</a>
+  </div>
+</div>
+
+<!-- CH06 -->
+<div class="chapter-card" id="ch06">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 06</div>
+      <div class="card-title">工作分析</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-practice">实务操作</span>
+      <span class="badge badge-hot">高频考点</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      工作分析是HRM实务的<strong>基础工具</strong>，就像盖楼前要先摸清地基情况。它产出的"工作描述"和"工作说明书"是招聘、绩效、薪酬所有工作的基础文件。<br>
+      <strong>前接：</strong>第5章规划确定需求 ｜ <strong>后启：</strong>第7章招聘需要工作说明书
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第6章 工作分析</div>
+          <div class="tree-l1">1. 工作分析概述</div>
+          <div class="tree-l2">工作分析定义 / 工作分析的作用</div>
+          <div class="tree-l2">工作分析的基本概念（职位/职务/职责/任务）</div>
+          <div class="tree-l1">2. 工作分析的方法</div>
+          <div class="tree-l2">访谈法 / 问卷法 / 观察法 / 工作日志法</div>
+          <div class="tree-l2">职位分析问卷（PAQ）/ 关键事件技术（CIT）</div>
+          <div class="tree-l1">3. 工作描述与工作说明书</div>
+          <div class="tree-l2">工作描述（Job Description）</div>
+          <div class="tree-l2">工作说明书（Job Specification）</div>
+          <div class="tree-l1">4. 工作设计</div>
+          <div class="tree-l2">工作扩大化 / 工作丰富化 / 工作轮换</div>
+          <div class="tree-l2">工作特征模型（哈克曼）</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🌊 知识展开逻辑流程</summary>
+      <div class="detail-inner">
+        <div class="flow-wrap">
+          <div class="flow-row">
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">收集信息<br><span style="font-size:11px">观察/访谈/问卷</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">分析整理<br><span style="font-size:11px">工作内容与要求</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">编写文件<br><span style="font-size:11px">工作描述/说明书</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">应用输出<br><span style="font-size:11px">招聘/绩效/薪酬</span></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 名词：工作分析/工作描述/工作说明书</span>
+      <span class="exam-high">★★★★ 简答：工作分析方法比较</span>
+      <span class="exam-mid">★★★ 论述：工作设计的方法</span>
+    </div>
+    <a href="#" class="chapter-link disabled">📄 详细笔记（待生成）</a>
+  </div>
+</div>
+
+<!-- CH07 -->
+<div class="chapter-card" id="ch07">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 07</div>
+      <div class="card-title">员工招聘</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-practice">实务操作</span>
+      <span class="badge badge-hot">高频考点</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      招聘是HRM的<strong>人才获取环节</strong>，就像给工厂引进原材料。依据规划（第5章）确定需求，依据工作分析（第6章）明确标准，然后从内外部引入合适人才。<br>
+      <strong>前接：</strong>第6章工作说明书提供招聘标准 ｜ <strong>后启：</strong>第8章绩效评价新员工
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第7章 员工招聘</div>
+          <div class="tree-l1">1. 招聘概述</div>
+          <div class="tree-l2">招聘定义 / 招聘原则</div>
+          <div class="tree-l1">2. 招聘渠道与方法</div>
+          <div class="tree-l2">内部来源（晋升/调任）vs 外部来源</div>
+          <div class="tree-l2">招聘渠道（校园/猎头/网络/报纸）</div>
+          <div class="tree-l1">3. 招聘计划与筛选</div>
+          <div class="tree-l2">招聘计划制定</div>
+          <div class="tree-l2">简历筛选 / 初步面试</div>
+          <div class="tree-l1">4. 人员测评与选拔</div>
+          <div class="tree-l2">素质测评（笔试/心理测试）</div>
+          <div class="tree-l2">评价中心（AC） / 无领导小组讨论</div>
+          <div class="tree-l2">面试技巧（结构化/非结构化）</div>
+          <div class="tree-l1">5. 招聘评估</div>
+          <div class="tree-l2">成本效益评估 / 数量质量评估</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🌊 知识展开逻辑流程</summary>
+      <div class="detail-inner">
+        <div class="flow-wrap">
+          <div class="flow-row">
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">确定需求<br><span style="font-size:11px">来自规划</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">发布信息<br><span style="font-size:11px">选择渠道</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">初步筛选<br><span style="font-size:11px">简历/笔试</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">深度评估<br><span style="font-size:11px">AC/面试</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#6ee7b7;background:#f0fdf4">录用决策<br><span style="font-size:11px">背调/录用</span></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 名词：评价中心/无领导小组</span>
+      <span class="exam-high">★★★★ 简答：内外部招聘优缺点</span>
+      <span class="exam-mid">★★★ 案例：某企业招聘方案设计</span>
+    </div>
+    <a href="#" class="chapter-link" style="background:var(--part2)">📄 查看详细笔记（已完成）</a>
+  </div>
+</div>
+
+<!-- CH08 -->
+<div class="chapter-card" id="ch08">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 08</div>
+      <div class="card-title">绩效管理</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-practice">实务操作</span>
+      <span class="badge badge-hot">超高频考点</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      绩效管理是HRM的<strong>评价核心</strong>，就像老师给学生打分。它既是薪酬发放的依据（→第9章），也是培训需求的来源（→第10章），还是激励决策的参考（→第11章）。<br>
+      <strong>前接：</strong>第7章招聘完成后开始评价 ｜ <strong>后启：</strong>绩效结果驱动薪酬/培训/激励
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第8章 绩效管理</div>
+          <div class="tree-l1">1. 绩效管理概述</div>
+          <div class="tree-l2">绩效管理 vs 绩效评价区别</div>
+          <div class="tree-l2">绩效管理的过程：计划→监控→评价→反馈</div>
+          <div class="tree-l1">2. 绩效评价体系</div>
+          <div class="tree-l2">评价主体（上级/同级/下级/自评/客户）</div>
+          <div class="tree-l2">评价周期 / 评价标准</div>
+          <div class="tree-l1">3. 绩效评价方法</div>
+          <div class="tree-l2">360度评价</div>
+          <div class="tree-l2">关键绩效指标（KPI）</div>
+          <div class="tree-l2">平衡记分卡（BSC）</div>
+          <div class="tree-l2">目标管理（MBO）</div>
+          <div class="tree-l2">行为锚定法（BARS）</div>
+          <div class="tree-l1">4. 绩效评价误差</div>
+          <div class="tree-l2">晕轮效应/集中趋势/近因效应等</div>
+          <div class="tree-l1">5. 绩效面谈与绩效改进</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 名词：KPI/BSC/360度/MBO</span>
+      <span class="exam-high">★★★★★ 论述：绩效管理与绩效评价区别</span>
+      <span class="exam-high">★★★★ 案例：BSC设计/绩效体系设计</span>
+    </div>
+    <a href="#" class="chapter-link disabled">📄 详细笔记（待生成）</a>
+  </div>
+</div>
+
+<!-- CH09 -->
+<div class="chapter-card" id="ch09">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 09</div>
+      <div class="card-title">薪酬管理</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-practice">实务操作</span>
+      <span class="badge badge-hot">高频考点</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      薪酬是<strong>价值回报</strong>，就像打工赚工资。它与绩效管理（第8章）直接挂钩，以绩效结果为依据分配报酬。薪酬设计合理与否直接影响人才的吸引和留存。<br>
+      <strong>前接：</strong>第8章绩效结果决定薪酬 ｜ <strong>后启：</strong>与第11章激励理论相互支撑
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第9章 薪酬管理</div>
+          <div class="tree-l1">1. 薪酬概述</div>
+          <div class="tree-l2">薪酬的构成（基本工资/绩效工资/福利）</div>
+          <div class="tree-l2">薪酬的功能 / 薪酬管理原则</div>
+          <div class="tree-l1">2. 薪酬体系设计</div>
+          <div class="tree-l2">岗位评价（工作评价）方法</div>
+          <div class="tree-l2">薪酬调查 / 薪酬结构</div>
+          <div class="tree-l2">宽带薪酬</div>
+          <div class="tree-l1">3. 薪酬水平策略</div>
+          <div class="tree-l2">领先策略/跟随策略/滞后策略</div>
+          <div class="tree-l1">4. 激励性薪酬</div>
+          <div class="tree-l2">绩效工资 / 利润分享 / 股票期权</div>
+          <div class="tree-l1">5. 员工福利</div>
+          <div class="tree-l2">法定福利（五险一金）</div>
+          <div class="tree-l2">弹性福利制度</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 名词：宽带薪酬/弹性福利</span>
+      <span class="exam-high">★★★★ 简答：薪酬水平策略三种</span>
+      <span class="exam-mid">★★★ 论述：薪酬体系设计步骤</span>
+    </div>
+    <a href="#" class="chapter-link" style="background:var(--part2)">📄 查看详细笔记（已完成）</a>
+  </div>
+</div>
+
+<!-- CH10 -->
+<div class="chapter-card" id="ch10">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 10</div>
+      <div class="card-title">人力资源开发与培训</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-practice">实务操作</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      培训与开发是<strong>人力资本增值</strong>的过程，就像给员工"充电升级"。以绩效差距（第8章）为培训需求，通过培训提高能力，与员工职业发展密切相关。<br>
+      <strong>前接：</strong>第8章绩效差距揭示培训需求 ｜ <strong>后启：</strong>第11章激励促进学习动力
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第10章 人力资源开发与培训</div>
+          <div class="tree-l1">1. 人力资源开发</div>
+          <div class="tree-l2">职业生涯规划（Holland职业性向）</div>
+          <div class="tree-l2">职业锚理论（沙因）</div>
+          <div class="tree-l1">2. 培训需求分析</div>
+          <div class="tree-l2">组织分析/任务分析/人员分析</div>
+          <div class="tree-l1">3. 培训方法</div>
+          <div class="tree-l2">在职培训（OJT）：导师制/工作轮换</div>
+          <div class="tree-l2">脱产培训：讲授/角色扮演/案例分析</div>
+          <div class="tree-l1">4. 培训效果评估</div>
+          <div class="tree-l2">柯克帕特里克四层次模型</div>
+          <div class="tree-l2">反应/学习/行为/成果</div>
+          <div class="tree-l1">5. IS010015国际培训标准</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 名词：职业锚/柯氏四层次</span>
+      <span class="exam-mid">★★★ 简答：培训需求分析三层次</span>
+      <span class="exam-mid">★★★ 论述：职业生涯规划的意义</span>
+    </div>
+    <a href="#" class="chapter-link disabled">📄 详细笔记（待生成）</a>
+  </div>
+</div>
+
+<!-- CH11 -->
+<div class="chapter-card" id="ch11">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 11</div>
+      <div class="card-title">激励</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-practice">实务操作</span>
+      <span class="badge badge-hot">超高频考点</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      激励是<strong>驱动员工努力工作</strong>的核心机制，就像给机器加油。激励理论是整个HRM的底层逻辑，解释了为什么要有绩效、薪酬、培训这些制度。<br>
+      <strong>前接：</strong>第10章培训提升能力 ｜ <strong>后启：</strong>第12章劳动关系保障激励环境
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第11章 激励</div>
+          <div class="tree-l1">1. 激励概述</div>
+          <div class="tree-l2">激励定义 / 激励过程模型</div>
+          <div class="tree-l1">2. 内容型激励理论</div>
+          <div class="tree-l2">马斯洛需求层次理论（5层）</div>
+          <div class="tree-l2">赫茨伯格双因素理论（保健/激励）</div>
+          <div class="tree-l2">麦克利兰成就激励理论</div>
+          <div class="tree-l2">ERG理论（奥尔德弗）</div>
+          <div class="tree-l1">3. 过程型激励理论</div>
+          <div class="tree-l2">期望理论（弗鲁姆）V=E×I</div>
+          <div class="tree-l2">公平理论（亚当斯）</div>
+          <div class="tree-l2">目标设置理论（洛克）</div>
+          <div class="tree-l1">4. 激励实践</div>
+          <div class="tree-l2">工作激励 / 绩效激励 / 薪酬激励</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 论述：双因素理论及应用</span>
+      <span class="exam-high">★★★★★ 名词：马斯洛/期望理论/公平理论</span>
+      <span class="exam-high">★★★★ 案例：激励机制设计</span>
+    </div>
+    <a href="#" class="chapter-link disabled">📄 详细笔记（待生成）</a>
+  </div>
+</div>
+
+<!-- CH12 -->
+<div class="chapter-card" id="ch12">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 12</div>
+      <div class="card-title">劳动关系</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-practice">实务操作</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      劳动关系是HRM的<strong>法律底线与保障</strong>，就像游戏规则。它规定了雇主与员工之间的权利义务，是整个实务体系的保障性框架。<br>
+      <strong>前接：</strong>第11章激励（权利义务对等） ｜ <strong>后启：</strong>第13章战略HRM视角
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第12章 劳动关系</div>
+          <div class="tree-l1">1. 劳动关系概述</div>
+          <div class="tree-l2">劳动关系的定义与类型</div>
+          <div class="tree-l2">劳动关系的主体（劳动者/用人单位/政府）</div>
+          <div class="tree-l1">2. 劳动关系的经济理论</div>
+          <div class="tree-l2">劳动力市场理论</div>
+          <div class="tree-l1">3. 劳动关系的调整</div>
+          <div class="tree-l2">劳动合同（订立/履行/变更/解除）</div>
+          <div class="tree-l2">集体谈判 / 劳动争议处理</div>
+          <div class="tree-l2">员工参与（工会）</div>
+          <div class="tree-l1">4. 中国劳动关系发展趋势</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★ 名词：集体谈判/劳动争议</span>
+      <span class="exam-mid">★★★ 简答：劳动关系调整方式</span>
+      <span class="exam-mid">★★★ 论述：中国劳动关系趋势</span>
+    </div>
+    <a href="#" class="chapter-link" style="background:var(--part2)">📄 查看详细笔记（已完成）</a>
+  </div>
+</div>
+
+</div><!-- /chapter-grid part2 -->
+
+<!-- ═══════════════ 第三部分 ═══════════════ -->
+<div class="part-header part-3" id="part3">
+  <div class="part-badge">PART · 03</div>
+  <div class="part-desc">
+    <strong>前沿动态篇（第13–14章）</strong> · 怎么从战略高度和全球视角管人？——将HRM提升至与企业战略结合的层面，以及跨文化、跨国境的人才管理实践。论述题和案例题的高分加分区域。
+  </div>
+</div>
+<div class="chapter-grid">
+
+<!-- CH13 -->
+<div class="chapter-card" id="ch13">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 13</div>
+      <div class="card-title">战略人力资源管理</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-frontier">前沿动态</span>
+      <span class="badge badge-hot">高频考点</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      战略HRM是整本书的<strong>升华篇</strong>，将前面12章的HRM实务提升至战略层面，解决"HRM如何与企业战略融合"的问题。是从"管人"到"用人战略"的跃升。<br>
+      <strong>前接：</strong>第1–12章所有HRM知识 ｜ <strong>后启：</strong>第14章拓展至国际视野
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第13章 战略人力资源管理</div>
+          <div class="tree-l1">1. 战略HRM的产生与发展</div>
+          <div class="tree-l2">从传统HRM到战略HRM</div>
+          <div class="tree-l1">2. 基于环境的战略HRM</div>
+          <div class="tree-l2">权变理论（外部适应性）</div>
+          <div class="tree-l2">Porter竞争战略与HRM匹配</div>
+          <div class="tree-l1">3. 基于资源的战略HRM</div>
+          <div class="tree-l2">核心竞争力理论</div>
+          <div class="tree-l2">RBV（资源基础观）</div>
+          <div class="tree-l1">4. 两大理论的整合</div>
+          <div class="tree-l2">内部一致性 + 外部适应性</div>
+          <div class="tree-l1">5. 战略HRM的实践应用</div>
+          <div class="tree-l2">高承诺型/高绩效型HRM系统</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🌊 知识展开逻辑流程</summary>
+      <div class="detail-inner">
+        <div class="flow-wrap">
+          <div class="flow-row">
+            <div class="flow-box" style="border-color:#c4b5fd;background:#faf5ff">企业战略<br><span style="font-size:11px">成本/差异/聚焦</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#c4b5fd;background:#faf5ff">环境分析<br><span style="font-size:11px">外部适应性</span></div>
+            <div class="flow-arrow">↕</div>
+            <div class="flow-box" style="border-color:#c4b5fd;background:#faf5ff">资源识别<br><span style="font-size:11px">内部核心能力</span></div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box" style="border-color:#c4b5fd;background:#faf5ff">HRM系统<br><span style="font-size:11px">战略一致性</span></div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★★ 论述：战略HRM两大理论流派</span>
+      <span class="exam-high">★★★★ 名词：高承诺型HRM系统</span>
+      <span class="exam-mid">★★★ 案例：某企业战略HRM实践</span>
+    </div>
+    <a href="#" class="chapter-link" style="background:var(--part3)">📄 查看详细笔记（已完成）</a>
+  </div>
+</div>
+
+<!-- CH14 -->
+<div class="chapter-card" id="ch14">
+  <div class="card-header">
+    <div>
+      <div class="card-chapter-num">CHAPTER · 14</div>
+      <div class="card-title">国际人力资源管理</div>
+    </div>
+    <div class="card-badges">
+      <span class="badge badge-frontier">前沿动态</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="logic-box">
+      <div class="logic-label">本章在全书中的位置</div>
+      国际HRM是全书的<strong>视野拓展</strong>，将所有HRM职能（招聘/培训/绩效/薪酬）放到跨国语境下重新审视。经济全球化背景下，跨文化管理能力越来越重要。<br>
+      <strong>前接：</strong>第13章战略视角 ｜ <strong>后接：</strong>全书终点，融汇贯通
+    </div>
+
+    <details>
+      <summary>📐 章节结构树</summary>
+      <div class="detail-inner">
+        <div class="tree">
+          <div class="tree-root">📌 第14章 国际人力资源管理</div>
+          <div class="tree-l1">1. 国际HRM的特征与挑战</div>
+          <div class="tree-l2">跨文化差异 / 母国-东道国关系</div>
+          <div class="tree-l1">2. 国际HRM模式</div>
+          <div class="tree-l2">民族中心型/多元中心型/全球中心型</div>
+          <div class="tree-l1">3. 欧美日HRM模式比较</div>
+          <div class="tree-l2">美国式：绩效导向/市场化</div>
+          <div class="tree-l2">日本式：终身雇用/年功序列</div>
+          <div class="tree-l2">欧洲式：社会伙伴关系</div>
+          <div class="tree-l1">4. 国际人力资源实务</div>
+          <div class="tree-l2">外派人员（PCN/HCN/TCN）选聘</div>
+          <div class="tree-l2">外派培训 / 跨文化绩效评价</div>
+          <div class="tree-l2">国际薪酬（均衡表法）</div>
+        </div>
+      </div>
+    </details>
+
+    <details>
+      <summary>🧠 章节思维导图</summary>
+      <div class="detail-inner">
+        <div class="mindmap">
+          <div class="mm-center">第14章：国际HRM</div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#faf5ff;border-color:#c4b5fd">HRM模式</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">民族中心</span><span class="mm-leaf">多元中心</span><span class="mm-leaf">全球中心</span>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#faf5ff;border-color:#c4b5fd">国际比较</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">美国模式</span><span class="mm-leaf">日本模式</span><span class="mm-leaf">欧洲模式</span>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <div class="mm-node" style="background:#faf5ff;border-color:#c4b5fd">外派实务</div>
+            <div class="mm-leaves">
+              <span class="mm-leaf">PCN/HCN/TCN</span><span class="mm-leaf">跨文化培训</span><span class="mm-leaf">均衡表薪酬</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <div class="exam-row">
+      <span class="exam-high">★★★★ 名词：外派人员/均衡表法</span>
+      <span class="exam-mid">★★★ 比较：欧美日HRM模式</span>
+      <span class="exam-mid">★★★ 论述：国际HRM面临的挑战</span>
+    </div>
+    <a href="#" class="chapter-link" style="background:var(--part3)">📄 查看详细笔记（已完成）</a>
+  </div>
+</div>
+
+</div><!-- /chapter-grid part3 -->
+
+<!-- ── QUICK REVIEW ── -->
+<div class="overview-section" style="margin-top:40px;">
+  <h2>⚡ 30秒全书极速复习</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px;">
+    <div style="background:var(--bg2);border-radius:12px;padding:18px;">
+      <div style="font-weight:700;color:var(--part1);margin-bottom:8px;">🔵 理论篇一句话</div>
+      <div style="font-size:13px;line-height:1.7;">HRM建立在<strong>劳动经济学</strong>（效率工资）、<strong>人力资本理论</strong>（投资回报）、<strong>委托代理理论</strong>（信息不对称）基础上，受<strong>组织结构</strong>和<strong>中国文化</strong>（儒道法兵）深刻影响。</div>
+    </div>
+    <div style="background:var(--bg2);border-radius:12px;padding:18px;">
+      <div style="font-weight:700;color:var(--part2);margin-bottom:8px;">🟢 实务篇一句话</div>
+      <div style="font-size:13px;line-height:1.7;">按「<strong>规划→分析→招聘→绩效→薪酬→培训→激励→劳动关系</strong>」的人才生命周期管理：先规划数量，再定义标准，然后引入人才，评价使用，按贡献分配，持续发展，激发活力，维护底线。</div>
+    </div>
+    <div style="background:var(--bg2);border-radius:12px;padding:18px;">
+      <div style="font-weight:700;color:var(--part3);margin-bottom:8px;">🟣 前沿篇一句话</div>
+      <div style="font-size:13px;line-height:1.7;">战略HRM要实现<strong>内部一致性</strong>（HRM各模块协调）和<strong>外部适应性</strong>（与企业战略匹配）；国际HRM要应对<strong>跨文化差异</strong>，选择合适的管理模式（民族/多元/全球中心型）。</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<footer>
+  <div>《人力资源管理（第3版）》全书框架导读 · 颜爱民 主编 · 北京大学出版社</div>
+  <div style="margin-top:6px;">中南大学企业管理学硕复试备考资料 ｜ 生成日期：2026-03-09</div>
+</footer>
+
+<script>
+// Night mode
+function toggleNight() {
+  document.body.classList.toggle('night');
+  const btn = document.querySelector('.btn-ctrl');
+  btn.textContent = document.body.classList.contains('night') ? '☀️ 日间' : '🌙 夜间';
+}
+
+</script>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

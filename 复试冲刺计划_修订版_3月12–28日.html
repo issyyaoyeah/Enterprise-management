@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>复试冲刺精准计划（修订版）· 3月12–28日 · 中南大学企业管理</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:#111827; --ink2:#4b5563;
+  --bg:#f2f5fa; --bg2:#e4ecf5; --card:#fff; --border:#d1dce8;
+  --shadow:0 2px 16px rgba(17,24,39,.08); --shadow-h:0 6px 28px rgba(17,24,39,.14);
+  --r1c:#2563eb; --r1l:#dbeafe; --r1b:#93c5fd;
+  --r2c:#059669; --r2l:#d1fae5; --r2b:#6ee7b7;
+  --r3c:#d97706; --r3l:#fef3c7; --r3b:#fcd34d;
+  --r4c:#dc2626; --r4l:#fee2e2; --r4b:#fca5a5;
+  --exam:#7c3aed; --examl:#ede9fe; --examb:#c4b5fd;
+  --eng:#0891b2; --engl:#cffafe; --engb:#67e8f9;
+}
+body.night{
+  --ink:#e2eaf4; --ink2:#94a3b8;
+  --bg:#0b1220; --bg2:#131f30; --card:#182030; --border:#253548;
+  --shadow:0 2px 16px rgba(0,0,0,.4);
+  --r1l:#1e3a5f; --r2l:#0d3326; --r3l:#3b2a0d; --r4l:#3b1515;
+  --examl:#2d1f5e; --engl:#0c2d35;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC',sans-serif;font-size:14.5px;line-height:1.75;padding-bottom:80px;transition:background .3s,color .3s;}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#080f1f 0%,#0f2040 40%,#1a3a6e 75%,#2563eb 100%);color:#fff;padding:50px 48px 42px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 78% 25%,rgba(147,197,253,.1) 0%,transparent 55%),repeating-linear-gradient(55deg,rgba(255,255,255,.02) 0,rgba(255,255,255,.02) 1px,transparent 1px,transparent 30px);}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:4px;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:12px;position:relative;}
+.hero h1{font-family:'Noto Serif SC',serif;font-size:36px;font-weight:900;line-height:1.25;margin-bottom:10px;position:relative;}
+.hero h1 em{color:#93c5fd;font-style:normal;}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.72);max-width:720px;line-height:1.85;position:relative;margin-bottom:22px;}
+.hero-pills{display:flex;gap:12px;flex-wrap:wrap;position:relative;}
+.hp{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:5px 16px;font-size:12.5px;display:flex;align-items:center;gap:6px;}
+.hp strong{color:#fde68a;font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;}
+.hp.alarm{background:rgba(220,38,38,.22);border-color:rgba(248,113,113,.45);}
+.hp.alarm strong{color:#fca5a5;}
+.hp.ok{background:rgba(5,150,105,.2);border-color:rgba(110,231,183,.4);}
+
+/* ── EXAM COUNTDOWN ── */
+.exam-banner{background:linear-gradient(135deg,#7c3aed,#4338ca);border-radius:18px;padding:24px 30px;color:#fff;margin-bottom:30px;display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;gap:0;align-items:center;}
+.eb-div{background:rgba(255,255,255,.2);height:60px;width:1px;}
+.eb-item{padding:0 24px;}
+.eb-item h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;opacity:.65;text-transform:uppercase;margin-bottom:5px;}
+.eb-item .eb-big{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700;margin-bottom:3px;}
+.eb-item .eb-sm{font-size:12px;opacity:.82;line-height:1.55;}
+
+/* ── NAV ── */
+.sticky-nav{position:sticky;top:0;z-index:999;background:#111827;padding:10px 48px;display:flex;align-items:center;gap:5px;flex-wrap:wrap;box-shadow:0 2px 14px rgba(0,0,0,.35);transition:background .3s;}
+body.night .sticky-nav{background:#070d18;}
+.nav-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-right:3px;white-space:nowrap;}
+.sticky-nav a{color:rgba(255,255,255,.65);text-decoration:none;font-size:12px;padding:3px 10px;border:1px solid rgba(255,255,255,.14);border-radius:12px;transition:all .18s;white-space:nowrap;}
+.sticky-nav a:hover,.sticky-nav a.active{background:rgba(255,255,255,.15);color:#fff;}
+.nav-right{margin-left:auto;display:flex;gap:7px;}
+.btn-ctrl{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:10px;padding:4px 12px;cursor:pointer;font-size:12px;font-family:'Noto Sans SC',sans-serif;transition:all .2s;white-space:nowrap;}
+.btn-ctrl:hover{background:rgba(255,255,255,.2);}
+
+/* ── SEARCH ── */
+.search-wrap{background:var(--card);border-bottom:1px solid var(--border);padding:10px 48px;transition:background .3s;}
+.search-wrap input{width:100%;max-width:520px;border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:13.5px;font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink);outline:none;transition:border .2s;}
+.search-wrap input:focus{border-color:var(--r1c);}
+.search-count{font-size:12px;color:var(--ink2);margin-top:4px;}
+mark.hl{background:#fde68a;color:#111827;border-radius:2px;padding:0 1px;}
+body.night mark.hl{background:#78350f;color:#fde68a;}
+
+main{max-width:1140px;margin:0 auto;padding:36px 48px;}
+
+/* ── WARN BOX ── */
+.warn-box{background:#fef2f2;border:1.5px solid #fca5a5;border-radius:14px;padding:18px 22px;margin-bottom:28px;}
+body.night .warn-box{background:#3b1515;border-color:#7f1d1d;}
+.warn-box h3{color:#dc2626;font-size:14.5px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:7px;}
+body.night .warn-box h3{color:#fca5a5;}
+.warn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:9px;}
+.wi{display:flex;align-items:flex-start;gap:9px;font-size:13px;}
+.wi-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+
+/* ── PHASE OVERVIEW TABLE ── */
+.overview-table{width:100%;border-collapse:collapse;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:36px;}
+.overview-table thead th{padding:13px 18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-align:left;}
+.overview-table thead{background:#111827;color:rgba(255,255,255,.9);}
+body.night .overview-table thead{background:#070d18;}
+.overview-table td{padding:13px 18px;font-size:13.5px;border-bottom:1px solid var(--border);background:var(--card);vertical-align:middle;}
+.overview-table tr:last-child td{border-bottom:none;}
+.overview-table tr:hover td{background:var(--bg2);}
+.phase-tag{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11.5px;font-weight:700;white-space:nowrap;}
+.pt-1{background:var(--r1l);color:#1d4ed8;} .pt-2{background:var(--r2l);color:#065f46;}
+.pt-3{background:var(--r3l);color:#92400e;} .pt-exam{background:var(--examl);color:#5b21b6;}
+.pt-face{background:#fce7f3;color:#9d174d;}
+body.night .pt-1{background:#1e3a5f;color:#93c5fd;} body.night .pt-2{background:#0d3326;color:#6ee7b7;}
+body.night .pt-3{background:#3b2a0d;color:#fcd34d;} body.night .pt-exam{background:#2d1f5e;color:#c4b5fd;}
+body.night .pt-face{background:#3b0f25;color:#f9a8d4;}
+.date-mono{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--ink2);}
+
+/* ── SEC HEAD ── */
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;margin-top:44px;padding-bottom:12px;border-bottom:2px solid var(--border);}
+.sec-badge{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;font-family:'JetBrains Mono',monospace;flex-shrink:0;}
+.sb-r1{background:var(--r1c);color:#fff;} .sb-r2{background:var(--r2c);color:#fff;}
+.sb-r3{background:var(--r3c);color:#fff;} .sb-r4{background:var(--r4c);color:#fff;}
+.sb-exam{background:var(--exam);color:#fff;} .sb-eng{background:var(--eng);color:#fff;}
+.sec-title{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;}
+.sec-sub{font-size:13px;color:var(--ink2);margin-left:auto;}
+
+/* ── ROUND INTRO ── */
+.round-intro{border-radius:13px;padding:18px 24px;margin-bottom:22px;border:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.ri-r1{background:var(--r1l);border-color:var(--r1b);} .ri-r2{background:var(--r2l);border-color:var(--r2b);}
+.ri-r3{background:var(--r3l);border-color:var(--r3b);} .ri-r4{background:var(--r4l);border-color:var(--r4b);}
+.ri-exam{background:var(--examl);border-color:var(--examb);}
+.ri-item h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--ink2);margin-bottom:4px;}
+.ri-item p{font-size:13.5px;font-weight:500;color:var(--ink);}
+
+/* ── DAY CARDS ── */
+.days-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(500px,1fr));gap:18px;}
+.day-card{background:var(--card);border-radius:16px;border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s,transform .18s;}
+.day-card:hover{box-shadow:var(--shadow-h);transform:translateY(-2px);}
+
+.day-header{padding:15px 20px 13px;display:flex;align-items:flex-start;gap:13px;border-bottom:1px solid var(--border);}
+.day-num-badge{flex-shrink:0;width:60px;height:60px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;gap:0;}
+.dn-day{font-size:8px;letter-spacing:1px;opacity:.75;text-transform:uppercase;}
+.dn-num{font-size:24px;font-weight:700;line-height:1.05;font-variant-numeric:tabular-nums;}
+.dn-date{font-size:9px;opacity:.8;letter-spacing:.3px;margin-top:2px;}
+.dnb-r1{background:var(--r1c);color:#fff;} .dnb-r2{background:var(--r2c);color:#fff;}
+.dnb-r3{background:var(--r3c);color:#fff;} .dnb-r4{background:var(--r4c);color:#fff;}
+.dnb-exam{background:var(--exam);color:#fff;} .dnb-sprint{background:linear-gradient(135deg,#dc2626,#7c3aed);color:#fff;}
+
+.day-meta{flex:1;min-width:0;}
+.dm-round{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;margin-bottom:2px;}
+.dm-r1{color:var(--r1c);} .dm-r2{color:var(--r2c);} .dm-r3{color:var(--r3c);}
+.dm-r4{color:var(--r4c);} .dm-exam{color:var(--exam);}
+.dm-subject{font-size:15px;font-weight:700;margin-bottom:2px;display:flex;align-items:center;gap:7px;}
+.subj-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.sd-strat{background:var(--exam);} .sd-hrm{background:var(--r3c);}
+.dm-chapter{font-size:13px;color:var(--ink2);line-height:1.4;}
+.mode-badge{flex-shrink:0;padding:3px 11px;border-radius:20px;font-size:11px;font-weight:700;align-self:flex-start;}
+.mb-1{background:var(--r1l);color:#1d4ed8;} .mb-2{background:var(--r2l);color:#065f46;}
+.mb-3{background:var(--r3l);color:#92400e;} .mb-4{background:var(--r4l);color:#991b1b;}
+.mb-exam{background:var(--examl);color:#5b21b6;}
+body.night .mb-1{background:#1e3a5f;color:#93c5fd;} body.night .mb-2{background:#0d3326;color:#6ee7b7;}
+body.night .mb-3{background:#3b2a0d;color:#fcd34d;} body.night .mb-4{background:#3b1515;color:#fca5a5;}
+body.night .mb-exam{background:#2d1f5e;color:#c4b5fd;}
+
+/* DAY BODY */
+.day-body{padding:16px 20px;}
+.sg{display:grid;grid-template-columns:70px 1fr;margin-bottom:12px;}
+.sg-t{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-variant-numeric:tabular-nums;color:var(--ink2);padding:8px 10px 8px 0;border-right:2px solid var(--border);text-align:right;}
+.sg-c{padding:8px 0 8px 14px;font-size:13px;border-bottom:1px dashed var(--border);position:relative;}
+.sg-c::before{content:'';position:absolute;left:-5px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:var(--border);}
+.dc-r1 .sg-c::before{background:var(--r1c);} .dc-r2 .sg-c::before{background:var(--r2c);}
+.dc-r3 .sg-c::before{background:var(--r3c);} .dc-r4 .sg-c::before{background:var(--r4c);}
+.dc-exam .sg-c::before{background:var(--exam);} .dc-sprint .sg-c::before{background:#7c3aed;}
+.sg-c:last-child{border-bottom:none;}
+
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+.chip{font-size:11.5px;padding:3px 10px;border-radius:20px;border:1px solid var(--border);color:var(--ink2);background:var(--bg);}
+.chip.hot{background:#fee2e2;border-color:#fca5a5;color:#991b1b;font-weight:600;}
+.chip.tip{background:#dbeafe;border-color:#93c5fd;color:#1d4ed8;}
+.chip.warn{background:#fef3c7;border-color:#fcd34d;color:#92400e;font-weight:600;}
+.chip.tool{background:var(--examl);border-color:var(--examb);color:#5b21b6;}
+.chip.red{background:#fee2e2;border-color:#fca5a5;color:#991b1b;font-weight:700;}
+body.night .chip{background:var(--bg2);}
+body.night .chip.hot{background:#3b1515;color:#fca5a5;border-color:#7f1d1d;}
+body.night .chip.tip{background:#1e3a5f;color:#93c5fd;border-color:#1e40af;}
+body.night .chip.warn{background:#3b2a0d;color:#fcd34d;border-color:#78350f;}
+body.night .chip.tool{background:#2d1f5e;color:#c4b5fd;border-color:#4c1d95;}
+
+.focus-box{margin-top:12px;padding:11px 14px;border-radius:10px;border-left:3px solid;font-size:12.5px;}
+.fb-r1{background:var(--r1l);border-color:var(--r1c);}
+.fb-r2{background:var(--r2l);border-color:var(--r2c);}
+.fb-r3{background:var(--r3l);border-color:var(--r3c);}
+.fb-r4{background:var(--r4l);border-color:var(--r4c);}
+.fb-exam{background:var(--examl);border-color:var(--exam);}
+.focus-box strong{display:block;margin-bottom:3px;font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
+.day-progress{height:3px;margin:0;}
+.dp-r1{background:var(--r1l);} .dp-r2{background:var(--r2l);}
+.dp-r3{background:var(--r3l);} .dp-r4{background:var(--r4l);} .dp-exam{background:var(--examl);}
+
+/* ── EXAM DAY CARD ── */
+.exam-card{border-radius:18px;padding:26px 30px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;}
+.exam-card::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.025) 0,rgba(255,255,255,.025) 1px,transparent 1px,transparent 22px);}
+.ec-written{background:linear-gradient(135deg,#7c3aed,#4338ca);}
+.ec-interview{background:linear-gradient(135deg,#dc2626,#be185d);}
+.ec-head{display:flex;align-items:center;gap:16px;margin-bottom:18px;position:relative;}
+.ec-icon{width:56px;height:56px;background:rgba(255,255,255,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.ec-title{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:900;}
+.ec-sub{font-size:13px;opacity:.8;margin-top:3px;}
+.ec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative;}
+.ec-item h4{font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:.65;font-family:'JetBrains Mono',monospace;margin-bottom:4px;}
+.ec-item p{font-size:13px;font-weight:600;line-height:1.5;}
+.ec-tips{margin-top:16px;background:rgba(255,255,255,.1);border-radius:10px;padding:13px 16px;position:relative;}
+.ec-tips h4{font-size:10px;letter-spacing:2px;text-transform:uppercase;opacity:.7;font-family:'JetBrains Mono',monospace;margin-bottom:7px;}
+.ec-tips ul{padding-left:16px;font-size:13px;opacity:.9;}
+.ec-tips li{margin-bottom:3px;}
+
+/* ── BIG TABLE ── */
+.big-table{width:100%;border-collapse:collapse;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-top:14px;}
+.big-table thead th{background:#111827;color:rgba(255,255,255,.88);font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:12px 16px;text-align:left;font-family:'JetBrains Mono',monospace;}
+body.night .big-table thead th{background:#070d18;}
+.big-table td{padding:11px 16px;font-size:13px;border-bottom:1px solid var(--border);background:var(--card);vertical-align:top;}
+.big-table tr:last-child td{border-bottom:none;}
+.big-table tr:hover td{background:var(--bg2);}
+
+/* ── CHECKLIST ── */
+.cl-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:var(--shadow);margin-top:16px;}
+.cl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:6px;margin-top:12px;}
+.cl-item{display:flex;align-items:center;gap:8px;padding:8px 11px;border-radius:9px;border:1px solid var(--border);cursor:pointer;transition:background .15s;font-size:13px;}
+.cl-item:hover{background:var(--bg2);}
+.cl-item.done{opacity:.48;text-decoration:line-through;}
+.cl-item input[type=checkbox]{width:15px;height:15px;flex-shrink:0;accent-color:var(--r1c);cursor:pointer;}
+.cl-date{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink2);margin-left:auto;white-space:nowrap;flex-shrink:0;}
+
+footer{max-width:1140px;margin:60px auto 0;padding:22px 48px;border-top:1px solid var(--border);font-size:12.5px;color:var(--ink2);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+
+@media(max-width:768px){
+  .hero{padding:30px 20px 26px;} .hero h1{font-size:26px;}
+  main{padding:18px;} .sticky-nav{padding:8px 16px;} .search-wrap{padding:8px 16px;}
+  .days-grid{grid-template-columns:1fr;}
+  .exam-banner{grid-template-columns:1fr;} .eb-div{display:none;}
+  .round-intro{grid-template-columns:1fr;} .ec-grid{grid-template-columns:1fr 1fr;}
+  footer{padding:16px 20px;}
+}
+</style>
+</head>
+<body id="body-root">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-eyebrow">CSU · 企业管理120202 · 2026复试冲刺 · 修订版 · 生成日期：2026-03-11</div>
+  <h1>3月12日–28日<br><em>三轮精准冲刺计划（修订版）</em></h1>
+  <p class="hero-sub">
+    3月12日：完成第一轮（HRM第12–14章）&nbsp;·&nbsp; 3月13–20日：第二轮双科交叉熟背<br>
+    3月21–26日：第三轮专题复习 + 真题模拟训练（6天）&nbsp;·&nbsp; 3月27日笔试 &nbsp;·&nbsp; 3月28日面试
+  </p>
+  <div class="hero-pills">
+    <div class="hp ok">✅ 已完成：战略管理全11章 + HRM第1–11章</div>
+    <div class="hp">📅 今天：<strong>3月11日</strong>（明天收尾第一轮）</div>
+    <div class="hp alarm">⚠️ 笔试：<strong>3月27日</strong> 14:30</div>
+    <div class="hp alarm">🎤 面试：<strong>3月28日</strong> 8:30</div>
+    <div class="hp">📋 行政截止：<strong>3月21–26日</strong></div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="sticky-nav" id="main-nav">
+  <span class="nav-lbl">跳转</span>
+  <a href="#overview">总览</a>
+  <a href="#admin">⚠️行政事项</a>
+  <a href="#round1">第一轮</a>
+  <a href="#round2">第二轮</a>
+  <a href="#round3">第三轮</a>
+  <a href="#exam-days">考试日</a>
+  <a href="#interview">面试备考</a>
+  <a href="#english">英语备考</a>
+  <a href="#checklist">打卡</a>
+  <div class="nav-right">
+    <button class="btn-ctrl" onclick="toggleNight()">🌙 夜间</button>
+    <button class="btn-ctrl" onclick="scrollToTop()">↑ 顶部</button>
+  </div>
+</nav>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  <input type="text" id="searchInput" placeholder="🔍 搜索章节 / 日期 / 知识点..." oninput="doSearch()">
+  <div class="search-count" id="searchCount"></div>
+</div>
+
+<main>
+
+<!-- EXAM COUNTDOWN -->
+<div class="exam-banner" id="overview">
+  <div class="eb-item">
+    <h4>📝 专业笔试</h4>
+    <div class="eb-big">3月27日（周四）</div>
+    <div class="eb-sm">14:30–16:30 · 满分100分<br>战略管理50% + HRM 50%<br>13:15先参加心理健康测试</div>
+  </div>
+  <div class="eb-div"></div>
+  <div class="eb-item">
+    <h4>🎤 综合+英语面试</h4>
+    <div class="eb-big">3月28日（周五）</div>
+    <div class="eb-sm">7:45到达 · 全天候考<br>外语能力 + 综合素质 各100分<br>任一项不合格 → 不予录取</div>
+  </div>
+  <div class="eb-div"></div>
+  <div class="eb-item">
+    <h4>📊 总成绩公式</h4>
+    <div class="eb-big">初试 + 复试</div>
+    <div class="eb-sm">总成绩 = 初试总分 + 复试总分<br>预计4月3日公布拟录取结果<br>录取后24小时内提交导师志愿</div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="warn-box" id="admin">
+  <h3>⚠️ 行政事项 — 错过任何一项将失去复试资格</h3>
+  <div class="warn-grid">
+    <div class="wi"><span class="wi-icon">📧</span><div><strong>3月21–23日：</strong>发确认邮件至 csusxy@126.com（主题：专业+姓名+已查阅复试方案）</div></div>
+    <div class="wi"><span class="wi-icon">💳</span><div><strong>3月21–25日：</strong>网上缴纳复试费120元（yjszsgl.csu.edu.cn，用户名=15位考生编号）</div></div>
+    <div class="wi"><span class="wi-icon">📋</span><div><strong>3月21–25日：</strong>提交资格审查材料（准考证/身份证/学历/成绩单/英语证书，发至 csusxy@126.com）</div></div>
+    <div class="wi"><span class="wi-icon">✍️</span><div><strong>3月21–25日：</strong>考生自述（1000字以内，含研究计划，手写签名，与材料一起发送）</div></div>
+    <div class="wi"><span class="wi-icon">📮</span><div><strong>3月26日前（邮寄日）：</strong>顺丰邮寄《思想政治表现函调表》→ 江湾楼225室申老师（0731-88830317）</div></div>
+    <div class="wi"><span class="wi-icon">🧠</span><div><strong>3月27日13:15：</strong>心理健康测验（提前到达江湾楼一楼大汉厅，携带准考证+身份证）</div></div>
+  </div>
+</div>
+
+<!-- PHASE OVERVIEW TABLE -->
+<table class="overview-table">
+  <thead><tr><th>阶段</th><th>日期</th><th>天数</th><th>核心任务</th><th>每日时长</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><span class="phase-tag pt-1">第一轮 · 收尾</span></td>
+      <td class="date-mono">3月12日（周四）</td>
+      <td class="date-mono">1天</td>
+      <td>完成HRM第12–14章，全书第一轮收官</td>
+      <td>6–7小时</td>
+    </tr>
+    <tr>
+      <td><span class="phase-tag pt-2">第二轮 · 熟背</span></td>
+      <td class="date-mono">3月13–20日</td>
+      <td class="date-mono">8天</td>
+      <td>双科交叉熟背，以已有笔记HTML为核心，重点击穿高频考点</td>
+      <td>7–8小时</td>
+    </tr>
+    <tr>
+      <td><span class="phase-tag pt-3">第三轮 · 专题+真题</span></td>
+      <td class="date-mono">3月21–26日</td>
+      <td class="date-mono">6天</td>
+      <td>按专题专项攻克 + 每日真题限时模拟训练，同步处理行政事项</td>
+      <td>8小时</td>
+    </tr>
+    <tr>
+      <td><span class="phase-tag pt-exam">笔试日</span></td>
+      <td class="date-mono">3月27日（周四）</td>
+      <td class="date-mono">—</td>
+      <td>13:15心理健康测验 → 14:30专业笔试（100分，2小时）</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><span class="phase-tag pt-face">面试日</span></td>
+      <td class="date-mono">3月28日（周五）</td>
+      <td class="date-mono">—</td>
+      <td>7:45到达 → 外语面试（100分）+ 综合素质面试（100分）</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ══════ ROUND 1 ══════ -->
+<section id="round1">
+  <div class="sec-head">
+    <div class="sec-badge sb-r1">①</div>
+    <div class="sec-title">第一轮收尾 · 3月12日（1天）</div>
+    <div class="sec-sub">完成HRM第12–14章 · 全书第一轮收官</div>
+  </div>
+  <div class="round-intro ri-r1">
+    <div class="ri-item"><h4>目标</h4><p>读懂理解，建立框架，今天之后第一轮画上句号</p></div>
+    <div class="ri-item"><h4>方法</h4><p>三章连续精读，每章输出一张手写概念图</p></div>
+    <div class="ri-item"><h4>产出</h4><p>三章关键概念清单 + 薄弱点标注（交给第二轮重点攻)</p></div>
+  </div>
+  <div class="days-grid">
+    <div class="day-card dc-r1" data-search="3月12日 第12章 员工关系 劳动合同 劳动争议 第13章 HRIS 第14章 HRBP 三支柱 第一轮">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r1"><span class="dn-day">DAY</span><span class="dn-num">01</span><span class="dn-date">3月12日 周四</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r1">第一轮 · 收官</div>
+          <div class="dm-subject"><span class="subj-dot sd-hrm"></span>人力资源管理</div>
+          <div class="dm-chapter">第12章 员工关系 + 第13章 HRIS + 第14章 战略HRM</div>
+        </div>
+        <span class="mode-badge mb-1">理解</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">精读第12章：劳动合同类型/必备条款、劳动争议处理程序（协商→调解→仲裁→诉讼）</div>
+          <div class="sg-t">10:30–11:30</div><div class="sg-c">精读第13章：HRIS定义、七大功能模块、大数据HR应用</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">输出：第12–13章手写概念图，标出高频考点词</div>
+          <div class="sg-t">14:00–16:00</div><div class="sg-c">精读第14章：HRBP三支柱（HRBP/COE/SSC）、战略性HRM vs 传统HRM对比</div>
+          <div class="sg-t">16:00–17:00</div><div class="sg-c">输出：第14章概念图 + 全书14章薄弱点清单（标出最没把握的5个章节）</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">对照已有笔记HTML（第12/13/14章），补充遗漏内容</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">🎉 第一轮收官口述：不看书，用5分钟串讲HRM全书14章体系</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐ HRBP三支柱（2026预测重点）</span>
+          <span class="chip hot">⭐ 劳动争议四步程序</span>
+          <span class="chip hot">⭐ HRIS七大模块</span>
+          <span class="chip tool">🎉 第一轮收官！</span>
+        </div>
+        <div class="focus-box fb-r1"><strong>今日收官标准</strong>能口述HRM全书逻辑：工作分析→HR规划→招募甄选→培训开发→绩效管理→薪酬管理→激励→劳动关系→HRIS→战略HRM。今晚标出第二轮重点攻关章节。</div>
+      </div>
+      <div class="day-progress dp-r1"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ ROUND 2 ══════ -->
+<section id="round2">
+  <div class="sec-head">
+    <div class="sec-badge sb-r2">②</div>
+    <div class="sec-title">第二轮 · 双科交叉熟背 · 3月13–20日（8天）</div>
+    <div class="sec-sub">以已有笔记HTML为核心 · 奇数天=战略 · 偶数天=HRM</div>
+  </div>
+  <div class="round-intro ri-r2">
+    <div class="ri-item"><h4>核心原则</h4><p>每天打开对应章节的HTML笔记，按知识卡片逐一<strong>默背→口述→写出框架</strong></p></div>
+    <div class="ri-item"><h4>每日必做</h4><p>①默写当天核心考点框架（不看书）②口述2–3个考点（计时3分钟/个）③对照答题模板找差距</p></div>
+    <div class="ri-item"><h4>达标标准</h4><p>每个考点：能脱口而出定义+要点+案例，用时不超过3分钟</p></div>
+  </div>
+  <div class="days-grid">
+
+    <!-- Day 2: 3/13 战略1-3章 -->
+    <div class="day-card dc-r2" data-search="3月13日 战略管理 第1章 战略管理概述 第2章 外部环境 PEST 波特五力 第3章 外部环境 第二轮 熟背">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r2"><span class="dn-day">DAY</span><span class="dn-num">02</span><span class="dn-date">3月13日 周五</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r2">第二轮 · 熟背</div>
+          <div class="dm-subject"><span class="subj-dot sd-strat"></span>企业战略管理</div>
+          <div class="dm-chapter">第1–3章 · 战略概述 + 战略管理者 + 外部环境分析</div>
+        </div>
+        <span class="mode-badge mb-2">熟背</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">打开【第一章HTML笔记】→ 逐卡默背：战略定义、战略管理三阶段（制定→实施→评价）、战略层次（公司/业务/职能）</div>
+          <div class="sg-t">10:30–11:30</div><div class="sg-c">打开【第二章HTML笔记】→ 默背：战略管理者的角色、高层管理团队理论</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">默写练习：不看书，写出战略管理三阶段+每阶段3个关键任务</div>
+          <div class="sg-t">14:00–15:30</div><div class="sg-c">打开【第三章HTML笔记】→ 默背：PEST四因素（各举3例）、波特五力（5个力量+影响机制）</div>
+          <div class="sg-t">15:30–17:00</div><div class="sg-c">默写练习：画出波特五力图，写出每个力量的影响因素；写出PEST分析某企业案例</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">口述练习：①2分钟说清楚战略管理的完整过程 ②2分钟讲波特五力 ③结合真实企业案例做外部分析</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">对照【30考点答题模板HTML】，找出第1–3章相关考点，背诵答题框架关键词</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐⭐ 波特五力模型（高频）</span>
+          <span class="chip hot">⭐⭐ PEST分析</span>
+          <span class="chip tip">💡 战略管理三阶段</span>
+          <span class="chip tool">📖 用HTML笔记学习</span>
+        </div>
+        <div class="focus-box fb-r2"><strong>熟背达标线</strong>闭眼默写：波特五力5个名称 + 每力2个影响因素；PEST的4个维度 + 每个各2个例子。写完对答案，有遗漏的再背一遍。</div>
+      </div>
+      <div class="day-progress dp-r2"></div>
+    </div>
+
+    <!-- Day 3: 3/14 HRM 1-3章 -->
+    <div class="day-card dc-r2" data-search="3月14日 HRM 第1章 人力资源管理概述 第2章 人力资本理论 第3章 组织 工作分析 六大模块 第二轮 熟背">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r2"><span class="dn-day">DAY</span><span class="dn-num">03</span><span class="dn-date">3月14日 周六</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r2">第二轮 · 熟背</div>
+          <div class="dm-subject"><span class="subj-dot sd-hrm"></span>人力资源管理</div>
+          <div class="dm-chapter">第1–3章 · HRM概述 + 人力资本理论 + 组织与HRM</div>
+        </div>
+        <span class="mode-badge mb-2">熟背</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">打开【第一章HTML笔记】→ 默背：人力资源四特性（能动/可再生/时效/社会性）、HRM六大职能模块</div>
+          <div class="sg-t">10:30–11:30</div><div class="sg-c">打开【第二章HTML笔记】→ 默背：人力资本理论（舒尔茨）、HRM vs 传统人事管理对比</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">默写：HRM六大模块，每个模块写出3个核心工具/方法</div>
+          <div class="sg-t">14:00–15:30</div><div class="sg-c">打开【第三章HTML笔记】→ 默背：工作分析四种方法（观察/访谈/问卷/工作日志）</div>
+          <div class="sg-t">15:30–17:00</div><div class="sg-c">默写：工作说明书（Job Description）vs 工作规范（Job Specification）对比表</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">口述练习：①HRM六大模块（1分钟报出全部）②工作分析的目的和4种方法（2分钟）③举一个具体岗位的工作分析案例</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">对照答题模板：HRM相关核心考点关键词背诵</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐ HRM六大职能模块（必背）</span>
+          <span class="chip hot">⭐⭐ 工作分析方法</span>
+          <span class="chip tip">💡 人力资本理论舒尔茨</span>
+        </div>
+        <div class="focus-box fb-r2"><strong>熟背达标线</strong>默写HRM六大模块全称（不遗漏）；能区分工作说明书和工作规范的内容差异；能背出工作分析四种方法的适用场景。</div>
+      </div>
+      <div class="day-progress dp-r2"></div>
+    </div>
+
+    <!-- Day 4: 3/15 战略4-6章 -->
+    <div class="day-card dc-r2" data-search="3月15日 战略管理 第4章 内部环境 VRIN 价值链 核心竞争力 第5章 基本战略 第6章 公司层战略 多元化 第二轮 熟背">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r2"><span class="dn-day">DAY</span><span class="dn-num">04</span><span class="dn-date">3月15日 周日</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r2">第二轮 · 熟背</div>
+          <div class="dm-subject"><span class="subj-dot sd-strat"></span>企业战略管理</div>
+          <div class="dm-chapter">第4–6章 · 内部环境分析 + 战略问题确认 + 公司层战略</div>
+        </div>
+        <span class="mode-badge mb-2">熟背</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">打开【第四章HTML笔记】→ 默背：资源基础观、核心竞争力定义、VRIN四标准（有价值/稀缺/难模仿/难替代）</div>
+          <div class="sg-t">10:30–11:30</div><div class="sg-c">默背：价值链分析——主要活动5项（进料→生产→出货→营销→服务）+ 辅助活动4项</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">默写：SWOT矩阵四象限策略（SO/ST/WO/WT）+各象限含义</div>
+          <div class="sg-t">14:00–15:30</div><div class="sg-c">打开【第五/六章HTML笔记】→ 默背：战略问题识别；公司层战略类型（一体化/多元化/撤退）</div>
+          <div class="sg-t">15:30–17:00</div><div class="sg-c">默写对比表：相关多元化 vs 非相关多元化（定义/优势/劣势/代表企业）</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">口述练习：①用VRIN分析华为的核心竞争力（3分钟）②解释为何腾讯选择相关多元化（2分钟）</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">对照【核心30考点模板】：第4–6章相关模板逐条背诵关键词</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐⭐ 核心竞争力+VRIN（高频必考）</span>
+          <span class="chip hot">⭐⭐ 多元化战略对比</span>
+          <span class="chip tip">💡 价值链主要+辅助活动</span>
+        </div>
+        <div class="focus-box fb-r2"><strong>熟背达标线</strong>默写VRIN四个英文单词 + 中文含义；能说出价值链的主要5项活动名称；能区分相关/非相关多元化并各举1个企业例子。</div>
+      </div>
+      <div class="day-progress dp-r2"></div>
+    </div>
+
+    <!-- Day 5: 3/16 HRM 4-6章 -->
+    <div class="day-card dc-r2" data-search="3月16日 HRM 第4章 文化 第5章 人力资源规划 供需预测 第6章 工作分析 第二轮 熟背 招募">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r2"><span class="dn-day">DAY</span><span class="dn-num">05</span><span class="dn-date">3月16日 周一</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r2">第二轮 · 熟背</div>
+          <div class="dm-subject"><span class="subj-dot sd-hrm"></span>人力资源管理</div>
+          <div class="dm-chapter">第4–6章 · 文化与HRM + 人力资源规划 + 工作分析</div>
+        </div>
+        <span class="mode-badge mb-2">熟背</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">打开【第四章HTML笔记】→ 默背：企业文化与HRM的关系、文化对招募/考核/薪酬的影响</div>
+          <div class="sg-t">10:30–11:30</div><div class="sg-c">打开【第五章HTML笔记】→ 默背：HR规划步骤（需求预测→供给预测→供需平衡→制定计划）</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">默写：HR需求预测方法（定员法/趋势外推/回归分析/德尔菲法）各自适用条件</div>
+          <div class="sg-t">14:00–16:00</div><div class="sg-c">打开【第六章HTML笔记】→ 默背：工作分析方法对比、工作设计理论（泰勒/赫茨伯格/哈克曼工作特征模型）</div>
+          <div class="sg-t">16:00–17:00</div><div class="sg-c">默写：哈克曼工作特征模型五维度（技能多样性/任务完整性/任务重要性/自主性/反馈）</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">口述：①HR规划的完整步骤（2分钟）②工作特征模型五维度（2分钟）</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">对照答题模板，背诵HR规划相关考点框架</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐ HR规划步骤（供需平衡）</span>
+          <span class="chip hot">⭐⭐ 工作特征模型五维度</span>
+          <span class="chip tip">💡 HR需求预测4种方法</span>
+        </div>
+        <div class="focus-box fb-r2"><strong>熟背达标线</strong>默写HR规划四步骤；背出哈克曼工作特征模型五维度英文缩写+中文含义；能说出定员法的适用场景。</div>
+      </div>
+      <div class="day-progress dp-r2"></div>
+    </div>
+
+    <!-- Day 6: 3/17 战略7-9章 -->
+    <div class="day-card dc-r2" data-search="3月17日 战略管理 第7章 公司层战略 第8章 国际化战略 第9章 战略联盟并购重组 第二轮 熟背">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r2"><span class="dn-day">DAY</span><span class="dn-num">06</span><span class="dn-date">3月17日 周二</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r2">第二轮 · 熟背</div>
+          <div class="dm-subject"><span class="subj-dot sd-strat"></span>企业战略管理</div>
+          <div class="dm-chapter">第7–9章 · 业务层战略 + 国际化战略 + 战略联盟并购</div>
+        </div>
+        <span class="mode-badge mb-2">熟背</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">打开【第七章HTML笔记】→ 默背：波特三种基本竞争战略（成本领先/差异化/集中化）定义+适用条件+风险</div>
+          <div class="sg-t">10:30–11:30</div><div class="sg-c">默写对比表：三种竞争战略 × 适用条件/代表企业/主要风险</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">打开【第八章HTML笔记】→ 默背：国际化进入模式（出口→合同→联盟→直接投资）及各自优缺点</div>
+          <div class="sg-t">14:00–15:30</div><div class="sg-c">打开【第九章HTML笔记】→ 默背：战略联盟类型（股权/非股权/合资）、并购类型（横向/纵向/混合）</div>
+          <div class="sg-t">15:30–17:00</div><div class="sg-c">默写：战略联盟 vs 并购——各自的优势、风险、适用时机对比</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">口述：①以小米为例分析其国际化战略选择（3分钟）②联盟与并购如何选择（2分钟）</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">对照答题模板：波特三种战略相关模板逐条背诵</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐⭐ 波特三种竞争战略（必考）</span>
+          <span class="chip hot">⭐⭐ 战略联盟类型</span>
+          <span class="chip hot">⭐⭐ 国际化进入模式</span>
+        </div>
+        <div class="focus-box fb-r2"><strong>熟背达标线</strong>默写三种竞争战略 × 适用条件 × 主要风险 × 1个企业案例；能说出战略联盟三种类型；能区分横向/纵向/混合并购。</div>
+      </div>
+      <div class="day-progress dp-r2"></div>
+    </div>
+
+    <!-- Day 7: 3/18 HRM 7-9章 -->
+    <div class="day-card dc-r2" data-search="3月18日 HRM 第7章 招募甄选 第8章 绩效管理 KPI BSC 360度 第9章 薪酬 第二轮 熟背 高频">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r2"><span class="dn-day">DAY</span><span class="dn-num">07</span><span class="dn-date">3月18日 周三</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r2">第二轮 · 熟背 🔥</div>
+          <div class="dm-subject"><span class="subj-dot sd-hrm"></span>人力资源管理</div>
+          <div class="dm-chapter">第7–9章 · 员工招募甄选 + 绩效管理 + 薪酬管理【双高频】</div>
+        </div>
+        <span class="mode-badge mb-2">熟背★★</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:00</div><div class="sg-c">打开【第七章HTML笔记】→ 默背：内外部招募渠道优缺点对比、甄选工具效度排序</div>
+          <div class="sg-t">10:00–11:30</div><div class="sg-c">打开【第八章HTML笔记】→ 逐卡默背：绩效管理四环节（计划→辅导→评价→反馈）、SMART原则</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">默写：KPI vs BSC vs 360度 vs OKR 四大工具对比表（定义/优点/缺点/适用）</div>
+          <div class="sg-t">14:00–15:30</div><div class="sg-c">打开【第九章HTML笔记】→ 默背：薪酬3P原则（岗位/绩效/能力）、薪酬结构（宽带 vs 等级）</div>
+          <div class="sg-t">15:30–17:00</div><div class="sg-c">默背：岗位评价四种方法（排列/分类/要素计点/因素比较）+ 要素计点法步骤</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">🔥 重点口述：①绩效管理体系完整论述（4分钟）②薪酬3P原则+岗位评价（3分钟）③联系企业案例</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">对照【30考点答题模板】：绩效管理和薪酬管理模板逐条默背关键词，找出自己还不熟的要点</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐⭐⭐⭐ 绩效管理（近10年7次）</span>
+          <span class="chip hot">⭐⭐⭐ 薪酬3P原则</span>
+          <span class="chip hot">⭐⭐ KPI/BSC/OKR对比</span>
+          <span class="chip warn">🔥 今天是第二轮最重要一天</span>
+        </div>
+        <div class="focus-box fb-r2"><strong>⚠️ 重点日达标线</strong>今天结束时：绩效管理四环节+KPI/BSC/OKR对比能默写且无遗漏；薪酬3P+岗位评价四方法能口述且配案例。这两个考点占HRM历年真题约40%分值。</div>
+      </div>
+      <div class="day-progress dp-r2"></div>
+    </div>
+
+    <!-- Day 8: 3/19 战略10-11章 -->
+    <div class="day-card dc-r2" data-search="3月19日 战略管理 第10章 战略实施 组织结构 第11章 战略控制 平衡计分卡 全书串联 第二轮 熟背">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r2"><span class="dn-day">DAY</span><span class="dn-num">08</span><span class="dn-date">3月19日 周四</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r2">第二轮 · 熟背</div>
+          <div class="dm-subject"><span class="subj-dot sd-strat"></span>企业战略管理</div>
+          <div class="dm-chapter">第10–11章 · 战略实施 + 战略控制 · 全书收官</div>
+        </div>
+        <span class="mode-badge mb-2">熟背</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">打开【第十章HTML笔记】→ 默背：组织结构类型（U型/M型/矩阵型/网络型）各自特征+适用战略</div>
+          <div class="sg-t">10:30–11:30</div><div class="sg-c">默背：钱德勒命题"结构跟随战略"；领导风格对战略实施的影响</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">默写：四种组织结构对比表（结构特点/优势/劣势/适用情况）</div>
+          <div class="sg-t">14:00–15:30</div><div class="sg-c">打开【第十一章HTML笔记】→ 默背：战略控制类型（前馈/过程/反馈）、平衡计分卡四维度</div>
+          <div class="sg-t">15:30–16:30</div><div class="sg-c">战略管理全书串联：11章逻辑链默写（环境分析→战略选择→战略实施→战略控制）</div>
+          <div class="sg-t">16:30–17:00</div><div class="sg-c">口述：用5分钟不看书串讲战略管理全书11章体系</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">对照【战略管理答题模板+案例分析库】，第10–11章相关模板背诵</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">标注：战略管理全书我还不熟的5个考点，交给第三轮重点攻克</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐ 组织结构四类型</span>
+          <span class="chip hot">⭐⭐ 平衡计分卡四维度</span>
+          <span class="chip tip">💡 钱德勒命题</span>
+          <span class="chip tool">🔄 战略管理全书收官</span>
+        </div>
+        <div class="focus-box fb-r2"><strong>熟背达标线</strong>默写组织结构四类型各自的优缺点；平衡计分卡四维度的名称+每维度1个指标；战略管理11章逻辑链能流畅口述。</div>
+      </div>
+      <div class="day-progress dp-r2"></div>
+    </div>
+
+    <!-- Day 9: 3/20 HRM 10-14章 -->
+    <div class="day-card dc-r2" data-search="3月20日 HRM 第10章 培训开发 柯克帕特里克 第11章 激励 马斯洛 赫茨伯格 期望理论 第12章 劳动关系 第13章 HRIS 第14章 HRBP 第二轮 熟背 全书收官">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r2"><span class="dn-day">DAY</span><span class="dn-num">09</span><span class="dn-date">3月20日 周五</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r2">第二轮 · 熟背 · 全书收官</div>
+          <div class="dm-subject"><span class="subj-dot sd-hrm"></span>人力资源管理</div>
+          <div class="dm-chapter">第10–14章 · 培训+激励+劳动关系+HRIS+战略HRM · 收官</div>
+        </div>
+        <span class="mode-badge mb-2">熟背</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:00</div><div class="sg-c">打开【第十章HTML笔记】→ 默背：培训需求三层次（组织/任务/人员）、柯克帕特里克四级评估</div>
+          <div class="sg-t">10:00–11:00</div><div class="sg-c">打开【第十一章HTML笔记】→ 默背：激励三大理论（需要/过程/强化）代表人物+核心内容</div>
+          <div class="sg-t">11:00–12:00</div><div class="sg-c">默写：马斯洛五层次 + 赫茨伯格激励因素 vs 保健因素 + 期望理论公式（V×E×I）</div>
+          <div class="sg-t">14:00–15:00</div><div class="sg-c">打开【第十二/十三章HTML笔记】→ 默背：劳动争议四步程序、HRIS七大模块</div>
+          <div class="sg-t">15:00–16:30</div><div class="sg-c">打开【第十四章HTML笔记（战略HRM章）】→ 默背：HRBP三支柱、战略HRM的特征</div>
+          <div class="sg-t">16:30–17:00</div><div class="sg-c">HRM全书串联：14章逻辑链口述（工作分析→规划→招募→培训→绩效→薪酬→激励→劳动关系→战略HRM）</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">对照【HRM答题模板+案例库】，背诵激励理论和HRBP三支柱的答题框架关键词</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">🎉 双科第二轮收官！标注双科各5个最薄弱考点，整理进入第三轮重点突破清单</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐⭐ 激励理论三大流派</span>
+          <span class="chip hot">⭐⭐ 柯克帕特里克四级评估</span>
+          <span class="chip hot">⭐⭐ HRBP三支柱（新热点）</span>
+          <span class="chip tool">🎉 双科第二轮收官！</span>
+        </div>
+        <div class="focus-box fb-r2"><strong>收官达标线</strong>柯克帕特里克四级（反应/学习/行为/结果）能默写；激励理论三类代表人物不混淆；HRBP三支柱分工能口述清楚。</div>
+      </div>
+      <div class="day-progress dp-r2"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ ROUND 3 ══════ -->
+<section id="round3">
+  <div class="sec-head">
+    <div class="sec-badge sb-r3">③</div>
+    <div class="sec-title">第三轮 · 专题复习 + 真题模拟训练 · 3月21–26日（6天）</div>
+    <div class="sec-sub">按专题攻克 · 每日限时模拟 · 同步处理行政事项</div>
+  </div>
+  <div class="round-intro ri-r3">
+    <div class="ri-item"><h4>专题分配</h4><p>每天聚焦1–2个跨科专题，横向打通双科知识关联</p></div>
+    <div class="ri-item"><h4>真题训练</h4><p>每天下午做2–3道真题，<strong>限时20–30分钟/题</strong>，在纸上写出完整答案</p></div>
+    <div class="ri-item"><h4>⚠️行政同步</h4><p>3月21日确认邮件+缴费+提交材料，每天行政任务嵌入复习安排中</p></div>
+  </div>
+
+  <!-- 专题说明表 -->
+  <table class="big-table" style="margin-bottom:24px;">
+    <thead><tr><th>日期</th><th>专题</th><th>核心考点</th><th>真题训练目标</th></tr></thead>
+    <tbody>
+      <tr><td class="date-mono">3月21日</td><td>专题① 绩效管理专项</td><td>绩效管理体系 / KPI / BSC / OKR / 360度 / 绩效面谈</td><td>历年绩效相关真题全做，找规律，整理最高频答题套路</td></tr>
+      <tr><td class="date-mono">3月22日</td><td>专题② 战略选择与竞争</td><td>波特三种战略 / VRIN / 核心竞争力 / 多元化 / 战略联盟</td><td>战略选择相关2024/2023年真题限时模拟，写完整论述答案</td></tr>
+      <tr><td class="date-mono">3月23日</td><td>专题③ 薪酬+激励整合</td><td>薪酬3P / 岗位评价 / 马斯洛 / 赫茨伯格 / 期望理论</td><td>薪酬+激励相关真题，注意两者结合出现的综合题</td></tr>
+      <tr><td class="date-mono">3月24日</td><td>专题④ 环境分析整合</td><td>PEST / 五力 / SWOT / 价值链 / 战略评价三标准</td><td>案例分析类真题：给定企业背景→做战略分析的完整训练</td></tr>
+      <tr><td class="date-mono">3月25日</td><td>专题⑤ 双科综合模拟</td><td>双科高频考点全覆盖 + 薄弱点补强</td><td>模拟半套笔试（3题，90分钟），还原考场真实压力</td></tr>
+      <tr><td class="date-mono">3月26日</td><td>专题⑥ 最终冲刺+备考</td><td>双科20个核心关键词速记 + 面试高频题口述</td><td>轻度复习，重点准备考试物品，早睡</td></tr>
+    </tbody>
+  </table>
+
+  <div class="days-grid">
+
+    <!-- Day 10: 3/21 专题①绩效 + 行政 -->
+    <div class="day-card dc-r3" data-search="3月21日 专题 绩效管理 KPI BSC OKR 真题训练 第三轮 行政事项 确认邮件 缴费">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r3"><span class="dn-day">DAY</span><span class="dn-num">10</span><span class="dn-date">3月21日 周六</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r3">第三轮 · 专题①</div>
+          <div class="dm-subject"><span class="subj-dot sd-hrm"></span>HRM · 绩效管理专项</div>
+          <div class="dm-chapter">绩效管理体系专题 + ⚠️行政事项（确认邮件+缴费）</div>
+        </div>
+        <span class="mode-badge mb-3">专题+真题</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">08:30–09:00</div><div class="sg-c">⚠️【行政】发确认邮件至 csusxy@126.com，网上缴费120元（30分钟搞定）</div>
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">专题强化：打开【第八章绩效管理HTML笔记】，逐卡背诵所有知识点，重点在KPI/BSC/OKR对比</div>
+          <div class="sg-t">10:30–12:00</div><div class="sg-c">默写：绩效管理完整答题框架（定义→四环节→工具选择→实施要点→案例→总结）</div>
+          <div class="sg-t">14:00–15:30</div><div class="sg-c">真题训练：从【HRM真题分析HTML】中找出2016–2023年绩效管理相关真题，<strong>限时25分钟/题</strong>，在纸上写答案</div>
+          <div class="sg-t">15:30–17:00</div><div class="sg-c">⚠️【行政】整理资格审查材料（准考证/学历/成绩单等），发送至 csusxy@126.com</div>
+          <div class="sg-t">19:00–20:30</div><div class="sg-c">真题复盘：对照答案找差距，补充遗漏的关键词，修改答题框架</div>
+          <div class="sg-t">20:30–22:00</div><div class="sg-c">口述训练：完整论述绩效管理体系（4分钟，含KPI/BSC对比+华为案例），录音后回放找差距</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">🔥 绩效管理全专题攻克</span>
+          <span class="chip warn">⚠️ 今日必须完成确认邮件+缴费+提交材料</span>
+          <span class="chip tool">📝 纸上限时真题训练开始</span>
+        </div>
+        <div class="focus-box fb-r3"><strong>专题目标</strong>今天结束时：绩效管理相关题目能在25分钟内写出800字以上完整答案，且包含：定义→体系→工具对比→常见问题→企业案例→总结。这是全书第一高频，必须做到"秒答"。</div>
+      </div>
+      <div class="day-progress dp-r3"></div>
+    </div>
+
+    <!-- Day 11: 3/22 专题②战略选择 -->
+    <div class="day-card dc-r3" data-search="3月22日 专题 战略选择 竞争战略 波特 VRIN 核心竞争力 多元化 战略联盟 真题训练 第三轮">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r3"><span class="dn-day">DAY</span><span class="dn-num">11</span><span class="dn-date">3月22日 周日</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r3">第三轮 · 专题②</div>
+          <div class="dm-subject"><span class="subj-dot sd-strat"></span>战略管理 · 战略选择专项</div>
+          <div class="dm-chapter">竞争战略 + 核心竞争力 + 多元化 + 联盟并购</div>
+        </div>
+        <span class="mode-badge mb-3">专题+真题</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">专题强化：打开【战略管理核心30考点HTML + 案例分析库HTML】，重点看战略选择相关考点</div>
+          <div class="sg-t">10:30–12:00</div><div class="sg-c">默写全套：①波特三战略对比表 ②VRIN四标准 ③多元化两类型对比 ④战略联盟三类型</div>
+          <div class="sg-t">14:00–16:00</div><div class="sg-c">真题训练：从【战略管理真题分析HTML】找出竞争战略/核心竞争力相关题目，<strong>限时30分钟/题</strong>写完整论述</div>
+          <div class="sg-t">16:00–17:00</div><div class="sg-c">真题复盘：核对答案，标出答案中自己没写到的关键词，补入自己的答题模板</div>
+          <div class="sg-t">19:00–20:30</div><div class="sg-c">口述训练：①以海尔为例论述多元化战略（3分钟）②以腾讯战略投资为例讲战略联盟（2分钟）</div>
+          <div class="sg-t">20:30–22:00</div><div class="sg-c">制作关键词卡片（A6卡片，正面考点名，背面5个关键词）：今天完成战略部分10张</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐⭐ 竞争战略专题攻克</span>
+          <span class="chip tool">📝 纸上真题训练</span>
+          <span class="chip tip">🃏 制作关键词速记卡片</span>
+        </div>
+        <div class="focus-box fb-r3"><strong>专题目标</strong>战略选择类题目能在30分钟内写出700字以上完整答案；能做到：看到题目→立刻想到答题框架→流畅展开，不需要回忆"这个考点叫什么"。</div>
+      </div>
+      <div class="day-progress dp-r3"></div>
+    </div>
+
+    <!-- Day 12: 3/23 专题③薪酬+激励 -->
+    <div class="day-card dc-r3" data-search="3月23日 专题 薪酬管理 激励理论 马斯洛 赫茨伯格 期望 3P原则 岗位评价 真题训练 第三轮 考生自述">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r3"><span class="dn-day">DAY</span><span class="dn-num">12</span><span class="dn-date">3月23日 周一</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r3">第三轮 · 专题③</div>
+          <div class="dm-subject"><span class="subj-dot sd-hrm"></span>HRM · 薪酬与激励整合专项</div>
+          <div class="dm-chapter">薪酬3P + 岗位评价 + 三大激励理论整合</div>
+        </div>
+        <span class="mode-badge mb-3">专题+真题</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">专题强化：薪酬3P原则深度背诵（岗位/绩效/能力）+ 四种岗位评价方法默写步骤</div>
+          <div class="sg-t">10:30–12:00</div><div class="sg-c">激励理论整合：默写对比表——马斯洛 vs 赫茨伯格 vs 期望理论（理论核心+实践应用+局限性）</div>
+          <div class="sg-t">14:00–16:00</div><div class="sg-c">真题训练：薪酬管理 + 激励理论各1题，<strong>各限时25分钟</strong>，纸上写完整答案</div>
+          <div class="sg-t">16:00–17:00</div><div class="sg-c">考生自述定稿（1000字内，手写签名版，今天务必完成，以便明天发送）</div>
+          <div class="sg-t">19:00–20:30</div><div class="sg-c">口述训练：①薪酬管理体系（3分钟）②激励理论在企业中的应用（以海底捞为例，2分钟）</div>
+          <div class="sg-t">20:30–22:00</div><div class="sg-c">制作关键词卡片：完成HRM部分10张（薪酬/激励/绩效/招募/培训等）</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐⭐ 激励理论整合对比</span>
+          <span class="chip hot">⭐⭐ 薪酬3P+岗位评价</span>
+          <span class="chip warn">⚠️ 今日完成考生自述（1000字）</span>
+        </div>
+        <div class="focus-box fb-r3"><strong>专题目标</strong>薪酬+激励综合题能一题写出"激励理论支撑下的薪酬设计逻辑"，两个考点融合回答。这种综合题型近年出现频率上升，需要专门练习横向联系。</div>
+      </div>
+      <div class="day-progress dp-r3"></div>
+    </div>
+
+    <!-- Day 13: 3/24 专题④环境分析 案例题 -->
+    <div class="day-card dc-r3" data-search="3月24日 专题 环境分析 PEST 波特五力 SWOT 价值链 案例分析 第三轮 真题训练">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r3"><span class="dn-day">DAY</span><span class="dn-num">13</span><span class="dn-date">3月24日 周二</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r3">第三轮 · 专题④</div>
+          <div class="dm-subject"><span class="subj-dot sd-strat"></span>战略管理 · 环境分析+案例题专项</div>
+          <div class="dm-chapter">PEST + 五力 + SWOT + 价值链 · 案例分析实战</div>
+        </div>
+        <span class="mode-badge mb-3">专题+真题</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">专题整合：PEST+五力+SWOT三框架横向打通——如何在同一道案例题中综合运用</div>
+          <div class="sg-t">10:30–11:30</div><div class="sg-c">打开【战略管理案例分析库HTML】，精读2–3个典型案例的分析逻辑</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">默写：战略评价三标准（适宜性/可行性/可接受性）+每项的检验问题</div>
+          <div class="sg-t">14:00–16:00</div><div class="sg-c">案例真题训练：从真题中找一道综合案例分析题，<strong>限时45分钟</strong>写完整分析报告（PEST+内部+SWOT+战略建议）</div>
+          <div class="sg-t">16:00–17:00</div><div class="sg-c">⚠️ 发送资格审查材料（最后确认）+ 检查考生自述是否发送</div>
+          <div class="sg-t">19:00–21:00</div><div class="sg-c">口述：①给一个企业背景（比如某餐饮连锁），做PEST+SWOT口头分析（5分钟）</div>
+          <div class="sg-t">21:00–22:00</div><div class="sg-c">开始练习英语面试：背诵英文自我介绍（1分钟版），练到流畅</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">⭐⭐ 综合案例分析训练</span>
+          <span class="chip hot">⭐ 战略评价三标准</span>
+          <span class="chip warn">⚠️ 最后确认行政材料</span>
+          <span class="chip tip">🎤 英语面试练习启动</span>
+        </div>
+        <div class="focus-box fb-r3"><strong>专题目标</strong>案例分析类题目是近年出题趋势。今天训练结束时能做到：看到企业案例背景→立刻选择合适分析框架→在45分钟内写出逻辑清晰的完整分析。</div>
+      </div>
+      <div class="day-progress dp-r3"></div>
+    </div>
+
+    <!-- Day 14: 3/25 全真模拟 -->
+    <div class="day-card dc-r4" data-search="3月25日 全真模拟 笔试 双科 综合模拟 查缺补漏 第三轮 冲刺">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r4"><span class="dn-day">DAY</span><span class="dn-num">14</span><span class="dn-date">3月25日 周三</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r4">笔试前2天 · 全真模拟</div>
+          <div class="dm-subject"><span class="subj-dot sd-strat"></span>双科综合模拟</div>
+          <div class="dm-chapter">全套模拟笔试（100分钟）+ 查缺补漏 + 面试口述</div>
+        </div>
+        <span class="mode-badge mb-4">冲刺模拟</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:40</div><div class="sg-c">🔥 全真模拟笔试（100分钟，不看书、不看笔记）：自拟一套题（战略2题+HRM2题），在纸上写出完整答案</div>
+          <div class="sg-t">10:40–11:30</div><div class="sg-c">自评：对照答题模板，给自己打分，找出遗漏的关键词和薄弱要点</div>
+          <div class="sg-t">11:30–12:00</div><div class="sg-c">补漏：把今天写错/写不完整的内容专项背诵30分钟</div>
+          <div class="sg-t">14:00–16:00</div><div class="sg-c">面试专项：口述高频面试题（8道，见面试备考表），录音/录像，回放找问题</div>
+          <div class="sg-t">16:00–17:00</div><div class="sg-c">英语面试练习：英文自我介绍 + 2道英文专业问答，流畅度训练</div>
+          <div class="sg-t">19:00–20:30</div><div class="sg-c">翻看关键词卡片（40张），快速过一遍，标出明天重点看的5张</div>
+          <div class="sg-t">20:30–21:30</div><div class="sg-c">⚠️ 准备明天物品：准考证+身份证+黑色签字笔（3支）+手表，确认考场位置（江湾楼）</div>
+          <div class="sg-t">21:30起</div><div class="sg-c">放下手机，早睡！考试状态比最后多背2个考点更重要</div>
+        </div>
+        <div class="chips">
+          <span class="chip hot">🔥 全真模拟（最重要训练）</span>
+          <span class="chip tool">🎤 面试口述录音</span>
+          <span class="chip warn">⚠️ 准备考试物品</span>
+          <span class="chip tip">😴 21:30必须上床</span>
+        </div>
+        <div class="focus-box fb-r4"><strong>今日核心原则</strong>今天是最后一次大规模练习机会。模拟时要"假装在考场"：不能翻书、不能停笔思考超过1分钟、每题控制在25分钟内。暴露的弱点今天补，明天只看关键词。</div>
+      </div>
+      <div class="day-progress dp-r4"></div>
+    </div>
+
+    <!-- Day 15: 3/26 D-1 -->
+    <div class="day-card dc-r4" data-search="3月26日 笔试前一天 D-1 轻松复习 速记卡片 函调表邮寄 早睡">
+      <div class="day-header">
+        <div class="day-num-badge dnb-r4"><span class="dn-day">DAY</span><span class="dn-num">15</span><span class="dn-date">3月26日 周四</span></div>
+        <div class="day-meta">
+          <div class="dm-round dm-r4">笔试前1天 D-1</div>
+          <div class="dm-subject"><span class="subj-dot sd-strat"></span>双科</div>
+          <div class="dm-chapter">轻度复习 · 速记卡片 · ⚠️函调表最后寄出 · 早睡</div>
+        </div>
+        <span class="mode-badge mb-4">D-1</span>
+      </div>
+      <div class="day-body">
+        <div class="sg">
+          <div class="sg-t">09:00–10:30</div><div class="sg-c">翻看40张关键词卡片，不背新内容，只巩固已背内容，特别看昨天标出的5张薄弱卡片</div>
+          <div class="sg-t">10:30–12:00</div><div class="sg-c">双科20个核心概念快速口述（1分钟/个），不要求完整，只要核心词不卡壳</div>
+          <div class="sg-t">上午任意时间</div><div class="sg-c">⚠️ 确认函调表今日顺丰寄出（江湾楼225室申老师，0731-88830317）</div>
+          <div class="sg-t">14:00–15:00</div><div class="sg-c">英语面试最后练习：英文自我介绍 + 1道英文专业问答，流畅度训练</div>
+          <div class="sg-t">15:00–16:00</div><div class="sg-c">明天流程确认：13:15心理健康测验→14:30笔试，路线+时间+携带物品最后核查</div>
+          <div class="sg-t">16:00起</div><div class="sg-c">放下教材！散步/听音乐/轻松活动，不学新内容</div>
+          <div class="sg-t">20:30起</div><div class="sg-c">🛏️ 上床，关掉手机，保证充足睡眠</div>
+        </div>
+        <div class="chips">
+          <span class="chip warn">⚠️ 函调表今天必须顺丰寄出</span>
+          <span class="chip tip">🃏 翻看速记卡片（不背新内容）</span>
+          <span class="chip tip">😴 20:30上床，状态>知识量</span>
+        </div>
+        <div class="focus-box fb-r4"><strong>D-1原则</strong>你已经准备好了。今天的任务是：保持状态，不焦虑，不学新东西。明天你需要的不是更多知识，而是清醒的大脑和稳定的心态。</div>
+      </div>
+      <div class="day-progress dp-r4"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXAM DAYS -->
+<section id="exam-days">
+  <div class="sec-head">
+    <div class="sec-badge sb-exam">✦</div>
+    <div class="sec-title">正式考试日安排</div>
+    <div class="sec-sub">3月27–28日</div>
+  </div>
+
+  <div class="exam-card ec-written">
+    <div class="ec-head">
+      <div class="ec-icon">📝</div>
+      <div><div class="ec-title">3月27日（周四）· 专业笔试</div><div class="ec-sub">携带：准考证 · 身份证 · 黑色签字笔×3 · 手表</div></div>
+    </div>
+    <div class="ec-grid">
+      <div class="ec-item"><h4>13:15 准时到达</h4><p>江湾楼一楼大汉厅<br>心理健康测验（合格/不合格）<br>⚠️必须通过，否则不予录取</p></div>
+      <div class="ec-item"><h4>14:30–16:30 笔试</h4><p>江湾楼教室（见考场安排）<br>满分100分 · 2小时<br>战略管理50% + HRM 50%</p></div>
+      <div class="ec-item"><h4>答题节奏</h4><p>先浏览全卷（3分钟）<br>→先做最熟悉题<br>→每题25分钟<br>→留10分钟检查补充</p></div>
+    </div>
+    <div class="ec-tips">
+      <h4>笔试答题要点</h4>
+      <ul>
+        <li><strong>名词解释：</strong>定义（1–2句）+ 核心特征（2–3点）+ 举例，约80–120字</li>
+        <li><strong>简答题：</strong>开门见山，分点作答①②③，每点1–2句话，约200字</li>
+        <li><strong>论述题：</strong>定义→理论框架→要点展开（3–5点）→企业案例→总结评价，约500–700字</li>
+        <li><strong>写不完也要写关键词：</strong>评卷老师看"你懂不懂"，关键词就是得分点，不要留空白</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exam-card ec-interview" style="margin-top:16px;">
+    <div class="ec-head">
+      <div class="ec-icon">🎤</div>
+      <div><div class="ec-title">3月28日（周五）· 外语面试 + 综合素质面试</div><div class="ec-sub">7:45到达江湾楼一楼大汉厅填写《复试情况表》</div></div>
+    </div>
+    <div class="ec-grid">
+      <div class="ec-item"><h4>外语能力测试</h4><p>英语听说+专业词汇<br>满分100分，不合格不录取<br>流利 > 完美，敢开口</p></div>
+      <div class="ec-item"><h4>综合素质面试</h4><p>专业知识+研究计划+应变<br>满分100分，不合格不录取<br>有框架+有案例+有总结</p></div>
+      <div class="ec-item"><h4>候考策略</h4><p>等候时翻关键词卡片<br>深呼吸，保持微笑<br>自信进场，讲清楚比讲完整更重要</p></div>
+    </div>
+    <div class="ec-tips">
+      <h4>面试万能回答结构</h4>
+      <ul>
+        <li>① <strong>定义句：</strong>"[概念]是指……" （1句话，简洁准确）</li>
+        <li>② <strong>展开句：</strong>"主要包括以下几个方面：第一……第二……第三……"</li>
+        <li>③ <strong>案例句：</strong>"以[华为/海底捞/阿里/字节跳动]为例……"</li>
+        <li>④ <strong>总结句：</strong>"因此，[概念]对于企业具有重要意义，表现在……"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section id="interview">
+  <div class="sec-head">
+    <div class="sec-badge sb-r4">面</div>
+    <div class="sec-title">综合面试高频题备考（3月22日起每天30分钟口述练习）</div>
+  </div>
+  <table class="big-table">
+    <thead><tr><th>题型</th><th>高频面试题</th><th>答题框架关键词</th></tr></thead>
+    <tbody>
+      <tr><td>自我介绍</td><td>请做一分钟自我介绍</td><td>本科→跨考动机→已做的准备→研究方向→为何选中南大学</td></tr>
+      <tr><td>专业问答</td><td>什么是绩效管理体系？如何在企业中设计？</td><td>四环节（计划/辅导/评价/反馈）→工具（KPI/BSC）→SMART→华为OKR案例</td></tr>
+      <tr><td>专业问答</td><td>企业如何形成并保持核心竞争力？</td><td>VRIN四标准→价值链→持续学习→华为研发投入案例</td></tr>
+      <tr><td>专业问答</td><td>请解释薪酬管理的3P原则</td><td>岗位（Position）/绩效（Performance）/能力（Person）→各自含义→内外部公平→岗位评价</td></tr>
+      <tr><td>专业问答</td><td>激励员工有哪些理论依据？如何在实践中应用？</td><td>需要理论（马斯洛/麦克利兰）→过程理论（期望/公平）→强化理论→海底捞案例</td></tr>
+      <tr><td>研究计划</td><td>你读研期间打算研究什么方向？</td><td>研究方向+实际意义+初步思路+想用的理论工具+结合导师方向</td></tr>
+      <tr><td>跨考应对</td><td>你是跨考生，如何弥补专业基础的不足？</td><td>承认差距（诚实）→已做的努力（看了什么书/做了什么笔记）→跨学科优势→未来计划</td></tr>
+      <tr><td>时事联系</td><td>数字化转型对人力资源管理有何影响？</td><td>招募数字化（AI面试）→培训数字化（在线学习）→绩效数字化（OKR系统）→挑战（数据隐私）→字节跳动案例</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ENGLISH -->
+<section id="english">
+  <div class="sec-head">
+    <div class="sec-badge sb-eng">英</div>
+    <div class="sec-title">英语面试备考（3月22日起每天10分钟）</div>
+  </div>
+  <table class="big-table">
+    <thead><tr><th>类型</th><th>内容</th><th>准备要点</th></tr></thead>
+    <tbody>
+      <tr><td>英文自我介绍</td><td>Please introduce yourself in English (1 min)</td><td>"My name is… I graduated from… with a major in… I chose to cross into enterprise management because… My research interest is… I look forward to…"</td></tr>
+      <tr><td>专业英语</td><td>What is Performance Management?</td><td>"Performance management is a systematic process of setting goals, coaching, evaluating, and providing feedback to improve employee performance, using tools like KPI, BSC, and 360-degree appraisal."</td></tr>
+      <tr><td>专业英语</td><td>What factors influence corporate strategy?</td><td>"Key factors include external environment (PEST analysis, Porter's Five Forces), internal capabilities (core competencies, VRIN framework), and strategic alignment between them."</td></tr>
+      <tr><td>时事英语</td><td>How does AI impact HR management?</td><td>"AI transforms HR by enabling data-driven recruitment, personalized training, automated performance tracking, and predictive analytics, though it also raises concerns about bias and data privacy."</td></tr>
+      <tr><td>必背专业词汇（10个）</td><td colspan="2">Performance Management · Compensation System · Core Competence · Strategic Alliance · Balanced Scorecard · Human Capital · Job Analysis · Talent Acquisition · Organizational Structure · Workforce Planning</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CHECKLIST -->
+<section id="checklist">
+  <div class="sec-head">
+    <div class="sec-badge sb-r1">✓</div>
+    <div class="sec-title">全程打卡清单</div>
+    <div class="sec-sub">点击勾选完成项</div>
+  </div>
+  <div class="cl-wrap">
+    <div class="cl-grid" id="checkGrid"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div>中南大学商学院 · 企业管理120202 · 2026复试 · 修订版 &nbsp;|&nbsp; 《企业战略管理》+《人力资源管理（第三版 颜爱民）》</div>
+  <div>生成日期：2026-03-11</div>
+</footer>
+
+<script>
+function toggleNight(){document.getElementById('body-root').classList.toggle('night');}
+function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+function doSearch(){
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  const cards=document.querySelectorAll('[data-search]');
+  document.querySelectorAll('mark.hl').forEach(m=>{const p=m.parentNode;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize();});
+  if(!q){cards.forEach(c=>c.style.display='');document.getElementById('searchCount').textContent='';return;}
+  let n=0;
+  cards.forEach(c=>{
+    if((c.dataset.search||'').toLowerCase().includes(q)||(c.innerText||'').toLowerCase().includes(q)){c.style.display='';n++;}
+    else c.style.display='none';
+  });
+  document.getElementById('searchCount').textContent=n>0?`找到 ${n} 个结果`:'未找到匹配内容';
+}
+
+const clItems=[
+  {d:'3月12日',t:'Day 01 · 完成HRM第12–14章，全书第一轮收官 🎉'},
+  {d:'3月13日',t:'Day 02 · 战略第1–3章 PEST+波特五力 熟背'},
+  {d:'3月14日',t:'Day 03 · HRM第1–3章 六大模块+工作分析 熟背'},
+  {d:'3月15日',t:'Day 04 · 战略第4–6章 VRIN+多元化战略 熟背'},
+  {d:'3月16日',t:'Day 05 · HRM第4–6章 HR规划+工作特征模型 熟背'},
+  {d:'3月17日',t:'Day 06 · 战略第7–9章 竞争战略+联盟并购 熟背'},
+  {d:'3月18日',t:'Day 07 · HRM第7–9章 🔥绩效管理+薪酬管理 熟背（最重要）'},
+  {d:'3月19日',t:'Day 08 · 战略第10–11章 战略实施+控制 全书收官'},
+  {d:'3月20日',t:'Day 09 · HRM第10–14章 培训+激励+HRBP 全书收官 🎉双科第二轮完成'},
+  {d:'3月21日',t:'Day 10 · 专题①绩效管理专项 + ⚠️行政材料提交'},
+  {d:'3月22日',t:'Day 11 · 专题②战略选择专项 + 制作速记卡片'},
+  {d:'3月23日',t:'Day 12 · 专题③薪酬+激励整合 + 完成考生自述'},
+  {d:'3月24日',t:'Day 13 · 专题④环境分析案例训练 + 最后确认行政材料'},
+  {d:'3月25日',t:'Day 14 · 全真模拟笔试（100分钟）+ 面试口述 + 准备物品'},
+  {d:'3月26日',t:'Day 15 · 轻松复习速记卡片 + ⚠️函调表顺丰寄出 + 20:30早睡'},
+  {d:'3月27日',t:'📝 笔试日 · 13:15心理健康测验 → 14:30专业笔试（100分）'},
+  {d:'3月28日',t:'🎤 面试日 · 7:45到场 → 外语面试+综合素质面试 · 加油！'},
+];
+const grid=document.getElementById('checkGrid');
+const saved=JSON.parse(localStorage.getItem('csu_plan_v3')||'{}');
+clItems.forEach((item,i)=>{
+  const el=document.createElement('label');
+  el.className='cl-item'+(saved[i]?' done':'');
+  el.innerHTML=`<input type="checkbox" ${saved[i]?'checked':''}> ${item.t}<span class="cl-date">${item.d}</span>`;
+  const cb=el.querySelector('input');
+  cb.addEventListener('change',()=>{saved[i]=cb.checked;el.classList.toggle('done',cb.checked);try{localStorage.setItem('csu_plan_v3',JSON.stringify(saved));}catch(e){}});
+  grid.appendChild(el);
+});
+
+// Nav active state
+window.addEventListener('scroll',()=>{
+  const ids=['overview','admin','round1','round2','round3','exam-days','interview','english','checklist'];
+  let cur='';
+  ids.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<130)cur=id;});
+  document.querySelectorAll('.sticky-nav a').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+});
+</script>
+</body>
+</html>

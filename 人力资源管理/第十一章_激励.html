@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十一章 · 激励</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f1f2e;--bg:#f0f4f8;--bg2:#e1eaf2;--accent:#1a56db;--accent2:#f59e0b;--accent3:#0e7c6a;--accent4:#7c3aed;--accent5:#dc2626;--gold:#d97706;--card-bg:#ffffff;--border:#b8cfe8;--tier1:#1a56db;--tier2:#f59e0b;--tier3:#0e7c6a;--shadow:0 4px 20px rgba(15,31,46,0.10);}
+body.night{--ink:#e2e8f0;--bg:#0f172a;--bg2:#1e293b;--card-bg:#1e293b;--border:#334155;--shadow:0 4px 20px rgba(0,0,0,0.4);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','Microsoft YaHei',sans-serif;font-size:15px;line-height:1.8;padding:0 0 80px;transition:background .3s,color .3s;font-variant-numeric:tabular-nums;}
+.hero{background:linear-gradient(135deg,#0f1f2e 0%,#1a3a6b 50%,#1a56db 100%);color:#fff;padding:60px 40px 50px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(60deg,rgba(255,255,255,.03) 0px,rgba(255,255,255,.03) 1px,transparent 1px,transparent 22px);}
+.hero-day{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:4px;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:12px;}
+.hero h1{font-family:'Noto Serif SC',serif;font-size:38px;font-weight:900;line-height:1.2;margin-bottom:16px;}
+.hero h1 span{color:#93c5fd;}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.75);max-width:700px;line-height:1.7;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+.hero-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:4px 14px;font-size:12px;color:rgba(255,255,255,.9);}
+.fixed-nav{position:sticky;top:0;z-index:999;background:var(--ink);color:#fff;padding:12px 40px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;box-shadow:0 2px 12px rgba(0,0,0,.3);transition:background .3s;}
+body.night .fixed-nav{background:#0f172a;}
+.toc-label{font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-right:6px;}
+.fixed-nav a{color:rgba(255,255,255,.75);text-decoration:none;font-size:12px;padding:3px 10px;border:1px solid rgba(255,255,255,.2);border-radius:12px;transition:all .2s;white-space:nowrap;}
+.fixed-nav a:hover{background:rgba(255,255,255,.15);color:#fff;}
+.nav-controls{margin-left:auto;display:flex;gap:8px;}
+.btn-night,.btn-top{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:10px;padding:4px 12px;cursor:pointer;font-size:12px;transition:all .2s;font-family:'Noto Sans SC',sans-serif;}
+.btn-night:hover,.btn-top:hover{background:rgba(255,255,255,.25);}
+.search-bar{background:var(--card-bg);border-bottom:1px solid var(--border);padding:10px 40px;display:flex;align-items:center;gap:12px;transition:background .3s;}
+.search-bar input{flex:1;border:1px solid var(--border);border-radius:8px;padding:7px 14px;font-size:13.5px;font-family:'Noto Sans SC',sans-serif;background:var(--bg);color:var(--ink);outline:none;transition:border-color .2s;}
+.search-bar input:focus{border-color:var(--accent);}
+.search-count{font-size:12px;color:#999;white-space:nowrap;}
+.highlight-search{background:#fef08a;border-radius:2px;}
+.case-banner{margin:40px 40px 0;background:linear-gradient(135deg,#0f1f2e,#1a3a6b);border-radius:16px;padding:30px 36px;color:#fff;border-left:6px solid var(--gold);}
+.case-banner .case-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+.case-banner h3{font-family:'Noto Serif SC',serif;font-size:20px;margin-bottom:12px;}
+.case-banner p{font-size:13.5px;color:rgba(255,255,255,.8);line-height:1.8;}
+.case-key{margin-top:14px;font-size:13px;color:var(--gold);font-weight:500;}
+.main{max-width:1100px;margin:0 auto;padding:0 40px;}
+.section-title{display:flex;align-items:center;gap:14px;margin:50px 0 24px;}
+.section-title .sec-num{background:var(--ink);color:#fff;font-family:'JetBrains Mono',monospace;font-size:13px;padding:6px 14px;border-radius:6px;letter-spacing:1px;transition:background .3s;}
+.section-title h2{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:var(--ink);}
+.section-title .page-ref{font-size:12px;color:#999;font-family:'JetBrains Mono',monospace;margin-left:auto;}
+.kcard{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;margin-bottom:28px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s,background .3s,border-color .3s;}
+.kcard:hover{box-shadow:0 8px 32px rgba(15,31,46,.15);}
+.kcard-header{padding:20px 28px 16px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:16px;background:linear-gradient(to right,#f0f6ff,var(--card-bg));}
+body.night .kcard-header{background:linear-gradient(to right,#1e3a5f,var(--card-bg));}
+.kcard-num{background:var(--ink);color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;flex-shrink:0;margin-top:3px;}
+.kcard-title-wrap{flex:1;}
+.kcard-title{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.kcard-meta{display:flex;flex-wrap:wrap;gap:6px;}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:12px;font-size:11.5px;font-weight:500;}
+.badge-tier1{background:#dbeafe;color:var(--tier1);border:1px solid #93c5fd;}
+.badge-tier2{background:#fef3e2;color:var(--tier2);border:1px solid #fcd98a;}
+.badge-tier3{background:#e6f7f4;color:var(--tier3);border:1px solid #9ed9cc;}
+.badge-page{background:#f5f0ff;color:var(--accent4);border:1px solid #ddd6fe;}
+.badge-exam{background:#fff1f2;color:var(--accent5);border:1px solid #fecaca;}
+.badge-year{background:#fffbeb;color:var(--gold);border:1px solid #fde68a;}
+.kcard-body{padding:24px 28px;}
+.block{margin-bottom:20px;padding:16px 20px;border-radius:10px;}
+.block:last-child{margin-bottom:0;}
+.block-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+.block-label::before{content:'';display:block;width:18px;height:2px;}
+.block-analogy{background:#fefce8;} body.night .block-analogy{background:#2d2a14;} .block-analogy .block-label{color:var(--gold);} .block-analogy .block-label::before{background:var(--gold);}
+.block-definition{background:#eff6ff;} body.night .block-definition{background:#172554;} .block-definition .block-label{color:var(--accent);} .block-definition .block-label::before{background:var(--accent);}
+.block-memory{background:#f0fdf4;} body.night .block-memory{background:#14301e;} .block-memory .block-label{color:var(--accent3);} .block-memory .block-label::before{background:var(--accent3);}
+.block-exam{background:#f5f0ff;} body.night .block-exam{background:#2d1f4f;} .block-exam .block-label{color:var(--accent4);} .block-exam .block-label::before{background:var(--accent4);}
+.block-tip{background:#fff1f2;} body.night .block-tip{background:#3b1218;} .block-tip .block-label{color:var(--accent5);} .block-tip .block-label::before{background:var(--accent5);}
+.quote{background:var(--ink);color:#fff;border-radius:10px;padding:16px 20px;font-size:13.5px;line-height:1.9;margin:12px 0;position:relative;}
+.quote::before{content:'"';font-size:60px;color:rgba(255,255,255,.1);position:absolute;top:-6px;left:12px;font-family:serif;line-height:1;}
+.quote p{position:relative;z-index:1;}
+.quote mark{background:#93c5fd;color:var(--ink);padding:0 3px;border-radius:3px;}
+.ctable{width:100%;border-collapse:collapse;margin:12px 0;font-size:13.5px;}
+.ctable th{background:var(--ink);color:#fff;padding:10px 14px;text-align:left;font-weight:600;}
+.ctable td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+.ctable tr:nth-child(even) td{background:var(--bg2);}
+.ctable tr:last-child td{border-bottom:none;}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.kl{padding-left:20px;} .kl li{margin-bottom:6px;} .kl li::marker{color:var(--accent);}
+.kw{background:rgba(26,86,219,.12);color:var(--accent);font-weight:600;border-radius:3px;padding:0 4px;}
+.kw2{background:rgba(14,124,106,.12);color:var(--accent3);font-weight:600;border-radius:3px;padding:0 4px;}
+.kw3{background:rgba(245,158,11,.15);color:var(--gold);font-weight:600;border-radius:3px;padding:0 4px;}
+.kwr{background:rgba(220,38,38,.1);color:var(--accent5);font-weight:600;border-radius:3px;padding:0 4px;}
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:14px 0;}
+.flow-step{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 18px;flex:1;min-width:120px;text-align:center;font-size:13px;}
+.flow-arrow{display:flex;align-items:center;color:var(--accent);font-size:20px;padding:0 6px;flex-shrink:0;}
+.flow-step .fs-num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);margin-bottom:4px;}
+.flow-step .fs-title{font-weight:700;font-size:14px;color:var(--ink);}
+.flow-step .fs-body{font-size:12px;color:#555;margin-top:4px;}
+body.night .flow-step .fs-body{color:#aaa;}
+.logic-map{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px;margin:30px 0;box-shadow:var(--shadow);transition:background .3s;}
+.logic-map h3{font-family:'Noto Serif SC',serif;font-size:18px;margin-bottom:20px;color:var(--ink);display:flex;align-items:center;gap:10px;}
+.logic-map h3::before{content:'🗺️';}
+.lm-node{background:var(--bg2);border:2px solid var(--border);border-radius:10px;padding:10px 16px;flex:1;min-width:150px;font-size:13px;}
+.lm-node.green{border-color:var(--accent3);background:#e6f7f4;}
+.lm-node.blue{border-color:var(--accent);background:#eff6ff;}
+.lm-node.yellow{border-color:var(--gold);background:#fef9e7;}
+.lm-node.red{border-color:var(--accent5);background:#fff1f2;}
+.lm-node.purple{border-color:var(--accent4);background:#f5f0ff;}
+.lm-node .ln-title{font-weight:700;margin-bottom:4px;}
+body.night .lm-node.green{background:#0f2e28;}
+body.night .lm-node.blue{background:#172554;}
+body.night .lm-node.yellow{background:#2d2210;}
+body.night .lm-node.red{background:#3b1218;}
+body.night .lm-node.purple{background:#2d1f4f;}
+.summary-box{background:var(--card-bg);border:2px solid var(--accent);border-radius:16px;padding:28px;margin:30px 0;}
+.summary-box h3{font-family:'Noto Serif SC',serif;font-size:18px;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.quiz-item{background:var(--bg2);border-radius:12px;padding:20px;margin-bottom:16px;}
+.quiz-q{font-weight:700;color:var(--ink);margin-bottom:10px;}
+.quiz-a{display:none;margin-top:10px;padding:12px;background:var(--card-bg);border-radius:8px;border-left:3px solid var(--accent3);font-size:13.5px;}
+.quiz-btn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:6px 16px;cursor:pointer;font-size:12px;font-family:'Noto Sans SC',sans-serif;margin-top:8px;}
+.quick-review{background:linear-gradient(135deg,#0f1f2e,#1a3a6b);border-radius:16px;padding:28px;color:#fff;margin:30px 0;}
+.quick-review h3{font-family:'Noto Serif SC',serif;font-size:18px;color:#93c5fd;margin-bottom:16px;}
+.qr-item{display:flex;gap:12px;margin-bottom:10px;align-items:flex-start;}
+.qr-num{background:rgba(255,255,255,.15);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;margin-top:2px;font-family:'JetBrains Mono',monospace;}
+.qr-text{font-size:13.5px;color:rgba(255,255,255,.85);line-height:1.7;}
+.theory-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;}
+.theory-card{background:var(--bg2);border-radius:12px;padding:16px;border:1px solid var(--border);}
+.theory-card .tc-label{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:6px;}
+.theory-card .tc-title{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:8px;}
+details{margin-bottom:12px;}
+details summary{cursor:pointer;font-weight:600;color:var(--accent);padding:8px 12px;background:var(--bg2);border-radius:8px;user-select:none;list-style:none;display:flex;align-items:center;gap:8px;}
+details summary::before{content:'▶';font-size:11px;transition:transform .2s;}
+details[open] summary::before{transform:rotate(90deg);}
+details .details-body{padding:14px 12px 4px;}
+.formula-box{background:linear-gradient(135deg,#1e3a8a,#1a56db);border-radius:12px;padding:20px 24px;color:#fff;text-align:center;margin:16px 0;}
+.formula-box .formula{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#93c5fd;margin:8px 0;letter-spacing:2px;}
+.formula-box .formula-note{font-size:13px;color:rgba(255,255,255,.7);margin-top:8px;}
+.pyramid{display:flex;flex-direction:column;align-items:center;gap:4px;margin:16px 0;}
+.pyramid-level{border-radius:6px;padding:10px 16px;text-align:center;font-size:13px;font-weight:600;color:#fff;}
+.footer-note{text-align:center;padding:30px 40px;font-size:13px;color:#888;border-top:1px solid var(--border);margin-top:60px;}
+</style>
+
+
+<script>window._PAGE_TEXT='第十一章 · 激励 \n \n \n \n \n \n 生成日期：2026-03-09 · 中南大学企业管理学硕复试笔记 \n 第十一章 激励 \n 人力资源管理的核心内容 · 以激励理论为基础，系统构建激励体系与压力-动力机制 · P353–380 \n \n 📚 颜爱民《人力资源管理》第3版 \n 🎯 复试核心章节 \n ⭐ 持续高频考察 \n 📝 2016–2025真题整合 \n \n \n \n 目录 \n §1 激励概述 \n §2.1 内容型理论 \n §2.2 过程型理论 \n §2.3 强化理论 \n §2.4 综合激励 \n §3 激励体系 \n §4 股权激励 \n §5 压力动力 \n 真题汇总 \n 串联总结 \n 自我检测 \n \n 🌙 夜间模式 \n ↑ 顶部 \n \n \n \n \n ↑ \n ↓ \n \n \n 📖 导入案例 \n 生存压力是行为动力之本源 \n Y教授观察动物世界中狮子追逐马群的场景，引发对国有企业激励机制的深思：为何同样的员工，转为民营企业后劳动热情大增？一般而言，绝大多数普通人更接近X理论人性观——追求安逸、逃避压力。努力工作，一则源自内在的需求压力，再则源自外在的环境压力，即 压力产生动力 。生存的竞争使落后者面临被吞噬的风险，这是现代人类工作行为的根本动力。 \n 🔑 管理启示：利益差距的设置、地位等级链的构架以及淘汰和失业压力是企业激励动力机制的活力所在。 \n \n \n \n 本章逻辑结构总览 \n \n \n \n 11.1 激励概述 \n 定义·类型·作用·机理 需要→动机→行为 \n \n → \n \n 11.2 激励理论（四类） \n 内容型·过程型 行为改造型·综合型 \n \n → \n \n 11.3 激励体系 \n 分层次激励 设计原则与流程 \n \n \n \n \n 11.4 股权激励 \n 渊源1952辉瑞·6种类型 机制设计6要素 \n \n + \n \n 11.5 激励压力-动力机制 \n 压力势效应·六大动力原理 机制设计三路径 \n \n \n \n \n 跨章联系： 第11章激励 ←→ 第8章绩效管理（绩效考核是激励基础）←→ 第9章薪酬（薪酬是激励的主要工具）←→ 第10章培训（培训也是激励手段）←→ 第12章劳动关系（激励与员工满意度）\n \n \n \n \n 11.1 \n 激励概述 \n P354–358 \n \n \n \n K-01 \n \n 激励的定义与内涵 \n \n ⭐⭐⭐⭐⭐ 核心必掌握 \n 📄 P354 \n 名词解释 / 简答 \n 2018笔试 · 2022复试 \n \n \n \n \n \n 📖 教材原定义 \n 所谓 激励（Motivating） ，就是为了特定目的而去 影响人们的内在需要或动机 ，从而 强化、引导或改变人们行为 的反复过程。（P354） \n \n \n 📌 四要素内涵 \n \n ① 激励是有目的性的 ——必须是现实的、明确的目的 \n ② 通过影响需要或动机 来强化、引导或改变行为（主动自觉，非被迫强制） \n ③ 激励是持续反复的过程 ——多种复杂内外因素交织，非即时互动 \n ④ 激励方式的多样性 ——人性观不同，动机需求不同，方式各异 \n \n \n \n 🌟 小学生版比喻 \n 激励就像给手机充电——电量低了（需要），你想找插头（动机），插上充电器（激励行为），电量满了（需要满足），然后又开始用手机耗电（新的需要产生），如此循环。 \n \n \n 🔑 助记口诀 \n "目需持多" ： 目 的性 → 需 要/动机 → 持 续反复 → 多 样方式 \n \n \n 🎯 复试回答模板 \n 定义： 激励是通过影响人的需要或动机，强化、引导或改变行为的持续反复过程。 \n 核心： 四要素——目的性、作用于需要/动机、过程性、方式多样性。 \n 举例： 企业给员工发绩效奖金（物质激励），或提供晋升机会（精神激励），使其积极工作。 \n 总结： 激励是HRM的核心，某种程度上人力资源管理过程即有效激励的过程。 \n \n "激励是企业管理 永恒的主题 ，更是人力资源管理的 核心内容 ，在某种程度上甚至可以将人力资源管理过程视为有效激励的过程。"（P354） \n \n \n \n \n K-02 \n \n 激励的类型（三维度六分类） \n \n ⭐⭐⭐⭐ 较高 \n 📄 P355–356 \n 简答 / 对比 \n \n \n \n \n \n 分类角度 类型 含义与特点 \n \n 从内容分 物质激励 满足物质需要（奖金、加薪）；物质需要是人类第一需要，是激励的主要方式 \n 精神激励 满足精神需要（表扬、授予称号）；物质满足后精神激励更持久有效 \n 从性质分 正激励 行为符合期望→奖赏强化；对行为的肯定，对实现组织目标效果好 \n 负激励 行为背离期望→惩罚抑制；对行为的否定，长期使用易致员工士气低落 \n 从对象分 内部激励 启发诱导，培养自觉意识；比较缓慢，一旦发生则持续长久、质量高 \n 外部激励 采用外部措施奖惩；表现出强迫性，可通过长期外部激励形成内部激励 \n \n \n \n 🌟 小学生版比喻 \n 正激励像老师给你画小红花（奖励）；负激励像犯错了要罚站（惩罚）；内部激励像你自己爱学习；外部激励像父母奖励考好分才给零花钱。 \n \n \n \n \n \n K-03 \n \n 激励机理：需要→动机→行为循环链 \n \n ⭐⭐⭐⭐⭐ 必掌握 \n 📄 P357–358 \n 简答 / 论述 \n 2020复试 \n \n \n \n \n \n STEP 01 需要 生理/心理因素缺乏→不平衡状态；是行为的起点和原动力 \n → \n STEP 02 动机 需要未满足→内在驱动力；引发并维持行为，指向目标 \n → \n STEP 03 行为 寻找目标→努力行动；内在因素是根本，外在因素是条件 \n → \n STEP 04 满足→新需要 已满足的需要不再激励；新需要产生，循环往复 \n \n \n ⚠️ 考试重点 \n \n 需要 ：分自然属性（生理需要）和社会属性（成就、理想等） \n 动机 ：分内在动机（个体内在需要）和外在动机（奖品、奖金等外部诱因） \n 激励的作用： ①实现组织目标 ②提升人才市场竞争能力 ③提高组织绩效与效率 ④提高员工素质 \n 哈佛研究： 缺乏激励员工仅发挥能力20%~30%；充分激励可达 80% \n \n \n \n \n \n \n 11.2 \n 内容型激励理论 \n P359–362 \n \n \n \n K-04 \n \n 马斯洛需要层次理论 \n \n ⭐⭐⭐⭐⭐ 最高频 \n 📄 P359 \n 名词解释 / 简答 / 论述 \n 2016·2019·2021·2023复试 \n \n \n \n \n \n 📖 理论来源 \n 美国心理学家 马斯洛（Maslow） 于1943年出版的《人类激励的一种理论》中首次提出 需要层次理论（Hierarchy of Needs Theory） 。 \n \n \n 自我实现的需要（第五级） \n 被尊重的需要（第四级） \n 爱与归属感的需要（第三级） \n 安全需要（第二级） \n 生理需要（第一级） \n 低层次需要（生理+安全）→ 高层次需要（社会+尊重+自我实现） \n \n \n 📌 核心观点 \n \n 需要像阶梯从低到高递升，低层次相对满足后追求高层次 \n 低层次需求 ：刚性大，激励保健性强，持续性差 \n 高层次需求 ：弹性大，激励空间大，持续性强 \n 同一时期，一个人可能有几种需要，但某一种需要占支配地位 \n 只有 未满足的需要 才具有激励作用 \n 任何需要不会因为更高层次的发展而消失 \n \n \n \n ⚠️ 理论局限 \n ①没有得到实证研究证明 ②没有考虑人们的主观能动性 ③对满足需求的意义解释不明确 ④现实中难以预测下一层次需要 \n \n \n 🔑 助记口诀 \n "生安爱尊实" ： 生 理→ 安 全→ 爱 （归属）→ 尊 重→自我 实 现 \n \n \n 🎯 复试延伸追问 \n \n Q：马斯洛与ERG理论有何区别？→ ERG是对马斯洛的修正，允许同时追求多层次，有"受挫回归"机制，且有实证支持 \n Q：如何用于HRM实践？→ 识别员工处于哪个层次，针对性激励（基层员工侧重薪酬，高管侧重股权与自主权） \n \n \n \n \n \n \n K-05 \n \n ERG理论（阿尔德弗） \n \n ⭐⭐⭐⭐ 较高 \n 📄 P360 \n 名词解释 / 对比分析 \n 2024复试 \n \n \n \n \n \n 📖 理论来源 \n 阿尔德弗（Clayton Alderfer） 于1969年提出，在大量实证研究基础上对马斯洛理论进行修正。 \n \n \n E – Existence 生存需要 对应马斯洛的生理+安全需要 \n R – Relatedness 关系需要 对应社会/归属+尊重需要 \n G – Growth 成长需要 对应自我实现需要 \n \n \n 📌 三大核心观点 \n \n ① 某种需要满足后， 可能去追求更高层次，也可能没有上升趋势 （不强制层级顺序） \n ② 受挫回归 ：较高级需要受到挫折时，可能降而求其次 \n ③ 需要满足强化 ：某种需要在得到基本满足后，其强烈程度不仅不会减弱，还可能会增强 \n \n \n \n 比较维度 马斯洛需要层次 ERG理论 \n \n 层次数量 5层 3层 \n 层次顺序 严格递进，固定顺序 可同时追求多层次 \n 受挫机制 无明确说明 有"受挫回归"机制 \n 实证支持 缺乏实证研究 有良好实证研究支撑 \n \n \n \n \n \n \n K-06 \n \n 赫茨伯格双因素理论（激励-保健） \n \n ⭐⭐⭐⭐⭐ 最高频 \n 📄 P360–361 \n 名词解释 / 简答 / 案例 \n 2017·2020·2022·2025 \n \n \n \n \n \n 📖 理论来源 \n 美国行为科学家 弗雷德里克·赫茨伯格（Fredrick Herzberg） 提出，又称 激励因素-保健因素理论（Motivation-Hygiene） 。 \n \n \n 维度 激励因素（Motivation Factors） 保健因素（Hygiene Factors） \n \n 关联内容 工作本身、工作内容 工作环境、工作关系 \n 具体内容 成就感、认可、工作本身、责任、晋升、成长 公司政策、行政管理、监督、薪金、工作条件、同事关系、个人生活 \n 满足效果 产生 满意感 （正效应） 只带来 没有不满意 （消除不满） \n 不满足效果 没有满意（非不满意） 产生 不满意 （负效应） \n \n \n \n ⚠️ 核心观点（必背） \n \n 满意的对立面不是不满意，而是没有满意 \n 不满意的对立面不是满意，而是没有不满意 \n 改善保健因素只能安抚员工，带来"没有不满意"，不能积极激励 \n 要真正激励员工，必须改善 激励因素 （工作本身） \n \n \n \n 📌 HRM指导意义 \n \n ①管理者必须区分两类因素，不能无限制满足保健因素 \n ②应从激励因素入手，满足员工工作内容方面的需要 \n ③有效措施：尽可能将 保健因素转化为激励因素 ，扩大激励范围 \n \n \n \n 🌟 小学生版比喻 \n 保健因素像教室里的空调——没有空调很不舒服（不满意），装了空调也不会让你爱上学习（没有满意）。激励因素像老师夸你"答得真棒"——这才真正让你有成就感、想更努力！ \n \n \n 🔑 助记口诀 \n "激励在内容，保健在环境" ：激励因素=工作本身（内）；保健因素=工作环境（外） \n 特别注意："工资（薪酬）是保健因素"——但有时也能产生满意结果（重叠现象） \n \n \n 🎯 复试回答模板 \n 定义： 双因素理论将影响员工行为的因素分为激励因素和保健因素两类。 \n 核心区别： 激励因素关乎工作本身（成就、责任等），能产生满意感；保健因素关乎工作环境（薪酬、关系等），只能消除不满，无法积极激励。 \n 举例： 涨薪（保健因素）能暂时消除不满，但给员工授权、提供挑战性工作（激励因素）才能真正提高积极性。 \n 管理启示： 不要把资源浪费在无限提高保健因素上，要重点设计激励因素。 \n \n \n \n \n \n K-07 \n \n 麦克莱兰成就需要理论 \n \n ⭐⭐⭐ 一般 \n 📄 P361 \n 名词解释 \n \n \n \n \n \n 📖 理论内容 \n 美国心理学家 麦克莱兰 提出 成就需要理论（Achievement Theory） ，阐明了3类基本激励需要： \n \n 权力需要 ：对影响和控制他人的需要 \n 归属需要 ：建立友好亲密关系的需要 \n 成就需要 ：达到卓越标准的需要；成就需要强烈的人有内在工作动机 \n \n \n \n ⚠️ 关键特点 \n \n 成就需要不是天生就有的， 可以通过教育和培训培养 \n 更适合于对 企业家 的研究（有别于马斯洛ERG的普遍适用性） \n \n \n \n \n \n \n 11.2续 \n 过程型激励理论 \n P361–364 \n \n \n \n K-08 \n \n 弗鲁姆期望理论 \n \n ⭐⭐⭐⭐⭐ 核心公式 \n 📄 P362 \n 名词解释 / 简答 / 计算 \n 2018·2021·2024 \n \n \n \n \n \n 📖 理论来源 \n 美国耶鲁大学教授、心理学家 维克托·弗鲁姆（Victor H. Vroom） 首先提出。又称" 效价-手段-期望理论 "。 \n \n \n 期望理论核心公式 \n 激励力 = 期望值 × 效价 \n 激励力（积极性调动程度）= 期望值（达到目标的把握程度）× 效价（目标对满足个人需要的价值） \n \n \n 📌 三种关系（期望理论框架） \n \n 个人努力 努力→绩效的可能性（期望值1） \n → \n 个人绩效 绩效→奖励的程度（期望值2） \n → \n 组织奖励 奖励满足个人目标的程度（效价） \n \n \n \n 📌 HRM应用 \n \n 绩效管理：制定切实可行的绩效目标；及时进行绩效反馈 \n 薪酬管理：根据绩效考核及时给予奖励；设计个性化报酬体系 \n \n \n \n 🌟 小学生版比喻 \n 期望理论就像："如果我努力学习（期望值：我认为能考好），考了100分老师会奖励我（效价：奖励对我有多重要），那我就很有动力学习！"两个条件缺一不可——觉得考不好，或者奖励没意思，都没动力。 \n \n \n \n \n \n K-09 \n \n 亚当斯公平理论 \n \n ⭐⭐⭐⭐⭐ 核心公式 \n 📄 P363 \n 名词解释 / 简答 / 案例 \n 2019·2022·2025 \n \n \n \n \n \n 📖 理论来源 \n 美国心理学家 亚当斯（J.S. Adams） 于20世纪60年代首先提出，主要讨论 报酬的公平性对人们工作积极性的影响 。 \n \n \n 公平理论核心公式 \n Qp / Ip = Qx / Ix \n Qp=自己的报酬 / Ip=自己的投入 / Qx=参照系报酬 / Ix=参照系投入 左＝右：公平感 → 激励有效 ｜ 左＜右：不公平 → 降低努力 ｜ 左＞右：暂满足→自我平衡后恢复常态 \n \n \n ⚠️ 心理偏差 \n 个人往往会 过高估计自己的投入与他人的报酬 ，而过低估价自己的报酬与他人的投入——这是公平感知的常见偏差。 \n \n \n 📌 HRM应用：薪酬公平三维度 \n \n 内部公平 ：组织内部不同职位间薪酬的相对公平性 \n 外部公平 ：与同行业/同地区企业薪酬水平的比较 \n 自我公平 ：员工感知到自己付出与所得相称 \n \n \n \n 🌟 小学生版比喻 \n 班里两个同学做了同样多的值日，老师却给A同学多发了奖励贴纸，B同学就会觉得不公平，可能就不想做值日了。所以分配要让大家觉得"我做的和得到的，跟别人一样公平"。 \n \n \n \n \n \n K-10 \n \n 洛克目标设置理论 \n \n ⭐⭐⭐⭐ 较高 \n 📄 P363–364 \n 简答 \n 2023笔试 \n \n \n \n \n \n 📖 核心观点 \n 洛克与拉色曼 的 目标设置理论（Goal-setting Theory） ：指向目标的工作意向是工作激励的主要源泉。 \n \n 明确的目标能提高绩效 \n 具体的、困难的目标 比"尽最大努力"的笼统目标效果更好 \n 一旦接受了困难目标，会比容易的目标带来更高绩效 \n 参与设置目标（参与式）可提高目标可接受性，困难目标更容易被员工接受 \n \n \n \n 📌 HRM应用（绩效管理） \n \n ①目标必须具体、明确 \n ②目标要有一定难度 \n ③制定目标时让员工共同参与，使其认同和接受 \n \n \n \n \n \n \n 11.2续 \n 行为改造型理论：强化理论 \n P364–366 \n \n \n \n K-11 \n \n 斯金纳强化理论（四种强化类型） \n \n ⭐⭐⭐⭐⭐ 高频考察 \n 📄 P364–365 \n 名词解释 / 简答 \n 2017·2020·2024 \n \n \n \n \n \n 📖 理论来源 \n 强化理论（Reinforcement Theory） 由美国心理学家 斯金纳（B.F. Skinner） 首先提出。该理论几乎不涉及主观判断等内部心理过程，只讨论 刺激和行为的关系 。 \n \n \n 刺激 \n → \n 反应/行为 \n → \n 后果 \n → \n 未来反应 \n \n \n 强化类型 机制 作用 应用示例 \n \n 正强化 对期望行为提供奖励 行为得到强化加强 表扬、奖金、晋升、挑战性工作； 间断不确定的正强化激励效果更大 \n 负强化 规定不符合要求的行为将受惩罚 员工自我约束，规避负面结果 考勤规定、操作规程；是一种事前规避 \n 惩罚 对不符合目标的行为施以惩罚 行为削弱直至消失 扣奖金、批评、开除；应主要采用连续方式 \n 忽视 对不符合要求的行为冷处理 无为而治，行为自然消退 对员工不当行为不予理会，行为逐渐消失 \n \n \n \n ⚠️ 管理原则 \n \n 重点放在 积极的正强化 ，而不是简单的惩罚 \n 惩罚虽然表面效果较快，但作用通常是暂时的，且对员工心理易产生不良副作用 \n 四种强化应 配合起来使用 \n \n \n \n 🌟 小学生版比喻 \n 正强化=做好事得小红花；负强化=知道不按时交作业会被罚所以提前交；惩罚=犯错扣分；忽视=同学捣乱老师不理他，他慢慢就不捣乱了。 \n \n \n 🔑 助记口诀 \n "正负罚忽" ： 正 强化 → 负 强化 → 罚 （惩罚）→ 忽 （忽视） \n \n \n \n \n \n 11.2续 \n 综合激励理论 \n P366–367 \n \n \n \n K-12 \n \n 勒温场动力理论 & 波特-劳勒综合激励模型 \n \n ⭐⭐⭐⭐ 较高 \n 📄 P366–367 \n 简答 / 论述 \n 2021·2023 \n \n \n \n \n \n \n 早期综合激励 \n 勒温场动力理论 \n \n B = f(P × E) \n B=行为方向和向量；P=个人内部动力；E=环境刺激 \n \n 若P=0，外部刺激不起作用；若P为负，外部刺激可能产生相反效果 \n \n \n 波特-劳勒模型 1968 \n 综合激励变量关系 \n \n 激励 \n → \n 努力 \n → \n 绩效 \n → \n 满足 \n \n 满足感反馈为新激励；绩效还取决于能力和任务理解 \n \n \n \n 📌 波特-劳勒模型四个关键变量 \n \n 努力程度 ：取决于报酬价值主观看法 × 努力获得报酬的可能性（正比关系） \n 工作绩效 ：取决于努力程度 + 员工能力 + 对任务的理解程度 \n 工作报酬 ：内在报酬 + 外在报酬（共同影响满足感） \n 满足感 ：实际结果≥预期→满足；实际结果<预期→不满 \n \n \n \n 🎯 复试延伸：三类激励理论的互补关系 \n \n 内容型：告诉我们人有哪些需要，激励=满足需要的过程 \n 过程型：把实现企业目标与满足个人需要统一，使员工出现企业期望行为 \n 行为改造型：通过强化物使员工的良好行为持续下去 \n 综合型：波特-劳勒整合以上理论，帮助管理者综合运用激励理论 \n \n \n \n \n \n \n 11.3 \n 激励体系 \n P367–372 \n \n \n \n K-13 \n \n 分层次员工激励体系 \n \n ⭐⭐⭐⭐⭐ 高频 \n 📄 P367–372 \n 论述 / 案例 \n 2018·2023·2025 \n \n \n \n \n \n 📌 激励体系构成 \n 激励体系设计是对各种激励要素进行 选择、组合及优化 的过程。 \n \n 短期激励因素 ：工资、奖金、福利、津贴、晋升、培训、精神鼓励 \n 长期激励因素 ：红利、股票期权等 \n \n \n \n 员工层次 需求特点 主要激励方式 \n \n 董事会·经理层 （高管） 需求层次较高：地位、荣誉、成就感 经营者持股、股票期权、延迟报酬计划、在职消费、带薪休假、培训进修、个人荣誉 \n 中层管理者 承受双重压力，重视自主空间 充分授权、业绩工资（平均收入 5~10倍 ）、年终奖励、在职培训、工作轮调 \n 科技员工 专业性强，重视成果认可，不善人际交往 环境激励、技术入股、科技成果奖、科技攻关奖、技术革新奖、研究基金 \n 一般员工 需求层次相对较低，易被激励 参与战略决策、岗位工资、技能等级补贴、员工持股、在职教育、便利设施服务 \n \n \n \n 🌟 小学生版比喻 \n 就像学校里不同年级的奖励不一样：小学生喜欢小红花贴纸；初中生更在意成绩排名；高中生需要老师帮忙联系好大学；大学生想要实习机会和研究经费。激励要"因人施策"！ \n \n \n \n \n \n K-14 \n \n 激励体系设计原则与流程 \n \n ⭐⭐⭐⭐ 较高 \n 📄 P372 \n 简答 \n \n \n \n \n \n 📌 设计原则（五原则） \n \n ① 以企业发展战略为核心 ：鼓励符合战略的行为，将战略目标转化为员工直接压力和动力 \n ② 以提升企业效益为根本目标 ：鼓励真正创造效益的行为，增强员工责任感和使命感 \n ③ 符合社会整体价值观和员工个人发展需要 \n ④ 以分配制度为主体 ：将诱导因素与目标体系连接 \n ⑤ 激励机制运行富有效率 ：效率准则——相同目标取低成本，相同成本取高目标实现 \n \n \n \n 📌 设计流程（五步骤） \n \n STEP1 审视现有制度 \n → \n STEP2 分析激励效用 \n → \n STEP3 找出制度缺损 \n → \n STEP4 优化完善设计 \n → \n STEP5 运行反馈检查 \n \n \n " 人人需激励、事事要激励、处处有激励 。只有这样，才能有效解决企业运作的动力源问题。"（P371） \n \n \n \n \n 11.4 \n 股权激励 \n P372–376 \n \n \n \n K-15 \n \n 股权激励：渊源、类型与机制设计 \n \n ⭐⭐⭐⭐⭐ 高频 \n 📄 P372–376 \n 论述 / 案例 \n 2019·2021·2023·2025 \n \n \n \n \n \n 📖 产生背景与渊源 \n 传统薪酬体系（基本工资+年度奖金）激励长期效果不理想，针对核心管理团队和业务人才，即期薪酬会增加控制成本和道德风险。为降低 职业经理人道德风险 、激励核心人才， 股权激励 模式应运而生。 \n 历史最早追溯到 1952年美国辉瑞（Pfizer）制药公司 的激励计划。（P373） \n \n \n 📋 股权激励六大类型（点击展开） \n \n \n 类型 含义 适用对象 \n \n 激励性股票期权 可推迟税收，按资本利得税率纳税（美国）；由限制性股票期权发展而来 高管和技术骨干 \n 员工股票购买计划 以低于市场价格购买本公司股票；通过扣工资比例支付 普通员工（更多使用） \n 非法定股票期权 美国运用最广；不受税务法则约束，方案设计灵活 灵活适用 \n 虚拟股票期权 没有所有权，享有价格升值收益和股票 分红权 经营者 \n 股票增值权 享有价格上升收益， 不享有分红 （区别于虚拟股票） 经营者 \n 业绩股票 完成年度业绩目标后赠予股票；一定年限后才可兑现 激励对象 \n \n \n \n \n \n ⚙️ 股权激励机制设计六要素（点击展开） \n \n \n ① 激励对象 ：传统以经营者为主；现扩大至普通雇员、董事、基金管理人 \n ② 购股规定 ：购买价格（参照市场价）、期限（即期/远期）、数量及是否允许放弃购股 \n ③ 售股规定 ：出售价格、数量、期限（规定一定期限后方可出售，以关注长期利益） \n ④ 权利义务 ：分红收益权、股票表决权、承担股权贬值风险的规定 \n ⑤ 股权管理 ：管理方式、股权获得来源（购买/奖励/技术入股/管理入股/岗位持股）、股权激励占总收入比例 \n ⑥ 操作方式 ：是否发生实际股权转让、股票来源（回购/增发/库存） \n \n \n \n \n 🌟 小学生版比喻 \n 股权激励就像学校给优秀的班长一份"未来合伙人协议"：现在先给你一张入股凭证，等5年后学校赚了更多钱，你可以按凭证分红——这样班长就会认真想着让学校越来越好，而不只顾眼前的薪水！ \n \n \n 🎯 复试回答思路 \n 问"为什么要实施股权激励"→ 从委托-代理理论切入：解决所有者与经营者利益不一致问题，通过持股使经理人与股东利益趋于一致，降低代理成本，激励长期绩效导向。股权激励实质上是让代理人转变为合伙者。 \n \n \n \n \n \n 11.5 \n 激励压力-动力机制 \n P376–380 \n \n \n \n K-16 \n \n 激励压力机制与六大动力原理 \n \n ⭐⭐⭐⭐ 较高 \n 📄 P376–380 \n 论述 / 案例 \n 2022复试 \n \n \n \n \n \n 📖 压力势效应 \n 压力势效应 ：行为的产生是主体蕴含能量散发的结果。压力→心理不平衡→内在压力（奋进/对抗/消极/破坏的动因）→能量聚积→权衡利弊→行为。 \n 压力链： 外部/内部压力 → 心理不平衡 → 内在压力 → 行为 \n \n \n 📌 六大动力原理 \n \n 动力原理 核心思想 代表 \n \n 欲望动力 布登勃洛克式：欲望满足→新欲望产生→新动力；要引导欲望正确方向（否则"富不出三代"） 托马斯·曼小说案例 \n 情欲动力 12种根本情欲推动3个目的；按劳分配、自由组合、精神鼓励 法国傅里叶 \n 生存动力 人类一切行为受"生存"支配；从自身→家庭→群体→人类最佳生存 哈伯德 \n 自主动力 自主意识状态下释放最大潜能；联产承包责任制成功原因；责权利一体化 中国农村改革案例 \n 目标动力 F=V•E（弗隆）；伟大的毅力只为伟大目的产生；需建立目标网络体系 弗隆、洛克 \n 群体动力 B=f(P,E)；1+1>2的合动力；驴子拉重实验（9000+8000= 30000磅 ） 卢因群体动力论 \n \n \n \n \n 📌 压力-动力机制设计三路径 \n \n ① 工作压力势 ：营造竞争态势→员工紧迫感和成就欲望；晋升与淘汰制度是基础 \n ② 晋升通道设计 ：横向通道（跨岗/跨工种）+ 纵向通道（升降），通道双向畅通 \n ③ 淘汰制度 ：有晋升就有淘汰；建立淘汰制度使员工不敢松懈，促进内部合理竞争氛围形成 \n \n \n \n 🌟 小学生版比喻（群体动力经典案例） \n 驴子拉重实验：两头驴单独分别能拉9000磅和8000磅，但合适地组合在一起竟能拉30000磅——团队合力远超个人之和！1+1>2，这就是群体动力的神奇之处。 \n \n \n \n \n \n 真题 \n 历年真题汇总（2016–2025） \n CSU企业管理学硕 \n \n \n \n EXAM \n \n 激励章节历年考察情况 \n \n ⭐⭐⭐⭐⭐ 持续高频 \n 名词解释 / 简答 / 论述 / 案例 \n \n \n \n \n \n 年份 考察内容 题型 涉及知识点 \n \n 2016 马斯洛需要层次理论与HRM应用 简答 K-04 \n 2017 赫茨伯格双因素理论；强化理论四类型 名词解释+简答 K-06, K-11 \n 2018 激励定义内涵；期望理论公式应用 名词解释+简答 K-01, K-08 \n 2019 马斯洛理论；公平理论在薪酬中的应用；股权激励案例分析 论述+案例 K-04, K-09, K-15 \n 2020 激励机理（需要-动机-行为）；双因素理论；强化理论 简答 K-03, K-06, K-11 \n 2021 期望理论三种关系；波特-劳勒模型；股权激励类型 简答+论述 K-08, K-12, K-15 \n 2022 激励定义；公平理论公式；激励压力-动力机制 名词解释+论述 K-01, K-09, K-16 \n 2023 分层次激励体系（四类员工）；目标设置理论；ERG理论 论述+简答 K-13, K-10, K-05 \n 2024 ERG理论与马斯洛对比；强化理论管理应用；期望理论 对比分析 K-05, K-11, K-08 \n 2025 双因素理论实践；公平理论与薪酬设计；股权激励机制设计 案例论述 K-06, K-09, K-15 \n \n \n \n ⚠️ 预测考察方向（2026复试） \n \n 🔴 极高概率： 双因素理论（激励/保健因素）区分与实践应用；马斯洛与ERG对比分析 \n 🔴 极高概率： 期望理论公式应用；公平理论薪酬三维度设计 \n 🟡 较高概率： 波特-劳勒综合模型；分层次激励体系（四类员工） \n 🟡 较高概率： 股权激励机制设计六要素；激励压力-动力机制 \n 🟢 一般概率： 强化理论四类型；成就需要理论；目标设置理论 \n \n \n \n \n \n \n 串联 \n 本章知识终极串联 \n \n \n ⚡ 30秒超速复习模块 \n 1 激励定义：影响需要/动机→强化引导改变行为的反复过程；四要素：目的性、作用需要/动机、持续性、多样性 \n 2 马斯洛5层（生安爱尊实）：低层=刚性强持续差；高层=弹性大持续强；只有未满足的需要才激励 \n 3 双因素：激励因素=工作本身（成就/责任）→满意；保健因素=工作环境（薪酬/关系）→消除不满；满意≠不满意对立面 \n 4 期望理论：激励力=期望值×效价；三关系：努力→绩效→奖励→个人目标 \n 5 公平理论：Qp/Ip=Qx/Ix；三维度：内部/外部/自我公平 \n 6 强化理论四类（正负罚忽）：正强化（奖励期望行为）、负强化（规避事前）、惩罚（抑制行为）、忽视（冷处理） \n 7 分层激励：高管→股权/持股；中层→授权+业绩工资（5~10倍）；科技员工→环境+成果奖；一般员工→参与+岗位工资 \n 8 股权激励：1952辉瑞起源；六类型（激励性期权/购买计划/非法定/虚拟股票/增值权/业绩股票）；机制设计六要素 \n 9 压力-动力：六大原理（欲望/情欲/生存/自主/目标/群体）；驴子实验：9000+8000=30000磅（群体动力1+1>2） \n \n \n 🎤 背诵版总结（适合复试口述） \n 第十一章"激励"是人力资源管理的核心内容，可从五个层面展开： \n \n 第一，激励的基本内涵： 激励是通过影响人的内在需要或动机，强化、引导或改变行为的持续过程，其机理是需要→动机→行为的循环链条。 \n 第二，内容型激励理论： 以马斯洛需要层次（生安爱尊实）和赫茨伯格双因素（激励因素≠保健因素）为核心，告诉我们人有哪些需要。 \n 第三，过程型激励理论： 弗鲁姆期望理论（激励力=期望值×效价）和亚当斯公平理论（Qp/Ip=Qx/Ix），关注从动机到行为的心理过程。 \n 第四，行为改造型与综合型： 斯金纳强化理论（正强化/负强化/惩罚/忽视）；波特-劳勒综合模型（激励→努力→绩效→满足→反馈）整合以上理论。 \n 第五，激励体系与实践： 分层次设计激励体系（高管/中层/科技人员/一般员工）；股权激励作为长期激励利器（1952年辉瑞起源，六类型六要素）；压力-动力机制（六大动力原理）提供系统设计框架。 \n \n \n \n \n \n CMP \n \n 激励理论综合对比表（必掌握） \n ⭐⭐⭐⭐⭐ 必掌握 \n \n \n \n \n 理论 代表人物 核心公式/模型 理论类型 HRM应用重点 \n \n 需要层次理论 马斯洛 5层金字塔（生安爱尊实） 内容型 识别员工需求层次，差异化激励 \n ERG理论 阿尔德弗 E(生存)-R(关系)-G(成长) 内容型（修正） 允许同时多层次需要，受挫回归 \n 双因素理论 赫茨伯格 激励因素（工作内容）vs 保健因素（工作环境） 内容型 薪酬是保健，工作设计是激励 \n 成就需要理论 麦克利兰 成就/权力/归属需要；nAch最重要 内容型 对高nAch者：挑战性任务+反馈 \n 期望理论 弗鲁姆 M=V×E；三种关系链条 过程型 提高绩效→奖励关联度 \n 公平理论 亚当斯 Qp/Ip vs Qx/Ix；内外自三维度 过程型 公平感知管理；三维薪酬公平 \n 目标设置理论 洛克 SMART原则；目标难度适中 过程型 MBO实践；明确具体目标设定 \n 强化理论 斯金纳 正强化/负强化/惩罚/忽视 行为改造型 奖惩制度设计；行为塑造 \n 波特-劳勒模型 波特、劳勒 综合模型：激励→努力→绩效→满足→反馈 综合型 绩效与奖励的全链路管理 \n \n \n \n ⚠️ 易混辨析：激励因素 vs 保健因素 \n \n 维度 激励因素 保健因素 \n \n 内容 工作本身（成就感、晋升、责任感、认可） 工作环境（薪酬、人际、监管、政策） \n 有时 → 产生满意感（激励效果） → 消除不满意（维持效果） \n 无时 → 没有满意感，不一定不满意 → 产生强烈不满意 \n HRM含义 工作丰富化、晋升通道设计 保障底线薪酬、改善工作环境 \n \n \n \n \n \n \n \n \n \n 检测 \n 课后自我检测（含历年真题与预测题） \n 共 10 题 \n \n \n 📌 建议先独立作答，再点击「查看思路」。答题框架供参考，复试时请结合教材原句。 \n \n Q·01 【名词解释 · 高频】 什么是激励？请结合颜爱民教材给出准确定义。 \n 查看思路 \n \n 教材定义： 激励是通过影响人的内在需要或动机，强化、引导或改变人们行为的反复过程。 \n 四要素： ①目的性（提高人员积极性、创造性）②作用于需要或动机 ③持续性（循环过程）④多样性（物质+精神） \n 复试口诀： 激励=影响需要→强化引导行为→持续多样循环\n \n \n \n Q·02 【简答 · 2016年真题】 简述马斯洛需要层次理论的主要内容，并说明其对人力资源管理的启示。 \n 查看思路 \n \n 五层次： 生理→安全→社交→尊重→自我实现（低层=刚性强+持续差；高层=弹性大+持续强） \n 两个基本假设： ①已满足的需要不激励；②人满足低层需要后追求高层 \n HRM启示： ①识别员工所处需求层次 ②差异化激励方案设计（低层→薪酬福利；高层→晋升授权）③动态调整激励措施 \n 局限性（加分点）： 层次划分过于机械，实践中需求可同时存在；ERG理论对其修正：受挫回归；允许多层次并存\n \n \n \n Q·03 【名词解释+辨析 · 2017年真题】 什么是赫茨伯格双因素理论？激励因素与保健因素的本质区别是什么？ \n 查看思路 \n \n 核心观点： 影响工作满意度的因素分为两类，作用不同，不是一个连续体的两端 \n 激励因素： 工作本身（成就感、认可、晋升、责任、工作兴趣）→有则产生满意感→激励效果 \n 保健因素： 工作环境（薪酬、人际关系、公司政策、监督方式）→无则产生强烈不满→维持效果 \n 关键结论： 满意的对立面是"没有满意"而非"不满意"；不满意的对立面是"没有不满意"而非"满意" \n HRM应用： 薪酬是保健因素（只能消除不满）；真正激励要靠工作本身的意义感和成就感→工作丰富化\n \n \n \n Q·04 【简答 · 2018年、2021年真题】 简述弗鲁姆期望理论，说明三种关系对管理实践的意义。 \n 查看思路 \n \n 公式： 激励力（M）= 期望值（E）× 效价（V） \n 三种关系： \n ①努力→绩效（E-P关系）：员工相信努力能带来绩效 → 管理者要提供充足资源和培训 \n ②绩效→奖励（P-O关系）：员工相信绩效能换来期望奖励 → 建立明确绩效考核与奖惩连接 \n ③奖励→个人目标（O-V关系）：奖励对个人有吸引力 → 差异化奖励，满足不同员工需求 \n 管理启示： 三链条任何一环断裂，激励效果归零。管理者必须同时管好这三重关联\n \n \n \n Q·05 【简答 · 2019年、2022年真题】 简述亚当斯公平理论的基本原理，并说明员工感知不公平时会采取哪些行为？ \n 查看思路 \n \n 公式： Qp/Ip 对比 Qx/Ix（自己的产出/投入 对比 他人的产出/投入） \n 三维公平： 内部公平（与内部同事比）、外部公平（与外部同类职位比）、自我公平（与自身过去比） \n 不公平时的行为： \n ①减少自身投入（消极怠工） \n ②增加自身产出要求（争取加薪） \n ③重新认知比较对象（换参照对象） \n ④寻求另一份工作（跳槽离职） \n ⑤改变比较标准（说服自己） \n HRM启示： 薪酬设计要注重三维公平感知管理；及时沟通薪酬逻辑，减少信息不对称\n \n \n \n Q·06 【简答 · 2017年、2020年真题】 强化理论有哪四种强化类型？各在管理中如何运用？ \n 查看思路 \n \n 四类型（口诀：正负罚忽）： \n ① 正强化 ：对期望行为给予奖励，增加行为频率 → 奖金、表扬、晋升 \n ② 负强化 ：撤销不利刺激以增加期望行为 → 完成目标则取消额外检查 \n ③ 惩罚 ：对不期望行为施以不利结果，减少行为频率 → 警告、降级、罚款 \n ④ 忽视（消退） ：对不期望行为不做任何回应，使其自然消退 → 对无关紧要的抱怨不响应 \n 管理要点： 以正强化为主；惩罚只能抑制行为，不能消除；忽视适合处理轻微问题行为\n \n \n \n Q·07 【对比分析 · 2024年真题改编】 比较马斯洛需要层次理论与阿尔德弗ERG理论，说明后者对前者的发展与修正。 \n 查看思路 \n \n 共同点： 都是内容型激励理论，关注人类基本需要的分类 \n 马斯洛（5层）： 生理→安全→社交→尊重→自我实现；严格层级顺序，低层满足才追高层 \n ERG（3类）： E（生存/Existence）=生理+安全；R（关系/Relatedness）=社交+尊重外在部分；G（成长/Growth）=尊重内在+自我实现 \n ERG的三大修正： \n ①允许同时追求多层次需要（不严格按序） \n ② 受挫回归 ：高层需要受挫时，退回追求低层需要（马斯洛没有此机制） \n ③更灵活，更贴近实际管理情境 \n 结论： ERG是马斯洛理论的简化与修正版，去掉了过于机械的层级限制\n \n \n \n Q·08 【论述 · 2021年、2023年真题】 论述波特-劳勒综合激励模型，并说明其在设计人力资源管理体系中的应用价值。 \n 查看思路 \n \n 模型结构（9个变量）： \n 激励力→努力→绩效（受能力/素质+角色认知影响）→奖励（外在奖励+内在奖励）→公平感→满足感→反馈→影响下次激励 \n 三大创新： \n ①整合期望理论+公平理论+强化理论于一体 \n ②明确提出"绩效导致满足"而非"满足导致绩效"（颠覆传统观念） \n ③引入内在奖励（成就感、自主感）与外在奖励（薪酬、晋升）的双轨机制 \n HRM应用： \n ①设计清晰的绩效→奖励连接机制（强化P-O关系） \n ②公平感知管理（确保内外部公平） \n ③既重视薪酬激励，又重视工作本身的内在激励设计 \n ④能力培训保障努力→绩效转化率\n \n \n \n Q·09 【案例论述 · 2019年、2025年真题类型】 某科技公司的高级工程师薪酬已高于市场水平，但仍不断跳槽。请运用激励理论分析原因，并提出改进建议。 \n 查看思路 \n \n 原因分析： \n ①双因素理论：高薪属于保健因素（工作环境），只能消除不满意，不能产生真正满意感和激励效果；真正的激励因素（成就感、挑战性工作、自主权）未被满足 \n ②马斯洛理论：工程师需求层次已到尊重和自我实现层，物质满足后追求精神层面的认可与成长 \n ③期望理论：可能存在P-O或O-V关系断裂——努力与绩效连接不清晰，或奖励对该员工个人效价较低 \n 改进建议： \n ①工作丰富化与授权：提供技术挑战性项目，给予更大自主权 \n ②建立技术职级晋升通道（双通道：管理序列+技术序列） \n ③实施长期激励：股权期权绑定长期利益 \n ④定期绩效反馈与职业发展规划辅导 \n ⑤分层次激励：属科技员工类→以有挑战的工作环境+成果激励为主\n \n \n \n Q·10 【预测题 · 2026复试高概率】 什么是股权激励？请说明其主要类型及机制设计的六个要素，并分析股权激励能否解决委托-代理问题。 \n 查看思路 \n \n 定义： 通过给予经理人或员工股权（或未来购股权），使其分享企业剩余价值，从而将代理人利益与所有者利益捆绑，降低道德风险的长期激励机制。起源：1952年美国辉瑞制药公司。 \n 六类型： 激励性股票期权、员工股票购买计划、非法定股票期权、虚拟股票（有分红）、股票增值权（无分红）、业绩股票 \n 机制设计六要素： ①激励对象 ②购股规定 ③售股规定 ④权利义务 ⑤股权管理 ⑥操作方式 \n 能否解决委托-代理问题（辩证分析，加分）： \n ✅ 有效方面：通过持股使代理人关注长期股价而非短期利润，减少利益背离 \n ⚠️ 局限性：①股价受外部市场影响，不完全反映管理者努力；②可能导致操纵财务数据；③持有期限设计不当会失效；④在中国资本市场不成熟背景下，激励效果存在折扣 \n 结论： 股权激励是解决委托代理问题的重要工具，但需要配套完善的公司治理制度（董事会监督+信息披露）才能发挥最大效果\n \n \n \n \n \n 📚 中南大学企业管理学硕复试笔记 · 第十一章 激励 · 基于颜爱民《人力资源管理》第3版 · P341–380 · 2016–2025真题整合版 · 生成日期：2026-03-09';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-day">生成日期：2026-03-09 &nbsp;·&nbsp; 中南大学企业管理学硕复试笔记</div>
+  <h1>第十一章<br><span>激励</span></h1>
+  <p class="hero-sub">人力资源管理的核心内容 · 以激励理论为基础，系统构建激励体系与压力-动力机制 · P353–380</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📚 颜爱民《人力资源管理》第3版</span>
+    <span class="hero-tag">🎯 复试核心章节</span>
+    <span class="hero-tag">⭐ 持续高频考察</span>
+    <span class="hero-tag">📝 2016–2025真题整合</span>
+  </div>
+</div>
+
+<nav class="fixed-nav">
+  <span class="toc-label">目录</span>
+  <a href="#sec1">§1 激励概述</a>
+  <a href="#sec2">§2.1 内容型理论</a>
+  <a href="#sec3">§2.2 过程型理论</a>
+  <a href="#sec4">§2.3 强化理论</a>
+  <a href="#sec5">§2.4 综合激励</a>
+  <a href="#sec6">§3 激励体系</a>
+  <a href="#sec7">§4 股权激励</a>
+  <a href="#sec8">§5 压力动力</a>
+  <a href="#sec9">真题汇总</a>
+  <a href="#sec10">串联总结</a>
+  <a href="#sec11">自我检测</a>
+  <div class="nav-controls">
+    <button class="btn-night" onclick="toggleNight()">🌙 夜间模式</button>
+    <button class="btn-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 顶部</button>
+  </div>
+</nav>
+
+<div class="search-bar">
+  
+  <span class="search-count" id="searchCount"></span
+  <button class="search-nav-btn" id="srchPrev" onclick="prevResult()" disabled title="上一个 (Shift+F3)">↑</button>
+  <button class="search-nav-btn" id="srchNext" onclick="nextResult()" disabled title="下一个 (F3)">↓</button>
+</div>
+
+<div class="case-banner">
+  <div class="case-label">📖 导入案例</div>
+  <h3>生存压力是行为动力之本源</h3>
+  <p>Y教授观察动物世界中狮子追逐马群的场景，引发对国有企业激励机制的深思：为何同样的员工，转为民营企业后劳动热情大增？一般而言，绝大多数普通人更接近X理论人性观——追求安逸、逃避压力。努力工作，一则源自内在的需求压力，再则源自外在的环境压力，即<strong>压力产生动力</strong>。生存的竞争使落后者面临被吞噬的风险，这是现代人类工作行为的根本动力。</p>
+  <p class="case-key">🔑 管理启示：利益差距的设置、地位等级链的构架以及淘汰和失业压力是企业激励动力机制的活力所在。</p>
+</div>
+
+<div class="main">
+
+<div class="logic-map">
+  <h3>本章逻辑结构总览</h3>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div class="lm-node blue" style="text-align:center;">
+        <div class="ln-title">11.1 激励概述</div>
+        <div style="font-size:12px;margin-top:4px;">定义·类型·作用·机理<br>需要→动机→行为</div>
+      </div>
+      <div style="display:flex;align-items:center;color:var(--accent);font-size:18px;">→</div>
+      <div class="lm-node green" style="text-align:center;">
+        <div class="ln-title">11.2 激励理论（四类）</div>
+        <div style="font-size:12px;margin-top:4px;">内容型·过程型<br>行为改造型·综合型</div>
+      </div>
+      <div style="display:flex;align-items:center;color:var(--accent);font-size:18px;">→</div>
+      <div class="lm-node yellow" style="text-align:center;">
+        <div class="ln-title">11.3 激励体系</div>
+        <div style="font-size:12px;margin-top:4px;">分层次激励<br>设计原则与流程</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <div class="lm-node purple" style="text-align:center;flex:1;">
+        <div class="ln-title">11.4 股权激励</div>
+        <div style="font-size:12px;margin-top:4px;">渊源1952辉瑞·6种类型<br>机制设计6要素</div>
+      </div>
+      <div style="display:flex;align-items:center;color:var(--accent);font-size:18px;">+</div>
+      <div class="lm-node red" style="text-align:center;flex:1;">
+        <div class="ln-title">11.5 激励压力-动力机制</div>
+        <div style="font-size:12px;margin-top:4px;">压力势效应·六大动力原理<br>机制设计三路径</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:16px;padding:12px;background:var(--bg2);border-radius:8px;font-size:13px;">
+    <strong>跨章联系：</strong>第11章激励 ←→ 第8章绩效管理（绩效考核是激励基础）←→ 第9章薪酬（薪酬是激励的主要工具）←→ 第10章培训（培训也是激励手段）←→ 第12章劳动关系（激励与员工满意度）
+  </div>
+</div>
+
+<!-- ════ SEC 1: 激励概述 ════ -->
+<div class="section-title" id="sec1">
+  <div class="sec-num">11.1</div>
+  <h2>激励概述</h2>
+  <span class="page-ref">P354–358</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-01</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">激励的定义与内涵</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心必掌握</span>
+        <span class="badge badge-page">📄 P354</span>
+        <span class="badge badge-exam">名词解释 / 简答</span>
+        <span class="badge badge-year">2018笔试 · 2022复试</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材原定义</div>
+      <p>所谓<span class="kw">激励（Motivating）</span>，就是为了特定目的而去<strong>影响人们的内在需要或动机</strong>，从而<strong>强化、引导或改变人们行为</strong>的反复过程。（P354）</p>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📌 四要素内涵</div>
+      <ul class="kl">
+        <li>① <span class="kw">激励是有目的性的</span>——必须是现实的、明确的目的</li>
+        <li>② <span class="kw">通过影响需要或动机</span>来强化、引导或改变行为（主动自觉，非被迫强制）</li>
+        <li>③ <span class="kw">激励是持续反复的过程</span>——多种复杂内外因素交织，非即时互动</li>
+        <li>④ <span class="kw">激励方式的多样性</span>——人性观不同，动机需求不同，方式各异</li>
+      </ul>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🌟 小学生版比喻</div>
+      <p>激励就像给手机充电——电量低了（需要），你想找插头（动机），插上充电器（激励行为），电量满了（需要满足），然后又开始用手机耗电（新的需要产生），如此循环。</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🔑 助记口诀</div>
+      <p><strong>"目需持多"</strong>：<span class="kw2">目</span>的性 → <span class="kw2">需</span>要/动机 → <span class="kw2">持</span>续反复 → <span class="kw2">多</span>样方式</p>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <p><strong>定义：</strong>激励是通过影响人的需要或动机，强化、引导或改变行为的持续反复过程。<br>
+      <strong>核心：</strong>四要素——目的性、作用于需要/动机、过程性、方式多样性。<br>
+      <strong>举例：</strong>企业给员工发绩效奖金（物质激励），或提供晋升机会（精神激励），使其积极工作。<br>
+      <strong>总结：</strong>激励是HRM的核心，某种程度上人力资源管理过程即有效激励的过程。</p>
+    </div>
+    <div class="quote"><p>"激励是企业管理<mark>永恒的主题</mark>，更是人力资源管理的<mark>核心内容</mark>，在某种程度上甚至可以将人力资源管理过程视为有效激励的过程。"（P354）</p></div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-02</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">激励的类型（三维度六分类）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐⭐ 较高</span>
+        <span class="badge badge-page">📄 P355–356</span>
+        <span class="badge badge-exam">简答 / 对比</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <thead><tr><th>分类角度</th><th>类型</th><th>含义与特点</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="2"><strong>从内容分</strong></td><td><span class="kw">物质激励</span></td><td>满足物质需要（奖金、加薪）；物质需要是人类第一需要，是激励的主要方式</td></tr>
+        <tr><td><span class="kw">精神激励</span></td><td>满足精神需要（表扬、授予称号）；物质满足后精神激励更持久有效</td></tr>
+        <tr><td rowspan="2"><strong>从性质分</strong></td><td><span class="kw2">正激励</span></td><td>行为符合期望→奖赏强化；对行为的肯定，对实现组织目标效果好</td></tr>
+        <tr><td><span class="kw2">负激励</span></td><td>行为背离期望→惩罚抑制；对行为的否定，长期使用易致员工士气低落</td></tr>
+        <tr><td rowspan="2"><strong>从对象分</strong></td><td><span class="kwr">内部激励</span></td><td>启发诱导，培养自觉意识；比较缓慢，一旦发生则持续长久、质量高</td></tr>
+        <tr><td><span class="kwr">外部激励</span></td><td>采用外部措施奖惩；表现出强迫性，可通过长期外部激励形成内部激励</td></tr>
+      </tbody>
+    </table>
+    <div class="block block-analogy">
+      <div class="block-label">🌟 小学生版比喻</div>
+      <p>正激励像老师给你画小红花（奖励）；负激励像犯错了要罚站（惩罚）；内部激励像你自己爱学习；外部激励像父母奖励考好分才给零花钱。</p>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-03</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">激励机理：需要→动机→行为循环链</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必掌握</span>
+        <span class="badge badge-page">📄 P357–358</span>
+        <span class="badge badge-exam">简答 / 论述</span>
+        <span class="badge badge-year">2020复试</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="flow">
+      <div class="flow-step"><div class="fs-num">STEP 01</div><div class="fs-title">需要</div><div class="fs-body">生理/心理因素缺乏→不平衡状态；是行为的起点和原动力</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fs-num">STEP 02</div><div class="fs-title">动机</div><div class="fs-body">需要未满足→内在驱动力；引发并维持行为，指向目标</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fs-num">STEP 03</div><div class="fs-title">行为</div><div class="fs-body">寻找目标→努力行动；内在因素是根本，外在因素是条件</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fs-num">STEP 04</div><div class="fs-title">满足→新需要</div><div class="fs-body">已满足的需要不再激励；新需要产生，循环往复</div></div>
+    </div>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 考试重点</div>
+      <ul class="kl">
+        <li><span class="kw">需要</span>：分自然属性（生理需要）和社会属性（成就、理想等）</li>
+        <li><span class="kw">动机</span>：分内在动机（个体内在需要）和外在动机（奖品、奖金等外部诱因）</li>
+        <li><strong>激励的作用：</strong>①实现组织目标 ②提升人才市场竞争能力 ③提高组织绩效与效率 ④提高员工素质</li>
+        <li><strong>哈佛研究：</strong>缺乏激励员工仅发挥能力20%~30%；充分激励可达<span class="kw3">80%</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SEC 2: 内容型激励理论 ════ -->
+<div class="section-title" id="sec2">
+  <div class="sec-num">11.2</div>
+  <h2>内容型激励理论</h2>
+  <span class="page-ref">P359–362</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-04</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">马斯洛需要层次理论</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 最高频</span>
+        <span class="badge badge-page">📄 P359</span>
+        <span class="badge badge-exam">名词解释 / 简答 / 论述</span>
+        <span class="badge badge-year">2016·2019·2021·2023复试</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 理论来源</div>
+      <p>美国心理学家<span class="kw">马斯洛（Maslow）</span>于1943年出版的《人类激励的一种理论》中首次提出<span class="kw">需要层次理论（Hierarchy of Needs Theory）</span>。</p>
+    </div>
+    <div class="pyramid">
+      <div class="pyramid-level" style="background:#7c3aed;width:30%;">自我实现的需要（第五级）</div>
+      <div class="pyramid-level" style="background:#1a56db;width:45%;">被尊重的需要（第四级）</div>
+      <div class="pyramid-level" style="background:#0e7c6a;width:60%;">爱与归属感的需要（第三级）</div>
+      <div class="pyramid-level" style="background:#d97706;width:75%;">安全需要（第二级）</div>
+      <div class="pyramid-level" style="background:#dc2626;width:90%;">生理需要（第一级）</div>
+      <div style="font-size:12px;color:#888;margin-top:6px;">低层次需要（生理+安全）→ 高层次需要（社会+尊重+自我实现）</div>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📌 核心观点</div>
+      <ul class="kl">
+        <li>需要像阶梯从低到高递升，低层次相对满足后追求高层次</li>
+        <li><span class="kw">低层次需求</span>：刚性大，激励保健性强，持续性差</li>
+        <li><span class="kw">高层次需求</span>：弹性大，激励空间大，持续性强</li>
+        <li>同一时期，一个人可能有几种需要，但某一种需要占支配地位</li>
+        <li>只有<span class="kw3">未满足的需要</span>才具有激励作用</li>
+        <li>任何需要不会因为更高层次的发展而消失</li>
+      </ul>
+    </div>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 理论局限</div>
+      <p>①没有得到实证研究证明 ②没有考虑人们的主观能动性 ③对满足需求的意义解释不明确 ④现实中难以预测下一层次需要</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🔑 助记口诀</div>
+      <p><strong>"生安爱尊实"</strong>：<span class="kwr">生</span>理→<span class="kwr">安</span>全→<span class="kwr">爱</span>（归属）→<span class="kwr">尊</span>重→自我<span class="kwr">实</span>现</p>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试延伸追问</div>
+      <ul class="kl">
+        <li>Q：马斯洛与ERG理论有何区别？→ ERG是对马斯洛的修正，允许同时追求多层次，有"受挫回归"机制，且有实证支持</li>
+        <li>Q：如何用于HRM实践？→ 识别员工处于哪个层次，针对性激励（基层员工侧重薪酬，高管侧重股权与自主权）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-05</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">ERG理论（阿尔德弗）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐⭐ 较高</span>
+        <span class="badge badge-page">📄 P360</span>
+        <span class="badge badge-exam">名词解释 / 对比分析</span>
+        <span class="badge badge-year">2024复试</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 理论来源</div>
+      <p><span class="kw">阿尔德弗（Clayton Alderfer）</span>于1969年提出，在大量实证研究基础上对马斯洛理论进行修正。</p>
+    </div>
+    <div style="display:flex;gap:12px;margin:12px 0;flex-wrap:wrap;">
+      <div class="lm-node red" style="text-align:center;flex:1;"><div class="ln-title">E – Existence<br>生存需要</div><div style="font-size:12px;margin-top:4px;">对应马斯洛的生理+安全需要</div></div>
+      <div class="lm-node blue" style="text-align:center;flex:1;"><div class="ln-title">R – Relatedness<br>关系需要</div><div style="font-size:12px;margin-top:4px;">对应社会/归属+尊重需要</div></div>
+      <div class="lm-node purple" style="text-align:center;flex:1;"><div class="ln-title">G – Growth<br>成长需要</div><div style="font-size:12px;margin-top:4px;">对应自我实现需要</div></div>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📌 三大核心观点</div>
+      <ul class="kl">
+        <li>① 某种需要满足后，<span class="kw">可能去追求更高层次，也可能没有上升趋势</span>（不强制层级顺序）</li>
+        <li>② <span class="kw">受挫回归</span>：较高级需要受到挫折时，可能降而求其次</li>
+        <li>③ <span class="kw">需要满足强化</span>：某种需要在得到基本满足后，其强烈程度不仅不会减弱，还可能会增强</li>
+      </ul>
+    </div>
+    <table class="ctable">
+      <thead><tr><th>比较维度</th><th>马斯洛需要层次</th><th>ERG理论</th></tr></thead>
+      <tbody>
+        <tr><td>层次数量</td><td>5层</td><td>3层</td></tr>
+        <tr><td>层次顺序</td><td>严格递进，固定顺序</td><td>可同时追求多层次</td></tr>
+        <tr><td>受挫机制</td><td>无明确说明</td><td>有"受挫回归"机制</td></tr>
+        <tr><td>实证支持</td><td>缺乏实证研究</td><td>有良好实证研究支撑</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-06</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">赫茨伯格双因素理论（激励-保健）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 最高频</span>
+        <span class="badge badge-page">📄 P360–361</span>
+        <span class="badge badge-exam">名词解释 / 简答 / 案例</span>
+        <span class="badge badge-year">2017·2020·2022·2025</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 理论来源</div>
+      <p>美国行为科学家<span class="kw">弗雷德里克·赫茨伯格（Fredrick Herzberg）</span>提出，又称<span class="kw">激励因素-保健因素理论（Motivation-Hygiene）</span>。</p>
+    </div>
+    <table class="ctable">
+      <thead><tr><th>维度</th><th>激励因素（Motivation Factors）</th><th>保健因素（Hygiene Factors）</th></tr></thead>
+      <tbody>
+        <tr><td><strong>关联内容</strong></td><td><span class="kw">工作本身、工作内容</span></td><td><span class="kw2">工作环境、工作关系</span></td></tr>
+        <tr><td><strong>具体内容</strong></td><td>成就感、认可、工作本身、责任、晋升、成长</td><td>公司政策、行政管理、监督、薪金、工作条件、同事关系、个人生活</td></tr>
+        <tr><td><strong>满足效果</strong></td><td>产生<span class="kw">满意感</span>（正效应）</td><td>只带来<span class="kw2">没有不满意</span>（消除不满）</td></tr>
+        <tr><td><strong>不满足效果</strong></td><td>没有满意（非不满意）</td><td>产生<span class="kwr">不满意</span>（负效应）</td></tr>
+      </tbody>
+    </table>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 核心观点（必背）</div>
+      <ul class="kl">
+        <li><span class="kw3">满意的对立面不是不满意，而是没有满意</span></li>
+        <li><span class="kw3">不满意的对立面不是满意，而是没有不满意</span></li>
+        <li>改善保健因素只能安抚员工，带来"没有不满意"，不能积极激励</li>
+        <li>要真正激励员工，必须改善<span class="kw">激励因素</span>（工作本身）</li>
+      </ul>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">📌 HRM指导意义</div>
+      <ul class="kl">
+        <li>①管理者必须区分两类因素，不能无限制满足保健因素</li>
+        <li>②应从激励因素入手，满足员工工作内容方面的需要</li>
+        <li>③有效措施：尽可能将<span class="kw2">保健因素转化为激励因素</span>，扩大激励范围</li>
+      </ul>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🌟 小学生版比喻</div>
+      <p>保健因素像教室里的空调——没有空调很不舒服（不满意），装了空调也不会让你爱上学习（没有满意）。激励因素像老师夸你"答得真棒"——这才真正让你有成就感、想更努力！</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🔑 助记口诀</div>
+      <p><strong>"激励在内容，保健在环境"</strong>：激励因素=工作本身（内）；保健因素=工作环境（外）<br>
+      特别注意："工资（薪酬）是保健因素"——但有时也能产生满意结果（重叠现象）</p>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <p><strong>定义：</strong>双因素理论将影响员工行为的因素分为激励因素和保健因素两类。<br>
+      <strong>核心区别：</strong>激励因素关乎工作本身（成就、责任等），能产生满意感；保健因素关乎工作环境（薪酬、关系等），只能消除不满，无法积极激励。<br>
+      <strong>举例：</strong>涨薪（保健因素）能暂时消除不满，但给员工授权、提供挑战性工作（激励因素）才能真正提高积极性。<br>
+      <strong>管理启示：</strong>不要把资源浪费在无限提高保健因素上，要重点设计激励因素。</p>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-07</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">麦克莱兰成就需要理论</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier3">⭐⭐⭐ 一般</span>
+        <span class="badge badge-page">📄 P361</span>
+        <span class="badge badge-exam">名词解释</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 理论内容</div>
+      <p>美国心理学家<span class="kw">麦克莱兰</span>提出<span class="kw">成就需要理论（Achievement Theory）</span>，阐明了3类基本激励需要：</p>
+      <ul class="kl">
+        <li><span class="kw">权力需要</span>：对影响和控制他人的需要</li>
+        <li><span class="kw">归属需要</span>：建立友好亲密关系的需要</li>
+        <li><span class="kw">成就需要</span>：达到卓越标准的需要；成就需要强烈的人有内在工作动机</li>
+      </ul>
+    </div>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 关键特点</div>
+      <ul class="kl">
+        <li>成就需要不是天生就有的，<span class="kw3">可以通过教育和培训培养</span></li>
+        <li>更适合于对<span class="kw">企业家</span>的研究（有别于马斯洛ERG的普遍适用性）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SEC 3: 过程型激励理论 ════ -->
+<div class="section-title" id="sec3">
+  <div class="sec-num">11.2续</div>
+  <h2>过程型激励理论</h2>
+  <span class="page-ref">P361–364</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-08</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">弗鲁姆期望理论</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心公式</span>
+        <span class="badge badge-page">📄 P362</span>
+        <span class="badge badge-exam">名词解释 / 简答 / 计算</span>
+        <span class="badge badge-year">2018·2021·2024</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 理论来源</div>
+      <p>美国耶鲁大学教授、心理学家<span class="kw">维克托·弗鲁姆（Victor H. Vroom）</span>首先提出。又称"<span class="kw">效价-手段-期望理论</span>"。</p>
+    </div>
+    <div class="formula-box">
+      <div style="font-size:14px;color:rgba(255,255,255,.7);margin-bottom:8px;">期望理论核心公式</div>
+      <div class="formula">激励力 = 期望值 × 效价</div>
+      <div class="formula-note">激励力（积极性调动程度）= 期望值（达到目标的把握程度）× 效价（目标对满足个人需要的价值）</div>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📌 三种关系（期望理论框架）</div>
+      <div class="flow">
+        <div class="flow-step"><div class="fs-title">个人努力</div><div class="fs-body">努力→绩效的可能性（期望值1）</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-title">个人绩效</div><div class="fs-body">绩效→奖励的程度（期望值2）</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-title">组织奖励</div><div class="fs-body">奖励满足个人目标的程度（效价）</div></div>
+      </div>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">📌 HRM应用</div>
+      <ul class="kl">
+        <li>绩效管理：制定切实可行的绩效目标；及时进行绩效反馈</li>
+        <li>薪酬管理：根据绩效考核及时给予奖励；设计个性化报酬体系</li>
+      </ul>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🌟 小学生版比喻</div>
+      <p>期望理论就像："如果我努力学习（期望值：我认为能考好），考了100分老师会奖励我（效价：奖励对我有多重要），那我就很有动力学习！"两个条件缺一不可——觉得考不好，或者奖励没意思，都没动力。</p>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-09</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">亚当斯公平理论</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心公式</span>
+        <span class="badge badge-page">📄 P363</span>
+        <span class="badge badge-exam">名词解释 / 简答 / 案例</span>
+        <span class="badge badge-year">2019·2022·2025</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 理论来源</div>
+      <p>美国心理学家<span class="kw">亚当斯（J.S. Adams）</span>于20世纪60年代首先提出，主要讨论<span class="kw">报酬的公平性对人们工作积极性的影响</span>。</p>
+    </div>
+    <div class="formula-box">
+      <div style="font-size:14px;color:rgba(255,255,255,.7);margin-bottom:8px;">公平理论核心公式</div>
+      <div class="formula">Qp / Ip = Qx / Ix</div>
+      <div class="formula-note">Qp=自己的报酬 / Ip=自己的投入 / Qx=参照系报酬 / Ix=参照系投入<br>左＝右：公平感 → 激励有效 ｜ 左＜右：不公平 → 降低努力 ｜ 左＞右：暂满足→自我平衡后恢复常态</div>
+    </div>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 心理偏差</div>
+      <p>个人往往会<span class="kw">过高估计自己的投入与他人的报酬</span>，而过低估价自己的报酬与他人的投入——这是公平感知的常见偏差。</p>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">📌 HRM应用：薪酬公平三维度</div>
+      <ul class="kl">
+        <li><span class="kw">内部公平</span>：组织内部不同职位间薪酬的相对公平性</li>
+        <li><span class="kw">外部公平</span>：与同行业/同地区企业薪酬水平的比较</li>
+        <li><span class="kw">自我公平</span>：员工感知到自己付出与所得相称</li>
+      </ul>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🌟 小学生版比喻</div>
+      <p>班里两个同学做了同样多的值日，老师却给A同学多发了奖励贴纸，B同学就会觉得不公平，可能就不想做值日了。所以分配要让大家觉得"我做的和得到的，跟别人一样公平"。</p>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-10</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">洛克目标设置理论</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐⭐ 较高</span>
+        <span class="badge badge-page">📄 P363–364</span>
+        <span class="badge badge-exam">简答</span>
+        <span class="badge badge-year">2023笔试</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 核心观点</div>
+      <p><span class="kw">洛克与拉色曼</span>的<span class="kw">目标设置理论（Goal-setting Theory）</span>：指向目标的工作意向是工作激励的主要源泉。</p>
+      <ul class="kl">
+        <li>明确的目标能提高绩效</li>
+        <li><span class="kw">具体的、困难的目标</span>比"尽最大努力"的笼统目标效果更好</li>
+        <li>一旦接受了困难目标，会比容易的目标带来更高绩效</li>
+        <li>参与设置目标（参与式）可提高目标可接受性，困难目标更容易被员工接受</li>
+      </ul>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">📌 HRM应用（绩效管理）</div>
+      <ul class="kl">
+        <li>①目标必须具体、明确</li>
+        <li>②目标要有一定难度</li>
+        <li>③制定目标时让员工共同参与，使其认同和接受</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SEC 4: 强化理论 ════ -->
+<div class="section-title" id="sec4">
+  <div class="sec-num">11.2续</div>
+  <h2>行为改造型理论：强化理论</h2>
+  <span class="page-ref">P364–366</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-11</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">斯金纳强化理论（四种强化类型）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高频考察</span>
+        <span class="badge badge-page">📄 P364–365</span>
+        <span class="badge badge-exam">名词解释 / 简答</span>
+        <span class="badge badge-year">2017·2020·2024</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 理论来源</div>
+      <p><span class="kw">强化理论（Reinforcement Theory）</span>由美国心理学家<span class="kw">斯金纳（B.F. Skinner）</span>首先提出。该理论几乎不涉及主观判断等内部心理过程，只讨论<span class="kw">刺激和行为的关系</span>。</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step"><div class="fs-title">刺激</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fs-title">反应/行为</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fs-title">后果</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="fs-title">未来反应</div></div>
+    </div>
+    <table class="ctable">
+      <thead><tr><th>强化类型</th><th>机制</th><th>作用</th><th>应用示例</th></tr></thead>
+      <tbody>
+        <tr><td><span class="kw2">正强化</span></td><td>对期望行为提供奖励</td><td>行为得到强化加强</td><td>表扬、奖金、晋升、挑战性工作；<strong>间断不确定的正强化激励效果更大</strong></td></tr>
+        <tr><td><span class="kw">负强化</span></td><td>规定不符合要求的行为将受惩罚</td><td>员工自我约束，规避负面结果</td><td>考勤规定、操作规程；是一种事前规避</td></tr>
+        <tr><td><span class="kwr">惩罚</span></td><td>对不符合目标的行为施以惩罚</td><td>行为削弱直至消失</td><td>扣奖金、批评、开除；应主要采用连续方式</td></tr>
+        <tr><td><span class="kw3">忽视</span></td><td>对不符合要求的行为冷处理</td><td>无为而治，行为自然消退</td><td>对员工不当行为不予理会，行为逐渐消失</td></tr>
+      </tbody>
+    </table>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 管理原则</div>
+      <ul class="kl">
+        <li>重点放在<span class="kw3">积极的正强化</span>，而不是简单的惩罚</li>
+        <li>惩罚虽然表面效果较快，但作用通常是暂时的，且对员工心理易产生不良副作用</li>
+        <li>四种强化应<span class="kw">配合起来使用</span></li>
+      </ul>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🌟 小学生版比喻</div>
+      <p>正强化=做好事得小红花；负强化=知道不按时交作业会被罚所以提前交；惩罚=犯错扣分；忽视=同学捣乱老师不理他，他慢慢就不捣乱了。</p>
+    </div>
+    <div class="block block-memory">
+      <div class="block-label">🔑 助记口诀</div>
+      <p><strong>"正负罚忽"</strong>：<span class="kw2">正</span>强化 → <span class="kw">负</span>强化 → <span class="kwr">罚</span>（惩罚）→ <span class="kw3">忽</span>（忽视）</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SEC 5: 综合激励理论 ════ -->
+<div class="section-title" id="sec5">
+  <div class="sec-num">11.2续</div>
+  <h2>综合激励理论</h2>
+  <span class="page-ref">P366–367</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-12</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">勒温场动力理论 & 波特-劳勒综合激励模型</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐⭐ 较高</span>
+        <span class="badge badge-page">📄 P366–367</span>
+        <span class="badge badge-exam">简答 / 论述</span>
+        <span class="badge badge-year">2021·2023</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="theory-grid">
+      <div class="theory-card">
+        <div class="tc-label">早期综合激励</div>
+        <div class="tc-title">勒温场动力理论</div>
+        <div class="formula-box" style="padding:14px;">
+          <div class="formula" style="font-size:16px;">B = f(P × E)</div>
+          <div class="formula-note" style="font-size:12px;">B=行为方向和向量；P=个人内部动力；E=环境刺激</div>
+        </div>
+        <p style="font-size:13px;margin-top:8px;">若P=0，外部刺激不起作用；若P为负，外部刺激可能产生相反效果</p>
+      </div>
+      <div class="theory-card">
+        <div class="tc-label">波特-劳勒模型 1968</div>
+        <div class="tc-title">综合激励变量关系</div>
+        <div class="flow" style="margin:8px 0;">
+          <div class="flow-step" style="min-width:70px;font-size:11px;padding:8px;"><div class="fs-title" style="font-size:12px;">激励</div></div>
+          <div class="flow-arrow" style="font-size:14px;">→</div>
+          <div class="flow-step" style="min-width:70px;font-size:11px;padding:8px;"><div class="fs-title" style="font-size:12px;">努力</div></div>
+          <div class="flow-arrow" style="font-size:14px;">→</div>
+          <div class="flow-step" style="min-width:70px;font-size:11px;padding:8px;"><div class="fs-title" style="font-size:12px;">绩效</div></div>
+          <div class="flow-arrow" style="font-size:14px;">→</div>
+          <div class="flow-step" style="min-width:70px;font-size:11px;padding:8px;"><div class="fs-title" style="font-size:12px;">满足</div></div>
+        </div>
+        <p style="font-size:13px;">满足感反馈为新激励；绩效还取决于能力和任务理解</p>
+      </div>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📌 波特-劳勒模型四个关键变量</div>
+      <ul class="kl">
+        <li><span class="kw">努力程度</span>：取决于报酬价值主观看法 × 努力获得报酬的可能性（正比关系）</li>
+        <li><span class="kw">工作绩效</span>：取决于努力程度 + 员工能力 + 对任务的理解程度</li>
+        <li><span class="kw">工作报酬</span>：内在报酬 + 外在报酬（共同影响满足感）</li>
+        <li><span class="kw">满足感</span>：实际结果≥预期→满足；实际结果&lt;预期→不满</li>
+      </ul>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试延伸：三类激励理论的互补关系</div>
+      <ul class="kl">
+        <li>内容型：告诉我们人有哪些需要，激励=满足需要的过程</li>
+        <li>过程型：把实现企业目标与满足个人需要统一，使员工出现企业期望行为</li>
+        <li>行为改造型：通过强化物使员工的良好行为持续下去</li>
+        <li>综合型：波特-劳勒整合以上理论，帮助管理者综合运用激励理论</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SEC 6: 激励体系 ════ -->
+<div class="section-title" id="sec6">
+  <div class="sec-num">11.3</div>
+  <h2>激励体系</h2>
+  <span class="page-ref">P367–372</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-13</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">分层次员工激励体系</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高频</span>
+        <span class="badge badge-page">📄 P367–372</span>
+        <span class="badge badge-exam">论述 / 案例</span>
+        <span class="badge badge-year">2018·2023·2025</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📌 激励体系构成</div>
+      <p>激励体系设计是对各种激励要素进行<span class="kw">选择、组合及优化</span>的过程。</p>
+      <ul class="kl">
+        <li><span class="kw3">短期激励因素</span>：工资、奖金、福利、津贴、晋升、培训、精神鼓励</li>
+        <li><span class="kw3">长期激励因素</span>：红利、股票期权等</li>
+      </ul>
+    </div>
+    <table class="ctable">
+      <thead><tr><th>员工层次</th><th>需求特点</th><th>主要激励方式</th></tr></thead>
+      <tbody>
+        <tr><td><strong>董事会·经理层</strong>（高管）</td><td>需求层次较高：地位、荣誉、成就感</td><td>经营者持股、股票期权、延迟报酬计划、在职消费、带薪休假、培训进修、个人荣誉</td></tr>
+        <tr><td><strong>中层管理者</strong></td><td>承受双重压力，重视自主空间</td><td>充分授权、业绩工资（平均收入<span class="kw">5~10倍</span>）、年终奖励、在职培训、工作轮调</td></tr>
+        <tr><td><strong>科技员工</strong></td><td>专业性强，重视成果认可，不善人际交往</td><td>环境激励、技术入股、科技成果奖、科技攻关奖、技术革新奖、研究基金</td></tr>
+        <tr><td><strong>一般员工</strong></td><td>需求层次相对较低，易被激励</td><td>参与战略决策、岗位工资、技能等级补贴、员工持股、在职教育、便利设施服务</td></tr>
+      </tbody>
+    </table>
+    <div class="block block-analogy">
+      <div class="block-label">🌟 小学生版比喻</div>
+      <p>就像学校里不同年级的奖励不一样：小学生喜欢小红花贴纸；初中生更在意成绩排名；高中生需要老师帮忙联系好大学；大学生想要实习机会和研究经费。激励要"因人施策"！</p>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-14</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">激励体系设计原则与流程</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐⭐ 较高</span>
+        <span class="badge badge-page">📄 P372</span>
+        <span class="badge badge-exam">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📌 设计原则（五原则）</div>
+      <ul class="kl">
+        <li>① <span class="kw">以企业发展战略为核心</span>：鼓励符合战略的行为，将战略目标转化为员工直接压力和动力</li>
+        <li>② <span class="kw">以提升企业效益为根本目标</span>：鼓励真正创造效益的行为，增强员工责任感和使命感</li>
+        <li>③ <span class="kw">符合社会整体价值观和员工个人发展需要</span></li>
+        <li>④ <span class="kw">以分配制度为主体</span>：将诱导因素与目标体系连接</li>
+        <li>⑤ <span class="kw">激励机制运行富有效率</span>：效率准则——相同目标取低成本，相同成本取高目标实现</li>
+      </ul>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📌 设计流程（五步骤）</div>
+      <div class="flow">
+        <div class="flow-step"><div class="fs-num">STEP1</div><div class="fs-title">审视现有制度</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-num">STEP2</div><div class="fs-title">分析激励效用</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-num">STEP3</div><div class="fs-title">找出制度缺损</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-num">STEP4</div><div class="fs-title">优化完善设计</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step"><div class="fs-num">STEP5</div><div class="fs-title">运行反馈检查</div></div>
+      </div>
+    </div>
+    <div class="quote"><p>"<mark>人人需激励、事事要激励、处处有激励</mark>。只有这样，才能有效解决企业运作的动力源问题。"（P371）</p></div>
+  </div>
+</div>
+
+<!-- ════ SEC 7: 股权激励 ════ -->
+<div class="section-title" id="sec7">
+  <div class="sec-num">11.4</div>
+  <h2>股权激励</h2>
+  <span class="page-ref">P372–376</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-15</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">股权激励：渊源、类型与机制设计</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高频</span>
+        <span class="badge badge-page">📄 P372–376</span>
+        <span class="badge badge-exam">论述 / 案例</span>
+        <span class="badge badge-year">2019·2021·2023·2025</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 产生背景与渊源</div>
+      <p>传统薪酬体系（基本工资+年度奖金）激励长期效果不理想，针对核心管理团队和业务人才，即期薪酬会增加控制成本和道德风险。为降低<span class="kw">职业经理人道德风险</span>、激励核心人才，<span class="kw">股权激励</span>模式应运而生。</p>
+      <p style="margin-top:8px;">历史最早追溯到<span class="kw3">1952年美国辉瑞（Pfizer）制药公司</span>的激励计划。（P373）</p>
+    </div>
+    <details>
+      <summary>📋 股权激励六大类型（点击展开）</summary>
+      <div class="details-body">
+        <table class="ctable">
+          <thead><tr><th>类型</th><th>含义</th><th>适用对象</th></tr></thead>
+          <tbody>
+            <tr><td><span class="kw">激励性股票期权</span></td><td>可推迟税收，按资本利得税率纳税（美国）；由限制性股票期权发展而来</td><td>高管和技术骨干</td></tr>
+            <tr><td><span class="kw">员工股票购买计划</span></td><td>以低于市场价格购买本公司股票；通过扣工资比例支付</td><td>普通员工（更多使用）</td></tr>
+            <tr><td><span class="kw">非法定股票期权</span></td><td>美国运用最广；不受税务法则约束，方案设计灵活</td><td>灵活适用</td></tr>
+            <tr><td><span class="kw2">虚拟股票期权</span></td><td>没有所有权，享有价格升值收益和股票<strong>分红权</strong></td><td>经营者</td></tr>
+            <tr><td><span class="kw2">股票增值权</span></td><td>享有价格上升收益，<strong>不享有分红</strong>（区别于虚拟股票）</td><td>经营者</td></tr>
+            <tr><td><span class="kw2">业绩股票</span></td><td>完成年度业绩目标后赠予股票；一定年限后才可兑现</td><td>激励对象</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+    <details>
+      <summary>⚙️ 股权激励机制设计六要素（点击展开）</summary>
+      <div class="details-body">
+        <ul class="kl">
+          <li><span class="kw">① 激励对象</span>：传统以经营者为主；现扩大至普通雇员、董事、基金管理人</li>
+          <li><span class="kw">② 购股规定</span>：购买价格（参照市场价）、期限（即期/远期）、数量及是否允许放弃购股</li>
+          <li><span class="kw">③ 售股规定</span>：出售价格、数量、期限（规定一定期限后方可出售，以关注长期利益）</li>
+          <li><span class="kw">④ 权利义务</span>：分红收益权、股票表决权、承担股权贬值风险的规定</li>
+          <li><span class="kw">⑤ 股权管理</span>：管理方式、股权获得来源（购买/奖励/技术入股/管理入股/岗位持股）、股权激励占总收入比例</li>
+          <li><span class="kw">⑥ 操作方式</span>：是否发生实际股权转让、股票来源（回购/增发/库存）</li>
+        </ul>
+      </div>
+    </details>
+    <div class="block block-analogy">
+      <div class="block-label">🌟 小学生版比喻</div>
+      <p>股权激励就像学校给优秀的班长一份"未来合伙人协议"：现在先给你一张入股凭证，等5年后学校赚了更多钱，你可以按凭证分红——这样班长就会认真想着让学校越来越好，而不只顾眼前的薪水！</p>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答思路</div>
+      <p>问"为什么要实施股权激励"→ 从委托-代理理论切入：解决所有者与经营者利益不一致问题，通过持股使经理人与股东利益趋于一致，降低代理成本，激励长期绩效导向。股权激励实质上是让代理人转变为合伙者。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SEC 8: 压力-动力机制 ════ -->
+<div class="section-title" id="sec8">
+  <div class="sec-num">11.5</div>
+  <h2>激励压力-动力机制</h2>
+  <span class="page-ref">P376–380</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">K-16</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">激励压力机制与六大动力原理</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐⭐ 较高</span>
+        <span class="badge badge-page">📄 P376–380</span>
+        <span class="badge badge-exam">论述 / 案例</span>
+        <span class="badge badge-year">2022复试</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 压力势效应</div>
+      <p><span class="kw">压力势效应</span>：行为的产生是主体蕴含能量散发的结果。压力→心理不平衡→内在压力（奋进/对抗/消极/破坏的动因）→能量聚积→权衡利弊→行为。</p>
+      <p style="margin-top:8px;">压力链：<span class="kw">外部/内部压力 → 心理不平衡 → 内在压力 → 行为</span></p>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📌 六大动力原理</div>
+      <table class="ctable">
+        <thead><tr><th>动力原理</th><th>核心思想</th><th>代表</th></tr></thead>
+        <tbody>
+          <tr><td><span class="kw">欲望动力</span></td><td>布登勃洛克式：欲望满足→新欲望产生→新动力；要引导欲望正确方向（否则"富不出三代"）</td><td>托马斯·曼小说案例</td></tr>
+          <tr><td><span class="kw">情欲动力</span></td><td>12种根本情欲推动3个目的；按劳分配、自由组合、精神鼓励</td><td>法国傅里叶</td></tr>
+          <tr><td><span class="kw">生存动力</span></td><td>人类一切行为受"生存"支配；从自身→家庭→群体→人类最佳生存</td><td>哈伯德</td></tr>
+          <tr><td><span class="kw">自主动力</span></td><td>自主意识状态下释放最大潜能；联产承包责任制成功原因；责权利一体化</td><td>中国农村改革案例</td></tr>
+          <tr><td><span class="kw">目标动力</span></td><td>F=V•E（弗隆）；伟大的毅力只为伟大目的产生；需建立目标网络体系</td><td>弗隆、洛克</td></tr>
+          <tr><td><span class="kw">群体动力</span></td><td>B=f(P,E)；1+1>2的合动力；驴子拉重实验（9000+8000=<span class="kw3">30000磅</span>）</td><td>卢因群体动力论</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="block block-definition">
+      <div class="block-label">📌 压力-动力机制设计三路径</div>
+      <ul class="kl">
+        <li><span class="kw">① 工作压力势</span>：营造竞争态势→员工紧迫感和成就欲望；晋升与淘汰制度是基础</li>
+        <li><span class="kw">② 晋升通道设计</span>：横向通道（跨岗/跨工种）+ 纵向通道（升降），通道双向畅通</li>
+        <li><span class="kw">③ 淘汰制度</span>：有晋升就有淘汰；建立淘汰制度使员工不敢松懈，促进内部合理竞争氛围形成</li>
+      </ul>
+    </div>
+    <div class="block block-analogy">
+      <div class="block-label">🌟 小学生版比喻（群体动力经典案例）</div>
+      <p>驴子拉重实验：两头驴单独分别能拉9000磅和8000磅，但合适地组合在一起竟能拉30000磅——团队合力远超个人之和！1+1>2，这就是群体动力的神奇之处。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SEC 9: 真题汇总 ════ -->
+<div class="section-title" id="sec9">
+  <div class="sec-num">真题</div>
+  <h2>历年真题汇总（2016–2025）</h2>
+  <span class="page-ref">CSU企业管理学硕</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">EXAM</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">激励章节历年考察情况</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 持续高频</span>
+        <span class="badge badge-exam">名词解释 / 简答 / 论述 / 案例</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <thead><tr><th>年份</th><th>考察内容</th><th>题型</th><th>涉及知识点</th></tr></thead>
+      <tbody>
+        <tr><td>2016</td><td>马斯洛需要层次理论与HRM应用</td><td>简答</td><td>K-04</td></tr>
+        <tr><td>2017</td><td>赫茨伯格双因素理论；强化理论四类型</td><td>名词解释+简答</td><td>K-06, K-11</td></tr>
+        <tr><td>2018</td><td>激励定义内涵；期望理论公式应用</td><td>名词解释+简答</td><td>K-01, K-08</td></tr>
+        <tr><td>2019</td><td>马斯洛理论；公平理论在薪酬中的应用；股权激励案例分析</td><td>论述+案例</td><td>K-04, K-09, K-15</td></tr>
+        <tr><td>2020</td><td>激励机理（需要-动机-行为）；双因素理论；强化理论</td><td>简答</td><td>K-03, K-06, K-11</td></tr>
+        <tr><td>2021</td><td>期望理论三种关系；波特-劳勒模型；股权激励类型</td><td>简答+论述</td><td>K-08, K-12, K-15</td></tr>
+        <tr><td>2022</td><td>激励定义；公平理论公式；激励压力-动力机制</td><td>名词解释+论述</td><td>K-01, K-09, K-16</td></tr>
+        <tr><td>2023</td><td>分层次激励体系（四类员工）；目标设置理论；ERG理论</td><td>论述+简答</td><td>K-13, K-10, K-05</td></tr>
+        <tr><td>2024</td><td>ERG理论与马斯洛对比；强化理论管理应用；期望理论</td><td>对比分析</td><td>K-05, K-11, K-08</td></tr>
+        <tr><td>2025</td><td>双因素理论实践；公平理论与薪酬设计；股权激励机制设计</td><td>案例论述</td><td>K-06, K-09, K-15</td></tr>
+      </tbody>
+    </table>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 预测考察方向（2026复试）</div>
+      <ul class="kl">
+        <li>🔴 <strong>极高概率：</strong>双因素理论（激励/保健因素）区分与实践应用；马斯洛与ERG对比分析</li>
+        <li>🔴 <strong>极高概率：</strong>期望理论公式应用；公平理论薪酬三维度设计</li>
+        <li>🟡 <strong>较高概率：</strong>波特-劳勒综合模型；分层次激励体系（四类员工）</li>
+        <li>🟡 <strong>较高概率：</strong>股权激励机制设计六要素；激励压力-动力机制</li>
+        <li>🟢 <strong>一般概率：</strong>强化理论四类型；成就需要理论；目标设置理论</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SEC 10: 串联总结 ════ -->
+<div class="section-title" id="sec10">
+  <div class="sec-num">串联</div>
+  <h2>本章知识终极串联</h2>
+</div>
+
+<div class="quick-review">
+  <h3>⚡ 30秒超速复习模块</h3>
+  <div class="qr-item"><div class="qr-num">1</div><div class="qr-text">激励定义：影响需要/动机→强化引导改变行为的反复过程；四要素：目的性、作用需要/动机、持续性、多样性</div></div>
+  <div class="qr-item"><div class="qr-num">2</div><div class="qr-text">马斯洛5层（生安爱尊实）：低层=刚性强持续差；高层=弹性大持续强；只有未满足的需要才激励</div></div>
+  <div class="qr-item"><div class="qr-num">3</div><div class="qr-text">双因素：激励因素=工作本身（成就/责任）→满意；保健因素=工作环境（薪酬/关系）→消除不满；满意≠不满意对立面</div></div>
+  <div class="qr-item"><div class="qr-num">4</div><div class="qr-text">期望理论：激励力=期望值×效价；三关系：努力→绩效→奖励→个人目标</div></div>
+  <div class="qr-item"><div class="qr-num">5</div><div class="qr-text">公平理论：Qp/Ip=Qx/Ix；三维度：内部/外部/自我公平</div></div>
+  <div class="qr-item"><div class="qr-num">6</div><div class="qr-text">强化理论四类（正负罚忽）：正强化（奖励期望行为）、负强化（规避事前）、惩罚（抑制行为）、忽视（冷处理）</div></div>
+  <div class="qr-item"><div class="qr-num">7</div><div class="qr-text">分层激励：高管→股权/持股；中层→授权+业绩工资（5~10倍）；科技员工→环境+成果奖；一般员工→参与+岗位工资</div></div>
+  <div class="qr-item"><div class="qr-num">8</div><div class="qr-text">股权激励：1952辉瑞起源；六类型（激励性期权/购买计划/非法定/虚拟股票/增值权/业绩股票）；机制设计六要素</div></div>
+  <div class="qr-item"><div class="qr-num">9</div><div class="qr-text">压力-动力：六大原理（欲望/情欲/生存/自主/目标/群体）；驴子实验：9000+8000=30000磅（群体动力1+1>2）</div></div>
+</div>
+
+<div class="summary-box">
+  <h3>🎤 背诵版总结（适合复试口述）</h3>
+  <p style="margin-bottom:12px;font-size:14px;">第十一章"激励"是人力资源管理的核心内容，可从五个层面展开：</p>
+  <ul class="kl">
+    <li><strong>第一，激励的基本内涵：</strong>激励是通过影响人的内在需要或动机，强化、引导或改变行为的持续过程，其机理是需要→动机→行为的循环链条。</li>
+    <li style="margin-top:8px;"><strong>第二，内容型激励理论：</strong>以马斯洛需要层次（生安爱尊实）和赫茨伯格双因素（激励因素≠保健因素）为核心，告诉我们人有哪些需要。</li>
+    <li style="margin-top:8px;"><strong>第三，过程型激励理论：</strong>弗鲁姆期望理论（激励力=期望值×效价）和亚当斯公平理论（Qp/Ip=Qx/Ix），关注从动机到行为的心理过程。</li>
+    <li style="margin-top:8px;"><strong>第四，行为改造型与综合型：</strong>斯金纳强化理论（正强化/负强化/惩罚/忽视）；波特-劳勒综合模型（激励→努力→绩效→满足→反馈）整合以上理论。</li>
+    <li style="margin-top:8px;"><strong>第五，激励体系与实践：</strong>分层次设计激励体系（高管/中层/科技人员/一般员工）；股权激励作为长期激励利器（1952年辉瑞起源，六类型六要素）；压力-动力机制（六大动力原理）提供系统设计框架。</li>
+  </ul>
+</div>
+
+<!-- 激励理论对比表 -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">CMP</div>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">激励理论综合对比表（必掌握）</div>
+      <div class="kcard-meta"><span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必掌握</span></div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <thead><tr><th>理论</th><th>代表人物</th><th>核心公式/模型</th><th>理论类型</th><th>HRM应用重点</th></tr></thead>
+      <tbody>
+        <tr><td>需要层次理论</td><td>马斯洛</td><td>5层金字塔（生安爱尊实）</td><td>内容型</td><td>识别员工需求层次，差异化激励</td></tr>
+        <tr><td>ERG理论</td><td>阿尔德弗</td><td>E(生存)-R(关系)-G(成长)</td><td>内容型（修正）</td><td>允许同时多层次需要，受挫回归</td></tr>
+        <tr><td>双因素理论</td><td>赫茨伯格</td><td>激励因素（工作内容）vs 保健因素（工作环境）</td><td>内容型</td><td>薪酬是保健，工作设计是激励</td></tr>
+                <tr><td>成就需要理论</td><td>麦克利兰</td><td>成就/权力/归属需要；nAch最重要</td><td>内容型</td><td>对高nAch者：挑战性任务+反馈</td></tr>
+        <tr><td>期望理论</td><td>弗鲁姆</td><td>M=V×E；三种关系链条</td><td>过程型</td><td>提高绩效→奖励关联度</td></tr>
+        <tr><td>公平理论</td><td>亚当斯</td><td>Qp/Ip vs Qx/Ix；内外自三维度</td><td>过程型</td><td>公平感知管理；三维薪酬公平</td></tr>
+        <tr><td>目标设置理论</td><td>洛克</td><td>SMART原则；目标难度适中</td><td>过程型</td><td>MBO实践；明确具体目标设定</td></tr>
+        <tr><td>强化理论</td><td>斯金纳</td><td>正强化/负强化/惩罚/忽视</td><td>行为改造型</td><td>奖惩制度设计；行为塑造</td></tr>
+        <tr><td>波特-劳勒模型</td><td>波特、劳勒</td><td>综合模型：激励→努力→绩效→满足→反馈</td><td>综合型</td><td>绩效与奖励的全链路管理</td></tr>
+      </tbody>
+    </table>
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 易混辨析：激励因素 vs 保健因素</div>
+      <table class="ctable">
+        <thead><tr><th>维度</th><th>激励因素</th><th>保健因素</th></tr></thead>
+        <tbody>
+          <tr><td>内容</td><td>工作本身（成就感、晋升、责任感、认可）</td><td>工作环境（薪酬、人际、监管、政策）</td></tr>
+          <tr><td>有时</td><td>→ 产生满意感（激励效果）</td><td>→ 消除不满意（维持效果）</td></tr>
+          <tr><td>无时</td><td>→ 没有满意感，不一定不满意</td><td>→ 产生强烈不满意</td></tr>
+          <tr><td>HRM含义</td><td>工作丰富化、晋升通道设计</td><td>保障底线薪酬、改善工作环境</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<!-- ════ SEC 11: 自我检测 ════ -->
+<div class="main">
+<div class="section-title" id="sec11">
+  <div class="sec-num">检测</div>
+  <h2>课后自我检测（含历年真题与预测题）</h2>
+  <span class="page-ref">共 10 题</span>
+</div>
+
+<div class="quiz">
+  <p style="font-size:13px;color:#888;margin-bottom:20px;">📌 建议先独立作答，再点击「查看思路」。答题框架供参考，复试时请结合教材原句。</p>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·01 【名词解释 · 高频】 什么是激励？请结合颜爱民教材给出准确定义。</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>教材定义：</strong>激励是通过影响人的内在需要或动机，强化、引导或改变人们行为的反复过程。<br><br>
+      <strong>四要素：</strong>①目的性（提高人员积极性、创造性）②作用于需要或动机 ③持续性（循环过程）④多样性（物质+精神）<br><br>
+      <strong>复试口诀：</strong>激励=影响需要→强化引导行为→持续多样循环
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·02 【简答 · 2016年真题】 简述马斯洛需要层次理论的主要内容，并说明其对人力资源管理的启示。</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>五层次：</strong>生理→安全→社交→尊重→自我实现（低层=刚性强+持续差；高层=弹性大+持续强）<br><br>
+      <strong>两个基本假设：</strong>①已满足的需要不激励；②人满足低层需要后追求高层<br><br>
+      <strong>HRM启示：</strong>①识别员工所处需求层次 ②差异化激励方案设计（低层→薪酬福利；高层→晋升授权）③动态调整激励措施<br><br>
+      <strong>局限性（加分点）：</strong>层次划分过于机械，实践中需求可同时存在；ERG理论对其修正：受挫回归；允许多层次并存
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·03 【名词解释+辨析 · 2017年真题】 什么是赫茨伯格双因素理论？激励因素与保健因素的本质区别是什么？</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>核心观点：</strong>影响工作满意度的因素分为两类，作用不同，不是一个连续体的两端<br><br>
+      <strong>激励因素：</strong>工作本身（成就感、认可、晋升、责任、工作兴趣）→有则产生满意感→激励效果<br><br>
+      <strong>保健因素：</strong>工作环境（薪酬、人际关系、公司政策、监督方式）→无则产生强烈不满→维持效果<br><br>
+      <strong>关键结论：</strong>满意的对立面是"没有满意"而非"不满意"；不满意的对立面是"没有不满意"而非"满意"<br><br>
+      <strong>HRM应用：</strong>薪酬是保健因素（只能消除不满）；真正激励要靠工作本身的意义感和成就感→工作丰富化
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·04 【简答 · 2018年、2021年真题】 简述弗鲁姆期望理论，说明三种关系对管理实践的意义。</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>公式：</strong>激励力（M）= 期望值（E）× 效价（V）<br><br>
+      <strong>三种关系：</strong><br>
+      ①努力→绩效（E-P关系）：员工相信努力能带来绩效 → 管理者要提供充足资源和培训<br>
+      ②绩效→奖励（P-O关系）：员工相信绩效能换来期望奖励 → 建立明确绩效考核与奖惩连接<br>
+      ③奖励→个人目标（O-V关系）：奖励对个人有吸引力 → 差异化奖励，满足不同员工需求<br><br>
+      <strong>管理启示：</strong>三链条任何一环断裂，激励效果归零。管理者必须同时管好这三重关联
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·05 【简答 · 2019年、2022年真题】 简述亚当斯公平理论的基本原理，并说明员工感知不公平时会采取哪些行为？</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>公式：</strong>Qp/Ip 对比 Qx/Ix（自己的产出/投入 对比 他人的产出/投入）<br><br>
+      <strong>三维公平：</strong>内部公平（与内部同事比）、外部公平（与外部同类职位比）、自我公平（与自身过去比）<br><br>
+      <strong>不公平时的行为：</strong><br>
+      ①减少自身投入（消极怠工）<br>
+      ②增加自身产出要求（争取加薪）<br>
+      ③重新认知比较对象（换参照对象）<br>
+      ④寻求另一份工作（跳槽离职）<br>
+      ⑤改变比较标准（说服自己）<br><br>
+      <strong>HRM启示：</strong>薪酬设计要注重三维公平感知管理；及时沟通薪酬逻辑，减少信息不对称
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·06 【简答 · 2017年、2020年真题】 强化理论有哪四种强化类型？各在管理中如何运用？</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>四类型（口诀：正负罚忽）：</strong><br>
+      ①<span style="color:#1a56db;font-weight:700;">正强化</span>：对期望行为给予奖励，增加行为频率 → 奖金、表扬、晋升<br>
+      ②<span style="color:#0e7c6a;font-weight:700;">负强化</span>：撤销不利刺激以增加期望行为 → 完成目标则取消额外检查<br>
+      ③<span style="color:#dc2626;font-weight:700;">惩罚</span>：对不期望行为施以不利结果，减少行为频率 → 警告、降级、罚款<br>
+      ④<span style="color:#888;font-weight:700;">忽视（消退）</span>：对不期望行为不做任何回应，使其自然消退 → 对无关紧要的抱怨不响应<br><br>
+      <strong>管理要点：</strong>以正强化为主；惩罚只能抑制行为，不能消除；忽视适合处理轻微问题行为
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·07 【对比分析 · 2024年真题改编】 比较马斯洛需要层次理论与阿尔德弗ERG理论，说明后者对前者的发展与修正。</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>共同点：</strong>都是内容型激励理论，关注人类基本需要的分类<br><br>
+      <strong>马斯洛（5层）：</strong>生理→安全→社交→尊重→自我实现；严格层级顺序，低层满足才追高层<br><br>
+      <strong>ERG（3类）：</strong>E（生存/Existence）=生理+安全；R（关系/Relatedness）=社交+尊重外在部分；G（成长/Growth）=尊重内在+自我实现<br><br>
+      <strong>ERG的三大修正：</strong><br>
+      ①允许同时追求多层次需要（不严格按序）<br>
+      ②<span style="color:#dc2626;font-weight:700;">受挫回归</span>：高层需要受挫时，退回追求低层需要（马斯洛没有此机制）<br>
+      ③更灵活，更贴近实际管理情境<br><br>
+      <strong>结论：</strong>ERG是马斯洛理论的简化与修正版，去掉了过于机械的层级限制
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·08 【论述 · 2021年、2023年真题】 论述波特-劳勒综合激励模型，并说明其在设计人力资源管理体系中的应用价值。</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>模型结构（9个变量）：</strong><br>
+      激励力→努力→绩效（受能力/素质+角色认知影响）→奖励（外在奖励+内在奖励）→公平感→满足感→反馈→影响下次激励<br><br>
+      <strong>三大创新：</strong><br>
+      ①整合期望理论+公平理论+强化理论于一体<br>
+      ②明确提出"绩效导致满足"而非"满足导致绩效"（颠覆传统观念）<br>
+      ③引入内在奖励（成就感、自主感）与外在奖励（薪酬、晋升）的双轨机制<br><br>
+      <strong>HRM应用：</strong><br>
+      ①设计清晰的绩效→奖励连接机制（强化P-O关系）<br>
+      ②公平感知管理（确保内外部公平）<br>
+      ③既重视薪酬激励，又重视工作本身的内在激励设计<br>
+      ④能力培训保障努力→绩效转化率
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·09 【案例论述 · 2019年、2025年真题类型】 某科技公司的高级工程师薪酬已高于市场水平，但仍不断跳槽。请运用激励理论分析原因，并提出改进建议。</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>原因分析：</strong><br>
+      ①双因素理论：高薪属于保健因素（工作环境），只能消除不满意，不能产生真正满意感和激励效果；真正的激励因素（成就感、挑战性工作、自主权）未被满足<br>
+      ②马斯洛理论：工程师需求层次已到尊重和自我实现层，物质满足后追求精神层面的认可与成长<br>
+      ③期望理论：可能存在P-O或O-V关系断裂——努力与绩效连接不清晰，或奖励对该员工个人效价较低<br><br>
+      <strong>改进建议：</strong><br>
+      ①工作丰富化与授权：提供技术挑战性项目，给予更大自主权<br>
+      ②建立技术职级晋升通道（双通道：管理序列+技术序列）<br>
+      ③实施长期激励：股权期权绑定长期利益<br>
+      ④定期绩效反馈与职业发展规划辅导<br>
+      ⑤分层次激励：属科技员工类→以有挑战的工作环境+成果激励为主
+    </div>
+  </div>
+
+  <div class="quiz-item">
+    <div class="quiz-q">Q·10 【预测题 · 2026复试高概率】 什么是股权激励？请说明其主要类型及机制设计的六个要素，并分析股权激励能否解决委托-代理问题。</div>
+    <button class="quiz-btn" onclick="toggleAns(this)">查看思路</button>
+    <div class="quiz-a">
+      <strong>定义：</strong>通过给予经理人或员工股权（或未来购股权），使其分享企业剩余价值，从而将代理人利益与所有者利益捆绑，降低道德风险的长期激励机制。起源：1952年美国辉瑞制药公司。<br><br>
+      <strong>六类型：</strong>激励性股票期权、员工股票购买计划、非法定股票期权、虚拟股票（有分红）、股票增值权（无分红）、业绩股票<br><br>
+      <strong>机制设计六要素：</strong>①激励对象 ②购股规定 ③售股规定 ④权利义务 ⑤股权管理 ⑥操作方式<br><br>
+      <strong>能否解决委托-代理问题（辩证分析，加分）：</strong><br>
+      ✅ 有效方面：通过持股使代理人关注长期股价而非短期利润，减少利益背离<br>
+      ⚠️ 局限性：①股价受外部市场影响，不完全反映管理者努力；②可能导致操纵财务数据；③持有期限设计不当会失效；④在中国资本市场不成熟背景下，激励效果存在折扣<br><br>
+      <strong>结论：</strong>股权激励是解决委托代理问题的重要工具，但需要配套完善的公司治理制度（董事会监督+信息披露）才能发挥最大效果
+    </div>
+  </div>
+
+</div><!-- end .quiz -->
+
+</div><!-- end .main -->
+
+<div class="footer-bar">
+  📚 中南大学企业管理学硕复试笔记 · <strong>第十一章 激励</strong> · 基于颜爱民《人力资源管理》第3版 · P341–380 · 2016–2025真题整合版 · 生成日期：2026-03-09
+</div>
+
+<!-- ════ JAVASCRIPT ════ -->
+<script>
+// ── Night Mode ──
+function toggleNight(){
+  document.body.classList.toggle('night');
+  const btn=document.querySelector('.btn-night');
+  btn.textContent=document.body.classList.contains('night')?'☀️ 日间':'🌙 夜间';
+}
+
+// ── Back to Top ──
+function toTop(){window.scrollTo({top:0,behavior:'smooth'});}
+
+// ── Search ──
+let lastQuery='';
+// ── Search state ──
+var _srchMatches=[], _srchIdx=-1;
+function _srchEsc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function _srchClear(){
+  document.querySelectorAll('.highlight-search').forEach(function(el){
+    var p=el.parentNode;if(!p)return;
+    p.replaceChild(document.createTextNode(el.textContent),el);p.normalize();
+  });
+  _srchMatches=[];_srchIdx=-1;
+}
+function _srchActivate(){
+  _srchMatches.forEach(function(m,i){m.classList.toggle('hl-cur',i===_srchIdx);});
+  var el=_srchMatches[_srchIdx];
+  if(el){
+    var p=el.parentElement;
+    while(p){if(p.tagName==='DETAILS')p.open=true;p=p.parentElement;}
+    setTimeout(function(){
+      var rect=el.getBoundingClientRect();
+      window.scrollTo({top:Math.max(0,window.scrollY+rect.top-110),behavior:'smooth'});
+    },50);
+  }
+  var cnt=_srchMatches.length;
+  document.getElementById('searchCount').textContent=cnt>0?(_srchIdx+1)+' / '+cnt+' 处':'未找到';
+  var dis=cnt===0;
+  var pv=document.getElementById('srchPrev');if(pv)pv.disabled=dis;
+  var nx=document.getElementById('srchNext');if(nx)nx.disabled=dis;
+}
+function nextResult(){if(!_srchMatches.length)return;_srchIdx=(_srchIdx+1)%_srchMatches.length;_srchActivate();}
+function prevResult(){if(!_srchMatches.length)return;_srchIdx=(_srchIdx-1+_srchMatches.length)%_srchMatches.length;_srchActivate();}
+document.addEventListener('keydown',function(e){if(e.key==='F3'){e.preventDefault();if(e.shiftKey)prevResult();else nextResult();}});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

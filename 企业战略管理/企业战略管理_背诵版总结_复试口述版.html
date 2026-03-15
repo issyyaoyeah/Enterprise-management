@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>《企业战略管理》背诵版总结 · 复试口述版合集</title>
+<style>
+  /* ===== CSS Variables ===== */
+  :root {
+    --bg-primary: #f5f3ee;
+    --bg-secondary: #fffef9;
+    --bg-card: #ffffff;
+    --bg-nav: #2c2825;
+    --text-primary: #1a1814;
+    --text-secondary: #4a4540;
+    --text-muted: #7a756e;
+    --text-nav: #e8e3da;
+    --accent-1: #c84b31;
+    --accent-2: #2563a8;
+    --accent-3: #1a7a4a;
+    --accent-4: #8b4513;
+    --accent-5: #6b3fa0;
+    --accent-6: #b5640a;
+    --border-light: #e0dbd4;
+    --border-card: #d8d3cc;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.07);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+    --tag-bg: #fef3e8;
+    --tag-border: #f0c080;
+    --highlight-bg: #fff9e6;
+    --highlight-border: #f5d060;
+    --font-body: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  }
+
+  .dark-mode {
+    --bg-primary: #1a1814;
+    --bg-secondary: #211e1a;
+    --bg-card: #2a2520;
+    --bg-nav: #110f0e;
+    --text-primary: #ede8df;
+    --text-secondary: #c0b8ae;
+    --text-muted: #8a8078;
+    --text-nav: #e8e3da;
+    --accent-1: #e06050;
+    --accent-2: #4a90d9;
+    --accent-3: #3ab870;
+    --accent-4: #c47840;
+    --accent-5: #9a70d0;
+    --accent-6: #d08030;
+    --border-light: #3a3530;
+    --border-card: #48433c;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+    --tag-bg: #3a2e1a;
+    --tag-border: #7a5a20;
+    --highlight-bg: #2e2810;
+    --highlight-border: #8a7030;
+  }
+
+  /* ===== Reset & Base ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  html { scroll-behavior: smooth; font-size: 16px; }
+  
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.8;
+    transition: background 0.3s, color 0.3s;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ===== Fixed Nav ===== */
+  #top-nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--bg-nav);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 20px;
+    height: 56px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  .nav-brand {
+    color: #d4c9b8;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    margin-right: 20px;
+    flex-shrink: 0;
+  }
+
+  .nav-chapters {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-chapters::-webkit-scrollbar { display: none; }
+
+  .nav-ch {
+    color: #9a9088;
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .nav-ch:hover {
+    color: #e8e3da;
+    background: rgba(255,255,255,0.1);
+  }
+  .nav-ch.active {
+    color: #f0c060;
+    background: rgba(240,192,96,0.15);
+  }
+
+  .nav-controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .btn-icon {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #c0b8ae;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: var(--font-body);
+    transition: all 0.2s;
+  }
+  .btn-icon:hover {
+    background: rgba(255,255,255,0.15);
+    color: #e8e3da;
+  }
+
+  /* ===== Search Bar ===== */
+  
+  
+  #search-input {
+    flex: 1;
+    max-width: 500px;
+    border: 1px solid var(--border-card);
+    border-radius: 8px;
+    padding: 8px 14px;
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+  }
+  #search-input:focus { border-color: var(--accent-2); }
+  #search-count {
+    color: var(--text-muted);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .search-highlight {
+    background: #ffe066;
+    color: #1a1814;
+    border-radius: 2px;
+    padding: 0 2px;
+  }
+  .dark-mode .search-highlight { background: #8a7020; color: #ede8df; }
+
+  /* ===== Main Content ===== */
+  #main-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 80px 24px 80px;
+  }
+
+  /* ===== Hero Header ===== */
+  .hero {
+    text-align: center;
+    padding: 48px 0 40px;
+    border-bottom: 2px solid var(--border-light);
+    margin-bottom: 48px;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta-tag {
+    background: var(--tag-bg);
+    border: 1px solid var(--tag-border);
+    color: var(--text-secondary);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* ===== Chapter Card ===== */
+  .chapter-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 16px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .chapter-card:hover { box-shadow: var(--shadow-md); }
+
+  .chapter-header {
+    padding: 20px 28px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-light);
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .ch-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  .ch-info { flex: 1; }
+
+  .ch-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .ch-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .ch-toggle {
+    color: var(--text-muted);
+    font-size: 18px;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .chapter-card.open .ch-toggle { transform: rotate(180deg); }
+
+  /* ===== Chapter Body ===== */
+  .chapter-body {
+    display: none;
+    padding: 0;
+  }
+  .chapter-card.open .chapter-body { display: block; }
+
+  /* ===== Content sections ===== */
+  .content-section {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .content-section:last-child { border-bottom: none; }
+
+  /* Q&A style blocks */
+  .qa-block {
+    margin-bottom: 20px;
+  }
+  .qa-block:last-child { margin-bottom: 0; }
+
+  .qa-question {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 15px;
+    padding: 10px 14px;
+    background: var(--highlight-bg);
+    border-left: 4px solid var(--highlight-border);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 12px;
+  }
+
+  .qa-answer {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    padding: 0 4px;
+  }
+
+  /* Bullet points in content */
+  .point-list {
+    list-style: none;
+    padding: 0;
+  }
+  .point-list li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    border-bottom: 1px dashed var(--border-light);
+  }
+  .point-list li:last-child { border-bottom: none; }
+  .point-list li::before {
+    content: '▸';
+    position: absolute;
+    left: 4px;
+    color: var(--accent-1);
+    font-size: 12px;
+    top: 8px;
+  }
+
+  /* Highlight keywords */
+  .kw {
+    font-weight: 700;
+    color: var(--accent-1);
+  }
+  .kw-blue { font-weight: 700; color: var(--accent-2); }
+  .kw-green { font-weight: 700; color: var(--accent-3); }
+
+  /* Raw text content */
+  .raw-content {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    white-space: pre-wrap;
+    font-family: var(--font-body);
+  }
+
+  /* Section label */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border-light);
+    width: 100%;
+  }
+
+  /* Progress bar */
+  .chapter-progress {
+    height: 3px;
+  }
+
+  /* Chapter colors */
+  .color-1 { background: #c84b31; }
+  .color-2 { background: #2563a8; }
+  .color-3 { background: #1a7a4a; }
+  .color-4 { background: #8b6914; }
+  .color-5 { background: #6b3fa0; }
+  .color-6 { background: #b5400a; }
+  .color-7 { background: #1a5fa8; }
+  .color-8 { background: #2a8060; }
+  .color-9 { background: #a0402a; }
+  .color-10 { background: #3a3a8a; }
+  .color-11 { background: #5a2080; }
+
+  /* ===== Chapter index at top ===== */
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 13px;
+    transition: all 0.2s;
+  }
+  .toc-item:hover {
+    border-color: var(--accent-2);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .toc-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 900;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  /* ===== Return to top ===== */
+  #back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 28px;
+    background: var(--bg-nav);
+    color: var(--text-nav);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 900;
+  }
+  #back-to-top:hover { transform: translateY(-3px); }
+  #back-to-top.visible { display: flex; }
+
+  /* ===== Footer ===== */
+  .page-footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    color: var(--text-muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border-light);
+    line-height: 2;
+  }
+
+  /* ===== Expand all btn ===== */
+  .expand-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  .btn-expand {
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    color: var(--text-secondary);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-expand:hover {
+    border-color: var(--accent-2);
+    color: var(--text-primary);
+  }
+
+  /* Print */
+  @media print {
+    #top-nav, #back-to-top, 
+    #main-content { padding-top: 20px; }
+    .chapter-card { break-inside: avoid; }
+    .chapter-body { display: block !important; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-title { font-size: 22px; }
+    .chapter-header { padding: 16px 18px 14px; }
+    .content-section { padding: 18px 18px; }
+    #main-content { padding: 72px 14px 60px; }
+    .toc-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+
+/* ===== FLOATING SEARCH PILL ===== */
+#search-pill {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 9999;
+  background: #1e1e2e;
+  color: #e0e0e0;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+  font-family: 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all .25s ease;
+  overflow: hidden;
+  cursor: pointer;
+  /* collapsed: just the icon */
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  justify-content: center;
+}
+#search-pill.expanded {
+  width: 320px;
+  height: auto;
+  min-height: 44px;
+  padding: 8px 14px;
+  gap: 7px;
+  cursor: default;
+}
+#search-pill-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  line-height: 1;
+  user-select: none;
+}
+#search-pill.expanded #search-pill-icon { font-size: 15px; }
+#search-pill-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #e0e0e0;
+  font-size: 14px;
+  font-family: inherit;
+  min-width: 0;
+  display: none;
+}
+#search-pill.expanded #search-pill-input { display: block; }
+#search-pill-info {
+  font-size: 12px;
+  color: #aaa;
+  white-space: nowrap;
+  display: none;
+}
+#search-pill.expanded #search-pill-info { display: inline; }
+.pill-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 15px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  line-height: 1;
+  transition: color .15s, background .15s;
+  display: none;
+  flex-shrink: 0;
+}
+#search-pill.expanded .pill-btn { display: inline-block; }
+.pill-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+mark.pill-hl {
+  background: rgba(255,165,0,0.35);
+  color: inherit;
+  border-radius: 2px;
+  padding: 0 1px;
+}
+mark.pill-hl.pill-hl-active {
+  background: #ff8c00;
+  color: #000;
+  border-radius: 2px;
+  outline: 2px solid #ff8c00;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ===== Fixed Top Nav ===== -->
+<nav id="top-nav">
+  <span class="nav-brand">企业战略管理 · 背诵合集</span>
+  <div class="nav-chapters">
+    <a class="nav-ch" href="#ch1">第1章</a>
+    <a class="nav-ch" href="#ch2">第2章</a>
+    <a class="nav-ch" href="#ch3">第3章</a>
+    <a class="nav-ch" href="#ch4">第4章</a>
+    <a class="nav-ch" href="#ch5">第5章</a>
+    <a class="nav-ch" href="#ch6">第6章</a>
+    <a class="nav-ch" href="#ch7">第7章</a>
+    <a class="nav-ch" href="#ch8">第8章</a>
+    <a class="nav-ch" href="#ch9">第9章</a>
+    <a class="nav-ch" href="#ch10">第10章</a>
+    <a class="nav-ch" href="#ch11">第11章</a>
+  </div>
+  <div class="nav-controls">
+    
+    <button class="btn-icon" onclick="toggleDark()">🌙 夜间</button>
+  </div>
+</nav>
+
+<!-- Search Bar -->
+
+
+<!-- ===== Main ===== -->
+<div id="main-content">
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-eyebrow">中南大学 · 企业管理学硕复试备考</p>
+    <h1 class="hero-title">《企业战略管理》<br>背诵版总结 · 复试口述版合集</h1>
+    <p class="hero-subtitle">蓝海林主编 第二版 · 第1章 → 第11章 · 完整提取版</p>
+    <div class="hero-meta">
+      <span class="meta-tag">📚 共11章</span>
+      <span class="meta-tag">🎯 复试口述专用</span>
+      <span class="meta-tag">📅 生成日期：2026-03-13</span>
+      <span class="meta-tag">⭐ 原文提取 · 保留结构</span>
+    </div>
+  </div>
+
+  <!-- Quick Index -->
+  <div class="toc-grid">
+    <a href="#ch1" class="toc-item"><span class="toc-num color-1">01</span>战略管理导论</a>
+    <a href="#ch2" class="toc-item"><span class="toc-num color-2">02</span>企业战略管理者</a>
+    <a href="#ch3" class="toc-item"><span class="toc-num color-3">03</span>外部环境分析</a>
+    <a href="#ch4" class="toc-item"><span class="toc-num color-4">04</span>内部环境分析</a>
+    <a href="#ch5" class="toc-item"><span class="toc-num color-5">05</span>战略问题确认与基本选择</a>
+    <a href="#ch6" class="toc-item"><span class="toc-num color-6">06</span>业务层战略</a>
+    <a href="#ch7" class="toc-item"><span class="toc-num color-7">07</span>公司层战略</a>
+    <a href="#ch8" class="toc-item"><span class="toc-num color-8">08</span>国际化战略</a>
+    <a href="#ch9" class="toc-item"><span class="toc-num color-9">09</span>战略联盟、并购与重组</a>
+    <a href="#ch10" class="toc-item"><span class="toc-num color-10">10</span>战略实施的性质和特点</a>
+    <a href="#ch11" class="toc-item"><span class="toc-num color-11">11</span>战略实施的管理与控制</a>
+  </div>
+
+  <!-- Expand Controls -->
+  <div class="expand-controls">
+    <button class="btn-expand" onclick="expandAll()">📖 展开所有章节</button>
+    <button class="btn-expand" onclick="collapseAll()">📕 折叠所有章节</button>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 1 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch1">
+    <div class="chapter-progress color-1" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-1">01</div>
+      <div class="ch-info">
+        <div class="ch-title">第一章 · 战略管理导论</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">📣 背诵版总结（复试口述版）<br>面试前重点背诵这些，按照「定义→内容→举例→总结」答</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">背诵点1：VUCA时代</div>
+          <div class="qa-answer">
+            由于<span class="kw">技术进步与经济全球化</span>加快，企业经营环境进入VUCA时代，具备<span class="kw">动态性、不确定性、复杂性和模糊性</span>四大特征。中国因处于经济转型期，渐进式改革使上述特征更加突出，给企业战略管理带来更大挑战。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">背诵点2：三种战略决策类型</div>
+          <div class="qa-answer">
+            企业战略决策包括三种类型：<br>
+            ① <span class="kw">战略承诺</span>——基于价值选择的长期（20年以上）根本性决策，需以宗旨陈述传播并接受监督；<br>
+            ② <span class="kw">战略决策</span>——在承诺约束下基于理性分析做出的中期（3-5年）决策；<br>
+            ③ <span class="kw">战略行动</span>——基于行动需要、强调速度和创新的短期具体决策。<br>
+            三者相互依托，缺一不可。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">背诵点3：企业战略定义（原句）</div>
+          <div class="qa-answer">
+            企业战略是企业在动态适应和利用环境变化的过程中，为<span class="kw">建立、保持和发挥竞争优势</span>而采取的一系列<span class="kw">长期、重大和根本性</span>的决策或者行动，这些决策或者行动之间具有一定的<span class="kw">一致性和连续性</span>。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">背诵点4：明茨伯格5P理论</div>
+          <div class="qa-answer">
+            明茨伯格提出企业战略有五种内涵：<br>
+            ① <span class="kw">计划</span>（事前理性行动方案）；<br>
+            ② <span class="kw">模式</span>（历史行为模式）；<br>
+            ③ <span class="kw">定位</span>（市场定位）；<br>
+            ④ <span class="kw">愿景/期望</span>（价值追求）；<br>
+            ⑤ <span class="kw">计谋</span>（竞争博弈手段）。<br>
+            体现了战略的多维本质：既是事前设计，也是事后归纳。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">背诵点5：战略管理基本过程</div>
+          <div class="qa-answer">
+            战略管理基本过程分为三个阶段：<br>
+            <span class="kw">战略分析</span>（分析内外环境，识别战略问题）→ <span class="kw">战略制定</span>（确认战略承诺，选择战略方案）→ <span class="kw">战略实施</span>（付诸行动，评估与控制）。<br>
+            三个阶段<span class="kw">相互重叠、循环往复</span>，而非线性顺序。蓝海林强调：战略实施与制定同等重要。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 2 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch2">
+    <div class="chapter-progress color-2" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-2">02</div>
+      <div class="ch-info">
+        <div class="ch-title">第二章 · 企业战略管理者</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">Q：什么是战略管理者？其层次如何划分？</div>
+          <div class="qa-answer">
+            战略管理者是在组织中拥有整体责任、其决策对企业未来发展具有<span class="kw">重大、长期和根本影响</span>的管理者。根据决策范围和战略层次，可分为三个层次：<br>
+            <span class="kw">公司层</span>（负责整体方向和行业组合战略）、<span class="kw">业务层</span>（负责特定行业的竞争战略）和<span class="kw">职能层</span>（提供专业支撑）。其中公司层战略管理者是最重要的战略决策主体。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">Q：什么是委托代理问题？如何解决？</div>
+          <div class="qa-answer">
+            委托代理问题是指由于<span class="kw">所有权与经营权分离</span>产生的信息不对称，导致代理人（管理者）可能偏离委托人（股东）利益的问题。<br>
+            解决方式分内外两类：<span class="kw">内部治理</span>包括董事会监督、股权激励、薪酬委员会等；<span class="kw">外部治理</span>包括资本市场约束、经理人市场声誉机制和法律监管。中国企业因所有者缺位和市场不完善，代理问题更为突出，需特别加强内部治理机制建设。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">Q：战略领导力包括哪些核心行为？</div>
+          <div class="qa-answer">
+            有效战略领导力包括五个核心行为：<br>
+            ① 明确<span class="kw">战略方向</span>，建立清晰愿景；<br>
+            ② 优化<span class="kw">人力资本</span>，构建高质量TMT；<br>
+            ③ 维持有效的<span class="kw">企业文化和价值观</span>；<br>
+            ④ 强调<span class="kw">道德实践</span>，以身作则；<br>
+            ⑤ 在<span class="kw">稳定与变革</span>之间保持平衡控制。<br>
+            以任正非为例，其领导华为的过程完整体现了这五大行为要素。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">Q：如何运用权力影响公司战略？（权力政治观）</div>
+          <div class="qa-answer">
+            战略管理者的影响力来自<span class="kw">正式权力</span>（职位）和<span class="kw">非正式影响力</span>（专业能力、关系网络、信息控制）。<span class="kw">高管团队（TMT）</span>是战略决策的核心主体，其构成、价值观和互动方式对战略选择有直接影响。良好的TMT应具备多元互补的背景，避免\"群体思维\"。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 3 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch3">
+    <div class="chapter-progress color-3" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-3">03</div>
+      <div class="ch-info">
+        <div class="ch-title">第三章 · 外部环境分析</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">🎤 背诵版总结（复试口述版）</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【PESTEL — 口述版】</div>
+          <div class="qa-answer">
+            宏观环境分析即<span class="kw">PESTEL分析</span>，包括六个维度：<span class="kw">政治法律环境（P）</span>分析政策和制度；<span class="kw">经济环境（E）</span>分析GDP、通胀等宏观经济指标；<span class="kw">社会文化环境（S）</span>分析人口和文化趋势；<span class="kw">技术环境（T）</span>分析技术进步和创新；<span class="kw">生态环境（E）</span>分析环保和可持续发展；<span class="kw">法律环境（L）</span>分析监管法规。其目的是识别影响企业战略的宏观机会与威胁。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【波特五力 — 口述版】</div>
+          <div class="qa-answer">
+            波特五力模型由迈克尔·波特提出，用于分析行业竞争结构，包括：<br>
+            ① <span class="kw">行业内现有竞争者的竞争强度</span>；<br>
+            ② <span class="kw">新进入者的威胁</span>（与进入壁垒相关）；<br>
+            ③ <span class="kw">替代品的威胁</span>；<br>
+            ④ <span class="kw">购买者的议价能力</span>；<br>
+            ⑤ <span class="kw">供应商的议价能力</span>。<br>
+            五种力量共同决定行业的整体盈利潜力。力量越强，行业越缺乏吸引力。企业通过战略定位来应对这五种力量。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【战略群组 — 口述版】</div>
+          <div class="qa-answer">
+            <span class="kw">战略群组</span>是指同一行业内采用相似战略、拥有相似资源能力的企业集合。同一战略群组内的企业互为直接竞争对手。通过战略群组分析，企业可以识别直接竞争对手、发现<span class="kw">战略空白机会</span>，并分析在不同群组之间移动的<span class="kw">移动壁垒</span>。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【三层次逻辑 — 口述版】</div>
+          <div class="qa-answer">
+            外部环境分析分为三个层次：最宏观的<span class="kw">PESTEL分析</span>识别一般环境趋势；其次是<span class="kw">波特五力模型</span>分析行业结构和竞争强度；最微观的是<span class="kw">战略群组分析</span>，明确直接竞争对手。三个层次由外而内，层层聚焦，共同构成企业战略制定的外部分析基础，其输出是SWOT分析中的机会（O）和威胁（T）。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 4 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch4">
+    <div class="chapter-progress color-4" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-4">04</div>
+      <div class="ch-info">
+        <div class="ch-title">第四章 · 内部环境分析</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">🎯 背诵版总结（复试口述版）</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【内部环境分析】</div>
+          <div class="qa-answer">
+            以识别企业相对竞争对手的<span class="kw">优势与劣势</span>为目的，具有<span class="kw">复杂性、不确定性和利益冲突性</span>三大特点，主要包括历史分析、资源分析、能力分析、价值链分析和核心专长分析五个方面。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【企业资源】</div>
+          <div class="qa-answer">
+            可分为<span class="kw">人力资源、有形资源（实物/财务/组织）和无形资源（技术/声誉）</span>三类；按来源分为自有资源和可利用资源。<span class="kw">无形资源</span>是难以模仿的竞争优势来源。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【企业能力】</div>
+          <div class="qa-answer">
+            分为<span class="kw">管理、经营、整合、动态</span>四类，层层递进。能力分析需关注<span class="kw">价值性、稀缺性、难以获取性、不可替代性</span>四大特性。整合能力和动态能力是高竞争环境下的关键。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【价值链分析】</div>
+          <div class="qa-answer">
+            波特提出，分为<span class="kw">基本活动</span>（输入物流/制造/输出物流/营销销售/服务）和<span class="kw">支持活动</span>（基础设施/人力资源管理/技术开发/采购）。企业是更大价值创造体系的一部分，需决定哪些活动自做、哪些外包。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【核心专长】</div>
+          <div class="qa-answer">
+            是企业带来独特且持续竞争优势的能力，需满足<span class="kw">「有稀难替」</span>四个标准——有价值（顾客认可）、稀缺（竞争对手少有）、难以模仿、不可替代。<br>
+            发挥路径：<span class="kw">规模经济</span>（横向）/ <span class="kw">范围经济</span>（相关多元化）/ <span class="kw">降低交易成本</span>（纵向整合）。<br>
+            强调<span class="kw">「做专才能做长」</span>。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 5 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch5">
+    <div class="chapter-progress color-5" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-5">05</div>
+      <div class="ch-info">
+        <div class="ch-title">第五章 · 战略问题的确认与基本战略选择</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">【战略问题】</div>
+          <div class="qa-answer">
+            战略问题是指来自企业内外部关键环境因素趋势性变化、对企业现在和未来发展具有<span class="kw">重大、长期、根本影响</span>的问题。它分为两类：一类是企业<span class="kw">没有把握外部机会或避免威胁</span>的问题；另一类是企业<span class="kw">没有发挥优势或克服劣势</span>的问题。<br>
+            有效确认战略问题是有效制定战略的一半，且是<span class="kw">更重要的那一半</span>。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【SWOT与战略问题确认】</div>
+          <div class="qa-answer">
+            SWOT分析矩阵在战略问题确认中有两个作用：一是找到可能的战略问题，二是通过<span class="kw">四类组合（SO/ST/WO/WT）</span>确认现实可解决的战略问题。<br>
+            具体三步骤：第一，列举内外部因素反复比对；第二，四类组合分析；第三，识别战略问题的性质——在哪个层次展开、主要内容是什么、由谁来完成。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【战略承诺】</div>
+          <div class="qa-answer">
+            战略承诺是企业基于自身资源能力，考虑外部环境变化，为实现长期战略目标而向利益相关者做出的长期承诺。其核心内容包括：<span class="kw">经营目的（使命）、企业愿景、战略意图和企业价值观（经营理念）</span>四部分。<br>
+            战略承诺不能过于具体（会错失机会）也不能过于宽泛（缺乏约束），一经做出必须<span class="kw">长期坚持</span>。承诺坚定是决策科学和行动迅速的前提。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【基本战略（五种发展态势）】</div>
+          <div class="qa-answer">
+            基于发展态势（未来目标vs现在水平）的五种基本战略：<br>
+            ① <span class="kw">增长战略</span>：扩大现有业务规模和范围；<br>
+            ② <span class="kw">稳定战略</span>：维持现状，巩固竞争地位；<br>
+            ③ <span class="kw">防御战略</span>：收缩业务，降低风险；<br>
+            ④ <span class="kw">组合战略</span>：同时推进上述多种战略；<br>
+            ⑤ <span class="kw">国际化战略</span>：拓展国际市场。<br>
+            实际中大多数企业采用组合战略，对不同业务同时实施不同发展态势战略。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【SWOT分析的局限性】</div>
+          <div class="qa-answer">
+            SWOT分析的三大局限：① 对优劣势、机会威胁的判断是<span class="kw">主观的</span>，可能受到认知偏差影响；② 忽略了<span class="kw">动态变化</span>，环境因素可能随时间转化；③ 无法自动生成<span class="kw">战略选择</span>，只是工具而非答案。因此需要配合其他分析工具综合使用。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 6 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch6">
+    <div class="chapter-progress color-6" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-6">06</div>
+      <div class="ch-info">
+        <div class="ch-title">第六章 · 业务层战略</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">🎙️ 背诵版总结（复试口述版）</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">01 业务层战略定义（口述版）</div>
+          <div class="qa-answer">
+            业务层战略，又称<span class="kw">经营级战略</span>或<span class="kw">竞争战略</span>，是企业为了在特定业务领域中发挥或建立竞争优势、为顾客创造最大价值而采取的一系列决策和行动。它具有四个特点：<br>
+            第一，聚焦特定业务；第二，强烈的<span class="kw">顾客导向和竞争指向</span>；第三，在利润和市场占有率之间动态平衡；第四，决策行动之间必须保持<span class="kw">一致性和稳定性</span>。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">02 波特基本定位战略（口述版）</div>
+          <div class="qa-answer">
+            迈克尔·波特认为，企业持续获得超额收益的基本战略只有两种：<span class="kw">低成本定位</span>和<span class="kw">高差异定位</span>，加上聚焦维度，形成四种基本定位战略。波特认为企业必须在两种定位之间做出清楚的<span class="kw">取舍</span>，「夹在中间」将使企业难以构建竞争优势。<br>
+            低成本战略的核心：标准化产品+成本优势；高差异战略的核心：差异化产品+差异优势；聚焦战略：在细分市场上实施上述两种战略。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">03 独特性定位战略（口述版）</div>
+          <div class="qa-answer">
+            随着同质化竞争加剧，<span class="kw">独特性定位战略</span>应运而生。它在差异导向和成本导向之外，发现顾客的<span class="kw">独特诉求</span>作为目标市场，打破原有价值曲线，构建独特竞争优势和管理模式。<span class="kw">商业模式创新</span>在理论上属于独特性定位战略。<span class="kw">蓝海战略</span>本质上也源于独特性定位思想。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">04 整合战略（口述版）</div>
+          <div class="qa-answer">
+            随着科技和管理进步，「夹在中间」的战略已有可能被打破，出现了<span class="kw">整合战略</span>——同时实现低成本和高差异化。整合战略有两种路径：① <span class="kw">技术创新</span>（降低差异化成本）；② <span class="kw">运营改善</span>（提升效率同时保持差异）。但整合战略难度大，必须建立在强大的<span class="kw">核心专长</span>和持续创新能力之上。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 7 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch7">
+    <div class="chapter-progress color-7" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-7">07</div>
+      <div class="ch-info">
+        <div class="ch-title">第七章 · 公司层战略</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">🎤 背诵版总结（复试口述版）</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">Q1：什么是公司层战略？（必问）</div>
+          <div class="qa-answer">
+            公司层战略是多元化企业的总部，为建立和发挥<span class="kw">多行业组合优势</span>而采取的一系列决策和行动，其核心目的是实现行业组合效益最大化，即<span class="kw">「1+1>2」</span>的效应。<br><br>
+            总部创造价值的三种方式：作为<span class="kw">资产管理中心</span>行使股东权利，作为<span class="kw">组合管理中心</span>促进协同共享，作为<span class="kw">投资管理中心</span>进行行业的投资与重组。<br><br>
+            公司层战略的核心决策框架是<span class="kw">行业组合战略与组合管理模式的动态匹配</span>，两者不匹配时可选择：稳定行业组合调整管理模式（市场基础观→组织重组），或稳定管理模式调整行业组合（资源基础观→业务重组）。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">Q2：纵向一体化的优点和局限性？（2018真题）</div>
+          <div class="qa-answer">
+            纵向一体化是指企业将上下游价值创造活动纳入企业边界内的行为。<br><br>
+            <span class="kw">三个优点：</span><br>
+            ① 降低交易成本（减少信息不对称和机会主义）；<br>
+            ② 增强市场影响力（控制产业链关键资源）；<br>
+            ③ 防止技术和重要信息外泄。<br><br>
+            <span class="kw">四个局限：</span><br>
+            ① 牺牲规模经济（内部生产成本可能高于外部）；<br>
+            ② 增加代理成本与控制成本；<br>
+            ③ 经营风险高、灵活性差、退出成本高；<br>
+            ④ 降低技术创新和应变能力。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">Q3：简述BCG矩阵四象限及战略？（2019真题）</div>
+          <div class="qa-answer">
+            波士顿矩阵以<span class="kw">市场增长率</span>和<span class="kw">相对市场份额</span>为两个维度，将业务划分为四个象限：<br><br>
+            ① <span class="kw">明星（Star）</span>：高增长·高份额——持续大量投资，维持或扩大份额；<br>
+            ② <span class="kw">现金牛（Cash Cow）</span>：低增长·高份额——稳定现金流来源，适度投入，最大化收益；<br>
+            ③ <span class="kw">问题（Question Mark）</span>：高增长·低份额——选择性投入，重点押注，或果断放弃；<br>
+            ④ <span class="kw">瘦狗（Dog）</span>：低增长·低份额——剥离或收缩，避免浪费资源。<br><br>
+            联系多元化速度：企业「一哄而起」同时进入多个新业务，所有业务都成为「问题区」，现金消耗量极大。应遵循<span class="kw">「成功一个，再进入一个」</span>的节奏。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">Q4：三种多元化战略的类型与风险？（2021真题）</div>
+          <div class="qa-answer">
+            ① <span class="kw">相关多元化</span>（纵向一体化/共享型）：进入具有相关性的行业。主要风险：夸大相关性（海市蜃楼效应）；协同成本过高；核心专长被过分分摊。<br><br>
+            ② <span class="kw">不相关多元化</span>：进入不具有相关性的行业，价值来源于财务范围经济。主要风险：委托代理成本高；核心专长被削弱；内部资本市场效率可能低于外部；过度分散使管理失控。<br><br>
+            ③ <span class="kw">混合多元化</span>：同时拥有相关和不相关业务。兼有两者的优点和风险，管理复杂度最高，需采用SBU型管理模式分类治理。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">Q5：多元化战略推进应注意什么？</div>
+          <div class="qa-answer">
+            多元化战略的推进需把握五个维度：<br>
+            ① <span class="kw">动机</span>：应以增强战略竞争优势为目的，警惕三大陷阱（诱惑陷阱·肥水陷阱·职能社会化陷阱）；<br>
+            ② <span class="kw">时机</span>：同时满足四条件——原行业成熟、资源积累足够、出现好机会、在原行业已建立优势；<br>
+            ③ <span class="kw">方式</span>：根据相关性和自身能力选择新建、并购或战略联盟，避免过度依赖并购；<br>
+            ④ <span class="kw">速度</span>：遵循BCG矩阵逻辑，「成功一个，再进入一个」，避免资金链断裂；<br>
+            ⑤ <span class="kw">程度</span>：「有所不为才能有所为」，过度多元化会导致代理成本飙升、战略失控、债务膨胀。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 8 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch8">
+    <div class="chapter-progress color-8" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-8">08</div>
+      <div class="ch-info">
+        <div class="ch-title">第八章 · 国际化战略</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">🎙️ 背诵版总结（复试口述版）<br>建议熟记框架+要点，不需要逐字背诵</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">关于「国际化战略的性质与类型」【必背】</div>
+          <div class="qa-answer">
+            国际化战略，又称为以国际化为主要内容的<span class="kw">公司层战略</span>，本质上是<span class="kw">市场多元化战略</span>，目的是将企业的核心专长在更广泛的国际市场范围内加以发挥，实现更大规模的规模经济和范围经济效益。<br><br>
+            分析国际化战略类型的核心工具是<span class="kw">I-R矩阵（整合-响应矩阵）</span>，以全球整合压力和本土化响应压力为两个维度，将国际化战略分为四种类型：<br>
+            第一，<span class="kw">全球化战略</span>，高整合压力、低响应压力，追求规模经济最大化，产品高度标准化，配套全球产品结构，典型如英特尔、波音；<br>
+            第二，<span class="kw">多国化战略</span>，低整合压力、高响应压力，各国分公司高度自治，产品深度本土化定制，配套全球地区结构，典型如雀巢；<br>
+            第三，<span class="kw">跨国化战略</span>，高整合、高响应，是最复杂也是竞争力最强的战略，实现全球整合效率与本土化响应的兼顾，配套全球矩阵结构，典型如华为、宝洁；<br>
+            第四，<span class="kw">国际化战略（狭义）</span>，低整合、低响应，直接将母国成功产品转移海外，配套国际事业部制。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">关于「进入国际市场的方式」</div>
+          <div class="qa-answer">
+            进入国际市场的方式按控制度和风险从低到高排列：<br>
+            ① <span class="kw">出口</span>（低控制、低风险）；<br>
+            ② <span class="kw">许可证/特许经营</span>（中低控制，转让技术或品牌）；<br>
+            ③ <span class="kw">战略联盟/合资企业</span>（中等控制，风险共担）；<br>
+            ④ <span class="kw">独资子公司</span>（高控制、高投入，包括绿地投资和海外收购）。<br>
+            选择进入方式需权衡：<span class="kw">控制程度、资源承诺、市场不确定性和文化差异</span>四个维度。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">关于「国际化动机与风险」</div>
+          <div class="qa-answer">
+            <span class="kw">国际化动机</span>（主要有三类）：<br>
+            ① 扩大核心专长的发挥范围，实现规模经济；<br>
+            ② 获取在母国不具备或稀缺的资源（技术、人才、市场）；<br>
+            ③ 分散经营风险，对冲母国市场周期性波动。<br><br>
+            <span class="kw">国际化主要风险</span>：<br>
+            政治风险（政策变动）、经济风险（汇率波动）、文化风险（管理模式不适配）和财务风险（高昂进入成本）。<br>
+            中国企业国际化还面临「走出去」政策约束和「逆全球化」浪潮的双重挑战。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 9 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch9">
+    <div class="chapter-progress color-9" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-9">09</div>
+      <div class="ch-info">
+        <div class="ch-title">第九章 · 战略联盟、并购与重组</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">📝 背诵版总结（复试口述版）<br>以下每段可作为复试口答的核心段落，建议熟读后用自己的话表达</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">1. 战略联盟（一段话版）</div>
+          <div class="qa-answer">
+            战略联盟是两个或两个以上企业，在保持各自独立性的前提下，为实现特定战略目标而进行的<span class="kw">资源共享、风险共担</span>的合作安排。其四大特征是：独立性、互补性、风险共担和战略导向性。<br>
+            形成战略联盟的动机有六类：进入新市场、获取互补资源、分担风险与成本、加快研发速度、建立行业标准、学习技术能力。<br>
+            治理上有<span class="kw">契约型、股权型和关系型</span>三种机制，其中股权型约束力最强，关系型成本最低。联盟成功的关键在于<span class="kw">相互信任、资源互补、目标一致和完善的治理结构</span>。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">2. 企业并购（一段话版）</div>
+          <div class="qa-answer">
+            企业并购分为<span class="kw">横向（同行）、纵向（上下游）和混合（不相关）</span>三类。并购动机包括：获取市场力量、克服进入壁垒、降低开发风险、增加多元化程度、重塑竞争范围、学习提升能力和获取税收优势。<br>
+            并购过程包含战略制定、目标搜索评估、谈判交易、并购后整合四个阶段，其中<span class="kw">后整合（PMI）</span>是最难也最关键的。<br>
+            并购失败的五大原因是：支付过高溢价、整合困难、文化冲突、协同效应被高估、关键人才流失。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">3. 战略重组（一段话版）</div>
+          <div class="qa-answer">
+            战略重组是企业对<span class="kw">业务组合、资产结构或组织结构</span>进行的根本性调整，目的是恢复或增强竞争优势。主要方式有：<span class="kw">剥离（出售非核心业务）、分拆（分开上市）和精简（裁员降成本）</span>三种。<br>
+            战略重组的动机通常是：过度多元化后的战略收缩、债务危机下的资产变现、或战略转型需要。<span class="kw">「有所不为才能有所为」</span>是战略重组的核心逻辑。重组成功的关键在于准确判断哪些业务是核心专长，哪些是拖累。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 10 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch10">
+    <div class="chapter-progress color-10" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-10">10</div>
+      <div class="ch-info">
+        <div class="ch-title">第十章 · 战略实施的性质和特点</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">🗣️ 背诵版总结（复试口述版）</div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【名词解释】战略实施</div>
+          <div class="qa-answer">
+            <span class="kw">战略实施</span>是指将组织战略从计划转变为行动，最终实现战略目标的过程。战略实施是战略管理过程中最具挑战性的阶段，其重要性甚至超过战略制定——因为有效的战略实施不仅能保证合适战略的成功，还能在一定程度上<span class="kw">挽救不合适的战略</span>（托马斯·波奈玛）。有效的战略实施能力是竞争优势直接和稳定的来源。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【简答】战略实施基本过程</div>
+          <div class="qa-answer">
+            战略实施的基本过程包括四个步骤：<br>
+            ① <span class="kw">目标分解</span>——将战略目标逐级分解为部门、个人的经营目标，形成纵横协同的目标体系；<br>
+            ② <span class="kw">资源配置</span>——将有限资源分配到关键领域（理查德·林奇三准则：弥补差距、支持关键战略、考量风险）；<br>
+            ③ <span class="kw">政策支持</span>——制定基本方针、行为规范与决策程序，既保证严格性又确保恰当性；<br>
+            ④ <span class="kw">战略评价与控制</span>——检查战略基础、衡量绩效、采取纠正措施（鲁梅尔特四标准：一致性、协调性、可行性、优越性）。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【简答/论述】河床模式</div>
+          <div class="qa-answer">
+            <span class="kw">河床模式</span>是蓝海林等学者提出的描述动态环境下战略实施的形象比喻：河床规定了基本走势（<span class="kw">战略承诺不轻易变</span>），河水在河床内自由流动（<span class="kw">具体行动可灵活调整</span>）。<br>
+            「水无定势，逢低而进，遇阻则绕，毕竟东流」——这体现了动态战略实施的<span class="kw">方向性与灵活性的统一</span>。河床模式的意义在于：在VUCA时代，企业需要坚持战略承诺，同时对战略行动保持高度灵活性，而不是机械执行预设计划。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">【简答】战略实施的特点</div>
+          <div class="qa-answer">
+            战略实施的主要特点：<br>
+            ① <span class="kw">复杂性</span>：涉及组织各个层面和职能；<br>
+            ② <span class="kw">长期性</span>：战略目标的实现需要较长时间；<br>
+            ③ <span class="kw">动态性</span>：需要根据环境变化不断调整；<br>
+            ④ <span class="kw">全员参与性</span>：需要所有层次管理者和员工共同参与；<br>
+            ⑤ <span class="kw">整体性</span>：战略实施的各个部分需保持协调一致。<br>
+            这些特点决定了战略实施是一个<span class="kw">持续的管理过程</span>而非一次性行动。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================= -->
+  <!-- CHAPTER 11 -->
+  <!-- ============================= -->
+  <div class="chapter-card open" id="ch11">
+    <div class="chapter-progress color-11" style="height:3px"></div>
+    <div class="chapter-header" onclick="toggleCard(this)">
+      <div class="ch-num color-11">11</div>
+      <div class="ch-info">
+        <div class="ch-title">第十一章 · 战略实施的管理与控制</div>
+        <div class="ch-sub">背诵版总结（复试口述版）</div>
+      </div>
+      <span class="ch-toggle">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="content-section">
+        <div class="qa-block">
+          <div class="qa-question">🎤 复试口述版（第十一章一分钟串讲）⭐⭐⭐⭐⭐ 必背</div>
+          <div class="qa-answer">
+            第十一章讲的是战略实施的管理与控制——<span class="kw">好的战略如何真正落地执行</span>。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">第一，组织结构方面</div>
+          <div class="qa-answer">
+            钱德勒提出<span class="kw">「结构追随战略」</span>，随着战略从单一到多元演变，组织结构经历了<span class="kw">简单→职能→事业部→矩阵→网络</span>的演进。不同战略需要匹配不同结构——<span class="kw">成本领先战略</span>适合职能制，<span class="kw">多元化战略</span>适合事业部制。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">第二，战略领导力方面</div>
+          <div class="qa-answer">
+            战略领导者有<span class="kw">六大核心职责</span>，包括：确定战略方向、开发核心能力、建立有效文化、强调道德行为、建立控制系统和培育人力资本。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">第三，企业文化方面</div>
+          <div class="qa-answer">
+            根据<span class="kw">沙因的三层次模型</span>，文化分为：可见的<span class="kw">人工制品</span>、倡导的<span class="kw">价值观</span>和深层的<span class="kw">基本假设</span>三层。文化具有<span class="kw">导向、凝聚、激励、约束、辐射</span>五大功能，是战略实施的「软性控制系统」。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">第四，战略控制方面</div>
+          <div class="qa-answer">
+            斯曾德尔和霍弗将战略控制分为四种：<br>
+            ① <span class="kw">前提控制</span>（检验假设）；<br>
+            ② <span class="kw">战略监控</span>（扫描信号）；<br>
+            ③ <span class="kw">特别预警控制</span>（应对危机）；<br>
+            ④ <span class="kw">实施控制</span>（里程碑检查）。<br>
+            此外，从控制机制看，分为<span class="kw">财务控制、战略控制和行为控制</span>三类。
+          </div>
+        </div>
+
+        <div class="qa-block">
+          <div class="qa-question">第五，平衡计分卡（BSC）</div>
+          <div class="qa-answer">
+            由<span class="kw">卡普兰和诺顿</span>提出，从<span class="kw">财务、客户、内部流程、学习与成长</span>四个维度综合评估企业战略实施绩效。BSC的核心逻辑是<span class="kw">因果链</span>：<br>
+            学习成长 → 内部流程改善 → 客户满意 → 财务成功（从下往上驱动）。<br>
+            BSC将战略目标转化为可操作的绩效指标，实现了<span class="kw">战略与执行的连接</span>，是战略控制的重要工具。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="page-footer">
+    <p>《企业战略管理》背诵版总结 · 复试口述版合集</p>
+    <p>中南大学企业管理学硕复试备考 · 依据蓝海林《企业战略管理》第二版整理</p>
+    <p>生成日期：2026-03-13 · 内容来源：1–11章笔记背诵版总结原文提取</p>
+  </div>
+
+</div>
+
+<!-- Back to top -->
+<button id="back-to-top" title="返回顶部">↑</button>
+
+<script>
+// ===== Dark Mode =====
+function toggleDark() {
+  document.body.classList.toggle('dark-mode');
+  const btn = document.querySelector('[onclick="toggleDark()"]');
+  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ 日间' : '🌙 夜间';
+}
+
+// ===== Card Toggle =====
+function toggleCard(header) {
+  const card = header.closest('.chapter-card');
+  card.classList.toggle('open');
+}
+
+function expandAll() {
+  document.querySelectorAll('.chapter-card').forEach(c => c.classList.add('open'));
+}
+
+function collapseAll() {
+  document.querySelectorAll('.chapter-card').forEach(c => c.classList.remove('open'));
+}
+
+// ===== Back to Top =====
+const topBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  topBtn.classList.toggle('visible', window.scrollY > 400);
+  highlightNav();
+});
+topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ===== Active Nav =====
+function highlightNav() {
+  const cards = document.querySelectorAll('.chapter-card');
+  let current = '';
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    if (rect.top <= 100) current = '#' + card.id;
+  });
+  document.querySelectorAll('.nav-ch').forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === current);
+  });
+}
+
+// ===== FLOATING SEARCH PILL =====
+(function() {
+  function initPill() {
+    const pill     = document.getElementById('search-pill');
+    const input    = document.getElementById('search-pill-input');
+    const info     = document.getElementById('search-pill-info');
+    const btnPrev  = document.getElementById('pill-prev');
+    const btnNext  = document.getElementById('pill-next');
+    const btnClose = document.getElementById('pill-close');
+    if (!pill || !input || !btnPrev || !btnNext || !btnClose) return;
+
+    let matches = [];
+    let cursor  = -1;
+
+    function expandPill() {
+      pill.classList.add('expanded');
+      setTimeout(() => { input.focus(); }, 50);
+    }
+    function collapsePill() {
+      pill.classList.remove('expanded');
+      clearHL();
+      input.value = '';
+      info.textContent = '';
+      matches = []; cursor = -1;
+    }
+
+    // clicking the collapsed pill expands it
+    pill.addEventListener('click', function(e) {
+      if (!pill.classList.contains('expanded')) expandPill();
+    });
+
+    function getTextNodes(root) {
+      const skip = new Set(['SCRIPT','STYLE','NOSCRIPT','MARK','BUTTON','INPUT','TEXTAREA']);
+      const nodes = [];
+      const walk = (n) => {
+        if (n.nodeType === 3 && n.nodeValue.trim()) { nodes.push(n); return; }
+        if (n.nodeType === 1 && skip.has(n.tagName)) return;
+        n.childNodes.forEach(walk);
+      };
+      walk(root);
+      return nodes;
+    }
+
+    function clearHL() {
+      document.querySelectorAll('mark.pill-hl').forEach(m => {
+        m.parentNode.replaceChild(document.createTextNode(m.textContent), m);
+        m.parentNode.normalize();
+      });
+      matches = []; cursor = -1;
+    }
+
+    function doSearch(term) {
+      clearHL();
+      if (!term.trim()) { info.textContent = ''; return; }
+      const lower = term.toLowerCase();
+      getTextNodes(document.body).forEach(tn => {
+        let val = tn.nodeValue;
+        let lo  = val.toLowerCase();
+        let idx = 0;
+        while ((idx = lo.indexOf(lower, idx)) !== -1) {
+          const mark = document.createElement('mark');
+          mark.className = 'pill-hl';
+          mark.textContent = val.substr(idx, term.length);
+          const rest = tn.splitText(idx);
+          rest.splitText(term.length);
+          rest.parentNode.replaceChild(mark, rest);
+          tn  = mark.nextSibling;
+          if (!tn || !tn.nodeValue) break;
+          val = tn.nodeValue;
+          lo  = val.toLowerCase();
+          idx = 0;
+        }
+      });
+      matches = Array.from(document.querySelectorAll('mark.pill-hl'));
+      cursor  = matches.length > 0 ? 0 : -1;
+      updateCursor();
+    }
+
+    function updateCursor() {
+      matches.forEach((m, i) => m.classList.toggle('pill-hl-active', i === cursor));
+      if (cursor >= 0) {
+        matches[cursor].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        info.textContent = (cursor + 1) + ' / ' + matches.length;
+      } else {
+        info.textContent = matches.length ? '无结果' : '';
+      }
+    }
+
+    function goNext() {
+      if (!matches.length) return;
+      cursor = (cursor + 1) % matches.length;
+      updateCursor();
+    }
+    function goPrev() {
+      if (!matches.length) return;
+      cursor = (cursor - 1 + matches.length) % matches.length;
+      updateCursor();
+    }
+
+    input.addEventListener('input', () => doSearch(input.value));
+    btnNext.addEventListener('click', (e) => { e.stopPropagation(); goNext(); });
+    btnPrev.addEventListener('click', (e) => { e.stopPropagation(); goPrev(); });
+    btnClose.addEventListener('click', (e) => { e.stopPropagation(); collapsePill(); });
+
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && e.key === 'f') || (!pill.classList.contains('expanded') && e.key === '/')) {
+        e.preventDefault(); expandPill(); return;
+      }
+      if (e.key === 'F3') {
+        e.preventDefault();
+        if (!pill.classList.contains('expanded')) { expandPill(); return; }
+        e.shiftKey ? goPrev() : goNext(); return;
+      }
+      if (e.key === 'Escape' && pill.classList.contains('expanded')) { collapsePill(); }
+      if (e.key === 'Enter' && pill.classList.contains('expanded') && document.activeElement === input) {
+        e.shiftKey ? goPrev() : goNext();
+      }
+    });
+
+    window.toggleSearch   = expandPill;
+    window.pillOpenSearch = expandPill;
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPill);
+  } else {
+    initPill();
+  }
+})();
+
+</script>
+
+<!-- Floating Search Pill -->
+<div id="search-pill" title="点击搜索 / Ctrl+F">
+  <span id="search-pill-icon">🔍</span>
+  <input id="search-pill-input" type="text" placeholder="搜索关键词…" autocomplete="off">
+  <span id="search-pill-info"></span>
+  <button class="pill-btn" id="pill-prev" title="上一个 (Shift+F3)">↑</button>
+  <button class="pill-btn" id="pill-next" title="下一个 (F3)">↓</button>
+  <button class="pill-btn" id="pill-close" title="关闭">✕</button>
+</div>
+
+</body>
+</html>

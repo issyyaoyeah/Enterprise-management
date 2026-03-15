@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第六章 · 工作分析 · 中南大学企业管理学硕复试笔记</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f1f2e;
+  --bg: #f0f4f8;
+  --bg2: #e1eaf2;
+  --accent: #1a56db;
+  --accent2: #f59e0b;
+  --accent3: #0e7c6a;
+  --accent4: #7c3aed;
+  --accent5: #dc2626;
+  --gold: #d97706;
+  --card-bg: #ffffff;
+  --border: #b8cfe8;
+  --shadow: 0 4px 20px rgba(15,31,46,0.10);
+  --tab-nums: tabular-nums;
+}
+body.night {
+  --ink: #e2e8f0;
+  --bg: #0f172a;
+  --bg2: #1e293b;
+  --card-bg: #1e293b;
+  --border: #334155;
+  --shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  padding: 0 0 100px;
+  transition: background .3s, color .3s;
+  font-variant-numeric: var(--tab-nums);
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #0f1f2e 0%, #1a3a6b 50%, #1a56db 100%);
+  color: #fff;
+  padding: 60px 40px 50px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(60deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 22px);
+}
+.hero-day { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 4px; color: rgba(255,255,255,.6); text-transform: uppercase; margin-bottom: 12px; }
+.hero h1 { font-family: 'Noto Serif SC', serif; font-size: 38px; font-weight: 900; line-height: 1.2; margin-bottom: 16px; }
+.hero h1 span { color: #93c5fd; }
+.hero-sub { font-size: 15px; color: rgba(255,255,255,.75); max-width: 700px; line-height: 1.7; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.hero-tag { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: rgba(255,255,255,.9); }
+
+/* ── FIXED NAV ── */
+.fixed-nav {
+  position: sticky; top: 0; z-index: 999;
+  background: var(--ink); color: #fff;
+  padding: 12px 40px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  box-shadow: 0 2px 12px rgba(0,0,0,.3);
+  transition: background .3s;
+}
+body.night .fixed-nav { background: #0f172a; }
+.toc-label { font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-right: 6px; }
+.fixed-nav a { color: rgba(255,255,255,.75); text-decoration: none; font-size: 12px; padding: 3px 10px; border: 1px solid rgba(255,255,255,.2); border-radius: 12px; transition: all .2s; white-space: nowrap; }
+.fixed-nav a:hover { background: rgba(255,255,255,.15); color: #fff; }
+.nav-controls { margin-left: auto; display: flex; gap: 8px; }
+.btn-night, .btn-top { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); color: #fff; border-radius: 10px; padding: 4px 12px; cursor: pointer; font-size: 12px; transition: all .2s; font-family: 'Noto Sans SC', sans-serif; }
+.btn-night:hover, .btn-top:hover { background: rgba(255,255,255,.25); }
+
+/* ── SEARCH BAR ── */
+.search-bar { background: var(--card-bg); border-bottom: 1px solid var(--border); padding: 10px 40px; display: flex; align-items: center; gap: 12px; transition: background .3s; }
+.search-bar input { flex: 1; border: 1px solid var(--border); border-radius: 8px; padding: 7px 14px; font-size: 13.5px; font-family: 'Noto Sans SC', sans-serif; background: var(--bg); color: var(--ink); outline: none; transition: border-color .2s; }
+.search-bar input:focus { border-color: var(--accent); }
+.search-count { font-size: 12px; color: #999; white-space: nowrap; }
+.highlight-search { background: #fef08a; border-radius: 2px; }
+.highlight-search.hl-cur { background: #fb923c !important; color: #fff !important; outline: 2px solid #f97316; border-radius: 3px; }
+.search-nav-btn { background: var(--card-bg,#fff); color: var(--ink,#1e2a3a); border: 1px solid var(--border,#e2e8f0); border-radius: 6px; padding: 4px 11px; cursor: pointer; font-size: 14px; font-weight: 700; transition: background .15s; }
+.search-nav-btn:hover:not(:disabled) { background: #2563eb; color: #fff; border-color: #2563eb; }
+.search-nav-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+/* ── CASE BANNER ── */
+.case-banner { margin: 40px 40px 0; background: linear-gradient(135deg, #0f1f2e, #1a3a6b); border-radius: 16px; padding: 30px 36px; color: #fff; border-left: 6px solid var(--gold); }
+.case-banner .case-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.case-banner h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 12px; }
+.case-banner p { font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.8; }
+.case-key { margin-top: 14px; font-size: 13px; color: var(--gold); font-weight: 500; }
+
+/* ── MAIN ── */
+.main { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+/* ── SECTION HEADING ── */
+.section-title { display: flex; align-items: center; gap: 14px; margin: 50px 0 24px; }
+.section-title .sec-num { background: var(--ink); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 14px; border-radius: 6px; letter-spacing: 1px; transition: background .3s; }
+body.night .section-title .sec-num { background: var(--accent); }
+.section-title h2 { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 700; color: var(--ink); }
+.section-title .sec-line { flex: 1; height: 1px; background: var(--border); }
+
+/* ── LOGIC FLOW ── */
+.logic-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px 32px; margin-bottom: 30px; box-shadow: var(--shadow); transition: background .3s; }
+.logic-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 16px 0; }
+.flow-node { background: var(--accent); color: #fff; border-radius: 10px; padding: 10px 18px; font-size: 13px; font-weight: 500; text-align: center; min-width: 90px; }
+.flow-node.orange { background: #f59e0b; }
+.flow-node.green { background: #0e7c6a; }
+.flow-node.purple { background: #7c3aed; }
+.flow-node.red { background: #dc2626; }
+.flow-node.current { background: #0f1f2e; border: 2px solid #93c5fd; }
+.flow-arrow { color: var(--accent); font-size: 22px; font-weight: 700; }
+
+/* ── MIND MAP ── */
+.mindmap-wrap { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 32px; overflow-x: auto; box-shadow: var(--shadow); transition: background .3s; }
+.mindmap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.mm-center { background: linear-gradient(135deg, #0f1f2e, #1a56db); color: #fff; border-radius: 14px; padding: 14px 30px; font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; text-align: center; margin-bottom: 8px; }
+.mm-branches { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; }
+.mm-branch { background: var(--bg2); border-radius: 12px; padding: 14px 18px; min-width: 150px; border-top: 4px solid var(--accent); transition: background .3s; }
+.mm-branch.b1 { border-top-color: #1a56db; }
+.mm-branch.b2 { border-top-color: #f59e0b; }
+.mm-branch.b3 { border-top-color: #0e7c6a; }
+.mm-branch.b4 { border-top-color: #7c3aed; }
+.mm-branch.b5 { border-top-color: #dc2626; }
+.mm-branch.b6 { border-top-color: #d97706; }
+.mm-branch-title { font-weight: 700; font-size: 13px; margin-bottom: 8px; color: var(--ink); }
+.mm-item { display: inline-block; background: var(--card-bg); border-radius: 6px; padding: 2px 8px; font-size: 12px; margin: 2px; border: 1px solid var(--border); color: var(--ink); }
+
+/* ── KNOWLEDGE CARDS ── */
+.kcard {
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  margin-bottom: 28px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: background .3s, border-color .3s;
+}
+.kcard-header { padding: 20px 26px 16px; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; border-bottom: 1px solid var(--border); }
+.kcard-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #999; letter-spacing: 2px; }
+.kcard-title { font-family: 'Noto Serif SC', serif; font-size: 19px; font-weight: 700; color: var(--ink); margin-right: auto; }
+.badge { display: inline-block; border-radius: 8px; padding: 2px 10px; font-size: 11px; font-weight: 600; }
+.badge-page { background: #dbeafe; color: #1e40af; }
+.badge-imp { background: #fef3c7; color: #92400e; }
+.badge-prob { background: #d1fae5; color: #065f46; }
+.badge-type { background: #ede9fe; color: #4c1d95; }
+body.night .badge-page { background: #1e3a5f; color: #93c5fd; }
+body.night .badge-imp { background: #3b2a00; color: #fcd34d; }
+body.night .badge-prob { background: #052e16; color: #6ee7b7; }
+body.night .badge-type { background: #2e1065; color: #c4b5fd; }
+
+.kcard-body { padding: 20px 26px; }
+.kcard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.kcard-item { background: var(--bg2); border-radius: 10px; padding: 14px 16px; transition: background .3s; }
+.kcard-item-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-bottom: 8px; }
+.kcard-item-content { font-size: 13.5px; line-height: 1.75; color: var(--ink); }
+
+.kcard-full { background: var(--bg2); border-radius: 10px; padding: 16px 18px; margin-top: 16px; transition: background .3s; }
+.kcard-full-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-bottom: 10px; }
+
+/* highlight keywords */
+.hl { background: #fef9c3; border-radius: 3px; padding: 0 3px; font-weight: 600; color: #92400e; }
+body.night .hl { background: #3b2f00; color: #fcd34d; }
+.hl-green { background: #d1fae5; color: #065f46; border-radius: 3px; padding: 0 3px; font-weight: 600; }
+body.night .hl-green { background: #052e16; color: #6ee7b7; }
+.hl-blue { background: #dbeafe; color: #1e3a8a; border-radius: 3px; padding: 0 3px; font-weight: 600; }
+body.night .hl-blue { background: #1e3a5f; color: #93c5fd; }
+.hl-purple { background: #ede9fe; color: #4c1d95; border-radius: 3px; padding: 0 3px; font-weight: 600; }
+body.night .hl-purple { background: #2e1065; color: #c4b5fd; }
+.hl-red { background: #fee2e2; color: #991b1b; border-radius: 3px; padding: 0 3px; font-weight: 600; }
+
+/* exam tag */
+.exam-tag { display: inline-block; background: #7c3aed; color: #fff; border-radius: 6px; padding: 2px 8px; font-size: 11px; font-weight: 600; margin-right: 6px; font-family: 'JetBrains Mono', monospace; }
+.exam-tag.green { background: #0e7c6a; }
+.exam-tag.orange { background: #f59e0b; color: #fff; }
+
+/* quote box */
+.quote-box { border-left: 4px solid var(--accent); background: var(--bg2); padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 12px 0; font-size: 13.5px; transition: background .3s; }
+.quote-box cite { display: block; font-size: 12px; color: #888; margin-top: 6px; }
+
+/* info box */
+.info-box { border: 1px solid; border-radius: 10px; padding: 14px 18px; margin: 12px 0; font-size: 13.5px; }
+.info-box.blue { border-color: #93c5fd; background: #eff6ff; color: #1e3a8a; }
+.info-box.green { border-color: #6ee7b7; background: #f0fdf4; color: #065f46; }
+.info-box.orange { border-color: #fcd34d; background: #fffbeb; color: #92400e; }
+.info-box.red { border-color: #fca5a5; background: #fff1f2; color: #991b1b; }
+body.night .info-box.blue { background: #1e3a5f; color: #bfdbfe; border-color: #3b82f6; }
+body.night .info-box.green { background: #052e16; color: #a7f3d0; border-color: #34d399; }
+body.night .info-box.orange { background: #3b2a00; color: #fde68a; border-color: #f59e0b; }
+body.night .info-box.red { background: #450a0a; color: #fca5a5; border-color: #f87171; }
+
+/* compare table */
+.table-wrap { overflow-x: auto; margin: 14px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th { background: var(--ink); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+body.night th { background: #1e3a8a; }
+td { padding: 9px 14px; border-bottom: 1px solid var(--border); color: var(--ink); vertical-align: top; }
+tr:nth-child(even) td { background: var(--bg2); }
+tr:hover td { background: #dbeafe22; }
+body.night tr:nth-child(even) td { background: #1e293b; }
+
+/* details/summary accordion */
+details { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; margin: 10px 0; overflow: hidden; transition: background .3s; }
+summary { cursor: pointer; padding: 14px 18px; font-weight: 600; font-size: 14px; color: var(--ink); display: flex; align-items: center; gap: 10px; list-style: none; }
+summary::before { content: '▶'; font-size: 10px; color: var(--accent); transition: transform .2s; }
+details[open] summary::before { transform: rotate(90deg); }
+details[open] summary { border-bottom: 1px solid var(--border); }
+.details-body { padding: 18px 20px; font-size: 13.5px; line-height: 1.8; }
+
+/* 30-sec review */
+.quick-box { background: linear-gradient(135deg, #0e7c6a, #065f46); border-radius: 16px; padding: 28px 32px; color: #fff; margin-bottom: 28px; }
+.quick-box h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; margin-bottom: 16px; }
+.quick-item { display: flex; align-items: baseline; gap: 10px; margin: 8px 0; font-size: 13.5px; }
+.quick-num { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 700; color: #6ee7b7; min-width: 36px; }
+
+/* recite box */
+.recite-box { background: linear-gradient(135deg, #1a3a6b, #0f1f2e); border-radius: 16px; padding: 28px 32px; color: #fff; margin-bottom: 28px; border: 1px solid rgba(255,255,255,.1); }
+.recite-box h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; margin-bottom: 16px; color: #93c5fd; }
+.recite-item { background: rgba(255,255,255,.07); border-radius: 10px; padding: 14px 18px; margin: 10px 0; font-size: 13.5px; line-height: 1.8; border-left: 3px solid #93c5fd; }
+.recite-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #93c5fd; margin-bottom: 6px; text-transform: uppercase; }
+
+/* quiz */
+.quiz { background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border); padding: 28px 32px; margin-bottom: 28px; box-shadow: var(--shadow); transition: background .3s; }
+.quiz h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 20px; color: var(--ink); }
+.q-item { background: var(--bg2); border-radius: 10px; padding: 16px 18px; margin: 12px 0; transition: background .3s; }
+.q-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #888; margin-bottom: 6px; letter-spacing: 2px; }
+.q-text { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 8px; }
+.q-hint { font-size: 12.5px; color: #888; border-top: 1px dashed var(--border); padding-top: 8px; margin-top: 8px; }
+.q-hint span { font-weight: 700; color: var(--accent); }
+
+/* footer */
+.footer-bar { text-align: center; padding: 24px 40px; font-size: 12px; color: #aaa; border-top: 1px solid var(--border); margin-top: 60px; }
+
+/* highlight match */
+mark { background: #fef08a; border-radius: 2px; }
+
+@media (max-width: 768px) {
+  .fixed-nav { padding: 10px 16px; }
+  .main { padding: 0 16px; }
+  .hero { padding: 40px 16px 36px; }
+  .hero h1 { font-size: 26px; }
+  .kcard-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+
+<script>window._PAGE_TEXT='第六章 · 工作分析 · 中南大学企业管理学硕复试笔记 \n \n \n \n \n \n \n 目录 \n 逻辑结构 \n 思维导图 \n 6.1 工作分析概述 \n 6.2 工作分析方法 \n 6.3 工作说明书 \n 6.4 工作设计 \n 对比表格 \n 历年真题 \n 知识串联 \n 30秒复习 \n 背诵版 \n 自我检测 \n \n 🌙 夜间模式 \n ↑ 顶部 \n \n \n \n \n \n ↑ \n ↓ \n \n \n \n 生成日期：2026-03-09 · 中南大学企业管理学硕复试笔记 \n 第六章 · 工作分析 \n 依据《人力资源管理（第3版）颜爱民》整理 · 整合2016–2025年企业管理真题 · 教材页码 P160–198 \n \n 📋 工作分析概述 \n 🔍 工作分析方法 \n 📄 工作说明书 \n ⚙️ 工作设计 \n 🎯 高频考点 \n 📅 2016–2025真题 \n \n \n \n \n 导入案例 · 教材原案例 \n T公司招聘维修工程师的尴尬 \n T公司招聘维修工程师，广告要求"本科学历、三年经验、英语四级"，但没有具体说明维修工程师所需的核心岗位技能，导致符合广告条件的人不具备岗位技能，具备技能的人又提出高薪要求，最终无人被录用。这说明： 没有工作分析，招聘就是无的放矢。 \n 🔑 核心教训：工作分析是招聘的前提，工作说明书的"职位职责"和"任职资格"缺一不可。 \n \n \n \n \n \n 逻辑 \n 本章与人力资源管理全局的逻辑关系 \n \n \n \n \n 第5章 人力资源规划 \n → \n 📍第6章 工作分析 \n → \n 第7章 员工招聘 \n → \n 第8章 绩效管理 \n → \n 第9章 薪酬管理 \n → \n 第10章 培训开发 \n \n \n 💡 核心地位： 工作分析是人力资源管理的 基础性工具 ，是"人事匹配"的前提。工作分析的成果—— 工作说明书 ，直接为招聘、绩效、薪酬、培训提供依据。教材原句： "工作分析是组织人力资源规划和其他一切人力资源管理活动的基础。" \n \n \n 🔺 工作分析 → 工作描述（工作本身） \n | \n 🔺 工作分析 → 工作规范（任职资格） \n | \n 🔺 两者合并 → 工作说明书 \n \n \n \n \n \n \n 导图 \n 章节思维导图（知识框架总览） \n \n \n \n \n 第六章：工作分析（P160–198） \n \n \n 6.1 工作分析概述 \n 含义与内容 \n 6WIH框架 \n 主要作用 \n 相关概念 \n 流程（4阶段） \n 六大原则 \n \n \n 6.2 工作分析方法 \n 观察法 \n 访谈法 \n 问卷调查法 \n PAQ（职位分析问卷） \n MPDQ（管理岗位） \n 关键事件法 \n 工作日志法 \n \n \n 6.3 工作说明书 \n 工作描述 \n 工作规范 \n 结构要素 \n 注意事项 \n \n \n 6.4 工作设计 \n 工作专业化 \n 工作轮换 \n 工作扩大化 \n 工作丰富化 \n 以团队为基础 \n 工作特征模型 \n \n \n 相关概念体系 \n 行动→任务 \n 任务→职责 \n 职责→职位 \n 职位→职务 \n 职位→工作 \n 职系/职组/职级/职等 \n \n \n 管理学联系 \n 泰勒科学管理 \n 霍桑实验 \n 赫茨伯格双因素 \n 人事匹配 \n 胜任力模型 \n \n \n \n \n \n \n \n \n § 1 \n 工作分析概述 \n \n \n \n \n \n §1-01 \n 工作分析的含义与内容（6WIH框架） \n 📄 P162–164 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 高概率 \n 名词解释 / 简答 \n \n \n \n \n 📖 专有名词解释（教材原意） \n \n 工作分析 是对组织中所有为实现组织目标而存在的各类工作（岗位）进行系统分析和研究，以确定每一种工作的 内容、职责与权限、工作条件和环境 ，以及完成本工作所需的 技能、能力、知识和其他资格条件 并形成工作说明书的过程。\n \n \n \n 🧒 小学生版通俗解释 \n \n 就像学校给每个班主任写一张"工作说明卡"：这个老师要做什么（教语文）、在哪里做（初三1班）、怎么做（上课+批改作业）、为什么做（让学生考好大学）、需要什么条件（本科学历+教师资格证）。这张卡片就是工作分析的成果。\n \n \n \n 💡 助记口诀 \n \n 6W1H = What + Who + Where + When + Why + For Whom + How \n 口诀： 什么人、何时何地、为何如何、为谁服务 \n 简化： 内容·人员·岗位·时间·方法·目的·对象 \n \n \n \n 🏢 企业/生活案例 \n \n 滴滴出行为"网约车司机"做工作分析：What（接单送客）、Who（持驾照、无违章记录）、Where（城市道路）、When（弹性工时）、How（手机APP操作）、Why（满足乘客出行需求）、For Whom（乘客）。这套分析最终形成司机"准入标准"和"服务规范"。\n \n \n \n \n 📋 6WIH内容详解对照表 \n \n \n 维度 英文 核心问题 对应岗位信息 \n \n 工作内容 What 做什么？ 职责义务、任务复杂度、对组织财物影响 \n 责任者 Who 谁来做？ 任职者所需知识技能、教育程度、心理素质 \n 工作岗位 Where 在哪做？ 工作场所、物理条件、是否需要出差 \n 工作时间 When 何时做？ 时间安排、是否经常加班 \n 怎样操作 How 如何做？ 具体工作任务、基本职能、与相关岗位联系 \n 为何要做 Why 为什么做？ 设立岗位的意义、对组织运转的价值 \n 服务对象 For Whom 为谁服务？ 该岗位直接服务的对象 \n \n \n \n \n \n 🎤 复试回答模板 \n \n 定义 → 内容框架 → 成果 → 意义 \n 工作分析是对组织中各类工作进行系统研究，以确定工作内容、职责权限、工作条件和任职资格要求，最终形成工作说明书的过程。其分析内容可用"6W1H"概括：工作内容（What）、责任者（Who）、工作岗位（Where）、工作时间（When）、怎样操作（How）、为何要做（Why）和服务对象（For Whom）。工作分析的两大成果是：①工作描述——关于工作本身的文件；②工作规范——关于任职者资格的文件。工作分析是人力资源管理的基础，服务于规划、招聘、绩效、薪酬、培训等所有职能。\n \n 复试延伸问题 \n \n ❓ 工作分析与工作设计有什么区别？（工作分析是"描述现有工作"，工作设计是"重新设计工作"） \n ❓ 工作分析的主体、客体、结果分别是什么？（主体：执行者；客体：职位；结果：工作说明书） \n ❓ 为什么说工作分析是人力资源管理的"基础"？（为招聘、绩效标准、薪酬、培训提供信息依据）\n \n \n \n "工作分析是组织人力资源规划和其他一切人力资源管理活动的基础，使人力资源管理走向科学化、规范化。"\n ——《人力资源管理（第3版）》颜爱民，P162 \n \n \n \n \n \n \n §1-02 \n 工作分析的主要作用（8大作用） \n 📄 P163–166 \n ⭐⭐⭐⭐ 重要 \n 🎯 较高概率 \n 简答 / 论述 \n \n \n \n \n 💡 助记口诀 \n \n 规招绩薪培汇目价 （8字） \n 规划→招聘→绩效→薪酬→培训→汇报关系→明确目标→岗位价值\n \n \n \n 📋 历年考察 \n \n 2017笔试 工作分析在HRM中的应用 \n 2020复试 简述工作分析的作用\n \n \n \n \n 📖 展开：8大作用详解 \n \n \n \n # 作用 核心内容 联系的HR职能 \n \n ① 为人力资源规划提供依据 预测各岗位所需人员数量和质量 人力资源规划 \n ② 合理安排工作任务 确保组织中各项任务都有人承担，岗位高效衔接 组织设计 \n ③ 明确职责和目标 让管理者和员工清楚工作职责范围和应完成的任务 组织管理 \n ④ 为工作再设计和职业规划提供依据 工作扩大化/丰富化的基础，支持员工职业成长 工作设计 \n ⑤ 为绩效管理提供评价标准 确定各岗位的应有标准，保证绩效考核公平公正 绩效管理 \n ⑥ 为招聘提供有效信息 明确岗位职责和任职资格，降低招聘成本 员工招聘 \n ⑦ 降低培训成本、提高培训效率 为培训需求分析提供信息依据 培训开发 \n ⑧ 明确汇报关系，保证薪酬公平性 分解组织目标→部门目标→岗位目标；确定岗位相对价值 薪酬管理 \n \n \n \n \n \n \n \n \n \n \n §1-03 \n 工作分析相关概念体系（易混考点） \n 📄 P165–167 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 高概率 \n 名词解释 / 对比题 \n \n \n \n ⚠️ 考试高危区： 行动、任务、职责、职位、职务、工作、工作族、职业等概念极易混淆，历年名词解释常考，复试口述也必须掌握。\n \n \n \n 🧒 小学生版解释——层级递进图 \n \n 🔹 行动 = 最小动作（拿起电话） \n 🔹 任务 = 多个行动的集合（接听并记录一个电话） \n 🔹 职责 = 多个任务的集合（管理公司对外通讯） \n 🔹 职位 = 一个人承担的所有职责（前台秘书这个岗位） \n 🔹 职务 = 职责相当的一组职位的统称（秘书职务） \n 🔹 工作 = 职责类似的职位组合（前台工作） \n 🔹 工作族 = 相似工作的集合（行政类工作族） \n 🔹 职业 = 跨组织的相似工作集合（秘书职业）\n \n \n \n 💡 助记口诀 \n \n 行动→任务→职责→职位→职务→工作→工作族→职业 \n 口诀： 动任责位务工族业 （从小到大，从具体到抽象） \n 职系、职组、职级、职等 （行政分类体系） \n 职系=性质相似的职位集合 \n 职组=相近职系的集合 \n 职级=同职系中难易相似的职位 \n 职等=跨职系间难易相当的职位\n \n \n \n \n 📋 核心概念对照表（教材原意） \n \n \n 概念 英文 教材定义核心 举例 \n \n 行动 Action 工作活动中不便再继续分解的最小动作单位 拿起电话、插入钥匙 \n 任务 Task 为达到某一目的而由相关行动直接组成的集合 复印文件（含4个行动） \n 职责 Responsibility 由某一方面承担的一项或多项任务组成的相关任务集合 监控员工满意度（含5项任务） \n 职位（岗位） Position 由一个人完成的一项或多项相关职责的集合；职位数量=人员数量 HR部经理 \n 职务 Headship 主要职责在重要性和数量上相当的一组职位的统称；职务≠职位（一对多） 副经理职务（可有2个职位） \n 工作 Job 一个或一组职责类似的职位所形成的组合 产品销售（含销售员、销售经理） \n 工作族 Occupation 企业内部具有广泛相似内容的相关工作群，又称职位族 技术类工作族、销售类工作族 \n 职业 Profession 不同组织中的相似工作组成的跨组织工作集合 教师职业、秘书职业 \n 职业生涯 Career 一个人在工作生活中所经历或将要经历的一系列职位、工作、职业 老师→公务员→经理 \n \n \n \n \n \n \n \n \n \n §1-04 \n 工作分析的流程（4阶段） \n 📄 P167–170 \n ⭐⭐⭐⭐ 重要 \n 🎯 较高概率 \n 简答 \n \n \n \n ①前期准备 明确目的 组建小组 \n → \n ②调查阶段 现场观察 收集信息 \n → \n ③分析汇总 审核整理 形成报告 \n → \n ④完成阶段 编写工作 描述与规范 \n \n \n 📖 展开：四阶段详细内容 \n \n \n \n 阶段 主要任务 具体步骤 \n \n \n 前期准备阶段 \n 熟悉情况，明确目的 \n ①确定工作分析目的 ②确定参与者 ③培训分析人员 ④确定样本 ⑤准备问卷与调查提纲 \n \n \n 调查阶段 \n 全面调查工作过程、环境、内容和人员 \n ①第一次现场考察 ②谈话（三层面：基层管理者、实际任职者、代表人物）③第二次现场考察验证信息 \n \n \n 分析汇总阶段 \n 整理信息，形成分析报告 \n 审核整理调查信息，发现关键成分，归纳岗位名称、任务与职责、劳动强度、工作环境和任职资格 \n \n \n 完成阶段 \n 编制工作描述与工作规范 \n ①草拟工作描述和工作规范 ②与实际工作对比 ③修正草稿 ④合并形成工作说明书 ⑤收集反馈，不断完善 \n \n \n \n \n \n 💡 时机选择： ①新企业刚成立时；②工作职位岗位变动时；③管理人员或制度变动时\n \n \n \n \n 🎯 六大原则（教材原句） \n \n ① 系统性原则 \n ② 动态性原则 \n ③ 目的性原则 \n ④ 效率性原则 \n ⑤ 对岗不对人原则 \n ⑥ 实用性原则 \n \n \n ⭐ "对岗不对人原则" 是考试高频考点：工作分析的对象是岗位本身，而非任职者个人。岗位评估衡量的是岗位的相对价值，而非绝对价值。这与后面第9章"岗位评估"的原则高度一致。\n \n \n \n \n \n \n \n \n § 2 \n 工作分析方法 \n \n \n \n \n \n §2-01 \n 工作分析方法对比总表 \n 📄 P170–179 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 高概率 \n 简答 / 对比题 \n \n \n \n 💡 助记口诀 \n \n 观访问关日 （5种常用法） \n 观察法 · 访谈法 · 问卷调查法 · 关键事件法 · 工作日志法 \n + PAQ（职位分析问卷法）· MPDQ（管理岗位描述问卷法） \n \n \n \n \n 方法 核心定义 适用岗位 优点 缺点 \n \n \n 观察法 \n 分析人员通过观察员工正常工作状态获取信息 \n 体力工作者、事务性工作者（流水线、文秘等） \n 全面性、真实性、灵活性 \n 干扰工作；耗时；难刻画内心活动；不适用脑力劳动 \n \n \n 访谈法 \n 工作分析人员与员工面对面谈话收集信息 \n 飞行员、建筑设计师等无法观察的工作 \n 应用广泛；可深层了解态度动机；可控性强 \n 耗时；被访者可能夸大工作重要性；信息可能失真 \n \n \n 问卷调查法 \n 结构化问卷要求任职者和主管以书面形式记录信息 \n 脑力工作者、管理工作者、软件设计人员等 \n 样本量大；费用低速度快；可统计分析 \n 设计问卷耗时耗力；可能缺乏交流；填写质量难保证 \n \n \n 关键事件法(CIT) \n 收集工作中特别有效或无效的关键行为事件 \n 各类工作均适用，特别是绩效考核设计 \n 聚焦关键行为；具体生动；可用于绩效标准制定 \n 整理耗时；只关注极端行为，忽略日常表现 \n \n \n 工作日志法 \n 要求员工每天记录工作活动、时间分配和遇到的问题 \n 变动性大的工作 \n 真实反映工作状态；可追踪时间分配 \n 员工负担重；记录可能不规范或遗漏 \n \n \n \n \n \n \n \n \n \n §2-02 \n 职位分析问卷法（PAQ） \n 📄 P174–175 \n ⭐⭐⭐⭐ 重要 \n 🎯 较高概率 \n 名词解释 / 简答 \n \n \n \n \n 📖 专有名词解释 \n \n PAQ（Position Analysis Questionnaire） ，职位分析问卷法，由麦考密克于 1972年 提出。PAQ包含 194个项目 （187项分析工作特征，7项涉及薪酬），分为 6个维度 ，可测定工作在 13个总体性维度 上的得分，适用于确定工作等级、计算薪酬比率和划分工作族。\n \n \n \n 📋 PAQ六大维度（记忆框架） \n \n ①信息投入（从哪里/如何获取信息） \n ②脑力过程（推理、决策、计划） \n ③工作产出（身体活动、工具、设备） \n ④同他人的关系（人际互动） \n ⑤工作环境（人文与社会环境） \n ⑥其他特点（其他相关活动）\n \n \n \n \n 💡 PAQ的局限： ①问卷表较复杂，普通员工难以自行填写；②通用化格式导致工作特征抽象化，不能描述具体的任务活动。\n \n \n \n \n \n \n §2-03 \n 管理岗位描述问卷法（MPDQ） \n 📄 P175 \n ⭐⭐⭐ 一般 \n 名词解释 \n \n \n \n 📖 专有名词解释 \n \n MPDQ（Management Position Description Questionnaire） ，管理岗位描述问卷法，专为管理职位设计，通过与管理者主要职责密切相关的 13个方面208个问题 进行调查，采用 6分标准 对每个项目评分。适应了管理人员 非程序化工作 的特点。\n \n \n \n 📖 展开：MPDQ的13个方面 \n \n ①产品、市场和财务战略计划 ②与组织其他部门和人事管理的协调 ③内部业务控制 ④产品和服务责任 ⑤公共与客户关系 ⑥高层次的咨询指导 ⑦行动的自主性 ⑧财务审批权 ⑨员工服务 ⑩监督 ⑪复杂性和压力 ⑫重要财务责任 ⑬广泛的人事责任\n \n \n \n \n \n \n \n \n § 3 \n 工作说明书（工作描述 + 工作规范） \n \n \n \n \n §3-01 \n 工作描述与工作规范的区别与内容 \n 📄 P179–185 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 高概率 \n 名词解释 / 简答 \n \n \n \n \n 📖 工作描述（Job Description） \n \n 工作描述 是有关 工作本身 的文件，明确工作的内容、职责和环境。回答"这份工作是什么？"\n 主要内容： \n • 工作标识（名称、编号、所在部门）\n • 工作目标（该工作为何存在）\n • 工作职责和任务（主要职责列表）\n • 工作关系（汇报关系、协作关系）\n • 工作条件和环境（物理环境、危险性等）\n \n \n \n 📖 工作规范（Job Specification） \n \n 工作规范 是有关完成该项工作的 人员资格 的文件，说明完成该项工作的人员应具备的知识、技能、能力和其他任职资格。回答"什么人能做这份工作？"\n 主要内容： \n • 教育程度要求\n • 工作经验要求\n • 知识技能要求\n • 身体条件要求\n • 心理素质和性格要求\n \n \n \n \n 📊 工作说明书 = 工作描述 + 工作规范（对比表） \n \n \n 维度 工作描述（Job Description） 工作规范（Job Specification） \n \n 核心问题 这份工作是什么？ 谁能做这份工作？ \n 关注对象 工作本身（岗位） 任职者（人员资格） \n 主要内容 工作内容、职责、任务、工作环境 知识、技能、能力、教育程度、经验 \n 核心回答 做什么（What）+ 怎么做（How） 谁来做（Who） \n \n \n \n \n 🔑 关键记忆： 工作描述="写岗位"，工作规范="写人的要求"，两者合并形成 工作说明书 （也叫岗位说明书/职位说明书）。\n \n \n \n 🎤 复试回答模板 \n \n 定义 → 区别 → 内容 → 应用 \n 工作说明书是工作分析的核心成果文件，由两部分组成：①工作描述——以岗位为核心，描述工作内容、职责、工作条件和环境，解决"这份工作做什么"的问题；②工作规范——以人为核心，说明完成该工作所需的知识、技能、能力和其他任职资格，解决"谁能胜任"的问题。两者区别在于：工作描述关注"岗"，工作规范关注"人"。工作说明书直接服务于员工招聘、绩效评价、薪酬确定和培训需求分析。\n \n \n \n \n \n \n \n \n § 4 \n 工作设计 \n \n \n \n \n §4-01 \n 工作设计的主要方法（5种） \n 📄 P185–196 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 高概率 \n 名词解释 / 简答 / 论述 \n \n \n \n 💡 助记口诀 \n \n 专换大富团 （5字） \n 工作专业化 → 工作轮换 → 工作扩大化 → 工作丰富化 → 以团队为基础的工作设计 \n 方向：纵横交错，从分工到整合 \n \n \n \n \n 方法 核心定义 方向 优点 缺点 典型案例 \n \n \n 工作专业化 \n 将工作分解为一系列最小单元，由专人专职完成 \n 细分工作 \n 效率极高，易于培训 \n 单调乏味，员工满意度低，易倦怠 \n 福特流水线、富士康装配线 \n \n \n 工作轮换 \n 让员工在不同工作岗位之间周期性移动 \n 横向移动 \n 减少单调感；培养多技能员工；后备人才培养 \n 初期效率下降；培训成本高 \n 丰田工厂让工人轮岗；北电网络18-24个月轮岗 \n \n \n 工作扩大化 \n 增加工作岗位的 横向 工作面（同级别任务数量增加） \n 横向扩展 \n 减少单调感；增加工作多样性 \n 本质上仍是"更多的相似任务"，激励效果有限 \n 秘书由"只打印"→"打印+复印+接待" \n \n \n 工作丰富化 \n 工作 纵向 拓展，赋予更多的自主权、责任感和成就感 \n 纵向拓展 \n 提高内在激励；满足自主性、成就感需求 \n 对员工要求高；管理成本增加 \n 工程师从"执行设计"→"自主设计+汇报结果" \n \n \n 以团队为基础 \n 将工作设计为由团队共同承担，共同负责工作成果 \n 整合协作 \n 协作效率高；适合复杂问题；增强凝聚力 \n 搭便车问题；协调成本高 \n 谷歌项目组、华为研发团队 \n \n \n \n \n \n ⚠️ 工作扩大化 vs 工作丰富化（易混考点） \n \n \n 维度 工作扩大化（Job Enlargement） 工作丰富化（Job Enrichment） \n \n 方向 横向 扩展 纵向 拓展 \n 变化内容 增加工作任务的数量（同级别） 增加工作的深度、自主权、责任感 \n 激励层次 主要改善工作单调感（保健因素） 提供成就感、自主性（激励因素） \n 赫茨伯格理论联系 改善保健因素 增加激励因素 \n 举例 超市收银员增加"商品上架"任务 超市收银员增加"负责区域盘点、向上汇报"的权力 \n \n \n \n \n \n \n \n \n \n §4-02 \n 工作特征模型（Hackman & Oldham） \n 📄 P190–193 \n ⭐⭐⭐⭐ 重要 \n 🎯 较高概率 \n 名词解释 / 简答 \n \n \n \n \n 📖 专有名词解释 \n \n 工作特征模型 由Hackman和Oldham提出，认为工作本身的5个核心特征会影响员工的心理状态，进而影响工作结果。五大核心特征： 技能多样性、任务完整性、任务重要性、自主性、反馈性 。\n \n \n \n 💡 助记口诀 \n \n 多整重自反 （5字） \n 技能多样性→ 任务完整性→ 任务重要性→ 自主性→ 反馈性 \n 激励潜力分（MPS）= (多样+完整+重要)/3 × 自主 × 反馈 \n \n \n \n \n 📖 展开：工作特征模型详解 \n \n \n \n 核心特征 含义 对应心理状态 提升方法 \n \n 技能多样性 工作需要多少种技能和才能 体验工作的意义感 工作轮换、工作扩大化 \n 任务完整性 工作是否要求完成一项完整可识别的工作 体验工作的意义感 减少分工细化，给予完整任务 \n 任务重要性 工作对他人生活、工作有多大影响 体验工作的意义感 让员工了解其工作的价值 \n 自主性 员工在计划工作和执行工作时的自由度 体验工作成果的责任感 工作丰富化，授权 \n 反馈性 员工能否获得关于工作绩效的直接信息 了解工作活动的实际结果 建立绩效反馈机制 \n \n \n \n \n 🔗 管理学联系： 工作特征模型与 赫茨伯格双因素理论 高度相关——任务完整性、自主性、反馈性对应的是"激励因素"（成就感、责任感、认可）。工作丰富化是实现工作特征模型的主要途径。\n \n \n \n \n \n \n \n \n \n 对比 \n 核心概念易混对比总结 \n \n \n \n \n 对比 \n 本章全部易混概念汇总对比 \n \n \n \n 📊 工作描述 vs 工作规范 vs 工作说明书 \n \n \n \n 概念 核心对象 回答的问题 主要内容 \n \n 工作描述 工作本身（岗位） 这份工作是什么？ 工作内容、职责、工作条件和环境 \n 工作规范 任职者资格 谁能胜任这份工作？ 知识、技能、教育、经验、心理素质 \n 工作说明书 工作描述+工作规范 对岗位的全面说明 上述两者的合并文件 \n \n \n \n \n \n \n 📊 工作扩大化 vs 工作丰富化 vs 工作轮换 \n \n \n \n 概念 方向 变化内容 激励层次 对应理论 \n \n 工作扩大化 横向扩展 增加同级别任务数量 减少单调感 保健因素 \n 工作丰富化 纵向拓展 增加自主权、责任感、成就感 内在激励 激励因素 \n 工作轮换 横向移动 在不同岗位间周期性轮换 技能多样性 工作特征模型 \n \n \n \n \n \n \n 📊 PAQ（职位分析问卷）vs MPDQ（管理岗位描述问卷） \n \n \n \n 维度 PAQ MPDQ \n \n 提出者 麦考密克（1972年） 专为管理职位设计 \n 适用范围 各类工作 仅限管理职位 \n 题目数量 194项（187+7） 13方面208个问题 \n 评分标准 6个维度评价 6分标准 \n 特点 通用性强；适合薪酬等级划分 适应非程序化工作特点 \n \n \n \n \n \n \n 📊 职位 vs 职务 vs 工作 vs 职业（核心概念辨析） \n \n \n \n 概念 核心区别 与人员的对应关系 举例 \n \n 职位（岗位） 一个人承担的职责集合 一一对应（职位数=人员数） HR经理（张三）这个具体岗位 \n 职务 一组职责相当的职位统称 一对多（一个职务可对应多个职位） 副经理职务（可有A、B两个职位） \n 工作 职责类似的职位组合 可跨越多个职位 产品销售工作（含销售员+销售经理） \n 职业 跨组织的相似工作集合 跨越多个组织 教师职业（在不同学校） \n \n \n \n \n \n \n \n \n \n \n \n 真题 \n 历年真题汇总（2016–2025） \n \n \n \n \n 真题库 \n 工作分析相关历年考察记录 \n \n \n \n \n 年份 考察形式 题目内容 考察知识点 建议得分要点 \n \n 2016 笔试·简答 简述工作说明书的主要内容 工作描述+工作规范 分两部分答：工作描述内容+工作规范内容，各列3-4点 \n 2018 笔试·名词解释 什么是工作分析？ 工作分析含义 教材定义+6W1H框架+两大成果 \n 2019 笔试·简答 工作分析的主要作用有哪些？ 工作分析的8大作用 至少答5点，每点要解释 \n 2020 复试·口述 简述工作分析在人力资源管理中的基础地位 工作分析的作用、与各职能的关系 用"工作分析→招聘/绩效/薪酬/培训"的逻辑链条回答 \n 2021 笔试·简答 比较工作扩大化与工作丰富化的区别 工作设计方法 列表对比：方向+变化内容+激励效果 \n 2022 复试 结合案例谈谈工作设计对员工激励的作用 工作设计方法+激励理论 工作特征模型+赫茨伯格+案例举例 \n 2023 笔试·名词解释 工作规范 工作规范定义 定义+内容要素+与工作描述的区别 \n 2024 复试 HRBP如何利用工作分析支持业务管理？ 工作分析在HRBP场景中的应用 结合工作分析为招聘/绩效/薪酬/培训提供依据展开 \n 2025预测 简答/论述 数字化时代工作分析面临哪些挑战？如何应对？ 工作分析+数字化转型 工作动态变化快、跨职能工作增多、远程工作等挑战+动态工作分析 \n \n \n \n \n 📌 高频考点规律： \n 工作分析的 含义（名词解释） 和 主要作用（简答） 是最高频考点。工作设计中的 扩大化vs丰富化（对比题） 几乎每年必考。工作说明书的 内容结构 也是持续高频考点。建议重点掌握这三个方向。\n \n \n \n \n \n \n \n 串联 \n 本章知识终极串联（逻辑流程图） \n \n \n \n 📊 工作分析全链条逻辑图 \n \n \n 组织战略目标 \n → \n 人力资源规划 \n → \n ⭐工作分析 （6W1H） \n \n ↓ \n \n 工作描述 （岗位信息） \n + \n 工作规范 （任职资格） \n = \n 工作说明书 （核心成果） \n \n ↓ \n \n 招聘选拔 任职资格依据 \n 绩效管理 评价标准依据 \n 薪酬管理 岗位价值依据 \n 培训开发 需求分析依据 \n 工作设计 再设计参考 \n \n \n \n 🔗 与其他章节的联系： \n • 第5章（人力资源规划）→ 工作分析提供岗位信息\n • 第7章（招聘）→ 工作说明书是招聘广告和选拔标准的来源\n • 第8章（绩效）→ 工作描述中的职责是绩效考核标准的基础\n • 第9章（薪酬）→ 工作规范和岗位相对价值决定薪酬等级\n • 第11章（激励）→ 工作设计（丰富化）是非物质激励的重要手段\n \n \n \n \n \n \n 速览 \n 30秒复习模块（超简版） \n \n \n \n ⚡ 30秒记住第六章核心内容 \n ① 工作分析 = 对岗位系统分析 → 6W1H框架 → 形成工作说明书（描述+规范） \n ② 工作分析是HRM的基础 ：为规划、招聘、绩效、薪酬、培训提供依据 \n ③ 流程4阶段 ：前期准备 → 调查 → 分析汇总 → 完成（草拟→对比→修正→合并） \n ④ 分析方法5种 ：观（察）访（谈）问（卷）关（键事件）日（志） \n ⑤ PAQ （1972年）194题6维度13总体维度； MPDQ 专为管理岗位，13方面208题 \n ⑥ 工作设计5法 ：专换大富团；扩大化=横向；丰富化=纵向（激励因素） \n ⑦ 工作特征模型 ：多整重自反（技能多样+任务完整+任务重要+自主+反馈）→ 激励潜力分 \n ⑧ 高频考点 ：工作分析含义、8大作用、工作说明书内容、扩大化vs丰富化对比 \n \n \n \n \n \n 背诵 \n 背诵版总结（适合复试口述） \n \n \n \n 📝 第六章 工作分析 · 复试口述版 \n \n ① 工作分析的定义（必背） \n 工作分析是对组织中所有为实现组织目标而存在的各类工作进行系统分析和研究，以确定每一种工作的内容、职责与权限、工作条件和环境，以及完成本工作所需的技能、能力、知识和其他资格条件，并形成工作说明书的过程。其分析框架可用"6W1H"概括。\n \n \n ② 工作分析的作用（8点简述版） \n 工作分析为人力资源管理提供基础信息：①为人力资源规划提供依据；②合理安排工作任务；③明确职责和目标；④为工作设计和职业规划提供依据；⑤为绩效管理提供评价标准；⑥为招聘提供有效信息；⑦降低培训成本提高效率；⑧明确汇报关系并保证薪酬的内部公平性。\n \n \n ③ 工作说明书（必背核心） \n 工作说明书由两部分构成：①工作描述——关于工作本身的文件，明确工作的内容、职责和环境；②工作规范——关于完成该项工作人员资格的文件，说明所需知识、技能、能力和其他任职资格。两者区别：描述针对"岗"，规范针对"人"。\n \n \n ④ 工作设计主要方法（口述版） \n 工作设计有5种主要方法：①工作专业化——细分工作，提高效率但易单调；②工作轮换——员工在不同岗位间移动，培养多技能；③工作扩大化——横向扩展，增加同级别任务数量；④工作丰富化——纵向拓展，增加自主权和责任感，对应激励因素；⑤以团队为基础的工作设计——协作完成，适合复杂任务。其中工作扩大化与丰富化最易混淆：前者是横向量变，后者是纵向质变。\n \n \n ⑤ 关键概念辨析（复试提问高频） \n 职位与职务：职位是一个人承担的职责集合，与人员一一对应；职务是职责相当的一组职位的统称，一个职务可对应多个职位。工作描述与工作规范：描述关注岗位本身（做什么），规范关注任职者（需要什么条件）。\n \n \n \n 🎓 复试延伸话题准备： \n 可能被追问的深度问题：①"为什么说工作分析是HRM的基础，而不是某一职能的工具？"（因为它服务于所有HR职能）②"数字化时代工作分析面临什么挑战？"（工作内容变化快、远程工作、平台经济使传统岗位边界模糊）③"工作丰富化背后是哪种激励理论？"（赫茨伯格双因素理论，增加激励因素）\n \n \n \n \n \n 测验 \n 课后自我检测（建议先合书作答） \n \n \n \n 📝 自我检测题目 \n \n Q·01 — 名词解释 \n 什么是工作分析？其主要成果是什么？ \n 答题要点： 定义（教材原句）→ 6W1H框架 → 两大成果（工作描述+工作规范）→ 合并为工作说明书 \n \n \n Q·02 — 简答 \n 简述工作分析的主要作用（至少5点）。 \n 关键词： 规划依据、任务安排、职责明确、工作设计、绩效标准、招聘信息、培训效率、汇报关系、薪酬公平性 \n \n \n Q·03 — 对比题 \n 比较工作描述与工作规范的区别，并说明二者如何构成工作说明书。 \n 关键词： 描述=针对岗位（内容+职责+环境）；规范=针对任职者（知识+技能+资格）；二者合并=工作说明书 \n \n \n Q·04 — 对比题 历年高频 \n 比较工作扩大化与工作丰富化的区别，分别举例说明。 \n 关键词： 扩大化=横向（增加同级任务数量）；丰富化=纵向（增加自主权+责任感+成就感）；对应赫茨伯格：扩大化=保健因素，丰富化=激励因素 \n \n \n Q·05 — 简答 \n 简述工作分析的流程（4个阶段）及各阶段的主要任务。 \n 关键词： 前期准备（明确目的+培训人员）→ 调查（现场+访谈）→ 分析汇总（整理报告）→ 完成（草拟→对比→修正→合并→评述） \n \n \n Q·06 — 名词解释 2023真题 \n 什么是工作规范？它与工作描述有何区别？ \n 关键词： 工作规范=关于任职者资格的文件（知识+技能+能力+教育+经验）；区别：描述关注岗位，规范关注人员 \n \n \n Q·07 — 简答 \n 什么是PAQ（职位分析问卷法）？其有哪些优点和局限性？ \n 关键词： 1972年麦考密克；194题；6个维度；13个总体维度；优：通用性强，适合划分工作族和确定薪酬；局限：复杂难填；工作特征抽象化 \n \n \n Q·08 — 论述题 2025预测 \n 数字化时代，工作分析面临哪些新挑战？如何进行"动态工作分析"以适应变化？ \n 答题框架： ①传统工作分析的局限（静态、定期更新滞后）→ ②数字化带来的挑战（岗位内容快速变化、远程工作、平台经济岗位边界模糊）→ ③动态工作分析的应对策略（持续监测、敏捷更新、引入大数据分析）→ ④结合HRBP实践举例 \n \n \n Q·09 — 案例分析 教材原案例 \n T公司招聘维修工程师失败的根本原因是什么？如果你是HR经理，你会如何改进？ \n 答题框架： 根本原因=没有进行工作分析，广告条件与岗位实际需求脱节 → 改进方案：①先做工作分析（观察法+访谈法）→ ②撰写维修工程师的工作描述（核心职责）+工作规范（具体技能要求）→ ③依据工作说明书设计招聘广告和笔试/操作题 \n \n \n \n \n \n 📚 中南大学企业管理学硕复试笔记 · 第六章 工作分析 · 《人力资源管理（第3版）》颜爱民 · P160–198 · 2016–2025真题整合版 \n 生成日期：2026-03-09';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body id="top">
+
+<!-- ══════════ FIXED NAV ══════════ -->
+<nav class="fixed-nav">
+  <span class="toc-label">目录</span>
+  <a href="#logic">逻辑结构</a>
+  <a href="#mindmap">思维导图</a>
+  <a href="#s1">6.1 工作分析概述</a>
+  <a href="#s2">6.2 工作分析方法</a>
+  <a href="#s3">6.3 工作说明书</a>
+  <a href="#s4">6.4 工作设计</a>
+  <a href="#compare">对比表格</a>
+  <a href="#exam">历年真题</a>
+  <a href="#chain">知识串联</a>
+  <a href="#quick">30秒复习</a>
+  <a href="#recite">背诵版</a>
+  <a href="#quiz">自我检测</a>
+  <div class="nav-controls">
+    <button class="btn-night" onclick="toggleNight()">🌙 夜间模式</button>
+    <button class="btn-top" onclick="scrollToTop()">↑ 顶部</button>
+  </div>
+</nav>
+
+<!-- ══════════ SEARCH BAR ══════════ -->
+<div class="search-bar">
+  
+  <span class="search-count" id="searchCount"></span
+  <button class="search-nav-btn" id="srchPrev" onclick="prevResult()" disabled title="上一个 (Shift+F3)">↑</button>
+  <button class="search-nav-btn" id="srchNext" onclick="nextResult()" disabled title="下一个 (F3)">↓</button>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+  <div class="hero-day">生成日期：2026-03-09 · 中南大学企业管理学硕复试笔记</div>
+  <h1>第六章 · <span>工作分析</span></h1>
+  <p class="hero-sub">依据《人力资源管理（第3版）颜爱民》整理 · 整合2016–2025年企业管理真题 · 教材页码 P160–198</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📋 工作分析概述</span>
+    <span class="hero-tag">🔍 工作分析方法</span>
+    <span class="hero-tag">📄 工作说明书</span>
+    <span class="hero-tag">⚙️ 工作设计</span>
+    <span class="hero-tag">🎯 高频考点</span>
+    <span class="hero-tag">📅 2016–2025真题</span>
+  </div>
+</header>
+
+<!-- ══════════ CASE BANNER ══════════ -->
+<div class="case-banner">
+  <div class="case-label">导入案例 · 教材原案例</div>
+  <h3>T公司招聘维修工程师的尴尬</h3>
+  <p>T公司招聘维修工程师，广告要求"本科学历、三年经验、英语四级"，但没有具体说明维修工程师所需的核心岗位技能，导致符合广告条件的人不具备岗位技能，具备技能的人又提出高薪要求，最终无人被录用。这说明：<strong>没有工作分析，招聘就是无的放矢。</strong></p>
+  <p class="case-key">🔑 核心教训：工作分析是招聘的前提，工作说明书的"职位职责"和"任职资格"缺一不可。</p>
+</div>
+
+<div class="main" id="main-content">
+
+<!-- ══════════ § 逻辑结构 ══════════ -->
+<div id="logic">
+  <div class="section-title">
+    <span class="sec-num">逻辑</span>
+    <h2>本章与人力资源管理全局的逻辑关系</h2>
+    <span class="sec-line"></span>
+  </div>
+  <div class="logic-box">
+    <div class="logic-flow">
+      <div class="flow-node">第5章<br><small>人力资源规划</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node current">📍第6章<br><small>工作分析</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node orange">第7章<br><small>员工招聘</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node green">第8章<br><small>绩效管理</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node purple">第9章<br><small>薪酬管理</small></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node red">第10章<br><small>培训开发</small></div>
+    </div>
+    <div class="info-box blue" style="margin-top:16px;">
+      💡 <strong>核心地位：</strong>工作分析是人力资源管理的<span class="hl">基础性工具</span>，是"人事匹配"的前提。工作分析的成果——<span class="hl-blue">工作说明书</span>，直接为招聘、绩效、薪酬、培训提供依据。教材原句：<em>"工作分析是组织人力资源规划和其他一切人力资源管理活动的基础。"</em>
+    </div>
+    <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--ink)">
+      <span>🔺 工作分析 → 工作描述（工作本身）</span>
+      <span style="color:var(--border)">|</span>
+      <span>🔺 工作分析 → 工作规范（任职资格）</span>
+      <span style="color:var(--border)">|</span>
+      <span>🔺 两者合并 → 工作说明书</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ § 思维导图 ══════════ -->
+<div id="mindmap">
+  <div class="section-title">
+    <span class="sec-num">导图</span>
+    <h2>章节思维导图（知识框架总览）</h2>
+    <span class="sec-line"></span>
+  </div>
+  <div class="mindmap-wrap">
+    <div class="mindmap">
+      <div class="mm-center">第六章：工作分析（P160–198）</div>
+      <div class="mm-branches">
+        <div class="mm-branch b1">
+          <div class="mm-branch-title">6.1 工作分析概述</div>
+          <span class="mm-item">含义与内容</span>
+          <span class="mm-item">6WIH框架</span>
+          <span class="mm-item">主要作用</span>
+          <span class="mm-item">相关概念</span>
+          <span class="mm-item">流程（4阶段）</span>
+          <span class="mm-item">六大原则</span>
+        </div>
+        <div class="mm-branch b2">
+          <div class="mm-branch-title">6.2 工作分析方法</div>
+          <span class="mm-item">观察法</span>
+          <span class="mm-item">访谈法</span>
+          <span class="mm-item">问卷调查法</span>
+          <span class="mm-item">PAQ（职位分析问卷）</span>
+          <span class="mm-item">MPDQ（管理岗位）</span>
+          <span class="mm-item">关键事件法</span>
+          <span class="mm-item">工作日志法</span>
+        </div>
+        <div class="mm-branch b3">
+          <div class="mm-branch-title">6.3 工作说明书</div>
+          <span class="mm-item">工作描述</span>
+          <span class="mm-item">工作规范</span>
+          <span class="mm-item">结构要素</span>
+          <span class="mm-item">注意事项</span>
+        </div>
+        <div class="mm-branch b4">
+          <div class="mm-branch-title">6.4 工作设计</div>
+          <span class="mm-item">工作专业化</span>
+          <span class="mm-item">工作轮换</span>
+          <span class="mm-item">工作扩大化</span>
+          <span class="mm-item">工作丰富化</span>
+          <span class="mm-item">以团队为基础</span>
+          <span class="mm-item">工作特征模型</span>
+        </div>
+        <div class="mm-branch b5">
+          <div class="mm-branch-title">相关概念体系</div>
+          <span class="mm-item">行动→任务</span>
+          <span class="mm-item">任务→职责</span>
+          <span class="mm-item">职责→职位</span>
+          <span class="mm-item">职位→职务</span>
+          <span class="mm-item">职位→工作</span>
+          <span class="mm-item">职系/职组/职级/职等</span>
+        </div>
+        <div class="mm-branch b6">
+          <div class="mm-branch-title">管理学联系</div>
+          <span class="mm-item">泰勒科学管理</span>
+          <span class="mm-item">霍桑实验</span>
+          <span class="mm-item">赫茨伯格双因素</span>
+          <span class="mm-item">人事匹配</span>
+          <span class="mm-item">胜任力模型</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ §1 工作分析概述 ══════════ -->
+<div id="s1">
+  <div class="section-title">
+    <span class="sec-num">§ 1</span>
+    <h2>工作分析概述</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <!-- 知识点1：工作分析的含义 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§1-01</span>
+      <span class="kcard-title">工作分析的含义与内容（6WIH框架）</span>
+      <span class="badge badge-page">📄 P162–164</span>
+      <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+      <span class="badge badge-prob">🎯 高概率</span>
+      <span class="badge badge-type">名词解释 / 简答</span>
+    </div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 专有名词解释（教材原意）</div>
+          <div class="kcard-item-content">
+            <span class="hl">工作分析</span>是对组织中所有为实现组织目标而存在的各类工作（岗位）进行系统分析和研究，以确定每一种工作的<span class="hl-blue">内容、职责与权限、工作条件和环境</span>，以及完成本工作所需的<span class="hl-green">技能、能力、知识和其他资格条件</span>并形成工作说明书的过程。
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🧒 小学生版通俗解释</div>
+          <div class="kcard-item-content">
+            就像学校给每个班主任写一张"工作说明卡"：这个老师要做什么（教语文）、在哪里做（初三1班）、怎么做（上课+批改作业）、为什么做（让学生考好大学）、需要什么条件（本科学历+教师资格证）。这张卡片就是工作分析的成果。
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content">
+            <strong>6W1H = What + Who + Where + When + Why + For Whom + How</strong><br>
+            口诀：<span class="hl">什么人、何时何地、为何如何、为谁服务</span><br>
+            简化：<strong>内容·人员·岗位·时间·方法·目的·对象</strong>
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">🏢 企业/生活案例</div>
+          <div class="kcard-item-content">
+            滴滴出行为"网约车司机"做工作分析：What（接单送客）、Who（持驾照、无违章记录）、Where（城市道路）、When（弹性工时）、How（手机APP操作）、Why（满足乘客出行需求）、For Whom（乘客）。这套分析最终形成司机"准入标准"和"服务规范"。
+          </div>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">📋 6WIH内容详解对照表</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>维度</th><th>英文</th><th>核心问题</th><th>对应岗位信息</th></tr></thead>
+            <tbody>
+              <tr><td><span class="hl">工作内容</span></td><td>What</td><td>做什么？</td><td>职责义务、任务复杂度、对组织财物影响</td></tr>
+              <tr><td><span class="hl">责任者</span></td><td>Who</td><td>谁来做？</td><td>任职者所需知识技能、教育程度、心理素质</td></tr>
+              <tr><td><span class="hl">工作岗位</span></td><td>Where</td><td>在哪做？</td><td>工作场所、物理条件、是否需要出差</td></tr>
+              <tr><td><span class="hl">工作时间</span></td><td>When</td><td>何时做？</td><td>时间安排、是否经常加班</td></tr>
+              <tr><td><span class="hl">怎样操作</span></td><td>How</td><td>如何做？</td><td>具体工作任务、基本职能、与相关岗位联系</td></tr>
+              <tr><td><span class="hl">为何要做</span></td><td>Why</td><td>为什么做？</td><td>设立岗位的意义、对组织运转的价值</td></tr>
+              <tr><td><span class="hl">服务对象</span></td><td>For Whom</td><td>为谁服务？</td><td>该岗位直接服务的对象</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">🎤 复试回答模板</div>
+        <div class="recite-item">
+          <div class="recite-label">定义 → 内容框架 → 成果 → 意义</div>
+          工作分析是对组织中各类工作进行系统研究，以确定工作内容、职责权限、工作条件和任职资格要求，最终形成工作说明书的过程。其分析内容可用"6W1H"概括：工作内容（What）、责任者（Who）、工作岗位（Where）、工作时间（When）、怎样操作（How）、为何要做（Why）和服务对象（For Whom）。工作分析的两大成果是：①工作描述——关于工作本身的文件；②工作规范——关于任职者资格的文件。工作分析是人力资源管理的基础，服务于规划、招聘、绩效、薪酬、培训等所有职能。
+        </div>
+        <div class="recite-label" style="margin-top:12px;">复试延伸问题</div>
+        <div style="font-size:13px;color:var(--ink)">
+          ❓ 工作分析与工作设计有什么区别？（工作分析是"描述现有工作"，工作设计是"重新设计工作"）<br>
+          ❓ 工作分析的主体、客体、结果分别是什么？（主体：执行者；客体：职位；结果：工作说明书）<br>
+          ❓ 为什么说工作分析是人力资源管理的"基础"？（为招聘、绩效标准、薪酬、培训提供信息依据）
+        </div>
+      </div>
+
+      <div class="quote-box">
+        "工作分析是组织人力资源规划和其他一切人力资源管理活动的基础，使人力资源管理走向科学化、规范化。"
+        <cite>——《人力资源管理（第3版）》颜爱民，P162</cite>
+      </div>
+    </div>
+  </div>
+
+  <!-- 知识点2：工作分析的主要作用 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§1-02</span>
+      <span class="kcard-title">工作分析的主要作用（8大作用）</span>
+      <span class="badge badge-page">📄 P163–166</span>
+      <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+      <span class="badge badge-prob">🎯 较高概率</span>
+      <span class="badge badge-type">简答 / 论述</span>
+    </div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content">
+            <span class="hl">规招绩薪培汇目价</span>（8字）<br>
+            规划→招聘→绩效→薪酬→培训→汇报关系→明确目标→岗位价值
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">📋 历年考察</div>
+          <div class="kcard-item-content">
+            <span class="exam-tag">2017笔试</span> 工作分析在HRM中的应用<br>
+            <span class="exam-tag green">2020复试</span> 简述工作分析的作用
+          </div>
+        </div>
+      </div>
+
+      <details style="margin-top:16px;">
+        <summary>📖 展开：8大作用详解</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>作用</th><th>核心内容</th><th>联系的HR职能</th></tr></thead>
+              <tbody>
+                <tr><td>①</td><td><span class="hl">为人力资源规划提供依据</span></td><td>预测各岗位所需人员数量和质量</td><td>人力资源规划</td></tr>
+                <tr><td>②</td><td><span class="hl">合理安排工作任务</span></td><td>确保组织中各项任务都有人承担，岗位高效衔接</td><td>组织设计</td></tr>
+                <tr><td>③</td><td><span class="hl">明确职责和目标</span></td><td>让管理者和员工清楚工作职责范围和应完成的任务</td><td>组织管理</td></tr>
+                <tr><td>④</td><td><span class="hl">为工作再设计和职业规划提供依据</span></td><td>工作扩大化/丰富化的基础，支持员工职业成长</td><td>工作设计</td></tr>
+                <tr><td>⑤</td><td><span class="hl">为绩效管理提供评价标准</span></td><td>确定各岗位的应有标准，保证绩效考核公平公正</td><td>绩效管理</td></tr>
+                <tr><td>⑥</td><td><span class="hl">为招聘提供有效信息</span></td><td>明确岗位职责和任职资格，降低招聘成本</td><td>员工招聘</td></tr>
+                <tr><td>⑦</td><td><span class="hl">降低培训成本、提高培训效率</span></td><td>为培训需求分析提供信息依据</td><td>培训开发</td></tr>
+                <tr><td>⑧</td><td><span class="hl">明确汇报关系，保证薪酬公平性</span></td><td>分解组织目标→部门目标→岗位目标；确定岗位相对价值</td><td>薪酬管理</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- 知识点3：相关概念 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§1-03</span>
+      <span class="kcard-title">工作分析相关概念体系（易混考点）</span>
+      <span class="badge badge-page">📄 P165–167</span>
+      <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+      <span class="badge badge-prob">🎯 高概率</span>
+      <span class="badge badge-type">名词解释 / 对比题</span>
+    </div>
+    <div class="kcard-body">
+      <div class="info-box orange">
+        ⚠️ <strong>考试高危区：</strong>行动、任务、职责、职位、职务、工作、工作族、职业等概念极易混淆，历年名词解释常考，复试口述也必须掌握。
+      </div>
+      <div class="kcard-grid" style="margin-top:16px;">
+        <div class="kcard-item">
+          <div class="kcard-item-label">🧒 小学生版解释——层级递进图</div>
+          <div class="kcard-item-content">
+            🔹 <strong>行动</strong> = 最小动作（拿起电话）<br>
+            🔹 <strong>任务</strong> = 多个行动的集合（接听并记录一个电话）<br>
+            🔹 <strong>职责</strong> = 多个任务的集合（管理公司对外通讯）<br>
+            🔹 <strong>职位</strong> = 一个人承担的所有职责（前台秘书这个岗位）<br>
+            🔹 <strong>职务</strong> = 职责相当的一组职位的统称（秘书职务）<br>
+            🔹 <strong>工作</strong> = 职责类似的职位组合（前台工作）<br>
+            🔹 <strong>工作族</strong> = 相似工作的集合（行政类工作族）<br>
+            🔹 <strong>职业</strong> = 跨组织的相似工作集合（秘书职业）
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content">
+            <span class="hl">行动→任务→职责→职位→职务→工作→工作族→职业</span><br>
+            口诀：<strong>动任责位务工族业</strong>（从小到大，从具体到抽象）<br><br>
+            <strong>职系、职组、职级、职等</strong>（行政分类体系）<br>
+            职系=性质相似的职位集合<br>
+            职组=相近职系的集合<br>
+            职级=同职系中难易相似的职位<br>
+            职等=跨职系间难易相当的职位
+          </div>
+        </div>
+      </div>
+
+      <div class="kcard-full">
+        <div class="kcard-full-label">📋 核心概念对照表（教材原意）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>概念</th><th>英文</th><th>教材定义核心</th><th>举例</th></tr></thead>
+            <tbody>
+              <tr><td><span class="hl">行动</span></td><td>Action</td><td>工作活动中不便再继续分解的最小动作单位</td><td>拿起电话、插入钥匙</td></tr>
+              <tr><td><span class="hl">任务</span></td><td>Task</td><td>为达到某一目的而由相关行动直接组成的集合</td><td>复印文件（含4个行动）</td></tr>
+              <tr><td><span class="hl">职责</span></td><td>Responsibility</td><td>由某一方面承担的一项或多项任务组成的相关任务集合</td><td>监控员工满意度（含5项任务）</td></tr>
+              <tr><td><span class="hl">职位（岗位）</span></td><td>Position</td><td>由一个人完成的一项或多项相关职责的集合；职位数量=人员数量</td><td>HR部经理</td></tr>
+              <tr><td><span class="hl">职务</span></td><td>Headship</td><td>主要职责在重要性和数量上相当的一组职位的统称；职务≠职位（一对多）</td><td>副经理职务（可有2个职位）</td></tr>
+              <tr><td><span class="hl">工作</span></td><td>Job</td><td>一个或一组职责类似的职位所形成的组合</td><td>产品销售（含销售员、销售经理）</td></tr>
+              <tr><td><span class="hl">工作族</span></td><td>Occupation</td><td>企业内部具有广泛相似内容的相关工作群，又称职位族</td><td>技术类工作族、销售类工作族</td></tr>
+              <tr><td><span class="hl">职业</span></td><td>Profession</td><td>不同组织中的相似工作组成的跨组织工作集合</td><td>教师职业、秘书职业</td></tr>
+              <tr><td><span class="hl">职业生涯</span></td><td>Career</td><td>一个人在工作生活中所经历或将要经历的一系列职位、工作、职业</td><td>老师→公务员→经理</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 知识点4：工作分析的流程 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§1-04</span>
+      <span class="kcard-title">工作分析的流程（4阶段）</span>
+      <span class="badge badge-page">📄 P167–170</span>
+      <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+      <span class="badge badge-prob">🎯 较高概率</span>
+      <span class="badge badge-type">简答</span>
+    </div>
+    <div class="kcard-body">
+      <div class="logic-flow" style="flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;">
+        <div class="flow-node">①前期准备<br><small>明确目的<br>组建小组</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node orange">②调查阶段<br><small>现场观察<br>收集信息</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node green">③分析汇总<br><small>审核整理<br>形成报告</small></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node purple">④完成阶段<br><small>编写工作<br>描述与规范</small></div>
+      </div>
+
+      <details style="margin-top:16px;">
+        <summary>📖 展开：四阶段详细内容</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>阶段</th><th>主要任务</th><th>具体步骤</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="hl">前期准备阶段</span></td>
+                  <td>熟悉情况，明确目的</td>
+                  <td>①确定工作分析目的 ②确定参与者 ③培训分析人员 ④确定样本 ⑤准备问卷与调查提纲</td>
+                </tr>
+                <tr>
+                  <td><span class="hl">调查阶段</span></td>
+                  <td>全面调查工作过程、环境、内容和人员</td>
+                  <td>①第一次现场考察 ②谈话（三层面：基层管理者、实际任职者、代表人物）③第二次现场考察验证信息</td>
+                </tr>
+                <tr>
+                  <td><span class="hl">分析汇总阶段</span></td>
+                  <td>整理信息，形成分析报告</td>
+                  <td>审核整理调查信息，发现关键成分，归纳岗位名称、任务与职责、劳动强度、工作环境和任职资格</td>
+                </tr>
+                <tr>
+                  <td><span class="hl">完成阶段</span></td>
+                  <td>编制工作描述与工作规范</td>
+                  <td>①草拟工作描述和工作规范 ②与实际工作对比 ③修正草稿 ④合并形成工作说明书 ⑤收集反馈，不断完善</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="info-box blue" style="margin-top:12px;">
+            💡 <strong>时机选择：</strong>①新企业刚成立时；②工作职位岗位变动时；③管理人员或制度变动时
+          </div>
+        </div>
+      </details>
+
+      <div class="kcard-full" style="margin-top:16px;">
+        <div class="kcard-full-label">🎯 六大原则（教材原句）</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:13px;">
+          <span class="badge badge-imp">① 系统性原则</span>
+          <span class="badge badge-prob">② 动态性原则</span>
+          <span class="badge badge-type">③ 目的性原则</span>
+          <span class="badge badge-page">④ 效率性原则</span>
+          <span class="badge badge-imp">⑤ 对岗不对人原则</span>
+          <span class="badge badge-prob">⑥ 实用性原则</span>
+        </div>
+        <div class="info-box orange" style="margin-top:10px;">
+          ⭐ <strong>"对岗不对人原则"</strong>是考试高频考点：工作分析的对象是岗位本身，而非任职者个人。岗位评估衡量的是岗位的相对价值，而非绝对价值。这与后面第9章"岗位评估"的原则高度一致。
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end #s1 -->
+
+<!-- ══════════ §2 工作分析方法 ══════════ -->
+<div id="s2">
+  <div class="section-title">
+    <span class="sec-num">§ 2</span>
+    <h2>工作分析方法</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <!-- 方法总览 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§2-01</span>
+      <span class="kcard-title">工作分析方法对比总表</span>
+      <span class="badge badge-page">📄 P170–179</span>
+      <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+      <span class="badge badge-prob">🎯 高概率</span>
+      <span class="badge badge-type">简答 / 对比题</span>
+    </div>
+    <div class="kcard-body">
+      <div class="kcard-item" style="margin-bottom:16px;">
+        <div class="kcard-item-label">💡 助记口诀</div>
+        <div class="kcard-item-content">
+          <span class="hl">观访问关日</span>（5种常用法）<br>
+          观察法 · 访谈法 · 问卷调查法 · 关键事件法 · 工作日志法<br>
+          <small>+ PAQ（职位分析问卷法）· MPDQ（管理岗位描述问卷法）</small>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>方法</th><th>核心定义</th><th>适用岗位</th><th>优点</th><th>缺点</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="hl">观察法</span></td>
+              <td>分析人员通过观察员工正常工作状态获取信息</td>
+              <td>体力工作者、事务性工作者（流水线、文秘等）</td>
+              <td>全面性、真实性、灵活性</td>
+              <td>干扰工作；耗时；难刻画内心活动；不适用脑力劳动</td>
+            </tr>
+            <tr>
+              <td><span class="hl">访谈法</span></td>
+              <td>工作分析人员与员工面对面谈话收集信息</td>
+              <td>飞行员、建筑设计师等无法观察的工作</td>
+              <td>应用广泛；可深层了解态度动机；可控性强</td>
+              <td>耗时；被访者可能夸大工作重要性；信息可能失真</td>
+            </tr>
+            <tr>
+              <td><span class="hl">问卷调查法</span></td>
+              <td>结构化问卷要求任职者和主管以书面形式记录信息</td>
+              <td>脑力工作者、管理工作者、软件设计人员等</td>
+              <td>样本量大；费用低速度快；可统计分析</td>
+              <td>设计问卷耗时耗力；可能缺乏交流；填写质量难保证</td>
+            </tr>
+            <tr>
+              <td><span class="hl">关键事件法(CIT)</span></td>
+              <td>收集工作中特别有效或无效的关键行为事件</td>
+              <td>各类工作均适用，特别是绩效考核设计</td>
+              <td>聚焦关键行为；具体生动；可用于绩效标准制定</td>
+              <td>整理耗时；只关注极端行为，忽略日常表现</td>
+            </tr>
+            <tr>
+              <td><span class="hl">工作日志法</span></td>
+              <td>要求员工每天记录工作活动、时间分配和遇到的问题</td>
+              <td>变动性大的工作</td>
+              <td>真实反映工作状态；可追踪时间分配</td>
+              <td>员工负担重；记录可能不规范或遗漏</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAQ -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§2-02</span>
+      <span class="kcard-title">职位分析问卷法（PAQ）</span>
+      <span class="badge badge-page">📄 P174–175</span>
+      <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+      <span class="badge badge-prob">🎯 较高概率</span>
+      <span class="badge badge-type">名词解释 / 简答</span>
+    </div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 专有名词解释</div>
+          <div class="kcard-item-content">
+            <span class="hl">PAQ（Position Analysis Questionnaire）</span>，职位分析问卷法，由麦考密克于<span class="hl-blue">1972年</span>提出。PAQ包含<span class="hl-blue">194个项目</span>（187项分析工作特征，7项涉及薪酬），分为<span class="hl-green">6个维度</span>，可测定工作在<span class="hl-green">13个总体性维度</span>上的得分，适用于确定工作等级、计算薪酬比率和划分工作族。
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">📋 PAQ六大维度（记忆框架）</div>
+          <div class="kcard-item-content">
+            ①信息投入（从哪里/如何获取信息）<br>
+            ②脑力过程（推理、决策、计划）<br>
+            ③工作产出（身体活动、工具、设备）<br>
+            ④同他人的关系（人际互动）<br>
+            ⑤工作环境（人文与社会环境）<br>
+            ⑥其他特点（其他相关活动）
+          </div>
+        </div>
+      </div>
+      <div class="info-box blue" style="margin-top:14px;">
+        💡 <strong>PAQ的局限：</strong>①问卷表较复杂，普通员工难以自行填写；②通用化格式导致工作特征抽象化，不能描述具体的任务活动。
+      </div>
+    </div>
+  </div>
+
+  <!-- MPDQ -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§2-03</span>
+      <span class="kcard-title">管理岗位描述问卷法（MPDQ）</span>
+      <span class="badge badge-page">📄 P175</span>
+      <span class="badge badge-imp">⭐⭐⭐ 一般</span>
+      <span class="badge badge-type">名词解释</span>
+    </div>
+    <div class="kcard-body">
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 专有名词解释</div>
+        <div class="kcard-item-content">
+          <span class="hl">MPDQ（Management Position Description Questionnaire）</span>，管理岗位描述问卷法，专为管理职位设计，通过与管理者主要职责密切相关的<span class="hl-blue">13个方面208个问题</span>进行调查，采用<span class="hl-blue">6分标准</span>对每个项目评分。适应了管理人员<span class="hl-green">非程序化工作</span>的特点。
+        </div>
+      </div>
+      <details style="margin-top:12px;">
+        <summary>📖 展开：MPDQ的13个方面</summary>
+        <div class="details-body">
+          ①产品、市场和财务战略计划 ②与组织其他部门和人事管理的协调 ③内部业务控制 ④产品和服务责任 ⑤公共与客户关系 ⑥高层次的咨询指导 ⑦行动的自主性 ⑧财务审批权 ⑨员工服务 ⑩监督 ⑪复杂性和压力 ⑫重要财务责任 ⑬广泛的人事责任
+        </div>
+      </details>
+    </div>
+  </div>
+</div><!-- end #s2 -->
+
+<!-- ══════════ §3 工作说明书 ══════════ -->
+<div id="s3">
+  <div class="section-title">
+    <span class="sec-num">§ 3</span>
+    <h2>工作说明书（工作描述 + 工作规范）</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§3-01</span>
+      <span class="kcard-title">工作描述与工作规范的区别与内容</span>
+      <span class="badge badge-page">📄 P179–185</span>
+      <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+      <span class="badge badge-prob">🎯 高概率</span>
+      <span class="badge badge-type">名词解释 / 简答</span>
+    </div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 工作描述（Job Description）</div>
+          <div class="kcard-item-content">
+            <span class="hl">工作描述</span>是有关<span class="hl-blue">工作本身</span>的文件，明确工作的内容、职责和环境。回答"这份工作是什么？"
+            <br><br><strong>主要内容：</strong>
+            <br>• 工作标识（名称、编号、所在部门）
+            <br>• 工作目标（该工作为何存在）
+            <br>• 工作职责和任务（主要职责列表）
+            <br>• 工作关系（汇报关系、协作关系）
+            <br>• 工作条件和环境（物理环境、危险性等）
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 工作规范（Job Specification）</div>
+          <div class="kcard-item-content">
+            <span class="hl">工作规范</span>是有关完成该项工作的<span class="hl-green">人员资格</span>的文件，说明完成该项工作的人员应具备的知识、技能、能力和其他任职资格。回答"什么人能做这份工作？"
+            <br><br><strong>主要内容：</strong>
+            <br>• 教育程度要求
+            <br>• 工作经验要求
+            <br>• 知识技能要求
+            <br>• 身体条件要求
+            <br>• 心理素质和性格要求
+          </div>
+        </div>
+      </div>
+
+      <div class="kcard-full" style="margin-top:16px;">
+        <div class="kcard-full-label">📊 工作说明书 = 工作描述 + 工作规范（对比表）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>维度</th><th>工作描述（Job Description）</th><th>工作规范（Job Specification）</th></tr></thead>
+            <tbody>
+              <tr><td>核心问题</td><td>这份工作是什么？</td><td>谁能做这份工作？</td></tr>
+              <tr><td>关注对象</td><td>工作本身（岗位）</td><td>任职者（人员资格）</td></tr>
+              <tr><td>主要内容</td><td>工作内容、职责、任务、工作环境</td><td>知识、技能、能力、教育程度、经验</td></tr>
+              <tr><td>核心回答</td><td>做什么（What）+ 怎么做（How）</td><td>谁来做（Who）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="info-box blue" style="margin-top:12px;">
+          🔑 <strong>关键记忆：</strong>工作描述="写岗位"，工作规范="写人的要求"，两者合并形成<span class="hl">工作说明书</span>（也叫岗位说明书/职位说明书）。
+        </div>
+      </div>
+
+      <div class="kcard-full" style="margin-top:16px;">
+        <div class="kcard-full-label">🎤 复试回答模板</div>
+        <div class="recite-item">
+          <div class="recite-label">定义 → 区别 → 内容 → 应用</div>
+          工作说明书是工作分析的核心成果文件，由两部分组成：①工作描述——以岗位为核心，描述工作内容、职责、工作条件和环境，解决"这份工作做什么"的问题；②工作规范——以人为核心，说明完成该工作所需的知识、技能、能力和其他任职资格，解决"谁能胜任"的问题。两者区别在于：工作描述关注"岗"，工作规范关注"人"。工作说明书直接服务于员工招聘、绩效评价、薪酬确定和培训需求分析。
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- end #s3 -->
+
+<!-- ══════════ §4 工作设计 ══════════ -->
+<div id="s4">
+  <div class="section-title">
+    <span class="sec-num">§ 4</span>
+    <h2>工作设计</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§4-01</span>
+      <span class="kcard-title">工作设计的主要方法（5种）</span>
+      <span class="badge badge-page">📄 P185–196</span>
+      <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+      <span class="badge badge-prob">🎯 高概率</span>
+      <span class="badge badge-type">名词解释 / 简答 / 论述</span>
+    </div>
+    <div class="kcard-body">
+      <div class="kcard-item" style="margin-bottom:16px;">
+        <div class="kcard-item-label">💡 助记口诀</div>
+        <div class="kcard-item-content">
+          <span class="hl">专换大富团</span>（5字）<br>
+          工作专业化 → 工作轮换 → 工作扩大化 → 工作丰富化 → 以团队为基础的工作设计<br>
+          <small>方向：纵横交错，从分工到整合</small>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>方法</th><th>核心定义</th><th>方向</th><th>优点</th><th>缺点</th><th>典型案例</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="hl">工作专业化</span></td>
+              <td>将工作分解为一系列最小单元，由专人专职完成</td>
+              <td>细分工作</td>
+              <td>效率极高，易于培训</td>
+              <td>单调乏味，员工满意度低，易倦怠</td>
+              <td>福特流水线、富士康装配线</td>
+            </tr>
+            <tr>
+              <td><span class="hl">工作轮换</span></td>
+              <td>让员工在不同工作岗位之间周期性移动</td>
+              <td>横向移动</td>
+              <td>减少单调感；培养多技能员工；后备人才培养</td>
+              <td>初期效率下降；培训成本高</td>
+              <td>丰田工厂让工人轮岗；北电网络18-24个月轮岗</td>
+            </tr>
+            <tr>
+              <td><span class="hl-green">工作扩大化</span></td>
+              <td>增加工作岗位的<strong>横向</strong>工作面（同级别任务数量增加）</td>
+              <td>横向扩展</td>
+              <td>减少单调感；增加工作多样性</td>
+              <td>本质上仍是"更多的相似任务"，激励效果有限</td>
+              <td>秘书由"只打印"→"打印+复印+接待"</td>
+            </tr>
+            <tr>
+              <td><span class="hl-purple">工作丰富化</span></td>
+              <td>工作<strong>纵向</strong>拓展，赋予更多的自主权、责任感和成就感</td>
+              <td>纵向拓展</td>
+              <td>提高内在激励；满足自主性、成就感需求</td>
+              <td>对员工要求高；管理成本增加</td>
+              <td>工程师从"执行设计"→"自主设计+汇报结果"</td>
+            </tr>
+            <tr>
+              <td><span class="hl">以团队为基础</span></td>
+              <td>将工作设计为由团队共同承担，共同负责工作成果</td>
+              <td>整合协作</td>
+              <td>协作效率高；适合复杂问题；增强凝聚力</td>
+              <td>搭便车问题；协调成本高</td>
+              <td>谷歌项目组、华为研发团队</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="kcard-full" style="margin-top:16px;">
+        <div class="kcard-full-label">⚠️ 工作扩大化 vs 工作丰富化（易混考点）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>维度</th><th>工作扩大化（Job Enlargement）</th><th>工作丰富化（Job Enrichment）</th></tr></thead>
+            <tbody>
+              <tr><td>方向</td><td><span class="hl-blue">横向</span>扩展</td><td><span class="hl-purple">纵向</span>拓展</td></tr>
+              <tr><td>变化内容</td><td>增加工作任务的数量（同级别）</td><td>增加工作的深度、自主权、责任感</td></tr>
+              <tr><td>激励层次</td><td>主要改善工作单调感（保健因素）</td><td>提供成就感、自主性（激励因素）</td></tr>
+              <tr><td>赫茨伯格理论联系</td><td>改善保健因素</td><td>增加激励因素</td></tr>
+              <tr><td>举例</td><td>超市收银员增加"商品上架"任务</td><td>超市收银员增加"负责区域盘点、向上汇报"的权力</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 工作特征模型 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">§4-02</span>
+      <span class="kcard-title">工作特征模型（Hackman & Oldham）</span>
+      <span class="badge badge-page">📄 P190–193</span>
+      <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+      <span class="badge badge-prob">🎯 较高概率</span>
+      <span class="badge badge-type">名词解释 / 简答</span>
+    </div>
+    <div class="kcard-body">
+      <div class="kcard-grid">
+        <div class="kcard-item">
+          <div class="kcard-item-label">📖 专有名词解释</div>
+          <div class="kcard-item-content">
+            <span class="hl">工作特征模型</span>由Hackman和Oldham提出，认为工作本身的5个核心特征会影响员工的心理状态，进而影响工作结果。五大核心特征：<span class="hl-blue">技能多样性、任务完整性、任务重要性、自主性、反馈性</span>。
+          </div>
+        </div>
+        <div class="kcard-item">
+          <div class="kcard-item-label">💡 助记口诀</div>
+          <div class="kcard-item-content">
+            <span class="hl">多整重自反</span>（5字）<br>
+            技能多样性→ 任务完整性→ 任务重要性→ 自主性→ 反馈性<br><br>
+            <strong>激励潜力分（MPS）= (多样+完整+重要)/3 × 自主 × 反馈</strong>
+          </div>
+        </div>
+      </div>
+
+      <details style="margin-top:14px;">
+        <summary>📖 展开：工作特征模型详解</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>核心特征</th><th>含义</th><th>对应心理状态</th><th>提升方法</th></tr></thead>
+              <tbody>
+                <tr><td><span class="hl">技能多样性</span></td><td>工作需要多少种技能和才能</td><td>体验工作的意义感</td><td>工作轮换、工作扩大化</td></tr>
+                <tr><td><span class="hl">任务完整性</span></td><td>工作是否要求完成一项完整可识别的工作</td><td>体验工作的意义感</td><td>减少分工细化，给予完整任务</td></tr>
+                <tr><td><span class="hl">任务重要性</span></td><td>工作对他人生活、工作有多大影响</td><td>体验工作的意义感</td><td>让员工了解其工作的价值</td></tr>
+                <tr><td><span class="hl">自主性</span></td><td>员工在计划工作和执行工作时的自由度</td><td>体验工作成果的责任感</td><td>工作丰富化，授权</td></tr>
+                <tr><td><span class="hl">反馈性</span></td><td>员工能否获得关于工作绩效的直接信息</td><td>了解工作活动的实际结果</td><td>建立绩效反馈机制</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="info-box green" style="margin-top:12px;">
+            🔗 <strong>管理学联系：</strong>工作特征模型与<strong>赫茨伯格双因素理论</strong>高度相关——任务完整性、自主性、反馈性对应的是"激励因素"（成就感、责任感、认可）。工作丰富化是实现工作特征模型的主要途径。
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</div><!-- end #s4 -->
+
+<!-- ══════════ 对比表格 ══════════ -->
+<div id="compare">
+  <div class="section-title">
+    <span class="sec-num">对比</span>
+    <h2>核心概念易混对比总结</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">对比</span>
+      <span class="kcard-title">本章全部易混概念汇总对比</span>
+    </div>
+    <div class="kcard-body">
+      <details open>
+        <summary>📊 工作描述 vs 工作规范 vs 工作说明书</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>概念</th><th>核心对象</th><th>回答的问题</th><th>主要内容</th></tr></thead>
+              <tbody>
+                <tr><td><span class="hl">工作描述</span></td><td>工作本身（岗位）</td><td>这份工作是什么？</td><td>工作内容、职责、工作条件和环境</td></tr>
+                <tr><td><span class="hl">工作规范</span></td><td>任职者资格</td><td>谁能胜任这份工作？</td><td>知识、技能、教育、经验、心理素质</td></tr>
+                <tr><td><span class="hl">工作说明书</span></td><td>工作描述+工作规范</td><td>对岗位的全面说明</td><td>上述两者的合并文件</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details style="margin-top:10px;">
+        <summary>📊 工作扩大化 vs 工作丰富化 vs 工作轮换</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>概念</th><th>方向</th><th>变化内容</th><th>激励层次</th><th>对应理论</th></tr></thead>
+              <tbody>
+                <tr><td><span class="hl-blue">工作扩大化</span></td><td>横向扩展</td><td>增加同级别任务数量</td><td>减少单调感</td><td>保健因素</td></tr>
+                <tr><td><span class="hl-purple">工作丰富化</span></td><td>纵向拓展</td><td>增加自主权、责任感、成就感</td><td>内在激励</td><td>激励因素</td></tr>
+                <tr><td><span class="hl-green">工作轮换</span></td><td>横向移动</td><td>在不同岗位间周期性轮换</td><td>技能多样性</td><td>工作特征模型</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details style="margin-top:10px;">
+        <summary>📊 PAQ（职位分析问卷）vs MPDQ（管理岗位描述问卷）</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>维度</th><th>PAQ</th><th>MPDQ</th></tr></thead>
+              <tbody>
+                <tr><td>提出者</td><td>麦考密克（1972年）</td><td>专为管理职位设计</td></tr>
+                <tr><td>适用范围</td><td>各类工作</td><td>仅限管理职位</td></tr>
+                <tr><td>题目数量</td><td>194项（187+7）</td><td>13方面208个问题</td></tr>
+                <tr><td>评分标准</td><td>6个维度评价</td><td>6分标准</td></tr>
+                <tr><td>特点</td><td>通用性强；适合薪酬等级划分</td><td>适应非程序化工作特点</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
+      <details style="margin-top:10px;">
+        <summary>📊 职位 vs 职务 vs 工作 vs 职业（核心概念辨析）</summary>
+        <div class="details-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>概念</th><th>核心区别</th><th>与人员的对应关系</th><th>举例</th></tr></thead>
+              <tbody>
+                <tr><td><span class="hl">职位（岗位）</span></td><td>一个人承担的职责集合</td><td>一一对应（职位数=人员数）</td><td>HR经理（张三）这个具体岗位</td></tr>
+                <tr><td><span class="hl">职务</span></td><td>一组职责相当的职位统称</td><td>一对多（一个职务可对应多个职位）</td><td>副经理职务（可有A、B两个职位）</td></tr>
+                <tr><td><span class="hl">工作</span></td><td>职责类似的职位组合</td><td>可跨越多个职位</td><td>产品销售工作（含销售员+销售经理）</td></tr>
+                <tr><td><span class="hl">职业</span></td><td>跨组织的相似工作集合</td><td>跨越多个组织</td><td>教师职业（在不同学校）</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 历年真题 ══════════ -->
+<div id="exam">
+  <div class="section-title">
+    <span class="sec-num">真题</span>
+    <h2>历年真题汇总（2016–2025）</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="kcard">
+    <div class="kcard-header">
+      <span class="kcard-num">真题库</span>
+      <span class="kcard-title">工作分析相关历年考察记录</span>
+    </div>
+    <div class="kcard-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>年份</th><th>考察形式</th><th>题目内容</th><th>考察知识点</th><th>建议得分要点</th></tr></thead>
+          <tbody>
+            <tr><td><span class="exam-tag">2016</span></td><td>笔试·简答</td><td>简述工作说明书的主要内容</td><td>工作描述+工作规范</td><td>分两部分答：工作描述内容+工作规范内容，各列3-4点</td></tr>
+            <tr><td><span class="exam-tag">2018</span></td><td>笔试·名词解释</td><td>什么是工作分析？</td><td>工作分析含义</td><td>教材定义+6W1H框架+两大成果</td></tr>
+            <tr><td><span class="exam-tag">2019</span></td><td>笔试·简答</td><td>工作分析的主要作用有哪些？</td><td>工作分析的8大作用</td><td>至少答5点，每点要解释</td></tr>
+            <tr><td><span class="exam-tag orange">2020</span></td><td>复试·口述</td><td>简述工作分析在人力资源管理中的基础地位</td><td>工作分析的作用、与各职能的关系</td><td>用"工作分析→招聘/绩效/薪酬/培训"的逻辑链条回答</td></tr>
+            <tr><td><span class="exam-tag">2021</span></td><td>笔试·简答</td><td>比较工作扩大化与工作丰富化的区别</td><td>工作设计方法</td><td>列表对比：方向+变化内容+激励效果</td></tr>
+            <tr><td><span class="exam-tag orange">2022</span></td><td>复试</td><td>结合案例谈谈工作设计对员工激励的作用</td><td>工作设计方法+激励理论</td><td>工作特征模型+赫茨伯格+案例举例</td></tr>
+            <tr><td><span class="exam-tag">2023</span></td><td>笔试·名词解释</td><td>工作规范</td><td>工作规范定义</td><td>定义+内容要素+与工作描述的区别</td></tr>
+            <tr><td><span class="exam-tag orange">2024</span></td><td>复试</td><td>HRBP如何利用工作分析支持业务管理？</td><td>工作分析在HRBP场景中的应用</td><td>结合工作分析为招聘/绩效/薪酬/培训提供依据展开</td></tr>
+            <tr><td><span class="exam-tag green">2025预测</span></td><td>简答/论述</td><td>数字化时代工作分析面临哪些挑战？如何应对？</td><td>工作分析+数字化转型</td><td>工作动态变化快、跨职能工作增多、远程工作等挑战+动态工作分析</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-box blue" style="margin-top:16px;">
+        📌 <strong>高频考点规律：</strong>
+        工作分析的<span class="hl">含义（名词解释）</span>和<span class="hl">主要作用（简答）</span>是最高频考点。工作设计中的<span class="hl">扩大化vs丰富化（对比题）</span>几乎每年必考。工作说明书的<span class="hl">内容结构</span>也是持续高频考点。建议重点掌握这三个方向。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 知识串联 ══════════ -->
+<div id="chain">
+  <div class="section-title">
+    <span class="sec-num">串联</span>
+    <h2>本章知识终极串联（逻辑流程图）</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="logic-box">
+    <div style="font-size:14px;font-weight:700;margin-bottom:16px;color:var(--ink)">📊 工作分析全链条逻辑图</div>
+
+    <div class="logic-flow" style="flex-direction:column;gap:12px;align-items:stretch;">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <div class="flow-node" style="min-width:120px;background:#0f1f2e;">组织战略目标</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node" style="min-width:120px;">人力资源规划</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node current" style="min-width:150px;">⭐工作分析<br><small>（6W1H）</small></div>
+      </div>
+      <div style="display:flex;justify-content:center;font-size:24px;color:var(--accent);">↓</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;">
+        <div class="flow-node orange" style="min-width:140px;">工作描述<br><small>（岗位信息）</small></div>
+        <div style="font-size:14px;color:var(--ink);padding:0 8px;">+</div>
+        <div class="flow-node green" style="min-width:140px;">工作规范<br><small>（任职资格）</small></div>
+        <div class="flow-arrow">=</div>
+        <div class="flow-node purple" style="min-width:140px;">工作说明书<br><small>（核心成果）</small></div>
+      </div>
+      <div style="display:flex;justify-content:center;font-size:24px;color:var(--accent);">↓</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+        <div class="flow-node" style="background:#1a56db;font-size:11px;padding:8px 12px;">招聘选拔<br><small>任职资格依据</small></div>
+        <div class="flow-node" style="background:#f59e0b;font-size:11px;padding:8px 12px;">绩效管理<br><small>评价标准依据</small></div>
+        <div class="flow-node" style="background:#0e7c6a;font-size:11px;padding:8px 12px;">薪酬管理<br><small>岗位价值依据</small></div>
+        <div class="flow-node" style="background:#7c3aed;font-size:11px;padding:8px 12px;">培训开发<br><small>需求分析依据</small></div>
+        <div class="flow-node" style="background:#dc2626;font-size:11px;padding:8px 12px;">工作设计<br><small>再设计参考</small></div>
+      </div>
+    </div>
+
+    <div class="info-box green" style="margin-top:16px;">
+      🔗 <strong>与其他章节的联系：</strong>
+      <br>• 第5章（人力资源规划）→ 工作分析提供岗位信息
+      <br>• 第7章（招聘）→ 工作说明书是招聘广告和选拔标准的来源
+      <br>• 第8章（绩效）→ 工作描述中的职责是绩效考核标准的基础
+      <br>• 第9章（薪酬）→ 工作规范和岗位相对价值决定薪酬等级
+      <br>• 第11章（激励）→ 工作设计（丰富化）是非物质激励的重要手段
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 30秒复习 ══════════ -->
+<div id="quick">
+  <div class="section-title">
+    <span class="sec-num">速览</span>
+    <h2>30秒复习模块（超简版）</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="quick-box">
+    <h3>⚡ 30秒记住第六章核心内容</h3>
+    <div class="quick-item"><span class="quick-num">①</span><span><strong>工作分析</strong> = 对岗位系统分析 → 6W1H框架 → 形成工作说明书（描述+规范）</span></div>
+    <div class="quick-item"><span class="quick-num">②</span><span><strong>工作分析是HRM的基础</strong>：为规划、招聘、绩效、薪酬、培训提供依据</span></div>
+    <div class="quick-item"><span class="quick-num">③</span><span><strong>流程4阶段</strong>：前期准备 → 调查 → 分析汇总 → 完成（草拟→对比→修正→合并）</span></div>
+    <div class="quick-item"><span class="quick-num">④</span><span><strong>分析方法5种</strong>：观（察）访（谈）问（卷）关（键事件）日（志）</span></div>
+    <div class="quick-item"><span class="quick-num">⑤</span><span><strong>PAQ</strong>（1972年）194题6维度13总体维度；<strong>MPDQ</strong>专为管理岗位，13方面208题</span></div>
+    <div class="quick-item"><span class="quick-num">⑥</span><span><strong>工作设计5法</strong>：专换大富团；扩大化=横向；丰富化=纵向（激励因素）</span></div>
+    <div class="quick-item"><span class="quick-num">⑦</span><span><strong>工作特征模型</strong>：多整重自反（技能多样+任务完整+任务重要+自主+反馈）→ 激励潜力分</span></div>
+    <div class="quick-item"><span class="quick-num">⑧</span><span><strong>高频考点</strong>：工作分析含义、8大作用、工作说明书内容、扩大化vs丰富化对比</span></div>
+  </div>
+</div>
+
+<!-- ══════════ 背诵版总结 ══════════ -->
+<div id="recite">
+  <div class="section-title">
+    <span class="sec-num">背诵</span>
+    <h2>背诵版总结（适合复试口述）</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="recite-box">
+    <h3>📝 第六章 工作分析 · 复试口述版</h3>
+
+    <div class="recite-item">
+      <div class="recite-label">① 工作分析的定义（必背）</div>
+      工作分析是对组织中所有为实现组织目标而存在的各类工作进行系统分析和研究，以确定每一种工作的内容、职责与权限、工作条件和环境，以及完成本工作所需的技能、能力、知识和其他资格条件，并形成工作说明书的过程。其分析框架可用"6W1H"概括。
+    </div>
+
+    <div class="recite-item">
+      <div class="recite-label">② 工作分析的作用（8点简述版）</div>
+      工作分析为人力资源管理提供基础信息：①为人力资源规划提供依据；②合理安排工作任务；③明确职责和目标；④为工作设计和职业规划提供依据；⑤为绩效管理提供评价标准；⑥为招聘提供有效信息；⑦降低培训成本提高效率；⑧明确汇报关系并保证薪酬的内部公平性。
+    </div>
+
+    <div class="recite-item">
+      <div class="recite-label">③ 工作说明书（必背核心）</div>
+      工作说明书由两部分构成：①工作描述——关于工作本身的文件，明确工作的内容、职责和环境；②工作规范——关于完成该项工作人员资格的文件，说明所需知识、技能、能力和其他任职资格。两者区别：描述针对"岗"，规范针对"人"。
+    </div>
+
+    <div class="recite-item">
+      <div class="recite-label">④ 工作设计主要方法（口述版）</div>
+      工作设计有5种主要方法：①工作专业化——细分工作，提高效率但易单调；②工作轮换——员工在不同岗位间移动，培养多技能；③工作扩大化——横向扩展，增加同级别任务数量；④工作丰富化——纵向拓展，增加自主权和责任感，对应激励因素；⑤以团队为基础的工作设计——协作完成，适合复杂任务。其中工作扩大化与丰富化最易混淆：前者是横向量变，后者是纵向质变。
+    </div>
+
+    <div class="recite-item">
+      <div class="recite-label">⑤ 关键概念辨析（复试提问高频）</div>
+      职位与职务：职位是一个人承担的职责集合，与人员一一对应；职务是职责相当的一组职位的统称，一个职务可对应多个职位。工作描述与工作规范：描述关注岗位本身（做什么），规范关注任职者（需要什么条件）。
+    </div>
+  </div>
+
+  <div class="info-box blue" style="margin-top:0;">
+    🎓 <strong>复试延伸话题准备：</strong>
+    可能被追问的深度问题：①"为什么说工作分析是HRM的基础，而不是某一职能的工具？"（因为它服务于所有HR职能）②"数字化时代工作分析面临什么挑战？"（工作内容变化快、远程工作、平台经济使传统岗位边界模糊）③"工作丰富化背后是哪种激励理论？"（赫茨伯格双因素理论，增加激励因素）
+  </div>
+</div>
+
+<!-- ══════════ 自我检测 ══════════ -->
+<div id="quiz">
+  <div class="section-title">
+    <span class="sec-num">测验</span>
+    <h2>课后自我检测（建议先合书作答）</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <div class="quiz">
+    <h3>📝 自我检测题目</h3>
+
+    <div class="q-item">
+      <div class="q-num">Q·01 — 名词解释</div>
+      <div class="q-text">什么是工作分析？其主要成果是什么？</div>
+      <div class="q-hint"><span>答题要点：</span>定义（教材原句）→ 6W1H框架 → 两大成果（工作描述+工作规范）→ 合并为工作说明书</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">Q·02 — 简答</div>
+      <div class="q-text">简述工作分析的主要作用（至少5点）。</div>
+      <div class="q-hint"><span>关键词：</span>规划依据、任务安排、职责明确、工作设计、绩效标准、招聘信息、培训效率、汇报关系、薪酬公平性</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">Q·03 — 对比题</div>
+      <div class="q-text">比较工作描述与工作规范的区别，并说明二者如何构成工作说明书。</div>
+      <div class="q-hint"><span>关键词：</span>描述=针对岗位（内容+职责+环境）；规范=针对任职者（知识+技能+资格）；二者合并=工作说明书</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">Q·04 — 对比题 <span class="exam-tag" style="font-size:10px;">历年高频</span></div>
+      <div class="q-text">比较工作扩大化与工作丰富化的区别，分别举例说明。</div>
+      <div class="q-hint"><span>关键词：</span>扩大化=横向（增加同级任务数量）；丰富化=纵向（增加自主权+责任感+成就感）；对应赫茨伯格：扩大化=保健因素，丰富化=激励因素</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">Q·05 — 简答</div>
+      <div class="q-text">简述工作分析的流程（4个阶段）及各阶段的主要任务。</div>
+      <div class="q-hint"><span>关键词：</span>前期准备（明确目的+培训人员）→ 调查（现场+访谈）→ 分析汇总（整理报告）→ 完成（草拟→对比→修正→合并→评述）</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">Q·06 — 名词解释 <span class="exam-tag" style="font-size:10px;">2023真题</span></div>
+      <div class="q-text">什么是工作规范？它与工作描述有何区别？</div>
+      <div class="q-hint"><span>关键词：</span>工作规范=关于任职者资格的文件（知识+技能+能力+教育+经验）；区别：描述关注岗位，规范关注人员</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">Q·07 — 简答</div>
+      <div class="q-text">什么是PAQ（职位分析问卷法）？其有哪些优点和局限性？</div>
+      <div class="q-hint"><span>关键词：</span>1972年麦考密克；194题；6个维度；13个总体维度；优：通用性强，适合划分工作族和确定薪酬；局限：复杂难填；工作特征抽象化</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">Q·08 — 论述题 <span class="exam-tag green" style="font-size:10px;">2025预测</span></div>
+      <div class="q-text">数字化时代，工作分析面临哪些新挑战？如何进行"动态工作分析"以适应变化？</div>
+      <div class="q-hint"><span>答题框架：</span>①传统工作分析的局限（静态、定期更新滞后）→ ②数字化带来的挑战（岗位内容快速变化、远程工作、平台经济岗位边界模糊）→ ③动态工作分析的应对策略（持续监测、敏捷更新、引入大数据分析）→ ④结合HRBP实践举例</div>
+    </div>
+
+    <div class="q-item">
+      <div class="q-num">Q·09 — 案例分析 <span class="exam-tag" style="font-size:10px;">教材原案例</span></div>
+      <div class="q-text">T公司招聘维修工程师失败的根本原因是什么？如果你是HR经理，你会如何改进？</div>
+      <div class="q-hint"><span>答题框架：</span>根本原因=没有进行工作分析，广告条件与岗位实际需求脱节 → 改进方案：①先做工作分析（观察法+访谈法）→ ②撰写维修工程师的工作描述（核心职责）+工作规范（具体技能要求）→ ③依据工作说明书设计招聘广告和笔试/操作题</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<div class="footer-bar">
+  📚 中南大学企业管理学硕复试笔记 · 第六章 工作分析 · 《人力资源管理（第3版）》颜爱民 · P160–198 · 2016–2025真题整合版<br>
+  生成日期：2026-03-09
+</div>
+
+<script>
+// Night mode
+function toggleNight() {
+  document.body.classList.toggle('night');
+  const btn = document.querySelector('.btn-night');
+  btn.textContent = document.body.classList.contains('night') ? '☀️ 日间模式' : '🌙 夜间模式';
+  localStorage.setItem('nightMode', document.body.classList.contains('night'));
+}
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+// Restore night mode
+if (localStorage.getItem('nightMode') === 'true') {
+  document.body.classList.add('night');
+  const btn = document.querySelector('.btn-night');
+  if (btn) btn.textContent = '☀️ 日间模式';
+}
+
+// Search
+// ── Search state ──
+var _srchMatches=[], _srchIdx=-1;
+function _srchEsc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function _srchClear(){
+  document.querySelectorAll('.highlight-search').forEach(function(el){
+    var p=el.parentNode;if(!p)return;
+    p.replaceChild(document.createTextNode(el.textContent),el);p.normalize();
+  });
+  _srchMatches=[];_srchIdx=-1;
+}
+function _srchActivate(){
+  _srchMatches.forEach(function(m,i){m.classList.toggle('hl-cur',i===_srchIdx);});
+  var el=_srchMatches[_srchIdx];
+  if(el){
+    var p=el.parentElement;
+    while(p){if(p.tagName==='DETAILS')p.open=true;p=p.parentElement;}
+    setTimeout(function(){
+      var rect=el.getBoundingClientRect();
+      window.scrollTo({top:Math.max(0,window.scrollY+rect.top-110),behavior:'smooth'});
+    },50);
+  }
+  var cnt=_srchMatches.length;
+  document.getElementById('searchCount').textContent=cnt>0?(_srchIdx+1)+' / '+cnt+' 处':'未找到';
+  var dis=cnt===0;
+  var pv=document.getElementById('srchPrev');if(pv)pv.disabled=dis;
+  var nx=document.getElementById('srchNext');if(nx)nx.disabled=dis;
+}
+function nextResult(){if(!_srchMatches.length)return;_srchIdx=(_srchIdx+1)%_srchMatches.length;_srchActivate();}
+function prevResult(){if(!_srchMatches.length)return;_srchIdx=(_srchIdx-1+_srchMatches.length)%_srchMatches.length;_srchActivate();}
+document.addEventListener('keydown',function(e){if(e.key==='F3'){e.preventDefault();if(e.shiftKey)prevResult();else nextResult();}});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>人力资源管理真题答案解析 | 中南大学企业管理复试 2016–2025</title>
+<style>
+:root {
+  --bg: #f5f6fa;
+  --card: #ffffff;
+  --nav-bg: #1a2340;
+  --nav-text: #e8eaf6;
+  --accent: #2c5fe3;
+  --accent2: #0d9966;
+  --accent3: #d4500a;
+  --accent4: #7c3aed;
+  --text: #1a1f36;
+  --text2: #4a5568;
+  --text3: #718096;
+  --border: #e2e8f0;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+  --tag-bg: #eef2ff;
+  --tag-text: #3730a3;
+  --year-bg: #fef3c7;
+  --year-text: #92400e;
+  --key-bg: #fef9c3;
+  --struct-bg: #f0fdf4;
+  --struct-border: #86efac;
+  --warn-bg: #fff7ed;
+  --warn-border: #fb923c;
+}
+.dark {
+  --bg: #0f1523;
+  --card: #1a2340;
+  --nav-bg: #0b0f1c;
+  --nav-text: #c5cae9;
+  --accent: #6b8dff;
+  --accent2: #34d399;
+  --accent3: #fb923c;
+  --accent4: #a78bfa;
+  --text: #e8eaf6;
+  --text2: #a0aec0;
+  --text3: #718096;
+  --border: #2d3748;
+  --shadow: 0 2px 12px rgba(0,0,0,0.3);
+  --tag-bg: #1e2a5e;
+  --tag-text: #a5b4fc;
+  --year-bg: #2d1f00;
+  --year-text: #fbbf24;
+  --key-bg: #2d2700;
+  --struct-bg: #0d2318;
+  --struct-border: #166534;
+  --warn-bg: #2d1500;
+  --warn-border: #c2410c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.7;
+  transition: background .3s, color .3s;
+}
+
+/* ── NAV ── */
+#nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--nav-bg);
+  box-shadow: 0 2px 16px rgba(0,0,0,.25);
+}
+.nav-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.nav-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--nav-text);
+  letter-spacing: .5px;
+  white-space: nowrap;
+}
+.nav-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav-controls input {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  color: #fff;
+  padding: 5px 12px;
+  font-size: .85rem;
+  width: 180px;
+  outline: none;
+}
+.nav-controls input::placeholder { color: rgba(255,255,255,.5); }
+.btn {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  color: var(--nav-text);
+  padding: 5px 12px;
+  font-size: .82rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .2s;
+}
+.btn:hover { background: rgba(255,255,255,.22); }
+
+.nav-links {
+  display: flex;
+  overflow-x: auto;
+  padding: 6px 16px 8px;
+  gap: 6px;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  color: rgba(255,255,255,.7);
+  text-decoration: none;
+  font-size: .8rem;
+  white-space: nowrap;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.12);
+  transition: all .2s;
+}
+.nav-links a:hover, .nav-links a.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ── MAIN ── */
+.wrap { max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #1a2340 0%, #2c3e6e 60%, #1e4d8c 100%);
+  border-radius: 16px;
+  padding: 36px 32px;
+  color: #fff;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; right: -40px; top: -40px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  pointer-events: none;
+}
+.hero-sub { font-size: .85rem; opacity: .7; margin-bottom: 8px; }
+.hero-title { font-size: 1.7rem; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
+.hero-desc { font-size: .92rem; opacity: .85; margin-bottom: 16px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-tag {
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: .8rem;
+}
+
+/* ── SECTION TITLE ── */
+.sec-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 32px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+}
+.sec-icon {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.sec-icon.y2016 { background: #dbeafe; }
+.sec-icon.y2017 { background: #dcfce7; }
+.sec-icon.y2018 { background: #fef9c3; }
+.sec-icon.y2019 { background: #fce7f3; }
+.sec-icon.y2020 { background: #ede9fe; }
+.sec-icon.y2021 { background: #fff7ed; }
+.sec-icon.y2022 { background: #f0fdf4; }
+.sec-icon.y2023 { background: #fef2f2; }
+.sec-icon.y2024 { background: #e0f2fe; }
+.sec-icon.y2025 { background: #f0fdf4; }
+.sec-year { font-size: 1.25rem; font-weight: 800; color: var(--text); }
+.sec-count { font-size: .8rem; color: var(--text3); background: var(--tag-bg); padding: 2px 8px; border-radius: 10px; }
+
+/* ── QUESTION CARD ── */
+.qcard {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: box-shadow .2s;
+}
+.qcard:hover { box-shadow: 0 4px 20px rgba(0,0,0,.1); }
+
+.qcard-header {
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.qtype-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: .78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.type-simple { background: #dbeafe; color: #1e40af; }
+.type-discuss { background: #dcfce7; color: #166534; }
+.type-case { background: #fef9c3; color: #854d0e; }
+.type-interview { background: #ede9fe; color: #5b21b6; }
+
+.qcard-title-wrap { flex: 1; }
+.qcard-title { font-size: 1rem; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 6px; }
+.qcard-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: .75rem;
+  font-weight: 600;
+}
+.badge-year { background: var(--year-bg); color: var(--year-text); }
+.badge-kp { background: #f0fdf4; color: #15803d; }
+.badge-hot { background: #fef2f2; color: #dc2626; }
+
+.qcard-body { padding: 16px 18px; }
+
+/* ── BLOCKS ── */
+.block {
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  font-size: .9rem;
+}
+.block:last-child { margin-bottom: 0; }
+
+.block-q {
+  background: #f8faff;
+  border-left: 3px solid var(--accent);
+}
+.dark .block-q { background: #1a2340; }
+.block-q-label { font-size: .78rem; color: var(--accent); font-weight: 700; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
+
+.block-struct {
+  background: var(--struct-bg);
+  border: 1px solid var(--struct-border);
+}
+.block-struct-label { font-size: .78rem; color: var(--accent2); font-weight: 700; margin-bottom: 8px; }
+
+.block-key {
+  background: var(--key-bg);
+  border-left: 3px solid #eab308;
+}
+.block-key-label { font-size: .78rem; color: #92400e; font-weight: 700; margin-bottom: 6px; }
+
+.block-tip {
+  background: var(--warn-bg);
+  border-left: 3px solid var(--warn-border);
+}
+.block-tip-label { font-size: .78rem; color: var(--accent3); font-weight: 700; margin-bottom: 6px; }
+
+/* ── STRUCT LIST ── */
+.struct-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  counter-reset: step;
+}
+.struct-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: .88rem;
+}
+.struct-num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.struct-arrow {
+  color: var(--text3);
+  font-size: .8rem;
+  padding-left: 32px;
+  margin-top: -4px;
+}
+
+/* ── KEY POINTS TABLE ── */
+.kp-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .86rem;
+  margin-top: 6px;
+}
+.kp-table th {
+  background: #f1f5f9;
+  padding: 7px 10px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text2);
+  border-bottom: 2px solid var(--border);
+}
+.dark .kp-table th { background: #243050; }
+.kp-table td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.kp-table tr:last-child td { border-bottom: none; }
+.kp-table tr:hover td { background: rgba(44,95,227,.04); }
+
+/* ── HIGHLIGHT ── */
+.hl { background: #fef9c3; color: #78350f; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+.dark .hl { background: #3d2c00; color: #fbbf24; }
+.hl2 { background: #dcfce7; color: #14532d; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+.dark .hl2 { background: #052e16; color: #86efac; }
+.hl3 { background: #ede9fe; color: #4c1d95; padding: 0 3px; border-radius: 3px; font-weight: 600; }
+.dark .hl3 { background: #1e1040; color: #c4b5fd; }
+
+/* ── EXPAND DETAILS ── */
+details > summary {
+  cursor: pointer;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--accent);
+  padding: 6px 0;
+  user-select: none;
+  list-style: none;
+}
+details > summary::before { content: '▶ '; font-size: .75rem; }
+details[open] > summary::before { content: '▼ '; }
+details > summary::-webkit-details-marker { display: none; }
+
+/* ── QUICK REF TABLE ── */
+.ref-table-wrap {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.ref-table-title {
+  background: linear-gradient(90deg, #1a2340, #2c3e6e);
+  color: #fff;
+  padding: 12px 18px;
+  font-size: .95rem;
+  font-weight: 700;
+}
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .84rem;
+}
+.ref-table th {
+  background: #f1f5f9;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text2);
+  border-bottom: 1px solid var(--border);
+}
+.dark .ref-table th { background: #243050; }
+.ref-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.ref-table tr:last-child td { border-bottom: none; }
+.ref-table tr:nth-child(even) td { background: rgba(0,0,0,.02); }
+.dark .ref-table tr:nth-child(even) td { background: rgba(255,255,255,.02); }
+
+/* ── SEARCH HIGHLIGHT ── */
+.search-match { background: #fbbf24; color: #1a1a1a; border-radius: 2px; }
+
+/* ── BACK TO TOP ── */
+#back-top {
+  position: fixed;
+  bottom: 28px; right: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(44,95,227,.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s;
+  z-index: 200;
+}
+#back-top:hover { transform: translateY(-3px); }
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 24px 16px;
+  color: var(--text3);
+  font-size: .8rem;
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+}
+
+/* ── STATS BANNER ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.stat-card {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.stat-num { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+.stat-label { font-size: .78rem; color: var(--text3); margin-top: 2px; }
+
+@media (max-width: 600px) {
+  .hero { padding: 24px 18px; }
+  .hero-title { font-size: 1.3rem; }
+  .qcard-header { flex-direction: column; }
+  .nav-controls input { width: 130px; }
+}
+</style>
+
+<style>
+/* ═══ 悬浮搜索药丸 v3 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+/* iframe内缩小以免被遮 */
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<div id="nav">
+  <div class="nav-top">
+    <div class="nav-title">📖 人力资源管理真题解析 · 中南大学企业管理复试 2016–2025</div>
+    <div class="nav-controls">
+      
+      <button class="btn" onclick="toggleDark()">🌙 夜间</button>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#overview">📊 总览</a>
+    <a href="#y2016">2016</a>
+    <a href="#y2017">2017</a>
+    <a href="#y2018">2018</a>
+    <a href="#y2019">2019</a>
+    <a href="#y2020">2020</a>
+    <a href="#y2021">2021</a>
+    <a href="#y2022">2022</a>
+    <a href="#y2023">2023</a>
+    <a href="#y2024">2024</a>
+    <a href="#y2025">2025</a>
+    <a href="#interview">🎤 面试专项</a>
+    <a href="#quickref">⚡ 速查表</a>
+  </div>
+</div>
+
+<!-- ════ MAIN ════ -->
+<div class="wrap">
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-sub">中南大学 · 120202企业管理学硕 · 复试笔试+面试</div>
+  <div class="hero-title">人力资源管理真题答案解析<br>2016 – 2025</div>
+  <div class="hero-desc">依据《人力资源管理（第3版）颜爱民·北京大学出版社》整理 · 结构统一 · 跨考生友好版</div>
+  <div class="hero-tags">
+    <span class="hero-tag">✅ 全部题目有答题结构</span>
+    <span class="hero-tag">📌 关键要点逐条列出</span>
+    <span class="hero-tag">🎤 面试口述模板</span>
+    <span class="hero-tag">生成日期：2026-03-10</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div id="overview" class="stats-row">
+  <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">覆盖年份</div></div>
+  <div class="stat-card"><div class="stat-num">28</div><div class="stat-label">人力资源题目</div></div>
+  <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">题型（简答/论述/案例）</div></div>
+  <div class="stat-card"><div class="stat-num">12</div><div class="stat-label">面试专项问题</div></div>
+  <div class="stat-card"><div class="stat-num">100%</div><div class="stat-label">教材对应</div></div>
+</div>
+
+<!-- 说明 -->
+<div class="qcard" style="margin-bottom:28px;">
+  <div class="qcard-body">
+    <div class="block block-tip">
+      <div class="block-tip-label">📌 使用说明</div>
+      <p style="font-size:.88rem; color:var(--text2);">
+        本文档识别了2016–2025年所有<strong>人力资源管理相关题目</strong>（笔试+面试），每题提供：<br>
+        ① <span class="hl">知识点定位</span>（教材章节）　② <span class="hl2">标准答题结构</span>　③ <span class="hl3">关键要点</span>（必须答到的得分点）<br>
+        跨考生建议：先看答题结构框架，再背关键要点，最后串联教材原文。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2016
+     ══════════════════════════════════════ -->
+<div id="y2016" class="sec-title">
+  <div class="sec-icon y2016">📅</div>
+  <div class="sec-year">2016年</div>
+  <div class="sec-count">2道笔试 + 2道面试</div>
+</div>
+
+<!-- Q2016-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-discuss">论述题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">论述企业战略与人力资源战略的匹配关系</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2016 笔试】</span>
+        <span class="badge badge-kp">第2章·人力资源战略</span>
+        <span class="badge badge-hot">🔥 高频必考</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（论述题：概念→关系→层次→机制→举例→总结）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>概念界定</strong>：什么是人力资源战略，什么是企业战略</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>匹配必要性</strong>：为何两者必须匹配（竞争优势来源、人才是战略执行者）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>匹配关系三层次</strong>：纵向整合 / 横向整合 / 动态整合</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>不同战略对应的人力资源策略</strong>（成本领先 vs 差异化 vs 集中化）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">5</div><div><strong>案例举例</strong>：结合具体企业说明匹配失败/成功案例</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">6</div><div><strong>总结</strong>：人力资源战略是企业战略落地的"人的保障"</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键要点（必须覆盖的得分点）</div>
+      <table class="kp-table">
+        <tr><th>要点</th><th>内容</th></tr>
+        <tr><td>① 定义</td><td>人力资源战略 = 根据企业总体战略，对人员的获取、配置、开发、激励进行整体规划</td></tr>
+        <tr><td>② 纵向整合</td><td>人力资源战略必须与企业总体战略方向一致，服从于企业目标</td></tr>
+        <tr><td>③ 横向整合</td><td>HR各子模块（招聘/培训/绩效/薪酬）必须相互协调，形成合力</td></tr>
+        <tr><td>④ 成本领先→HR策略</td><td>标准化招聘、统一培训、以效率为导向的绩效考核、固定薪酬为主</td></tr>
+        <tr><td>⑤ 差异化→HR策略</td><td>选拔创新型人才、重视个人发展、柔性绩效评价、宽带薪酬+长期激励</td></tr>
+        <tr><td>⑥ 动态调整</td><td>企业生命周期不同阶段（创业/成长/成熟/衰退），HR战略需动态调整</td></tr>
+      </table>
+    </div>
+    <div class="block block-tip">
+      <div class="block-tip-label">💡 跨考生提示</div>
+      <span style="font-size:.87rem; color:var(--text2);">论述题必须体现"分析框架"而非堆砌要点。答出"纵向整合 + 横向整合"这两个词就已高于平均水平。最后务必加案例，哪怕是华为/阿里等耳熟能详的例子。</span>
+    </div>
+  </div>
+</div>
+
+<!-- Q2016-2 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-case">案例分析</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">案例：某制造企业多元化扩张失败——分析人力配置问题</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2016 笔试·人力部分】</span>
+        <span class="badge badge-kp">第2章·人力资源规划 + 第7章·招聘</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 案例答题框架（问题识别→原因分析→对策建议）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>识别人力配置问题</strong>：多元化扩张后，新业务所需人才与现有人员结构不匹配</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>原因分析（3个维度）</strong>：① 人力资源规划缺失（无前瞻性规划）② 招聘能力不足（未能及时引进新业务所需人才）③ 培训体系滞后（老员工无法快速转型）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>对策建议</strong>：① 战略性人才储备 ② 调整招聘渠道 ③ 建立转岗培训机制 ④ 薪酬激励吸引新业务人才</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键要点</div>
+      <p style="font-size:.87rem; color:var(--text2);">
+        • <span class="hl">人力资源规划</span>：需求预测 + 供给预测 → 发现缺口 → 制定方案<br>
+        • 多元化失败的人力原因常见：核心管理人才被稀释、新业务人才未能及时引进、激励机制未能覆盖新业务<br>
+        • 引用<span class="hl2">战略性人才储备</span>概念（教材7.3.3节）加分
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2017
+     ══════════════════════════════════════ -->
+<div id="y2017" class="sec-title">
+  <div class="sec-icon y2017">📅</div>
+  <div class="sec-year">2017年</div>
+  <div class="sec-count">1道笔试（简答）+ 论述含人力部分 + 2道面试</div>
+</div>
+
+<!-- Q2017-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-simple">简答题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">简述胜任力模型的构建流程</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2017 笔试】</span>
+        <span class="badge badge-kp">第3章·工作分析 / 第2章·人力资源管理模式</span>
+        <span class="badge badge-hot">🔥 高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（定义 → 构建步骤 → 常用方法 → 应用价值）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>定义胜任力</strong>：将优秀员工与普通员工区分开来的、与工作绩效高度相关的知识、技能、能力和个性特征的集合（Spencer，1993）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>构建步骤（5步）</strong></div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>常用方法</strong>：行为事件访谈（BEI）+ 专家小组法 + 问卷调查</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>应用价值</strong>：招聘甄选、培训开发、绩效评价、继任计划的依据</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 五步构建流程（必背）</div>
+      <table class="kp-table">
+        <tr><th>步骤</th><th>具体内容</th></tr>
+        <tr><td>① 确定分析目标</td><td>明确为哪个岗位/岗位族建立模型，明确"优秀"与"普通"的界定标准</td></tr>
+        <tr><td>② 收集行为数据</td><td>采用行为事件访谈（BEI）对绩优/普通两组员工访谈，收集关键事件</td></tr>
+        <tr><td>③ 分析提炼</td><td>编码分析访谈内容，提炼出绩优群体显著多于普通群体的特征/行为</td></tr>
+        <tr><td>④ 构建模型</td><td>整合专家意见，形成含指标名称、定义、分级描述的完整胜任力词典</td></tr>
+        <tr><td>⑤ 验证与应用</td><td>通过效标样本验证模型预测力，根据业务变化动态修订</td></tr>
+      </table>
+    </div>
+    <div class="block block-tip">
+      <div class="block-tip-label">💡 高分加分</div>
+      <span style="font-size:.87rem; color:var(--text2);">提到"<span class="hl">冰山模型</span>"（Spencer）：水上部分=知识、技能（易培训）；水下部分=态度、价值观、特质（难改变）——说明胜任力聚焦于区分绩效差异的深层特征。</span>
+    </div>
+  </div>
+</div>
+
+<!-- Q2017-2 论述含人力 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-discuss">论述题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">论述数字化转型对企业战略与人力资源管理的影响</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2017 笔试·人力部分】</span>
+        <span class="badge badge-kp">第2章·战略性HRM + 第10章·培训开发</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（背景→挑战→变革→对策）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>背景界定</strong>：数字化转型的核心内涵（数据驱动、平台化、智能化）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>对人力资源的影响</strong>：① 岗位结构变化（部分岗位消失，新岗位出现）② 能力需求变化（数字素养成为基础能力）③ 工作方式变化（远程/弹性/项目制）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>HR管理的变革方向</strong>：数字化招聘、个性化培训、数据化绩效管理、HRBP角色转型</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>案例+总结</strong>：结合某企业数字化HR实践</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键要点</div>
+      <p style="font-size:.87rem; color:var(--text2);">
+        • <span class="hl">数字化素养</span>成为全员基础能力要求<br>
+        • HR三支柱：SSC（共享服务中心）/ BP（业务伙伴）/ COE（专家中心）<br>
+        • 人才结构：T型人才（专业深度+横向协作能力）<br>
+        • 强调：数字化转型不仅是技术问题，更是人的问题——人才、文化、组织是核心
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2018
+     ══════════════════════════════════════ -->
+<div id="y2018" class="sec-title">
+  <div class="sec-icon y2018">📅</div>
+  <div class="sec-year">2018年</div>
+  <div class="sec-count">1道笔试（简答）+ 1道面试</div>
+</div>
+
+<!-- Q2018-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-simple">简答题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">简述KPI与OKR的区别与各自适用场景</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2018 笔试】</span>
+        <span class="badge badge-kp">第8章·绩效管理</span>
+        <span class="badge badge-hot">🔥 高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（KPI定义→OKR定义→对比→适用场景）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>KPI定义</strong>：关键绩效指标（Key Performance Indicator），量化目标，考核结果导向，通常与薪酬挂钩</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>OKR定义</strong>：目标与关键结果（Objectives & Key Results），聚焦目标方向，强调挑战性和透明度，与薪酬相对脱钩</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>核心区别对比表</strong>（见下方）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>适用场景</strong>：KPI适合成熟业务/可量化工作；OKR适合创新业务/知识型工作</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 核心对比（必背）</div>
+      <table class="kp-table">
+        <tr><th>维度</th><th>KPI</th><th>OKR</th></tr>
+        <tr><td>导向</td><td>结果/指标导向</td><td>目标方向导向</td></tr>
+        <tr><td>制定方式</td><td>自上而下分解</td><td>自上而下+自下而上结合</td></tr>
+        <tr><td>与薪酬关系</td><td>直接挂钩</td><td>通常脱钩（避免保守设目标）</td></tr>
+        <tr><td>更新周期</td><td>年度/半年</td><td>季度（更敏捷）</td></tr>
+        <tr><td>透明度</td><td>部门内部</td><td>全公司公开</td></tr>
+        <tr><td>适用场景</td><td>流程清晰、可量化的业务</td><td>创新性强、目标需快速迭代的业务</td></tr>
+        <tr><td>典型企业</td><td>传统制造、销售团队</td><td>谷歌、字节跳动、Intel</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2019
+     ══════════════════════════════════════ -->
+<div id="y2019" class="sec-title">
+  <div class="sec-icon y2019">📅</div>
+  <div class="sec-year">2019年</div>
+  <div class="sec-count">1道笔试（简答）+ 1道案例（人力部分）</div>
+</div>
+
+<!-- Q2019-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-simple">简答题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">简述员工职业发展通道设计</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2019 笔试】</span>
+        <span class="badge badge-kp">第10章·人力资源开发与培训·职业生涯规划</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（含义→类型→设计步骤→作用）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>含义</strong>：职业发展通道是组织为员工设计的晋升路径，明确各层级的资格要求、发展方向和晋升条件</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>主要通道类型</strong>：管理通道 / 专业技术通道 / 操作技能通道（双通道/多通道）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>设计步骤（4步）</strong>：① 工作分析，明确岗位族 ② 制定各通道层级标准 ③ 确定晋升/转通道条件 ④ 配套培训、薪酬、绩效体系</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>作用</strong>：员工有清晰发展预期 → 留才 + 激励 + 与组织战略对齐</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键要点</div>
+      <p style="font-size:.87rem; color:var(--text2);">
+        • <span class="hl">双通道/多通道</span>：让技术专家不必走管理路线也能晋升（解决"千军万马过独木桥"问题）<br>
+        • 联系<span class="hl2">职业锚</span>（沙因）：不同职业锚（管理型/技术型/安全型等）对应不同发展通道<br>
+        • 需与岗位评估体系（薪酬等级）匹配，否则通道设计流于形式
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Q2019-2 案例 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-case">案例分析</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">案例：共享经济模式下企业战略与人力管理创新</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2019 笔试·人力部分】</span>
+        <span class="badge badge-kp">第2章·战略性HRM + 第11章·员工关系</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题框架</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>共享经济对用工模式的影响</strong>：平台化用工、灵活就业、兼职/合同工大量出现</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>人力管理创新挑战</strong>：① 如何对非正式员工进行绩效管理 ② 如何建立归属感与激励 ③ 劳动合规与社会保障</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>应对策略</strong>：建立差异化管理体系（核心员工/灵活用工分类管理）、数字化HR工具、新型激励机制（平台分润/星级体系）</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键要点</div>
+      <p style="font-size:.87rem; color:var(--text2);">
+        • 平台企业人力特征：<span class="hl">内部员工少、外部协作者多</span>、高依赖算法/数据管理<br>
+        • 激励重点：<span class="hl2">即时反馈、透明规则、荣誉体系</span>替代传统年终奖<br>
+        • 员工关系风险：劳动关系认定模糊，需注意<span class="hl3">劳务合同vs劳动合同</span>的区别
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2020
+     ══════════════════════════════════════ -->
+<div id="y2020" class="sec-title">
+  <div class="sec-icon y2020">📅</div>
+  <div class="sec-year">2020年（线上）</div>
+  <div class="sec-count">1道笔试（简答）+ 1道论述（含人力）+ 1道案例（含人力）</div>
+</div>
+
+<!-- Q2020-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-simple">简答题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">简述薪酬结构设计原则</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2020 笔试】</span>
+        <span class="badge badge-kp">第9章·薪酬·薪酬结构设计（P268–285）</span>
+        <span class="badge badge-hot">🔥 高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（原则逐条阐述 + 原因说明）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>内部公平性原则</strong>：岗位价值差异决定薪酬差异（基于工作分析与岗位评估）</div></div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>外部竞争性原则</strong>：薪酬水平要与市场行情对标（市场调查），保持吸引力</div></div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>激励性原则</strong>：固定薪酬+绩效浮动，与绩效挂钩，激发员工努力</div></div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>合法合规原则</strong>：遵守最低工资标准、法定福利等劳动法规定</div></div>
+        <div class="struct-item"><div class="struct-num">5</div><div><strong>战略导向原则</strong>：薪酬结构应支撑企业战略目标，引导员工行为指向战略</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键要点</div>
+      <p style="font-size:.87rem; color:var(--text2);">
+        • 四种薪酬模式（必知）：<span class="hl">以岗位为基础 / 以能力为基础 / 以绩效为基础 / 以市场供求为基础</span><br>
+        • 薪酬结构三要素：<span class="hl2">薪酬水平（对外）+ 薪酬结构（内部）+ 薪酬形式（固定/浮动/福利比例）</span><br>
+        • 宽带薪酬（Broad Band）：压缩等级数量、拓宽薪资区间，适合扁平化组织
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Q2020-2 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-discuss">论述题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">论述疫情对企业战略与人力资源管理的冲击及应对</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2020 笔试·人力部分】</span>
+        <span class="badge badge-kp">第2章·战略性HRM + 第11章·员工关系</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（冲击识别→HR具体挑战→应对策略→反思启示）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>人力资源层面的冲击</strong>：① 用工需求骤变（部分裁员，部分紧缺）② 远程办公挑战管理方式 ③ 员工心理健康问题突出 ④ 薪酬与绩效管理机制面临压力</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>应对策略</strong>：① 柔性用工（共享员工、临时工、弹性安排）② 数字化HR工具（线上招聘、云培训、数字化考勤）③ 关注员工身心健康（EAP员工援助计划）④ 薪酬保留核心人才</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>长期启示</strong>：建立弹性组织韧性；重视人力资源应急预案；加速HR数字化转型</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键概念</div>
+      <p style="font-size:.87rem; color:var(--text2);">
+        • <span class="hl">EAP（员工援助计划）</span>：帮助员工解决心理/生活困难，提升工作效率的福利项目<br>
+        • <span class="hl2">共享员工</span>：将闲置员工借调给人手紧缺企业的柔性用工模式（疫情期间创新实践）<br>
+        • 论述时注意：疫情是外部环境冲击，联系PESTEL分析框架可额外加分
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2021
+     ══════════════════════════════════════ -->
+<div id="y2021" class="sec-title">
+  <div class="sec-icon y2021">📅</div>
+  <div class="sec-year">2021年</div>
+  <div class="sec-count">1道笔试（简答）+ 面试专项</div>
+</div>
+
+<!-- Q2021-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-simple">简答题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">简述招聘渠道的选择与效果评估</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2021 笔试】</span>
+        <span class="badge badge-kp">第7章·员工招聘·招聘渠道与甄选（P188–235）</span>
+        <span class="badge badge-hot">🔥 高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（渠道类型→选择依据→评估指标）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>主要招聘渠道类型</strong>：内部招募（晋升/岗位转换）+ 外部招募（校园/猎头/网络/职业介绍所/媒体广告）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>渠道选择依据</strong>：① 岗位层级（高管→猎头，应届→校招）② 紧急程度 ③ 招聘预算 ④ 所需人才特征 ⑤ 企业品牌影响力</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>效果评估指标</strong>：简历数量/质量、录用率、招聘周期、人均招聘成本、试用期留存率、绩效达标率</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 内部 vs 外部招聘对比（必知）</div>
+      <table class="kp-table">
+        <tr><th>维度</th><th>内部招募</th><th>外部招募</th></tr>
+        <tr><td>优点</td><td>了解企业文化、激励现有员工、成本低、风险小</td><td>带来新思想/技能、扩大人才池</td></tr>
+        <tr><td>缺点</td><td>可能引发"败者"不满、近亲繁殖</td><td>适应期长、成本高、风险大</td></tr>
+        <tr><td>适用</td><td>企业文化稳定、内部有合适人选</td><td>开创新业务、需要新能力时</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2022
+     ══════════════════════════════════════ -->
+<div id="y2022" class="sec-title">
+  <div class="sec-icon y2022">📅</div>
+  <div class="sec-year">2022年</div>
+  <div class="sec-count">1道笔试（简答）+ 1道论述（含人力）</div>
+</div>
+
+<!-- Q2022-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-simple">简答题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">简述员工培训需求分析的方法</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2022 笔试】</span>
+        <span class="badge badge-kp">第10章·人力资源开发与培训·培训需求分析（P337–360）</span>
+        <span class="badge badge-hot">🔥 高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（三层次分析 + 具体方法）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>培训需求分析定义</strong>：在设计培训方案前，系统收集和分析数据，确定"谁需要培训、需要什么培训、为什么需要"的过程</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>三层次分析模型</strong>：① 组织层次分析 ② 任务/工作层次分析 ③ 个人层次分析</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>具体方法</strong>：观察法、问卷调查法、访谈法、绩效数据分析法、工作分析法、重要事件法</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>需求分析的输出</strong>：确定培训对象、培训目标、培训内容和优先级</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 三层次需求分析（必背）</div>
+      <table class="kp-table">
+        <tr><th>层次</th><th>分析内容</th><th>目的</th></tr>
+        <tr><td><span class="hl">组织层次</span></td><td>组织战略目标、文化、资源、整体绩效差距</td><td>确定培训是否符合组织战略方向</td></tr>
+        <tr><td><span class="hl2">工作/任务层次</span></td><td>完成岗位所需的知识、技能、能力（KSA）</td><td>确定培训内容和目标行为</td></tr>
+        <tr><td><span class="hl3">个人层次</span></td><td>对比岗位要求vs员工现状，发现能力缺口</td><td>确定培训对象及优先级</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Q2022-2 论述 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-discuss">论述题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">论述数字化转型中的战略与人力资源协同</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2022 笔试·人力部分】</span>
+        <span class="badge badge-kp">第2章·战略性HRM + 第10章·培训 + HRBP</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（协同必要性→协同内容→协同机制→案例）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>协同必要性</strong>：数字化转型是系统工程，技术只是手段，人才和组织才是根本；战略落地需要人力支撑</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>人力协同内容</strong>：① 数字化人才招聘（引进AI/数据人才）② 全员数字素养培训 ③ 绩效指标纳入数字化KPI ④ 组织结构调整（建立数字化中台）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>HR角色转型</strong>：从事务型HR → HRBP（业务伙伴），深度参与业务决策</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>文化层面</strong>：推动拥抱变革、试错容错的数字化文化</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键概念</div>
+      <p style="font-size:.87rem; color:var(--text2);">
+        • <span class="hl">HRBP（HR Business Partner）</span>：嵌入业务部门的HR专家，直接支持业务目标实现<br>
+        • HR三支柱：<span class="hl2">SSC（共享服务）+ BP（业务伙伴）+ COE（专家中心）</span><br>
+        • "人技协同"：数字化转型成功 = 技术投入 × 人才适配 × 组织变革，三者缺一不可
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2023
+     ══════════════════════════════════════ -->
+<div id="y2023" class="sec-title">
+  <div class="sec-icon y2023">📅</div>
+  <div class="sec-year">2023年</div>
+  <div class="sec-count">1道笔试（简答）+ 1道案例（含人力）</div>
+</div>
+
+<!-- Q2023-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-simple">简答题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">简述绩效管理的流程与常见误区</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2023 笔试】</span>
+        <span class="badge badge-kp">第8章·绩效管理（P238–280）</span>
+        <span class="badge badge-hot">🔥 极高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（流程四步 → 常见误区 → 改进建议）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>绩效管理定义</strong>：通过目标设定、过程辅导、评价反馈和结果应用，持续提升员工绩效，实现组织目标的动态管理过程</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>绩效管理循环（四步）</strong>：绩效计划→绩效辅导→绩效评价→绩效反馈与应用</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>常见误区</strong>（见下方）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>改进建议</strong>：建立双向沟通机制、重视过程辅导而非只看结果、区分绩效管理与绩效考核</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 绩效管理常见误区（必背5条）</div>
+      <table class="kp-table">
+        <tr><th>误区</th><th>表现</th><th>危害</th></tr>
+        <tr><td><span class="hl">月晕效应（晕轮效应）</span></td><td>以偏概全，一个突出优点掩盖其他不足</td><td>评价失真</td></tr>
+        <tr><td><span class="hl2">集中趋势</span></td><td>评分过于集中在中间，不敢打高分/低分</td><td>失去区分度</td></tr>
+        <tr><td>近因效应</td><td>只关注最近一段时间的表现，忽视全年</td><td>评价片面</td></tr>
+        <tr><td>宽大化倾向</td><td>评分普遍偏高（"老好人"心理）</td><td>激励失效</td></tr>
+        <tr><td>将绩效管理变成"秋后算账"</td><td>平时不沟通，年底突然打低分</td><td>员工抵制，关系恶化</td></tr>
+      </table>
+    </div>
+    <div class="block block-tip">
+      <div class="block-tip-label">💡 区分必考点</div>
+      <span style="font-size:.87rem; color:var(--text2);">绩效<strong>管理</strong>≠绩效<strong>考核</strong>：考核是静态结果评价；管理是含计划-辅导-评价-反馈的完整动态循环，重点在过程改进而非只是打分。</span>
+    </div>
+  </div>
+</div>
+
+<!-- Q2023-2 案例 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-case">案例分析</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">案例：专精特新企业成长战略与人力资源支撑</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2023 笔试·人力部分】</span>
+        <span class="badge badge-kp">第2章·战略性HRM + 第10章·培训开发</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题框架</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>专精特新特征分析</strong>：规模小但深耕细分领域，核心依赖技术人才和研发能力</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>人力支撑需求</strong>：① 吸引顶尖技术人才（竞争力薪酬+股权激励）② 建立"专家型"职业发展通道 ③ 加大研发培训投入 ④ 保留核心人才（留人机制）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>成长阶段匹配</strong>：创业期→重招聘与激励；成长期→重培训与梯队建设；成熟期→重知识管理与传承</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键要点</div>
+      <p style="font-size:.87rem; color:var(--text2);">
+        • 专精特新企业核心竞争力 = 技术 + 人才，两者互为根本<br>
+        • <span class="hl">股权激励</span>是留住核心技术人才的关键工具（长期激励，绑定利益）<br>
+        • 联系<span class="hl2">人力资源规划</span>：企业战略扩张→需预测人才缺口→提前储备
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2024
+     ══════════════════════════════════════ -->
+<div id="y2024" class="sec-title">
+  <div class="sec-icon y2024">📅</div>
+  <div class="sec-year">2024年</div>
+  <div class="sec-count">1道笔试（简答）+ 面试专项</div>
+</div>
+
+<!-- Q2024-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-simple">简答题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">简述HRBP的角色定位与能力要求</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2024 笔试】</span>
+        <span class="badge badge-kp">第2章·战略性人力资源管理·HR三支柱</span>
+        <span class="badge badge-hot">🔥 新热点必考</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（背景→定义→三支柱→角色→能力→价值）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>背景</strong>：戴维·尤里奇（Dave Ulrich）提出HR转型，从事务型转向战略型，形成HR三支柱模型</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>HRBP定义</strong>：HR Business Partner，人力资源业务伙伴，嵌入业务部门，深度理解业务并为其提供定制化HR解决方案</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>三支柱模型</strong>：SSC（共享服务中心，处理标准化事务）+ COE（专家中心，制定政策标准）+ BP（业务伙伴，前台支持）</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>HRBP核心能力</strong>：业务理解力 + HR专业能力 + 数据分析能力 + 咨询沟通能力 + 影响力</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键要点</div>
+      <table class="kp-table">
+        <tr><th>三支柱</th><th>职能</th><th>定位</th></tr>
+        <tr><td><span class="hl">SSC（共享服务中心）</span></td><td>薪酬核算、社保办理、档案管理等标准化事务</td><td>降本增效</td></tr>
+        <tr><td><span class="hl2">COE（专家中心）</span></td><td>制定薪酬体系、绩效方案、培训政策等专业标准</td><td>输出专业方案</td></tr>
+        <tr><td><span class="hl3">BP（业务伙伴）</span></td><td>嵌入业务，提供针对性人才解决方案，参与业务决策</td><td>战略支撑</td></tr>
+      </table>
+    </div>
+    <div class="block block-tip">
+      <div class="block-tip-label">💡 一句话记忆</div>
+      <span style="font-size:.87rem; color:var(--text2);">HRBP = "懂业务的HR" + "懂HR的业务顾问"，核心价值是<strong>把人才战略翻译为业务语言</strong>。</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     2025
+     ══════════════════════════════════════ -->
+<div id="y2025" class="sec-title">
+  <div class="sec-icon y2025">📅</div>
+  <div class="sec-year">2025年（最新）</div>
+  <div class="sec-count">1道笔试（简答）+ 1道案例（含人力）</div>
+</div>
+
+<!-- Q2025-1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-simple">简答题</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">简述薪酬激励设计要点（固定+浮动+长期）</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2025 笔试】</span>
+        <span class="badge badge-kp">第9章·薪酬（P265–322）</span>
+        <span class="badge badge-hot">🔥 2025最新真题</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 答题结构（三大组成 → 设计原则 → 匹配策略）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>固定薪酬（基本工资）</strong>：保障员工基本生活，基于岗位价值和市场水平设定，体现"内部公平+外部竞争"</div></div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>浮动薪酬（绩效奖金）</strong>：与绩效挂钩，激励短期目标达成，包括月度/季度/年度奖金，比例视岗位性质而定</div></div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>长期激励</strong>：股权激励（期权/限制性股票）、利润分享计划，绑定核心人才与企业长期利益</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">4</div><div><strong>设计原则</strong>：内部公平性、外部竞争性、激励性、合法合规、战略导向</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">5</div><div><strong>总结</strong>：三者比例因岗位、企业发展阶段、战略目标而异（如销售岗浮动比例高；研发岗长期激励比例高）</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 三类薪酬激励对比</div>
+      <table class="kp-table">
+        <tr><th>类型</th><th>形式</th><th>激励周期</th><th>适用岗位</th></tr>
+        <tr><td><span class="hl">固定薪酬</span></td><td>月薪/年薪基础部分</td><td>持续，无激励峰值</td><td>所有岗位</td></tr>
+        <tr><td><span class="hl2">浮动薪酬</span></td><td>绩效奖金、提成、项目奖</td><td>短期（月/季/年）</td><td>销售/目标清晰岗位</td></tr>
+        <tr><td><span class="hl3">长期激励</span></td><td>股权、期权、利润分享</td><td>长期（3-5年）</td><td>核心管理层/技术骨干</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Q2025-2 案例 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-case">案例分析</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">案例：某企业数字化转型失败——分析战略与人力资源问题</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2025 笔试·人力部分】</span>
+        <span class="badge badge-kp">第2章·战略性HRM + 第10章·培训 + 第8章·绩效</span>
+        <span class="badge badge-hot">🔥 2025最新</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 案例答题框架（问题识别→人力根因→对策）</div>
+      <div class="struct-flow">
+        <div class="struct-item"><div class="struct-num">1</div><div><strong>人力资源层面的失败原因（必覆盖4点）</strong></div></div>
+        <div class="struct-item" style="padding-left:20px; font-size:.87rem; color:var(--text2);">
+          ① 数字化人才缺口：未提前储备AI/数据人才，内部员工数字素养不足<br>
+          ② 培训体系滞后：缺乏系统的数字化能力培训，员工对新系统/工具抵触<br>
+          ③ 绩效指标未更新：KPI仍沿用传统指标，未纳入数字化转型相关目标<br>
+          ④ 组织文化保守：变革意愿低，中层管理者阻力大，未形成拥抱变革文化
+        </div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">2</div><div><strong>对策建议</strong>：人才引进+内部培训双轨并行；绩效体系纳入数字化KPI；HRBP深度参与转型项目；领导者示范带动文化变革</div></div>
+        <div class="struct-arrow">↓</div>
+        <div class="struct-item"><div class="struct-num">3</div><div><strong>总结升华</strong>：数字化转型 = 技术变革 + 人才变革 + 组织变革，人力资源是转型成败的核心变量</div></div>
+      </div>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 案例答题得分要点</div>
+      <p style="font-size:.87rem; color:var(--text2);">
+        • 必须从<span class="hl">人才/能力/文化/激励</span>四个维度分析，不能只讲战略<br>
+        • 引用<span class="hl2">勒温变革三阶段</span>（解冻→变革→再冻结）解释文化变革路径<br>
+        • 提出<span class="hl3">HRBP参与转型</span>的机制，体现对前沿趋势的了解
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     面试专项
+     ══════════════════════════════════════ -->
+<div id="interview" class="sec-title">
+  <div class="sec-icon" style="background:#ede9fe;">🎤</div>
+  <div class="sec-year">面试专项（2016–2025 高频问题）</div>
+  <div class="sec-count">12道面试题答题模板</div>
+</div>
+
+<!-- 面试说明 -->
+<div class="qcard" style="margin-bottom:14px;">
+  <div class="qcard-body">
+    <div class="block block-tip">
+      <div class="block-tip-label">📌 面试答题原则</div>
+      <p style="font-size:.87rem; color:var(--text2);">面试回答遵循：<strong>定义→核心内容→举例→总结</strong>，控制在90秒–2分钟内。语气自信，逻辑清晰，结尾联系企业实际或热点，体现思考深度。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试1 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">招聘中如何识别高潜力人才？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2016 面试·高频】</span>
+        <span class="badge badge-kp">第7章·招聘与甄选</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        高潜力人才的识别可以从三个维度来看：<br>
+        第一，<span class="hl">能力维度</span>——学习能力、解决复杂问题的能力、跨功能协作能力；<br>
+        第二，<span class="hl2">意愿维度</span>——成就动机强，主动寻求挑战，有明确的职业目标；<br>
+        第三，<span class="hl3">潜力信号</span>——面试时观察行为事件访谈（BEI）中展现出的思维方式，特别是遇到困难时如何独立解决问题。<br>
+        在工具层面，可综合运用<strong>结构化面试 + 评价中心（情境模拟）+ 心理测评</strong>，比单纯看学历和经历更准确。
+      </p>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 关键词</div>
+      <p style="font-size:.87rem; color:var(--text2);">行为事件访谈（BEI）· 结构化面试 · 评价中心 · 学习敏锐度（Learning Agility）· 成就动机</p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试2 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">绩效管理常见问题有哪些？如何改进？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2016 面试 · 2023笔试相关】</span>
+        <span class="badge badge-kp">第8章·绩效管理</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        绩效管理的常见问题主要有四类：<br>
+        ① <span class="hl">只有考核没有管理</span>——平时不沟通，年底"秋后算账"，导致员工抵触；<br>
+        ② <span class="hl2">评价者误差</span>——晕轮效应、宽大化、集中趋势等，导致考核结果失真；<br>
+        ③ <span class="hl3">指标设计不合理</span>——KPI过多过细、或过于简单，无法真实反映绩效；<br>
+        ④ 结果应用单一——只用于发奖金，未能指导培训、晋升、职业发展。<br>
+        改进方向：建立<strong>持续性绩效对话</strong>机制（如季度OKR复盘），区分绩效评价者误差的识别与规避培训，将绩效结果与员工发展计划挂钩。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试3 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">新生代员工管理有哪些难点？如何应对？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2017·2023 面试高频】</span>
+        <span class="badge badge-kp">第11章·员工关系管理 / 激励理论</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        新生代员工（以95后/00后为主）有几个显著特征：<span class="hl">个性鲜明、价值观多元、对意义感要求高、对权威的接受度低</span>。<br>
+        管理难点包括：忠诚度较低、容易跳槽；不接受单一的命令式管理；物质激励效用递减，非物质需求（成长机会、工作意义、自主权）更突出。<br>
+        应对策略：<br>
+        ① 从"管控"转向"赋能"，给予更多自主空间和决策参与感；<br>
+        ② 提供清晰的成长路径和即时反馈（频繁表扬，而非年底集中评价）；<br>
+        ③ 注重工作意义感的塑造，让员工理解工作与公司使命的连接；<br>
+        ④ 重视心理安全感和<span class="hl2">工作-生活平衡</span>，建立员工援助体系（EAP）。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试4 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">股权激励的作用与设计要点？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2017 面试】</span>
+        <span class="badge badge-kp">第9章·薪酬·长期激励</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板（定义→作用→主要形式→设计要点）</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        股权激励是将员工利益与企业长期价值增长绑定的薪酬工具。<br>
+        <strong>作用</strong>：① 留住核心人才（归属期设计，一般3-5年）② 激励创造长期价值而非短期行为 ③ 传递企业对人才的重视信号。<br>
+        <strong>主要形式</strong>：股票期权（未来按约定价格买入）、限制性股票（满足条件后解锁）、员工持股计划（ESOP）。<br>
+        <strong>设计要点</strong>：设定合理的授予对象和比例；归属期设计（防止人才过早离职）；业绩条件挂钩（避免无条件送股）；符合法律合规要求。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试5 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">企业培训体系设计的要点？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2018·2022 面试/笔试】</span>
+        <span class="badge badge-kp">第10章·人力资源开发与培训</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板（ADDIE模型）</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        完整的培训体系设计遵循<span class="hl">ADDIE模型</span>（分析→设计→开发→实施→评估）：<br>
+        ① <strong>分析（Analysis）</strong>：培训需求分析（组织/工作/个人三层次）；<br>
+        ② <strong>设计（Design）</strong>：确定培训目标、内容模块、受众分层；<br>
+        ③ <strong>开发（Development）</strong>：选择课程形式（线上/线下/OJT在岗培训）；<br>
+        ④ <strong>实施（Implementation）</strong>：选择培训师、安排时间地点、做好后勤保障；<br>
+        ⑤ <strong>评估（Evaluation）</strong>：柯氏四级评估（反应→学习→行为→结果）。<br>
+        有效的培训体系还需与<span class="hl2">绩效管理和职业发展</span>相挂钩，才能形成完整的人才发展闭环。
+      </p>
+    </div>
+    <div class="block block-key">
+      <div class="block-key-label">🔑 柯氏四级评估（必背）</div>
+      <table class="kp-table">
+        <tr><th>级别</th><th>评估内容</th><th>方法</th></tr>
+        <tr><td>L1 反应层</td><td>学员对培训的满意度</td><td>培训后问卷</td></tr>
+        <tr><td>L2 学习层</td><td>知识/技能的掌握程度</td><td>测试/考核</td></tr>
+        <tr><td>L3 行为层</td><td>工作行为是否改变</td><td>3个月后上级评价</td></tr>
+        <tr><td>L4 结果层</td><td>对组织绩效的实际影响</td><td>业务指标对比</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 面试6 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">绩效管理与薪酬如何挂钩？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2019 面试】</span>
+        <span class="badge badge-kp">第8章·绩效管理 + 第9章·薪酬</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        绩效与薪酬挂钩是激励系统设计的核心命题，需把握两点平衡：<br>
+        <strong>挂钩的必要性</strong>：绩效工资体现"按贡献分配"原则，有助于区分优秀与普通员工，增强激励效果。<br>
+        <strong>挂钩的风险</strong>：过度依赖绩效工资可能导致员工只关注可量化目标（"测量什么就做什么"），忽视团队合作和长期发展。<br>
+        <strong>合理设计建议</strong>：<br>
+        ① 固定薪酬保障基础，浮动比例因岗位而异（销售岗可达30-50%，行政岗10-20%）；<br>
+        ② 绩效评价结果分档（优秀/良好/达标/不达标），对应不同浮动奖金系数；<br>
+        ③ 避免绩效工资成为"绩效排名"，要区分<span class="hl">绝对标准</span>（达标即发）和<span class="hl2">相对排名</span>（强制分布）的适用场景。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试7 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">并购中的人力资源整合如何进行？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2019 面试】</span>
+        <span class="badge badge-kp">第2章·战略性HRM + 第11章·员工关系</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板（尽职调查→整合规划→执行→文化融合）</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        并购的失败很多源于人力资源整合失败，而非战略本身。整合分四个阶段：<br>
+        ① <span class="hl">并购前（尽职调查）</span>：评估被并购方的人才质量、组织结构、薪酬体系、劳动合同情况及潜在劳动纠纷；<br>
+        ② <span class="hl2">整合规划</span>：确定核心人才保留名单，设计留人方案（留人奖金、承诺承继）；确定冗余岗位裁撤方案；<br>
+        ③ <span class="hl3">执行阶段</span>：统一薪酬体系（避免"同岗不同酬"引发不公平感）；重新进行岗位评估；建立新的绩效目标；<br>
+        ④ <strong>文化整合</strong>：最难也最关键——两个企业文化的碰撞，需要领导者明确表达新文化愿景，通过故事、仪式、符号重塑共同认同。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试8 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">员工心理健康管理（EAP）怎么做？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2020 面试】</span>
+        <span class="badge badge-kp">第11章·员工关系 / 福利管理</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        EAP（员工援助计划，Employee Assistance Program）是企业为员工提供的专业心理与生活支持服务。<br>
+        <strong>为何重要</strong>：心理健康直接影响工作效率、决策质量和人际关系；压力管理不当会导致离职、医疗成本上升。<br>
+        <strong>EAP内容</strong>：① 保密心理咨询热线 ② 压力管理和情绪调节培训 ③ 危机干预（如重大事故后）④ 生活问题辅助（法律/财务顾问）。<br>
+        <strong>管理层面</strong>：管理者需具备基本的心理健康识别能力；建立心理安全的工作环境；重视工作-生活平衡制度（灵活工时、弹性休假）。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试9 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">人才盘点与继任计划怎么做？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2021 面试】</span>
+        <span class="badge badge-kp">第2章·战略性HRM / 人力资源规划</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板（定义→九宫格→继任计划→应用）</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        <strong>人才盘点</strong>是系统评估组织内部人才数量、质量、结构和潜力的过程。<br>
+        常用工具：<span class="hl">九宫格（9-Box Grid）</span>——横轴为绩效（当前表现），纵轴为潜力（未来发展空间），将员工分为9类，找出高绩效高潜力（HiPo）人才。<br>
+        <strong>继任计划（Succession Planning）</strong>：针对关键岗位，提前识别并培养候选人，防止核心岗位出现人才断层。<br>
+        <strong>实施步骤</strong>：<br>
+        ① 识别关键岗位 ② 盘点现有人才 ③ 分析继任差距 ④ 制定针对性发展计划 ⑤ 定期评估和更新。<br>
+        人才盘点结果需与<span class="hl2">培训开发、晋升和薪酬</span>相结合，才能真正发挥价值。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试10 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">高绩效团队如何建设？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2022 面试】</span>
+        <span class="badge badge-kp">第11章·员工关系 / 激励理论</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        高绩效团队需具备五个特征（参考谷歌"亚里士多德项目"研究）：<br>
+        ① <span class="hl">心理安全感</span>（最关键）：成员可以自由表达想法而不担心被嘲笑；<br>
+        ② <span class="hl2">可依靠性</span>：每个成员都能按时、高质量地完成承诺；<br>
+        ③ <span class="hl3">结构清晰</span>：目标明确、角色分工清晰、流程规范；<br>
+        ④ <strong>工作意义感</strong>：成员认为工作对自己有个人意义；<br>
+        ⑤ <strong>影响力感</strong>：相信自己的工作能影响大局。<br>
+        从HR角度建设高绩效团队：合理的人员组合（技能互补）+ 明确的绩效目标 + 有效的激励机制 + 充分的资源支持 + 良好的团队文化。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试11 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">人才梯队如何搭建？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2024 面试】</span>
+        <span class="badge badge-kp">第2章·战略性HRM / 第10章·培训开发</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        人才梯队建设是确保组织关键岗位"后继有人"的战略举措，分三步：<br>
+        ① <span class="hl">识别关键岗位与核心人才</span>：确定哪些岗位对业务至关重要，盘点现有人才；<br>
+        ② <span class="hl2">分层分类培养</span>：依据九宫格结果，对高潜人才实施加速发展计划（轮岗、导师制、领导力培训项目）；<br>
+        ③ <span class="hl3">建立梯队检视机制</span>：定期（年度）更新梯队名单，评估培养进展，动态调整。<br>
+        梯队建设的核心原则是<strong>"边用边培养"</strong>——通过具有挑战性的项目和轮岗让候选人在实战中成长，而非只靠课堂培训。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 面试12 -->
+<div class="qcard">
+  <div class="qcard-header">
+    <div class="qtype-badge type-interview">面试</div>
+    <div class="qcard-title-wrap">
+      <div class="qcard-title">员工体验管理（EX）是什么？有何价值？</div>
+      <div class="qcard-meta">
+        <span class="badge badge-year">【2025 面试·新热点】</span>
+        <span class="badge badge-kp">第11章·员工关系 / 战略性HRM</span>
+      </div>
+    </div>
+  </div>
+  <div class="qcard-body">
+    <div class="block block-struct">
+      <div class="block-struct-label">✅ 口述模板</div>
+      <p style="font-size:.9rem; line-height:1.8; color:var(--text2);">
+        员工体验（Employee Experience，EX）是员工在整个职业生涯周期（入职→在职→离职）中对组织的综合感受和认知，类比"用户体验"的概念迁移到人力资源领域。<br>
+        <strong>价值</strong>：良好的员工体验 → 高员工敬业度 → 低离职率 → 高生产力 → 好客户体验 → 好业绩。<br>
+        <strong>关键触点</strong>：招聘体验、入职体验（Onboarding）、日常工作环境、学习发展机会、绩效反馈方式、离职体验（Offboarding）。<br>
+        <strong>管理方法</strong>：员工旅程地图（Employee Journey Mapping）+ 定期员工满意度/敬业度调查（eNPS）+ 及时响应员工反馈。<br>
+        <strong>与雇主品牌</strong>的关系：良好的员工体验是最有说服力的雇主品牌建设，会吸引外部人才主动投递。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     速查总表
+     ══════════════════════════════════════ -->
+<div id="quickref">
+  <div class="ref-table-wrap" style="margin-top:32px;">
+    <div class="ref-table-title">⚡ 人力资源真题速查总表（2016–2025）</div>
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>年份</th>
+          <th>题目</th>
+          <th>题型</th>
+          <th>教材章节</th>
+          <th>重要度</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>2016</td><td>企业战略与人力资源战略的匹配关系</td><td>论述</td><td>第2章</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>2016</td><td>多元化失败案例·人力配置问题</td><td>案例</td><td>第2+7章</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td>2017</td><td>胜任力模型构建流程</td><td>简答</td><td>第3章</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>2017</td><td>数字化转型对人力资源的影响</td><td>论述</td><td>第2+10章</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td>2018</td><td>KPI与OKR区别及适用场景</td><td>简答</td><td>第8章</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>2018</td><td>零售转型案例·人力变革</td><td>案例</td><td>第2+10章</td><td>⭐⭐⭐</td></tr>
+        <tr><td>2019</td><td>员工职业发展通道设计</td><td>简答</td><td>第10章</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td>2019</td><td>共享经济案例·人力管理创新</td><td>案例</td><td>第11章</td><td>⭐⭐⭐</td></tr>
+        <tr><td>2020</td><td>薪酬结构设计原则</td><td>简答</td><td>第9章</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>2020</td><td>疫情对人力资源的冲击及应对</td><td>论述</td><td>第2+11章</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td>2021</td><td>招聘渠道选择与效果评估</td><td>简答</td><td>第7章</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>2022</td><td>员工培训需求分析方法</td><td>简答</td><td>第10章</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>2022</td><td>数字化转型·战略与人力协同</td><td>论述</td><td>第2章+HRBP</td><td>⭐⭐⭐⭐</td></tr>
+        <tr><td>2023</td><td>绩效管理流程与误区</td><td>简答</td><td>第8章</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>2023</td><td>专精特新企业·人力支撑</td><td>案例</td><td>第2+10章</td><td>⭐⭐⭐</td></tr>
+        <tr><td>2024</td><td>HRBP角色与能力要求</td><td>简答</td><td>第2章</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>2025</td><td>薪酬激励设计要点（固+浮+长期）</td><td>简答</td><td>第9章</td><td>⭐⭐⭐⭐⭐</td></tr>
+        <tr><td>2025</td><td>数字化转型失败·战略与人力分析</td><td>案例</td><td>第2+8+10章</td><td>⭐⭐⭐⭐⭐</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<div class="footer">
+  📚 中南大学企业管理学硕复试 · 人力资源管理真题答案解析 · 依据《人力资源管理（第3版）颜爱民·北京大学出版社》整理<br>
+  涵盖2016–2025年所有人力资源相关笔试题目及面试高频问题 · 生成日期：2026-03-10
+</div>
+
+</div><!-- end .wrap -->
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ── DARK MODE ──
+function toggleDark() {
+  document.body.classList.toggle('dark');
+  const btn = document.querySelector('.btn');
+  btn.textContent = document.body.classList.contains('dark') ? '☀️ 日间' : '🌙 夜间';
+  localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+}
+if (localStorage.getItem('dark') === '1') {
+  document.body.classList.add('dark');
+  const btn = document.querySelector('.btn');
+  if (btn) btn.textContent = '☀️ 日间';
+}
+
+// ── BACK TO TOP ──
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+  backTop.style.display = window.scrollY > 400 ? 'flex' : 'none';
+});
+
+
+// ── NAV ACTIVE ──
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if (active) {
+        active.classList.add('active');
+        active.scrollIntoView({inline:'nearest', behavior:'smooth'});
+      }
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+</script>
+
+<!-- HL_INJECT -->
+<script>
+/* HL_INJECT v3 – uses search pill instead of own nav */
+(function(){
+  var kw=new URLSearchParams(location.search).get('highlight');
+  if(!kw)return;
+  /* Wait for pill to be ready, then activate it */
+  function activate(){
+    if(typeof window.openSearchPill==='function'){
+      window.openSearchPill();
+      var inp=document.getElementById('sp-input');
+      if(inp){
+        inp.value=kw;
+        inp.dispatchEvent(new Event('input'));
+      }
+    }
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
+  } else {
+    setTimeout(activate,300);
+  }
+})();
+</script>
+
+<!-- 搜索触发按钮 -->
+
+<!-- Search Pill v3 -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<script>
+/* Search Pill v3 – single authoritative copy */
+(function(){
+'use strict';
+/* detect iframe */
+try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
+
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+
+function q(s){return document.querySelector(s);}
+function qa(s){return Array.from(document.querySelectorAll(s));}
+
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true); /* capture phase to override HL_INJECT listener */
+}
+
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  /* find best root */
+  var root=document.querySelector(
+    '.main-container,.main,.content-area,main,#main,.content,article'
+  )||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      /* skip pill and trigger */
+      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
+        return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+
+function nav(d){
+  /* always re-read from DOM in case DOM changed */
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;
+  if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

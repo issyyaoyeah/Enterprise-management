@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第十四章 国际人力资源管理 · 中南大学企业管理复试笔记</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1f2e;
+    --bg: #f0f4f7;
+    --bg2: #e1eaf2;
+    --accent: #1a5fa8;
+    --accent2: #f59e0b;
+    --accent3: #0e7c6a;
+    --accent4: #7c3aed;
+    --accent5: #dc2626;
+    --gold: #d97706;
+    --card-bg: #ffffff;
+    --border: #c8d8ea;
+    --tier1: #1a5fa8;
+    --tier2: #f59e0b;
+    --tier3: #0e7c6a;
+    --shadow: 0 4px 20px rgba(15,31,46,0.10);
+  }
+  .dark-mode {
+    --ink: #e2e8f0; --bg: #0f1f2e; --bg2: #162840;
+    --card-bg: #1a2e45; --border: #2a4060;
+    --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font-family: 'Noto Sans SC', sans-serif; font-size: 15px; line-height: 1.8; padding: 0 0 80px; transition: background .3s, color .3s; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #0f1f2e 0%, #1a3a6e 50%, #1a5fa8 100%); color: #fff; padding: 60px 40px 50px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(60deg, rgba(255,255,255,.03) 0px, rgba(255,255,255,.03) 1px, transparent 1px, transparent 22px); }
+  .hero-day { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 4px; color: rgba(255,255,255,.6); text-transform: uppercase; margin-bottom: 12px; }
+  .hero h1 { font-family: 'Noto Serif SC', serif; font-size: 38px; font-weight: 900; line-height: 1.2; margin-bottom: 16px; }
+  .hero h1 span { color: #93c5fd; }
+  .hero-sub { font-size: 15px; color: rgba(255,255,255,.75); max-width: 700px; line-height: 1.7; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .hero-tag { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: rgba(255,255,255,.9); }
+
+  /* NAV */
+  .toc { background: var(--ink); color: #fff; padding: 20px 40px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+  .toc-label { font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,.4); text-transform: uppercase; margin-right: 6px; }
+  .toc a { color: rgba(255,255,255,.75); text-decoration: none; font-size: 13px; padding: 3px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 12px; transition: all .2s; }
+  .toc a:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+  /* CONTROLS */
+  .ctrl-btn { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.3); border-radius: 8px; color: #fff; padding: 4px 12px; font-size: 12px; cursor: pointer; margin-left: 8px; }
+  .ctrl-btn:hover { background: rgba(255,255,255,.25); }
+  .search-box { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.3); border-radius: 8px; color: #fff; padding: 4px 12px; font-size: 12px; outline: none; margin-left: auto; width: 180px; }
+  .search-box::placeholder { color: rgba(255,255,255,.4); }
+
+  /* CASE BANNER */
+  .case-banner { margin: 40px 40px 0; background: linear-gradient(135deg, #0f1f2e, #1a3a6e); border-radius: 16px; padding: 30px 36px; color: #fff; border-left: 6px solid var(--gold); }
+  .case-banner .case-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+  .case-banner h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; margin-bottom: 12px; }
+  .case-banner p { font-size: 13.5px; color: rgba(255,255,255,.8); line-height: 1.8; }
+  .case-key { margin-top: 14px; font-size: 13px; color: var(--gold); font-weight: 500; }
+
+  /* MAIN */
+  .main { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+
+  /* SECTION HEADING */
+  .section-title { display: flex; align-items: center; gap: 14px; margin: 50px 0 24px; }
+  .section-title .sec-num { background: var(--ink); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 13px; padding: 6px 14px; border-radius: 6px; letter-spacing: 1px; }
+  .section-title h2 { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 700; color: var(--ink); }
+  .section-title .page-ref { font-size: 12px; color: #999; font-family: 'JetBrains Mono', monospace; margin-left: auto; }
+
+  /* KNOWLEDGE CARD */
+  .kcard { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; margin-bottom: 28px; overflow: hidden; box-shadow: var(--shadow); transition: box-shadow .2s; }
+  .kcard:hover { box-shadow: 0 8px 32px rgba(15,31,46,.15); }
+  .kcard-header { padding: 20px 28px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 16px; background: linear-gradient(to right, #f0f6fc, var(--card-bg)); }
+  .kcard-num { background: var(--ink); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px; flex-shrink: 0; margin-top: 3px; }
+  .kcard-title-wrap { flex: 1; }
+  .kcard-title { font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .kcard-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* BADGES */
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 12px; font-size: 11.5px; font-weight: 500; }
+  .badge-tier1 { background: #dbeafe; color: var(--tier1); border: 1px solid #bfdbfe; }
+  .badge-tier2 { background: #fef3e2; color: var(--tier2); border: 1px solid #fcd98a; }
+  .badge-tier3 { background: #e6f7f4; color: var(--tier3); border: 1px solid #9ed9cc; }
+  .badge-page  { background: #f5f0ff; color: var(--accent4); border: 1px solid #ddd6fe; }
+  .badge-exam  { background: #fff1f2; color: var(--accent5); border: 1px solid #fecaca; }
+  .badge-year  { background: #fffbeb; color: var(--gold); border: 1px solid #fde68a; }
+
+  .kcard-body { padding: 24px 28px; }
+
+  /* BLOCKS */
+  .block { margin-bottom: 20px; padding: 16px 20px; border-radius: 10px; }
+  .block:last-child { margin-bottom: 0; }
+  .block-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+  .block-label::before { content: ''; display: block; width: 18px; height: 2px; }
+  .block-analogy { background: #fefce8; }
+  .block-analogy .block-label { color: var(--gold); }
+  .block-analogy .block-label::before { background: var(--gold); }
+  .block-definition { background: #eff6ff; }
+  .block-definition .block-label { color: var(--tier1); }
+  .block-definition .block-label::before { background: var(--tier1); }
+  .block-memory { background: #f0fdf4; }
+  .block-memory .block-label { color: var(--tier3); }
+  .block-memory .block-label::before { background: var(--tier3); }
+  .block-exam { background: #f5f0ff; }
+  .block-exam .block-label { color: var(--accent4); }
+  .block-exam .block-label::before { background: var(--accent4); }
+  .block-tip { background: #fff1f2; }
+  .block-tip .block-label { color: var(--accent5); }
+  .block-tip .block-label::before { background: var(--accent5); }
+  .block-template { background: #f0f9ff; border-left: 4px solid #38bdf8; }
+  .block-template .block-label { color: #0369a1; }
+  .block-template .block-label::before { background: #0369a1; }
+
+  /* QUOTE */
+  .quote { background: var(--ink); color: #fff; border-radius: 10px; padding: 16px 20px; font-size: 13.5px; line-height: 1.9; margin: 12px 0; position: relative; }
+  .quote::before { content: '"'; font-size: 60px; color: rgba(255,255,255,.1); position: absolute; top: -6px; left: 12px; font-family: serif; line-height: 1; }
+  .quote p { position: relative; z-index: 1; }
+  .quote mark { background: #93c5fd; color: var(--ink); padding: 0 3px; border-radius: 3px; }
+
+  /* TABLES */
+  .ctable { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13.5px; }
+  .ctable th { background: var(--ink); color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+  .ctable td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .ctable tr:nth-child(even) td { background: var(--bg2); }
+  .ctable tr:last-child td { border-bottom: none; }
+  .ctable th:first-child { border-radius: 8px 0 0 0; }
+  .ctable th:last-child  { border-radius: 0 8px 0 0; }
+
+  /* LISTS */
+  .kl { padding-left: 20px; }
+  .kl li { margin-bottom: 6px; }
+  .kl li::marker { color: var(--accent); }
+
+  /* KEYWORDS */
+  .kw  { background: rgba(26,95,168,.12); color: var(--tier1); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw2 { background: rgba(14,124,106,.12); color: var(--tier3); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw3 { background: rgba(245,158,11,.15); color: var(--gold); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw4 { background: rgba(124,58,237,.12); color: var(--accent4); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  .kw5 { background: rgba(220,38,38,.10); color: var(--accent5); font-weight: 600; border-radius: 3px; padding: 0 4px; }
+  mark.hi { background: #bfdbfe; color: var(--ink); padding: 0 3px; border-radius: 3px; }
+
+  /* FLOW */
+  .flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; margin: 14px 0; }
+  .flow-step { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; flex: 1; min-width: 140px; text-align: center; font-size: 13px; }
+  .flow-arrow { display: flex; align-items: center; color: var(--accent); font-size: 20px; padding: 0 6px; flex-shrink: 0; }
+  .flow-step .fs-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); margin-bottom: 4px; }
+  .flow-step .fs-title { font-weight: 700; font-size: 14px; color: var(--ink); }
+  .flow-step .fs-body { font-size: 12px; color: #555; margin-top: 4px; }
+
+  /* LOGIC MAP */
+  .logic-map { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin: 30px 0; box-shadow: var(--shadow); }
+  .logic-map h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; margin-bottom: 20px; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+  .lm-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+  .lm-node { background: var(--bg2); border: 2px solid var(--border); border-radius: 10px; padding: 10px 16px; flex: 1; min-width: 150px; font-size: 13px; }
+  .lm-node.blue   { border-color: var(--tier1); background: #dbeafe; }
+  .lm-node.green  { border-color: var(--tier3); background: #e6f7f4; }
+  .lm-node.yellow { border-color: var(--gold); background: #fef9e7; }
+  .lm-node.red    { border-color: var(--accent5); background: #fff1f2; }
+  .lm-node.purple { border-color: var(--accent4); background: #f5f0ff; }
+  .lm-node .ln-title { font-weight: 700; margin-bottom: 4px; }
+
+  /* MINDMAP */
+  .mindmap { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin: 20px 0; }
+  .mindmap h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; margin-bottom: 20px; color: var(--ink); }
+  .mm-center { background: var(--ink); color: #fff; border-radius: 50px; padding: 14px 32px; text-align: center; font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 700; display: inline-block; margin-bottom: 20px; }
+  .mm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .mm-branch { background: var(--bg2); border: 2px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+  .mm-branch.b1 { border-color: var(--tier1); background: #dbeafe; }
+  .mm-branch.b2 { border-color: var(--tier2); background: #fef3e2; }
+  .mm-branch.b3 { border-color: var(--tier3); background: #e6f7f4; }
+  .mm-branch.b4 { border-color: var(--accent4); background: #f5f0ff; }
+  .mm-branch.b5 { border-color: var(--accent5); background: #fff1f2; }
+  .mm-branch.b6 { border-color: var(--gold); background: #fef9e7; }
+  .mm-branch-title { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+  .mm-branch ul { padding-left: 16px; font-size: 12.5px; }
+  .mm-branch ul li { margin-bottom: 3px; }
+
+  /* CHAIN */
+  .chain { background: linear-gradient(135deg, #0f1f2e 0%, #1a3a6e 100%); border-radius: 20px; padding: 40px; margin: 50px 0 30px; color: #fff; }
+  .chain h2 { font-family: 'Noto Serif SC', serif; font-size: 24px; font-weight: 900; margin-bottom: 6px; }
+  .chain .chain-sub { color: rgba(255,255,255,.55); font-size: 13px; margin-bottom: 28px; }
+  .chain-flow { display: flex; align-items: stretch; gap: 0; flex-wrap: wrap; }
+  .chain-step { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 12px; padding: 18px 20px; flex: 1; min-width: 160px; }
+  .chain-arrow { display: flex; align-items: center; color: rgba(255,255,255,.3); font-size: 22px; padding: 0 6px; flex-shrink: 0; }
+  .chain-step .step-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #93c5fd; letter-spacing: 2px; margin-bottom: 8px; }
+  .chain-step .step-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .chain-step .step-body { font-size: 12.5px; color: rgba(255,255,255,.7); line-height: 1.7; }
+  .chain-summary { margin-top: 24px; background: rgba(255,255,255,.06); border-radius: 10px; padding: 18px 22px; font-size: 13.5px; color: rgba(255,255,255,.85); line-height: 1.9; border-left: 4px solid #93c5fd; }
+
+  /* QUIZ */
+  .quiz { background: var(--bg2); border: 2px solid var(--border); border-radius: 20px; padding: 36px 40px; margin: 0 0 40px; }
+  .quiz h2 { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .quiz-sub { color: #888; font-size: 13px; margin-bottom: 24px; }
+  .q-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; margin-bottom: 14px; }
+  .q-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 2px; margin-bottom: 6px; font-weight: 600; }
+  .q-text { font-weight: 500; color: var(--ink); margin-bottom: 10px; font-size: 14.5px; }
+  .q-hint { font-size: 12.5px; color: #777; border-top: 1px solid var(--border); padding-top: 10px; margin-top: 10px; }
+  .q-hint span { color: var(--accent); font-weight: 600; }
+  .q-exam { font-size: 12px; color: var(--accent5); background: #fff1f2; border-radius: 6px; padding: 2px 8px; display: inline-block; margin-bottom: 8px; }
+
+  /* 30-SEC REVIEW */
+  .review30 { background: linear-gradient(135deg, #0e7c6a, #1a5fa8); border-radius: 20px; padding: 36px 40px; margin: 30px 0; color: #fff; }
+  .review30 h2 { font-family: 'Noto Serif SC', serif; font-size: 22px; margin-bottom: 20px; }
+  .r30-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .r30-item { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 10px; padding: 14px 16px; }
+  .r30-item .r30-title { font-weight: 700; font-size: 13px; color: #93c5fd; margin-bottom: 6px; }
+  .r30-item .r30-body { font-size: 12.5px; color: rgba(255,255,255,.8); line-height: 1.7; }
+
+  /* RECITE */
+  .recite { background: var(--card-bg); border: 2px solid var(--tier1); border-radius: 16px; padding: 28px; margin: 20px 0; }
+  .recite h3 { font-family: 'Noto Serif SC', serif; font-size: 18px; color: var(--tier1); margin-bottom: 16px; }
+  .recite-item { background: var(--bg2); border-radius: 8px; padding: 12px 16px; margin-bottom: 10px; font-size: 13.5px; }
+  .recite-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--tier1); margin-bottom: 4px; }
+
+  /* HIGHLIGHT for search */
+  
+
+  /* FOOTER */
+  .footer-bar { background: var(--ink); color: rgba(255,255,255,.4); text-align: center; padding: 20px; font-size: 12px; margin-top: 60px; }
+  .divider { border: none; border-top: 2px dashed var(--border); margin: 30px 0; }
+
+  /* details/summary */
+  details summary { cursor: pointer; padding: 10px 14px; background: var(--bg2); border-radius: 8px; font-weight: 600; margin-bottom: 8px; list-style: none; display: flex; align-items: center; gap: 8px; }
+  details summary::before { content: '▶'; font-size: 10px; color: var(--accent); transition: transform .2s; }
+  details[open] summary::before { transform: rotate(90deg); }
+  details .details-body { padding: 16px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 0 0 10px 10px; margin-top: -8px; }
+
+  /* BACK TO TOP */
+  #backTop { position: fixed; bottom: 30px; right: 30px; background: var(--tier1); color: #fff; border: none; border-radius: 50%; width: 46px; height: 46px; font-size: 20px; cursor: pointer; display: none; box-shadow: 0 4px 12px rgba(0,0,0,.25); z-index: 999; transition: background .2s; }
+  #backTop:hover { background: #1a3a6e; }
+  #backTop.show { display: block; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  @media(max-width: 760px) {
+    .hero { padding: 40px 20px; }
+    .hero h1 { font-size: 28px; }
+    .main { padding: 0 16px; }
+    .toc { padding: 12px 16px; }
+    .case-banner { margin: 16px 16px 0; padding: 20px; }
+    .chain { padding: 24px 20px; }
+    .quiz { padding: 24px 16px; }
+    .kcard-body { padding: 16px; }
+    .mm-grid { grid-template-columns: repeat(2,1fr); }
+    .r30-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+
+<script>window._PAGE_TEXT='第十四章 国际人力资源管理 · 中南大学企业管理复试笔记 \n \n \n \n \n \n \n 第十四章 · 人力资源管理（颜爱民第3版） \n 国际 人力资源管理 \n 经济全球化背景下，跨国企业如何管理来自不同国家的员工？本章涵盖国际HRM的含义、美日韩模式比较、外派人员选聘培训绩效薪酬，是中南大学企业管理专业高频考点。 \n \n 📍 教材 P452–478 \n 🌏 跨国公司必考 \n ✍️ 名词 · 简答 · 论述 · 案例 \n ⭐ HHP模式 · 外派管理 \n 🏆 2020·2024面试高频 \n \n \n \n \n 目录 \n 逻辑图 \n 思维导图 \n 概述 \n 模式比较 \n 选聘 \n 培训 \n 绩效 \n 薪酬 \n 对比表 \n 串联 \n 30秒 \n 自检 \n 🌙 夜间 \n \n \n \n \n 📖 导入案例 · P452 \n 阿里巴巴：请来"牛人"威尔金森 \n 2014年，即将在美国上市的阿里巴巴，为推进管理层国际化，招入了美国前财长幕僚长吉姆·威尔金森——担任资深副总裁，负责国际企业事务，办公于旧金山湾区。这位纵横美国政商两界的公关老手，将借助其在华尔街和华盛顿的人脉，帮助阿里完成赴美上市后的形象管理与政府关系建设。 \n ⚠️ 核心问题：越来越多的中国企业在实现全球化经营的同时，将面临 人力资源管理国际化 的多方面挑战——如何吸引国际型人才？如何跨文化管理？这正是本章要回答的问题。 \n \n \n \n \n \n 本章与其他章节的逻辑关系 \n \n \n \n 章节 关联逻辑 \n \n 第1章 人力资源管理概述 本章是第1章的延伸扩展：传统HRM（国内）→ 国际HRM（跨国），核心功能相同但复杂度提升 \n 第7章 员工招聘 国际选聘 = 招聘理论的跨国应用，增加文化适应能力、语言能力、家庭因素等特殊维度 \n 第8章 绩效管理 国际绩效考核 = 绩效管理的跨国版：增加战略方向指标、绩效诊断与辅导、跨文化因素 \n 第9章 薪酬 国际薪酬 = 薪酬理论的跨国版：增加津贴体系、资产负债表法、汇率与购买力问题 \n 第13章 战略性人力资源管理 战略IHRM是本章的理论基础：跨国公司通过战略性HR活动实现全球竞争目标 \n \n \n \n 📌 本章各节逻辑关系 \n \n \n §14.1 \n 什么是IHRM？ \n 含义·特征 复杂性·本土化 \n \n → \n \n §14.2 \n 用什么模式？ \n 美日韩比较 HHP模式选择 \n \n → \n \n §14.3 \n 怎么选人？ \n 外派标准 东道国标准·实施 \n \n → \n \n §14.4 \n 怎么培训？ \n 美日欧特点 外派·东道国培训 \n \n → \n \n §14.5 \n 如何考核？ \n 特点·外派考核 东道国考核 \n \n → \n \n §14.6 \n 如何激励？ \n 薪酬多样性 外派薪酬构成 \n \n \n 逻辑主线： 识别IHRM复杂性 → 选择适合的管理模式 → 针对不同来源员工分类管理 （选聘→培训→绩效→薪酬） \n \n \n \n 📊 第14章知识框架思维导图 \n \n 第14章 国际人力资源管理 \n \n \n \n §1 概述 \n \n 摩尔根三维模型 \n 三类国家·三类员工 \n 特征：复杂性·本土化 \n \n \n \n §2 模式比较 \n \n 美国：丈夫型 \n 日本：主妇型 \n 中国：家长制 \n 美日韩多维比较 \n \n \n \n §3 国际选聘 \n \n 外派5大标准 \n 东道国标准 \n 高管：3步流程 \n 一般员工：3步流程 \n \n \n \n §4 国际培训 \n \n 美国：市场导向 \n 日本：上下一致 \n 外派培训3类 \n 德国双元制 \n \n \n \n §5 国际绩效 \n \n 4大特点 \n 外派：3类指标 \n 3大考核环节 \n 东道国考核 \n \n \n \n §6 国际薪酬 \n \n 国际薪酬多样性 \n 外派薪酬4构成 \n 母国/东道国标准 \n 全球薪酬体系5步 \n \n \n \n \n \n \n § 14.1 \n 国际人力资源管理概述 \n P453–455 \n \n \n \n 14.1.1 \n \n 国际人力资源管理的含义（摩尔根模型） \n \n ⭐⭐⭐⭐⭐ 必背 \n P453 \n 名词解释 / 简答 \n 高频出题 \n \n \n \n \n \n 📖 教材定义 \n 国际人力资源管理（IHRM） 是指随着企业经营的国际化而导致的企业人力资源管理的国际化。虽然IHRM与常规HRM在 基本功能、常规程序 上相同，但由于企业经营的国际化，IHRM的所有活动都会变得更加复杂。\n \n \n 🍰 小学生版理解 \n 想象学校只有一个班（国内企业），班主任只管这一班的同学。现在学校变成了国际学校，有来自中国、美国、日本的同学（跨国公司），班主任要用不同的方式管理不同文化背景的同学——这就是"国际人力资源管理"。\n \n 摩尔根（Morgan）三维模型： \n \n \n 维度 具体内容 举例（微软中国） \n \n \n ① HRM活动 \n 人力资源的获取、分配与使用 \n 招聘、培训、绩效、薪酬 \n \n \n ② 国家类型 \n 东道国 （经营所在国） 母国 （总部所在国） 第三国 （劳动力来源的其他国） \n 中国=东道国 美国=母国 新加坡=第三国 \n \n \n ③ 员工类型 \n 东道国员工 / 母国员工 / 第三国员工 \n 中国籍员工/美籍员工/新加坡籍员工 \n \n \n \n 🧠 助记口诀 \n "活动·国家·员工 三三制" —— IHRM = 3类HRM活动 × 3类国家 × 3类员工的相互作用。记住"3×3×3"就记住了摩尔根模型。\n \n \n 国际人力资源管理是指 人力资源活动中国家类型、企业经营和雇员类型三个方面的相互作用 ，其中每个方面都与人力资源的招募、配置和使用有关。（教材原文） \n \n \n 🎯 复试回答模板 \n 定义 ：IHRM是随企业国际化而产生的HRM国际化。 \n 核心模型 ：摩尔根三维模型——HRM活动（获取/分配/使用）× 三类国家（东道/母/第三）× 三类员工。 \n 与国内HRM的关系 ：功能相同，但复杂度大幅提升。 \n 举例 ：华为在美国设研发中心，需同时管理美国本地员工（东道国员工）、中国外派工程师（母国员工）和印度籍技术专家（第三国员工）。 \n 复试延伸问题 ：老师可能追问"IHRM与国内HRM最大的区别是什么？"→ 答： 复杂性 和 人才本土化必要性 两大差异。\n \n \n \n \n \n 14.1.2 \n \n IHRM的两大特征：管理复杂性 & 人才本土化 \n \n ⭐⭐⭐⭐⭐ 必背 \n P454–455 \n 简答 / 论述 \n \n \n \n \n \n ① 管理的复杂性（5个方面） \n \n \n 复杂性来源 具体表现 \n 组织边界模糊 管理制度越来越有弹性，需要更强的 管理灵活性 \n 全球视角招聘 从全球选人，培训需注意文化适应性与融合性 \n 文化冲突频发 来自不同国家文化的员工，工作中不可避免产生 文化冲突 \n 沟通协调困难 语言差异、文化差异造成沟通障碍，阻碍企业正常运行 \n 关注员工生活 需确保驻外人员住房、医保、薪酬福利——很多跨国企业设"国际HR服务部门" \n \n \n 劳动关系问题： 各国劳动关系的历史、政治、法律背景不同，是IHRM一个 重要而敏感 的问题。\n \n \n \n \n ② 人才本土化的客观必要性（3个原因） \n \n \n 原因 说明 \n 增强信任感 大量东道国人员担任管理职务，提高东道国员工就业率，增强对子公司的信任感 \n 降低成本 外派人员不但要高额津贴补贴，还有选聘培训成本；直接聘用当地员工可避免上述支出 \n 熟悉市场 东道国员工更熟悉本国风俗、消费者需求、法规，有利于快速拓展市场 \n \n \n 🍰 案例 \n 麦当劳在中国：高层战略由美国总部决定，但门店店长和员工几乎全是中国人——这就是人才本土化。本地员工更懂顾客口味（比如加豆浆），成本也更低。\n \n \n \n \n 🎯 简答答题框架（2特征） \n IHRM与传统国内HRM的差别主要表现在两方面： \n 一是 管理的复杂性 （组织边界模糊、全球视角招聘、文化冲突、沟通障碍、关注个人生活）； \n 二是 人才本土化的客观必要性 （增强信任感、降低成本、熟悉市场）。\n \n \n \n \n \n § 14.2 \n 人力资源管理模式的国际比较与选择 \n P455–458 \n \n \n \n 14.2.1 \n \n 美、日、韩人力资源管理模式比较 \n \n ⭐⭐⭐⭐⭐ 高频必背 \n P455–456 \n 简答 / 论述 / 对比题 \n 历年面试高频 \n \n \n \n \n \n 🍰 小学生版记忆 \n 美国：大胆开拓型（班长，说干就干，敢闯市场） \n 日本：认真细致型（劳动委员，把每件事做到极致，完美主义） \n 韩国：美日混合型（学了两家的优点）\n \n \n \n 比较维度 \n 🇺🇸 美国模式 \n 🇯🇵 日本模式 \n 🇰🇷 韩国模式 \n \n 招聘体系 外部市场为主，侧重能力 终身雇佣，主要内部晋升 混合，学历+忠诚度并重 \n 薪酬体系 绩效工资为主，能力主义 年功序列制（年资薪酬） 年功+绩效融合 \n 培训体系 短期培训，市场导向 长期内部培训，在职为主 类似日本，强调团队 \n 决策方式 自上而下，快速决策 共识决策（林吉法） 家长式决策 \n 雇佣关系 雇员与公司是契约关系 终身雇佣，家庭型 集体主义，忠诚文化 \n 优势 开拓创新，战略远见，包容多元 品质管理，内部协调，客户关系 融合美日，适应性强 \n 劣势 内部管理和产品细节精度不足 缺乏长远战略，开拓精神不够 家族主义倾向 \n \n \n 🧠 助记口诀 \n 美国"战略开拓"，日本"质量内控"，韩国"两者融合" —— 三国模式各有千秋，差别来自历史文化积累。\n \n \n \n \n \n 14.2.2 \n \n HHP模式：日（主妇）·美（丈夫）·中（家长制）对比 \n \n ⭐⭐⭐⭐⭐ 核心考点 \n P456–457 \n 论述 / 名词解释 \n 复试面试超高频 \n \n \n \n \n \n 📖 HHP模式定义 \n HHP即 Housewife（主妇）·Husband（丈夫）·Paternalism（家长制） ，用三种家庭角色类比日本、美国、中国的管理风格。\n \n \n \n 国家 \n 类型 \n 核心特征 \n 总体倾向 \n 适用情境 \n \n \n 🇯🇵 日本 \n 主妇型管理 \n 管理精细（对内）、经营周到（对外）、不断改善追求完美（技术）、 短见 （战略） \n 重内部管理与产品、技术和客户管理；轻战略与市场开拓；细腻、温情、认真 \n 制造业主导、大生产时代；20世纪80年代前全球领先 \n \n \n 🇺🇸 美国 \n 丈夫型管理 \n 理性（分权变革）、开拓（市场扩展）、创新（技术产品）、 远见 （战略） \n 重战略、市场开拓与技术创新；内部管理精细化稍不足；豪放、进取、果敢 \n 知识经济时代、全球化竞争；20世纪80年代后持续领先 \n \n \n 🇨🇳 中国 \n 家长制管理 \n 粗放性（内部）、感性型（市场）、适用满足性（技术）、 机会主义 （战略） \n 偏重产品生产与市场占有；不稳定；保守、实际、权威、感性 \n 中小企业、短期运营；灵活快速决策场景 \n \n \n \n 🍰 小学生类比 \n 日本主妇：把家里每个角落打扫得干干净净，厨房锅碗瓢盆摆放整齐，但不会主动规划未来买房计划。 \n 美国丈夫：大胆提出"10年后我们要搬到大城市发展"，敢于冒险，但家里有时候乱一点。 \n 中国家长：凭感觉管家，谁说了算就按谁来，灵活但规则不多。\n \n \n 🧠 核心对比速记 \n \n 维度 日本（主妇） 美国（丈夫） 中国（家长） \n 战略 短见 远见 机会主义 \n 管理 精细 理性 粗放 \n 创新 改善完善 颠覆创新 适用满足 \n 市场 客户导向 开拓扩展 感性经营 \n \n \n \n 🎯 复试回答模板 \n 定义 ：HHP模式分别以主妇、丈夫、家长比喻日本、美国和中国管理风格。 \n 日本 ：主妇型→精细内部管理+质量追求，但战略短视。适合制造业大生产时代，80年代后竞争力下降。 \n 美国 ：丈夫型→战略远见+理性创新+包容多元，适合知识经济和全球化竞争。 \n 中国 ：家长制→灵活实用但不规范，中小企业可行，大企业国际竞争中明显不足。 \n 结论 ：管理国际化不是照搬某一模式，而是根据当时当地实际情况 综合整合与管理创新 。\n \n \n ⚠️ 复试延伸问题 \n 老师可能问："中国企业如何学习美国或日本管理？" → 答：不能简单照搬，需结合中国文化国情，学习美国的战略远见和创新开拓，学习日本的内部精细管理，但须克服家长制的非规范化弊端。华为是典型案例：军事化内部管理（借鉴日本）+ 全球化战略（借鉴美国）。\n \n \n \n \n \n 14.2.3 \n \n 人力资源管理模式选择 \n \n ⭐⭐⭐ 理解 \n P457–458 \n \n \n \n \n \n \n 时代/行业特点 适合模式 理由 \n \n \n 产品大生产、制造业为主 \n 日本式（主妇型） \n 精细内部管理+品质控制，降低成本+提高质量，日本曾以此称雄全球 \n \n \n 全球化竞争、知识经济 \n 美国式（丈夫型） \n 战略眼光+创新精神+包容多元，从80年代开始持续领先全球 \n \n \n 中小企业、短期快速运营 \n 中国式（家长制） \n 灵活决策快速，适合小企业；但不适合大企业跨国竞争 \n \n \n \n 🧠 核心结论 \n "实现管理国际化，不是照搬某一特定管理模式，而应根据当时当地实际情况进行综合整合与提升，即进行管理创新。" （教材原句）\n \n \n 📋 与本章其他内容的联系： 模式选择是§14.3-14.6（选聘/培训/绩效/薪酬）的理论基础——不同模式决定了不同的HR实践方式。\n \n \n \n \n \n § 14.3 \n 国际人力资源选聘 \n P459–463 \n \n \n \n 14.3.1 \n \n 母国外派人员或第三国人员的选聘标准（5大维度） \n \n ⭐⭐⭐⭐⭐ 必背 \n P459 \n 简答 / 论述 \n \n \n \n \n \n 🍰 小学生版类比 \n 公司要派张三去美国工作——除了他业务能力强，还要看：他能不能适应美国文化？会英语吗？老婆孩子支持吗？以前有没有出过国？这5点就是外派选聘标准。\n \n \n \n 标准 核心要求 案例说明 \n \n \n ① 专业技术和管理能力 \n 技术技能 + 行政技能 + 领导技能 \n 英美德企业研究表明：这是最重要的筛选标准 \n \n \n ② 文化适应能力 \n 跨文化移情能力（用东道国文化思维看问题）；能接受不同风俗/宗教/生活环境 \n 外派失败最主要原因 不是技术能力，而是文化适应能力低！ \n \n \n ③ 外语能力 \n 能熟练使用东道国语言（中国企业最重要：英语能力） \n 语言是跨文化沟通最大障碍；英语普及使其重要性相对低于前两项 \n \n \n ④ 家庭因素 \n 配偶是否支持；家庭是否双职工；子女教育问题；家庭适应性 \n 家庭因素常是外派失败的隐藏原因 \n \n \n ⑤ 国外工作经历 \n 过去的跨国经历是预测未来成功的最佳指标；哪怕暑假海外旅行也算 \n 高露洁公司：特别看重个人工作经历与文化背景的跨文化证明 \n \n \n \n 🧠 助记口诀 \n "专（业技能）文（化适应）语（言）家（庭）历（史经历）" —— 5字诀，缺一不可。 \n 易错提醒 ：文化适应能力排名第二，且是 外派失败最常见原因 ！考试常考这个。\n \n \n 🎯 复试回答模板 \n 母国外派人员或第三国人员的选聘标准包括5个维度：①专业技术和管理能力（最基础）；②文化适应能力（最关键，是外派失败的主要原因）；③外语能力（重要沟通桥梁）；④家庭因素（影响长期外派稳定性）；⑤国外工作经历（过去经历是最佳预测指标）。\n \n \n \n \n \n 14.3.2 \n \n 东道国人员选聘标准 & 国际选聘实施 \n \n ⭐⭐⭐ 掌握 \n P459–463 \n 简答 \n \n \n \n \n \n 东道国人员选聘标准 \n \n \n 跨国公司以何种方式 进入东道国市场 是重要考量（独资子公司 vs 并购当地公司） \n 注重能力和经验外，特别注意各国 不同文化背景因素 （如印度/韩国/拉美国家存在裙带关系现象） \n 要求具备较强的 心理素质和自我调节能力 （高心理素质员工带来：提高效率、节省培训开支、改善组织气氛等10大好处） \n \n \n \n \n 高级管理人员选聘：3步流程 \n \n \n \n STEP 1 \n 初步面试 \n 人力资源部主管主持；了解学业成绩、工作经历、职责期望等直观信息 \n \n → \n \n STEP 2 \n 标准化测试 \n 外聘心理学者主持；测智力、认知、驱动力、管理技能（16PF、MMPI等） \n \n → \n \n STEP 3 \n 仿真测验 \n 关键环节！小组角色模拟，专家小组监督，历时2天，同时测"智商+情商" \n \n \n \n \n \n 一般人力资源选聘：3步流程 \n \n \n \n STEP 1 \n 多渠道发布信息 \n 建立人才储备库；不等空缺出现才找人；微软案例：大举建设"中国人才库" \n \n → \n \n STEP 2 \n 优化评价指标 \n 科学分析任务角色→访谈关键事件→确定胜任特征（Competency）；特别注重 难以通过培训改变 的特征（如工作态度） \n \n → \n \n STEP 3 \n 选择评价方法 \n 面谈（最广泛最有效）> 评价中心；简历筛选、实况预演、书面测试；还要评估信度和效度 \n \n \n \n \n \n \n \n \n § 14.4 \n 国际人力资源培训与开发 \n P463–467 \n \n \n \n 14.4.1 \n \n 美国、日本、欧洲企业培训与开发的特点 \n \n ⭐⭐⭐⭐ 重要 \n P463–466 \n 简答 / 对比题 \n \n \n \n \n \n \n 国家 培训特点 标志性数据/案例 \n \n \n 🇺🇸 美国 \n \n ①完全由 劳动力市场需求 决定，直接服务于生产力； \n ②内容、形式、资金渠道 多样化 ，分权管理； \n ③企业视培训为 战略性人力资源活动 ； \n ④检验标准：能否增强市场竞争能力\n \n \n 每年培训经费高达 2100亿美元 ； \n 每员工平均接受 15小时/年 培训； \n 摩托罗拉每年投入 1.2亿美元 ； \n GE每年投入 9亿美元 ； \n 1200多家跨国公司建有 企业大学 \n \n \n \n 🇯🇵 日本 \n \n 终身雇佣→特别重视 在职培训（OJT） ； \n "上下一致" ：所有员工不分职务均需培训； \n "一专多能" ：既要精通一门专业，又能参与经营管理； \n 纵向培训（分层次）+ 横向培训（职能性）\n \n 日本企业内部分级培训体系：新员工培训→现场监督者→管理干部培训（纵向层次化） \n \n \n 🇫🇷 法国 \n 员工有 法定带薪培训假期 ；雇主缴纳 职业继续教育税 （按工资总额比例） \n 大型企业多有自己的培训机构 \n \n \n 🇩🇪 德国 \n "双元制"职业培训 ：企业在职培训 + 学校理论教育有机结合； 学员双重身份：职业学校学生 + 企业学徒工； 企业负责结业考试；以企业培训为主 \n 20世纪60年代出现；对德国经济恢复和提升国际竞争力起重要作用 \n \n \n \n 🧠 助记对比 \n 美国：市场决定 + 多元化 + 战略投资 \n 日本：上下一致 + 一专多能 + 在职培训 \n 德国：双元制（学校+企业 = 学生+学徒） \n \n \n \n \n \n 14.4.2 \n \n 外派人员培训（3大类内容） \n \n ⭐⭐⭐⭐⭐ 高频必背 \n P465–466 \n 简答 / 论述 \n \n \n \n \n \n ⚠️ 重要背景数据 \n 外派人员 失败率通常为25%~50% ，在发展中国家高达 70% ！ \n 美国只有32%的公司有外派培训计划，欧洲57%，日本69%—— 培训计划越完善，失败率越低 。\n \n \n \n 培训类型 主要内容 核心说明 \n \n \n ① 对东道国的介绍培训 \n 语言培训（英语+东道国语言）；文化意识培训；历史地理；生活条件介绍 \n 文化意识培训 = 帮助外派人员适应新工作环境、不感到孤单；有时还包括家庭成员 \n \n \n ② 持续性开发培训 \n 技能扩展培训；职业生涯开发计划；企业培养使用计划 \n 解决外派人员最大顾虑：担心外派不利于职业生涯发展；让其安心外派 \n \n \n ③ 回返性调整培训和工作安置准备培训 \n 消除文化休克的培训；接纳和安置培训 \n 帮助外派人员从长期外国生活经历中摆脱出来，消除回国适应障碍，给予新人际关系网络适应期 \n \n \n \n 🧠 助记口诀 \n "出发前培训（介绍东道国）→在岗持续开发→回国调整培训" \n 对应外派周期三阶段：出发前 → 驻外中 → 回国后。\n \n \n 🎯 复试回答模板 \n 外派人员培训包括三类：①出发前的东道国介绍培训（语言+文化意识为主）；②驻外期间的持续性开发培训（解决职业生涯发展顾虑）；③回国后的回返性调整培训（消除"反向文化冲击"）。这三类培训覆盖外派全周期，是降低高达70%外派失败率的关键手段。\n \n \n \n \n \n § 14.5 \n 国际人力资源绩效考核 \n P467–470 \n \n \n \n 14.5.1 \n \n 国际HRM绩效考核的4大特点 \n \n ⭐⭐⭐⭐ 重要 \n P467–468 \n 简答 / 论述 \n 面试高频 \n \n \n \n \n \n \n 特点 核心内容 典型案例 \n \n \n ① 个人·团队·公司目标密切结合 \n 不仅是薪酬晋升依据，更重视三方目标契合；在工作要求与个人能力、兴趣和工作重点间发展最佳契合点 \n 摩托罗拉：使个人、团队业务和公司目标密切结合，提高对话质量，增强共同责任 \n \n \n ② 突出战略方向与业绩的统一 \n 考核指标 = 战略方向 + 业绩；与一般企业只关注业绩不同 \n 摩托罗拉：年度工作目标 = 战略方向（长远战略+优先目标）+ 业绩（财务/客户/员工关系等） \n \n \n ③ 持续不断的绩效沟通 \n 将员工看成企业伙伴；业绩计划是动态的；持续沟通追踪进展，消除障碍 \n 欧美企业：业绩计划和工作业绩均视为动态，在问题出现前或出现时即消除障碍 \n \n \n ④ 重视绩效诊断与辅导 \n 绩效诊断 = 识别绩效问题真实原因；辅导 = 帮助员工开发知识技能；渗透到绩效管理各环节 \n 年度回顾→重新计划→循环持续改进 \n \n \n \n 🧠 助记口诀 \n 「三目标 → 战略业绩 → 持续沟通 → 诊断辅导」 \n 记忆：个人团队公司目标 + 战略业绩统一 + 过程中持续沟通 + 及时诊断辅导 = 国际绩效考核4大特点\n \n \n \n \n \n 14.5.2 \n \n 外派人员绩效考核的3大环节 \n \n ⭐⭐⭐⭐⭐ 重点 \n P468–470 \n 简答 · 论述 \n \n \n \n \n \n 环节1：选择科学的绩效评估指标（3类） \n \n \n \n 指标类型 定义 举例 \n \n 硬指标 客观、定量、可直接衡量 投资回报率、利润率 \n 软指标 关系/品质为基础 领导风格、处理人际关系技巧 \n 情境指标 与周围环境密切相关 东道国政治变化、汇率波动下的应对表现 \n \n \n 选择指标注意事项： \n ①要考虑国外因素（东道国政策、公司战略调整等经理控制范围之外的因素）； \n ②行为也可作为评价标准（维护公司信誉、搞好政府关系、培养人才）； \n ③ 慎重对待财务指标 （转让价格、汇率波动可能扭曲账面利润）\n \n \n \n \n 环节2：确定评估执行者 \n \n \n 执行者 优势 劣势 \n 东道国管理人员 了解外派人员绩效，能综合考虑各种因素 文化隔阂，难以抛开文化和价值观影响 \n 母公司管理人员 对职业生涯发展有重要影响意义 不了解子公司日常情况，评估精确性受影响 \n \n \n \n \n 环节3：了解绩效评估的制约因素 \n \n \n 区分 子公司经理人员的评估与子公司本身的评估（两者不是一回事） \n 注重局部收益，更注重整体收益 （全球战略强调全球成就，不是某一市场局部收益） \n 建立新的财务管理制度 （减少汇率波动、转让价格的扭曲影响） \n \n \n \n \n \n \n \n § 14.6 \n 国际人力资源薪酬与激励 \n P470–475 \n \n \n \n 14.6.1 \n \n 国际薪酬的特点：多样性 + 成本公平兼顾 \n \n ⭐⭐⭐⭐ 重要 \n P470–471 \n 简答 \n \n \n \n \n \n \n 特点 具体表现 \n \n \n 国际薪酬的多样性 \n \n ① 员工类型多样→不同薪酬待遇（东道国/母国/第三国员工工资各异） \n ② 国家差异→货币购买力问题（通货膨胀、货币稳定性、汇率变化） \n ③ 文化差异→薪酬福利/激励方式不同（不同文化对福利偏好不同）\n \n \n \n 成本与公平问题兼顾 \n \n 驻外人员薪酬往往较高（吸引总公司员工外派），但高成本需与全球竞争战略结合衡量； \n 公平问题：外派人员与国内同级比较 + 与东道国员工比较 + 所有驻外人员互相比较\n \n \n \n \n 🧠 有效国际薪酬政策应具备5点（马尔托尼奥） \n ①对外派人员有吸引力、能保留合格雇员；②增强对外部优秀人才的吸引力；③促进员工在各子公司间顺利流动；④保持各子公司薪酬制度稳定关系；⑤与主要竞争者薪酬制度相当。\n \n \n \n \n \n 14.6.2 \n \n 外派人员薪酬构成：基本薪酬 + 津贴 + 奖金 + 福利 \n \n ⭐⭐⭐⭐⭐ 必背框架 \n P472–474 \n 简答 / 论述 \n \n \n \n \n \n 🍰 小学生版理解 \n 派小明去美国出差一年：基本工资还是要给（基本薪酬）；美国房租贵，要多给点住房补贴（住房津贴）；节假日表现好给奖励（奖金）；医疗保险也要跟上（福利）。外派薪酬就是这4部分。\n \n \n \n 构成 内容 确定方式 \n \n \n ① 基本薪酬 \n 与职务相联系，是奖励/津贴/其他报酬的基础；可用母国或东道国货币支付 \n \n 按母国标准 ：保持与国内同事一致，避免不公平感；适用于短期外派或东道国工资低于母国 \n 按东道国标准 ：参照当地员工工资；适用于母国工资低于东道国；有利于与当地员工融合\n \n \n \n ② 津贴 \n \n \n 住房津贴 \n 生活费用津贴（弥补食品/交通/娱乐等从价差） \n 子女教育津贴 \n 安家补贴（搬家/运输/汽车/俱乐部费用） \n \n \n 根据估计或实际情况支付 \n \n \n ③ 奖金 \n \n \n 海外任职津贴（底薪10%~25%，最普遍） \n 工作期满津贴 \n 探亲津贴（每年一次或多次回国费用） \n 艰苦条件津贴（气候/卫生/政局/文化设施匮乏等） \n \n \n 以津贴形式发放 \n \n \n ④ 福利 \n 享受母国福利计划（为回国做准备）；欧盟内可享受可转移的社会保险福利 \n 复杂，管理难度大于薪酬本身 \n \n \n \n 🧠 助记口诀 \n 「基（本薪酬）＋津（贴：住房/生活/教育/安家）＋奖（金：任职/期满/探亲/艰苦）＋福（利）」 \n 简记： 基津奖福 ，4大构成缺一不可。\n \n \n 🎯 外派人员薪酬特点总结（考试常考） \n ①薪酬水平较高（各种福利和补贴是重要组成）； \n ②标准较复杂（以本国/所在国/总部/全球为基础的4种方式）； \n ③对绩效薪酬研究不足（目前停留在"维持基本生活需要"层面）； \n ④趋势： 外在薪酬作用越来越小，内在薪酬越来越大 （福利比高薪有效，所在国支持比福利更有效）。\n \n \n \n \n \n 14.6.3 \n \n 东道国和第三国员工的薪酬：全球薪酬体系5步法 \n \n ⭐⭐⭐ 掌握 \n P474–475 \n \n \n \n \n 传统上按当地工资水平；现在越来越多公司采用 "全球薪酬体系" ——既保持全球一致性，又考虑各地差异。 \n \n \n STEP 1 \n 确定薪酬哲学框架 \n 高层集体反思各薪酬组成如何促进战略目标 \n \n → \n \n STEP 2 \n 找差距 \n 审查全球薪酬体系vs战略目标的支持程度 \n \n → \n \n STEP 3 \n 系统化 \n 综合各部分内容及关系；全球范围协调 \n \n → \n \n STEP 4 \n 调整薪酬政策 \n 全球调查+评估当地实践适应性→微调 \n \n → \n \n STEP 5 \n 持续评估 \n 定期评估反馈，保证与时俱进 \n \n \n \n \n \n \n 📊 \n 易混概念对比总结表 \n \n \n \n 对比1 \n \n 东道国员工 vs 母国员工 vs 第三国员工 \n \n \n \n \n \n 类型 定义 优点 缺点 以微软中国为例 \n \n \n 东道国员工 \n 跨国公司在东道国招聘的当地员工 \n 熟悉本地文化/法规/市场；成本低；增强信任感 \n 可能与总公司文化有差距 \n 中国籍员工 \n \n \n 母国员工（外派人员） \n 从母公司派往海外子公司工作的员工 \n 了解总公司战略文化；技术能力强 \n 成本高；文化适应困难；失败率高 \n 美籍员工（从美国派来） \n \n \n 第三国员工 \n 来自母国和东道国以外第三国的员工 \n 可能比母国员工更适应当地；薪酬可能较低 \n 也面临跨文化适应问题 \n 新加坡籍员工 \n \n \n \n \n \n \n 对比2 \n \n 按母国标准付酬 vs 按东道国标准付酬 \n \n \n \n \n \n 维度 按母国标准 按东道国标准 \n \n 含义 外派人员工资按母国同岗同级标准+补贴 参照东道国当地员工工资标准 \n 适用 外派时间短；东道国工资低于母国；一般采用"就高不就低" 母国工资低于东道国；鼓励与当地融合 \n 优点 消除不公平感；回国时薪酬差距不大 体现公平性；有助于与东道国员工融合 \n 缺点 管理复杂（生活费+税收管理难）；可能引起东道国员工不满 员工都想去高薪国家；在高薪国家任职后回国难以接受较低薪酬 \n \n \n \n \n \n 对比3 \n \n 外派人员 vs 东道国员工：绩效考核差异 \n \n \n \n \n \n 维度 外派人员绩效考核 东道国员工绩效考核 \n \n 指标 硬指标+软指标+情境指标；考虑国外因素影响 符合总公司绩效管理系统要求的当地化指标 \n 执行者 东道国主管或母公司管理人员（各有优劣） 当地分公司管理人员 \n 特殊性 要区分子公司评估与经理人员个人评估；慎用财务指标 尽量符合当地工作行为评价规范 \n \n \n \n \n \n \n 真题 \n \n 历年真题汇总（2016-2025） \n \n 复试必读 \n 2016–2025 \n \n \n \n \n \n \n 年份 考题方向 题型 对应知识点 \n \n 2020 简述国际化战略类型（全球化/多国化/跨国化） 简答 §14.2 HHP管理模式选择 \n 2020 疫情对企业战略与人力的冲击及应对 论述 §14.1 IHRM特征；§14.4 外派培训挑战 \n 2022 组织文化变革（面试） 面试口答 §14.2 HHP文化差异；中国式管理特点 \n 2023 绩效管理流程与误区 简答 §14.5 国际绩效考核4大特点 \n 2024 新能源企业国际化战略与风险管控（案例） 案例分析 §14全章：IHRM复杂性、外派管理、薪酬 \n 面试高频 如何看待中国企业管理的特点与不足？ 口头表达 §14.2 HHP模式：家长制管理分析 \n 面试高频 并购中的人力整合怎么做？ 口头表达 §14.3 东道国员工选聘；§14.4 文化培训 \n 预测2026 简述国际人力资源管理的特征 简答 §14.1 复杂性+本土化必要性 \n 预测2026 比较美日中人力资源管理模式（HHP模式） 论述 §14.2 HHP全部内容 \n 预测2026 试述外派人员选聘标准 简答 §14.3 5大标准 \n \n \n 教材重要原句汇总（建议默写）： \n \n ① "国际人力资源管理是指随着企业经营的国际化而导致的 企业人力资源管理的国际化 ……由于企业经营的国际化，国际人力资源管理的所有活动都会变得更加复杂。"（P453） \n \n \n ② "实现管理国际化，并不一定就要照搬某一种特定的管理，而是应该根据当时当地的实际情况进行 综合的整合与提升 ，也就是进行管理创新。"（P458） \n \n \n ③ "外在薪酬在驻外人员身上所起的作用越来越小，而 内在薪酬的作用越来越大 ……对于驻外人员而言，福利比高薪有效，所在国的支持又比福利与高薪有效。"（P472） \n \n \n ④ 跨国公司外派人员失败的原因常常是由于 文化适应能力比较低 ，而不是技术和职业技能方面有什么困难。（P459） \n \n \n \n \n \n 🔗 本章终极串联复习 \n 将第14章所有知识点贯穿成一条逻辑链 \n \n \n STEP 01 \n 为什么要IHRM？ \n 经济全球化→跨国经营→HR活动国际化→复杂性+本土化必然性（摩尔根三维模型） \n \n › \n \n STEP 02 \n 用哪种模式？ \n 美日韩模式比较→HHP三种风格→因时因地选择：知识经济→美式；制造业大生产→日式；中小企业→中式 \n \n › \n \n STEP 03 \n 如何选人？ \n 外派5标准（专业/文化适应/语言/家庭/经历）+东道国特殊考虑→3步高管选聘/3步一般选聘 \n \n › \n \n STEP 04 \n 如何培训？ \n 美（市场导向）/日（上下一致一专多能）/德（双元制）→外派培训3类（出发前/在岗/回国后） \n \n › \n \n STEP 05 \n 如何考核？ \n 4大特点（三目标·战略业绩·持续沟通·诊断辅导）→外派3环节（指标/执行者/制约因素） \n \n › \n \n STEP 06 \n 如何激励？ \n 多样性+成本公平→外派薪酬（基津奖福）→母国/东道国标准→全球薪酬体系5步法 \n \n \n \n 一句话总结： 国际人力资源管理 = 在 摩尔根三维模型 框架下，根据 HHP模式选择 ，分别针对 外派人员、东道国员工、第三国员工 实施差异化的选聘→培训→绩效→薪酬全链条管理，核心挑战是 复杂性管理与人才本土化平衡 。\n \n \n \n \n ⚡ 30秒复习模块（超简版） \n \n \n 摩尔根模型 \n 三维：HRM活动 × 三类国家（东道/母/第三）× 三类员工 \n \n \n IHRM两大特征 \n ①管理复杂性（5方面）②人才本土化必要性（增信任/降成本/熟市场） \n \n \n HHP模式 \n 日=主妇型（精细短视）；美=丈夫型（开拓远见）；中=家长制（灵活粗放） \n \n \n 外派5标准 \n 专业技能 → 文化适应 → 外语 → 家庭 → 国外经历（失败主因是文化适应低） \n \n \n 外派培训3类 \n ①东道国介绍（语言+文化意识）②持续开发（职业生涯）③回返调整（消除文化休克） \n \n \n 外派薪酬4构成 \n 基津奖福：基本薪酬 + 津贴（住/生/教/安家）+ 奖金（任职/期满/探亲/艰苦）+ 福利 \n \n \n 国际绩效4特点 \n 三目标结合 / 战略业绩统一 / 持续绩效沟通 / 重视诊断辅导 \n \n \n 外派失败率 \n 一般25~50%；发展中国家70%；有培训计划的公司失败率大幅降低 \n \n \n 德国双元制 \n 企业培训（实操）+ 学校教育（理论）；学员=学生+学徒；企业为主，负责结业考试 \n \n \n \n \n \n 📣 背诵版总结（复试口述版） \n \n IHRM含义（名词解释答法） \n 国际人力资源管理是指随着企业经营的国际化而导致的企业人力资源管理的国际化。摩尔根提出三维模型：HRM活动（获取/分配/使用）× 三类国家（东道/母/第三国）× 三类员工。与国内HRM的功能和程序相同，但复杂度更高。\n \n \n IHRM两大特征（简答答法） \n 一、管理的复杂性：包括组织边界模糊、全球视角招聘培训、文化冲突、沟通协调困难、关注员工个人生活五方面；劳动关系是重要而敏感的问题。二、人才本土化的客观必要性：增强东道国信任感、降低经营成本、有利于熟悉东道国市场。\n \n \n HHP模式（论述答法） \n 日本主妇型：管理精细、经营周到、追求完美但战略短视，适合制造业大生产时代。美国丈夫型：理性开拓、创新远见、包容多元，适合全球化知识经济时代。中国家长制：灵活实用但粗放不规范，适合中小企业短期经营。结论：不能照搬某种模式，应综合整合进行管理创新。\n \n \n 外派人员选聘标准（简答答法） \n ①专业技术和管理能力（最基础）；②文化适应能力（最关键，外派失败的主要原因）；③外语能力（消除沟通障碍）；④家庭因素（配偶支持、子女教育）；⑤国外工作经历（最好的预测指标）。\n \n \n 外派培训3类（简答答法） \n 外派培训包括三类：①出发前的东道国介绍培训（语言培训+文化意识培训）；②驻外期间的持续性开发培训（技能扩展+职业生涯开发，消除外派人员对职业发展的顾虑）；③回国后的回返性调整培训（消除文化休克，安置回国）。三类培训覆盖外派全周期，是降低高失败率的关键。\n \n \n 外派薪酬构成（简答答法） \n 外派人员薪酬一般由四部分构成：①基本薪酬（按母国标准或东道国标准，各有优缺点）；②津贴（住房、生活费用、子女教育、安家补贴）；③奖金（海外任职津贴为最普遍，底薪10%~25%；还有工作期满津贴、探亲津贴、艰苦条件津贴）；④福利（母国福利计划为主）。趋势：内在薪酬的作用越来越重要。\n \n \n \n \n 📝 课后自我检验 \n 先合书作答，再展开查看答题要点 \n \n Q · 01 — 名词解释 \n 什么是国际人力资源管理？摩尔根模型包含哪三个维度？ \n 参考答案要点： 定义→随企业国际化而导致的HRM国际化；摩尔根：HRM活动（获取/分配/使用）× 三类国家（东道/母/第三国）× 三类员工；举例：微软中国 \n \n \n Q · 02 — 简答 \n 国际人力资源管理与传统国内人力资源管理的差别主要表现在哪两方面？ \n 关键词： ①管理的复杂性（5方面详述：组织边界/全球招聘/文化冲突/沟通障碍/关注个人生活）；②人才本土化的客观必要性（3个原因：增信任/降成本/熟市场） \n \n \n Q · 03 — 论述 \n 面试高频题 \n 比较日本、美国、中国人力资源管理模式的特点（HHP模式），并说明各自适用的情境。 \n 答题框架： ①HHP概念定义；②日本主妇型（精细/周到/完美/短见+适用：制造业大生产）；③美国丈夫型（理性/开拓/创新/远见+适用：知识经济全球化）；④中国家长制（粗放/感性/适用/机会主义+适用：中小企业）；⑤结论：综合整合+管理创新，不能照搬 \n \n \n Q · 04 — 简答 \n 预测2026真题 \n 试述跨国企业选聘母国外派人员或第三国人员的5大标准。 \n 关键词： ①专业技术和管理能力（基础）；②文化适应能力（核心，外派失败主因）；③外语能力；④家庭因素（配偶支持/子女教育）；⑤国外工作经历（最佳预测指标） \n \n \n Q · 05 — 简答 \n 试述外派人员培训的主要内容（三大类）。 \n 关键词： ①东道国介绍培训（语言培训+文化意识培训为主）；②持续性开发培训（技能扩展+职业生涯）；③回返性调整培训和工作安置准备培训（消除文化休克）；补充：背景数据——外派失败率25-50%/发展中国家70% \n \n \n Q · 06 — 简答 \n 与一般绩效管理相比，跨国企业的绩效管理具有哪些特殊性（4大特点）？ \n 关键词： ①个人+团队+公司目标密切结合（区别：不仅为薪酬晋升）；②突出战略方向与业绩的统一；③持续不断的绩效沟通贯穿全程；④重视绩效诊断与辅导 \n \n \n Q · 07 — 简答 \n 外派人员的薪酬一般由哪几部分构成？基本薪酬有哪两种确定方式？ \n 关键词： 4构成：基本薪酬+津贴（住/生/教/安）+奖金（任职/期满/探亲/艰苦）+福利；2方式：按母国标准（优：消除不公平感；缺：管理复杂）+按东道国标准（优：有助融合；缺：员工都想去高薪国） \n \n \n Q · 08 — 案例分析 \n 2024真题改编 \n TCL集团在国际化进程中如何应对人力资源管理挑战？请结合本章理论分析（案例见P475）。 \n 分析框架： ①IHRM复杂性识别（文化差异+跨国沟通）→②HRM模式选择（因地制宜，不照搬任一国模式）→③选聘（综合素质+国际背景人才）→④培训（国际化培训+国外交流任职）→⑤绩效（本土化考核标准）→⑥薪酬（综合母国/东道国标准，体现公正感）→关键：兼收并蓄，克服文化差异 \n \n \n \n \n 📚 中南大学企业管理学硕复试笔记 · 第十四章 国际人力资源管理 · 教材P452–478 · 颜爱民《人力资源管理》第3版 · 2016–2025真题整合版\n \n \n ↑';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-day">第十四章 · 人力资源管理（颜爱民第3版）</div>
+  <h1>国际<span>人力资源管理</span></h1>
+  <p class="hero-sub">经济全球化背景下，跨国企业如何管理来自不同国家的员工？本章涵盖国际HRM的含义、美日韩模式比较、外派人员选聘培训绩效薪酬，是中南大学企业管理专业高频考点。</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📍 教材 P452–478</span>
+    <span class="hero-tag">🌏 跨国公司必考</span>
+    <span class="hero-tag">✍️ 名词 · 简答 · 论述 · 案例</span>
+    <span class="hero-tag">⭐ HHP模式 · 外派管理</span>
+    <span class="hero-tag">🏆 2020·2024面试高频</span>
+  </div>
+</div>
+
+<!-- TOC & CONTROLS -->
+<div class="toc">
+  <span class="toc-label">目录</span>
+  <a href="#map">逻辑图</a>
+  <a href="#mindmap">思维导图</a>
+  <a href="#s1">§1 概述</a>
+  <a href="#s2">§2 模式比较</a>
+  <a href="#s3">§3 选聘</a>
+  <a href="#s4">§4 培训</a>
+  <a href="#s5">§5 绩效</a>
+  <a href="#s6">§6 薪酬</a>
+  <a href="#contrast">对比表</a>
+  <a href="#chain">串联</a>
+  <a href="#r30">30秒</a>
+  <a href="#quiz">自检</a>
+  <button class="ctrl-btn" onclick="toggleDark()">🌙 夜间</button>
+  
+</div>
+
+<!-- CASE BANNER -->
+<div class="case-banner" id="intro">
+  <div class="case-label">📖 导入案例 · P452</div>
+  <h3>阿里巴巴：请来"牛人"威尔金森</h3>
+  <p>2014年，即将在美国上市的阿里巴巴，为推进管理层国际化，招入了美国前财长幕僚长吉姆·威尔金森——担任资深副总裁，负责国际企业事务，办公于旧金山湾区。这位纵横美国政商两界的公关老手，将借助其在华尔街和华盛顿的人脉，帮助阿里完成赴美上市后的形象管理与政府关系建设。</p>
+  <p class="case-key">⚠️ 核心问题：越来越多的中国企业在实现全球化经营的同时，将面临<strong>人力资源管理国际化</strong>的多方面挑战——如何吸引国际型人才？如何跨文化管理？这正是本章要回答的问题。</p>
+</div>
+
+<!-- ================================================================ -->
+<div class="main">
+
+<!-- ═══ 逻辑关系图 ═══ -->
+<div class="logic-map" id="map">
+  <h3>本章与其他章节的逻辑关系</h3>
+  <div style="overflow-x:auto">
+  <table class="ctable" style="font-size:13px">
+    <tr>
+      <th>章节</th><th>关联逻辑</th>
+    </tr>
+    <tr><td><strong>第1章 人力资源管理概述</strong></td><td>本章是第1章的延伸扩展：传统HRM（国内）→ 国际HRM（跨国），核心功能相同但复杂度提升</td></tr>
+    <tr><td><strong>第7章 员工招聘</strong></td><td>国际选聘 = 招聘理论的跨国应用，增加文化适应能力、语言能力、家庭因素等特殊维度</td></tr>
+    <tr><td><strong>第8章 绩效管理</strong></td><td>国际绩效考核 = 绩效管理的跨国版：增加战略方向指标、绩效诊断与辅导、跨文化因素</td></tr>
+    <tr><td><strong>第9章 薪酬</strong></td><td>国际薪酬 = 薪酬理论的跨国版：增加津贴体系、资产负债表法、汇率与购买力问题</td></tr>
+    <tr><td><strong>第13章 战略性人力资源管理</strong></td><td>战略IHRM是本章的理论基础：跨国公司通过战略性HR活动实现全球竞争目标</td></tr>
+  </table>
+  </div>
+  <div style="height:16px"></div>
+  <h3 style="font-size:16px; margin-bottom:14px;">📌 本章各节逻辑关系</h3>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="fs-num">§14.1</div>
+      <div class="fs-title">什么是IHRM？</div>
+      <div class="fs-body">含义·特征<br>复杂性·本土化</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§14.2</div>
+      <div class="fs-title">用什么模式？</div>
+      <div class="fs-body">美日韩比较<br>HHP模式选择</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§14.3</div>
+      <div class="fs-title">怎么选人？</div>
+      <div class="fs-body">外派标准<br>东道国标准·实施</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§14.4</div>
+      <div class="fs-title">怎么培训？</div>
+      <div class="fs-body">美日欧特点<br>外派·东道国培训</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§14.5</div>
+      <div class="fs-title">如何考核？</div>
+      <div class="fs-body">特点·外派考核<br>东道国考核</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="fs-num">§14.6</div>
+      <div class="fs-title">如何激励？</div>
+      <div class="fs-body">薪酬多样性<br>外派薪酬构成</div>
+    </div>
+  </div>
+  <p style="font-size:13px;color:#666;margin-top:10px">逻辑主线：<strong>识别IHRM复杂性</strong> → <strong>选择适合的管理模式</strong> → <strong>针对不同来源员工分类管理</strong>（选聘→培训→绩效→薪酬）</p>
+</div>
+
+<!-- ═══ 思维导图 ═══ -->
+<div class="mindmap" id="mindmap">
+  <h3>📊 第14章知识框架思维导图</h3>
+  <div style="text-align:center; margin-bottom:20px">
+    <span class="mm-center">第14章 国际人力资源管理</span>
+  </div>
+  <div class="mm-grid">
+    <div class="mm-branch b1">
+      <div class="mm-branch-title">§1 概述</div>
+      <ul>
+        <li>摩尔根三维模型</li>
+        <li>三类国家·三类员工</li>
+        <li>特征：复杂性·本土化</li>
+      </ul>
+    </div>
+    <div class="mm-branch b2">
+      <div class="mm-branch-title">§2 模式比较</div>
+      <ul>
+        <li>美国：丈夫型</li>
+        <li>日本：主妇型</li>
+        <li>中国：家长制</li>
+        <li>美日韩多维比较</li>
+      </ul>
+    </div>
+    <div class="mm-branch b3">
+      <div class="mm-branch-title">§3 国际选聘</div>
+      <ul>
+        <li>外派5大标准</li>
+        <li>东道国标准</li>
+        <li>高管：3步流程</li>
+        <li>一般员工：3步流程</li>
+      </ul>
+    </div>
+    <div class="mm-branch b4">
+      <div class="mm-branch-title">§4 国际培训</div>
+      <ul>
+        <li>美国：市场导向</li>
+        <li>日本：上下一致</li>
+        <li>外派培训3类</li>
+        <li>德国双元制</li>
+      </ul>
+    </div>
+    <div class="mm-branch b5">
+      <div class="mm-branch-title">§5 国际绩效</div>
+      <ul>
+        <li>4大特点</li>
+        <li>外派：3类指标</li>
+        <li>3大考核环节</li>
+        <li>东道国考核</li>
+      </ul>
+    </div>
+    <div class="mm-branch b6">
+      <div class="mm-branch-title">§6 国际薪酬</div>
+      <ul>
+        <li>国际薪酬多样性</li>
+        <li>外派薪酬4构成</li>
+        <li>母国/东道国标准</li>
+        <li>全球薪酬体系5步</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     §14.1 国际人力资源管理概述
+     ════════════════════════════ -->
+<div class="section-title" id="s1">
+  <span class="sec-num">§ 14.1</span>
+  <h2>国际人力资源管理概述</h2>
+  <span class="page-ref">P453–455</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.1.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">国际人力资源管理的含义（摩尔根模型）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P453</span>
+        <span class="badge badge-exam">名词解释 / 简答</span>
+        <span class="badge badge-year">高频出题</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 教材定义</div>
+      <strong>国际人力资源管理（IHRM）</strong>是指随着企业经营的国际化而导致的企业人力资源管理的国际化。虽然IHRM与常规HRM在<span class="kw">基本功能、常规程序</span>上相同，但由于企业经营的国际化，IHRM的所有活动都会变得更加复杂。
+    </div>
+
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版理解</div>
+      想象学校只有一个班（国内企业），班主任只管这一班的同学。现在学校变成了国际学校，有来自中国、美国、日本的同学（跨国公司），班主任要用不同的方式管理不同文化背景的同学——这就是"国际人力资源管理"。
+    </div>
+
+    <p style="margin-bottom:12px"><strong>摩尔根（Morgan）三维模型：</strong></p>
+    <table class="ctable">
+      <tr>
+        <th>维度</th><th>具体内容</th><th>举例（微软中国）</th>
+      </tr>
+      <tr>
+        <td>① <span class="kw">HRM活动</span></td>
+        <td>人力资源的获取、分配与使用</td>
+        <td>招聘、培训、绩效、薪酬</td>
+      </tr>
+      <tr>
+        <td>② <span class="kw">国家类型</span></td>
+        <td><span class="kw2">东道国</span>（经营所在国）<br><span class="kw2">母国</span>（总部所在国）<br><span class="kw2">第三国</span>（劳动力来源的其他国）</td>
+        <td>中国=东道国<br>美国=母国<br>新加坡=第三国</td>
+      </tr>
+      <tr>
+        <td>③ <span class="kw">员工类型</span></td>
+        <td>东道国员工 / 母国员工 / 第三国员工</td>
+        <td>中国籍员工/美籍员工/新加坡籍员工</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>"活动·国家·员工 三三制"</strong> —— IHRM = 3类HRM活动 × 3类国家 × 3类员工的相互作用。记住"3×3×3"就记住了摩尔根模型。
+    </div>
+
+    <div class="quote">
+      <p>国际人力资源管理是指<mark>人力资源活动中国家类型、企业经营和雇员类型三个方面的相互作用</mark>，其中每个方面都与人力资源的招募、配置和使用有关。（教材原文）</p>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <strong>定义</strong>：IHRM是随企业国际化而产生的HRM国际化。<br>
+      <strong>核心模型</strong>：摩尔根三维模型——HRM活动（获取/分配/使用）× 三类国家（东道/母/第三）× 三类员工。<br>
+      <strong>与国内HRM的关系</strong>：功能相同，但复杂度大幅提升。<br>
+      <strong>举例</strong>：华为在美国设研发中心，需同时管理美国本地员工（东道国员工）、中国外派工程师（母国员工）和印度籍技术专家（第三国员工）。<br>
+      <strong>复试延伸问题</strong>：老师可能追问"IHRM与国内HRM最大的区别是什么？"→ 答：<span class="kw">复杂性</span>和<span class="kw">人才本土化必要性</span>两大差异。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.1.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">IHRM的两大特征：管理复杂性 & 人才本土化</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P454–455</span>
+        <span class="badge badge-exam">简答 / 论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <details open>
+      <summary>① 管理的复杂性（5个方面）</summary>
+      <div class="details-body">
+        <table class="ctable">
+          <tr><th>复杂性来源</th><th>具体表现</th></tr>
+          <tr><td>组织边界模糊</td><td>管理制度越来越有弹性，需要更强的<span class="kw">管理灵活性</span></td></tr>
+          <tr><td>全球视角招聘</td><td>从全球选人，培训需注意文化适应性与融合性</td></tr>
+          <tr><td>文化冲突频发</td><td>来自不同国家文化的员工，工作中不可避免产生<span class="kw">文化冲突</span></td></tr>
+          <tr><td>沟通协调困难</td><td>语言差异、文化差异造成沟通障碍，阻碍企业正常运行</td></tr>
+          <tr><td>关注员工生活</td><td>需确保驻外人员住房、医保、薪酬福利——很多跨国企业设"国际HR服务部门"</td></tr>
+        </table>
+        <div style="margin-top:12px">
+          <strong>劳动关系问题：</strong>各国劳动关系的历史、政治、法律背景不同，是IHRM一个<span class="kw5">重要而敏感</span>的问题。
+        </div>
+      </div>
+    </details>
+
+    <details style="margin-top:12px">
+      <summary>② 人才本土化的客观必要性（3个原因）</summary>
+      <div class="details-body">
+        <table class="ctable">
+          <tr><th>原因</th><th>说明</th></tr>
+          <tr><td><span class="kw2">增强信任感</span></td><td>大量东道国人员担任管理职务，提高东道国员工就业率，增强对子公司的信任感</td></tr>
+          <tr><td><span class="kw2">降低成本</span></td><td>外派人员不但要高额津贴补贴，还有选聘培训成本；直接聘用当地员工可避免上述支出</td></tr>
+          <tr><td><span class="kw2">熟悉市场</span></td><td>东道国员工更熟悉本国风俗、消费者需求、法规，有利于快速拓展市场</td></tr>
+        </table>
+        <div class="block block-analogy" style="margin-top:12px">
+          <div class="block-label">🍰 案例</div>
+          麦当劳在中国：高层战略由美国总部决定，但门店店长和员工几乎全是中国人——这就是人才本土化。本地员工更懂顾客口味（比如加豆浆），成本也更低。
+        </div>
+      </div>
+    </details>
+
+    <div class="block block-exam" style="margin-top:16px">
+      <div class="block-label">🎯 简答答题框架（2特征）</div>
+      IHRM与传统国内HRM的差别主要表现在两方面：<br>
+      一是<span class="kw">管理的复杂性</span>（组织边界模糊、全球视角招聘、文化冲突、沟通障碍、关注个人生活）；<br>
+      二是<span class="kw">人才本土化的客观必要性</span>（增强信任感、降低成本、熟悉市场）。
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     §14.2 人力资源管理模式的国际比较
+     ════════════════════════════ -->
+<div class="section-title" id="s2">
+  <span class="sec-num">§ 14.2</span>
+  <h2>人力资源管理模式的国际比较与选择</h2>
+  <span class="page-ref">P455–458</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.2.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">美、日、韩人力资源管理模式比较</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高频必背</span>
+        <span class="badge badge-page">P455–456</span>
+        <span class="badge badge-exam">简答 / 论述 / 对比题</span>
+        <span class="badge badge-year">历年面试高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版记忆</div>
+      美国：大胆开拓型（班长，说干就干，敢闯市场）<br>
+      日本：认真细致型（劳动委员，把每件事做到极致，完美主义）<br>
+      韩国：美日混合型（学了两家的优点）
+    </div>
+
+    <table class="ctable">
+      <tr>
+        <th>比较维度</th>
+        <th>🇺🇸 美国模式</th>
+        <th>🇯🇵 日本模式</th>
+        <th>🇰🇷 韩国模式</th>
+      </tr>
+      <tr><td><strong>招聘体系</strong></td><td>外部市场为主，侧重能力</td><td>终身雇佣，主要内部晋升</td><td>混合，学历+忠诚度并重</td></tr>
+      <tr><td><strong>薪酬体系</strong></td><td>绩效工资为主，能力主义</td><td>年功序列制（年资薪酬）</td><td>年功+绩效融合</td></tr>
+      <tr><td><strong>培训体系</strong></td><td>短期培训，市场导向</td><td>长期内部培训，在职为主</td><td>类似日本，强调团队</td></tr>
+      <tr><td><strong>决策方式</strong></td><td>自上而下，快速决策</td><td>共识决策（林吉法）</td><td>家长式决策</td></tr>
+      <tr><td><strong>雇佣关系</strong></td><td>雇员与公司是契约关系</td><td>终身雇佣，家庭型</td><td>集体主义，忠诚文化</td></tr>
+      <tr><td><strong>优势</strong></td><td>开拓创新，战略远见，包容多元</td><td>品质管理，内部协调，客户关系</td><td>融合美日，适应性强</td></tr>
+      <tr><td><strong>劣势</strong></td><td>内部管理和产品细节精度不足</td><td>缺乏长远战略，开拓精神不够</td><td>家族主义倾向</td></tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>美国"战略开拓"，日本"质量内控"，韩国"两者融合"</strong> —— 三国模式各有千秋，差别来自历史文化积累。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.2.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">HHP模式：日（主妇）·美（丈夫）·中（家长制）对比</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 核心考点</span>
+        <span class="badge badge-page">P456–457</span>
+        <span class="badge badge-exam">论述 / 名词解释</span>
+        <span class="badge badge-year">复试面试超高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-definition">
+      <div class="block-label">📖 HHP模式定义</div>
+      HHP即<span class="kw">Housewife（主妇）·Husband（丈夫）·Paternalism（家长制）</span>，用三种家庭角色类比日本、美国、中国的管理风格。
+    </div>
+
+    <table class="ctable">
+      <tr>
+        <th>国家</th>
+        <th>类型</th>
+        <th>核心特征</th>
+        <th>总体倾向</th>
+        <th>适用情境</th>
+      </tr>
+      <tr>
+        <td>🇯🇵 日本</td>
+        <td><span class="kw2">主妇型管理</span></td>
+        <td>管理精细（对内）、经营周到（对外）、不断改善追求完美（技术）、<span class="kw5">短见</span>（战略）</td>
+        <td>重内部管理与产品、技术和客户管理；轻战略与市场开拓；细腻、温情、认真</td>
+        <td>制造业主导、大生产时代；20世纪80年代前全球领先</td>
+      </tr>
+      <tr>
+        <td>🇺🇸 美国</td>
+        <td><span class="kw2">丈夫型管理</span></td>
+        <td>理性（分权变革）、开拓（市场扩展）、创新（技术产品）、<span class="kw3">远见</span>（战略）</td>
+        <td>重战略、市场开拓与技术创新；内部管理精细化稍不足；豪放、进取、果敢</td>
+        <td>知识经济时代、全球化竞争；20世纪80年代后持续领先</td>
+      </tr>
+      <tr>
+        <td>🇨🇳 中国</td>
+        <td><span class="kw2">家长制管理</span></td>
+        <td>粗放性（内部）、感性型（市场）、适用满足性（技术）、<span class="kw5">机会主义</span>（战略）</td>
+        <td>偏重产品生产与市场占有；不稳定；保守、实际、权威、感性</td>
+        <td>中小企业、短期运营；灵活快速决策场景</td>
+      </tr>
+    </table>
+
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生类比</div>
+      日本主妇：把家里每个角落打扫得干干净净，厨房锅碗瓢盆摆放整齐，但不会主动规划未来买房计划。<br>
+      美国丈夫：大胆提出"10年后我们要搬到大城市发展"，敢于冒险，但家里有时候乱一点。<br>
+      中国家长：凭感觉管家，谁说了算就按谁来，灵活但规则不多。
+    </div>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 核心对比速记</div>
+      <table class="ctable">
+        <tr><th>维度</th><th>日本（主妇）</th><th>美国（丈夫）</th><th>中国（家长）</th></tr>
+        <tr><td>战略</td><td>短见</td><td>远见</td><td>机会主义</td></tr>
+        <tr><td>管理</td><td>精细</td><td>理性</td><td>粗放</td></tr>
+        <tr><td>创新</td><td>改善完善</td><td>颠覆创新</td><td>适用满足</td></tr>
+        <tr><td>市场</td><td>客户导向</td><td>开拓扩展</td><td>感性经营</td></tr>
+      </table>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      <strong>定义</strong>：HHP模式分别以主妇、丈夫、家长比喻日本、美国和中国管理风格。<br>
+      <strong>日本</strong>：主妇型→精细内部管理+质量追求，但战略短视。适合制造业大生产时代，80年代后竞争力下降。<br>
+      <strong>美国</strong>：丈夫型→战略远见+理性创新+包容多元，适合知识经济和全球化竞争。<br>
+      <strong>中国</strong>：家长制→灵活实用但不规范，中小企业可行，大企业国际竞争中明显不足。<br>
+      <strong>结论</strong>：管理国际化不是照搬某一模式，而是根据当时当地实际情况<span class="kw">综合整合与管理创新</span>。
+    </div>
+
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 复试延伸问题</div>
+      老师可能问："中国企业如何学习美国或日本管理？"<br>→ 答：不能简单照搬，需结合中国文化国情，学习美国的战略远见和创新开拓，学习日本的内部精细管理，但须克服家长制的非规范化弊端。华为是典型案例：军事化内部管理（借鉴日本）+ 全球化战略（借鉴美国）。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.2.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">人力资源管理模式选择</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 理解</span>
+        <span class="badge badge-page">P457–458</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>时代/行业特点</th><th>适合模式</th><th>理由</th>
+      </tr>
+      <tr>
+        <td>产品大生产、制造业为主</td>
+        <td><span class="kw2">日本式（主妇型）</span></td>
+        <td>精细内部管理+品质控制，降低成本+提高质量，日本曾以此称雄全球</td>
+      </tr>
+      <tr>
+        <td>全球化竞争、知识经济</td>
+        <td><span class="kw2">美国式（丈夫型）</span></td>
+        <td>战略眼光+创新精神+包容多元，从80年代开始持续领先全球</td>
+      </tr>
+      <tr>
+        <td>中小企业、短期快速运营</td>
+        <td><span class="kw2">中国式（家长制）</span></td>
+        <td>灵活决策快速，适合小企业；但不适合大企业跨国竞争</td>
+      </tr>
+    </table>
+    <div class="block block-memory">
+      <div class="block-label">🧠 核心结论</div>
+      <strong>"实现管理国际化，不是照搬某一特定管理模式，而应根据当时当地实际情况进行综合整合与提升，即进行管理创新。"</strong>（教材原句）
+    </div>
+    <div style="margin-top:12px">
+      <strong>📋 与本章其他内容的联系：</strong>模式选择是§14.3-14.6（选聘/培训/绩效/薪酬）的理论基础——不同模式决定了不同的HR实践方式。
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     §14.3 国际人力资源选聘
+     ════════════════════════════ -->
+<div class="section-title" id="s3">
+  <span class="sec-num">§ 14.3</span>
+  <h2>国际人力资源选聘</h2>
+  <span class="page-ref">P459–463</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.3.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">母国外派人员或第三国人员的选聘标准（5大维度）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背</span>
+        <span class="badge badge-page">P459</span>
+        <span class="badge badge-exam">简答 / 论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版类比</div>
+      公司要派张三去美国工作——除了他业务能力强，还要看：他能不能适应美国文化？会英语吗？老婆孩子支持吗？以前有没有出过国？这5点就是外派选聘标准。
+    </div>
+
+    <table class="ctable">
+      <tr>
+        <th>标准</th><th>核心要求</th><th>案例说明</th>
+      </tr>
+      <tr>
+        <td>① <span class="kw">专业技术和管理能力</span></td>
+        <td>技术技能 + 行政技能 + 领导技能</td>
+        <td>英美德企业研究表明：这是最重要的筛选标准</td>
+      </tr>
+      <tr>
+        <td>② <span class="kw">文化适应能力</span></td>
+        <td>跨文化移情能力（用东道国文化思维看问题）；能接受不同风俗/宗教/生活环境</td>
+        <td><strong>外派失败最主要原因</strong>不是技术能力，而是文化适应能力低！</td>
+      </tr>
+      <tr>
+        <td>③ <span class="kw">外语能力</span></td>
+        <td>能熟练使用东道国语言（中国企业最重要：英语能力）</td>
+        <td>语言是跨文化沟通最大障碍；英语普及使其重要性相对低于前两项</td>
+      </tr>
+      <tr>
+        <td>④ <span class="kw">家庭因素</span></td>
+        <td>配偶是否支持；家庭是否双职工；子女教育问题；家庭适应性</td>
+        <td>家庭因素常是外派失败的隐藏原因</td>
+      </tr>
+      <tr>
+        <td>⑤ <span class="kw">国外工作经历</span></td>
+        <td>过去的跨国经历是预测未来成功的最佳指标；哪怕暑假海外旅行也算</td>
+        <td>高露洁公司：特别看重个人工作经历与文化背景的跨文化证明</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>"专（业技能）文（化适应）语（言）家（庭）历（史经历）"</strong> —— 5字诀，缺一不可。<br>
+      <strong>易错提醒</strong>：文化适应能力排名第二，且是<span class="kw5">外派失败最常见原因</span>！考试常考这个。
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      母国外派人员或第三国人员的选聘标准包括5个维度：①专业技术和管理能力（最基础）；②文化适应能力（最关键，是外派失败的主要原因）；③外语能力（重要沟通桥梁）；④家庭因素（影响长期外派稳定性）；⑤国外工作经历（过去经历是最佳预测指标）。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.3.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">东道国人员选聘标准 & 国际选聘实施</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 掌握</span>
+        <span class="badge badge-page">P459–463</span>
+        <span class="badge badge-exam">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <details open>
+      <summary>东道国人员选聘标准</summary>
+      <div class="details-body">
+        <ul class="kl">
+          <li>跨国公司以何种方式<strong>进入东道国市场</strong>是重要考量（独资子公司 vs 并购当地公司）</li>
+          <li>注重能力和经验外，特别注意各国<span class="kw">不同文化背景因素</span>（如印度/韩国/拉美国家存在裙带关系现象）</li>
+          <li>要求具备较强的<span class="kw">心理素质和自我调节能力</span>（高心理素质员工带来：提高效率、节省培训开支、改善组织气氛等10大好处）</li>
+        </ul>
+      </div>
+    </details>
+
+    <details style="margin-top:12px">
+      <summary>高级管理人员选聘：3步流程</summary>
+      <div class="details-body">
+        <div class="flow">
+          <div class="flow-step">
+            <div class="fs-num">STEP 1</div>
+            <div class="fs-title">初步面试</div>
+            <div class="fs-body">人力资源部主管主持；了解学业成绩、工作经历、职责期望等直观信息</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="fs-num">STEP 2</div>
+            <div class="fs-title">标准化测试</div>
+            <div class="fs-body">外聘心理学者主持；测智力、认知、驱动力、管理技能（16PF、MMPI等）</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="fs-num">STEP 3</div>
+            <div class="fs-title">仿真测验</div>
+            <div class="fs-body">关键环节！小组角色模拟，专家小组监督，历时2天，同时测"智商+情商"</div>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details style="margin-top:12px">
+      <summary>一般人力资源选聘：3步流程</summary>
+      <div class="details-body">
+        <div class="flow">
+          <div class="flow-step">
+            <div class="fs-num">STEP 1</div>
+            <div class="fs-title">多渠道发布信息</div>
+            <div class="fs-body">建立人才储备库；不等空缺出现才找人；微软案例：大举建设"中国人才库"</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="fs-num">STEP 2</div>
+            <div class="fs-title">优化评价指标</div>
+            <div class="fs-body">科学分析任务角色→访谈关键事件→确定胜任特征（Competency）；特别注重<span class="kw">难以通过培训改变</span>的特征（如工作态度）</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="fs-num">STEP 3</div>
+            <div class="fs-title">选择评价方法</div>
+            <div class="fs-body">面谈（最广泛最有效）> 评价中心；简历筛选、实况预演、书面测试；还要评估信度和效度</div>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     §14.4 国际人力资源培训与开发
+     ════════════════════════════ -->
+<div class="section-title" id="s4">
+  <span class="sec-num">§ 14.4</span>
+  <h2>国际人力资源培训与开发</h2>
+  <span class="page-ref">P463–467</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.4.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">美国、日本、欧洲企业培训与开发的特点</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P463–466</span>
+        <span class="badge badge-exam">简答 / 对比题</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>国家</th><th>培训特点</th><th>标志性数据/案例</th>
+      </tr>
+      <tr>
+        <td><strong>🇺🇸 美国</strong></td>
+        <td>
+          ①完全由<span class="kw">劳动力市场需求</span>决定，直接服务于生产力；<br>
+          ②内容、形式、资金渠道<span class="kw">多样化</span>，分权管理；<br>
+          ③企业视培训为<span class="kw">战略性人力资源活动</span>；<br>
+          ④检验标准：能否增强市场竞争能力
+        </td>
+        <td>
+          每年培训经费高达<strong>2100亿美元</strong>；<br>
+          每员工平均接受<strong>15小时/年</strong>培训；<br>
+          摩托罗拉每年投入<strong>1.2亿美元</strong>；<br>
+          GE每年投入<strong>9亿美元</strong>；<br>
+          1200多家跨国公司建有<span class="kw">企业大学</span>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>🇯🇵 日本</strong></td>
+        <td>
+          终身雇佣→特别重视<span class="kw">在职培训（OJT）</span>；<br>
+          <span class="kw2">"上下一致"</span>：所有员工不分职务均需培训；<br>
+          <span class="kw2">"一专多能"</span>：既要精通一门专业，又能参与经营管理；<br>
+          纵向培训（分层次）+ 横向培训（职能性）
+        </td>
+        <td>日本企业内部分级培训体系：新员工培训→现场监督者→管理干部培训（纵向层次化）</td>
+      </tr>
+      <tr>
+        <td><strong>🇫🇷 法国</strong></td>
+        <td>员工有<span class="kw">法定带薪培训假期</span>；雇主缴纳<span class="kw">职业继续教育税</span>（按工资总额比例）</td>
+        <td>大型企业多有自己的培训机构</td>
+      </tr>
+      <tr>
+        <td><strong>🇩🇪 德国</strong></td>
+        <td><span class="kw3">"双元制"职业培训</span>：企业在职培训 + 学校理论教育有机结合；<br>学员双重身份：职业学校学生 + 企业学徒工；<br>企业负责结业考试；以企业培训为主</td>
+        <td>20世纪60年代出现；对德国经济恢复和提升国际竞争力起重要作用</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记对比</div>
+      <strong>美国：市场决定 + 多元化 + 战略投资</strong><br>
+      <strong>日本：上下一致 + 一专多能 + 在职培训</strong><br>
+      <strong>德国：双元制（学校+企业 = 学生+学徒）</strong>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.4.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">外派人员培训（3大类内容）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 高频必背</span>
+        <span class="badge badge-page">P465–466</span>
+        <span class="badge badge-exam">简答 / 论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-tip">
+      <div class="block-label">⚠️ 重要背景数据</div>
+      外派人员<span class="kw5">失败率通常为25%~50%</span>，在发展中国家高达<span class="kw5">70%</span>！<br>
+      美国只有32%的公司有外派培训计划，欧洲57%，日本69%——<span class="kw">培训计划越完善，失败率越低</span>。
+    </div>
+
+    <table class="ctable">
+      <tr>
+        <th>培训类型</th><th>主要内容</th><th>核心说明</th>
+      </tr>
+      <tr>
+        <td>① <span class="kw">对东道国的介绍培训</span></td>
+        <td>语言培训（英语+东道国语言）；文化意识培训；历史地理；生活条件介绍</td>
+        <td>文化意识培训 = 帮助外派人员适应新工作环境、不感到孤单；有时还包括家庭成员</td>
+      </tr>
+      <tr>
+        <td>② <span class="kw">持续性开发培训</span></td>
+        <td>技能扩展培训；职业生涯开发计划；企业培养使用计划</td>
+        <td>解决外派人员最大顾虑：担心外派不利于职业生涯发展；让其安心外派</td>
+      </tr>
+      <tr>
+        <td>③ <span class="kw">回返性调整培训和工作安置准备培训</span></td>
+        <td>消除文化休克的培训；接纳和安置培训</td>
+        <td>帮助外派人员从长期外国生活经历中摆脱出来，消除回国适应障碍，给予新人际关系网络适应期</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>"出发前培训（介绍东道国）→在岗持续开发→回国调整培训"</strong><br>
+      对应外派周期三阶段：出发前 → 驻外中 → 回国后。
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">🎯 复试回答模板</div>
+      外派人员培训包括三类：①出发前的东道国介绍培训（语言+文化意识为主）；②驻外期间的持续性开发培训（解决职业生涯发展顾虑）；③回国后的回返性调整培训（消除"反向文化冲击"）。这三类培训覆盖外派全周期，是降低高达70%外派失败率的关键手段。
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     §14.5 国际人力资源绩效考核
+     ════════════════════════════ -->
+<div class="section-title" id="s5">
+  <span class="sec-num">§ 14.5</span>
+  <h2>国际人力资源绩效考核</h2>
+  <span class="page-ref">P467–470</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.5.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">国际HRM绩效考核的4大特点</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P467–468</span>
+        <span class="badge badge-exam">简答 / 论述</span>
+        <span class="badge badge-year">面试高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>特点</th><th>核心内容</th><th>典型案例</th>
+      </tr>
+      <tr>
+        <td>① <span class="kw">个人·团队·公司目标密切结合</span></td>
+        <td>不仅是薪酬晋升依据，更重视三方目标契合；在工作要求与个人能力、兴趣和工作重点间发展最佳契合点</td>
+        <td>摩托罗拉：使个人、团队业务和公司目标密切结合，提高对话质量，增强共同责任</td>
+      </tr>
+      <tr>
+        <td>② <span class="kw">突出战略方向与业绩的统一</span></td>
+        <td>考核指标 = 战略方向 + 业绩；与一般企业只关注业绩不同</td>
+        <td>摩托罗拉：年度工作目标 = 战略方向（长远战略+优先目标）+ 业绩（财务/客户/员工关系等）</td>
+      </tr>
+      <tr>
+        <td>③ <span class="kw">持续不断的绩效沟通</span></td>
+        <td>将员工看成企业伙伴；业绩计划是动态的；持续沟通追踪进展，消除障碍</td>
+        <td>欧美企业：业绩计划和工作业绩均视为动态，在问题出现前或出现时即消除障碍</td>
+      </tr>
+      <tr>
+        <td>④ <span class="kw">重视绩效诊断与辅导</span></td>
+        <td>绩效诊断 = 识别绩效问题真实原因；辅导 = 帮助员工开发知识技能；渗透到绩效管理各环节</td>
+        <td>年度回顾→重新计划→循环持续改进</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>「三目标 → 战略业绩 → 持续沟通 → 诊断辅导」</strong><br>
+      记忆：个人团队公司目标 + 战略业绩统一 + 过程中持续沟通 + 及时诊断辅导 = 国际绩效考核4大特点
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.5.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">外派人员绩效考核的3大环节</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 重点</span>
+        <span class="badge badge-page">P468–470</span>
+        <span class="badge badge-exam">简答 · 论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <details open>
+      <summary>环节1：选择科学的绩效评估指标（3类）</summary>
+      <div class="details-body">
+        <table class="ctable">
+          <tr>
+            <th>指标类型</th><th>定义</th><th>举例</th>
+          </tr>
+          <tr><td><span class="kw">硬指标</span></td><td>客观、定量、可直接衡量</td><td>投资回报率、利润率</td></tr>
+          <tr><td><span class="kw">软指标</span></td><td>关系/品质为基础</td><td>领导风格、处理人际关系技巧</td></tr>
+          <tr><td><span class="kw">情境指标</span></td><td>与周围环境密切相关</td><td>东道国政治变化、汇率波动下的应对表现</td></tr>
+        </table>
+        <div style="margin-top:10px; font-size:13.5px">
+          <strong>选择指标注意事项：</strong><br>
+          ①要考虑国外因素（东道国政策、公司战略调整等经理控制范围之外的因素）；<br>
+          ②行为也可作为评价标准（维护公司信誉、搞好政府关系、培养人才）；<br>
+          ③<span class="kw5">慎重对待财务指标</span>（转让价格、汇率波动可能扭曲账面利润）
+        </div>
+      </div>
+    </details>
+
+    <details style="margin-top:12px">
+      <summary>环节2：确定评估执行者</summary>
+      <div class="details-body">
+        <table class="ctable">
+          <tr><th>执行者</th><th>优势</th><th>劣势</th></tr>
+          <tr><td>东道国管理人员</td><td>了解外派人员绩效，能综合考虑各种因素</td><td>文化隔阂，难以抛开文化和价值观影响</td></tr>
+          <tr><td>母公司管理人员</td><td>对职业生涯发展有重要影响意义</td><td>不了解子公司日常情况，评估精确性受影响</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <details style="margin-top:12px">
+      <summary>环节3：了解绩效评估的制约因素</summary>
+      <div class="details-body">
+        <ul class="kl">
+          <li><span class="kw">区分</span>子公司经理人员的评估与子公司本身的评估（两者不是一回事）</li>
+          <li><span class="kw">注重局部收益，更注重整体收益</span>（全球战略强调全球成就，不是某一市场局部收益）</li>
+          <li><span class="kw">建立新的财务管理制度</span>（减少汇率波动、转让价格的扭曲影响）</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ════════════════════════════
+     §14.6 国际人力资源薪酬与激励
+     ════════════════════════════ -->
+<div class="section-title" id="s6">
+  <span class="sec-num">§ 14.6</span>
+  <h2>国际人力资源薪酬与激励</h2>
+  <span class="page-ref">P470–475</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.6.1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">国际薪酬的特点：多样性 + 成本公平兼顾</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-page">P470–471</span>
+        <span class="badge badge-exam">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>特点</th><th>具体表现</th>
+      </tr>
+      <tr>
+        <td><span class="kw">国际薪酬的多样性</span></td>
+        <td>
+          ① 员工类型多样→不同薪酬待遇（东道国/母国/第三国员工工资各异）<br>
+          ② 国家差异→货币购买力问题（通货膨胀、货币稳定性、汇率变化）<br>
+          ③ 文化差异→薪酬福利/激励方式不同（不同文化对福利偏好不同）
+        </td>
+      </tr>
+      <tr>
+        <td><span class="kw">成本与公平问题兼顾</span></td>
+        <td>
+          驻外人员薪酬往往较高（吸引总公司员工外派），但高成本需与全球竞争战略结合衡量；<br>
+          公平问题：外派人员与国内同级比较 + 与东道国员工比较 + 所有驻外人员互相比较
+        </td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 有效国际薪酬政策应具备5点（马尔托尼奥）</div>
+      ①对外派人员有吸引力、能保留合格雇员；②增强对外部优秀人才的吸引力；③促进员工在各子公司间顺利流动；④保持各子公司薪酬制度稳定关系；⑤与主要竞争者薪酬制度相当。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.6.2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">外派人员薪酬构成：基本薪酬 + 津贴 + 奖金 + 福利</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier1">⭐⭐⭐⭐⭐ 必背框架</span>
+        <span class="badge badge-page">P472–474</span>
+        <span class="badge badge-exam">简答 / 论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-analogy">
+      <div class="block-label">🍰 小学生版理解</div>
+      派小明去美国出差一年：基本工资还是要给（基本薪酬）；美国房租贵，要多给点住房补贴（住房津贴）；节假日表现好给奖励（奖金）；医疗保险也要跟上（福利）。外派薪酬就是这4部分。
+    </div>
+
+    <table class="ctable">
+      <tr>
+        <th>构成</th><th>内容</th><th>确定方式</th>
+      </tr>
+      <tr>
+        <td>① <span class="kw">基本薪酬</span></td>
+        <td>与职务相联系，是奖励/津贴/其他报酬的基础；可用母国或东道国货币支付</td>
+        <td>
+          <strong>按母国标准</strong>：保持与国内同事一致，避免不公平感；适用于短期外派或东道国工资低于母国<br>
+          <strong>按东道国标准</strong>：参照当地员工工资；适用于母国工资低于东道国；有利于与当地员工融合
+        </td>
+      </tr>
+      <tr>
+        <td>② <span class="kw">津贴</span></td>
+        <td>
+          <ul class="kl" style="font-size:13px">
+            <li>住房津贴</li>
+            <li>生活费用津贴（弥补食品/交通/娱乐等从价差）</li>
+            <li>子女教育津贴</li>
+            <li>安家补贴（搬家/运输/汽车/俱乐部费用）</li>
+          </ul>
+        </td>
+        <td>根据估计或实际情况支付</td>
+      </tr>
+      <tr>
+        <td>③ <span class="kw">奖金</span></td>
+        <td>
+          <ul class="kl" style="font-size:13px">
+            <li>海外任职津贴（底薪10%~25%，最普遍）</li>
+            <li>工作期满津贴</li>
+            <li>探亲津贴（每年一次或多次回国费用）</li>
+            <li>艰苦条件津贴（气候/卫生/政局/文化设施匮乏等）</li>
+          </ul>
+        </td>
+        <td>以津贴形式发放</td>
+      </tr>
+      <tr>
+        <td>④ <span class="kw">福利</span></td>
+        <td>享受母国福利计划（为回国做准备）；欧盟内可享受可转移的社会保险福利</td>
+        <td>复杂，管理难度大于薪酬本身</td>
+      </tr>
+    </table>
+
+    <div class="block block-memory">
+      <div class="block-label">🧠 助记口诀</div>
+      <strong>「基（本薪酬）＋津（贴：住房/生活/教育/安家）＋奖（金：任职/期满/探亲/艰苦）＋福（利）」</strong><br>
+      简记：<strong>基津奖福</strong>，4大构成缺一不可。
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">🎯 外派人员薪酬特点总结（考试常考）</div>
+      ①薪酬水平较高（各种福利和补贴是重要组成）；<br>
+      ②标准较复杂（以本国/所在国/总部/全球为基础的4种方式）；<br>
+      ③对绩效薪酬研究不足（目前停留在"维持基本生活需要"层面）；<br>
+      ④趋势：<span class="kw">外在薪酬作用越来越小，内在薪酬越来越大</span>（福利比高薪有效，所在国支持比福利更有效）。
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">14.6.3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">东道国和第三国员工的薪酬：全球薪酬体系5步法</div>
+      <div class="kcard-meta">
+        <span class="badge badge-tier2">⭐⭐⭐ 掌握</span>
+        <span class="badge badge-page">P474–475</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <p style="margin-bottom:12px">传统上按当地工资水平；现在越来越多公司采用<span class="kw">"全球薪酬体系"</span>——既保持全球一致性，又考虑各地差异。</p>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="fs-num">STEP 1</div>
+        <div class="fs-title">确定薪酬哲学框架</div>
+        <div class="fs-body">高层集体反思各薪酬组成如何促进战略目标</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 2</div>
+        <div class="fs-title">找差距</div>
+        <div class="fs-body">审查全球薪酬体系vs战略目标的支持程度</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 3</div>
+        <div class="fs-title">系统化</div>
+        <div class="fs-body">综合各部分内容及关系；全球范围协调</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 4</div>
+        <div class="fs-title">调整薪酬政策</div>
+        <div class="fs-body">全球调查+评估当地实践适应性→微调</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="fs-num">STEP 5</div>
+        <div class="fs-title">持续评估</div>
+        <div class="fs-body">定期评估反馈，保证与时俱进</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════
+     对比总结表
+     ════════════════════════ -->
+<div class="section-title" id="contrast">
+  <span class="sec-num">📊</span>
+  <h2>易混概念对比总结表</h2>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">对比1</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">东道国员工 vs 母国员工 vs 第三国员工</div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>类型</th><th>定义</th><th>优点</th><th>缺点</th><th>以微软中国为例</th>
+      </tr>
+      <tr>
+        <td><span class="kw">东道国员工</span></td>
+        <td>跨国公司在东道国招聘的当地员工</td>
+        <td>熟悉本地文化/法规/市场；成本低；增强信任感</td>
+        <td>可能与总公司文化有差距</td>
+        <td>中国籍员工</td>
+      </tr>
+      <tr>
+        <td><span class="kw2">母国员工（外派人员）</span></td>
+        <td>从母公司派往海外子公司工作的员工</td>
+        <td>了解总公司战略文化；技术能力强</td>
+        <td>成本高；文化适应困难；失败率高</td>
+        <td>美籍员工（从美国派来）</td>
+      </tr>
+      <tr>
+        <td><span class="kw3">第三国员工</span></td>
+        <td>来自母国和东道国以外第三国的员工</td>
+        <td>可能比母国员工更适应当地；薪酬可能较低</td>
+        <td>也面临跨文化适应问题</td>
+        <td>新加坡籍员工</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">对比2</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">按母国标准付酬 vs 按东道国标准付酬</div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>维度</th><th>按母国标准</th><th>按东道国标准</th>
+      </tr>
+      <tr><td>含义</td><td>外派人员工资按母国同岗同级标准+补贴</td><td>参照东道国当地员工工资标准</td></tr>
+      <tr><td>适用</td><td>外派时间短；东道国工资低于母国；一般采用"就高不就低"</td><td>母国工资低于东道国；鼓励与当地融合</td></tr>
+      <tr><td>优点</td><td>消除不公平感；回国时薪酬差距不大</td><td>体现公平性；有助于与东道国员工融合</td></tr>
+      <tr><td>缺点</td><td>管理复杂（生活费+税收管理难）；可能引起东道国员工不满</td><td>员工都想去高薪国家；在高薪国家任职后回国难以接受较低薪酬</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">对比3</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">外派人员 vs 东道国员工：绩效考核差异</div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>维度</th><th>外派人员绩效考核</th><th>东道国员工绩效考核</th>
+      </tr>
+      <tr><td>指标</td><td>硬指标+软指标+情境指标；考虑国外因素影响</td><td>符合总公司绩效管理系统要求的当地化指标</td></tr>
+      <tr><td>执行者</td><td>东道国主管或母公司管理人员（各有优劣）</td><td>当地分公司管理人员</td></tr>
+      <tr><td>特殊性</td><td>要区分子公司评估与经理人员个人评估；慎用财务指标</td><td>尽量符合当地工作行为评价规范</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════
+     历年真题汇总
+     ════════════════════════ -->
+<div class="kcard">
+  <div class="kcard-header">
+    <span class="kcard-num">真题</span>
+    <div class="kcard-title-wrap">
+      <div class="kcard-title">历年真题汇总（2016-2025）</div>
+      <div class="kcard-meta">
+        <span class="badge badge-exam">复试必读</span>
+        <span class="badge badge-year">2016–2025</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr>
+        <th>年份</th><th>考题方向</th><th>题型</th><th>对应知识点</th>
+      </tr>
+      <tr><td>2020</td><td>简述国际化战略类型（全球化/多国化/跨国化）</td><td>简答</td><td>§14.2 HHP管理模式选择</td></tr>
+      <tr><td>2020</td><td>疫情对企业战略与人力的冲击及应对</td><td>论述</td><td>§14.1 IHRM特征；§14.4 外派培训挑战</td></tr>
+      <tr><td>2022</td><td>组织文化变革（面试）</td><td>面试口答</td><td>§14.2 HHP文化差异；中国式管理特点</td></tr>
+      <tr><td>2023</td><td>绩效管理流程与误区</td><td>简答</td><td>§14.5 国际绩效考核4大特点</td></tr>
+      <tr><td>2024</td><td>新能源企业国际化战略与风险管控（案例）</td><td>案例分析</td><td>§14全章：IHRM复杂性、外派管理、薪酬</td></tr>
+      <tr><td>面试高频</td><td>如何看待中国企业管理的特点与不足？</td><td>口头表达</td><td>§14.2 HHP模式：家长制管理分析</td></tr>
+      <tr><td>面试高频</td><td>并购中的人力整合怎么做？</td><td>口头表达</td><td>§14.3 东道国员工选聘；§14.4 文化培训</td></tr>
+      <tr><td>预测2026</td><td>简述国际人力资源管理的特征</td><td>简答</td><td>§14.1 复杂性+本土化必要性</td></tr>
+      <tr><td>预测2026</td><td>比较美日中人力资源管理模式（HHP模式）</td><td>论述</td><td>§14.2 HHP全部内容</td></tr>
+      <tr><td>预测2026</td><td>试述外派人员选聘标准</td><td>简答</td><td>§14.3 5大标准</td></tr>
+    </table>
+
+    <hr class="divider">
+    <strong>教材重要原句汇总（建议默写）：</strong>
+    <div class="quote" style="margin-top:10px">
+      <p>① "国际人力资源管理是指随着企业经营的国际化而导致的<mark>企业人力资源管理的国际化</mark>……由于企业经营的国际化，国际人力资源管理的所有活动都会变得更加复杂。"（P453）</p>
+    </div>
+    <div class="quote" style="margin-top:10px">
+      <p>② "实现管理国际化，并不一定就要照搬某一种特定的管理，而是应该根据当时当地的实际情况进行<mark>综合的整合与提升</mark>，也就是进行管理创新。"（P458）</p>
+    </div>
+    <div class="quote" style="margin-top:10px">
+      <p>③ "外在薪酬在驻外人员身上所起的作用越来越小，而<mark>内在薪酬的作用越来越大</mark>……对于驻外人员而言，福利比高薪有效，所在国的支持又比福利与高薪有效。"（P472）</p>
+    </div>
+    <div class="quote" style="margin-top:10px">
+      <p>④ 跨国公司外派人员失败的原因常常是由于<mark>文化适应能力比较低</mark>，而不是技术和职业技能方面有什么困难。（P459）</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════
+     终极串联
+     ════════════════════════ -->
+<div class="chain" id="chain">
+  <h2>🔗 本章终极串联复习</h2>
+  <p class="chain-sub">将第14章所有知识点贯穿成一条逻辑链</p>
+  <div class="chain-flow">
+    <div class="chain-step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">为什么要IHRM？</div>
+      <div class="step-body">经济全球化→跨国经营→HR活动国际化→复杂性+本土化必然性（摩尔根三维模型）</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-title">用哪种模式？</div>
+      <div class="step-body">美日韩模式比较→HHP三种风格→因时因地选择：知识经济→美式；制造业大生产→日式；中小企业→中式</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-title">如何选人？</div>
+      <div class="step-body">外派5标准（专业/文化适应/语言/家庭/经历）+东道国特殊考虑→3步高管选聘/3步一般选聘</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 04</div>
+      <div class="step-title">如何培训？</div>
+      <div class="step-body">美（市场导向）/日（上下一致一专多能）/德（双元制）→外派培训3类（出发前/在岗/回国后）</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 05</div>
+      <div class="step-title">如何考核？</div>
+      <div class="step-body">4大特点（三目标·战略业绩·持续沟通·诊断辅导）→外派3环节（指标/执行者/制约因素）</div>
+    </div>
+    <div class="chain-arrow">›</div>
+    <div class="chain-step">
+      <div class="step-num">STEP 06</div>
+      <div class="step-title">如何激励？</div>
+      <div class="step-body">多样性+成本公平→外派薪酬（基津奖福）→母国/东道国标准→全球薪酬体系5步法</div>
+    </div>
+  </div>
+  <div class="chain-summary">
+    <strong>一句话总结：</strong>国际人力资源管理 = 在<mark style="background:#93c5fd;color:#0f1f2e;padding:0 4px;border-radius:3px">摩尔根三维模型</mark>框架下，根据<mark style="background:#93c5fd;color:#0f1f2e;padding:0 4px;border-radius:3px">HHP模式选择</mark>，分别针对<mark style="background:#93c5fd;color:#0f1f2e;padding:0 4px;border-radius:3px">外派人员、东道国员工、第三国员工</mark>实施差异化的选聘→培训→绩效→薪酬全链条管理，核心挑战是<mark style="background:#93c5fd;color:#0f1f2e;padding:0 4px;border-radius:3px">复杂性管理与人才本土化平衡</mark>。
+  </div>
+</div>
+
+<!-- ════════════════════════
+     30秒复习模块
+     ════════════════════════ -->
+<div class="review30" id="r30">
+  <h2>⚡ 30秒复习模块（超简版）</h2>
+  <div class="r30-grid">
+    <div class="r30-item">
+      <div class="r30-title">摩尔根模型</div>
+      <div class="r30-body">三维：HRM活动 × 三类国家（东道/母/第三）× 三类员工</div>
+    </div>
+    <div class="r30-item">
+      <div class="r30-title">IHRM两大特征</div>
+      <div class="r30-body">①管理复杂性（5方面）②人才本土化必要性（增信任/降成本/熟市场）</div>
+    </div>
+    <div class="r30-item">
+      <div class="r30-title">HHP模式</div>
+      <div class="r30-body">日=主妇型（精细短视）；美=丈夫型（开拓远见）；中=家长制（灵活粗放）</div>
+    </div>
+    <div class="r30-item">
+      <div class="r30-title">外派5标准</div>
+      <div class="r30-body">专业技能 → 文化适应 → 外语 → 家庭 → 国外经历（失败主因是文化适应低）</div>
+    </div>
+    <div class="r30-item">
+      <div class="r30-title">外派培训3类</div>
+      <div class="r30-body">①东道国介绍（语言+文化意识）②持续开发（职业生涯）③回返调整（消除文化休克）</div>
+    </div>
+    <div class="r30-item">
+      <div class="r30-title">外派薪酬4构成</div>
+      <div class="r30-body">基津奖福：基本薪酬 + 津贴（住/生/教/安家）+ 奖金（任职/期满/探亲/艰苦）+ 福利</div>
+    </div>
+    <div class="r30-item">
+      <div class="r30-title">国际绩效4特点</div>
+      <div class="r30-body">三目标结合 / 战略业绩统一 / 持续绩效沟通 / 重视诊断辅导</div>
+    </div>
+    <div class="r30-item">
+      <div class="r30-title">外派失败率</div>
+      <div class="r30-body">一般25~50%；发展中国家70%；有培训计划的公司失败率大幅降低</div>
+    </div>
+    <div class="r30-item">
+      <div class="r30-title">德国双元制</div>
+      <div class="r30-body">企业培训（实操）+ 学校教育（理论）；学员=学生+学徒；企业为主，负责结业考试</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════
+     背诵版总结
+     ════════════════════════ -->
+<div class="recite" id="recite">
+  <h3>📣 背诵版总结（复试口述版）</h3>
+
+  <div class="recite-item">
+    <div class="recite-tag">IHRM含义（名词解释答法）</div>
+    国际人力资源管理是指随着企业经营的国际化而导致的企业人力资源管理的国际化。摩尔根提出三维模型：HRM活动（获取/分配/使用）× 三类国家（东道/母/第三国）× 三类员工。与国内HRM的功能和程序相同，但复杂度更高。
+  </div>
+
+  <div class="recite-item">
+    <div class="recite-tag">IHRM两大特征（简答答法）</div>
+    一、管理的复杂性：包括组织边界模糊、全球视角招聘培训、文化冲突、沟通协调困难、关注员工个人生活五方面；劳动关系是重要而敏感的问题。二、人才本土化的客观必要性：增强东道国信任感、降低经营成本、有利于熟悉东道国市场。
+  </div>
+
+  <div class="recite-item">
+    <div class="recite-tag">HHP模式（论述答法）</div>
+    日本主妇型：管理精细、经营周到、追求完美但战略短视，适合制造业大生产时代。美国丈夫型：理性开拓、创新远见、包容多元，适合全球化知识经济时代。中国家长制：灵活实用但粗放不规范，适合中小企业短期经营。结论：不能照搬某种模式，应综合整合进行管理创新。
+  </div>
+
+  <div class="recite-item">
+    <div class="recite-tag">外派人员选聘标准（简答答法）</div>
+    ①专业技术和管理能力（最基础）；②文化适应能力（最关键，外派失败的主要原因）；③外语能力（消除沟通障碍）；④家庭因素（配偶支持、子女教育）；⑤国外工作经历（最好的预测指标）。
+  </div>
+
+  <div class="recite-item">
+    <div class="recite-tag">外派培训3类（简答答法）</div>
+    外派培训包括三类：①出发前的东道国介绍培训（语言培训+文化意识培训）；②驻外期间的持续性开发培训（技能扩展+职业生涯开发，消除外派人员对职业发展的顾虑）；③回国后的回返性调整培训（消除文化休克，安置回国）。三类培训覆盖外派全周期，是降低高失败率的关键。
+  </div>
+
+  <div class="recite-item">
+    <div class="recite-tag">外派薪酬构成（简答答法）</div>
+    外派人员薪酬一般由四部分构成：①基本薪酬（按母国标准或东道国标准，各有优缺点）；②津贴（住房、生活费用、子女教育、安家补贴）；③奖金（海外任职津贴为最普遍，底薪10%~25%；还有工作期满津贴、探亲津贴、艰苦条件津贴）；④福利（母国福利计划为主）。趋势：内在薪酬的作用越来越重要。
+  </div>
+</div>
+
+<!-- ════════════════════════
+     自我检验
+     ════════════════════════ -->
+<div class="quiz" id="quiz">
+  <h2>📝 课后自我检验</h2>
+  <p class="quiz-sub">先合书作答，再展开查看答题要点</p>
+
+  <div class="q-item">
+    <div class="q-num">Q · 01 — 名词解释</div>
+    <div class="q-text">什么是国际人力资源管理？摩尔根模型包含哪三个维度？</div>
+    <div class="q-hint"><span>参考答案要点：</span>定义→随企业国际化而导致的HRM国际化；摩尔根：HRM活动（获取/分配/使用）× 三类国家（东道/母/第三国）× 三类员工；举例：微软中国</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 02 — 简答</div>
+    <div class="q-text">国际人力资源管理与传统国内人力资源管理的差别主要表现在哪两方面？</div>
+    <div class="q-hint"><span>关键词：</span>①管理的复杂性（5方面详述：组织边界/全球招聘/文化冲突/沟通障碍/关注个人生活）；②人才本土化的客观必要性（3个原因：增信任/降成本/熟市场）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 03 — 论述</div>
+    <div class="q-exam">面试高频题</div>
+    <div class="q-text">比较日本、美国、中国人力资源管理模式的特点（HHP模式），并说明各自适用的情境。</div>
+    <div class="q-hint"><span>答题框架：</span>①HHP概念定义；②日本主妇型（精细/周到/完美/短见+适用：制造业大生产）；③美国丈夫型（理性/开拓/创新/远见+适用：知识经济全球化）；④中国家长制（粗放/感性/适用/机会主义+适用：中小企业）；⑤结论：综合整合+管理创新，不能照搬</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 04 — 简答</div>
+    <div class="q-exam">预测2026真题</div>
+    <div class="q-text">试述跨国企业选聘母国外派人员或第三国人员的5大标准。</div>
+    <div class="q-hint"><span>关键词：</span>①专业技术和管理能力（基础）；②文化适应能力（核心，外派失败主因）；③外语能力；④家庭因素（配偶支持/子女教育）；⑤国外工作经历（最佳预测指标）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 05 — 简答</div>
+    <div class="q-text">试述外派人员培训的主要内容（三大类）。</div>
+    <div class="q-hint"><span>关键词：</span>①东道国介绍培训（语言培训+文化意识培训为主）；②持续性开发培训（技能扩展+职业生涯）；③回返性调整培训和工作安置准备培训（消除文化休克）；补充：背景数据——外派失败率25-50%/发展中国家70%</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 06 — 简答</div>
+    <div class="q-text">与一般绩效管理相比，跨国企业的绩效管理具有哪些特殊性（4大特点）？</div>
+    <div class="q-hint"><span>关键词：</span>①个人+团队+公司目标密切结合（区别：不仅为薪酬晋升）；②突出战略方向与业绩的统一；③持续不断的绩效沟通贯穿全程；④重视绩效诊断与辅导</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 07 — 简答</div>
+    <div class="q-text">外派人员的薪酬一般由哪几部分构成？基本薪酬有哪两种确定方式？</div>
+    <div class="q-hint"><span>关键词：</span>4构成：基本薪酬+津贴（住/生/教/安）+奖金（任职/期满/探亲/艰苦）+福利；2方式：按母国标准（优：消除不公平感；缺：管理复杂）+按东道国标准（优：有助融合；缺：员工都想去高薪国）</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-num">Q · 08 — 案例分析</div>
+    <div class="q-exam">2024真题改编</div>
+    <div class="q-text">TCL集团在国际化进程中如何应对人力资源管理挑战？请结合本章理论分析（案例见P475）。</div>
+    <div class="q-hint"><span>分析框架：</span>①IHRM复杂性识别（文化差异+跨国沟通）→②HRM模式选择（因地制宜，不照搬任一国模式）→③选聘（综合素质+国际背景人才）→④培训（国际化培训+国外交流任职）→⑤绩效（本土化考核标准）→⑥薪酬（综合母国/东道国标准，体现公正感）→关键：兼收并蓄，克服文化差异</div>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<div class="footer-bar">
+  📚 中南大学企业管理学硕复试笔记 · 第十四章 国际人力资源管理 · 教材P452–478 · 颜爱民《人力资源管理》第3版 · 2016–2025真题整合版
+</div>
+
+<!-- 返回顶部按钮 -->
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// 夜间模式
+function toggleDark() {
+  document.body.classList.toggle('dark-mode');
+}
+
+// 返回顶部按钮
+window.addEventListener('scroll', function() {
+  const btn = document.getElementById('backTop');
+  if (window.scrollY > 300) btn.classList.add('show');
+  else btn.classList.remove('show');
+});
+
+// 搜索高亮功能
+function doSearch(keyword) {
+  // 清除已有高亮
+  document.querySelectorAll('.search-highlight').forEach(el => {
+    const parent = el.parentNode;
+    parent.replaceChild(document.createTextNode(el.textContent), el);
+    parent.normalize();
+  });
+
+  if (!keyword || keyword.length < 2) return;
+
+  const walker = document.createTreeWalker(
+    document.getElementById('backTop').parentNode.querySelector('.main') || document.body,
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+
+  const nodes = [];
+  let node;
+  while (node = walker.nextNode()) nodes.push(node);
+
+  const regex = new RegExp(keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+
+  nodes.forEach(textNode => {
+    const text = textNode.textContent;
+    if (regex.test(text)) {
+      regex.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let last = 0, match;
+      while ((match = regex.exec(text)) !== null) {
+        frag.appendChild(document.createTextNode(text.slice(last, match.index)));
+        const span = document.createElement('span');
+        span.className = 'search-highlight';
+        span.textContent = match[0];
+        frag.appendChild(span);
+        last = regex.lastIndex;
+      }
+      frag.appendChild(document.createTextNode(text.slice(last)));
+      textNode.parentNode.replaceChild(frag, textNode);
+    }
+  });
+
+  // 跳到第一个高亮
+  const first = document.querySelector('.search-highlight');
+  if (first) first.scrollIntoView({behavior: 'smooth', block: 'center'});
+}
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

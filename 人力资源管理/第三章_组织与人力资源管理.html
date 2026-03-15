@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第三章 · 组织与人力资源管理 — 颜爱民HRM复试笔记</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --bg: #f5f0eb;
+  --bg2: #ede5da;
+  --accent:  #b45309;
+  --accent2: #d97706;
+  --accent3: #0e7c6a;
+  --accent4: #7c3aed;
+  --accent5: #dc2626;
+  --card-bg: #ffffff;
+  --border: #d4b896;
+  --shadow: 0 4px 20px rgba(26,18,10,0.10);
+  --nav-bg: rgba(255,255,255,0.95);
+}
+body.night {
+  --ink: #e2d9cf;
+  --bg: #1a110a;
+  --bg2: #2a1f14;
+  --card-bg: #241a10;
+  --border: #4a3520;
+  --nav-bg: rgba(26,17,10,0.97);
+  --shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
+  font-variant-numeric: tabular-nums;
+  padding: 0 0 100px;
+  transition: background .3s, color .3s;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #1a110a 0%, #6b3518 50%, #b45309 100%);
+  color: #fff;
+  padding: 60px 40px 50px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(60deg,rgba(255,255,255,.025) 0px,rgba(255,255,255,.025) 1px,transparent 1px,transparent 22px);
+}
+.hero-day {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,.55);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  position: relative;
+}
+.hero h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  position: relative;
+}
+.hero h1 span { color: #fcd34d; }
+.hero-sub { font-size: 14px; color: rgba(255,255,255,.72); max-width: 650px; position: relative; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; position: relative; }
+.hero-tag {
+  font-size: 12px; font-weight: 500;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 20px; padding: 4px 12px;
+  letter-spacing: .5px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--nav-bg);
+  border-bottom: 2px solid var(--border);
+  padding: 0 20px;
+  backdrop-filter: blur(12px);
+  transition: background .3s, border-color .3s;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 6px;
+  height: 52px; overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-a {
+  white-space: nowrap; font-size: 13px; font-weight: 500;
+  color: var(--accent); text-decoration: none;
+  padding: 6px 12px; border-radius: 6px;
+  transition: background .2s;
+  flex-shrink: 0;
+}
+.nav-a:hover { background: rgba(180,83,9,.12); }
+.nav-sep { color: var(--border); font-size: 12px; flex-shrink: 0; }
+.nav-ctrl { margin-left: auto; display: flex; gap: 6px; flex-shrink: 0; }
+.btn-sm {
+  font-size: 12px; font-weight: 600;
+  border: 1.5px solid var(--border);
+  background: var(--card-bg); color: var(--ink);
+  border-radius: 6px; padding: 5px 10px;
+  cursor: pointer; transition: all .2s;
+  white-space: nowrap;
+}
+.btn-sm:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── SEARCH ── */
+.search-wrap {
+  max-width: 900px; margin: 28px auto 0; padding: 0 20px;
+}
+.search-input {
+  width: 100%; padding: 10px 16px;
+  border: 2px solid var(--border); border-radius: 10px;
+  background: var(--card-bg); color: var(--ink);
+  font-size: 14px; font-family: inherit;
+  transition: border-color .2s;
+  outline: none;
+}
+.search-input:focus { border-color: var(--accent); }
+.search-input::placeholder { color: #aaa; }
+.search-hint { font-size: 12px; color: #aaa; margin-top: 6px; padding-left: 4px; }
+mark.sh { background: #fde68a; color: #1a1a2e; border-radius: 3px; padding: 0 2px; }
+
+/* ── LAYOUT ── */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+.section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--accent);
+  border-left: 5px solid var(--accent2);
+  padding-left: 14px;
+  margin: 44px 0 20px;
+}
+.section-sub {
+  font-size: 12px; font-weight: 400;
+  color: #999; margin-left: 8px; vertical-align: middle;
+}
+
+/* ── LOGIC FLOW ── */
+.logic-box {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.logic-title { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 18px; letter-spacing: .5px; }
+.flow-row {
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; margin-bottom: 12px;
+}
+.flow-box {
+  background: linear-gradient(135deg,#fef3c7,#fde68a);
+  border: 1.5px solid #d97706;
+  border-radius: 8px; padding: 8px 14px;
+  font-size: 13px; font-weight: 600; color: #92400e;
+  text-align: center; min-width: 80px;
+}
+.flow-arr { font-size: 18px; color: var(--accent2); font-weight: 700; }
+.flow-desc { font-size: 12px; color: #777; flex: 1; min-width: 120px; }
+
+/* ── MIND MAP ── */
+.mindmap {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 20px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow);
+}
+.mm-center {
+  background: linear-gradient(135deg,#b45309,#d97706);
+  color: #fff; font-weight: 700; font-size: 15px;
+  border-radius: 12px; padding: 12px 20px;
+  text-align: center; display: inline-block;
+  margin-bottom: 20px;
+}
+.mm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 14px;
+}
+.mm-branch {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  background: var(--bg2);
+  transition: transform .2s;
+}
+.mm-branch:hover { transform: translateY(-2px); }
+.mm-branch-title {
+  font-size: 13px; font-weight: 700;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--border);
+}
+.mm-branch.c1 .mm-branch-title { color: #b45309; }
+.mm-branch.c2 .mm-branch-title { color: #0e7c6a; }
+.mm-branch.c3 .mm-branch-title { color: #7c3aed; }
+.mm-branch.c4 .mm-branch-title { color: #dc2626; }
+.mm-leaf { font-size: 12px; color: #666; line-height: 1.9; }
+.mm-leaf span { display: block; padding-left: 8px; }
+.mm-leaf span::before { content: "·"; margin-right: 4px; }
+
+/* ── KNOWLEDGE CARDS ── */
+.kcard {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.kcard:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.12); }
+.kcard-header {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+}
+.kcard-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px; font-weight: 700;
+  color: var(--accent); flex-shrink: 0;
+  line-height: 1;
+}
+.kcard-title-area { flex: 1; }
+.kcard-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.badge {
+  font-size: 11px; font-weight: 600;
+  border-radius: 20px; padding: 3px 10px;
+  white-space: nowrap;
+}
+.badge-page { background: #fef3c7; color: #92400e; }
+.badge-imp  { background: #fee2e2; color: #991b1b; }
+.badge-prob { background: #d1fae5; color: #065f46; }
+.badge-type { background: #ede9fe; color: #5b21b6; }
+.badge-exam { background: #dbeafe; color: #1e40af; }
+
+.kcard-body { padding: 18px 20px; }
+.kcard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-bottom: 16px;
+}
+.kcard-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 13px 15px;
+}
+.kcard-item-label {
+  font-size: 11px; font-weight: 700;
+  color: var(--accent); letter-spacing: .5px;
+  margin-bottom: 7px; text-transform: uppercase;
+}
+.kcard-item-content { font-size: 13.5px; line-height: 1.75; }
+.kcard-full {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.kcard-full-label {
+  font-size: 12px; font-weight: 700;
+  color: var(--accent); margin-bottom: 10px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border);
+}
+
+/* ── DETAILS/SUMMARY ── */
+details { margin-top: 10px; }
+details summary {
+  font-size: 13px; font-weight: 600;
+  color: var(--accent2); cursor: pointer;
+  padding: 8px 12px;
+  background: rgba(217,119,6,.08);
+  border-radius: 8px;
+  border: 1px solid rgba(217,119,6,.2);
+  list-style: none;
+  transition: background .2s;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "▶ "; font-size: 10px; }
+details[open] summary::before { content: "▼ "; }
+details summary:hover { background: rgba(217,119,6,.15); }
+details .det-body {
+  padding: 14px 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  font-size: 13.5px; line-height: 1.8;
+}
+
+/* ── TABLE ── */
+.table-wrap { overflow-x: auto; margin: 10px 0; }
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 13.5px;
+}
+th {
+  background: linear-gradient(90deg, #b45309, #d97706);
+  color: #fff; padding: 10px 12px;
+  text-align: left; font-weight: 600;
+  white-space: nowrap;
+}
+td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tr:nth-child(even) td { background: var(--bg2); }
+tr:hover td { background: rgba(217,119,6,.07); }
+
+/* ── HIGHLIGHT BOXES ── */
+.hl-amber {
+  background: #fffbeb;
+  border-left: 4px solid #d97706;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px; margin: 10px 0;
+  font-size: 13.5px;
+}
+.hl-green {
+  background: #ecfdf5;
+  border-left: 4px solid #059669;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px; margin: 10px 0;
+  font-size: 13.5px;
+}
+.hl-blue {
+  background: #eff6ff;
+  border-left: 4px solid #3b82f6;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px; margin: 10px 0;
+  font-size: 13.5px;
+}
+.hl-red {
+  background: #fff1f2;
+  border-left: 4px solid #e11d48;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px; margin: 10px 0;
+  font-size: 13.5px;
+}
+body.night .hl-amber { background: rgba(217,119,6,.12); }
+body.night .hl-green { background: rgba(5,150,105,.12); }
+body.night .hl-blue  { background: rgba(59,130,246,.12); }
+body.night .hl-red   { background: rgba(225,29,72,.12); }
+
+.kw { font-weight: 700; color: var(--accent); }
+.kw2 { font-weight: 700; color: #0e7c6a; }
+.kw3 { font-weight: 700; color: #7c3aed; }
+.kw4 { font-weight: 700; color: #dc2626; }
+
+/* ── EXAM CARD ── */
+.exam-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.exam-card {
+  background: var(--card-bg);
+  border: 1.5px solid #bfdbfe;
+  border-radius: 12px; padding: 16px;
+  box-shadow: 0 2px 8px rgba(59,130,246,.08);
+}
+.exam-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  color: #1d4ed8; letter-spacing: 1px;
+  margin-bottom: 8px;
+  padding: 3px 8px; background: #dbeafe; border-radius: 4px;
+  display: inline-block;
+}
+.exam-q { font-size: 13.5px; color: var(--ink); line-height: 1.7; }
+
+/* ── QUICK REVIEW ── */
+.quick-wrap {
+  background: linear-gradient(135deg,#1a110a,#6b3518);
+  border-radius: 16px; padding: 32px 28px;
+  color: #fff; margin: 8px 0;
+}
+.quick-title { font-size: 16px; font-weight: 700; margin-bottom: 20px; letter-spacing: 1px; }
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.quick-item {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 10px; padding: 12px 14px;
+}
+.quick-item-t { font-size: 12px; font-weight: 700; color: #fcd34d; margin-bottom: 6px; }
+.quick-item-c { font-size: 12.5px; color: rgba(255,255,255,.85); line-height: 1.7; }
+
+/* ── RECITE BOX ── */
+.recite-wrap {
+  background: var(--card-bg);
+  border: 2px solid var(--accent);
+  border-radius: 14px; padding: 24px;
+  margin: 8px 0; box-shadow: var(--shadow);
+}
+.recite-title { font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 16px; }
+.recite-p {
+  font-size: 14px; line-height: 1.9;
+  padding: 10px 14px;
+  background: var(--bg2);
+  border-radius: 8px; margin-bottom: 10px;
+}
+
+/* ── QUIZ ── */
+.quiz-wrap {
+  display: grid; grid-template-columns: 1fr;
+  gap: 14px; margin-top: 16px;
+}
+.quiz-item {
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 16px 20px;
+  box-shadow: var(--shadow);
+}
+.quiz-q { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+details.quiz-ans summary {
+  font-size: 12px; color: #0e7c6a;
+  background: rgba(14,124,106,.08); border-color: rgba(14,124,106,.3);
+}
+details.quiz-ans .det-body { font-size: 13px; }
+
+/* ── BACK TO TOP ── */
+#backTop {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  border: none; cursor: pointer; font-size: 18px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
+  opacity: 0; transition: opacity .3s;
+  display: flex; align-items: center; justify-content: center;
+}
+#backTop.show { opacity: 1; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 32px 20px;
+  font-size: 12px; color: #aaa;
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+}
+
+/* ── FADE IN ── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+.kcard, .logic-box, .mindmap, .exam-card { animation: fadeUp .4s ease both; }
+</style>
+
+
+<script>window._PAGE_TEXT='第三章 · 组织与人力资源管理 — 颜爱民HRM复试笔记 \n \n \n \n \n \n \n 生成日期：2026-03-08 · 中南大学企业管理学硕复试笔记 \n 第三章 组织与人力资源管理 \n 人性理论 · 个体特征 · 群体特征 · 组织结构 — 人力资源管理的组织学基础 \n \n 📄 教材 P068–P112 \n ⭐ 重要度 ★★★★ \n 🎯 复试考察概率 ★★★★ \n 📝 名词解释 / 简答 / 案例 \n 🔑 6大知识点 \n \n \n \n \n \n 逻辑图 \n · \n 思维导图 \n · \n §1 人性理论 \n · \n §2 个体特征 \n · \n §2.3 胜任力 \n · \n §2.4 心理契约 \n · \n §3 群体特征 \n · \n §4 组织结构 \n · \n 对比表 \n · \n 历年真题 \n · \n 30秒复习 \n · \n 背诵版 \n · \n 自我检测 \n \n 🌙 夜间 \n \n \n \n \n \n \n \n \n \n \n \n 🗺 本章逻辑结构 整体框架一览 \n \n 📌 第三章核心逻辑链 \n \n 人性理论 \n → \n 个体差异 \n → \n 群体行为 \n → \n 组织结构 \n → \n HRM策略 \n \n \n \n 核心逻辑： 不同的 人性假设 导致不同的管理思想 → 了解 个体特征 （知觉/态度/胜任力/心理契约）才能精准配置人才 → 掌握 群体规律 （凝聚力/权力政治）才能建设高效团队 → 选择合适的 组织结构 才能适配不同发展阶段的HRM需求\n \n \n \n 西方人性：经济人→社会人→自动人→复杂人 \n vs \n 中国人性：性善论→性恶论→可塑论 \n \n \n \n 🧠 章节思维导图 知识体系全览 \n \n 第三章：组织与人力资源管理 \n \n \n §1 人性理论 \n \n 西方：经济人（X理论） \n 西方：社会人 \n 西方：自动人（Y理论） \n 西方：复杂人（超Y理论） \n 中国：性善论（孟子） \n 中国：性恶论（荀子） \n 中国：可塑论（张载） \n \n \n \n §2 个体特征 \n \n 传记特征（年龄/性别/教育） \n 知觉与知觉偏差 \n 态度与观念/价值观 \n 性格特征 \n 胜任力（Spencer模型） \n 心理契约（卢梭） \n 工作压力与满意度 \n \n \n \n §3 群体特征 \n \n 群体规范 \n 群体凝聚力 \n 群体一致性 \n 组织权力与政治 \n 团队管理 \n \n \n \n §4 组织结构 \n \n 简单结构阶段 \n 官僚结构（机械结构） \n 有机结构阶段 \n 传统：直线制/职能制 \n 现代：事业部/矩阵制 \n 新型：虚拟/网络/团队 \n \n \n \n \n \n 📚 知识点一：人性理论与人力资源管理 ★★★★★ \n \n \n 01 \n \n 人性假设理论体系（西方+中国） \n \n 📄 P069–P078 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 高考察概率 \n 名词解释 / 简答 / 论述 \n \n \n \n \n \n \n 📖 核心定义 \n 人性假设 是对人本性的价值判断，是哲学、管理学、经济学和社会学等许多社会科学领域的研究出发点。 不同的人性理论将会演化出不同的人力资源管理思想，形成不同的方法，构成不同的体系。 \n \n \n 🧒 小学生版解释 \n 就像老师管同学：如果老师觉得"小孩子都是懒的"，就会用很多规矩和惩罚（X理论）；如果老师觉得"小孩子都想好好学"，就会给更多自由和鼓励（Y理论）。 你 怎么看人 ，就 怎么管人 ！ \n \n \n 💡 助记口诀 \n 西方四步走： 经→社→自→复 （经济人→社会人→自动人→复杂人） 中国三论： 孟子善、荀子恶、张载可塑 （善恶之间，人性可变） \n \n \n 🏢 企业案例 \n 富士康早期管理（接近X理论）：流水线严格计件、纪律管控、钟点卡打卡。 谷歌管理（接近Y理论）：20%自由时间、弹性办公、让员工自主创新，Gmail和Maps就是这样诞生的。 \n \n \n \n 📊 西方人性假设四阶段对照表 \n \n \n 人性假设 代表理论 代表人物 核心观点 对应HRM方式 \n \n \n 经济人 \n X理论 \n 麦格雷戈（总结） 泰勒（实践） \n 人天生懒惰、厌恶工作、逃避责任；金钱是唯一动力 \n 严格控制、奖惩分明、"胡萝卜加大棒"、科学管理 \n \n \n 社会人 \n 人际关系理论 \n 梅奥（霍桑实验） \n 人受社会、心理需求驱动；归属感和团体认同比金钱更重要 \n 关注员工情感、营造良好人际关系、非正式群体管理 \n \n \n 自动人 （自我实现人） \n Y理论 \n 马斯洛、阿吉里斯、麦格雷戈 \n 人并无好逸恶劳天性；工作本身可满足需求；人追求自我实现 \n 工作丰富化、赋权授权、参与管理、内在激励 \n \n \n 复杂人 \n 超Y理论 \n 薛恩（Schein） \n 人的需要因人、因时、因环境而异；没有单一适用的管理方式 \n 弹性管理、权变管理、因人而异、个性化激励 \n \n \n \n \n \n \n 🀄 中国传统人性理论对照表 \n \n \n 理论 代表人物 核心主张 类比西方理论 对应HRM思想 \n \n \n 性善论 \n 孟子（儒家） \n "人性之善也"，仁义礼智为人固有；"仁政"是必然结论 \n 类似Y理论 \n 关注员工需要，通过需求满足实施激励；仁政式管理 \n \n \n 性恶论 \n 荀子 \n "人之性恶，其善者，伪也"；后天教育可以由恶变善 \n 类似X理论 \n 严格制度管理、奖惩模式；"胡萝卜加大棒" \n \n \n 可塑论 \n 张载、二程、朱熹（理学） \n "天地之性"与"气质之性"；人性可善可恶，关键在塑造 \n 类似复杂人 \n 管理不仅是适应人性的过程，更是 塑造人性的过程 \n \n \n \n \n \n 💡 教材立场（必背）： 颜爱民教授倾向于 人性可塑论 ，认为完全意义上的性恶和性善都难以全面反映人性特征。 \n → 管理不仅是对人性的适应过程，而且是对人性的塑造过程。 \n \n \n \n 📋 复试回答模板 + 延伸追问 \n \n 回答模板： \n ① 定义 ：人性假设是对人本性的价值判断，是人力资源管理的哲学基础。 \n ② 西方四阶段 ：经济人（X理论/泰勒）→社会人（梅奥/霍桑）→自动人（Y理论/马斯洛）→复杂人（超Y/薛恩） \n ③ 中国三论 ：性善论（孟子，类似Y）→性恶论（荀子，类似X）→可塑论（张载，教材推崇） \n ④ 总结 ：不同人性假设演化出不同HRM方式，教材认为人性可塑论最符合管理实践。 \n 老师可能追问： \n ① 为什么说Y理论在实践中不能完全适用？（因为绝大多数人接近X理论，追求安逸是本能） \n ② 中国现阶段适合哪种人性观下的管理？（可塑论：制度管理为主，人性化管理逐步推进） \n ③ 复杂人假设对绩效管理有什么启示？（因人而异，个性化激励，权变管理） \n 管理学联系： 人性假设 → 激励理论（第11章）→ 领导方式（路径目标理论）→ 战略HRM（第13章）\n \n \n \n \n \n 📚 知识点二：个体特征与人力资源管理 ★★★★ \n \n \n 02 \n \n 传记特征、知觉、态度、性格 \n \n 📄 P079–P088 \n ⭐⭐⭐⭐ 重要 \n 🎯 较高概率 \n 名词解释 / 简答 \n \n \n \n \n \n \n 📖 传记特征 \n 指 年龄、性别、婚姻状况、教育背景 等客观信息。教育背景包括受教育程度、学校、专业、成绩等。一般受教育程度越高，工作学习能力越强；但也可能表现出更强烈个性，挑战管理。 \n \n \n 📖 知觉与知觉偏差 \n 知觉 是人对客观环境和主体状态的感觉和解释过程。 知觉的主观性导致 知觉偏差 ：在招聘面试中，考官受知觉偏差影响常常做出不正确判断；在绩效评估中，评估结果因知觉偏差而主观。 \n \n \n 📖 态度与价值观 \n 态度 是个人对特定对象所持有的心理倾向，是外界刺激与个人反应之间的中介因素。 价值观 是个体的基本信念，对个体的行为起思想指导作用。约 40%工作价值观 通过遗传获得，更多由后天环境决定。 \n \n \n 🧒 小学生版解释 \n 你是不是戴眼镜的人看事情方式不一样？每个人的"眼镜"（知觉）都不同，这就是为什么同一件事大家看法不同。 而价值观就像你的"内心标准"，决定什么对你重要。 \n \n \n \n 🔑 管理启示： 在招聘和绩效评估中必须努力摒除知觉偏差，保证客观公正性。组织惯例对员工观念产生作用，进而影响行为，是支配员工行为的重要因素。\n \n \n 📋 知觉偏差的主要类型（复试延伸） \n \n 常见知觉偏差类型： \n ① 晕轮效应 ：以某一突出特征推断全面特征（以偏概全） \n ② 首因效应 ：第一印象影响整体判断 \n ③ 近因效应 ：最近信息影响判断 \n ④ 投射效应 ：把自己的特质投射到他人身上 \n ⑤ 刻板印象 ：按群体特征套用到个体身上 \n → HRM应用：建立结构化面试，使用客观评估工具，减少主观偏差\n \n \n \n \n \n 📚 知识点三：胜任力与胜任力模型 ★★★★★ 高频考点 \n \n \n 03 \n \n 胜任力（Competency）模型 — Spencer夫妇 \n \n 📄 P088–P093 \n ⭐⭐⭐⭐⭐ 极重要 \n 🎯 高考察概率 \n 名词解释 / 简答 \n 【历年真题】简述胜任力模型构建流程 \n \n \n \n \n \n \n 📖 专有名词解释 \n 胜任力 （Competency）：能将某一工作（或组织、文化）中 有卓越成就者与表现平平者区分开来 的个人的潜在特征。它可以是动机、特质、自我形象、态度或价值观、某领域知识、认知或行为技能——任何可以被可靠测量或计数的、能显著区分 优秀与一般绩效 的个体特征。（Spencer夫妇） \n \n \n 🧒 小学生版解释 \n 班级里有些同学学习特别好，有些普通。"胜任力"就是找出那些 "学霸"和"普通同学"的差别在哪里 ——不只是考试分数，还有他们思考方式、努力程度、价值观的差别。 \n \n \n 💡 助记口诀 \n 胜任力三层：必差战 \n 必要胜任力：人人都要有 \n 差异胜任力：区分好与一般 \n 战略胜任力：企业核心竞争力 \n 识别两方法： 静态（人的特征）+ 动态（行为角度） \n \n \n 🏢 企业案例 \n 华为的胜任力模型： \n • 必要胜任力：基本技术技能（人人必须掌握） \n • 差异胜任力：创新思维、自我驱动力（区分优秀人才） \n • 战略胜任力：全球视野、5G研发能力（公司核心竞争力） \n \n \n \n 🏗 胜任力模型三层次（必背） \n \n \n 层次 定义 特点 HRM应用 \n \n \n 必要胜任力 \n 每一位员工都必须具备的基本知识和技能 \n 可以通过培训开发出来 \n 入职培训、岗前技能考核 \n \n \n 差异胜任力 \n 用以区别员工一般绩效和优秀绩效，包括心智模式、特质、动机等 \n 很难开发，但对长期绩效提高有益 \n 绩效评估、人才选拔标准 \n \n \n 战略胜任力 \n 组织内部最核心的胜任力，包括创新、高效、学习和专利技术 \n 提高组织核心竞争能力和凝聚力 \n 战略人才储备、核心人才保留 \n \n \n \n \n \n \n 🔍 胜任力识别两种方法 \n \n \n 方法一：静态识别（特征角度） \n 从人的特征角度出发，将胜任力视为与人特征相关的现象，这些特征独立于情境，能适应较广范围的工作活动 \n \n \n 方法二：动态识别（行为角度） \n 从行为角度识别，将胜任力看作特定情境下知识、技能、态度、动机等的具体运用的行为表现形式。通过可观察的行为指标反映胜任力 \n \n \n \n \n 📋 胜任力模型构建流程（复试简答必备） \n \n 胜任力模型构建的一般流程： \n ① 确定效标 ：确定工作绩效的衡量标准，区分优秀表现者与普通表现者 \n ② 选取效标样本 ：选取优秀绩效者和普通绩效者各一组 \n ③ 收集数据 ：通过行为事件访谈（BEI）、调查问卷、专家小组等方法获取数据 \n ④ 分析数据 ：建立胜任力词典，识别区分优秀与普通绩效的关键胜任特征 \n ⑤ 建立模型 ：确定胜任力项目及其层次，建立胜任力模型 \n ⑥ 验证模型 ：用新的效标样本验证模型的有效性 \n 图示（教材图3.2）： 组织目标 + 个人目标 → 行为锥测定 → 胜任力模型 → HRM各职能运作\n \n \n \n \n \n 📚 知识点四：心理契约 ★★★★ \n \n \n 04 \n \n 心理契约（Psychological Contract） \n \n 📄 P093–P096 \n ⭐⭐⭐⭐ 重要 \n 🎯 较高概率 \n 名词解释 / 简答 \n \n \n \n \n \n \n 📖 专有名词解释 \n 心理契约 （Psychological Contract）：员工与雇主之间关于双方 相互期望和义务 的一套内隐的、非正式的、未书面化的主观信念体系。它不同于正式劳动合同，强调的是双方内心深处的期望与承诺。（卢梭，Rousseau，1989年） \n \n \n 🧒 小学生版解释 \n 就像你和父母之间没有写在纸上的"约定"：你认真读书，父母就会照顾你、支持你。如果父母突然不给零花钱，你会感到"被骗了"——这种感觉就是心理契约被违背。 公司和员工之间也有这种 "心里的合同" 。 \n \n \n 💡 助记口诀 \n 心理契约两特点： \n 无形（未书面化） \n 双向（员工←→雇主） \n 两种类型： \n 交易型（短期、经济交换） \n 关系型（长期、情感投入） \n \n \n 🏢 企业案例 \n 某互联网公司员工入职时，老板承诺"努力工作就会晋升"，但三年后因为部门重组，晋升机会消失。 虽然劳动合同未违反，但 心理契约被破坏 ，员工大量离职，士气大跌——这就是心理契约违背的典型案例。 \n \n \n \n 📊 心理契约两种类型对比 \n \n \n 维度 交易型心理契约 关系型心理契约 \n \n 时间框架 短期、有限 长期、开放式 \n 交换焦点 经济利益（工资、福利） 情感、发展机会、认同感 \n 典型情境 临时工、兼职、外包 核心员工、管理层 \n 违背影响 换工作（较低情感代价） 大幅降低工作投入、信任崩塌 \n \n \n \n \n \n 💡 管理启示： 企业应重视心理契约的管理，招聘时做出的承诺要兑现；当外部环境变化需要调整时，应与员工充分沟通，尽量维护心理契约的完整性，降低员工离职倾向和组织公民行为的下降。\n \n \n \n \n 📚 知识点五：群体特征与工作压力 ★★★★ \n \n \n 05 \n \n 群体凝聚力 · 工作压力倒U型曲线 · 组织权力 \n \n 📄 P097–P106 \n ⭐⭐⭐⭐ 重要 \n 🎯 较高概率 \n 简答 / 案例分析 \n \n \n \n \n \n \n 📖 群体凝聚力 \n 群体凝聚力 ：作用于个体使之保持在群体内的一种力量。不论正式群体还是非正式群体都具有一定紧密性或共同的态度、行为和任务，这种紧密性就成为群体凝聚力。 \n \n \n 📖 工作压力倒U型曲线 \n 工作压力与工作绩效 呈 倒U型曲线 关系（Karasek，1979）： \n • 适度压力→激发潜能→绩效提升 \n • 压力过低→缺乏动力→绩效低 \n • 压力超过临界点→焦虑→绩效下降 \n \n \n 🧒 小学生版解释（倒U） \n 就像橡皮筋：不拉没弹力；适当拉紧弹力最好；拉太紧就断了。 工作压力也一样： 刚好的压力让你发挥最好，太大了就"断弦"了。 \n \n \n 📖 组织权力 \n 权力 ：按预想方式改变他人态度或行为的能力（孔茨）。权力是依赖的函数—— 依赖程度越强，权力越大 。 在招聘中，决策者可能倾向于选择"更像自己"的候选人，以扩大权力联盟。 \n \n \n \n 📈 工作压力倒U型曲线详解 \n \n \n 绩效高峰 ▲ \n ▲ \n ╱ ╲ \n ╱ ╲ \n ——●————————————●——→ 压力水平 \n 低绩效 低绩效 \n （压力过低） （压力过高）\n \n \n 关键： 组织应将员工压力维持在最优区间，避免极端\n \n \n \n 压力管理策略（教材）： 企业应从 组织因素、角色认知、人际关系、职业发展 4个方面减轻员工工作压力，通过压力缓解提高工作满意度。\n \n \n \n 📋 群体规范、一致性与HRM（复试延伸） \n \n 群体规范： 群体成员共同遵守的行为准则和期望，对成员行为有强制性引导作用 \n 群体凝聚力影响因素： 群体规模（小群体凝聚力更强）、成员相似性、外部威胁、成功经历 \n 高凝聚力的双刃剑： 高凝聚力可以提高员工忠诚度和协作效率，但如果群体目标与组织目标不一致，可能形成"小团体"，降低组织整体绩效 \n 组织政治行为： 由于隐蔽性，使得制度保障下的利益得不到保障；对组织政治行为知觉高的人与工作满意度呈 负相关 关系\n \n \n \n \n \n 📚 知识点六：组织结构与人力资源管理 ★★★★ \n \n \n 06 \n \n 组织结构演变三阶段与HRM适配 \n \n 📄 P106–P112 \n ⭐⭐⭐⭐ 重要 \n 🎯 较高概率 \n 简答 / 论述 \n \n \n \n \n \n \n 📖 核心定义 \n 组织结构 ：组织各个部分以及它们之间关系的一种模式，是组织的框架。 组织结构演变的根源在于人力资源的演变 ——整个社会的人力资源特点决定着整体组织结构的特点。 \n \n \n 💡 助记口诀 \n 三阶段：简→官→有 \n 简单结构（工人无技能） \n 官僚结构（机械化大生产） \n 有机结构（知识经济时代） \n 核心规律： 人力资源素质↑→组织结构扁平化↑ \n \n \n 🧒 小学生版解释 \n 公司就像一支球队： \n • 简单结构=小学球队，队长说了算 \n • 官僚结构=专业球队，严格分工+战术手册 \n • 有机结构=现代球队，每个人都能临场决策，灵活配合 \n \n \n 🏢 企业案例 \n 阿里巴巴的组织演变： \n • 创业期（简单结构）：马云一人拍板 \n • 上市前（官僚结构）：严格BU划分、层级汇报 \n • 现在（有机结构）：阿里云、蚂蚁金服等独立公司，扁平化、授权团队 \n \n \n \n 📊 组织结构三阶段演变全览（必背） \n \n \n 阶段 人力资源特点 组织结构特征 对应HRM重点 \n \n \n 简单结构 （资本主义初期） \n 工人无技能，没受教育，对组织依赖性强 \n 无明确分工，管理随意，无正规制度，资本家集权 \n 以金钱激励为主，强制管理 \n \n \n 官僚结构 （机械结构） \n 工人掌握操作技术，有基本文化知识 \n 僵化部门制，高度正规化，有限信息网络，集权化，员工参与少 \n 标准化操作规程，绩效计件，培训技术技能 \n \n \n 有机结构 （20世纪80年代后） \n 受教育程度大幅提升，个人知识与能力成为新型资本 \n 扁平化，多功能跨等级团队，高员工参与，信息自由流通 \n 自主管理，知识激励，团队建设，职业发展 \n \n \n \n \n \n \n 📊 主要组织结构模式对比（传统→现代→新型） \n \n \n 类型 代表模式 优点 缺点 适用情境 \n \n \n 传统结构 \n 直线制 \n 命令统一，管理简单 \n 要求领导万能 \n 小型企业 \n \n \n 职能制 \n 专业化程度高 \n 多头领导，协调困难 \n 大中型功能性企业 \n \n \n 直线职能制 \n 统一指挥+专业参谋 \n 直线与职能之间张力 \n 多数制造业企业 \n \n \n 现代结构 \n 事业部制（M型） \n 适应多元化，分权灵活 \n 资源重复，协调成本高 \n 大型多元化企业 \n \n \n 矩阵制 \n 专业与项目结合，资源共享 \n 双头领导，权责不清 \n 项目型企业、咨询公司 \n \n \n 控股型 \n 财务管控，各子公司独立 \n 协同效应弱 \n 多元化集团 \n \n \n 新型结构 \n 网络结构 \n 极度灵活，外包非核心业务 \n 核心能力难以掌控 \n 互联网企业、平台经济 \n \n \n 虚拟组织 \n 超越时空，快速响应 \n 信任问题，协调困难 \n 跨国临时项目 \n \n \n 团队结构 \n 1+1>2，高绩效 \n 团队协调成本 \n 知识密集型企业 \n \n \n \n \n \n \n 📋 复试回答模板：组织结构与HRM的关系 \n \n 标准回答思路： \n ① 定义 ：组织结构是组织各部分及其关系的模式；组织结构演变的根源在于人力资源的演变。 \n ② 演变三阶段 ：简单结构→官僚结构→有机结构，与人力资源素质提升相对应。 \n ③ 不同结构的HRM特点 ：传统结构HRM强调规范化和分工；现代结构HRM注重专业化和授权；新型有机结构HRM强调柔性管理、团队自治和知识激励。 \n ④ 总结 ：组织结构和HRM的和谐适应是HRM的重要问题，不同组织结构对HRM的内容、方式与手段都有重要影响。 \n 联系章节： 组织结构（第3章）→战略与组织结构匹配（战略管理）→HRM战略（第13章）\n \n \n \n \n \n 🔄 易混概念对比总结 避免混淆 \n \n \n \n 概念A 概念B 核心区别 \n \n \n X理论（经济人） 人天生懒惰，需外力控制 \n Y理论（自动人） 人追求自我实现，工作本身有价值 \n X理论→外部激励（金钱/惩罚）；Y理论→内在激励（成就感/自主性） \n \n \n 超Y理论（复杂人） 人的需要因人因时因境而异 \n Y理论（自动人） 假设所有人都追求自我实现 \n 超Y理论≠Y理论；超Y强调无万能管理法，需权变；Y理论假设过于理想化 \n \n \n 心理契约 未书面化的主观期望体系 \n 劳动合同 法律层面书面约定 \n 心理契约：无形、主观、双向期望；劳动合同：有形、法律、明确条款 \n \n \n 胜任力（Competency） 区分优秀与一般绩效的特征 \n 能力（Ability） 完成某项工作的一般能力 \n 胜任力强调区分性（卓越vs一般）；能力只表示"能做什么"，不强调区分 \n \n \n 群体凝聚力 成员保持在群体内的力量 \n 群体规范 成员共同遵守的行为准则 \n 凝聚力是"向心力"（动态）；规范是"行为标准"（静态）；两者相互影响 \n \n \n 官僚结构（机械结构） 高度正规化、集权化 \n 有机结构 扁平化、弹性、高参与 \n 官僚结构：适合稳定环境、技能单一的员工；有机结构：适合动态环境、高素质员工 \n \n \n \n \n \n \n 📝 历年真题汇总 2016-2025 \n \n \n 历年复试·人力模块 \n 简述胜任力模型的三个层次及其HRM应用 （高频考点，需掌握必要/差异/战略胜任力的定义和区分） \n \n \n 历年复试·人力模块 \n 简述胜任力模型的构建流程 （效标选取→BEI访谈→数据分析→模型建立→验证） \n \n \n 预测题·高概率 \n 什么是心理契约？心理契约被违背会产生什么后果？ （名词解释+影响分析，联系员工关系章节） \n \n \n 预测题·高概率 \n 麦格雷戈的X理论和Y理论有何区别？各自对应什么HRM实践？ （经典理论对比，结合激励理论讲述） \n \n \n 预测题·较高概率 \n 简述工作压力与工作绩效的关系，并说明企业如何进行压力管理。 （倒U型曲线+4个维度的压力管理） \n \n \n 预测题·较高概率 \n 组织结构演变与人力资源演变的关系是什么？（论述） （三阶段演变，HRM适配变化，可结合中国情境） \n \n \n 预测题·一般概率 \n 中国传统人性理论（性善论/性恶论/可塑论）对当代人力资源管理有何启示？ （教材特色题，需联系中国实际） \n \n \n 案例分析·综合 \n 某互联网企业实行弹性工作制，员工自主选择工作时间。请从人性假设角度分析该政策的理论依据，并评估其风险。 （Y理论/复杂人假设→弹性管理的优势与局限） \n \n \n \n 🔗 本章知识终极串联 逻辑流程 \n \n 第三章核心逻辑串联 \n \n 出发点 ：不同 人性假设 （经济人/社会人/自动人/复杂人）→ 决定管理者的 管理风格和HRM策略 \n ⬇ \n 个体层面 ：了解 个体特征 （传记特征/知觉/态度/性格/胜任力/心理契约/工作压力）→ 精准匹配人与岗位，制定个性化激励 \n ⬇ \n 群体层面 ：管理 群体行为 （规范/凝聚力/权力政治）→ 建设高绩效团队，维护组织公平氛围 \n ⬇ \n 组织层面 ：选择适合的 组织结构 （简单→官僚→有机）→ 配套相应的HRM体系（标准化→专业化→柔性化） \n ⬇ \n 联系第5章（人力资源规划） ：人性假设+组织结构+个体/群体特征 → 决定企业人力资源战略方向 \n ⬇ \n 联系第13章（战略HRM） ：人性可塑论+有机结构+胜任力模型 → 战略人力资源管理体系的基础 \n \n \n \n ⚡ 30秒复习模块（超简版） \n \n ⚡ 第三章核心要点 — 30秒快速回顾 \n \n \n 西方人性四阶段 \n 经济人（X）→ 社会人 → 自动人（Y）→ 复杂人（超Y） \n \n \n 中国人性三论 \n 孟子性善（≈Y）→ 荀子性恶（≈X）→ 张载可塑（教材推崇） \n \n \n 胜任力三层次 \n 必要（人人可培训）→ 差异（区分优秀/一般）→ 战略（核心竞争力） \n \n \n 心理契约 \n 无形/非正式/双向期望 | 交易型 vs 关系型 \n \n \n 工作压力倒U曲线 \n 适度压力→绩效最高 | 过低/过高压力→绩效下降 \n \n \n 组织结构三阶段 \n 简单（无技能）→ 官僚（机械化）→ 有机（知识经济） \n \n \n 人性可塑论核心 \n 管理不仅是适应人性，更是塑造人性的过程 \n \n \n 知觉偏差的HRM影响 \n 面试/绩效评估应建立客观标准，减少主观偏差 \n \n \n \n \n 🎯 背诵版总结（复试口述版） \n \n 🎯 第三章核心口述要点（背诵版） \n \n 【人性理论】 西方人性假设历经 经济人、社会人、自动人、复杂人 四个阶段，分别对应 X理论、社会关系理论、Y理论、超Y理论 。中国传统有 性善论（孟子）、性恶论（荀子）、可塑论（张载） 三种，颜爱民教授认为 人性可塑论 最接近管理实践——管理不仅是对人性的适应，更是 塑造人性的过程 。\n \n \n 【个体特征】 包括传记特征（年龄/性别/教育）、知觉（易产生偏差，影响招聘和绩效评估）、态度与价值观（约40%价值观由遗传决定）、性格（比较稳定的行为方式），以及 工作压力与绩效的倒U型关系 （Karasek，1979）——适度压力激发绩效，过高过低均不利。\n \n \n 【胜任力】 Spencer夫妇定义：能将 卓越成就者与表现平平者区分开来 的个人潜在特征。三层次： 必要胜任力 （基本技能，可培训）→ 差异胜任力 （区分优劣，难开发）→ 战略胜任力 （核心竞争力，提升组织竞争能力）。识别方法：静态（特征角度）+动态（行为角度）。\n \n \n 【心理契约】 （卢梭，1989）：员工与雇主间关于相互期望和义务的 内隐、非正式、未书面化 的主观信念体系。分 交易型 （短期/经济）和 关系型 （长期/情感）。心理契约违背→信任崩塌→离职意愿上升→绩效下降。\n \n \n 【组织结构三阶段】 根源在人力资源演变： 简单结构 （资本主义初期，工人无技能，集权随意）→ 官僚结构 （工业化，高度正规化，集权）→ 有机结构 （知识经济，扁平化，高参与，团队自治）。HRM随之从标准化→专业化→柔性化演变。\n \n \n \n ✏️ 课后自我检测 教材题+历年题+预测题 \n \n \n Q1. 【名词解释】什么是胜任力（Competency）？请结合Spencer夫妇的定义，说明其三个层次。 \n \n ▶ 查看参考答案 \n \n 胜任力定义： 能将某一工作（或组织、文化）中有卓越成就者与表现平平者区分开来的个人潜在特征，包括动机、特质、自我形象、态度、知识、认知或行为技能。（Spencer夫妇） \n 三层次： \n ① 必要胜任力：每位员工都必须具备的基本知识和技能，可以通过培训开发。 \n ② 差异胜任力：区分一般绩效和优秀绩效，包括心智模式、特质、动机，难以开发但对长期绩效有益。 \n ③ 战略胜任力：组织最核心的胜任力，包括创新、高效、学习和专利技术，提高组织核心竞争能力。\n \n \n \n \n Q2. 【简答】简述麦格雷戈X理论和Y理论的核心假设及其对应的人力资源管理方式。 \n \n ▶ 查看参考答案 \n \n X理论（经济人）： 人天生懒惰，厌恶工作，逃避责任；只受金钱驱动。 → HRM方式：严格控制、惩罚威胁、"胡萝卜加大棒"、科学管理、计件工资制 \n Y理论（自动人）： 人并非天生懒惰；工作本身可以满足需求；人追求自我实现。 → HRM方式：工作丰富化、赋权授权、参与管理、内在激励、弹性工作 \n 教材补充： 颜爱民认为，绝大多数普通人更接近X理论人性观，但少数卓越者接近Y理论。管理实践应根据人性特征权变选择。\n \n \n \n \n Q3. 【简答】什么是心理契约？心理契约被违背会对员工行为产生什么影响？（联系HRM实践） \n \n ▶ 查看参考答案 \n \n 定义： 心理契约（卢梭，1989）是员工与雇主之间关于相互期望和义务的内隐、非正式、未书面化的主观信念体系。 \n 违背影响： \n ① 工作满意度下降 \n ② 组织承诺降低 \n ③ 离职意愿上升 \n ④ 工作绩效下降 \n ⑤ 信任危机，影响组织公民行为 \n HRM启示： ① 招聘时做出的承诺必须兑现；② 环境变化时及时与员工沟通；③ 构建良好的职业发展通道维护关系型心理契约\n \n \n \n \n Q4. 【简答】简述工作压力与工作绩效的关系，并说明企业应如何进行工作压力管理。 \n \n ▶ 查看参考答案 \n \n 倒U型关系（Karasek，1979）： \n 工作压力与工作绩效呈倒U型曲线关系。适度压力→产生危机意识→激发潜能→绩效最高；压力过低→缺乏动力；压力超过临界点→焦虑、绩效下降。 \n 压力管理策略（教材4个维度）： \n ① 组织因素：优化工作设计，合理分配工作量 \n ② 角色认知：清晰角色定位，减少角色模糊和角色冲突 \n ③ 人际关系：建立良好团队氛围，减少职场政治 \n ④ 职业发展：提供清晰的晋升路径和职业发展机会\n \n \n \n \n Q5. 【论述】组织结构的演变与人力资源的演变有何内在联系？请结合三个历史阶段进行论述。 \n \n ▶ 查看参考答案 \n \n 核心观点（教材原句）： "组织结构演变的根源在于人力资源的演变。整个社会的人力资源特点决定着整体组织结构的特点。" \n 三阶段分析： \n ① 简单结构阶段（资本主义初期）：工人无技能、无教育、高依赖性→简单集权结构，无正规分工 \n ② 官僚结构阶段（工业化时期）：工人具备基本技能和文化知识→高度正规化的机械官僚结构，科学管理盛行 \n ③ 有机结构阶段（20世纪80年代后，知识经济）：个人知识与能力成为新型资本，不再依赖传统资本→扁平化、多功能团队、高参与度的有机结构 \n 结论： 组织结构与HRM必须和谐适应。随着人力资源素质不断提升，HRM应从标准化管理转向知识激励、弹性管理和职业发展，才能充分发挥人力资源价值。\n \n \n \n \n Q6. 【预测案例】某科技创业公司，员工以90后为主，学历高、个性强。CEO认为"既然大家都这么能干，应该让他们自由发挥"，于是几乎没有KPI和管理制度。结果员工表现参差不齐。请从人性假设角度分析问题所在，并提出改进建议。 \n \n ▶ 查看参考答案 \n \n 问题诊断： \n CEO的做法基于Y理论（自动人/自我实现人），认为高学历员工都具有内在动力和自律性，无须外部管控。 \n 颜爱民教材观点： "只有极少数圣贤具有Y理论所述人性特征；绝大多数普通人更接近X理论人性观，追求安逸，趋利避害是其本能。压力产生动力。" \n 问题本质： 忽视了人的复杂性（复杂人假设），高估了所有员工的自我管理能力；同时忽视了适度压力对绩效的激励作用（倒U型曲线）。 \n 改进建议： \n ① 建立基本制度框架（适度官僚结构+有机结构结合） \n ② 引入OKR等目标管理，让员工有方向感 \n ③ 基于胜任力模型差异化管理（核心人才给更多自主权，普通员工加强过程管理） \n ④ 维护良好的心理契约，兼顾关系型和交易型激励 \n ⑤ 权变管理：因人而异，而非"一刀切"的放权\n \n \n \n \n \n \n 中南大学企业管理学硕复试笔记 · 《人力资源管理》第3版 · 颜爱民 \n 第三章 组织与人力资源管理 · 生成日期：2026-03-08 \n 本笔记仅供学习参考，所有内容以原版教材为准 \n \n ▲';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-day">生成日期：2026-03-08 &nbsp;·&nbsp; 中南大学企业管理学硕复试笔记</div>
+  <h1>第三章 &nbsp;<span>组织与人力资源管理</span></h1>
+  <p class="hero-sub">人性理论 · 个体特征 · 群体特征 · 组织结构 — 人力资源管理的组织学基础</p>
+  <div class="hero-tags">
+    <span class="hero-tag">📄 教材 P068–P112</span>
+    <span class="hero-tag">⭐ 重要度 ★★★★</span>
+    <span class="hero-tag">🎯 复试考察概率 ★★★★</span>
+    <span class="hero-tag">📝 名词解释 / 简答 / 案例</span>
+    <span class="hero-tag">🔑 6大知识点</span>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-a" href="#sec-logic">逻辑图</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-mind">思维导图</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-k1">§1 人性理论</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-k2">§2 个体特征</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-k3">§2.3 胜任力</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-k4">§2.4 心理契约</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-k5">§3 群体特征</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-k6">§4 组织结构</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-compare">对比表</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-exam">历年真题</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-quick">30秒复习</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-recite">背诵版</a>
+    <span class="nav-sep">·</span>
+    <a class="nav-a" href="#sec-quiz">自我检测</a>
+    <div class="nav-ctrl">
+      <button class="btn-sm" onclick="toggleNight()">🌙 夜间</button>
+      
+    </div>
+  </div>
+</nav>
+
+<!-- SEARCH -->
+<div class="search-wrap">
+  
+  <div class="search-hint" id="searchHint"></div>
+</div>
+
+<div class="wrap" id="mainContent">
+
+<!-- ===== §1 逻辑结构 ===== -->
+<h2 class="section-title" id="sec-logic">🗺 本章逻辑结构 <span class="section-sub">整体框架一览</span></h2>
+<div class="logic-box">
+  <div class="logic-title">📌 第三章核心逻辑链</div>
+  <div class="flow-row">
+    <div class="flow-box">人性理论</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box">个体差异</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box">群体行为</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box">组织结构</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box">HRM策略</div>
+  </div>
+  <div class="flow-row" style="margin-top:8px;">
+    <div class="flow-desc" style="min-width:100%;background:var(--bg2);border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.8;">
+      <strong>核心逻辑：</strong>不同的<span class="kw">人性假设</span>导致不同的管理思想 → 了解<span class="kw">个体特征</span>（知觉/态度/胜任力/心理契约）才能精准配置人才 → 掌握<span class="kw">群体规律</span>（凝聚力/权力政治）才能建设高效团队 → 选择合适的<span class="kw">组织结构</span>才能适配不同发展阶段的HRM需求
+    </div>
+  </div>
+  <div class="flow-row" style="margin-top:14px;">
+    <div class="flow-box" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#3b82f6;color:#1e40af;">西方人性：经济人→社会人→自动人→复杂人</div>
+    <div class="flow-arr">vs</div>
+    <div class="flow-box" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:#059669;color:#065f46;">中国人性：性善论→性恶论→可塑论</div>
+  </div>
+</div>
+
+<!-- ===== §2 思维导图 ===== -->
+<h2 class="section-title" id="sec-mind">🧠 章节思维导图 <span class="section-sub">知识体系全览</span></h2>
+<div class="mindmap">
+  <div class="mm-center">第三章：组织与人力资源管理</div>
+  <div class="mm-grid">
+    <div class="mm-branch c1">
+      <div class="mm-branch-title">§1 人性理论</div>
+      <div class="mm-leaf">
+        <span>西方：经济人（X理论）</span>
+        <span>西方：社会人</span>
+        <span>西方：自动人（Y理论）</span>
+        <span>西方：复杂人（超Y理论）</span>
+        <span>中国：性善论（孟子）</span>
+        <span>中国：性恶论（荀子）</span>
+        <span>中国：可塑论（张载）</span>
+      </div>
+    </div>
+    <div class="mm-branch c2">
+      <div class="mm-branch-title">§2 个体特征</div>
+      <div class="mm-leaf">
+        <span>传记特征（年龄/性别/教育）</span>
+        <span>知觉与知觉偏差</span>
+        <span>态度与观念/价值观</span>
+        <span>性格特征</span>
+        <span>胜任力（Spencer模型）</span>
+        <span>心理契约（卢梭）</span>
+        <span>工作压力与满意度</span>
+      </div>
+    </div>
+    <div class="mm-branch c3">
+      <div class="mm-branch-title">§3 群体特征</div>
+      <div class="mm-leaf">
+        <span>群体规范</span>
+        <span>群体凝聚力</span>
+        <span>群体一致性</span>
+        <span>组织权力与政治</span>
+        <span>团队管理</span>
+      </div>
+    </div>
+    <div class="mm-branch c4">
+      <div class="mm-branch-title">§4 组织结构</div>
+      <div class="mm-leaf">
+        <span>简单结构阶段</span>
+        <span>官僚结构（机械结构）</span>
+        <span>有机结构阶段</span>
+        <span>传统：直线制/职能制</span>
+        <span>现代：事业部/矩阵制</span>
+        <span>新型：虚拟/网络/团队</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== K1 人性理论 ===== -->
+<h2 class="section-title" id="sec-k1">📚 知识点一：人性理论与人力资源管理 <span class="section-sub">★★★★★</span></h2>
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">01</div>
+    <div class="kcard-title-area">
+      <div class="kcard-title">人性假设理论体系（西方+中国）</div>
+      <div class="badge-row">
+        <span class="badge badge-page">📄 P069–P078</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">🎯 高考察概率</span>
+        <span class="badge badge-type">名词解释 / 简答 / 论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="kcard-grid">
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 核心定义</div>
+        <div class="kcard-item-content"><span class="kw">人性假设</span>是对人本性的价值判断，是哲学、管理学、经济学和社会学等许多社会科学领域的研究出发点。<strong>不同的人性理论将会演化出不同的人力资源管理思想，形成不同的方法，构成不同的体系。</strong></div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🧒 小学生版解释</div>
+        <div class="kcard-item-content">就像老师管同学：如果老师觉得"小孩子都是懒的"，就会用很多规矩和惩罚（X理论）；如果老师觉得"小孩子都想好好学"，就会给更多自由和鼓励（Y理论）。<br>你<strong>怎么看人</strong>，就<strong>怎么管人</strong>！</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">💡 助记口诀</div>
+        <div class="kcard-item-content"><span class="kw">西方四步走：</span>经→社→自→复<br>（经济人→社会人→自动人→复杂人）<br><br><span class="kw">中国三论：</span>孟子善、荀子恶、张载可塑<br>（善恶之间，人性可变）</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🏢 企业案例</div>
+        <div class="kcard-item-content">富士康早期管理（接近X理论）：流水线严格计件、纪律管控、钟点卡打卡。<br>谷歌管理（接近Y理论）：20%自由时间、弹性办公、让员工自主创新，Gmail和Maps就是这样诞生的。</div>
+      </div>
+    </div>
+
+    <div class="kcard-full">
+      <div class="kcard-full-label">📊 西方人性假设四阶段对照表</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>人性假设</th><th>代表理论</th><th>代表人物</th><th>核心观点</th><th>对应HRM方式</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong class="kw">经济人</strong></td>
+              <td>X理论</td>
+              <td>麦格雷戈（总结）<br>泰勒（实践）</td>
+              <td>人天生懒惰、厌恶工作、逃避责任；金钱是唯一动力</td>
+              <td>严格控制、奖惩分明、"胡萝卜加大棒"、科学管理</td>
+            </tr>
+            <tr>
+              <td><strong class="kw2">社会人</strong></td>
+              <td>人际关系理论</td>
+              <td>梅奥（霍桑实验）</td>
+              <td>人受社会、心理需求驱动；归属感和团体认同比金钱更重要</td>
+              <td>关注员工情感、营造良好人际关系、非正式群体管理</td>
+            </tr>
+            <tr>
+              <td><strong class="kw3">自动人<br>（自我实现人）</strong></td>
+              <td>Y理论</td>
+              <td>马斯洛、阿吉里斯、麦格雷戈</td>
+              <td>人并无好逸恶劳天性；工作本身可满足需求；人追求自我实现</td>
+              <td>工作丰富化、赋权授权、参与管理、内在激励</td>
+            </tr>
+            <tr>
+              <td><strong class="kw4">复杂人</strong></td>
+              <td>超Y理论</td>
+              <td>薛恩（Schein）</td>
+              <td>人的需要因人、因时、因环境而异；没有单一适用的管理方式</td>
+              <td>弹性管理、权变管理、因人而异、个性化激励</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="kcard-full">
+      <div class="kcard-full-label">🀄 中国传统人性理论对照表</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>理论</th><th>代表人物</th><th>核心主张</th><th>类比西方理论</th><th>对应HRM思想</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong class="kw">性善论</strong></td>
+              <td>孟子（儒家）</td>
+              <td>"人性之善也"，仁义礼智为人固有；"仁政"是必然结论</td>
+              <td>类似Y理论</td>
+              <td>关注员工需要，通过需求满足实施激励；仁政式管理</td>
+            </tr>
+            <tr>
+              <td><strong class="kw4">性恶论</strong></td>
+              <td>荀子</td>
+              <td>"人之性恶，其善者，伪也"；后天教育可以由恶变善</td>
+              <td>类似X理论</td>
+              <td>严格制度管理、奖惩模式；"胡萝卜加大棒"</td>
+            </tr>
+            <tr>
+              <td><strong class="kw2">可塑论</strong></td>
+              <td>张载、二程、朱熹（理学）</td>
+              <td>"天地之性"与"气质之性"；人性可善可恶，关键在塑造</td>
+              <td>类似复杂人</td>
+              <td>管理不仅是适应人性的过程，更是<strong>塑造人性的过程</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="hl-amber">
+        <strong>💡 教材立场（必背）：</strong>颜爱民教授倾向于<span class="kw">人性可塑论</span>，认为完全意义上的性恶和性善都难以全面反映人性特征。<br>
+        <strong>→ 管理不仅是对人性的适应过程，而且是对人性的塑造过程。</strong>
+      </div>
+    </div>
+
+    <details>
+      <summary>📋 复试回答模板 + 延伸追问</summary>
+      <div class="det-body">
+        <strong>回答模板：</strong><br>
+        ① <strong>定义</strong>：人性假设是对人本性的价值判断，是人力资源管理的哲学基础。<br>
+        ② <strong>西方四阶段</strong>：经济人（X理论/泰勒）→社会人（梅奥/霍桑）→自动人（Y理论/马斯洛）→复杂人（超Y/薛恩）<br>
+        ③ <strong>中国三论</strong>：性善论（孟子，类似Y）→性恶论（荀子，类似X）→可塑论（张载，教材推崇）<br>
+        ④ <strong>总结</strong>：不同人性假设演化出不同HRM方式，教材认为人性可塑论最符合管理实践。<br><br>
+        <strong>老师可能追问：</strong><br>
+        ① 为什么说Y理论在实践中不能完全适用？（因为绝大多数人接近X理论，追求安逸是本能）<br>
+        ② 中国现阶段适合哪种人性观下的管理？（可塑论：制度管理为主，人性化管理逐步推进）<br>
+        ③ 复杂人假设对绩效管理有什么启示？（因人而异，个性化激励，权变管理）<br><br>
+        <strong>管理学联系：</strong>人性假设 → 激励理论（第11章）→ 领导方式（路径目标理论）→ 战略HRM（第13章）
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== K2 个体特征 ===== -->
+<h2 class="section-title" id="sec-k2">📚 知识点二：个体特征与人力资源管理 <span class="section-sub">★★★★</span></h2>
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">02</div>
+    <div class="kcard-title-area">
+      <div class="kcard-title">传记特征、知觉、态度、性格</div>
+      <div class="badge-row">
+        <span class="badge badge-page">📄 P079–P088</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-prob">🎯 较高概率</span>
+        <span class="badge badge-type">名词解释 / 简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="kcard-grid">
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 传记特征</div>
+        <div class="kcard-item-content">指<span class="kw">年龄、性别、婚姻状况、教育背景</span>等客观信息。教育背景包括受教育程度、学校、专业、成绩等。一般受教育程度越高，工作学习能力越强；但也可能表现出更强烈个性，挑战管理。</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 知觉与知觉偏差</div>
+        <div class="kcard-item-content"><span class="kw">知觉</span>是人对客观环境和主体状态的感觉和解释过程。<br>知觉的主观性导致<strong>知觉偏差</strong>：在招聘面试中，考官受知觉偏差影响常常做出不正确判断；在绩效评估中，评估结果因知觉偏差而主观。</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 态度与价值观</div>
+        <div class="kcard-item-content"><span class="kw">态度</span>是个人对特定对象所持有的心理倾向，是外界刺激与个人反应之间的中介因素。<br><span class="kw">价值观</span>是个体的基本信念，对个体的行为起思想指导作用。约<strong>40%工作价值观</strong>通过遗传获得，更多由后天环境决定。</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🧒 小学生版解释</div>
+        <div class="kcard-item-content">你是不是戴眼镜的人看事情方式不一样？每个人的"眼镜"（知觉）都不同，这就是为什么同一件事大家看法不同。<br>而价值观就像你的"内心标准"，决定什么对你重要。</div>
+      </div>
+    </div>
+    <div class="hl-amber">
+      <strong>🔑 管理启示：</strong>在招聘和绩效评估中必须努力摒除知觉偏差，保证客观公正性。组织惯例对员工观念产生作用，进而影响行为，是支配员工行为的重要因素。
+    </div>
+    <details>
+      <summary>📋 知觉偏差的主要类型（复试延伸）</summary>
+      <div class="det-body">
+        常见知觉偏差类型：<br>
+        <strong>① 晕轮效应</strong>：以某一突出特征推断全面特征（以偏概全）<br>
+        <strong>② 首因效应</strong>：第一印象影响整体判断<br>
+        <strong>③ 近因效应</strong>：最近信息影响判断<br>
+        <strong>④ 投射效应</strong>：把自己的特质投射到他人身上<br>
+        <strong>⑤ 刻板印象</strong>：按群体特征套用到个体身上<br><br>
+        → HRM应用：建立结构化面试，使用客观评估工具，减少主观偏差
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== K3 胜任力 ===== -->
+<h2 class="section-title" id="sec-k3">📚 知识点三：胜任力与胜任力模型 <span class="section-sub">★★★★★ 高频考点</span></h2>
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">03</div>
+    <div class="kcard-title-area">
+      <div class="kcard-title">胜任力（Competency）模型 — Spencer夫妇</div>
+      <div class="badge-row">
+        <span class="badge badge-page">📄 P088–P093</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐⭐ 极重要</span>
+        <span class="badge badge-prob">🎯 高考察概率</span>
+        <span class="badge badge-type">名词解释 / 简答</span>
+        <span class="badge badge-exam">【历年真题】简述胜任力模型构建流程</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="kcard-grid">
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 专有名词解释</div>
+        <div class="kcard-item-content"><span class="kw">胜任力</span>（Competency）：能将某一工作（或组织、文化）中<strong>有卓越成就者与表现平平者区分开来</strong>的个人的潜在特征。它可以是动机、特质、自我形象、态度或价值观、某领域知识、认知或行为技能——任何可以被可靠测量或计数的、能显著区分<strong>优秀与一般绩效</strong>的个体特征。（Spencer夫妇）</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🧒 小学生版解释</div>
+        <div class="kcard-item-content">班级里有些同学学习特别好，有些普通。"胜任力"就是找出那些<strong>"学霸"和"普通同学"的差别在哪里</strong>——不只是考试分数，还有他们思考方式、努力程度、价值观的差别。</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">💡 助记口诀</div>
+        <div class="kcard-item-content"><span class="kw">胜任力三层：必差战</span><br>
+        必要胜任力：人人都要有<br>
+        差异胜任力：区分好与一般<br>
+        战略胜任力：企业核心竞争力<br><br>
+        <span class="kw">识别两方法：</span>静态（人的特征）+ 动态（行为角度）</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🏢 企业案例</div>
+        <div class="kcard-item-content">华为的胜任力模型：<br>
+        • 必要胜任力：基本技术技能（人人必须掌握）<br>
+        • 差异胜任力：创新思维、自我驱动力（区分优秀人才）<br>
+        • 战略胜任力：全球视野、5G研发能力（公司核心竞争力）</div>
+      </div>
+    </div>
+
+    <div class="kcard-full">
+      <div class="kcard-full-label">🏗 胜任力模型三层次（必背）</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>层次</th><th>定义</th><th>特点</th><th>HRM应用</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong class="kw">必要胜任力</strong></td>
+              <td>每一位员工都必须具备的基本知识和技能</td>
+              <td>可以通过培训开发出来</td>
+              <td>入职培训、岗前技能考核</td>
+            </tr>
+            <tr>
+              <td><strong class="kw3">差异胜任力</strong></td>
+              <td>用以区别员工一般绩效和优秀绩效，包括心智模式、特质、动机等</td>
+              <td>很难开发，但对长期绩效提高有益</td>
+              <td>绩效评估、人才选拔标准</td>
+            </tr>
+            <tr>
+              <td><strong class="kw4">战略胜任力</strong></td>
+              <td>组织内部最核心的胜任力，包括创新、高效、学习和专利技术</td>
+              <td>提高组织核心竞争能力和凝聚力</td>
+              <td>战略人才储备、核心人才保留</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="kcard-full">
+      <div class="kcard-full-label">🔍 胜任力识别两种方法</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div style="background:var(--bg2);border-radius:8px;padding:12px;">
+          <strong class="kw">方法一：静态识别（特征角度）</strong><br>
+          <span style="font-size:13px;">从人的特征角度出发，将胜任力视为与人特征相关的现象，这些特征独立于情境，能适应较广范围的工作活动</span>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:12px;">
+          <strong class="kw2">方法二：动态识别（行为角度）</strong><br>
+          <span style="font-size:13px;">从行为角度识别，将胜任力看作特定情境下知识、技能、态度、动机等的具体运用的行为表现形式。通过可观察的行为指标反映胜任力</span>
+        </div>
+      </div>
+    </div>
+
+    <details>
+      <summary>📋 胜任力模型构建流程（复试简答必备）</summary>
+      <div class="det-body">
+        <strong>胜任力模型构建的一般流程：</strong><br>
+        ① <strong>确定效标</strong>：确定工作绩效的衡量标准，区分优秀表现者与普通表现者<br>
+        ② <strong>选取效标样本</strong>：选取优秀绩效者和普通绩效者各一组<br>
+        ③ <strong>收集数据</strong>：通过行为事件访谈（BEI）、调查问卷、专家小组等方法获取数据<br>
+        ④ <strong>分析数据</strong>：建立胜任力词典，识别区分优秀与普通绩效的关键胜任特征<br>
+        ⑤ <strong>建立模型</strong>：确定胜任力项目及其层次，建立胜任力模型<br>
+        ⑥ <strong>验证模型</strong>：用新的效标样本验证模型的有效性<br><br>
+        <strong>图示（教材图3.2）：</strong>组织目标 + 个人目标 → 行为锥测定 → 胜任力模型 → HRM各职能运作
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== K4 心理契约 ===== -->
+<h2 class="section-title" id="sec-k4">📚 知识点四：心理契约 <span class="section-sub">★★★★</span></h2>
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">04</div>
+    <div class="kcard-title-area">
+      <div class="kcard-title">心理契约（Psychological Contract）</div>
+      <div class="badge-row">
+        <span class="badge badge-page">📄 P093–P096</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-prob">🎯 较高概率</span>
+        <span class="badge badge-type">名词解释 / 简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="kcard-grid">
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 专有名词解释</div>
+        <div class="kcard-item-content"><span class="kw">心理契约</span>（Psychological Contract）：员工与雇主之间关于双方<strong>相互期望和义务</strong>的一套内隐的、非正式的、未书面化的主观信念体系。它不同于正式劳动合同，强调的是双方内心深处的期望与承诺。（卢梭，Rousseau，1989年）</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🧒 小学生版解释</div>
+        <div class="kcard-item-content">就像你和父母之间没有写在纸上的"约定"：你认真读书，父母就会照顾你、支持你。如果父母突然不给零花钱，你会感到"被骗了"——这种感觉就是心理契约被违背。<br>公司和员工之间也有这种<strong>"心里的合同"</strong>。</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">💡 助记口诀</div>
+        <div class="kcard-item-content"><span class="kw">心理契约两特点：</span><br>
+        无形（未书面化）<br>
+        双向（员工←→雇主）<br><br>
+        <span class="kw">两种类型：</span><br>
+        交易型（短期、经济交换）<br>
+        关系型（长期、情感投入）</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🏢 企业案例</div>
+        <div class="kcard-item-content">某互联网公司员工入职时，老板承诺"努力工作就会晋升"，但三年后因为部门重组，晋升机会消失。<br>虽然劳动合同未违反，但<strong>心理契约被破坏</strong>，员工大量离职，士气大跌——这就是心理契约违背的典型案例。</div>
+      </div>
+    </div>
+
+    <div class="kcard-full">
+      <div class="kcard-full-label">📊 心理契约两种类型对比</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th>交易型心理契约</th><th>关系型心理契约</th></tr></thead>
+          <tbody>
+            <tr><td><strong>时间框架</strong></td><td>短期、有限</td><td>长期、开放式</td></tr>
+            <tr><td><strong>交换焦点</strong></td><td>经济利益（工资、福利）</td><td>情感、发展机会、认同感</td></tr>
+            <tr><td><strong>典型情境</strong></td><td>临时工、兼职、外包</td><td>核心员工、管理层</td></tr>
+            <tr><td><strong>违背影响</strong></td><td>换工作（较低情感代价）</td><td>大幅降低工作投入、信任崩塌</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="hl-green">
+      <strong>💡 管理启示：</strong>企业应重视心理契约的管理，招聘时做出的承诺要兑现；当外部环境变化需要调整时，应与员工充分沟通，尽量维护心理契约的完整性，降低员工离职倾向和组织公民行为的下降。
+    </div>
+  </div>
+</div>
+
+<!-- ===== K5 群体特征 + 工作压力 ===== -->
+<h2 class="section-title" id="sec-k5">📚 知识点五：群体特征与工作压力 <span class="section-sub">★★★★</span></h2>
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">05</div>
+    <div class="kcard-title-area">
+      <div class="kcard-title">群体凝聚力 · 工作压力倒U型曲线 · 组织权力</div>
+      <div class="badge-row">
+        <span class="badge badge-page">📄 P097–P106</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-prob">🎯 较高概率</span>
+        <span class="badge badge-type">简答 / 案例分析</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="kcard-grid">
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 群体凝聚力</div>
+        <div class="kcard-item-content"><span class="kw">群体凝聚力</span>：作用于个体使之保持在群体内的一种力量。不论正式群体还是非正式群体都具有一定紧密性或共同的态度、行为和任务，这种紧密性就成为群体凝聚力。</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 工作压力倒U型曲线</div>
+        <div class="kcard-item-content"><span class="kw">工作压力与工作绩效</span>呈<strong>倒U型曲线</strong>关系（Karasek，1979）：<br>
+        • 适度压力→激发潜能→绩效提升<br>
+        • 压力过低→缺乏动力→绩效低<br>
+        • 压力超过临界点→焦虑→绩效下降</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🧒 小学生版解释（倒U）</div>
+        <div class="kcard-item-content">就像橡皮筋：不拉没弹力；适当拉紧弹力最好；拉太紧就断了。<br>工作压力也一样：<strong>刚好的压力让你发挥最好，太大了就"断弦"了。</strong></div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 组织权力</div>
+        <div class="kcard-item-content"><span class="kw">权力</span>：按预想方式改变他人态度或行为的能力（孔茨）。权力是依赖的函数——<strong>依赖程度越强，权力越大</strong>。<br>在招聘中，决策者可能倾向于选择"更像自己"的候选人，以扩大权力联盟。</div>
+      </div>
+    </div>
+
+    <div class="kcard-full">
+      <div class="kcard-full-label">📈 工作压力倒U型曲线详解</div>
+      <div style="background:var(--bg2);border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:13px;line-height:2;">
+          绩效高峰 ▲<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▲<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;╱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;╲<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;╱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;╲<br>
+          ——●————————————●——→ 压力水平<br>
+          低绩效&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;低绩效<br>
+          （压力过低）&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（压力过高）
+        </div>
+        <div style="font-size:13px;margin-top:8px;color:#b45309;">
+          <strong>关键：</strong>组织应将员工压力维持在最优区间，避免极端
+        </div>
+      </div>
+      <div class="hl-green" style="margin-top:10px;">
+        <strong>压力管理策略（教材）：</strong>企业应从<strong>组织因素、角色认知、人际关系、职业发展</strong>4个方面减轻员工工作压力，通过压力缓解提高工作满意度。
+      </div>
+    </div>
+
+    <details>
+      <summary>📋 群体规范、一致性与HRM（复试延伸）</summary>
+      <div class="det-body">
+        <strong>群体规范：</strong>群体成员共同遵守的行为准则和期望，对成员行为有强制性引导作用<br>
+        <strong>群体凝聚力影响因素：</strong>群体规模（小群体凝聚力更强）、成员相似性、外部威胁、成功经历<br>
+        <strong>高凝聚力的双刃剑：</strong>高凝聚力可以提高员工忠诚度和协作效率，但如果群体目标与组织目标不一致，可能形成"小团体"，降低组织整体绩效<br><br>
+        <strong>组织政治行为：</strong>由于隐蔽性，使得制度保障下的利益得不到保障；对组织政治行为知觉高的人与工作满意度呈<span class="kw">负相关</span>关系
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== K6 组织结构 ===== -->
+<h2 class="section-title" id="sec-k6">📚 知识点六：组织结构与人力资源管理 <span class="section-sub">★★★★</span></h2>
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">06</div>
+    <div class="kcard-title-area">
+      <div class="kcard-title">组织结构演变三阶段与HRM适配</div>
+      <div class="badge-row">
+        <span class="badge badge-page">📄 P106–P112</span>
+        <span class="badge badge-imp">⭐⭐⭐⭐ 重要</span>
+        <span class="badge badge-prob">🎯 较高概率</span>
+        <span class="badge badge-type">简答 / 论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="kcard-grid">
+      <div class="kcard-item">
+        <div class="kcard-item-label">📖 核心定义</div>
+        <div class="kcard-item-content"><span class="kw">组织结构</span>：组织各个部分以及它们之间关系的一种模式，是组织的框架。<br><strong>组织结构演变的根源在于人力资源的演变</strong>——整个社会的人力资源特点决定着整体组织结构的特点。</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">💡 助记口诀</div>
+        <div class="kcard-item-content"><span class="kw">三阶段：简→官→有</span><br>
+        简单结构（工人无技能）<br>
+        官僚结构（机械化大生产）<br>
+        有机结构（知识经济时代）<br><br>
+        <span class="kw">核心规律：</span>人力资源素质↑→组织结构扁平化↑</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🧒 小学生版解释</div>
+        <div class="kcard-item-content">公司就像一支球队：<br>
+        • 简单结构=小学球队，队长说了算<br>
+        • 官僚结构=专业球队，严格分工+战术手册<br>
+        • 有机结构=现代球队，每个人都能临场决策，灵活配合</div>
+      </div>
+      <div class="kcard-item">
+        <div class="kcard-item-label">🏢 企业案例</div>
+        <div class="kcard-item-content">阿里巴巴的组织演变：<br>
+        • 创业期（简单结构）：马云一人拍板<br>
+        • 上市前（官僚结构）：严格BU划分、层级汇报<br>
+        • 现在（有机结构）：阿里云、蚂蚁金服等独立公司，扁平化、授权团队</div>
+      </div>
+    </div>
+
+    <div class="kcard-full">
+      <div class="kcard-full-label">📊 组织结构三阶段演变全览（必背）</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>阶段</th><th>人力资源特点</th><th>组织结构特征</th><th>对应HRM重点</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong class="kw">简单结构</strong><br>（资本主义初期）</td>
+              <td>工人无技能，没受教育，对组织依赖性强</td>
+              <td>无明确分工，管理随意，无正规制度，资本家集权</td>
+              <td>以金钱激励为主，强制管理</td>
+            </tr>
+            <tr>
+              <td><strong class="kw2">官僚结构</strong><br>（机械结构）</td>
+              <td>工人掌握操作技术，有基本文化知识</td>
+              <td>僵化部门制，高度正规化，有限信息网络，集权化，员工参与少</td>
+              <td>标准化操作规程，绩效计件，培训技术技能</td>
+            </tr>
+            <tr>
+              <td><strong class="kw3">有机结构</strong><br>（20世纪80年代后）</td>
+              <td>受教育程度大幅提升，个人知识与能力成为新型资本</td>
+              <td>扁平化，多功能跨等级团队，高员工参与，信息自由流通</td>
+              <td>自主管理，知识激励，团队建设，职业发展</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="kcard-full">
+      <div class="kcard-full-label">📊 主要组织结构模式对比（传统→现代→新型）</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>类型</th><th>代表模式</th><th>优点</th><th>缺点</th><th>适用情境</th></tr></thead>
+          <tbody>
+            <tr>
+              <td rowspan="3"><strong>传统结构</strong></td>
+              <td>直线制</td>
+              <td>命令统一，管理简单</td>
+              <td>要求领导万能</td>
+              <td>小型企业</td>
+            </tr>
+            <tr>
+              <td>职能制</td>
+              <td>专业化程度高</td>
+              <td>多头领导，协调困难</td>
+              <td>大中型功能性企业</td>
+            </tr>
+            <tr>
+              <td>直线职能制</td>
+              <td>统一指挥+专业参谋</td>
+              <td>直线与职能之间张力</td>
+              <td>多数制造业企业</td>
+            </tr>
+            <tr>
+              <td rowspan="3"><strong>现代结构</strong></td>
+              <td>事业部制（M型）</td>
+              <td>适应多元化，分权灵活</td>
+              <td>资源重复，协调成本高</td>
+              <td>大型多元化企业</td>
+            </tr>
+            <tr>
+              <td>矩阵制</td>
+              <td>专业与项目结合，资源共享</td>
+              <td>双头领导，权责不清</td>
+              <td>项目型企业、咨询公司</td>
+            </tr>
+            <tr>
+              <td>控股型</td>
+              <td>财务管控，各子公司独立</td>
+              <td>协同效应弱</td>
+              <td>多元化集团</td>
+            </tr>
+            <tr>
+              <td rowspan="3"><strong>新型结构</strong></td>
+              <td>网络结构</td>
+              <td>极度灵活，外包非核心业务</td>
+              <td>核心能力难以掌控</td>
+              <td>互联网企业、平台经济</td>
+            </tr>
+            <tr>
+              <td>虚拟组织</td>
+              <td>超越时空，快速响应</td>
+              <td>信任问题，协调困难</td>
+              <td>跨国临时项目</td>
+            </tr>
+            <tr>
+              <td>团队结构</td>
+              <td>1+1&gt;2，高绩效</td>
+              <td>团队协调成本</td>
+              <td>知识密集型企业</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <details>
+      <summary>📋 复试回答模板：组织结构与HRM的关系</summary>
+      <div class="det-body">
+        <strong>标准回答思路：</strong><br>
+        ① <strong>定义</strong>：组织结构是组织各部分及其关系的模式；组织结构演变的根源在于人力资源的演变。<br>
+        ② <strong>演变三阶段</strong>：简单结构→官僚结构→有机结构，与人力资源素质提升相对应。<br>
+        ③ <strong>不同结构的HRM特点</strong>：传统结构HRM强调规范化和分工；现代结构HRM注重专业化和授权；新型有机结构HRM强调柔性管理、团队自治和知识激励。<br>
+        ④ <strong>总结</strong>：组织结构和HRM的和谐适应是HRM的重要问题，不同组织结构对HRM的内容、方式与手段都有重要影响。<br><br>
+        <strong>联系章节：</strong>组织结构（第3章）→战略与组织结构匹配（战略管理）→HRM战略（第13章）
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== 对比表 ===== -->
+<h2 class="section-title" id="sec-compare">🔄 易混概念对比总结 <span class="section-sub">避免混淆</span></h2>
+<div class="logic-box">
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>概念A</th><th>概念B</th><th>核心区别</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>X理论（经济人）</strong><br>人天生懒惰，需外力控制</td>
+          <td><strong>Y理论（自动人）</strong><br>人追求自我实现，工作本身有价值</td>
+          <td>X理论→外部激励（金钱/惩罚）；Y理论→内在激励（成就感/自主性）</td>
+        </tr>
+        <tr>
+          <td><strong>超Y理论（复杂人）</strong><br>人的需要因人因时因境而异</td>
+          <td><strong>Y理论（自动人）</strong><br>假设所有人都追求自我实现</td>
+          <td>超Y理论≠Y理论；超Y强调无万能管理法，需权变；Y理论假设过于理想化</td>
+        </tr>
+        <tr>
+          <td><strong>心理契约</strong><br>未书面化的主观期望体系</td>
+          <td><strong>劳动合同</strong><br>法律层面书面约定</td>
+          <td>心理契约：无形、主观、双向期望；劳动合同：有形、法律、明确条款</td>
+        </tr>
+        <tr>
+          <td><strong>胜任力（Competency）</strong><br>区分优秀与一般绩效的特征</td>
+          <td><strong>能力（Ability）</strong><br>完成某项工作的一般能力</td>
+          <td>胜任力强调区分性（卓越vs一般）；能力只表示"能做什么"，不强调区分</td>
+        </tr>
+        <tr>
+          <td><strong>群体凝聚力</strong><br>成员保持在群体内的力量</td>
+          <td><strong>群体规范</strong><br>成员共同遵守的行为准则</td>
+          <td>凝聚力是"向心力"（动态）；规范是"行为标准"（静态）；两者相互影响</td>
+        </tr>
+        <tr>
+          <td><strong>官僚结构（机械结构）</strong><br>高度正规化、集权化</td>
+          <td><strong>有机结构</strong><br>扁平化、弹性、高参与</td>
+          <td>官僚结构：适合稳定环境、技能单一的员工；有机结构：适合动态环境、高素质员工</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 历年真题 ===== -->
+<h2 class="section-title" id="sec-exam">📝 历年真题汇总 <span class="section-sub">2016-2025</span></h2>
+<div class="exam-grid">
+  <div class="exam-card">
+    <div class="exam-year">历年复试·人力模块</div>
+    <div class="exam-q"><strong>简述胜任力模型的三个层次及其HRM应用</strong><br><span style="font-size:12px;color:#888;">（高频考点，需掌握必要/差异/战略胜任力的定义和区分）</span></div>
+  </div>
+  <div class="exam-card">
+    <div class="exam-year">历年复试·人力模块</div>
+    <div class="exam-q"><strong>简述胜任力模型的构建流程</strong><br><span style="font-size:12px;color:#888;">（效标选取→BEI访谈→数据分析→模型建立→验证）</span></div>
+  </div>
+  <div class="exam-card">
+    <div class="exam-year">预测题·高概率</div>
+    <div class="exam-q"><strong>什么是心理契约？心理契约被违背会产生什么后果？</strong><br><span style="font-size:12px;color:#888;">（名词解释+影响分析，联系员工关系章节）</span></div>
+  </div>
+  <div class="exam-card">
+    <div class="exam-year">预测题·高概率</div>
+    <div class="exam-q"><strong>麦格雷戈的X理论和Y理论有何区别？各自对应什么HRM实践？</strong><br><span style="font-size:12px;color:#888;">（经典理论对比，结合激励理论讲述）</span></div>
+  </div>
+  <div class="exam-card">
+    <div class="exam-year">预测题·较高概率</div>
+    <div class="exam-q"><strong>简述工作压力与工作绩效的关系，并说明企业如何进行压力管理。</strong><br><span style="font-size:12px;color:#888;">（倒U型曲线+4个维度的压力管理）</span></div>
+  </div>
+  <div class="exam-card">
+    <div class="exam-year">预测题·较高概率</div>
+    <div class="exam-q"><strong>组织结构演变与人力资源演变的关系是什么？（论述）</strong><br><span style="font-size:12px;color:#888;">（三阶段演变，HRM适配变化，可结合中国情境）</span></div>
+  </div>
+  <div class="exam-card">
+    <div class="exam-year">预测题·一般概率</div>
+    <div class="exam-q"><strong>中国传统人性理论（性善论/性恶论/可塑论）对当代人力资源管理有何启示？</strong><br><span style="font-size:12px;color:#888;">（教材特色题，需联系中国实际）</span></div>
+  </div>
+  <div class="exam-card">
+    <div class="exam-year">案例分析·综合</div>
+    <div class="exam-q"><strong>某互联网企业实行弹性工作制，员工自主选择工作时间。请从人性假设角度分析该政策的理论依据，并评估其风险。</strong><br><span style="font-size:12px;color:#888;">（Y理论/复杂人假设→弹性管理的优势与局限）</span></div>
+  </div>
+</div>
+
+<!-- ===== 本章终极串联 ===== -->
+<h2 class="section-title" id="sec-link">🔗 本章知识终极串联 <span class="section-sub">逻辑流程</span></h2>
+<div class="logic-box">
+  <div class="logic-title">第三章核心逻辑串联</div>
+  <div style="background:var(--bg2);border-radius:10px;padding:16px;font-size:13.5px;line-height:2.2;">
+    <div><span class="kw">出发点</span>：不同<strong>人性假设</strong>（经济人/社会人/自动人/复杂人）→ 决定管理者的<strong>管理风格和HRM策略</strong></div>
+    <div>⬇</div>
+    <div><span class="kw">个体层面</span>：了解<strong>个体特征</strong>（传记特征/知觉/态度/性格/胜任力/心理契约/工作压力）→ 精准匹配人与岗位，制定个性化激励</div>
+    <div>⬇</div>
+    <div><span class="kw">群体层面</span>：管理<strong>群体行为</strong>（规范/凝聚力/权力政治）→ 建设高绩效团队，维护组织公平氛围</div>
+    <div>⬇</div>
+    <div><span class="kw">组织层面</span>：选择适合的<strong>组织结构</strong>（简单→官僚→有机）→ 配套相应的HRM体系（标准化→专业化→柔性化）</div>
+    <div>⬇</div>
+    <div><span class="kw">联系第5章（人力资源规划）</span>：人性假设+组织结构+个体/群体特征 → 决定企业人力资源战略方向</div>
+    <div>⬇</div>
+    <div><span class="kw">联系第13章（战略HRM）</span>：人性可塑论+有机结构+胜任力模型 → 战略人力资源管理体系的基础</div>
+  </div>
+</div>
+
+<!-- ===== 30秒复习 ===== -->
+<h2 class="section-title" id="sec-quick">⚡ 30秒复习模块（超简版）</h2>
+<div class="quick-wrap">
+  <div class="quick-title">⚡ 第三章核心要点 — 30秒快速回顾</div>
+  <div class="quick-grid">
+    <div class="quick-item">
+      <div class="quick-item-t">西方人性四阶段</div>
+      <div class="quick-item-c">经济人（X）→ 社会人 → 自动人（Y）→ 复杂人（超Y）</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-item-t">中国人性三论</div>
+      <div class="quick-item-c">孟子性善（≈Y）→ 荀子性恶（≈X）→ 张载可塑（教材推崇）</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-item-t">胜任力三层次</div>
+      <div class="quick-item-c">必要（人人可培训）→ 差异（区分优秀/一般）→ 战略（核心竞争力）</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-item-t">心理契约</div>
+      <div class="quick-item-c">无形/非正式/双向期望 | 交易型 vs 关系型</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-item-t">工作压力倒U曲线</div>
+      <div class="quick-item-c">适度压力→绩效最高 | 过低/过高压力→绩效下降</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-item-t">组织结构三阶段</div>
+      <div class="quick-item-c">简单（无技能）→ 官僚（机械化）→ 有机（知识经济）</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-item-t">人性可塑论核心</div>
+      <div class="quick-item-c">管理不仅是适应人性，更是塑造人性的过程</div>
+    </div>
+    <div class="quick-item">
+      <div class="quick-item-t">知觉偏差的HRM影响</div>
+      <div class="quick-item-c">面试/绩效评估应建立客观标准，减少主观偏差</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 背诵版总结 ===== -->
+<h2 class="section-title" id="sec-recite">🎯 背诵版总结（复试口述版）</h2>
+<div class="recite-wrap">
+  <div class="recite-title">🎯 第三章核心口述要点（背诵版）</div>
+  <div class="recite-p">
+    <span class="kw">【人性理论】</span>西方人性假设历经<span class="kw">经济人、社会人、自动人、复杂人</span>四个阶段，分别对应<span class="kw">X理论、社会关系理论、Y理论、超Y理论</span>。中国传统有<span class="kw">性善论（孟子）、性恶论（荀子）、可塑论（张载）</span>三种，颜爱民教授认为<strong>人性可塑论</strong>最接近管理实践——管理不仅是对人性的适应，更是<strong>塑造人性的过程</strong>。
+  </div>
+  <div class="recite-p">
+    <span class="kw">【个体特征】</span>包括传记特征（年龄/性别/教育）、知觉（易产生偏差，影响招聘和绩效评估）、态度与价值观（约40%价值观由遗传决定）、性格（比较稳定的行为方式），以及<span class="kw">工作压力与绩效的倒U型关系</span>（Karasek，1979）——适度压力激发绩效，过高过低均不利。
+  </div>
+  <div class="recite-p">
+    <span class="kw">【胜任力】</span>Spencer夫妇定义：能将<strong>卓越成就者与表现平平者区分开来</strong>的个人潜在特征。三层次：<span class="kw">必要胜任力</span>（基本技能，可培训）→<span class="kw">差异胜任力</span>（区分优劣，难开发）→<span class="kw">战略胜任力</span>（核心竞争力，提升组织竞争能力）。识别方法：静态（特征角度）+动态（行为角度）。
+  </div>
+  <div class="recite-p">
+    <span class="kw">【心理契约】</span>（卢梭，1989）：员工与雇主间关于相互期望和义务的<strong>内隐、非正式、未书面化</strong>的主观信念体系。分<span class="kw">交易型</span>（短期/经济）和<span class="kw">关系型</span>（长期/情感）。心理契约违背→信任崩塌→离职意愿上升→绩效下降。
+  </div>
+  <div class="recite-p">
+    <span class="kw">【组织结构三阶段】</span>根源在人力资源演变：<span class="kw">简单结构</span>（资本主义初期，工人无技能，集权随意）→<span class="kw">官僚结构</span>（工业化，高度正规化，集权）→<span class="kw">有机结构</span>（知识经济，扁平化，高参与，团队自治）。HRM随之从标准化→专业化→柔性化演变。
+  </div>
+</div>
+
+<!-- ===== 自我检测 ===== -->
+<h2 class="section-title" id="sec-quiz">✏️ 课后自我检测 <span class="section-sub">教材题+历年题+预测题</span></h2>
+<div class="quiz-wrap">
+  <div class="quiz-item">
+    <div class="quiz-q">Q1. 【名词解释】什么是胜任力（Competency）？请结合Spencer夫妇的定义，说明其三个层次。</div>
+    <details class="quiz-ans">
+      <summary>▶ 查看参考答案</summary>
+      <div class="det-body">
+        <strong>胜任力定义：</strong>能将某一工作（或组织、文化）中有卓越成就者与表现平平者区分开来的个人潜在特征，包括动机、特质、自我形象、态度、知识、认知或行为技能。（Spencer夫妇）<br><br>
+        <strong>三层次：</strong><br>
+        ① 必要胜任力：每位员工都必须具备的基本知识和技能，可以通过培训开发。<br>
+        ② 差异胜任力：区分一般绩效和优秀绩效，包括心智模式、特质、动机，难以开发但对长期绩效有益。<br>
+        ③ 战略胜任力：组织最核心的胜任力，包括创新、高效、学习和专利技术，提高组织核心竞争能力。
+      </div>
+    </details>
+  </div>
+  <div class="quiz-item">
+    <div class="quiz-q">Q2. 【简答】简述麦格雷戈X理论和Y理论的核心假设及其对应的人力资源管理方式。</div>
+    <details class="quiz-ans">
+      <summary>▶ 查看参考答案</summary>
+      <div class="det-body">
+        <strong>X理论（经济人）：</strong>人天生懒惰，厌恶工作，逃避责任；只受金钱驱动。<br>→ HRM方式：严格控制、惩罚威胁、"胡萝卜加大棒"、科学管理、计件工资制<br><br>
+        <strong>Y理论（自动人）：</strong>人并非天生懒惰；工作本身可以满足需求；人追求自我实现。<br>→ HRM方式：工作丰富化、赋权授权、参与管理、内在激励、弹性工作<br><br>
+        <strong>教材补充：</strong>颜爱民认为，绝大多数普通人更接近X理论人性观，但少数卓越者接近Y理论。管理实践应根据人性特征权变选择。
+      </div>
+    </details>
+  </div>
+  <div class="quiz-item">
+    <div class="quiz-q">Q3. 【简答】什么是心理契约？心理契约被违背会对员工行为产生什么影响？（联系HRM实践）</div>
+    <details class="quiz-ans">
+      <summary>▶ 查看参考答案</summary>
+      <div class="det-body">
+        <strong>定义：</strong>心理契约（卢梭，1989）是员工与雇主之间关于相互期望和义务的内隐、非正式、未书面化的主观信念体系。<br><br>
+        <strong>违背影响：</strong><br>
+        ① 工作满意度下降<br>
+        ② 组织承诺降低<br>
+        ③ 离职意愿上升<br>
+        ④ 工作绩效下降<br>
+        ⑤ 信任危机，影响组织公民行为<br><br>
+        <strong>HRM启示：</strong>① 招聘时做出的承诺必须兑现；② 环境变化时及时与员工沟通；③ 构建良好的职业发展通道维护关系型心理契约
+      </div>
+    </details>
+  </div>
+  <div class="quiz-item">
+    <div class="quiz-q">Q4. 【简答】简述工作压力与工作绩效的关系，并说明企业应如何进行工作压力管理。</div>
+    <details class="quiz-ans">
+      <summary>▶ 查看参考答案</summary>
+      <div class="det-body">
+        <strong>倒U型关系（Karasek，1979）：</strong><br>
+        工作压力与工作绩效呈倒U型曲线关系。适度压力→产生危机意识→激发潜能→绩效最高；压力过低→缺乏动力；压力超过临界点→焦虑、绩效下降。<br><br>
+        <strong>压力管理策略（教材4个维度）：</strong><br>
+        ① 组织因素：优化工作设计，合理分配工作量<br>
+        ② 角色认知：清晰角色定位，减少角色模糊和角色冲突<br>
+        ③ 人际关系：建立良好团队氛围，减少职场政治<br>
+        ④ 职业发展：提供清晰的晋升路径和职业发展机会
+      </div>
+    </details>
+  </div>
+  <div class="quiz-item">
+    <div class="quiz-q">Q5. 【论述】组织结构的演变与人力资源的演变有何内在联系？请结合三个历史阶段进行论述。</div>
+    <details class="quiz-ans">
+      <summary>▶ 查看参考答案</summary>
+      <div class="det-body">
+        <strong>核心观点（教材原句）：</strong>"组织结构演变的根源在于人力资源的演变。整个社会的人力资源特点决定着整体组织结构的特点。"<br><br>
+        <strong>三阶段分析：</strong><br>
+        ① 简单结构阶段（资本主义初期）：工人无技能、无教育、高依赖性→简单集权结构，无正规分工<br>
+        ② 官僚结构阶段（工业化时期）：工人具备基本技能和文化知识→高度正规化的机械官僚结构，科学管理盛行<br>
+        ③ 有机结构阶段（20世纪80年代后，知识经济）：个人知识与能力成为新型资本，不再依赖传统资本→扁平化、多功能团队、高参与度的有机结构<br><br>
+        <strong>结论：</strong>组织结构与HRM必须和谐适应。随着人力资源素质不断提升，HRM应从标准化管理转向知识激励、弹性管理和职业发展，才能充分发挥人力资源价值。
+      </div>
+    </details>
+  </div>
+  <div class="quiz-item">
+    <div class="quiz-q">Q6. 【预测案例】某科技创业公司，员工以90后为主，学历高、个性强。CEO认为"既然大家都这么能干，应该让他们自由发挥"，于是几乎没有KPI和管理制度。结果员工表现参差不齐。请从人性假设角度分析问题所在，并提出改进建议。</div>
+    <details class="quiz-ans">
+      <summary>▶ 查看参考答案</summary>
+      <div class="det-body">
+        <strong>问题诊断：</strong><br>
+        CEO的做法基于Y理论（自动人/自我实现人），认为高学历员工都具有内在动力和自律性，无须外部管控。<br><br>
+        <strong>颜爱民教材观点：</strong>"只有极少数圣贤具有Y理论所述人性特征；绝大多数普通人更接近X理论人性观，追求安逸，趋利避害是其本能。压力产生动力。"<br><br>
+        <strong>问题本质：</strong>忽视了人的复杂性（复杂人假设），高估了所有员工的自我管理能力；同时忽视了适度压力对绩效的激励作用（倒U型曲线）。<br><br>
+        <strong>改进建议：</strong><br>
+        ① 建立基本制度框架（适度官僚结构+有机结构结合）<br>
+        ② 引入OKR等目标管理，让员工有方向感<br>
+        ③ 基于胜任力模型差异化管理（核心人才给更多自主权，普通员工加强过程管理）<br>
+        ④ 维护良好的心理契约，兼顾关系型和交易型激励<br>
+        ⑤ 权变管理：因人而异，而非"一刀切"的放权
+      </div>
+    </details>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
+<footer>
+  <p>中南大学企业管理学硕复试笔记 · 《人力资源管理》第3版 · 颜爱民</p>
+  <p style="margin-top:6px;">第三章 组织与人力资源管理 · 生成日期：2026-03-08</p>
+  <p style="margin-top:4px; color:#ccc;">本笔记仅供学习参考，所有内容以原版教材为准</p>
+</footer>
+
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<script>
+// Night mode
+function toggleNight(){
+  document.body.classList.toggle('night');
+  localStorage.setItem('nightMode', document.body.classList.contains('night'));
+}
+if(localStorage.getItem('nightMode')==='true') document.body.classList.add('night');
+
+// Back to top
+window.addEventListener('scroll',function(){
+  document.getElementById('backTop').classList.toggle('show', window.scrollY>300);
+});
+
+function liveSearch(q){
+  clearMarks();
+  const hint = document.getElementById('searchHint');
+  if(!q.trim()){ hint.textContent=''; return; }
+  const body = document.getElementById('mainContent');
+  const count = markText(body, q.trim());
+  hint.textContent = count ? `找到 ${count} 处匹配` : '未找到匹配内容';
+  if(count) document.querySelector('mark.sh').scrollIntoView({behavior:'smooth', block:'center'});
+}
+function clearMarks(){
+  document.querySelectorAll('mark.sh').forEach(m=>{
+    const t = document.createTextNode(m.textContent);
+    m.parentNode.replaceChild(t,m);
+  });
+  document.getElementById('mainContent').normalize();
+}
+function markText(node, q){
+  let count=0;
+  if(node.nodeType===3){
+    const idx=node.textContent.toLowerCase().indexOf(q.toLowerCase());
+    if(idx>-1){
+      const range=document.createRange();
+      range.setStart(node,idx); range.setEnd(node,idx+q.length);
+      const mark=document.createElement('mark');
+      mark.className='sh'; range.surroundContents(mark); count++;
+    }
+  } else if(node.nodeType===1 && !['SCRIPT','STYLE','INPUT'].includes(node.tagName)){
+    [...node.childNodes].forEach(c=>{ count+=markText(c,q); });
+  }
+  return count;
+}
+
+// Fade in on scroll
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.style.animationPlayState='running'; });
+},{threshold:0.1});
+document.querySelectorAll('.kcard,.logic-box,.mindmap,.exam-card').forEach(el=>{
+  el.style.animationPlayState='paused';
+  observer.observe(el);
+});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>

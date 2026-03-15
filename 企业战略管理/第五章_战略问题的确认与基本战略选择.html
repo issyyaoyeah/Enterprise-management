@@ -1,0 +1,1981 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第五章 战略问题的确认与基本战略选择 | 中南大学企业管理学硕复试笔记</title>
+<style>
+/* ======== CSS 变量 ======== */
+:root{
+  --bg:#f0f4f8;
+  --bg2:#ffffff;
+  --bg3:#e8edf3;
+  --nav-bg:#1a2744;
+  --nav-text:#e8edf3;
+  --card-bg:#ffffff;
+  --card-border:#dde3ea;
+  --text:#1a2032;
+  --text2:#4a5568;
+  --text3:#718096;
+  --accent1:#2563eb;
+  --accent2:#7c3aed;
+  --accent3:#059669;
+  --accent4:#d97706;
+  --accent5:#dc2626;
+  --accent6:#0891b2;
+  --tag-bg:#eff6ff;
+  --tag-text:#1d4ed8;
+  --kw-bg:#fef3c7;
+  --kw-text:#92400e;
+  --kw2-bg:#d1fae5;
+  --kw2-text:#065f46;
+  --quote-bg:#f8f6ff;
+  --quote-border:#7c3aed;
+  --table-head:#1a2744;
+  --table-head-text:#ffffff;
+  --table-even:#f7f9fc;
+  --shadow:0 2px 12px rgba(37,99,235,.10);
+  --shadow2:0 4px 24px rgba(37,99,235,.15);
+  --radius:14px;
+  --radius-sm:8px;
+  --font-main:'Noto Serif SC',serif;
+  --font-body:'Noto Sans SC',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+}
+.dark-mode{
+  --bg:#0f172a;
+  --bg2:#1e293b;
+  --bg3:#0f172a;
+  --nav-bg:#020617;
+  --nav-text:#cbd5e1;
+  --card-bg:#1e293b;
+  --card-border:#334155;
+  --text:#e2e8f0;
+  --text2:#94a3b8;
+  --text3:#64748b;
+  --tag-bg:#1e3a8a;
+  --tag-text:#93c5fd;
+  --kw-bg:#451a03;
+  --kw-text:#fcd34d;
+  --kw2-bg:#064e3b;
+  --kw2-text:#6ee7b7;
+  --quote-bg:#1e1b4b;
+  --quote-border:#a78bfa;
+  --table-head:#020617;
+  --table-head-text:#93c5fd;
+  --table-even:#0f172a;
+  --shadow:0 2px 12px rgba(0,0,0,.4);
+  --shadow2:0 4px 24px rgba(0,0,0,.5);
+}
+
+/* ======== RESET & BASE ======== */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--font-body);font-size:15px;line-height:1.7;
+  transition:background .3s,color .3s;
+}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+/* ======== FIXED NAV ======== */
+#topnav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:var(--nav-bg);color:var(--nav-text);
+  box-shadow:0 2px 16px rgba(0,0,0,.3);
+  transition:background .3s;
+}
+.nav-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 24px;border-bottom:1px solid rgba(255,255,255,.1);
+  flex-wrap:wrap;gap:8px;
+}
+.nav-title{font-family:var(--font-main);font-size:1.05rem;font-weight:700;letter-spacing:.05em;color:#93c5fd;}
+.nav-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+#searchBox{
+  padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08);color:var(--nav-text);font-size:.85rem;
+  width:200px;outline:none;transition:border .2s,width .3s;
+}
+#searchBox:focus{border-color:rgba(147,197,253,.6);background:rgba(255,255,255,.12);width:260px;}
+#searchBox::placeholder{color:rgba(255,255,255,.4);}
+.nav-btn{
+  padding:5px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08);color:var(--nav-text);cursor:pointer;
+  font-size:.82rem;transition:all .2s;white-space:nowrap;
+}
+.nav-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);}
+.nav-links{
+  display:flex;gap:0;overflow-x:auto;padding:0;scrollbar-width:none;
+}
+.nav-links::-webkit-scrollbar{display:none;}
+.nav-link{
+  color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;
+  padding:7px 14px;white-space:nowrap;border-right:1px solid rgba(255,255,255,.08);
+  transition:background .2s,color .2s;
+}
+.nav-link:hover,.nav-link.active{background:rgba(147,197,253,.18);color:#93c5fd;}
+
+/* ======== SEARCH HIGHLIGHT ======== */
+
+.dark-mode 
+#searchResults{
+  display:none;position:absolute;top:100%;left:0;right:0;
+  background:var(--nav-bg);border-top:1px solid rgba(255,255,255,.1);
+  max-height:280px;overflow-y:auto;z-index:2000;
+}
+.search-result-item{
+  padding:8px 24px;font-size:.82rem;color:var(--nav-text);cursor:pointer;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  transition:background .15s;
+}
+.search-result-item:hover{background:rgba(147,197,253,.12);}
+
+/* ======== LAYOUT ======== */
+.page-wrap{max-width:1100px;margin:0 auto;padding:110px 20px 60px;}
+
+/* ======== CHAPTER HEADER ======== */
+.ch-header{
+  background:linear-gradient(135deg,#1a2744 0%,#2563eb 60%,#7c3aed 100%);
+  border-radius:var(--radius);padding:40px 36px;margin-bottom:32px;
+  color:#fff;box-shadow:var(--shadow2);position:relative;overflow:hidden;
+}
+.ch-header::before{
+  content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;
+  border-radius:50%;background:rgba(255,255,255,.06);
+}
+.ch-header::after{
+  content:'';position:absolute;bottom:-60px;left:-20px;width:160px;height:160px;
+  border-radius:50%;background:rgba(124,58,237,.2);
+}
+.ch-num{font-size:.85rem;letter-spacing:.2em;opacity:.7;text-transform:uppercase;margin-bottom:6px;}
+.ch-title{font-family:var(--font-main);font-size:1.8rem;font-weight:700;margin-bottom:12px;line-height:1.3;}
+.ch-sub{font-size:.9rem;opacity:.8;margin-bottom:18px;}
+.ch-meta{display:flex;gap:10px;flex-wrap:wrap;}
+.ch-badge{
+  padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+}
+
+/* ======== SECTION TITLE ======== */
+.sec-title{
+  font-family:var(--font-main);font-size:1.3rem;font-weight:700;
+  color:var(--accent1);padding:0 0 10px 16px;margin:36px 0 20px;
+  border-left:4px solid var(--accent1);position:relative;
+}
+.sec-title span{font-size:.75rem;color:var(--text3);font-weight:400;margin-left:8px;font-family:var(--font-body);}
+
+/* ======== LOGIC MAP ======== */
+.logic-map{
+  background:var(--card-bg);border-radius:var(--radius);padding:28px 24px;
+  margin-bottom:28px;box-shadow:var(--shadow);border:1px solid var(--card-border);
+}
+.logic-map h2{font-family:var(--font-main);font-size:1.1rem;color:var(--text);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.lm-flow{display:flex;align-items:center;flex-wrap:wrap;gap:0;}
+.lm-node{
+  background:linear-gradient(135deg,#1a2744,#2563eb);color:#fff;
+  padding:10px 16px;border-radius:10px;font-size:.82rem;font-weight:600;
+  text-align:center;min-width:80px;
+}
+.lm-node.green{background:linear-gradient(135deg,#065f46,#059669);}
+.lm-node.purple{background:linear-gradient(135deg,#4c1d95,#7c3aed);}
+.lm-node.orange{background:linear-gradient(135deg,#78350f,#d97706);}
+.lm-node.red{background:linear-gradient(135deg,#7f1d1d,#dc2626);}
+.lm-arrow{padding:0 6px;color:var(--accent1);font-size:1.2rem;font-weight:700;}
+
+/* ======== MINDMAP SVG CONTAINER ======== */
+.mindmap-box{
+  background:var(--card-bg);border-radius:var(--radius);padding:24px;
+  margin-bottom:28px;box-shadow:var(--shadow);border:1px solid var(--card-border);
+  overflow-x:auto;
+}
+.mindmap-box h2{font-family:var(--font-main);font-size:1.1rem;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.mindmap-svg{width:100%;min-width:780px;height:420px;}
+
+/* ======== KNOWLEDGE CARD ======== */
+.kcard{
+  background:var(--card-bg);border-radius:var(--radius);
+  box-shadow:var(--shadow);border:1px solid var(--card-border);
+  margin-bottom:22px;overflow:hidden;transition:box-shadow .2s,transform .2s;
+}
+.kcard:hover{box-shadow:var(--shadow2);transform:translateY(-2px);}
+.kcard-header{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 20px;
+  background:linear-gradient(90deg,rgba(37,99,235,.07),rgba(124,58,237,.04));
+  border-bottom:1px solid var(--card-border);
+}
+.kcard-num{
+  flex-shrink:0;width:42px;height:42px;border-radius:10px;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.9rem;font-family:var(--font-mono);
+}
+.kcard-title-wrap{flex:1;}
+.kcard-title{font-family:var(--font-main);font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:6px;}
+.kcard-meta{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.badge{padding:3px 10px;border-radius:12px;font-size:.72rem;font-weight:600;}
+.badge-blue{background:var(--tag-bg);color:var(--tag-text);}
+.badge-green{background:#d1fae5;color:#065f46;}
+.badge-orange{background:#fef3c7;color:#92400e;}
+.badge-red{background:#fee2e2;color:#991b1b;}
+.badge-purple{background:#ede9fe;color:#5b21b6;}
+.badge-gray{background:var(--bg3);color:var(--text2);}
+.dark-mode .badge-green{background:#064e3b;color:#6ee7b7;}
+.dark-mode .badge-orange{background:#451a03;color:#fcd34d;}
+.dark-mode .badge-red{background:#450a0a;color:#fca5a5;}
+.dark-mode .badge-purple{background:#2e1065;color:#c4b5fd;}
+.kcard-body{padding:20px;}
+.kcard-body p{margin-bottom:10px;color:var(--text2);}
+
+/* ======== KEYWORD HIGHLIGHT ======== */
+.kw{background:var(--kw-bg);color:var(--kw-text);padding:1px 6px;border-radius:4px;font-weight:600;}
+.kw2{background:var(--kw2-bg);color:var(--kw2-text);padding:1px 6px;border-radius:4px;font-weight:600;}
+.kw3{background:#ede9fe;color:#5b21b6;padding:1px 6px;border-radius:4px;font-weight:600;}
+.dark-mode .kw3{background:#2e1065;color:#c4b5fd;}
+
+/* ======== BLOCKS ======== */
+.block{border-radius:10px;padding:14px 16px;margin:12px 0;}
+.block-label{font-weight:700;font-size:.75rem;letter-spacing:.1em;margin-bottom:6px;opacity:.8;}
+.block-def{background:linear-gradient(90deg,rgba(37,99,235,.06),rgba(37,99,235,.02));border-left:3px solid var(--accent1);}
+.block-memory{background:linear-gradient(90deg,rgba(124,58,237,.06),rgba(124,58,237,.02));border-left:3px solid var(--accent2);}
+.block-case{background:linear-gradient(90deg,rgba(5,150,105,.06),rgba(5,150,105,.02));border-left:3px solid var(--accent3);}
+.block-exam{background:linear-gradient(90deg,rgba(217,119,6,.06),rgba(217,119,6,.02));border-left:3px solid var(--accent4);}
+.block-template{background:linear-gradient(90deg,rgba(8,145,178,.06),rgba(8,145,178,.02));border-left:3px solid var(--accent6);}
+.block-origin{background:linear-gradient(90deg,rgba(220,38,38,.06),rgba(220,38,38,.02));border-left:3px solid var(--accent5);}
+
+/* ======== DETAILS/SUMMARY ======== */
+details{margin:10px 0;}
+summary{
+  cursor:pointer;padding:10px 14px;border-radius:var(--radius-sm);
+  background:var(--bg3);font-weight:600;font-size:.88rem;color:var(--text);
+  list-style:none;display:flex;align-items:center;gap:8px;
+  transition:background .2s;
+}
+summary::before{content:'▶';font-size:.7rem;color:var(--accent1);transition:transform .2s;}
+details[open] summary::before{transform:rotate(90deg);}
+summary::-webkit-details-marker{display:none;}
+summary:hover{background:var(--card-border);}
+details > *:not(summary){padding:12px 16px;}
+
+/* ======== TABLES ======== */
+.ctable{width:100%;border-collapse:collapse;font-size:.85rem;margin:10px 0;}
+.ctable th{
+  background:var(--table-head);color:var(--table-head-text);
+  padding:10px 12px;text-align:left;font-weight:600;
+}
+.ctable td{padding:9px 12px;border-bottom:1px solid var(--card-border);color:var(--text2);}
+.ctable tr:nth-child(even) td{background:var(--table-even);}
+.ctable tr:hover td{background:rgba(37,99,235,.04);}
+.ctable th:first-child{border-radius:8px 0 0 0;}
+.ctable th:last-child{border-radius:0 8px 0 0;}
+.table-wrap{overflow-x:auto;border-radius:var(--radius-sm);}
+
+/* ======== QUOTE ======== */
+.quote{
+  border-left:4px solid var(--quote-border);
+  background:var(--quote-bg);padding:12px 16px;
+  border-radius:0 8px 8px 0;font-style:italic;
+  color:var(--text);font-size:.88rem;line-height:1.8;margin:10px 0;
+}
+
+/* ======== EXAM TAG ======== */
+.exam-tag{
+  display:inline-block;padding:2px 8px;border-radius:4px;
+  font-size:.7rem;font-weight:700;margin:2px;
+  background:#1a2744;color:#93c5fd;
+}
+.dark-mode .exam-tag{background:#0f172a;color:#7dd3fc;}
+
+/* ======== COMPARISON TABLE SECTION ======== */
+.compare-section{
+  background:var(--card-bg);border-radius:var(--radius);
+  padding:24px;margin-bottom:28px;box-shadow:var(--shadow);
+  border:1px solid var(--card-border);
+}
+.compare-section h2{font-family:var(--font-main);font-size:1.1rem;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+
+/* ======== EXAM SECTION ======== */
+.exam-section{
+  background:var(--card-bg);border-radius:var(--radius);
+  padding:24px;margin-bottom:28px;box-shadow:var(--shadow);
+  border:2px solid var(--accent4);
+}
+.exam-section h2{font-family:var(--font-main);font-size:1.1rem;color:var(--accent4);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+
+/* ======== CHAIN ======== */
+.chain-section{
+  background:linear-gradient(135deg,#1a2744 0%,#0f172a 100%);
+  border-radius:var(--radius);padding:28px;margin-bottom:28px;
+  box-shadow:var(--shadow2);color:#e2e8f0;
+}
+.chain-section h2{font-size:1.15rem;font-family:var(--font-main);color:#93c5fd;margin-bottom:20px;}
+.chain-flow{display:flex;flex-direction:column;gap:0;}
+.chain-step{
+  display:flex;align-items:flex-start;gap:16px;padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.chain-step:last-child{border-bottom:none;}
+.step-num{
+  flex-shrink:0;width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;font-weight:700;color:#fff;
+}
+.step-content{flex:1;}
+.step-title{font-weight:700;color:#93c5fd;font-size:.92rem;margin-bottom:4px;}
+.step-body{font-size:.85rem;color:#94a3b8;line-height:1.6;}
+.chain-summary{
+  margin-top:18px;padding:16px;border-radius:10px;
+  background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);
+  font-size:.88rem;color:#cbd5e1;
+}
+
+/* ======== 30-SEC REVIEW ======== */
+.quick-review{
+  background:linear-gradient(135deg,#059669,#0891b2);
+  border-radius:var(--radius);padding:28px;margin-bottom:28px;
+  color:#fff;box-shadow:var(--shadow2);
+}
+.quick-review h2{font-family:var(--font-main);font-size:1.15rem;margin-bottom:16px;}
+.quick-list{list-style:none;}
+.quick-list li{
+  padding:8px 0 8px 24px;position:relative;font-size:.88rem;
+  border-bottom:1px solid rgba(255,255,255,.15);
+}
+.quick-list li:last-child{border-bottom:none;}
+.quick-list li::before{content:'⚡';position:absolute;left:0;}
+
+/* ======== RECITE BLOCK ======== */
+.recite-section{
+  background:linear-gradient(135deg,#4c1d95,#7c3aed);
+  border-radius:var(--radius);padding:28px;margin-bottom:28px;color:#fff;
+  box-shadow:var(--shadow2);
+}
+.recite-section h2{font-family:var(--font-main);font-size:1.15rem;margin-bottom:16px;}
+.recite-item{
+  padding:10px 16px;margin-bottom:10px;background:rgba(255,255,255,.08);
+  border-radius:8px;font-size:.87rem;line-height:1.7;border-left:3px solid rgba(255,255,255,.3);
+}
+
+/* ======== SELF-TEST ======== */
+.test-section{
+  background:var(--card-bg);border-radius:var(--radius);
+  padding:24px;margin-bottom:28px;box-shadow:var(--shadow);
+  border:2px solid var(--accent2);
+}
+.test-section h2{font-family:var(--font-main);font-size:1.1rem;color:var(--accent2);margin-bottom:16px;}
+.test-q{
+  padding:14px;margin-bottom:12px;background:var(--bg);
+  border-radius:10px;font-size:.88rem;cursor:pointer;
+  border:1px solid var(--card-border);transition:border .2s;
+}
+.test-q:hover{border-color:var(--accent2);}
+.test-q .q-label{font-size:.7rem;font-weight:700;color:var(--accent2);margin-bottom:4px;}
+.test-q .q-text{color:var(--text);font-weight:500;}
+.test-answer{
+  display:none;margin-top:10px;padding:12px;background:var(--quote-bg);
+  border-radius:8px;font-size:.83rem;color:var(--text2);border-left:3px solid var(--accent2);
+}
+.test-q.open .test-answer{display:block;}
+
+/* ======== RETURN TO TOP ======== */
+#toTopBtn{
+  position:fixed;bottom:28px;right:24px;z-index:999;
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,#2563eb,#7c3aed);
+  color:#fff;border:none;cursor:pointer;font-size:1.2rem;
+  box-shadow:0 4px 16px rgba(37,99,235,.4);
+  display:none;align-items:center;justify-content:center;
+  transition:transform .2s,box-shadow .2s;
+}
+#toTopBtn:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(37,99,235,.5);}
+
+/* ======== MISC ======== */
+.divider{height:1px;background:var(--card-border);margin:16px 0;border:none;}
+.star{color:#f59e0b;}
+.pg{font-size:.72rem;color:var(--text3);font-style:italic;}
+
+/* ======== BASIC STRATEGY GRID ======== */
+.strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.strategy-card{
+  padding:16px;border-radius:10px;border:2px solid;
+  transition:transform .2s;
+}
+.strategy-card:hover{transform:scale(1.02);}
+.strategy-card.stable{border-color:#059669;background:rgba(5,150,105,.05);}
+.strategy-card.growth{border-color:#2563eb;background:rgba(37,99,235,.05);}
+.strategy-card.shrink{border-color:#dc2626;background:rgba(220,38,38,.05);}
+.strategy-card.defense{border-color:#d97706;background:rgba(217,119,6,.05);}
+.strategy-card.mixed{border-color:#7c3aed;background:rgba(124,58,237,.05);}
+.sc-title{font-weight:700;font-size:.88rem;margin-bottom:6px;}
+.sc-title.blue{color:#2563eb;}.sc-title.green{color:#059669;}
+.sc-title.red{color:#dc2626;}.sc-title.orange{color:#d97706;}.sc-title.purple{color:#7c3aed;}
+.sc-body{font-size:.8rem;color:var(--text2);line-height:1.6;}
+
+/* ======== SWOT MATRIX ======== */
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;}
+.swot-cell{padding:14px;border-radius:10px;font-size:.82rem;line-height:1.6;}
+.swot-so{background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.3);}
+.swot-st{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.3);}
+.swot-wo{background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.3);}
+.swot-wt{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);}
+.swot-label{font-weight:700;font-size:.78rem;letter-spacing:.08em;margin-bottom:6px;}
+.swot-so .swot-label{color:#059669;}
+.swot-st .swot-label{color:#2563eb;}
+.swot-wo .swot-label{color:#d97706;}
+.swot-wt .swot-label{color:#dc2626;}
+
+/* ======== RESPONSIVE ======== */
+@media(max-width:700px){
+  .page-wrap{padding:120px 12px 40px;}
+  .ch-title{font-size:1.3rem;}
+  .strategy-grid{grid-template-columns:1fr;}
+  .swot-grid{grid-template-columns:1fr;}
+  .nav-title{font-size:.9rem;}
+  #searchBox{width:140px;}
+}
+</style>
+
+
+<script>window._PAGE_TEXT='第五章 战略问题的确认与基本战略选择 | 中南大学企业管理学硕复试笔记 \n \n \n \n \n \n \n 📖 第五章 · 战略问题的确认与基本战略选择 \n \n hideResults(),200)">\n \n 🌙 夜间模式 \n \n \n \n 🗺 逻辑图 \n 🧠 思维导图 \n §1 战略问题 \n §2 SWOT确认 \n §3 战略承诺 \n §4 战略方向 \n §5 战略目标 \n 📊 对比表 \n 📝 真题 \n 🔗 串联 \n ⚡ 30秒 \n 📣 背诵版 \n ✅ 自测 \n \n \n \n \n \n \n 第五章 · 战略制定篇第一章 \n 战略问题的确认与基本战略选择 \n 《企业战略管理》第2版 蓝海林 著 | 中南大学企业管理学硕复试笔记 \n \n 📄 教材 P124–156 \n ⭐⭐⭐⭐⭐ 极高频考章 \n 🎯 5节核心内容 \n 📝 名词·简答·论述·案例均考 \n \n \n \n \n 🗺 本章逻辑结构 （在战略管理流程中的位置） \n \n 感知战略问题 触发点 \n → \n 外部环境分析 第3章 \n → \n 内部环境分析 第4章 \n → \n SWOT确认 战略问题 §1-§2 \n → \n 审视与修改 战略承诺 §3 \n → \n 选择 基本战略 §4 \n → \n 制定 战略目标 §5 \n → \n 公司层/业务层 战略制定 第6-9章 \n \n \n 💡 本章的逻辑地位： 承上启下的关键枢纽。前接环境分析（第3、4章），以SWOT最终确认战略问题；后启具体战略制定（第6–9章），通过战略承诺、基本战略方向与战略目标为下游提供指引。\n \n \n \n \n 🧠 章节思维导图（知识框架） \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n 第五章 \n 战略问题确认与 \n 基本战略选择 \n \n \n \n §1 战略问题 \n 确认与决策原则 \n \n \n \n 两类战略问题 \n \n \n SWOT确认步骤 \n \n \n \n §2 SWOT矩阵 \n SO·ST·WO·WT \n \n \n \n §3 战略承诺 \n 使命·愿景·意图·价值观 \n \n \n \n §4 基本战略（方向） \n 行业×市场 / 发展态势 \n \n \n \n 稳定·增长·收缩·防御·混合 \n \n \n \n §5 战略目标 \n 内容·层次·时间·方法·技术 \n \n \n \n 第6–9章 \n 公司层/业务层战略制定 \n \n \n \n 第3–4章 \n 内外部环境分析 \n \n ● 本章主要节 \n - - - 与其他章节关系 \n \n \n \n \n §1 战略问题的确认与决策原则 P124–128 ★★★★★ \n \n \n \n 5.1 \n \n 战略问题（Strategic Issue）的定义 \n \n ⭐⭐⭐⭐⭐ 极高频 \n 名词解释 \n 简答 \n P124 \n 【2019笔试】 \n 【2023复试】 \n \n \n \n \n \n 📖 专有名词解释（教材原意） \n 战略问题，就是那些 源自企业内部和外部关键环境因素的趋势性变化 ，并且对企业 现在和未来发展具有重大、长期和根本影响 的问题。\n \n \n 📚 三个核心特征：重大性·长期性·根本性 \n \n \n 特征 含义 举例 \n 重大性 对企业发展影响深远，不是小事 数字化转型是重大战略问题；某季度销售下滑是经营问题 \n 长期性 影响时间跨度长，通常跨越多个战略周期 新能源汽车替代传统燃油车是长期战略问题 \n 根本性 触及企业存在的根本，影响竞争优势的来源 互联网对传统零售的冲击是根本性问题 \n \n \n \n \n 📂 战略问题的两大类型 \n \n \n 类型 内容 例子 \n \n 外部机会/威胁类 \n 企业没有把握外部机会或者没有避免外部威胁 \n 电商兴起，传统零售未能把握线上化机会 \n \n \n 内部优劣势类 \n 企业没有发挥优势或者没有克服劣势 \n 格力电器应更好发挥制造优势，进一步扩大规模 \n \n \n \n \n \n 🧠 助记口诀 \n 「重·长·根，两来源（内外）」 —— 战略问题三特征：重大、长期、根本；两来源：内部优劣、外部机会威胁。\n \n \n 🏢 企业案例（小学生版） \n 格力 vs 阿里：两种战略问题视角 \n 格力：我已经很强大了，战略问题是"怎么把格力做更大"（五年再增1000亿）。但如果用SWOT认真分析，战略问题应该是"进入什么行业才能更好发挥我的制造专长"。 \n 阿里：每次都问"我能把握哪些帮中小企业做生意的机会"，所以从B2B→淘宝→支付宝→菜鸟，越来越强但核心不变。 \n 结论：有效确认战略问题是有效制定战略的一半，而且是更重要的那一半！ \n \n \n 💬 复试回答模板 \n 结构：定义 → 三特征 → 两类型 → 案例 → 总结 \n "战略问题是指来自内外部关键环境因素趋势性变化、对企业具有 重大、长期、根本 影响的问题。\n 它分为外部机会/威胁类和内部优劣势类两大类。以格力为例……（举例）\n 有效确认战略问题，是战略制定中更为重要的前半程。"\n \n \n 💡 复试延伸追问 \n \n ① 战略问题与经营问题有什么区别？（关键词：趋势性、重大、长期、根本） \n ② 如何防止管理者只看到"碎片式"经营问题而忽视战略问题？（关键词：SWOT分析、系统分析） \n ③ 战略问题确认不准确会带来什么后果？（格力案例：按五年再造方向走和按"发挥制造专长"方向走，战略完全不同） \n \n \n \n 📌 需背诵教材原句 \n "有效地确认企业所面临的战略问题是有效制定企业战略的一半，而且是 更重要的那一半 。"（P127）\n \n \n \n \n \n \n §2 战略问题确认的方法——SWOT矩阵 P125–128 ★★★★★ \n \n \n 5.2 \n \n SWOT分析矩阵与战略问题确认步骤 \n \n ⭐⭐⭐⭐⭐ 极高频 \n 名词解释 \n 论述 \n 案例 \n P125–128 \n 【2020笔试】 \n 【2022复试】 \n \n \n \n \n \n 📖 SWOT两大作用 \n 一是通过内外部分析 找到 企业可能面临的战略问题；\n 二是通过 SWOT的反复比对组合 ，最终 确认 现实可解决的战略问题。\n \n \n \n SO 组合（进攻型） \n 凭借公司 优势（S） ，充分利用外部环境所带来的各种 机会（O） 。 \n → 如何用优势抓机会？ \n \n \n ST 组合（防御型） \n 利用公司 优势（S） ，尽量规避外部环境带来的 威胁（T） 。 \n → 如何用优势挡威胁？ \n \n \n WO 组合（扭转型） \n 通过各种方式弥补公司的 劣势（W） ，充分利用 机会（O） 。 \n → 如何克服劣势抓机会？ \n \n \n WT 组合（保守型） \n 通过各种方式弥补公司的 劣势（W） ，规避 威胁（T） 。 \n → 如何在最弱状态下避险？ \n \n \n \n 📋 SWOT确认战略问题的三步骤（必背） \n \n \n 步骤 具体操作 关键点 \n \n 第一步 列举比对 \n 将外部机会O、威胁T和内部优势S、劣势W具体列举，反复比对，找出： ① 有哪些可以但没有把握的机会 ② 有哪些应该但没有防范的威胁 ③ 有哪些可以但没有发挥的优势 ④ 有哪些应该但没有克服的劣势 \n 机会/威胁是相对优势/劣势而言的，优势/劣势也是相对机会/威胁而言的 \n \n \n 第二步 四类组合 \n 对外部因素(O,T)与内部因素(S,W)进行组合比对，得到SO/ST/WO/WT四大类可解决的战略问题 \n 组合出的才是 现实可解决 的战略问题 \n \n \n 第三步 识别性质 \n 识别战略问题的性质： ① 在哪个层次展开（公司层 or 业务层） ② 战略内容是什么（行业组合/竞争优势） ③ 由谁来完成（总部/事业部） ④ 调整发生在哪个逻辑层次（承诺/方向/目标/具体战略） \n 多元化企业需 公司整体 + 每个业务 分别分析 \n \n \n \n \n \n 🧠 助记口诀 \n 「列举—组合—识性质」三步走 ；四象限：SO进攻、ST防御、WO扭转、WT保守。 \n 口诀： "外遇内情对对碰，进·防·扭·守四组合" \n \n \n 🏢 通俗案例（小学生版） \n 想象你是一个学生，期末考试前要制定学习计划（战略）： \n S优势：数学好 W劣势：英语差 \n O机会：英语老师公布了考点 T威胁：数学可能出难题 \n SO： 用数学好的优势，去攻克考点里的数学计算题 \n ST： 用数学好来应对可能的难题挑战 \n WO： 老师公布了英语考点，赶紧针对考点补英语短板 \n WT： 英语差、数学也难——要用最少精力守住基础分\n \n \n 💬 复试回答模板（SWOT作用） \n "SWOT分析矩阵在战略问题确认中有两个作用：一是帮助 发现 可能的战略问题（将内外部因素系统梳理）；二是通过 四类组合（SO/ST/WO/WT） 确认现实可解决的战略问题。\n 具体步骤分三步：列举比对、四类组合、识别性质……（展开说明）\n SWOT分析特别强调机会/威胁和优势/劣势是 相互参照 的，只有完成内外部分析后才能做有针对性的SWOT。"\n \n \n 📌 需背诵教材原句 \n "SWOT分析矩阵对于战略问题的确认具有两个方面的重要作用：一是通过外部和内部环境分析 找到 企业可能面临的战略问题；二是通过SWOT的反复比对或者组合，最终 确认 企业所面临的现实战略问题，即有可能解决的战略问题。"（P127）\n \n \n \n \n \n \n §3 战略承诺 P128–146 ★★★★★ 核心高频 \n \n \n \n 5.3 \n \n 战略承诺（Strategic Commitments）——定义与特征 \n \n ⭐⭐⭐⭐⭐ 极高频 \n 名词解释 \n 简答 \n P133–134 \n 【2018复试】 \n 【2021笔试】 \n 【2024复试】 \n \n \n \n \n \n 📖 专有名词解释（教材原意） \n 战略承诺（strategic commitments）是指企业基于 自身的资源和能力 ，并考虑到 当前外部环境及其未来变化的趋势 ，为了实现希望达到的 长期战略目标 而向顾客、供应商、企业员工等 利益相关者 做出的长期承诺。\n \n \n 📌 战略承诺的核心要点（5点） \n \n \n # 要点 说明 \n ① 价值层面 的战略选择 时间跨度最长、影响最广泛；受企业价值观影响，也需科学决策 \n ② 不能过于具体 过具体会在环境变化中错失机会 \n ③ 不能过于宽泛 过宽泛会在环境变化中缺乏约束而过于冒险 \n ④ 一经做出必须长期坚持 体现战略的连续性、整体性和创新性 \n ⑤ 承诺坚定是前提 承诺坚定是决策科学和行动迅速的前提（阿里巴巴案例） \n \n \n \n \n 🏢 企业案例（小学生版） \n 阿里巴巴战略承诺： "让天下没有难做的生意"——这就是它的战略承诺。 \n 不管开了多少业务（淘宝/天猫/菜鸟/支付宝/钉钉），中心思想永远是"帮中小企业做生意更容易"。 \n 就像你给朋友承诺"我会在你需要的时候帮助你"，不管以后发生什么，你都会用不同方式践行这个承诺。\n \n \n 🧠 助记口诀 \n 「战略承诺 = 企业存在的根本理由 + 长期不变的指南针」 \n 记忆：战略承诺就像结婚誓词——不能太细（"我每天给你煮饭"），也不能太空（"我会让你幸福"），必须是"我愿意与你一生共同经营家庭"这个程度。\n \n \n \n \n \n \n 5.3B \n \n 战略承诺的核心内容四要素（使命·愿景·战略意图·价值观） \n \n ⭐⭐⭐⭐⭐ 极高频 \n 名词解释×4 \n 简答 \n P134–143 \n 【2016笔试】 \n 【2019复试】 \n 【2022笔试】 \n \n \n \n \n \n \n \n 要素 \n 专有名词解释（教材原意） \n 关键特征 \n 通俗解释 \n 案例 \n \n \n ①经营目的 （使命） \n 企业存在的使命、根本理由或目的；企业的长期承诺和最重要的价值追求 \n 从 满足顾客需求 角度陈述；体现企业个性；超越单纯赚钱 \n "我们为什么存在？" \n 阿里："让天下没有难做的生意" \n \n \n ②企业愿景 \n 对企业未来将发展成为什么样子的描述，表达企业对未来的美好想象和希望 \n 面向未来；鼓舞人心；具体可想象；区别于现状 \n "我们想变成什么样子？" \n 微软早期："让每个家庭桌上都有一台电脑" \n \n \n ③战略意图 \n 对实现特定战略愿景的执著追求，是企业在一段时期内奋斗目标的集中表达 \n 中期 奋斗目标；强调执著追求；具体挑战性 \n "接下来5-10年我要做到什么？" \n 格力"五年再造一个格力" \n \n \n ④经营理念 （价值观） \n 指导企业行为的最根本的优先顺序和准则；是企业文化的基础 \n 长期稳定；一旦形成较难改变；从创业期形成 \n "我们怎么做事情？" \n 华为："以客户为中心，以奋斗者为本" \n \n \n \n \n 🔍 四要素对比：使命 vs 愿景 vs 战略意图（易混！） \n \n \n 对比维度 使命（经营目的） 愿景 战略意图 \n 时间维度 永久性，长期不变 长期，但可更新 中期（5-10年） \n 内容焦点 企业存在的根本理由 企业未来样子 具体奋斗目标 \n 情感色彩 使命感，价值追求 美好想象，激励人心 执著追求，不达不止 \n 可测量性 较难量化 定性描述 相对具体，可感知 \n \n \n \n \n 🧠 助记口诀 \n 「使·愿·意·值」四字口诀 \n 使命（为什么来）→ 愿景（要去哪里）→ 战略意图（这段路怎么走）→ 价值观（怎么做人做事） \n 就像爬山：使命=我为什么爬山；愿景=山顶是什么样；战略意图=今天要到第几营地；价值观=爬山的规矩是什么\n \n \n 💬 复试回答模板（战略承诺内容） \n "战略承诺的核心内容主要包括四个方面： \n 第一， 经营目的（使命） ——企业存在的根本理由，例如阿里的"让天下没有难做的生意"； \n 第二， 企业愿景 ——对未来状态的描述，鼓舞人心； \n 第三， 战略意图 ——中期奋斗目标，执著追求； \n 第四， 企业价值观 ——最根本的行为准则和优先顺序。 \n 这四个要素共同构成企业战略承诺的完整内容，为战略制定提供最高层次的指引。"\n \n \n 📌 需背诵教材原句 \n "企业价值观是指导企业行为的 最根本的优先顺序和准则 。企业的价值观说明了经理层和员工应该如何规范自己的言行，如何做好自己的工作，以及为了实现企业宗旨应该构建何种类型的组织。"（P141）\n \n \n \n \n \n \n §4 战略方向（基本战略选择） P146–148 ★★★★★ \n \n \n \n 5.4A \n \n 基于行业与市场范围的基本战略选择（2×2矩阵） \n \n ⭐⭐⭐⭐⭐ \n 简答 \n 论述 \n P146–147 \n 【2021复试】 \n \n \n \n \n \n 📖 框架说明 \n 依据企业对 行业（单一/多个） 和 市场（单一/多个） 经营范围的战略承诺，企业在四种基本战略之间选择。\n \n \n \n \n 单一市场 多个市场 \n \n \n 单一行业 \n 行业/市场集中战略 → 业务层战略 满足特定市场特定需求 \n 市场多元化战略（国际化战略） → 公司层战略 满足多个市场的某一需求 \n \n \n 多个行业 \n 行业多元化战略 → 公司层战略 满足特定市场多方面需求 \n 行业与市场多元化战略 → 公司层战略 满足多个市场多方面需求 \n \n \n \n \n 🧠 助记口诀 \n 「单单=集中=业务层；单多/多单/多多=多元化=公司层」 \n 只要"多"了一个维度，就升级到公司层战略。\n \n \n 🏢 案例（小学生版） \n 卖包子的店： \n 行业集中+市场集中 = 就在武汉卖包子（集中战略） \n 行业集中+多个市场 = 在全国/全球卖包子（国际化/市场多元化） \n 多个行业+单一市场 = 在武汉卖包子+粥+炒菜（行业多元化） \n 多个行业+多个市场 = 在全国卖各种食品（行业市场都多元化）\n \n \n \n \n \n \n 5.4B \n \n 基于发展态势的基本战略（五种）——稳定·增长·收缩·防御·混合 \n \n ⭐⭐⭐⭐⭐ 最高频 \n 名词解释 \n 简答×5 \n 对比论述 \n P147–148 \n 【2017笔试】 \n 【2019笔试】 \n 【2020复试】 \n 【2023笔试】 \n \n \n \n \n \n 📖 发展态势定义 \n 发展态势（战略态势） ：将企业 未来发展目标 （资源配置与经营状况）与 目前发展水平 进行比较而得到的企业发展趋势。\n \n \n \n \n \n 未来目标：低 \n 未来目标：高 \n 现在水平：低 \n \n 防御型战略 \n 现在低 → 未来低 外部稳定，资源有限 等待未来机会 \n \n \n 增长型战略 \n 现在低 → 未来高 最流行，挖掘内部 充分利用外部机会 \n \n 现在水平：高 \n \n 收缩型战略 \n 现在高 → 未来低 以退为进 战略重组/衰退期 \n \n \n 稳定型战略 \n 现在高 → 未来高 非快速但稳定增长 外部变化不大 \n \n \n *第五种： 混合型战略 = 大型企业各业务单元分别采用不同基本战略的组合 \n \n \n \n ① 稳定型战略（Stability Strategy） \n \n 定义： 经营状况和资源配置保持目前较高水平，变化不大。 \n 核心： 稳定≠不增长，是"非快速地发展" \n 适用： 外部变化不大 + 前期经营相当成功 \n 案例： 成熟期行业领导品牌维持市场地位\n \n \n \n ② 增长型战略（Growth Strategy） \n \n 定义： 挖掘内部资源充分利用机会，向更高目标迈进。 \n 为何最流行： 求生存手段；规模经济降低成本；管理者晋升动力；掩盖失误 \n 适用： 机会多、资源积累充足 \n 案例： 华为、小米早期快速扩张\n \n \n \n ③ 收缩型战略（Retrenchment Strategy） \n \n 定义： 未来资源配置与经营状况需要收缩（未来低于现在） \n 性质： 相对消极的战略，但"以退为进" \n 原因： 战略重组需要；行业衰退期；失去竞争优势 \n 案例： IBM剥离PC业务专注IT服务\n \n \n \n ④ 防御型战略（Defensive Strategy） \n \n 定义： 经营状况保持目前较低水平（现在低 → 未来低） \n 原因： 外部稳定，机会暂时不多，资源能力有限 \n 目的： 等待未来机会出现 \n 案例： 资源有限的初创企业先守住基本盘\n \n \n \n ⑤ 混合型战略（Combined Strategy） \n \n \n 定义： 企业各业务单元采用不同的基本战略组合。 \n 适用： 规模大的企业（多个业务单元、分布不同行业、态势各异） \n 特点： 若强行对所有业务用同一战略则不合适 \n 案例： 华润集团——零售(稳定) + 地产(增长) + 医药(增长) + 水泥(收缩)\n \n \n \n \n \n 🧠 助记口诀（五种基本战略） \n 「稳增收防混，高高低低中」 \n 稳（高→高）、增（低→高）、收（高→低）、防（低→低）、混（多业务组合） \n 记忆矩阵： 高·高=稳定（好学生保持好成绩）；低·高=增长（差学生努力提升）；高·低=收缩（降班）；低·低=防御（先守住不挂科） \n \n \n 💬 复试回答模板（五种基本战略） \n "基于发展态势的基本战略分为五种： \n ① 稳定型 ——现在高、未来高，保持非快速稳定发展，适合外部变化不大且经营成功的企业； \n ② 增长型 ——现在低、未来高，充分挖掘内部资源利用外部机会，是最流行的战略； \n ③ 收缩型 ——现在高、未来低，是以退为进的战略，原因包括战略重组、行业衰退等； \n ④ 防御型 ——现在低、未来低，外部机会暂时不多，资源有限，等待未来机会； \n ⑤ 混合型 ——大企业各业务单元采用不同基本战略的组合，避免"一刀切"。"\n \n \n 💡 复试延伸追问 \n \n ① 增长型战略为什么是最流行的？有什么潜在风险？（过快增长→掩盖问题→资金链断裂） \n ② 收缩型战略一定是失败的表现吗？（非也，IBM剥离PC是主动收缩以聚焦优势领域） \n ③ 防御型和收缩型的区别是什么？（防御：从未来的角度维持现状；收缩：从高水平往低水平走） \n \n \n \n 📌 需背诵教材原句 \n "收缩型战略是一种 以退为进 的战略。"（P148） \n "增长型战略是一种最流行、 使用最多 的战略。"（P147）\n \n \n \n \n \n \n §5 战略目标 P149–156 ★★★★ \n \n \n 5.5 \n \n 战略目标——定义、体系与制定方法 \n \n ⭐⭐⭐⭐ 较高频 \n 名词解释 \n 简答 \n P149–156 \n 【2020笔试】 \n 【2024笔试】 \n \n \n \n \n \n 📖 战略目标定义 \n 战略目标是对企业 需要努力实现的未来的一种精确、可测量的描述 ，或者说是对企业战略经营活动取得的 主要成果的期望值 ，也是企业在实现战略承诺过程中希望达到的 阶段性结果 。\n \n \n 📋 目标体系的三个合理性（内容·层次·时间） \n \n \n 合理性维度 包含内容 关键要点 \n \n ①内容结构 \n 规模指标、财务指标、创新目标、社会责任目标 \n 四类目标 相互平衡匹配 ；过于偏重某类会导致战略行为不合理 \n \n \n ②层次结构 \n 总部→事业部→职能部门 \n 总部主要目标：投资收益率；事业部：市场占有率+利润；职能部门：有效性+速度 \n \n \n ③时间结构 \n 长期（≥5年）→中期（1-5年）→短期（≤1年） \n 三者相互连接，短期目标实现情况动态修正中长期目标 \n \n \n \n \n \n 📋 目标体系方法合理性的四大矛盾处理 \n \n \n 矛盾对 原则 \n 结果 vs 手段 不能只有结果导向目标，还要有行动约束类目标（手段导向），否则"不择手段" \n 定量 vs 定性 定量目标易分解控制，但部分重要目标难以量化；环境动态化时定性指导性上升 \n 可能性 vs 挑战性 目标过高→反激励甚至损害长远利益；要分析宏观环境、行业潜力、竞争优势 \n 坚持 vs 调整 定性/手段/长期目标更应刚性；定量/结果/短期目标可有弹性；设置调整节奏（每年/每两年） \n \n \n \n \n 📋 战略目标制定的八种技术 \n \n \n # 方法/技术 适用场景 \n 1 时间序列分析法 环境较稳定，历史数据充足 \n 2 相关分析法（因果关系） 变量间存在依存关系 \n 3 盈亏平衡分析法 销售量、成本、利润三者关系 \n 4 决策矩阵法 需要明确目标、多方案、客观概率 \n 5 决策树法 复杂多阶段决策，图解直观 \n 6 博弈论法（对策论） 竞争性环境，与对手博弈 \n 7 模拟模型法 输入不同数据观察结果 \n 8 平衡计分卡（BSC） 将战略承诺转化为财务、客户、流程、学习四维目标 \n \n \n \n \n 🧠 助记口诀 \n 「战略目标 = 阶段性承诺兑现的里程碑」 \n 目标体系三合理：内容合理（四类平衡）、层次合理（总-部-职能）、时间合理（长-中-短） \n 方法四矛盾：结·量·高·坚（结果vs手段；定量vs定性；高vs现实；坚持vs调整）\n \n \n 🏢 案例（小学生版） \n 战略目标就像学期目标： \n ✅ 期末成绩（财务目标）+ 参加比赛（创新）+ 好好相处（社会责任）要一起设 \n ✅ 不能只说"考100分"而不管手段（为了考100分作弊？） \n ✅ 要分长期（高考上985）、中期（高中三年成绩上升）、短期（这次月考数学超过90）\n \n \n 📌 需背诵教材原句 \n "战略目标是对企业需要努力实现的未来的一种 精确、可测量的描述 ，或者说，是对企业战略经营活动取得的主要成果的期望值，也是企业在实现战略承诺过程中希望达到的 阶段性结果 。"（P149）\n \n \n \n \n \n \n 📊 对比总结表（易混概念辨析） \n \n 📋 易混概念大对比 \n \n \n \n 概念对比 \n 使命（经营目的） \n 愿景 \n 战略意图 \n 企业价值观 \n \n \n 时间跨度 \n 永久，不变 \n 长期（可更新） \n 中期（5-10年） \n 长期，一旦形成不易变 \n \n \n 回答的问题 \n 我们为什么存在？ \n 我们要成为什么？ \n 这阶段奋斗目标 \n 我们怎么做事？ \n \n \n 情感特征 \n 使命感、价值追求 \n 激励、想象未来 \n 执著、拼搏感 \n 规范性、稳定性 \n \n \n 典型案例 \n 阿里："让天下没有难做的生意" \n 微软早期："每家桌上有台电脑" \n 格力："五年再造一个格力" \n 华为："以客户为中心" \n \n \n \n \n \n \n \n 五种基本战略对比 \n 现在水平 \n 未来目标 \n 适用情境 \n 关键词 \n \n \n 稳定型 \n 高 \n 高（变化不大） \n 外部变化不大 + 前期成功 \n 非快速、稳定增长 \n \n \n 增长型 \n 低 \n 高 \n 机会多、资源积累足够 \n 最流行、规模经济 \n \n \n 收缩型 \n 高 \n 低 \n 战略重组/行业衰退/失去优势 \n 以退为进、权宜之计 \n \n \n 防御型 \n 低 \n 低（维持） \n 外部稳定、资源有限，等待机会 \n 等待、维持 \n \n \n 混合型 \n 各业务单元各不同 \n 大型多元化企业 \n 一刀切不合适 \n \n \n \n \n \n \n \n 战略问题 vs 经营问题 \n 战略问题 \n 经营问题 \n \n 来源 内外部关键环境因素的趋势性变化 日常运营中的短期波动 \n 影响程度 重大、长期、根本 局部、短期、表层 \n 例子 互联网颠覆传统零售（需要战略转型） 某季度销售下滑（调整促销方案） \n 解决层次 战略层次（高层决策） 经营层次（中层管理） \n \n \n \n \n \n \n 📝 历年真题汇总（2016–2025） \n \n 📝 历年真题 · 第五章相关 \n \n \n \n 年份 \n 题型 \n 题目 \n 本章对应知识点·答题要点 \n \n \n 2016 \n 简答/论述 \n 简述战略承诺的内容与意义 \n §3：使命·愿景·战略意图·价值观四要素；强调"承诺坚定是决策前提" \n \n \n 2017 \n 名词解释 \n 战略承诺、企业愿景 \n §3：分别定义，区分与使命的关系 \n \n \n 2018 \n 简答 \n 企业可以选择的基本战略有哪些？各自适用条件？ \n §4：五种基本战略（发展态势维度）+ 两种框架（行业×市场维度） \n \n \n 2019 \n 论述 \n 如何有效确认企业的战略问题？ \n §1§2：战略问题三特征+两类+SWOT三步骤确认+格力/阿里案例 \n \n \n 2020 \n 名词解释 简答 \n 战略问题；战略目标的有效性条件 \n §1：定义+三特征；§5：目标体系三合理+四矛盾 \n \n \n 2021 \n 简答 \n 基于行业和市场范围的基本战略有哪些？ \n §4A：行业×市场2×2矩阵四种战略+战略层次 \n \n \n 2022 \n 论述 \n 结合SWOT模型，论述如何识别和确认战略问题（案例题） \n §2：SWOT两大作用+三步骤+四组合类型，结合案例分析 \n \n \n 2023 \n 简答 \n 增长型战略为何是最流行的战略？有哪些潜在风险？ \n §4B：增长型战略定义+流行原因（5条）+潜在风险（掩盖失误、资金压力等） \n \n \n 2024 \n 案例分析 \n 某企业战略承诺不清晰导致战略失误，分析原因与对策 \n §3：战略承诺特征（不能太宽/太具体）+承诺坚定的重要性 \n \n \n 2025 \n 论述 \n 简述战略管理过程（分析-制定-实施-控制）中本章的地位 \n 本章是战略制定的入口：环境分析后→SWOT确认战略问题→战略承诺→基本战略→战略目标 \n \n \n \n \n 📣 高频出题规律总结 \n 名词解释超高频： 战略问题、战略承诺、战略意图、增长型战略、稳定型战略、收缩型战略 \n 简答超高频： 五种基本战略对比、SWOT确认步骤、战略承诺内容四要素 \n 论述/案例高频： 结合案例分析战略问题确认（SWOT框架）、战略承诺对战略行为的影响\n \n \n \n \n \n 🔗 本章终极串联（逻辑流程） \n \n 🔗 第五章知识点终极串联 \n \n \n 01 \n \n 企业感知到战略问题 \n 内外部环境出现趋势性变化（重大、长期、根本），管理者感到现有战略不足以应对。前接第3章（外部分析）+第4章（内部分析）的结果。 \n \n \n \n 02 \n \n SWOT矩阵确认战略问题（§1§2） \n 三步骤：列举比对O/T/S/W → SO/ST/WO/WT四类组合 → 识别战略问题性质（层次、内容、责任者）。确认两类战略问题：外部机会/威胁类 + 内部优劣势类。 \n \n \n \n 03 \n \n 审视与修改战略承诺（§3） \n 在战略态势分析后，审视现有战略承诺是否需要修改。战略承诺四要素：使命→愿景→战略意图→价值观。承诺坚定是决策科学和行动迅速的前提。 \n \n \n \n 04 \n \n 选择基本战略方向（§4） \n \n 两个维度： \n 维度一（行业×市场）：集中/行业多元化/国际化/行业市场双多元化 \n 维度二（发展态势）：稳定/增长/收缩/防御/混合五种选择\n \n \n \n \n 05 \n \n 制定战略目标（§5） \n 战略目标是阶段性结果的精确可测描述。目标体系三合理（内容/层次/时间）+ 四矛盾处理（结果vs手段；定量vs定性；高vs现实；坚持vs调整）。 \n \n \n \n 06 \n \n ↓ 为后续战略制定提供依据 \n 战略承诺 + 基本战略 + 战略目标 = 第6–9章公司层和业务层具体战略的基本原则和方向。 \n \n \n \n \n 一句话总结本章逻辑： \n 在外部(第3章)和内部(第4章)分析完成后， 用SWOT三步骤确认战略问题 → 审视并明确战略承诺 → 选择基本战略方向 → 制定战略目标 ，由此为后续具体战略制定提供最高层指引。\n \n \n \n \n \n 📡 本章与其他章节的关系 \n \n \n 相关章节 关系类型 关键联系点 \n \n 第3章（外部环境分析） \n 输入关系 \n 外部分析→SWOT的O(机会)和T(威胁)→本章战略问题确认的输入 \n \n \n 第4章（内部环境分析） \n 输入关系 \n 内部分析→SWOT的S(优势)和W(劣势)→本章战略问题确认的输入 \n \n \n 第6章（业务层战略） \n 输出关系 \n 本章§4"行业/市场集中战略"直接引导到业务层战略；本章战略目标为业务层提供方向 \n \n \n 第7章（公司层战略） \n 输出关系 \n 本章§4"行业多元化/国际化/双多元化"直接对应公司层战略的核心内容 \n \n \n 第11章（战略控制） \n 闭环关系 \n 战略目标（§5）是战略控制的标尺；平衡计分卡同时用于制定目标和控制实施 \n \n \n 第2章（战略管理过程） \n 框架关系 \n 本章内容对应战略制定流程的起始阶段（确认问题→承诺→方向→目标） \n \n \n \n \n \n \n \n ⚡ 30秒复习模块（超简版） \n \n 战略问题： 源自内外部关键因素趋势性变化，具有 重大·长期·根本 影响的问题；分外部机会/威胁类 + 内部优劣势类 \n SWOT确认三步： 列举比对 → 四类组合(SO/ST/WO/WT) → 识别性质（层次/内容/责任） \n 战略承诺： 企业基于资源能力，向利益相关者做出的长期承诺；四要素：使命→愿景→战略意图→价值观；不能太宽，不能太具体 \n 基本战略方向①（行业×市场）： 集中/行业多元化/国际化/行业市场双多元化 \n 基本战略方向②（发展态势）五种： 稳（高→高）·增（低→高/最流行）·收（高→低/以退为进）·防（低→低/等待）·混（大企业组合） \n 战略目标： 阶段性结果的精确可测描述；三合理（内容/层次/时间）；四矛盾（结果vs手段·定量vs定性·挑战vs可能·坚持vs调整） \n 本章地位： 承上（内外部分析）启下（具体战略制定），是战略制定的入口枢纽 \n \n \n \n \n \n \n 📣 背诵版总结（复试口述版） \n \n 【战略问题】 \n 战略问题是指来自企业内外部关键环境因素趋势性变化、对企业现在和未来发展具有重大、长期、根本影响的问题。它分为两类：一类是企业没有把握外部机会或避免威胁的问题；另一类是企业没有发挥优势或克服劣势的问题。有效确认战略问题是有效制定战略的一半，且是更重要的那一半。\n \n \n 【SWOT与战略问题确认】 \n SWOT分析矩阵在战略问题确认中有两个作用：一是找到可能的战略问题，二是通过四类组合（SO/ST/WO/WT）确认现实可解决的战略问题。具体三步骤：第一，列举内外部因素反复比对；第二，四类组合分析；第三，识别战略问题的性质——在哪个层次展开、主要内容是什么、由谁来完成。\n \n \n 【战略承诺】 \n 战略承诺是企业基于自身资源能力，考虑外部环境变化，为实现长期战略目标而向利益相关者做出的长期承诺。其核心内容包括：经营目的（使命）、企业愿景、战略意图和企业价值观（经营理念）四部分。战略承诺不能过于具体（会错失机会）也不能过于宽泛（缺乏约束），一经做出必须长期坚持。承诺坚定是决策科学和行动迅速的前提。\n \n \n 【基本战略（五种发展态势）】 \n 基于发展态势（未来目标vs现在水平）的五种基本战略：①稳定型——现高未高，稳定非快速发展，适合外部变化不大且经营成功者；②增长型——现低未高，挖掘内部资源利用机会，是最流行最常用的战略；③收缩型——现高未低，以退为进的权宜之计，原因包括战略重组、行业衰退、失去竞争优势；④防御型——现低未低，等待未来机会出现；⑤混合型——大型企业各业务单元分别采用不同基本战略的组合。\n \n \n 【战略目标】 \n 战略目标是企业战略承诺过程中需要达到的阶段性结果的精确可测描述。有效的目标体系需满足三个合理性：内容合理（规模、财务、创新、社会责任四类平衡）、层次合理（总部-事业部-职能部门）、时间合理（长-中-短期）。制定过程中需处理四大矛盾：结果与手段的关系、定量与定性的关系、可能性与挑战性的关系、坚持目标与动态调整的关系。\n \n \n \n \n \n ✅ 自我检测 \n \n ✅ 教材思考题 + 历年真题 + 预测题 \n \n 【教材思考题·名词解释】 \n 什么是战略问题？战略问题有哪些特征？如何确认战略问题？ \n \n 定义： 战略问题是源自内外部关键环境因素趋势性变化，对企业现在和未来发展具有重大、长期、根本影响的问题。 \n 三大特征： 重大性、长期性、根本性。 \n 如何确认： ①用SWOT分析矩阵（两大作用：找到可能的战略问题 + 确认现实可解决的战略问题）；②三步骤：列举比对O/T/S/W → SO/ST/WO/WT四类组合 → 识别战略问题性质（层次、内容、责任）。\n \n \n \n 【教材思考题·简答】 \n 什么是战略承诺？企业为何要做出战略承诺？战略承诺应包含哪些内容？ \n \n 定义： 战略承诺是企业基于自身资源能力，考虑外部环境及其变化趋势，为实现长期战略目标而向顾客、供应商、员工等利益相关者做出的长期承诺。 \n 为何需要： ①使战略行为体现连续性、整体性和创新性；②承诺坚定是决策科学和行动迅速的前提；③为战略决策提供长期宏观指导。 \n 内容四要素： ①经营目的（使命）——企业存在的根本理由；②企业愿景——未来状态的美好想象；③战略意图——中期执著奋斗目标；④企业价值观（经营理念）——最根本的行为准则和优先顺序。\n \n \n \n 【历年真题2018·简答】 \n 企业可以选择的基本战略有哪些？各自的适用条件是什么？ \n \n 维度一（行业×市场）： ①行业/市场集中战略（单行业单市场，业务层）；②行业多元化战略（多行业单市场，公司层）；③市场多元化战略/国际化（单行业多市场，公司层）；④行业与市场多元化战略（多行业多市场，公司层）。 \n 维度二（发展态势五种）： ①稳定型——外部变化不大+前期成功；②增长型——机会多+资源充足；③收缩型——战略重组需要/行业衰退/失去优势；④防御型——外部稳定+资源有限+等待机会；⑤混合型——大型多元化企业的各业务单元组合选择。\n \n \n \n 【历年真题2023·简答】 \n 增长型战略为何是最流行的战略？有哪些潜在风险？ \n \n 增长型战略定义： 企业根据发展态势，决定深入挖掘内部资源能力以充分利用外部环境机会，使企业向更高发展目标迈进的战略。 \n 为何流行（5条原因）： ①给企业带来经营优势；②动态环境下增长是求生存的手段；③扩大规模可通过规模经济和学习曲线降低成本；④很多管理者将增长等同于成功；⑤增长快可掩盖失误与低效率；⑥增长快的企业战略管理者更容易获得晋升。 \n 潜在风险： ①掩盖效率低下问题，积累隐患；②资金链压力（盲目快速扩张）；③核心专长可能被分散，竞争优势弱化；④管理跟不上规模扩张，内部失控。\n \n \n \n 【预测题·论述】 \n 结合SWOT模型，论述企业如何系统识别和确认战略问题，并说明如何在此基础上做出基本战略选择（以某企业为例）。 \n \n 参考答题框架（论述题）： \n 一、战略问题的定义（定义+三特征+两类型） \n 二、SWOT模型确认战略问题 \n ①两大作用：找到可能问题+确认现实问题 \n ②三步骤（列举比对→四类组合→识别性质） \n ③强调机会/威胁和优势/劣势是相互参照的 \n 三、基于确认的战略问题选择基本战略 \n ①行业×市场维度的四种选择 \n ②发展态势维度的五种选择 \n ③结合阿里巴巴或格力举例说明 \n 四、结合案例（如：某数字化企业）展开具体分析 \n 五、总结：有效确认战略问题是战略制定更重要的前半程\n \n \n \n 【预测题·名词解释×3】 \n ①战略意图 ②收缩型战略 ③发展态势 \n \n ①战略意图： 指企业对实现特定战略愿景的执著追求，是企业在一段时期内奋斗目标的集中表达。它是中期目标，强调执著追求，具有具体挑战性。（如格力"五年再造一个格力"） \n ②收缩型战略： 指企业根据发展态势，决定企业未来资源配置与经营状况需要收缩，即企业未来发展水平低于现有发展水平的战略。这是一种以退为进、短期权宜的战略，原因包括：战略重组需要、行业衰退期、失去竞争优势。 \n ③发展态势（战略态势）： 指将企业未来发展目标（资源配置与经营状况）与目前发展水平进行比较而得到的企业发展趋势。它是选择稳定型、增长型、收缩型、防御型或混合型基本战略的基本依据。\n \n \n 💡 点击题目展开参考答案 | 建议先独立作答再对照 \n \n \n \n \n 📖 《企业战略管理》第2版 蓝海林等著 | 中南大学企业管理学硕复试学习笔记 \n 第五章 · 战略问题的确认与基本战略选择 | P124–156 \n 整合历年真题2016–2025 · 复试备考专用版 \n \n \n \n ▲';</script>
+<style>/* ═══ 悬浮搜索药丸 v4 ═══ */
+#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
+  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
+  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
+  display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
+  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
+  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
+  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:440px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
+  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+#sp-hidden-toast{position:fixed;bottom:140px;right:18px;z-index:9999;
+  background:#0f172a;color:#93c5fd;border:1px solid #334155;border-radius:8px;
+  padding:6px 14px;font-size:12px;font-family:"Microsoft YaHei",sans-serif;
+  display:none;pointer-events:none;max-width:260px;}
+body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
+body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
+body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
+body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:380px;font-size:13px;}
+body.in-iframe #sp-hidden-toast{bottom:80px;right:8px;}</style>
+</head>
+<body>
+
+<!-- ============================================================
+     FIXED TOP NAV
+     ============================================================ -->
+<div id="topnav">
+  <div class="nav-top">
+    <div class="nav-title">📖 第五章 · 战略问题的确认与基本战略选择</div>
+    <div class="nav-controls">
+      hideResults(),200)">
+      <div id="searchResults"></div>
+      <button class="nav-btn" onclick="toggleDark()">🌙 夜间模式</button>
+    </div>
+  </div>
+  <nav class="nav-links">
+    <a class="nav-link" href="#logic">🗺 逻辑图</a>
+    <a class="nav-link" href="#mindmap">🧠 思维导图</a>
+    <a class="nav-link" href="#sec1">§1 战略问题</a>
+    <a class="nav-link" href="#sec2">§2 SWOT确认</a>
+    <a class="nav-link" href="#sec3">§3 战略承诺</a>
+    <a class="nav-link" href="#sec4">§4 战略方向</a>
+    <a class="nav-link" href="#sec5">§5 战略目标</a>
+    <a class="nav-link" href="#compare">📊 对比表</a>
+    <a class="nav-link" href="#exam">📝 真题</a>
+    <a class="nav-link" href="#chain">🔗 串联</a>
+    <a class="nav-link" href="#quick">⚡ 30秒</a>
+    <a class="nav-link" href="#recite">📣 背诵版</a>
+    <a class="nav-link" href="#test">✅ 自测</a>
+  </nav>
+</div>
+
+<!-- ============================================================
+     MAIN WRAPPER
+     ============================================================ -->
+<div class="page-wrap">
+
+<!-- CHAPTER HEADER -->
+<div class="ch-header">
+  <div class="ch-num">第五章 · 战略制定篇第一章</div>
+  <div class="ch-title">战略问题的确认与基本战略选择</div>
+  <div class="ch-sub">《企业战略管理》第2版 蓝海林 著 | 中南大学企业管理学硕复试笔记</div>
+  <div class="ch-meta">
+    <span class="ch-badge">📄 教材 P124–156</span>
+    <span class="ch-badge">⭐⭐⭐⭐⭐ 极高频考章</span>
+    <span class="ch-badge">🎯 5节核心内容</span>
+    <span class="ch-badge">📝 名词·简答·论述·案例均考</span>
+  </div>
+</div>
+
+<!-- ============================================================
+     §0 本章逻辑结构图
+     ============================================================ -->
+<div id="logic" class="logic-map">
+  <h2>🗺 本章逻辑结构 <small style="font-weight:400;font-size:.8rem;color:var(--text3)">（在战略管理流程中的位置）</small></h2>
+  <div class="lm-flow" style="flex-wrap:wrap;gap:6px;">
+    <div class="lm-node" style="background:linear-gradient(135deg,#374151,#6b7280);">感知战略问题<br><small style="font-size:.7rem;opacity:.8">触发点</small></div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node" style="background:linear-gradient(135deg,#374151,#6b7280);">外部环境分析<br><small style="font-size:.7rem;opacity:.8">第3章</small></div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node" style="background:linear-gradient(135deg,#374151,#6b7280);">内部环境分析<br><small style="font-size:.7rem;opacity:.8">第4章</small></div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node" style="background:linear-gradient(135deg,#1e40af,#2563eb);">SWOT确认<br>战略问题<br><small style="font-size:.7rem;opacity:.8">§1-§2</small></div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node purple">审视与修改<br>战略承诺<br><small style="font-size:.7rem;opacity:.8">§3</small></div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node orange">选择<br>基本战略<br><small style="font-size:.7rem;opacity:.8">§4</small></div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node green">制定<br>战略目标<br><small style="font-size:.7rem;opacity:.8">§5</small></div>
+    <div class="lm-arrow">→</div>
+    <div class="lm-node" style="background:linear-gradient(135deg,#374151,#6b7280);">公司层/业务层<br>战略制定<br><small style="font-size:.7rem;opacity:.8">第6-9章</small></div>
+  </div>
+  <p style="margin-top:16px;font-size:.82rem;color:var(--text3);">
+    💡 <strong>本章的逻辑地位：</strong>承上启下的关键枢纽。前接环境分析（第3、4章），以SWOT最终确认战略问题；后启具体战略制定（第6–9章），通过战略承诺、基本战略方向与战略目标为下游提供指引。
+  </p>
+</div>
+
+<!-- ============================================================
+     §0 章节思维导图
+     ============================================================ -->
+<div id="mindmap" class="mindmap-box">
+  <h2>🧠 章节思维导图（知识框架）</h2>
+  <svg class="mindmap-svg" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#94a3b8"/>
+      </marker>
+    </defs>
+    <!-- Center -->
+    <rect x="355" y="170" width="190" height="60" rx="12" fill="url(#grad1)"/>
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#1a2744"/>
+        <stop offset="100%" style="stop-color:#2563eb"/>
+      </linearGradient>
+      <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#065f46"/>
+        <stop offset="100%" style="stop-color:#059669"/>
+      </linearGradient>
+      <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#4c1d95"/>
+        <stop offset="100%" style="stop-color:#7c3aed"/>
+      </linearGradient>
+      <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#78350f"/>
+        <stop offset="100%" style="stop-color:#d97706"/>
+      </linearGradient>
+      <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#7f1d1d"/>
+        <stop offset="100%" style="stop-color:#dc2626"/>
+      </linearGradient>
+    </defs>
+    <text x="450" y="196" text-anchor="middle" fill="white" font-weight="700" font-size="13">第五章</text>
+    <text x="450" y="215" text-anchor="middle" fill="#93c5fd" font-size="10">战略问题确认与</text>
+    <text x="450" y="228" text-anchor="middle" fill="#93c5fd" font-size="10">基本战略选择</text>
+
+    <!-- Branch 1: §1 战略问题 -->
+    <line x1="355" y1="185" x2="250" y2="90" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+    <rect x="130" y="55" width="120" height="50" rx="8" fill="url(#grad2)"/>
+    <text x="190" y="77" text-anchor="middle" fill="white" font-weight="600" font-size="11">§1 战略问题</text>
+    <text x="190" y="94" text-anchor="middle" fill="#a7f3d0" font-size="9">确认与决策原则</text>
+    <!-- sub nodes -->
+    <line x1="130" y1="75" x2="80" y2="30" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3"/>
+    <rect x="10" y="10" width="70" height="22" rx="6" fill="#064e3b"/>
+    <text x="45" y="25" text-anchor="middle" fill="#6ee7b7" font-size="9">两类战略问题</text>
+    <line x1="130" y1="90" x2="10" y2="105" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3"/>
+    <rect x="-65" y="94" width="75" height="22" rx="6" fill="#064e3b"/>
+    <text x="-27" y="109" text-anchor="middle" fill="#6ee7b7" font-size="9">SWOT确认步骤</text>
+
+    <!-- Branch 2: §2 SWOT确认 -->
+    <line x1="380" y1="170" x2="280" y2="60" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+    <rect x="240" y="20" width="120" height="40" rx="8" fill="url(#grad2)" opacity=".85"/>
+    <text x="300" y="38" text-anchor="middle" fill="white" font-weight="600" font-size="10">§2 SWOT矩阵</text>
+    <text x="300" y="52" text-anchor="middle" fill="#a7f3d0" font-size="9">SO·ST·WO·WT</text>
+
+    <!-- Branch 3: §3 战略承诺 -->
+    <line x1="450" y1="170" x2="450" y2="60" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+    <rect x="388" y="20" width="125" height="40" rx="8" fill="url(#grad3)"/>
+    <text x="450" y="38" text-anchor="middle" fill="white" font-weight="600" font-size="11">§3 战略承诺</text>
+    <text x="450" y="52" text-anchor="middle" fill="#c4b5fd" font-size="9">使命·愿景·意图·价值观</text>
+
+    <!-- Branch 4: §4 基本战略 -->
+    <line x1="545" y1="170" x2="640" y2="60" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+    <rect x="590" y="20" width="150" height="40" rx="8" fill="url(#grad4)"/>
+    <text x="665" y="38" text-anchor="middle" fill="white" font-weight="600" font-size="11">§4 基本战略（方向）</text>
+    <text x="665" y="52" text-anchor="middle" fill="#fde68a" font-size="9">行业×市场 / 发展态势</text>
+    <!-- sub -->
+    <line x1="740" y1="40" x2="810" y2="20" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3"/>
+    <rect x="808" y="8" width="80" height="22" rx="6" fill="#451a03"/>
+    <text x="848" y="23" text-anchor="middle" fill="#fcd34d" font-size="9">稳定·增长·收缩·防御·混合</text>
+
+    <!-- Branch 5: §5 战略目标 -->
+    <line x1="545" y1="200" x2="660" y2="280" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+    <rect x="640" y="265" width="140" height="50" rx="8" fill="url(#grad5)"/>
+    <text x="710" y="287" text-anchor="middle" fill="white" font-weight="600" font-size="11">§5 战略目标</text>
+    <text x="710" y="303" text-anchor="middle" fill="#fca5a5" font-size="9">内容·层次·时间·方法·技术</text>
+
+    <!-- Branch 6: 与下章关系 -->
+    <line x1="450" y1="230" x2="450" y2="340" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arr)"/>
+    <rect x="380" y="340" width="140" height="40" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="450" y="358" text-anchor="middle" fill="#94a3b8" font-size="10">第6–9章</text>
+    <text x="450" y="372" text-anchor="middle" fill="#64748b" font-size="9">公司层/业务层战略制定</text>
+
+    <!-- Branch 7: 与上章关系 -->
+    <line x1="355" y1="215" x2="160" y2="320" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arr)"/>
+    <rect x="60" y="305" width="110" height="40" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="115" y="322" text-anchor="middle" fill="#94a3b8" font-size="10">第3–4章</text>
+    <text x="115" y="337" text-anchor="middle" fill="#64748b" font-size="9">内外部环境分析</text>
+
+    <!-- 图例 -->
+    <text x="15" y="390" fill="#94a3b8" font-size="10">● 本章主要节</text>
+    <text x="130" y="390" fill="#64748b" font-size="10">- - - 与其他章节关系</text>
+  </svg>
+</div>
+
+<!-- ============================================================
+     §1 战略问题的确认与决策原则
+     ============================================================ -->
+<div id="sec1">
+  <div class="sec-title">§1 战略问题的确认与决策原则 <span>P124–128 ★★★★★</span></div>
+
+  <!-- 知识点 5.1.1 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">5.1</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">战略问题（Strategic Issue）的定义</div>
+        <div class="kcard-meta">
+          <span class="badge badge-red">⭐⭐⭐⭐⭐ 极高频</span>
+          <span class="badge badge-blue">名词解释</span>
+          <span class="badge badge-blue">简答</span>
+          <span class="pg">P124</span>
+          <span class="exam-tag">【2019笔试】</span>
+          <span class="exam-tag">【2023复试】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <div class="block block-def">
+        <div class="block-label">📖 专有名词解释（教材原意）</div>
+        战略问题，就是那些<kw class="kw">源自企业内部和外部关键环境因素的趋势性变化</kw>，并且对企业<kw class="kw">现在和未来发展具有重大、长期和根本影响</kw>的问题。
+      </div>
+
+      <details>
+        <summary>📚 三个核心特征：重大性·长期性·根本性</summary>
+        <div class="table-wrap">
+          <table class="ctable">
+            <tr><th>特征</th><th>含义</th><th>举例</th></tr>
+            <tr><td><span class="kw">重大性</span></td><td>对企业发展影响深远，不是小事</td><td>数字化转型是重大战略问题；某季度销售下滑是经营问题</td></tr>
+            <tr><td><span class="kw">长期性</span></td><td>影响时间跨度长，通常跨越多个战略周期</td><td>新能源汽车替代传统燃油车是长期战略问题</td></tr>
+            <tr><td><span class="kw">根本性</span></td><td>触及企业存在的根本，影响竞争优势的来源</td><td>互联网对传统零售的冲击是根本性问题</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details>
+        <summary>📂 战略问题的两大类型</summary>
+        <div class="table-wrap">
+          <table class="ctable">
+            <tr><th>类型</th><th>内容</th><th>例子</th></tr>
+            <tr>
+              <td><span class="kw">外部机会/威胁类</span></td>
+              <td>企业没有把握外部机会或者没有避免外部威胁</td>
+              <td>电商兴起，传统零售未能把握线上化机会</td>
+            </tr>
+            <tr>
+              <td><span class="kw2">内部优劣势类</span></td>
+              <td>企业没有发挥优势或者没有克服劣势</td>
+              <td>格力电器应更好发挥制造优势，进一步扩大规模</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+
+      <div class="block block-memory">
+        <div class="block-label">🧠 助记口诀</div>
+        <strong>「重·长·根，两来源（内外）」</strong>—— 战略问题三特征：重大、长期、根本；两来源：内部优劣、外部机会威胁。
+      </div>
+
+      <div class="block block-case">
+        <div class="block-label">🏢 企业案例（小学生版）</div>
+        <strong>格力 vs 阿里：两种战略问题视角</strong><br>
+        格力：我已经很强大了，战略问题是"怎么把格力做更大"（五年再增1000亿）。但如果用SWOT认真分析，战略问题应该是"进入什么行业才能更好发挥我的制造专长"。<br>
+        阿里：每次都问"我能把握哪些帮中小企业做生意的机会"，所以从B2B→淘宝→支付宝→菜鸟，越来越强但核心不变。<br>
+        <strong style="color:var(--accent3)">结论：有效确认战略问题是有效制定战略的一半，而且是更重要的那一半！</strong>
+      </div>
+
+      <div class="block block-template">
+        <div class="block-label">💬 复试回答模板</div>
+        <strong>结构：定义 → 三特征 → 两类型 → 案例 → 总结</strong><br>
+        "战略问题是指来自内外部关键环境因素趋势性变化、对企业具有<strong>重大、长期、根本</strong>影响的问题。
+        它分为外部机会/威胁类和内部优劣势类两大类。以格力为例……（举例）
+        有效确认战略问题，是战略制定中更为重要的前半程。"
+      </div>
+
+      <details>
+        <summary>💡 复试延伸追问</summary>
+        <div>
+          <p>① 战略问题与经营问题有什么区别？（关键词：趋势性、重大、长期、根本）</p>
+          <p>② 如何防止管理者只看到"碎片式"经营问题而忽视战略问题？（关键词：SWOT分析、系统分析）</p>
+          <p>③ 战略问题确认不准确会带来什么后果？（格力案例：按五年再造方向走和按"发挥制造专长"方向走，战略完全不同）</p>
+        </div>
+      </details>
+
+      <div class="block block-origin">
+        <div class="block-label">📌 需背诵教材原句</div>
+        "有效地确认企业所面临的战略问题是有效制定企业战略的一半，而且是<span class="kw">更重要的那一半</span>。"（P127）
+      </div>
+    </div>
+  </div><!-- end kcard 5.1 -->
+
+</div><!-- end §1 -->
+
+<!-- ============================================================
+     §2 SWOT分析矩阵确认战略问题
+     ============================================================ -->
+<div id="sec2">
+  <div class="sec-title">§2 战略问题确认的方法——SWOT矩阵 <span>P125–128 ★★★★★</span></div>
+
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">5.2</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">SWOT分析矩阵与战略问题确认步骤</div>
+        <div class="kcard-meta">
+          <span class="badge badge-red">⭐⭐⭐⭐⭐ 极高频</span>
+          <span class="badge badge-blue">名词解释</span>
+          <span class="badge badge-orange">论述</span>
+          <span class="badge badge-orange">案例</span>
+          <span class="pg">P125–128</span>
+          <span class="exam-tag">【2020笔试】</span>
+          <span class="exam-tag">【2022复试】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <div class="block block-def">
+        <div class="block-label">📖 SWOT两大作用</div>
+        一是通过内外部分析<kw class="kw">找到</kw>企业可能面临的战略问题；
+        二是通过<kw class="kw">SWOT的反复比对组合</kw>，最终<kw class="kw">确认</kw>现实可解决的战略问题。
+      </div>
+
+      <div class="swot-grid">
+        <div class="swot-cell swot-so">
+          <div class="swot-label">SO 组合（进攻型）</div>
+          凭借公司<span class="kw2">优势（S）</span>，充分利用外部环境所带来的各种<span class="kw2">机会（O）</span>。<br>
+          <em style="font-size:.78rem">→ 如何用优势抓机会？</em>
+        </div>
+        <div class="swot-cell swot-st">
+          <div class="swot-label">ST 组合（防御型）</div>
+          利用公司<span class="kw">优势（S）</span>，尽量规避外部环境带来的<span class="kw">威胁（T）</span>。<br>
+          <em style="font-size:.78rem">→ 如何用优势挡威胁？</em>
+        </div>
+        <div class="swot-cell swot-wo">
+          <div class="swot-label">WO 组合（扭转型）</div>
+          通过各种方式弥补公司的<span class="kw">劣势（W）</span>，充分利用<span class="kw">机会（O）</span>。<br>
+          <em style="font-size:.78rem">→ 如何克服劣势抓机会？</em>
+        </div>
+        <div class="swot-cell swot-wt">
+          <div class="swot-label">WT 组合（保守型）</div>
+          通过各种方式弥补公司的<span class="kw">劣势（W）</span>，规避<span class="kw">威胁（T）</span>。<br>
+          <em style="font-size:.78rem">→ 如何在最弱状态下避险？</em>
+        </div>
+      </div>
+
+      <details>
+        <summary>📋 SWOT确认战略问题的三步骤（必背）</summary>
+        <div class="table-wrap">
+          <table class="ctable">
+            <tr><th>步骤</th><th>具体操作</th><th>关键点</th></tr>
+            <tr>
+              <td><strong>第一步</strong><br>列举比对</td>
+              <td>将外部机会O、威胁T和内部优势S、劣势W具体列举，反复比对，找出：<br>① 有哪些可以但没有把握的机会<br>② 有哪些应该但没有防范的威胁<br>③ 有哪些可以但没有发挥的优势<br>④ 有哪些应该但没有克服的劣势</td>
+              <td><kw class="kw">机会/威胁是相对优势/劣势而言的，优势/劣势也是相对机会/威胁而言的</kw></td>
+            </tr>
+            <tr>
+              <td><strong>第二步</strong><br>四类组合</td>
+              <td>对外部因素(O,T)与内部因素(S,W)进行组合比对，得到SO/ST/WO/WT四大类可解决的战略问题</td>
+              <td>组合出的才是<kw class="kw2">现实可解决</kw>的战略问题</td>
+            </tr>
+            <tr>
+              <td><strong>第三步</strong><br>识别性质</td>
+              <td>识别战略问题的性质：<br>① 在哪个层次展开（公司层 or 业务层）<br>② 战略内容是什么（行业组合/竞争优势）<br>③ 由谁来完成（总部/事业部）<br>④ 调整发生在哪个逻辑层次（承诺/方向/目标/具体战略）</td>
+              <td>多元化企业需<kw class="kw">公司整体 + 每个业务</kw>分别分析</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+
+      <div class="block block-memory">
+        <div class="block-label">🧠 助记口诀</div>
+        <strong>「列举—组合—识性质」三步走</strong>；四象限：SO进攻、ST防御、WO扭转、WT保守。<br>
+        口诀：<strong>"外遇内情对对碰，进·防·扭·守四组合"</strong>
+      </div>
+
+      <div class="block block-case">
+        <div class="block-label">🏢 通俗案例（小学生版）</div>
+        想象你是一个学生，期末考试前要制定学习计划（战略）：<br>
+        S优势：数学好  W劣势：英语差<br>
+        O机会：英语老师公布了考点  T威胁：数学可能出难题<br>
+        <strong>SO：</strong>用数学好的优势，去攻克考点里的数学计算题<br>
+        <strong>ST：</strong>用数学好来应对可能的难题挑战<br>
+        <strong>WO：</strong>老师公布了英语考点，赶紧针对考点补英语短板<br>
+        <strong>WT：</strong>英语差、数学也难——要用最少精力守住基础分
+      </div>
+
+      <div class="block block-template">
+        <div class="block-label">💬 复试回答模板（SWOT作用）</div>
+        "SWOT分析矩阵在战略问题确认中有两个作用：一是帮助<strong>发现</strong>可能的战略问题（将内外部因素系统梳理）；二是通过<strong>四类组合（SO/ST/WO/WT）</strong>确认现实可解决的战略问题。
+        具体步骤分三步：列举比对、四类组合、识别性质……（展开说明）
+        SWOT分析特别强调机会/威胁和优势/劣势是<strong>相互参照</strong>的，只有完成内外部分析后才能做有针对性的SWOT。"
+      </div>
+
+      <div class="block block-origin">
+        <div class="block-label">📌 需背诵教材原句</div>
+        "SWOT分析矩阵对于战略问题的确认具有两个方面的重要作用：一是通过外部和内部环境分析<span class="kw">找到</span>企业可能面临的战略问题；二是通过SWOT的反复比对或者组合，最终<span class="kw">确认</span>企业所面临的现实战略问题，即有可能解决的战略问题。"（P127）
+      </div>
+    </div>
+  </div><!-- end kcard 5.2 -->
+
+</div><!-- end §2 -->
+
+<!-- ============================================================
+     §3 战略承诺
+     ============================================================ -->
+<div id="sec3">
+  <div class="sec-title">§3 战略承诺 <span>P128–146 ★★★★★ 核心高频</span></div>
+
+  <!-- 5.3.1 战略承诺定义 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">5.3</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">战略承诺（Strategic Commitments）——定义与特征</div>
+        <div class="kcard-meta">
+          <span class="badge badge-red">⭐⭐⭐⭐⭐ 极高频</span>
+          <span class="badge badge-blue">名词解释</span>
+          <span class="badge badge-blue">简答</span>
+          <span class="pg">P133–134</span>
+          <span class="exam-tag">【2018复试】</span>
+          <span class="exam-tag">【2021笔试】</span>
+          <span class="exam-tag">【2024复试】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <div class="block block-def">
+        <div class="block-label">📖 专有名词解释（教材原意）</div>
+        战略承诺（strategic commitments）是指企业基于<kw class="kw">自身的资源和能力</kw>，并考虑到<kw class="kw">当前外部环境及其未来变化的趋势</kw>，为了实现希望达到的<kw class="kw">长期战略目标</kw>而向顾客、供应商、企业员工等<kw class="kw">利益相关者</kw>做出的长期承诺。
+      </div>
+
+      <details>
+        <summary>📌 战略承诺的核心要点（5点）</summary>
+        <div class="table-wrap">
+          <table class="ctable">
+            <tr><th>#</th><th>要点</th><th>说明</th></tr>
+            <tr><td>①</td><td><span class="kw">价值层面</span>的战略选择</td><td>时间跨度最长、影响最广泛；受企业价值观影响，也需科学决策</td></tr>
+            <tr><td>②</td><td><span class="kw">不能过于具体</span></td><td>过具体会在环境变化中错失机会</td></tr>
+            <tr><td>③</td><td><span class="kw">不能过于宽泛</span></td><td>过宽泛会在环境变化中缺乏约束而过于冒险</td></tr>
+            <tr><td>④</td><td><span class="kw">一经做出必须长期坚持</span></td><td>体现战略的连续性、整体性和创新性</td></tr>
+            <tr><td>⑤</td><td><span class="kw">承诺坚定是前提</span></td><td>承诺坚定是决策科学和行动迅速的前提（阿里巴巴案例）</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <div class="block block-case">
+        <div class="block-label">🏢 企业案例（小学生版）</div>
+        <strong>阿里巴巴战略承诺：</strong>"让天下没有难做的生意"——这就是它的战略承诺。<br>
+        不管开了多少业务（淘宝/天猫/菜鸟/支付宝/钉钉），中心思想永远是"帮中小企业做生意更容易"。<br>
+        就像你给朋友承诺"我会在你需要的时候帮助你"，不管以后发生什么，你都会用不同方式践行这个承诺。
+      </div>
+
+      <div class="block block-memory">
+        <div class="block-label">🧠 助记口诀</div>
+        <strong>「战略承诺 = 企业存在的根本理由 + 长期不变的指南针」</strong><br>
+        记忆：战略承诺就像结婚誓词——不能太细（"我每天给你煮饭"），也不能太空（"我会让你幸福"），必须是"我愿意与你一生共同经营家庭"这个程度。
+      </div>
+    </div>
+  </div><!-- end 5.3 -->
+
+  <!-- 5.3.2 战略承诺的核心内容 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">5.3B</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">战略承诺的核心内容四要素（使命·愿景·战略意图·价值观）</div>
+        <div class="kcard-meta">
+          <span class="badge badge-red">⭐⭐⭐⭐⭐ 极高频</span>
+          <span class="badge badge-blue">名词解释×4</span>
+          <span class="badge badge-orange">简答</span>
+          <span class="pg">P134–143</span>
+          <span class="exam-tag">【2016笔试】</span>
+          <span class="exam-tag">【2019复试】</span>
+          <span class="exam-tag">【2022笔试】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <div class="table-wrap">
+        <table class="ctable">
+          <tr>
+            <th style="width:16%">要素</th>
+            <th style="width:28%">专有名词解释（教材原意）</th>
+            <th style="width:22%">关键特征</th>
+            <th style="width:18%">通俗解释</th>
+            <th style="width:16%">案例</th>
+          </tr>
+          <tr>
+            <td><span class="kw">①经营目的<br>（使命）</span></td>
+            <td>企业存在的使命、根本理由或目的；企业的长期承诺和最重要的价值追求</td>
+            <td>从<strong>满足顾客需求</strong>角度陈述；体现企业个性；超越单纯赚钱</td>
+            <td>"我们为什么存在？"</td>
+            <td>阿里："让天下没有难做的生意"</td>
+          </tr>
+          <tr>
+            <td><span class="kw">②企业愿景</span></td>
+            <td>对企业未来将发展成为什么样子的描述，表达企业对未来的美好想象和希望</td>
+            <td>面向未来；鼓舞人心；具体可想象；区别于现状</td>
+            <td>"我们想变成什么样子？"</td>
+            <td>微软早期："让每个家庭桌上都有一台电脑"</td>
+          </tr>
+          <tr>
+            <td><span class="kw3">③战略意图</span></td>
+            <td>对实现特定战略愿景的执著追求，是企业在一段时期内奋斗目标的集中表达</td>
+            <td><strong>中期</strong>奋斗目标；强调执著追求；具体挑战性</td>
+            <td>"接下来5-10年我要做到什么？"</td>
+            <td>格力"五年再造一个格力"</td>
+          </tr>
+          <tr>
+            <td><span class="kw2">④经营理念<br>（价值观）</span></td>
+            <td>指导企业行为的最根本的优先顺序和准则；是企业文化的基础</td>
+            <td>长期稳定；一旦形成较难改变；从创业期形成</td>
+            <td>"我们怎么做事情？"</td>
+            <td>华为："以客户为中心，以奋斗者为本"</td>
+          </tr>
+        </table>
+      </div>
+
+      <details>
+        <summary>🔍 四要素对比：使命 vs 愿景 vs 战略意图（易混！）</summary>
+        <div class="table-wrap">
+          <table class="ctable">
+            <tr><th>对比维度</th><th>使命（经营目的）</th><th>愿景</th><th>战略意图</th></tr>
+            <tr><td>时间维度</td><td>永久性，长期不变</td><td>长期，但可更新</td><td>中期（5-10年）</td></tr>
+            <tr><td>内容焦点</td><td>企业存在的根本理由</td><td>企业未来样子</td><td>具体奋斗目标</td></tr>
+            <tr><td>情感色彩</td><td>使命感，价值追求</td><td>美好想象，激励人心</td><td>执著追求，不达不止</td></tr>
+            <tr><td>可测量性</td><td>较难量化</td><td>定性描述</td><td>相对具体，可感知</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <div class="block block-memory">
+        <div class="block-label">🧠 助记口诀</div>
+        <strong>「使·愿·意·值」四字口诀</strong><br>
+        使命（为什么来）→ 愿景（要去哪里）→ 战略意图（这段路怎么走）→ 价值观（怎么做人做事）<br>
+        就像爬山：使命=我为什么爬山；愿景=山顶是什么样；战略意图=今天要到第几营地；价值观=爬山的规矩是什么
+      </div>
+
+      <div class="block block-template">
+        <div class="block-label">💬 复试回答模板（战略承诺内容）</div>
+        "战略承诺的核心内容主要包括四个方面：<br>
+        第一，<strong>经营目的（使命）</strong>——企业存在的根本理由，例如阿里的"让天下没有难做的生意"；<br>
+        第二，<strong>企业愿景</strong>——对未来状态的描述，鼓舞人心；<br>
+        第三，<strong>战略意图</strong>——中期奋斗目标，执著追求；<br>
+        第四，<strong>企业价值观</strong>——最根本的行为准则和优先顺序。<br>
+        这四个要素共同构成企业战略承诺的完整内容，为战略制定提供最高层次的指引。"
+      </div>
+
+      <div class="block block-origin">
+        <div class="block-label">📌 需背诵教材原句</div>
+        "企业价值观是指导企业行为的<span class="kw">最根本的优先顺序和准则</span>。企业的价值观说明了经理层和员工应该如何规范自己的言行，如何做好自己的工作，以及为了实现企业宗旨应该构建何种类型的组织。"（P141）
+      </div>
+    </div>
+  </div><!-- end 5.3B -->
+
+</div><!-- end §3 -->
+
+<!-- ============================================================
+     §4 战略方向（基本战略）
+     ============================================================ -->
+<div id="sec4">
+  <div class="sec-title">§4 战略方向（基本战略选择） <span>P146–148 ★★★★★</span></div>
+
+  <!-- 4.1 基于行业×市场的战略选择 -->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">5.4A</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">基于行业与市场范围的基本战略选择（2×2矩阵）</div>
+        <div class="kcard-meta">
+          <span class="badge badge-red">⭐⭐⭐⭐⭐</span>
+          <span class="badge badge-blue">简答</span>
+          <span class="badge badge-orange">论述</span>
+          <span class="pg">P146–147</span>
+          <span class="exam-tag">【2021复试】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <div class="block block-def">
+        <div class="block-label">📖 框架说明</div>
+        依据企业对<kw class="kw">行业（单一/多个）</kw>和<kw class="kw">市场（单一/多个）</kw>经营范围的战略承诺，企业在四种基本战略之间选择。
+      </div>
+      <div class="table-wrap">
+        <table class="ctable">
+          <tr>
+            <th></th><th>单一市场</th><th>多个市场</th>
+          </tr>
+          <tr>
+            <td><strong>单一行业</strong></td>
+            <td><span class="kw2">行业/市场集中战略</span><br><small>→ 业务层战略<br>满足特定市场特定需求</small></td>
+            <td><span class="kw3">市场多元化战略（国际化战略）</span><br><small>→ 公司层战略<br>满足多个市场的某一需求</small></td>
+          </tr>
+          <tr>
+            <td><strong>多个行业</strong></td>
+            <td><span class="kw">行业多元化战略</span><br><small>→ 公司层战略<br>满足特定市场多方面需求</small></td>
+            <td><span class="kw">行业与市场多元化战略</span><br><small>→ 公司层战略<br>满足多个市场多方面需求</small></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="block block-memory">
+        <div class="block-label">🧠 助记口诀</div>
+        <strong>「单单=集中=业务层；单多/多单/多多=多元化=公司层」</strong><br>
+        只要"多"了一个维度，就升级到公司层战略。
+      </div>
+
+      <div class="block block-case">
+        <div class="block-label">🏢 案例（小学生版）</div>
+        <strong>卖包子的店：</strong>
+        行业集中+市场集中 = 就在武汉卖包子（集中战略）<br>
+        行业集中+多个市场 = 在全国/全球卖包子（国际化/市场多元化）<br>
+        多个行业+单一市场 = 在武汉卖包子+粥+炒菜（行业多元化）<br>
+        多个行业+多个市场 = 在全国卖各种食品（行业市场都多元化）
+      </div>
+    </div>
+  </div><!-- end 5.4A -->
+
+  <!-- 4.2 基于发展态势的基本战略选择（五种）-->
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">5.4B</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">基于发展态势的基本战略（五种）——稳定·增长·收缩·防御·混合</div>
+        <div class="kcard-meta">
+          <span class="badge badge-red">⭐⭐⭐⭐⭐ 最高频</span>
+          <span class="badge badge-blue">名词解释</span>
+          <span class="badge badge-blue">简答×5</span>
+          <span class="badge badge-orange">对比论述</span>
+          <span class="pg">P147–148</span>
+          <span class="exam-tag">【2017笔试】</span>
+          <span class="exam-tag">【2019笔试】</span>
+          <span class="exam-tag">【2020复试】</span>
+          <span class="exam-tag">【2023笔试】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <div class="block block-def">
+        <div class="block-label">📖 发展态势定义</div>
+        <kw class="kw">发展态势（战略态势）</kw>：将企业<kw class="kw">未来发展目标</kw>（资源配置与经营状况）与<kw class="kw">目前发展水平</kw>进行比较而得到的企业发展趋势。
+      </div>
+
+      <!-- 2×2 Matrix Diagram -->
+      <div style="margin:16px 0;">
+        <div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:4px;font-size:.8rem;">
+          <div style="grid-row:1;grid-column:1;"></div>
+          <div style="text-align:center;padding:6px;background:var(--table-head);color:var(--table-head-text);border-radius:6px 0 0 0;font-weight:700;">未来目标：低</div>
+          <div style="text-align:center;padding:6px;background:var(--table-head);color:var(--table-head-text);border-radius:0 6px 0 0;font-weight:700;">未来目标：高</div>
+          <div style="writing-mode:vertical-rl;text-align:center;padding:8px 4px;background:var(--table-head);color:var(--table-head-text);border-radius:0 0 0 6px;font-size:.78rem;font-weight:700;">现在水平：低</div>
+          <div style="padding:12px;background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.3);border-radius:4px;">
+            <strong style="color:#d97706;">防御型战略</strong><br>
+            <small>现在低 → 未来低<br>外部稳定，资源有限<br>等待未来机会</small>
+          </div>
+          <div style="padding:12px;background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.3);border-radius:4px;">
+            <strong style="color:#2563eb;">增长型战略</strong><br>
+            <small>现在低 → 未来高<br>最流行，挖掘内部<br>充分利用外部机会</small>
+          </div>
+          <div style="writing-mode:vertical-rl;text-align:center;padding:8px 4px;background:var(--table-head);color:var(--table-head-text);font-size:.78rem;font-weight:700;">现在水平：高</div>
+          <div style="padding:12px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);border-radius:4px;">
+            <strong style="color:#dc2626;">收缩型战略</strong><br>
+            <small>现在高 → 未来低<br>以退为进<br>战略重组/衰退期</small>
+          </div>
+          <div style="padding:12px;background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.3);border-radius:4px;">
+            <strong style="color:#059669;">稳定型战略</strong><br>
+            <small>现在高 → 未来高<br>非快速但稳定增长<br>外部变化不大</small>
+          </div>
+        </div>
+        <p style="font-size:.75rem;color:var(--text3);margin-top:8px;">*第五种：<span class="kw3">混合型战略</span> = 大型企业各业务单元分别采用不同基本战略的组合</p>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="strategy-card stable">
+          <div class="sc-title green">① 稳定型战略（Stability Strategy）</div>
+          <div class="sc-body">
+            <strong>定义：</strong>经营状况和资源配置保持目前较高水平，变化不大。<br>
+            <strong>核心：</strong>稳定≠不增长，是"非快速地发展"<br>
+            <strong>适用：</strong>外部变化不大 + 前期经营相当成功<br>
+            <strong>案例：</strong>成熟期行业领导品牌维持市场地位
+          </div>
+        </div>
+        <div class="strategy-card growth">
+          <div class="sc-title blue">② 增长型战略（Growth Strategy）</div>
+          <div class="sc-body">
+            <strong>定义：</strong>挖掘内部资源充分利用机会，向更高目标迈进。<br>
+            <strong>为何最流行：</strong>求生存手段；规模经济降低成本；管理者晋升动力；掩盖失误<br>
+            <strong>适用：</strong>机会多、资源积累充足<br>
+            <strong>案例：</strong>华为、小米早期快速扩张
+          </div>
+        </div>
+        <div class="strategy-card shrink">
+          <div class="sc-title red">③ 收缩型战略（Retrenchment Strategy）</div>
+          <div class="sc-body">
+            <strong>定义：</strong>未来资源配置与经营状况需要收缩（未来低于现在）<br>
+            <strong>性质：</strong>相对消极的战略，但"以退为进"<br>
+            <strong>原因：</strong>战略重组需要；行业衰退期；失去竞争优势<br>
+            <strong>案例：</strong>IBM剥离PC业务专注IT服务
+          </div>
+        </div>
+        <div class="strategy-card defense">
+          <div class="sc-title orange">④ 防御型战略（Defensive Strategy）</div>
+          <div class="sc-body">
+            <strong>定义：</strong>经营状况保持目前较低水平（现在低 → 未来低）<br>
+            <strong>原因：</strong>外部稳定，机会暂时不多，资源能力有限<br>
+            <strong>目的：</strong>等待未来机会出现<br>
+            <strong>案例：</strong>资源有限的初创企业先守住基本盘
+          </div>
+        </div>
+        <div class="strategy-card mixed" style="grid-column:1/3;">
+          <div class="sc-title purple">⑤ 混合型战略（Combined Strategy）</div>
+          <div class="sc-body" style="display:flex;gap:16px;flex-wrap:wrap;">
+            <div>
+              <strong>定义：</strong>企业各业务单元采用不同的基本战略组合。<br>
+              <strong>适用：</strong>规模大的企业（多个业务单元、分布不同行业、态势各异）<br>
+              <strong>特点：</strong>若强行对所有业务用同一战略则不合适<br>
+              <strong>案例：</strong>华润集团——零售(稳定) + 地产(增长) + 医药(增长) + 水泥(收缩)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block block-memory">
+        <div class="block-label">🧠 助记口诀（五种基本战略）</div>
+        <strong>「稳增收防混，高高低低中」</strong><br>
+        稳（高→高）、增（低→高）、收（高→低）、防（低→低）、混（多业务组合）<br>
+        记忆矩阵：<em>高·高=稳定（好学生保持好成绩）；低·高=增长（差学生努力提升）；高·低=收缩（降班）；低·低=防御（先守住不挂科）</em>
+      </div>
+
+      <div class="block block-template">
+        <div class="block-label">💬 复试回答模板（五种基本战略）</div>
+        "基于发展态势的基本战略分为五种：<br>
+        ① <strong>稳定型</strong>——现在高、未来高，保持非快速稳定发展，适合外部变化不大且经营成功的企业；<br>
+        ② <strong>增长型</strong>——现在低、未来高，充分挖掘内部资源利用外部机会，是最流行的战略；<br>
+        ③ <strong>收缩型</strong>——现在高、未来低，是以退为进的战略，原因包括战略重组、行业衰退等；<br>
+        ④ <strong>防御型</strong>——现在低、未来低，外部机会暂时不多，资源有限，等待未来机会；<br>
+        ⑤ <strong>混合型</strong>——大企业各业务单元采用不同基本战略的组合，避免"一刀切"。"
+      </div>
+
+      <details>
+        <summary>💡 复试延伸追问</summary>
+        <div>
+          <p>① 增长型战略为什么是最流行的？有什么潜在风险？（过快增长→掩盖问题→资金链断裂）</p>
+          <p>② 收缩型战略一定是失败的表现吗？（非也，IBM剥离PC是主动收缩以聚焦优势领域）</p>
+          <p>③ 防御型和收缩型的区别是什么？（防御：从未来的角度维持现状；收缩：从高水平往低水平走）</p>
+        </div>
+      </details>
+
+      <div class="block block-origin">
+        <div class="block-label">📌 需背诵教材原句</div>
+        "收缩型战略是一种<span class="kw">以退为进</span>的战略。"（P148）<br>
+        "增长型战略是一种最流行、<span class="kw">使用最多</span>的战略。"（P147）
+      </div>
+    </div>
+  </div><!-- end 5.4B -->
+
+</div><!-- end §4 -->
+
+<!-- ============================================================
+     §5 战略目标
+     ============================================================ -->
+<div id="sec5">
+  <div class="sec-title">§5 战略目标 <span>P149–156 ★★★★</span></div>
+
+  <div class="kcard">
+    <div class="kcard-header">
+      <div class="kcard-num">5.5</div>
+      <div class="kcard-title-wrap">
+        <div class="kcard-title">战略目标——定义、体系与制定方法</div>
+        <div class="kcard-meta">
+          <span class="badge badge-orange">⭐⭐⭐⭐ 较高频</span>
+          <span class="badge badge-blue">名词解释</span>
+          <span class="badge badge-blue">简答</span>
+          <span class="pg">P149–156</span>
+          <span class="exam-tag">【2020笔试】</span>
+          <span class="exam-tag">【2024笔试】</span>
+        </div>
+      </div>
+    </div>
+    <div class="kcard-body">
+      <div class="block block-def">
+        <div class="block-label">📖 战略目标定义</div>
+        战略目标是对企业<kw class="kw">需要努力实现的未来的一种精确、可测量的描述</kw>，或者说是对企业战略经营活动取得的<kw class="kw">主要成果的期望值</kw>，也是企业在实现战略承诺过程中希望达到的<kw class="kw">阶段性结果</kw>。
+      </div>
+
+      <details>
+        <summary>📋 目标体系的三个合理性（内容·层次·时间）</summary>
+        <div class="table-wrap">
+          <table class="ctable">
+            <tr><th>合理性维度</th><th>包含内容</th><th>关键要点</th></tr>
+            <tr>
+              <td><span class="kw">①内容结构</span></td>
+              <td>规模指标、财务指标、创新目标、社会责任目标</td>
+              <td>四类目标<strong>相互平衡匹配</strong>；过于偏重某类会导致战略行为不合理</td>
+            </tr>
+            <tr>
+              <td><span class="kw2">②层次结构</span></td>
+              <td>总部→事业部→职能部门</td>
+              <td>总部主要目标：投资收益率；事业部：市场占有率+利润；职能部门：有效性+速度</td>
+            </tr>
+            <tr>
+              <td><span class="kw3">③时间结构</span></td>
+              <td>长期（≥5年）→中期（1-5年）→短期（≤1年）</td>
+              <td>三者相互连接，短期目标实现情况动态修正中长期目标</td>
+            </tr>
+          </table>
+        </div>
+      </details>
+
+      <details>
+        <summary>📋 目标体系方法合理性的四大矛盾处理</summary>
+        <div class="table-wrap">
+          <table class="ctable">
+            <tr><th>矛盾对</th><th>原则</th></tr>
+            <tr><td><span class="kw">结果 vs 手段</span></td><td>不能只有结果导向目标，还要有行动约束类目标（手段导向），否则"不择手段"</td></tr>
+            <tr><td><span class="kw">定量 vs 定性</span></td><td>定量目标易分解控制，但部分重要目标难以量化；环境动态化时定性指导性上升</td></tr>
+            <tr><td><span class="kw">可能性 vs 挑战性</span></td><td>目标过高→反激励甚至损害长远利益；要分析宏观环境、行业潜力、竞争优势</td></tr>
+            <tr><td><span class="kw">坚持 vs 调整</span></td><td>定性/手段/长期目标更应刚性；定量/结果/短期目标可有弹性；设置调整节奏（每年/每两年）</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <details>
+        <summary>📋 战略目标制定的八种技术</summary>
+        <div class="table-wrap">
+          <table class="ctable">
+            <tr><th>#</th><th>方法/技术</th><th>适用场景</th></tr>
+            <tr><td>1</td><td>时间序列分析法</td><td>环境较稳定，历史数据充足</td></tr>
+            <tr><td>2</td><td>相关分析法（因果关系）</td><td>变量间存在依存关系</td></tr>
+            <tr><td>3</td><td>盈亏平衡分析法</td><td>销售量、成本、利润三者关系</td></tr>
+            <tr><td>4</td><td>决策矩阵法</td><td>需要明确目标、多方案、客观概率</td></tr>
+            <tr><td>5</td><td>决策树法</td><td>复杂多阶段决策，图解直观</td></tr>
+            <tr><td>6</td><td>博弈论法（对策论）</td><td>竞争性环境，与对手博弈</td></tr>
+            <tr><td>7</td><td>模拟模型法</td><td>输入不同数据观察结果</td></tr>
+            <tr><td>8</td><td><strong>平衡计分卡（BSC）</strong></td><td>将战略承诺转化为财务、客户、流程、学习四维目标</td></tr>
+          </table>
+        </div>
+      </details>
+
+      <div class="block block-memory">
+        <div class="block-label">🧠 助记口诀</div>
+        <strong>「战略目标 = 阶段性承诺兑现的里程碑」</strong><br>
+        目标体系三合理：内容合理（四类平衡）、层次合理（总-部-职能）、时间合理（长-中-短）<br>
+        方法四矛盾：结·量·高·坚（结果vs手段；定量vs定性；高vs现实；坚持vs调整）
+      </div>
+
+      <div class="block block-case">
+        <div class="block-label">🏢 案例（小学生版）</div>
+        战略目标就像学期目标：<br>
+        ✅ 期末成绩（财务目标）+ 参加比赛（创新）+ 好好相处（社会责任）要一起设<br>
+        ✅ 不能只说"考100分"而不管手段（为了考100分作弊？）<br>
+        ✅ 要分长期（高考上985）、中期（高中三年成绩上升）、短期（这次月考数学超过90）
+      </div>
+
+      <div class="block block-origin">
+        <div class="block-label">📌 需背诵教材原句</div>
+        "战略目标是对企业需要努力实现的未来的一种<span class="kw">精确、可测量的描述</span>，或者说，是对企业战略经营活动取得的主要成果的期望值，也是企业在实现战略承诺过程中希望达到的<span class="kw">阶段性结果</span>。"（P149）
+      </div>
+    </div>
+  </div><!-- end 5.5 -->
+
+</div><!-- end §5 -->
+
+<!-- ============================================================
+     对比总结表
+     ============================================================ -->
+<div id="compare">
+  <div class="sec-title">📊 对比总结表（易混概念辨析）</div>
+
+  <div class="compare-section">
+    <h2>📋 易混概念大对比</h2>
+    <div class="table-wrap">
+      <table class="ctable">
+        <tr>
+          <th>概念对比</th>
+          <th>使命（经营目的）</th>
+          <th>愿景</th>
+          <th>战略意图</th>
+          <th>企业价值观</th>
+        </tr>
+        <tr>
+          <td>时间跨度</td>
+          <td>永久，不变</td>
+          <td>长期（可更新）</td>
+          <td>中期（5-10年）</td>
+          <td>长期，一旦形成不易变</td>
+        </tr>
+        <tr>
+          <td>回答的问题</td>
+          <td>我们为什么存在？</td>
+          <td>我们要成为什么？</td>
+          <td>这阶段奋斗目标</td>
+          <td>我们怎么做事？</td>
+        </tr>
+        <tr>
+          <td>情感特征</td>
+          <td>使命感、价值追求</td>
+          <td>激励、想象未来</td>
+          <td>执著、拼搏感</td>
+          <td>规范性、稳定性</td>
+        </tr>
+        <tr>
+          <td>典型案例</td>
+          <td>阿里："让天下没有难做的生意"</td>
+          <td>微软早期："每家桌上有台电脑"</td>
+          <td>格力："五年再造一个格力"</td>
+          <td>华为："以客户为中心"</td>
+        </tr>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <div class="table-wrap">
+      <table class="ctable">
+        <tr>
+          <th>五种基本战略对比</th>
+          <th>现在水平</th>
+          <th>未来目标</th>
+          <th>适用情境</th>
+          <th>关键词</th>
+        </tr>
+        <tr>
+          <td><span class="kw2">稳定型</span></td>
+          <td>高</td>
+          <td>高（变化不大）</td>
+          <td>外部变化不大 + 前期成功</td>
+          <td>非快速、稳定增长</td>
+        </tr>
+        <tr>
+          <td><span class="kw">增长型</span></td>
+          <td>低</td>
+          <td>高</td>
+          <td>机会多、资源积累足够</td>
+          <td>最流行、规模经济</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-red" style="font-size:.75rem;">收缩型</span></td>
+          <td>高</td>
+          <td>低</td>
+          <td>战略重组/行业衰退/失去优势</td>
+          <td>以退为进、权宜之计</td>
+        </tr>
+        <tr>
+          <td><span class="kw" style="background:var(--kw-bg)">防御型</span></td>
+          <td>低</td>
+          <td>低（维持）</td>
+          <td>外部稳定、资源有限，等待机会</td>
+          <td>等待、维持</td>
+        </tr>
+        <tr>
+          <td><span class="kw3">混合型</span></td>
+          <td colspan="2" style="text-align:center;">各业务单元各不同</td>
+          <td>大型多元化企业</td>
+          <td>一刀切不合适</td>
+        </tr>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <div class="table-wrap">
+      <table class="ctable">
+        <tr>
+          <th>战略问题 vs 经营问题</th>
+          <th>战略问题</th>
+          <th>经营问题</th>
+        </tr>
+        <tr><td>来源</td><td>内外部关键环境因素的趋势性变化</td><td>日常运营中的短期波动</td></tr>
+        <tr><td>影响程度</td><td>重大、长期、根本</td><td>局部、短期、表层</td></tr>
+        <tr><td>例子</td><td>互联网颠覆传统零售（需要战略转型）</td><td>某季度销售下滑（调整促销方案）</td></tr>
+        <tr><td>解决层次</td><td>战略层次（高层决策）</td><td>经营层次（中层管理）</td></tr>
+      </table>
+    </div>
+  </div><!-- end compare-section -->
+
+</div><!-- end compare -->
+
+<!-- ============================================================
+     历年真题汇总
+     ============================================================ -->
+<div id="exam">
+  <div class="sec-title">📝 历年真题汇总（2016–2025）</div>
+
+  <div class="exam-section">
+    <h2>📝 历年真题 · 第五章相关</h2>
+    <div class="table-wrap">
+      <table class="ctable">
+        <tr>
+          <th style="width:10%">年份</th>
+          <th style="width:12%">题型</th>
+          <th style="width:40%">题目</th>
+          <th style="width:38%">本章对应知识点·答题要点</th>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2016</span></td>
+          <td>简答/论述</td>
+          <td>简述战略承诺的内容与意义</td>
+          <td>§3：使命·愿景·战略意图·价值观四要素；强调"承诺坚定是决策前提"</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2017</span></td>
+          <td>名词解释</td>
+          <td>战略承诺、企业愿景</td>
+          <td>§3：分别定义，区分与使命的关系</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2018</span></td>
+          <td>简答</td>
+          <td>企业可以选择的基本战略有哪些？各自适用条件？</td>
+          <td>§4：五种基本战略（发展态势维度）+ 两种框架（行业×市场维度）</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2019</span></td>
+          <td>论述</td>
+          <td>如何有效确认企业的战略问题？</td>
+          <td>§1§2：战略问题三特征+两类+SWOT三步骤确认+格力/阿里案例</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2020</span></td>
+          <td>名词解释<br>简答</td>
+          <td>战略问题；战略目标的有效性条件</td>
+          <td>§1：定义+三特征；§5：目标体系三合理+四矛盾</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2021</span></td>
+          <td>简答</td>
+          <td>基于行业和市场范围的基本战略有哪些？</td>
+          <td>§4A：行业×市场2×2矩阵四种战略+战略层次</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2022</span></td>
+          <td>论述</td>
+          <td>结合SWOT模型，论述如何识别和确认战略问题（案例题）</td>
+          <td>§2：SWOT两大作用+三步骤+四组合类型，结合案例分析</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2023</span></td>
+          <td>简答</td>
+          <td>增长型战略为何是最流行的战略？有哪些潜在风险？</td>
+          <td>§4B：增长型战略定义+流行原因（5条）+潜在风险（掩盖失误、资金压力等）</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2024</span></td>
+          <td>案例分析</td>
+          <td>某企业战略承诺不清晰导致战略失误，分析原因与对策</td>
+          <td>§3：战略承诺特征（不能太宽/太具体）+承诺坚定的重要性</td>
+        </tr>
+        <tr>
+          <td><span class="exam-tag">2025</span></td>
+          <td>论述</td>
+          <td>简述战略管理过程（分析-制定-实施-控制）中本章的地位</td>
+          <td>本章是战略制定的入口：环境分析后→SWOT确认战略问题→战略承诺→基本战略→战略目标</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="block block-exam" style="margin-top:16px;">
+      <div class="block-label">📣 高频出题规律总结</div>
+      <strong>名词解释超高频：</strong>战略问题、战略承诺、战略意图、增长型战略、稳定型战略、收缩型战略<br>
+      <strong>简答超高频：</strong>五种基本战略对比、SWOT确认步骤、战略承诺内容四要素<br>
+      <strong>论述/案例高频：</strong>结合案例分析战略问题确认（SWOT框架）、战略承诺对战略行为的影响
+    </div>
+  </div><!-- end exam-section -->
+
+</div><!-- end exam -->
+
+<!-- ============================================================
+     本章终极串联
+     ============================================================ -->
+<div id="chain">
+  <div class="sec-title">🔗 本章终极串联（逻辑流程）</div>
+
+  <div class="chain-section">
+    <h2>🔗 第五章知识点终极串联</h2>
+    <div class="chain-flow">
+      <div class="chain-step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <div class="step-title">企业感知到战略问题</div>
+          <div class="step-body">内外部环境出现趋势性变化（重大、长期、根本），管理者感到现有战略不足以应对。前接第3章（外部分析）+第4章（内部分析）的结果。</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <div class="step-title">SWOT矩阵确认战略问题（§1§2）</div>
+          <div class="step-body">三步骤：列举比对O/T/S/W → SO/ST/WO/WT四类组合 → 识别战略问题性质（层次、内容、责任者）。确认两类战略问题：外部机会/威胁类 + 内部优劣势类。</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <div class="step-title">审视与修改战略承诺（§3）</div>
+          <div class="step-body">在战略态势分析后，审视现有战略承诺是否需要修改。战略承诺四要素：使命→愿景→战略意图→价值观。承诺坚定是决策科学和行动迅速的前提。</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <div class="step-title">选择基本战略方向（§4）</div>
+          <div class="step-body">
+            两个维度：<br>
+            维度一（行业×市场）：集中/行业多元化/国际化/行业市场双多元化<br>
+            维度二（发展态势）：稳定/增长/收缩/防御/混合五种选择
+          </div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <div class="step-title">制定战略目标（§5）</div>
+          <div class="step-body">战略目标是阶段性结果的精确可测描述。目标体系三合理（内容/层次/时间）+ 四矛盾处理（结果vs手段；定量vs定性；高vs现实；坚持vs调整）。</div>
+        </div>
+      </div>
+      <div class="chain-step">
+        <div class="step-num">06</div>
+        <div class="step-content">
+          <div class="step-title">↓ 为后续战略制定提供依据</div>
+          <div class="step-body">战略承诺 + 基本战略 + 战略目标 = 第6–9章公司层和业务层具体战略的基本原则和方向。</div>
+        </div>
+      </div>
+    </div>
+    <div class="chain-summary" style="margin-top:18px;">
+      <strong>一句话总结本章逻辑：</strong>
+      在外部(第3章)和内部(第4章)分析完成后，<mark style="background:rgba(147,197,253,.3);color:#e2e8f0;padding:0 4px;border-radius:3px">用SWOT三步骤确认战略问题</mark> → <mark style="background:rgba(167,243,208,.2);color:#e2e8f0;padding:0 4px;border-radius:3px">审视并明确战略承诺</mark> → <mark style="background:rgba(253,230,138,.2);color:#e2e8f0;padding:0 4px;border-radius:3px">选择基本战略方向</mark> → <mark style="background:rgba(196,181,253,.2);color:#e2e8f0;padding:0 4px;border-radius:3px">制定战略目标</mark>，由此为后续具体战略制定提供最高层指引。
+    </div>
+  </div><!-- end chain-section -->
+
+</div><!-- end chain -->
+
+<!-- ============================================================
+     与其他章节的逻辑关系
+     ============================================================ -->
+<div style="background:var(--card-bg);border-radius:var(--radius);padding:24px;margin-bottom:28px;box-shadow:var(--shadow);border:1px solid var(--card-border);">
+  <h2 style="font-family:var(--font-main);font-size:1.1rem;color:var(--text);margin-bottom:16px;">📡 本章与其他章节的关系</h2>
+  <div class="table-wrap">
+    <table class="ctable">
+      <tr><th>相关章节</th><th>关系类型</th><th>关键联系点</th></tr>
+      <tr>
+        <td>第3章（外部环境分析）</td>
+        <td>输入关系</td>
+        <td>外部分析→SWOT的O(机会)和T(威胁)→本章战略问题确认的输入</td>
+      </tr>
+      <tr>
+        <td>第4章（内部环境分析）</td>
+        <td>输入关系</td>
+        <td>内部分析→SWOT的S(优势)和W(劣势)→本章战略问题确认的输入</td>
+      </tr>
+      <tr>
+        <td>第6章（业务层战略）</td>
+        <td>输出关系</td>
+        <td>本章§4"行业/市场集中战略"直接引导到业务层战略；本章战略目标为业务层提供方向</td>
+      </tr>
+      <tr>
+        <td>第7章（公司层战略）</td>
+        <td>输出关系</td>
+        <td>本章§4"行业多元化/国际化/双多元化"直接对应公司层战略的核心内容</td>
+      </tr>
+      <tr>
+        <td>第11章（战略控制）</td>
+        <td>闭环关系</td>
+        <td>战略目标（§5）是战略控制的标尺；平衡计分卡同时用于制定目标和控制实施</td>
+      </tr>
+      <tr>
+        <td>第2章（战略管理过程）</td>
+        <td>框架关系</td>
+        <td>本章内容对应战略制定流程的起始阶段（确认问题→承诺→方向→目标）</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================
+     30秒复习模块
+     ============================================================ -->
+<div id="quick">
+  <div class="quick-review">
+    <h2>⚡ 30秒复习模块（超简版）</h2>
+    <ul class="quick-list">
+      <li><strong>战略问题：</strong>源自内外部关键因素趋势性变化，具有<strong>重大·长期·根本</strong>影响的问题；分外部机会/威胁类 + 内部优劣势类</li>
+      <li><strong>SWOT确认三步：</strong>列举比对 → 四类组合(SO/ST/WO/WT) → 识别性质（层次/内容/责任）</li>
+      <li><strong>战略承诺：</strong>企业基于资源能力，向利益相关者做出的长期承诺；四要素：使命→愿景→战略意图→价值观；不能太宽，不能太具体</li>
+      <li><strong>基本战略方向①（行业×市场）：</strong>集中/行业多元化/国际化/行业市场双多元化</li>
+      <li><strong>基本战略方向②（发展态势）五种：</strong>稳（高→高）·增（低→高/最流行）·收（高→低/以退为进）·防（低→低/等待）·混（大企业组合）</li>
+      <li><strong>战略目标：</strong>阶段性结果的精确可测描述；三合理（内容/层次/时间）；四矛盾（结果vs手段·定量vs定性·挑战vs可能·坚持vs调整）</li>
+      <li><strong>本章地位：</strong>承上（内外部分析）启下（具体战略制定），是战略制定的入口枢纽</li>
+    </ul>
+  </div>
+</div><!-- end quick -->
+
+<!-- ============================================================
+     背诵版总结（复试口述版）
+     ============================================================ -->
+<div id="recite">
+  <div class="recite-section">
+    <h2>📣 背诵版总结（复试口述版）</h2>
+    <div class="recite-item">
+      <strong>【战略问题】</strong><br>
+      战略问题是指来自企业内外部关键环境因素趋势性变化、对企业现在和未来发展具有重大、长期、根本影响的问题。它分为两类：一类是企业没有把握外部机会或避免威胁的问题；另一类是企业没有发挥优势或克服劣势的问题。有效确认战略问题是有效制定战略的一半，且是更重要的那一半。
+    </div>
+    <div class="recite-item">
+      <strong>【SWOT与战略问题确认】</strong><br>
+      SWOT分析矩阵在战略问题确认中有两个作用：一是找到可能的战略问题，二是通过四类组合（SO/ST/WO/WT）确认现实可解决的战略问题。具体三步骤：第一，列举内外部因素反复比对；第二，四类组合分析；第三，识别战略问题的性质——在哪个层次展开、主要内容是什么、由谁来完成。
+    </div>
+    <div class="recite-item">
+      <strong>【战略承诺】</strong><br>
+      战略承诺是企业基于自身资源能力，考虑外部环境变化，为实现长期战略目标而向利益相关者做出的长期承诺。其核心内容包括：经营目的（使命）、企业愿景、战略意图和企业价值观（经营理念）四部分。战略承诺不能过于具体（会错失机会）也不能过于宽泛（缺乏约束），一经做出必须长期坚持。承诺坚定是决策科学和行动迅速的前提。
+    </div>
+    <div class="recite-item">
+      <strong>【基本战略（五种发展态势）】</strong><br>
+      基于发展态势（未来目标vs现在水平）的五种基本战略：①稳定型——现高未高，稳定非快速发展，适合外部变化不大且经营成功者；②增长型——现低未高，挖掘内部资源利用机会，是最流行最常用的战略；③收缩型——现高未低，以退为进的权宜之计，原因包括战略重组、行业衰退、失去竞争优势；④防御型——现低未低，等待未来机会出现；⑤混合型——大型企业各业务单元分别采用不同基本战略的组合。
+    </div>
+    <div class="recite-item">
+      <strong>【战略目标】</strong><br>
+      战略目标是企业战略承诺过程中需要达到的阶段性结果的精确可测描述。有效的目标体系需满足三个合理性：内容合理（规模、财务、创新、社会责任四类平衡）、层次合理（总部-事业部-职能部门）、时间合理（长-中-短期）。制定过程中需处理四大矛盾：结果与手段的关系、定量与定性的关系、可能性与挑战性的关系、坚持目标与动态调整的关系。
+    </div>
+  </div>
+</div><!-- end recite -->
+
+<!-- ============================================================
+     自我检测
+     ============================================================ -->
+<div id="test">
+  <div class="sec-title">✅ 自我检测</div>
+
+  <div class="test-section">
+    <h2>✅ 教材思考题 + 历年真题 + 预测题</h2>
+
+    <div class="test-q" onclick="this.classList.toggle('open')">
+      <div class="q-label">【教材思考题·名词解释】</div>
+      <div class="q-text">什么是战略问题？战略问题有哪些特征？如何确认战略问题？</div>
+      <div class="test-answer">
+        <strong>定义：</strong>战略问题是源自内外部关键环境因素趋势性变化，对企业现在和未来发展具有重大、长期、根本影响的问题。<br>
+        <strong>三大特征：</strong>重大性、长期性、根本性。<br>
+        <strong>如何确认：</strong>①用SWOT分析矩阵（两大作用：找到可能的战略问题 + 确认现实可解决的战略问题）；②三步骤：列举比对O/T/S/W → SO/ST/WO/WT四类组合 → 识别战略问题性质（层次、内容、责任）。
+      </div>
+    </div>
+
+    <div class="test-q" onclick="this.classList.toggle('open')">
+      <div class="q-label">【教材思考题·简答】</div>
+      <div class="q-text">什么是战略承诺？企业为何要做出战略承诺？战略承诺应包含哪些内容？</div>
+      <div class="test-answer">
+        <strong>定义：</strong>战略承诺是企业基于自身资源能力，考虑外部环境及其变化趋势，为实现长期战略目标而向顾客、供应商、员工等利益相关者做出的长期承诺。<br>
+        <strong>为何需要：</strong>①使战略行为体现连续性、整体性和创新性；②承诺坚定是决策科学和行动迅速的前提；③为战略决策提供长期宏观指导。<br>
+        <strong>内容四要素：</strong>①经营目的（使命）——企业存在的根本理由；②企业愿景——未来状态的美好想象；③战略意图——中期执著奋斗目标；④企业价值观（经营理念）——最根本的行为准则和优先顺序。
+      </div>
+    </div>
+
+    <div class="test-q" onclick="this.classList.toggle('open')">
+      <div class="q-label">【历年真题2018·简答】</div>
+      <div class="q-text">企业可以选择的基本战略有哪些？各自的适用条件是什么？</div>
+      <div class="test-answer">
+        <strong>维度一（行业×市场）：</strong>①行业/市场集中战略（单行业单市场，业务层）；②行业多元化战略（多行业单市场，公司层）；③市场多元化战略/国际化（单行业多市场，公司层）；④行业与市场多元化战略（多行业多市场，公司层）。<br>
+        <strong>维度二（发展态势五种）：</strong>①稳定型——外部变化不大+前期成功；②增长型——机会多+资源充足；③收缩型——战略重组需要/行业衰退/失去优势；④防御型——外部稳定+资源有限+等待机会；⑤混合型——大型多元化企业的各业务单元组合选择。
+      </div>
+    </div>
+
+    <div class="test-q" onclick="this.classList.toggle('open')">
+      <div class="q-label">【历年真题2023·简答】</div>
+      <div class="q-text">增长型战略为何是最流行的战略？有哪些潜在风险？</div>
+      <div class="test-answer">
+        <strong>增长型战略定义：</strong>企业根据发展态势，决定深入挖掘内部资源能力以充分利用外部环境机会，使企业向更高发展目标迈进的战略。<br>
+        <strong>为何流行（5条原因）：</strong>①给企业带来经营优势；②动态环境下增长是求生存的手段；③扩大规模可通过规模经济和学习曲线降低成本；④很多管理者将增长等同于成功；⑤增长快可掩盖失误与低效率；⑥增长快的企业战略管理者更容易获得晋升。<br>
+        <strong>潜在风险：</strong>①掩盖效率低下问题，积累隐患；②资金链压力（盲目快速扩张）；③核心专长可能被分散，竞争优势弱化；④管理跟不上规模扩张，内部失控。
+      </div>
+    </div>
+
+    <div class="test-q" onclick="this.classList.toggle('open')">
+      <div class="q-label">【预测题·论述】</div>
+      <div class="q-text">结合SWOT模型，论述企业如何系统识别和确认战略问题，并说明如何在此基础上做出基本战略选择（以某企业为例）。</div>
+      <div class="test-answer">
+        <strong>参考答题框架（论述题）：</strong><br>
+        一、战略问题的定义（定义+三特征+两类型）<br>
+        二、SWOT模型确认战略问题<br>
+        ①两大作用：找到可能问题+确认现实问题<br>
+        ②三步骤（列举比对→四类组合→识别性质）<br>
+        ③强调机会/威胁和优势/劣势是相互参照的<br>
+        三、基于确认的战略问题选择基本战略<br>
+        ①行业×市场维度的四种选择<br>
+        ②发展态势维度的五种选择<br>
+        ③结合阿里巴巴或格力举例说明<br>
+        四、结合案例（如：某数字化企业）展开具体分析<br>
+        五、总结：有效确认战略问题是战略制定更重要的前半程
+      </div>
+    </div>
+
+    <div class="test-q" onclick="this.classList.toggle('open')">
+      <div class="q-label">【预测题·名词解释×3】</div>
+      <div class="q-text">①战略意图 ②收缩型战略 ③发展态势</div>
+      <div class="test-answer">
+        <strong>①战略意图：</strong>指企业对实现特定战略愿景的执著追求，是企业在一段时期内奋斗目标的集中表达。它是中期目标，强调执著追求，具有具体挑战性。（如格力"五年再造一个格力"）<br><br>
+        <strong>②收缩型战略：</strong>指企业根据发展态势，决定企业未来资源配置与经营状况需要收缩，即企业未来发展水平低于现有发展水平的战略。这是一种以退为进、短期权宜的战略，原因包括：战略重组需要、行业衰退期、失去竞争优势。<br><br>
+        <strong>③发展态势（战略态势）：</strong>指将企业未来发展目标（资源配置与经营状况）与目前发展水平进行比较而得到的企业发展趋势。它是选择稳定型、增长型、收缩型、防御型或混合型基本战略的基本依据。
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--text3);font-size:.82rem;margin-top:16px;">💡 点击题目展开参考答案 | 建议先独立作答再对照</p>
+  </div><!-- end test-section -->
+
+</div><!-- end test -->
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:32px 0 10px;color:var(--text3);font-size:.8rem;border-top:1px solid var(--card-border);margin-top:40px;">
+  📖 《企业战略管理》第2版 蓝海林等著 | 中南大学企业管理学硕复试学习笔记<br>
+  第五章 · 战略问题的确认与基本战略选择 | P124–156<br>
+  <span style="font-size:.75rem;opacity:.6;">整合历年真题2016–2025 · 复试备考专用版</span>
+</div>
+
+</div><!-- end page-wrap -->
+
+<!-- Return to Top Button -->
+<button id="toTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ===== Dark Mode =====
+function toggleDark(){
+  document.body.classList.toggle('dark-mode');
+  const btn = document.querySelector('[onclick="toggleDark()"]');
+  btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ 日间模式' : '🌙 夜间模式';
+}
+
+// ===== Return to Top =====
+const toTop = document.getElementById('toTopBtn');
+window.addEventListener('scroll', ()=>{
+  toTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+});
+
+// ===== Active Nav Link =====
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const active = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+      if(active) active.classList.add('active');
+    }
+  });
+},{threshold:0.3,rootMargin:'-80px 0px -50% 0px'});
+sections.forEach(s=>observer.observe(s));
+
+// ===== Search =====
+function doSearch(query){
+  const res = document.getElementById('searchResults');
+  if(!query.trim()){res.style.display='none';return;}
+  const q = query.toLowerCase();
+  const cards = document.querySelectorAll('.kcard');
+  const matches = [];
+  cards.forEach(card=>{
+    const title = card.querySelector('.kcard-title');
+    const body = card.querySelector('.kcard-body');
+    if(!title) return;
+    const titleText = title.textContent;
+    const bodyText = body ? body.textContent : '';
+    if(titleText.toLowerCase().includes(q) || bodyText.toLowerCase().includes(q)){
+      matches.push({title:titleText.trim(), id:card.closest('[id]')?.id||''});
+    }
+  });
+  if(matches.length===0){
+    res.innerHTML='<div class="search-result-item">未找到相关知识点</div>';
+  } else {
+    res.innerHTML = matches.slice(0,8).map(m=>
+      `<div class="search-result-item" onclick="jumpTo('${m.id}','${m.title}')">${m.title}</div>`
+    ).join('');
+  }
+  res.style.display='block';
+}
+function jumpTo(id, title){
+  hideResults();
+  if(id){
+    document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+function hideResults(){
+  document.getElementById('searchResults').style.display='none';
+}
+// Close search on ESC
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') hideResults();
+});
+</script>
+
+<!-- HL_INJECT -->
+
+
+<!-- 搜索触发按钮 -->
+
+
+
+<!-- Search Pill v4 -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+<script>
+/* Search Pill v4 */
+(function(){
+'use strict';
+try{if(window.self!==window.top)document.body.classList.add('in-iframe');}catch(e){}
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+var PAGE_TEXT=window._PAGE_TEXT||'';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-container,.main,.content-area,main,#main,.content,article')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  if(PAGE_TEXT&&toast){
+    rx.lastIndex=0;
+    var total=0,m2;
+    while((m2=rx.exec(PAGE_TEXT))!==null)total++;
+    var hidden=total-marks.length;
+    if(hidden>0){toast.textContent='已自动展开折叠区域，共找到 '+(marks.length)+' 处匹配';toast.style.display='block';setTimeout(function(){if(toast)toast.style.display='none';},4000);}
+    else toast.style.display='none';
+  }
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>
