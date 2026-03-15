@@ -180,6 +180,42 @@ body{font-family:'Microsoft YaHei','PingFang SC',sans-serif;background:var(--bg)
 /* SCROLL TOP */
 #scrollTop{position:fixed;bottom:22px;right:22px;background:var(--accent);color:#fff;border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;display:none;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(37,99,235,.4);z-index:99}
 #scrollTop.show{display:flex}
+
+/* ════ QUICK SPRINT SECTION ════ */
+.sprint-mod{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;margin-bottom:12px;box-shadow:var(--sh)}
+.sprint-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@media(max-width:680px){.sprint-grid{grid-template-columns:1fr}}
+.sprint-col-head{font-size:12px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.sprint-links{display:flex;flex-direction:column;gap:5px}
+.sprint-link{display:flex;align-items:center;gap:7px;padding:7px 11px;border-radius:7px;border:1px solid var(--border);background:var(--bg);cursor:pointer;transition:border-color .15s,background .15s,transform .12s;text-decoration:none;color:var(--text)}
+.sprint-link:hover{border-color:var(--accent);background:var(--ts);transform:translateX(2px)}
+.sprint-link .sl-icon{font-size:14px;flex-shrink:0}
+.sprint-link .sl-name{font-size:12px;font-weight:600;flex:1;line-height:1.3}
+.sprint-link .sl-badge{font-size:10px;padding:1px 7px;border-radius:99px;flex-shrink:0;font-weight:700}
+.sl-b-30{background:#fef9c3;color:#a16207}.dark .sl-b-30{background:#3b2e0a;color:#fcd34d}
+.sl-b-bg{background:#dbeafe;color:#1d4ed8}.dark .sl-b-bg{background:#1e3a5f;color:#93c5fd}
+.sl-b-test{background:#d1fae5;color:#065f46}.dark .sl-b-test{background:#14352a;color:#6ee7b7}
+
+/* ════ CLOUD SYNC ════ */
+#cloudBar{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;margin-bottom:12px;box-shadow:var(--sh);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#cloudBar .cb-title{font-size:13px;font-weight:700;flex-shrink:0}
+#cloudBar .cb-status{font-size:11px;color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#cloud-token-input,#cloud-gist-input{border:1px solid var(--border);border-radius:6px;padding:4px 9px;font-size:12px;background:var(--bg);color:var(--text);outline:none;width:190px}
+.cb-btn{padding:4px 12px;border-radius:6px;border:none;font-size:12px;cursor:pointer;font-weight:600;transition:background .15s}
+.cb-btn-save{background:#2563eb;color:#fff}.cb-btn-save:hover{background:#1d4ed8}
+.cb-btn-sync{background:#16a34a;color:#fff}.cb-btn-sync:hover{background:#15803d}
+.cb-btn-upload{background:#7c3aed;color:#fff}.cb-btn-upload:hover{background:#6d28d9}
+.cb-toggle{font-size:12px;color:var(--accent);cursor:pointer;text-decoration:underline;flex-shrink:0}
+#cloudSetup{display:none;width:100%;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);flex-wrap:wrap;gap:8px;align-items:center}
+#cloudSetup.open{display:flex}
+.cb-label{font-size:12px;color:var(--muted);flex-shrink:0}
+.cloud-indicator{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:#9ca3af}
+.cloud-indicator.ok{background:#16a34a}
+.cloud-indicator.err{background:#dc2626}
+.cloud-indicator.syncing{background:#f59e0b;animation:_pulse .8s infinite}
+@keyframes _pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+
 @media(max-width:600px){.hero{flex-direction:column}.cg{grid-template-columns:1fr 1fr}#si{width:120px}.radar-grid{grid-template-columns:1fr}}
 
 /* ════ SPA CHAPTER PANEL ════ */
@@ -268,6 +304,23 @@ body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360p
     </div>
   </div>
 
+  <!-- ════ CLOUD SYNC BAR ════ -->
+  <div id="cloudBar">
+    <div class="cloud-indicator" id="cloudIndicator"></div>
+    <span class="cb-title">☁️ 云端同步</span>
+    <span class="cb-status" id="cloudStatus">未配置 · 数据仅保存在本地</span>
+    <button class="cb-btn cb-btn-sync" onclick="loadCloudData()">⬇ 拉取</button>
+    <button class="cb-btn cb-btn-upload" onclick="saveCloudData()">⬆ 推送</button>
+    <span class="cb-toggle" onclick="toggleCloudSetup()">⚙ 设置</span>
+    <div id="cloudSetup">
+      <span class="cb-label">GitHub Token：</span>
+      <input id="cloud-token-input" type="password" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
+      <span class="cb-label">Gist ID（留空自动创建）：</span>
+      <input id="cloud-gist-input" type="text" placeholder="可选">
+      <button class="cb-btn cb-btn-save" onclick="saveCloudConfig()">保存配置</button>
+    </div>
+  </div>
+
   <!-- ════ COUNTDOWN ════ -->
   <div class="countdown-mod">
     <div class="mod-h">🎓 中南大学企业管理复试倒计时</div>
@@ -305,6 +358,61 @@ body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360p
     <div style="font-size:11px;color:var(--muted);margin:-3px 0 4px 105px">第三轮：快速回顾章节 + 真题训练</div>
   </div>
 
+  <!-- ════ QUICK SPRINT TOOLS ════ -->
+  <div class="sprint-mod">
+    <div class="mod-h">⚡ 冲刺速记工具箱</div>
+    <div class="mod-sub">考前快速背诵 · 30秒复习 · 自我检测 · 一键直达</div>
+    <div class="sprint-grid">
+      <!-- 战略管理 -->
+      <div>
+        <div class="sprint-col-head"><span style="background:var(--ts);color:var(--tst);padding:2px 8px;border-radius:99px">📘 企业战略管理</span></div>
+        <div class="sprint-links">
+          <div class="sprint-link" onclick="recordStudy('企业战略管理_考前背诵总结');loadChapter('企业战略管理/企业战略管理_考前背诵总结.html','企业战略管理_考前背诵总结')">
+            <span class="sl-icon">📖</span>
+            <span class="sl-name">考前背诵总结</span>
+            <span class="sl-badge sl-b-bg">背诵</span>
+          </div>
+          <div class="sprint-link" onclick="recordStudy('企业战略管理_30秒复习合集');loadChapter('企业战略管理/企业战略管理_30秒复习合集.html','企业战略管理_30秒复习合集')">
+            <span class="sl-icon">⏱</span>
+            <span class="sl-name">30秒复习合集</span>
+            <span class="sl-badge sl-b-30">30秒</span>
+          </div>
+          <div class="sprint-link" onclick="recordStudy('企业战略管理_背诵版总结_复试口述版');loadChapter('企业战略管理/企业战略管理_背诵版总结_复试口述版.html','企业战略管理_背诵版总结_复试口述版')">
+            <span class="sl-icon">🎤</span>
+            <span class="sl-name">背诵版总结（复试口述版）</span>
+            <span class="sl-badge sl-b-bg">口述</span>
+          </div>
+          <div class="sprint-link" onclick="recordStudy('企业战略管理_自我检测题合集');loadChapter('企业战略管理/企业战略管理_自我检测题合集.html','企业战略管理_自我检测题合集')">
+            <span class="sl-icon">✅</span>
+            <span class="sl-name">自我检测题合集</span>
+            <span class="sl-badge sl-b-test">检测</span>
+          </div>
+        </div>
+      </div>
+      <!-- 人力资源管理 -->
+      <div>
+        <div class="sprint-col-head"><span style="background:var(--th);color:var(--tht);padding:2px 8px;border-radius:99px">📗 人力资源管理</span></div>
+        <div class="sprint-links">
+          <div class="sprint-link" onclick="recordStudy('人力资源管理_考前背诵版总结');loadChapter('人力资源管理/人力资源管理_考前背诵版总结.html','人力资源管理_考前背诵版总结')">
+            <span class="sl-icon">📖</span>
+            <span class="sl-name">考前背诵版总结</span>
+            <span class="sl-badge sl-b-bg">背诵</span>
+          </div>
+          <div class="sprint-link" onclick="recordStudy('人力资源管理_30秒复习合集');loadChapter('人力资源管理/人力资源管理_30秒复习合集.html','人力资源管理_30秒复习合集')">
+            <span class="sl-icon">⏱</span>
+            <span class="sl-name">30秒复习合集</span>
+            <span class="sl-badge sl-b-30">30秒</span>
+          </div>
+          <div class="sprint-link" onclick="recordStudy('人力资源管理_自我检测题合集');loadChapter('人力资源管理/人力资源管理_自我检测题合集.html','人力资源管理_自我检测题合集')">
+            <span class="sl-icon">✅</span>
+            <span class="sl-name">自我检测题合集</span>
+            <span class="sl-badge sl-b-test">检测</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ════ TODAY REVIEWED ════ -->
   <div class="today-mod" id="todayReviewedMod">
     <div class="mod-h">📖 今日学习章节</div>
@@ -332,9 +440,13 @@ body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360p
     <button class="fn" onclick="setRevCat('s-exam',this)">📘 战略管理 · 真题分析</button>
     <button class="fn" onclick="setRevCat('s-hf',this)">📘 战略管理 · 高频考点</button>
     <button class="fn" onclick="setRevCat('s-case',this)">📘 战略管理 · 案例整理</button>
+    <button class="fn" onclick="setRevCat('s-sprint',this)">📘 战略管理 · 冲刺背诵</button>
+    <button class="fn" onclick="setRevCat('s-test',this)">📘 战略管理 · 自我检测</button>
     <button class="fn" onclick="setRevCat('h-exam',this)">📗 人力资源 · 真题分析</button>
     <button class="fn" onclick="setRevCat('h-hf',this)">📗 人力资源 · 高频考点</button>
     <button class="fn" onclick="setRevCat('h-case',this)">📗 人力资源 · 案例整理</button>
+    <button class="fn" onclick="setRevCat('h-sprint',this)">📗 人力资源 · 冲刺背诵</button>
+    <button class="fn" onclick="setRevCat('h-test',this)">📗 人力资源 · 自我检测</button>
   </div>
   <div class="cg cl" id="gr"></div>
 
@@ -463,12 +575,16 @@ const STRAT_CHAP=[
   {name:"第十一章_战略实施的管理与控制",      file:"企业战略管理/第十一章_战略实施的管理与控制.html"},
 ];
 const STRAT_REV=[
-  {name:"核心必备30个考点_企业战略管理", file:"企业战略管理/核心必备30个考点_企业战略管理.html", revcat:"s-hf"},
-  {name:"企业战略管理_复试案例分析库",   file:"企业战略管理/企业战略管理_复试案例分析库.html",  revcat:"s-case"},
-  {name:"企业战略管理_真题分析",         file:"企业战略管理/企业战略管理_真题分析.html",         revcat:"s-exam"},
-  {name:"企业战略管理真题解析_2016-2025",file:"企业战略管理/企业战略管理真题解析_2016-2025.html",revcat:"s-exam"},
-  {name:"企业战略管理_通用答题模板",     file:"企业战略管理/企业战略管理_通用答题模板.html",     revcat:"s-hf"},
-  {name:"全书框架导读_企业战略管理第2版",file:"企业战略管理/全书框架导读_企业战略管理第2版.html",revcat:"s-hf"},
+  {name:"核心必备30个考点_企业战略管理",      file:"企业战略管理/核心必备30个考点_企业战略管理.html",          revcat:"s-hf"},
+  {name:"企业战略管理_复试案例分析库",         file:"企业战略管理/企业战略管理_复试案例分析库.html",             revcat:"s-case"},
+  {name:"企业战略管理_真题分析",               file:"企业战略管理/企业战略管理_真题分析.html",                   revcat:"s-exam"},
+  {name:"企业战略管理真题解析_2016-2025",      file:"企业战略管理/企业战略管理真题解析_2016-2025.html",          revcat:"s-exam"},
+  {name:"企业战略管理_通用答题模板",           file:"企业战略管理/企业战略管理_通用答题模板.html",               revcat:"s-hf"},
+  {name:"全书框架导读_企业战略管理第2版",      file:"企业战略管理/全书框架导读_企业战略管理第2版.html",          revcat:"s-hf"},
+  {name:"企业战略管理_考前背诵总结",           file:"企业战略管理/企业战略管理_考前背诵总结.html",               revcat:"s-sprint"},
+  {name:"企业战略管理_30秒复习合集",           file:"企业战略管理/企业战略管理_30秒复习合集.html",               revcat:"s-sprint"},
+  {name:"企业战略管理_背诵版总结_复试口述版",  file:"企业战略管理/企业战略管理_背诵版总结_复试口述版.html",      revcat:"s-sprint"},
+  {name:"企业战略管理_自我检测题合集",         file:"企业战略管理/企业战略管理_自我检测题合集.html",             revcat:"s-test"},
 ];
 const HR_CHAP=[
   {name:"第一章_人力资源管理概述",     file:"人力资源管理/第一章_人力资源管理概述.html"},
@@ -488,11 +604,14 @@ const HR_CHAP=[
 ];
 const HR_REV=[
   {name:"核心必背30考点_人力资源管理",    file:"人力资源管理/核心必背30考点_人力资源管理.html",    revcat:"h-hf"},
-  {name:"人力资源管理_复试案例分析库",     file:"人力资源管理/人力资源管理_复试案例分析库.html",     revcat:"h-case"},
-  {name:"人力资源管理_真题分析",           file:"人力资源管理/人力资源管理_真题分析.html",           revcat:"h-exam"},
-  {name:"人力资源管理真题解析_2016-2025",  file:"人力资源管理/人力资源管理真题解析_2016-2025.html",  revcat:"h-exam"},
-  {name:"人力资源管理_通用答题模板",       file:"人力资源管理/人力资源管理_通用答题模板.html",       revcat:"h-hf"},
-  {name:"全书框架导读_人力资源管理第3版",  file:"人力资源管理/全书框架导读_人力资源管理第3版.html",  revcat:"h-hf"},
+  {name:"人力资源管理_复试案例分析库",    file:"人力资源管理/人力资源管理_复试案例分析库.html",    revcat:"h-case"},
+  {name:"人力资源管理_真题分析",          file:"人力资源管理/人力资源管理_真题分析.html",          revcat:"h-exam"},
+  {name:"人力资源管理真题解析_2016-2025", file:"人力资源管理/人力资源管理真题解析_2016-2025.html", revcat:"h-exam"},
+  {name:"人力资源管理_通用答题模板",      file:"人力资源管理/人力资源管理_通用答题模板.html",      revcat:"h-hf"},
+  {name:"全书框架导读_人力资源管理第3版", file:"人力资源管理/全书框架导读_人力资源管理第3版.html", revcat:"h-hf"},
+  {name:"人力资源管理_30秒复习合集",      file:"人力资源管理/人力资源管理_30秒复习合集.html",      revcat:"h-sprint"},
+  {name:"人力资源管理_考前背诵版总结",    file:"人力资源管理/人力资源管理_考前背诵版总结.html",    revcat:"h-sprint"},
+  {name:"人力资源管理_自我检测题合集",    file:"人力资源管理/人力资源管理_自我检测题合集.html",    revcat:"h-test"},
 ];
 
 // ─── 高频考点数据 ─────────────────────────────────────────
@@ -569,7 +688,7 @@ const KANBAN_ITEMS=[
 const KB3_PHASES=['phase1','phase2','phase3'];
 // Storage: csu_kb3 = { "file:phase": true/false }
 let KB3 = JSON.parse(localStorage.getItem('csu_kb3')||'{}');
-function saveKB3(){localStorage.setItem('csu_kb3',JSON.stringify(KB3));}
+function saveKB3(){localStorage.setItem('csu_kb3',JSON.stringify(KB3));autoSaveCloud();}
 function kb3Key(id,phase){return id+'::'+phase;}
 function isKB3Done(id,phase){return !!KB3[kb3Key(id,phase)];}
 function toggleKB3(id,phase){
@@ -653,7 +772,7 @@ let searchResultBox=null;
 // ─── 状态管理 ────────────────────────────────────────────
 let ST  = JSON.parse(localStorage.getItem('csu_st3')||'{}');
 let curF='all', curS='', curHF='all', curRT='both';
-const saveS=()=>localStorage.setItem('csu_st3',JSON.stringify(ST));
+const saveS=()=>{localStorage.setItem('csu_st3',JSON.stringify(ST));autoSaveCloud();};
 function getS(f){if(!ST[f])ST[f]={status:'no',star:false};return ST[f];}
 
 // ─── 倒计时 ───────────────────────────────────────────────
@@ -666,6 +785,7 @@ function setCdDate(){
   document.getElementById('cd-hint').textContent='✅ 已保存';
   setTimeout(()=>{document.getElementById('cd-hint').textContent='';},2000);
   startCountdown();
+  autoSaveCloud();
 }
 function startCountdown(){
   if(cdIv)clearInterval(cdIv);
@@ -715,7 +835,7 @@ function makeCard(item,sec){
     <div class="cf">
       <button class="ob" style="font-size:11px;padding:3px 9px;background:${s.status==='done'?'#16a34a':'var(--border)'};color:${s.status==='done'?'#fff':'var(--muted)'}"
         onclick="toggleDoneStatus('${fk}','${nm}',this)">${s.status==='done'?'✅ 已学习':'📌 未学习'}</button>
-      <button class="ob" onclick="recordTodayReview('${item.name.replace(/_/g,' ')}');loadChapter('${fk}','${nm.replace(/_/g,' ')}')">打开 →</button>
+      <button class="ob" onclick="recordTodayReview('${item.name.replace(/_/g,' ')}');recordStudy('${item.name.replace(/_/g,' ')}');loadChapter('${fk}','${nm.replace(/_/g,' ')}')">打开 →</button>
     </div>`;
   return d;
 }
@@ -863,11 +983,137 @@ function filterHF(f,btn){
   btn.classList.add('a'); renderHF();
 }
 
+// ─── 学习记록 recordStudy() ──────────────────────────────
+function recordStudy(chapterName){
+  const today=new Date().toISOString().slice(0,10);
+  const log=JSON.parse(localStorage.getItem('csu_study_log')||'{}');
+  if(!log[today])log[today]=[];
+  const name=(chapterName||'').replace(/_/g,' ').trim();
+  if(name&&!log[today].includes(name))log[today].push(name);
+  localStorage.setItem('csu_study_log',JSON.stringify(log));
+  autoSaveCloud();
+}
+
+// ─── CLOUD SYNC ──────────────────────────────────────────
+let _cloudToken='',_cloudGistId='',_autoSaveTimer=null;
+
+function loadCloudConfig(){
+  _cloudToken=localStorage.getItem('csu_cloud_token')||'';
+  _cloudGistId=localStorage.getItem('csu_cloud_gist')||'';
+  if(_cloudToken){
+    document.getElementById('cloud-token-input').value=_cloudToken;
+    document.getElementById('cloud-gist-input').value=_cloudGistId;
+    setCloudStatus('ok','已配置 Token · 点击拉取同步云端数据');
+  }
+}
+
+function saveCloudConfig(){
+  const t=(document.getElementById('cloud-token-input').value||'').trim();
+  const g=(document.getElementById('cloud-gist-input').value||'').trim();
+  if(!t){setCloudStatus('err','请输入 GitHub Token');return;}
+  _cloudToken=t;_cloudGistId=g;
+  localStorage.setItem('csu_cloud_token',t);
+  if(g)localStorage.setItem('csu_cloud_gist',g);
+  setCloudStatus('ok','配置已保存，正在连接…');
+  toggleCloudSetup();
+  loadCloudData();
+}
+
+function toggleCloudSetup(){
+  document.getElementById('cloudSetup').classList.toggle('open');
+}
+
+function setCloudStatus(state,msg){
+  const ind=document.getElementById('cloudIndicator');
+  const st=document.getElementById('cloudStatus');
+  if(ind)ind.className='cloud-indicator'+(state?' '+state:'');
+  if(st)st.textContent=msg||'';
+}
+
+function buildCloudPayload(){
+  return{
+    kb:JSON.parse(localStorage.getItem('csu_kb3')||'{}'),
+    st:JSON.parse(localStorage.getItem('csu_st3')||'{}'),
+    countdown:localStorage.getItem('csu_cddate')||'',
+    dark:localStorage.getItem('csu_dark3')||'',
+    review:[],
+    study_log:JSON.parse(localStorage.getItem('csu_study_log')||'{}'),
+    _ts:Date.now()
+  };
+}
+
+function applyCloudPayload(data){
+  if(!data)return;
+  if(data.kb&&typeof data.kb==='object'){localStorage.setItem('csu_kb3',JSON.stringify(data.kb));KB3=data.kb;}
+  if(data.st&&typeof data.st==='object'){localStorage.setItem('csu_st3',JSON.stringify(data.st));ST=data.st;}
+  if(data.countdown){cdDate=data.countdown;localStorage.setItem('csu_cddate',cdDate);const inp=document.getElementById('cd-input');if(inp)inp.value=cdDate;}
+  if(data.dark!==undefined){localStorage.setItem('csu_dark3',data.dark);document.body.classList.toggle('dark',data.dark==='1');}
+  if(data.study_log&&typeof data.study_log==='object')localStorage.setItem('csu_study_log',JSON.stringify(data.study_log));
+  renderCards();renderKanban();renderCountdown();updateStats();
+  setTimeout(initCharts,120);
+}
+
+async function _findOrCreateGist(){
+  try{
+    const res=await fetch('https://api.github.com/gists?per_page=50',{headers:{Authorization:'token '+_cloudToken,'Accept':'application/vnd.github.v3+json'}});
+    if(!res.ok)return;
+    const list=await res.json();
+    const ex=list.find(g=>g.files&&g.files['csu_study_data.json']);
+    if(ex){_cloudGistId=ex.id;localStorage.setItem('csu_cloud_gist',_cloudGistId);document.getElementById('cloud-gist-input').value=_cloudGistId;return;}
+    const cr=await fetch('https://api.github.com/gists',{method:'POST',headers:{Authorization:'token '+_cloudToken,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({description:'CSU企业管理复试学习系统数据',public:false,files:{'csu_study_data.json':{content:JSON.stringify({_ts:0})}}})});
+    if(!cr.ok)return;
+    const ng=await cr.json();_cloudGistId=ng.id;localStorage.setItem('csu_cloud_gist',_cloudGistId);document.getElementById('cloud-gist-input').value=_cloudGistId;
+  }catch(e){console.warn('_findOrCreateGist',e);}
+}
+
+async function loadCloudData(){
+  if(!_cloudToken){setCloudStatus('','未配置 · 数据仅保存在本地');return;}
+  setCloudStatus('syncing','正在从云端拉取数据…');
+  try{
+    if(!_cloudGistId){await _findOrCreateGist();if(!_cloudGistId){setCloudStatus('err','无法获取 Gist，请检查 Token 权限');return;}}
+    const res=await fetch('https://api.github.com/gists/'+_cloudGistId,{headers:{Authorization:'token '+_cloudToken,'Accept':'application/vnd.github.v3+json'}});
+    if(!res.ok){if(res.status===404){_cloudGistId='';localStorage.removeItem('csu_cloud_gist');await _findOrCreateGist();}else throw new Error('HTTP '+res.status);}
+    const gist=await res.json();
+    const fc=gist.files&&gist.files['csu_study_data.json']&&gist.files['csu_study_data.json'].content;
+    if(!fc){setCloudStatus('ok','云端暂无数据，已准备好同步');return;}
+    const cloudData=JSON.parse(fc);
+    const localTs=parseInt(localStorage.getItem('csu_cloud_ts')||'0');
+    const cloudTs=cloudData._ts||0;
+    if(cloudTs>localTs){
+      applyCloudPayload(cloudData);
+      localStorage.setItem('csu_cloud_ts',String(cloudTs));
+      setCloudStatus('ok','云端数据已同步 · '+new Date(cloudTs).toLocaleString('zh-CN'));
+    }else{
+      setCloudStatus('ok','本地为最新数据 · 云端：'+(cloudTs?new Date(cloudTs).toLocaleString('zh-CN'):'无记录'));
+    }
+  }catch(e){setCloudStatus('err','拉取失败：'+e.message);}
+}
+
+async function saveCloudData(){
+  if(!_cloudToken){alert('请先配置 GitHub Token（点击 ⚙ 设置）');toggleCloudSetup();return;}
+  setCloudStatus('syncing','正在推送数据到云端…');
+  try{
+    if(!_cloudGistId){await _findOrCreateGist();if(!_cloudGistId){setCloudStatus('err','无法创建 Gist，请检查 Token 权限');return;}}
+    const payload=buildCloudPayload();
+    const res=await fetch('https://api.github.com/gists/'+_cloudGistId,{method:'PATCH',headers:{Authorization:'token '+_cloudToken,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'},body:JSON.stringify({files:{'csu_study_data.json':{content:JSON.stringify(payload,null,2)}}})});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    localStorage.setItem('csu_cloud_ts',String(payload._ts));
+    setCloudStatus('ok','已推送到云端 · '+new Date(payload._ts).toLocaleString('zh-CN'));
+  }catch(e){setCloudStatus('err','推送失败：'+e.message);}
+}
+
+function autoSaveCloud(){
+  if(!_cloudToken)return;
+  if(_autoSaveTimer)clearTimeout(_autoSaveTimer);
+  _autoSaveTimer=setTimeout(saveCloudData,3000);
+}
+
 // ─── DARK MODE ───────────────────────────────────────────
 function toggleDark(){
   document.body.classList.toggle('dark');
   localStorage.setItem('csu_dark3',document.body.classList.contains('dark')?'1':'0');
   setTimeout(()=>{initCharts();},80);
+  autoSaveCloud();
 }
 
 // ─── SCROLL TOP ──────────────────────────────────────────
@@ -879,6 +1125,7 @@ if(cdDate){
   const inp=document.getElementById('cd-input');
   if(inp)inp.value=cdDate;
 }
+loadCloudConfig();
 renderCountdown();
 startCountdown();
 renderTodayReviewed();
@@ -886,6 +1133,7 @@ renderCards();
 renderHF();
 renderKanban();
 setTimeout(initCharts,120);
+setTimeout(loadCloudData,1500);
 
 // ─── SPA CHAPTER LOADER ─────────────────────────────────────────────────────
 let _curChapterFile = '';
