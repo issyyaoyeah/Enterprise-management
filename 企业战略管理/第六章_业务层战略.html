@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第六章 业务层战略 | 中南大学企业管理复试笔记</title>
+<style>
+/* ===== CSS变量：日/夜间模式系统 ===== */
+:root {
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-header: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%);
+  --bg-nav: #0d47a1;
+  --bg-nav-hover: #1565c0;
+  --bg-table-head: #e3f2fd;
+  --bg-table-alt: #f5f5f5;
+  --text-primary: #1a1a2e;
+  --text-secondary: #37474f;
+  --text-nav: #ffffff;
+  --text-muted: #6b7280;
+  --border-color: #e2e8f0;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.14);
+  --card-border: #e2e8f0;
+  --mindmap-bg: #f8f9ff;
+  --btn-bg: #1565c0;
+  --btn-text: #fff;
+  --accent1: #0d47a1;
+  --accent2: #1b5e20;
+  --accent3: #e65100;
+  --accent4: #880e4f;
+  --accent5: #4a148c;
+  --tag-blue: #e3f2fd;
+  --tag-green: #e8f5e9;
+  --tag-orange: #fff3e0;
+  --tag-red: #fce4ec;
+  --tag-purple: #f3e5f5;
+  --highlight: #fff9c4;
+  --kw-color: #0d47a1;
+}
+body.dark-mode {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-card: #1c2333;
+  --bg-header: linear-gradient(135deg, #050c1e 0%, #0d1b38 50%, #0d1f4a 100%);
+  --bg-nav: #050c1e;
+  --bg-nav-hover: #0d1b38;
+  --bg-table-head: #0d1b38;
+  --bg-table-alt: #161b22;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-nav: #e6edf3;
+  --text-muted: #6e7681;
+  --border-color: #30363d;
+  --shadow: 0 2px 12px rgba(0,0,0,0.5);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.6);
+  --card-border: #30363d;
+  --mindmap-bg: #0d1117;
+  --btn-bg: #0d1b38;
+  --btn-text: #c9d1d9;
+  --accent1: #58a6ff;
+  --accent2: #3fb950;
+  --accent3: #ffa657;
+  --accent4: #ff7b72;
+  --accent5: #d2a8ff;
+  --tag-blue: #0d1b38;
+  --tag-green: #0d1f0d;
+  --tag-orange: #1f1200;
+  --tag-red: #200d12;
+  --tag-purple: #1a0d26;
+  --highlight: #1f1b00;
+  --kw-color: #58a6ff;
+}
+
+/* ===== 全局 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'PingFang SC','Microsoft YaHei','Noto Sans CJK SC',sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
+  line-height: 1.75;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== 顶部固定导航 ===== */
+#top-nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  background: var(--bg-nav); z-index: 1000;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.35);
+  transition: background 0.3s;
+}
+.nav-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.nav-title { color: #fff; font-size: 1rem; font-weight: 700; letter-spacing: 1px; }
+.nav-controls { display: flex; gap: 8px; align-items: center; }
+.nav-btn {
+  background: rgba(255,255,255,0.12); color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 5px 14px; border-radius: 20px; cursor: pointer;
+  font-size: 0.8rem; transition: all 0.2s;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.22); }
+.nav-menu {
+  display: flex; overflow-x: auto; padding: 6px 16px; gap: 4px;
+  scrollbar-width: none;
+}
+.nav-menu::-webkit-scrollbar { display: none; }
+.nav-item {
+  color: rgba(255,255,255,0.78); text-decoration: none;
+  white-space: nowrap; padding: 4px 12px; border-radius: 12px;
+  font-size: 0.78rem; transition: all 0.2s;
+  border: 1px solid transparent;
+}
+.nav-item:hover { color: #fff; background: var(--bg-nav-hover); border-color: rgba(255,255,255,0.2); }
+
+/* ===== 主容器 ===== */
+.main-wrap { max-width: 1060px; margin: 0 auto; padding: 116px 16px 60px; }
+
+/* ===== Hero 标题区 ===== */
+.hero {
+  background: var(--bg-header); border-radius: 18px;
+  padding: 40px 36px; margin-bottom: 28px;
+  box-shadow: 0 8px 32px rgba(13,71,161,0.3);
+}
+.hero-chapter { color: rgba(255,255,255,0.7); font-size: 0.85rem; margin-bottom: 8px; }
+.hero-title { color: #fff; font-size: 2.1rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 8px; }
+.hero-sub { color: rgba(255,255,255,0.82); font-size: 0.95rem; margin-bottom: 16px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.htag {
+  background: rgba(255,255,255,0.15); color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 4px 12px; border-radius: 20px; font-size: 0.78rem;
+}
+.gen-date { color: rgba(255,255,255,0.55); font-size: 0.75rem; margin-top: 14px; }
+
+/* ===== 区块标题 ===== */
+.sec-head {
+  display: flex; align-items: center; gap: 12px;
+  margin: 36px 0 18px;
+}
+.sec-num {
+  background: var(--accent1); color: #fff;
+  width: 36px; height: 36px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; font-weight: 800; flex-shrink: 0;
+}
+.sec-head h2 { font-size: 1.25rem; font-weight: 800; color: var(--text-primary); }
+.sec-page { font-size: 0.78rem; color: var(--text-muted); background: var(--bg-table-alt); padding: 3px 10px; border-radius: 10px; }
+
+/* ===== 知识卡片 ===== */
+.kcard {
+  background: var(--bg-card); border: 1px solid var(--card-border);
+  border-radius: 14px; margin-bottom: 20px;
+  box-shadow: var(--shadow); overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.kcard:hover { box-shadow: var(--shadow-hover); }
+.kcard-header {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--card-border);
+  background: var(--bg-table-alt);
+}
+.kcard-num {
+  background: var(--accent1); color: #fff;
+  padding: 4px 10px; border-radius: 8px;
+  font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+}
+.kcard-title { font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+.kcard-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.kcard-body { padding: 20px; }
+
+/* ===== 徽标 ===== */
+.badge {
+  display: inline-block; padding: 2px 9px; border-radius: 10px;
+  font-size: 0.72rem; font-weight: 600;
+}
+.b-star { background: #fff3e0; color: #e65100; border: 1px solid #ffcc02; }
+.b-page { background: var(--tag-blue); color: var(--accent1); border: 1px solid #90caf9; }
+.b-type { background: var(--tag-green); color: #1b5e20; border: 1px solid #a5d6a7; }
+.b-year { background: var(--tag-purple); color: var(--accent5); border: 1px solid #ce93d8; }
+.b-hot  { background: var(--tag-red);  color: #880e4f; border: 1px solid #f48fb1; }
+
+/* ===== 内容块 ===== */
+.block { padding: 14px 16px; border-radius: 10px; margin-bottom: 14px; }
+.block-def  { background: var(--tag-blue); border-left: 4px solid #1976d2; }
+.block-ana  { background: var(--tag-green); border-left: 4px solid #388e3c; }
+.block-mem  { background: #fffde7; border-left: 4px solid #f9a825; }
+.dark-mode .block-mem { background: #1f1b00; }
+.block-exam { background: var(--tag-orange); border-left: 4px solid #f57c00; }
+.block-risk { background: var(--tag-red); border-left: 4px solid #c62828; }
+.block-ext  { background: var(--tag-purple); border-left: 4px solid #7b1fa2; }
+.block-label { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 6px; }
+
+/* ===== 关键词高亮 ===== */
+.kw { color: var(--kw-color); font-weight: 700; }
+mark { background: var(--highlight); padding: 0 3px; border-radius: 3px; }
+
+/* ===== 表格 ===== */
+.ctable {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.88rem; margin: 12px 0;
+}
+.ctable th {
+  background: var(--bg-table-head); color: var(--text-primary);
+  padding: 9px 12px; text-align: left; font-weight: 700;
+  border: 1px solid var(--border-color);
+}
+.ctable td {
+  padding: 8px 12px; border: 1px solid var(--border-color);
+  vertical-align: top; color: var(--text-secondary);
+}
+.ctable tr:nth-child(even) td { background: var(--bg-table-alt); }
+
+/* ===== 折叠面板 ===== */
+details { border: 1px solid var(--border-color); border-radius: 10px; margin: 10px 0; overflow: hidden; }
+summary {
+  padding: 11px 16px; cursor: pointer; font-weight: 600;
+  background: var(--bg-table-alt); font-size: 0.9rem;
+  list-style: none; display: flex; align-items: center; gap: 8px;
+}
+summary::-webkit-details-marker { display: none; }
+summary::before { content: '▶'; font-size: 0.7rem; color: var(--accent1); transition: transform 0.2s; }
+details[open] summary::before { transform: rotate(90deg); }
+.detail-body { padding: 16px; }
+
+/* ===== 对比表容器 ===== */
+.compare-wrap { overflow-x: auto; }
+
+/* ===== 流程图（SVG容器） ===== */
+.flow-wrap {
+  background: var(--mindmap-bg); border: 1px solid var(--border-color);
+  border-radius: 14px; padding: 24px; margin: 18px 0; overflow-x: auto;
+}
+.flow-wrap svg { min-width: 700px; }
+
+/* ===== 思维导图容器 ===== */
+.mindmap-wrap {
+  background: var(--mindmap-bg); border: 1px solid var(--border-color);
+  border-radius: 14px; padding: 20px; margin: 18px 0; overflow-x: auto;
+}
+.mindmap-wrap svg { min-width: 760px; }
+
+/* ===== 真题标签 ===== */
+.exam-tag {
+  display: inline-block; background: #e53935; color: #fff;
+  font-size: 0.7rem; font-weight: 700; padding: 2px 8px;
+  border-radius: 6px; margin-right: 4px;
+}
+
+/* ===== 30秒复习 ===== */
+.flash-box {
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  border-radius: 16px; padding: 28px; margin: 24px 0;
+  color: #fff;
+}
+.flash-box h3 { font-size: 1.15rem; margin-bottom: 18px; }
+.flash-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 10px; font-size: 0.88rem;
+}
+.fi-num {
+  background: rgba(255,255,255,0.2); border-radius: 6px;
+  padding: 2px 8px; font-weight: 700; flex-shrink: 0; font-size: 0.78rem;
+}
+.flash-item mark { background: rgba(255,255,200,0.35); color: #fff; padding: 0 3px; border-radius: 3px; }
+
+/* ===== 背诵版 ===== */
+.recite-box {
+  background: var(--bg-card); border: 2px solid var(--accent2);
+  border-radius: 16px; padding: 24px; margin: 24px 0;
+}
+.recite-box h3 { color: var(--accent2); margin-bottom: 16px; }
+.recite-box p { margin-bottom: 12px; font-size: 0.92rem; }
+
+/* ===== 终极串联链 ===== */
+.chain-flow {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin: 16px 0;
+}
+.chain-step {
+  background: var(--bg-card); border: 1px solid var(--card-border);
+  border-radius: 12px; padding: 14px 16px; flex: 1; min-width: 180px;
+}
+.step-num { font-size: 0.7rem; color: var(--text-muted); font-weight: 700; }
+.step-title { font-size: 0.95rem; font-weight: 700; color: var(--accent1); margin: 4px 0; }
+.step-body { font-size: 0.8rem; color: var(--text-secondary); }
+.chain-arr { font-size: 1.5rem; color: var(--text-muted); }
+
+/* ===== 自我检测 ===== */
+.quiz-item {
+  background: var(--bg-card); border: 1px solid var(--card-border);
+  border-radius: 12px; padding: 16px 20px; margin-bottom: 14px;
+}
+.q-num { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
+.q-text { font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+.q-hint { font-size: 0.82rem; color: var(--text-secondary); background: var(--bg-table-alt); padding: 10px 12px; border-radius: 8px; }
+.q-hint span { color: var(--accent1); font-weight: 700; }
+
+/* ===== 搜索触发圆钮 + 药丸（第八章 v4 格式）===== */
+#search-trigger {
+  position: fixed; bottom: 80px; right: 22px; z-index: 9998;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #1e293b; color: #f8fafc;
+  border: 2px solid #334155; font-size: 18px;
+  cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,.35);
+  transition: background .2s, transform .15s;
+  display: flex; align-items: center; justify-content: center;
+}
+#search-trigger:hover { background: #334155; transform: scale(1.08); }
+#search-pill {
+  position: fixed; bottom: 80px; right: 18px; z-index: 9999;
+  display: none; align-items: center; gap: 6px;
+  background: #1e293b; color: #f8fafc;
+  border: 1.5px solid #475569; border-radius: 50px;
+  padding: 8px 14px 8px 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,.4);
+  font-size: 14px;
+  font-family: 'Microsoft YaHei','PingFang SC',sans-serif;
+  min-width: 300px; max-width: 440px;
+}
+#sp-icon { font-size: 16px; flex-shrink: 0; }
+#sp-input {
+  flex: 1; background: transparent; border: none; outline: none;
+  color: #f8fafc; font-size: 14px; font-family: inherit; min-width: 0;
+}
+#sp-input::placeholder { color: rgba(248,250,252,.4); }
+#sp-count {
+  color: #94a3b8; font-size: 12px; white-space: nowrap;
+  flex-shrink: 0; font-variant-numeric: tabular-nums;
+  min-width: 60px; text-align: center;
+}
+#search-pill button {
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+  color: #f8fafc; border-radius: 50%; width: 28px; height: 28px;
+  cursor: pointer; font-size: 13px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+#search-pill button:hover { background: rgba(255,255,255,.25); }
+#sp-close { font-size: 12px; }
+mark.sp-hl { background: #fbbf24; color: #000; border-radius: 2px; padding: 0 1px; }
+mark.sp-hl.sp-cur { background: #f97316; color: #fff; outline: 2px solid #fb923c; }
+#sp-hidden-toast {
+  position: fixed; bottom: 140px; right: 18px; z-index: 9999;
+  background: #0f172a; color: #93c5fd; border: 1px solid #334155;
+  border-radius: 8px; padding: 6px 14px; font-size: 12px;
+  font-family: 'Microsoft YaHei', sans-serif;
+  display: none; pointer-events: none; max-width: 260px;
+}
+
+/* ===== 返回顶部 ===== */
+#back-top {
+  position: fixed; bottom: 24px; right: 24px; z-index: 1999;
+  background: var(--accent1); color: #fff; border: none;
+  width: 44px; height: 44px; border-radius: 50%;
+  font-size: 1.1rem; line-height: 1; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  transition: all 0.2s; display: none;
+  align-items: center; justify-content: center;
+  padding: 0; text-align: center;
+}
+#back-top:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+
+/* ===== 引用框 ===== */
+.quote {
+  border-left: 4px solid var(--accent1); background: var(--bg-table-alt);
+  padding: 12px 16px; border-radius: 0 10px 10px 0;
+  font-size: 0.88rem; color: var(--text-secondary);
+  margin: 10px 0;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 700px) {
+  .main-wrap { padding: 110px 10px 50px; }
+  .hero-title { font-size: 1.5rem; }
+  .chain-flow { flex-direction: column; }
+  #search-pill { right: 10px; bottom: 70px; min-width: 240px; }
+}
+
+/* ===== 页脚 ===== */
+.footer { text-align: center; padding: 28px; color: var(--text-muted); font-size: 0.78rem; border-top: 1px solid var(--border-color); margin-top: 32px; }
+</style>
+</head>
+<body>
+
+<!-- ===== 顶部固定导航 ===== -->
+<nav id="top-nav">
+  <div class="nav-header">
+    <span class="nav-title">📚 第六章 · 业务层战略</span>
+    <div class="nav-controls">
+      <button class="nav-btn" onclick="toggleDark()">🌙 夜间</button>
+    </div>
+  </div>
+  <div class="nav-menu">
+    <a href="#s0" class="nav-item">📊 逻辑结构</a>
+    <a href="#s-mind" class="nav-item">🧠 思维导图</a>
+    <a href="#s1" class="nav-item">§1 业务层战略概述</a>
+    <a href="#s2" class="nav-item">§2 基本定位战略</a>
+    <a href="#s3" class="nav-item">§3 定位战略新实践</a>
+    <a href="#s4" class="nav-item">§4 动态竞争战略</a>
+    <a href="#s5" class="nav-item">§5 竞争优势可保持性</a>
+    <a href="#s-compare" class="nav-item">⚖️ 对比表</a>
+    <a href="#s-exam" class="nav-item">📝 历年真题</a>
+    <a href="#s-chain" class="nav-item">🔗 终极串联</a>
+    <a href="#s-flash" class="nav-item">⚡ 30秒复习</a>
+    <a href="#s-recite" class="nav-item">🎤 背诵版</a>
+    <a href="#s-quiz" class="nav-item">✅ 自我检测</a>
+  </div>
+</nav>
+
+<!-- ===== 搜索 toast + 药丸 + 触发圆钮（第八章 v4 格式）===== -->
+<div id="sp-hidden-toast"></div>
+<div id="search-pill">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索页面所有内容…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
+
+<!-- ===== 返回顶部 ===== -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<!-- ===== 主内容 ===== -->
+<div class="main-wrap">
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-chapter">中南大学企业管理学硕 · 《企业战略管理（第2版·蓝海林等编著）》</div>
+  <div class="hero-title">第六章 · 业务层战略</div>
+  <div class="hero-sub">Business-Level Strategy / Competitive Strategy ｜ 页码 P160–P190</div>
+  <div class="hero-tags">
+    <span class="htag">⭐⭐⭐⭐⭐ 核心必考章</span>
+    <span class="htag">🎯 高频考察</span>
+    <span class="htag">4大战略类型</span>
+    <span class="htag">2016–2025 真题整合</span>
+  </div>
+  <div class="gen-date">生成日期：2026-03-15</div>
+</div>
+
+<!-- ===== §0 本章逻辑关系 ===== -->
+<div id="s0">
+<div class="sec-head">
+  <div class="sec-num">0</div>
+  <h2>本章整体逻辑关系</h2>
+  <span class="sec-page">章节概览</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">逻辑</div>
+    <div>
+      <div class="kcard-title">本章在全书中的位置与核心问题</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐⭐ 必读</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📍 本章位置</div>
+      <p>全书逻辑：<strong>外部环境分析（第3章）→ 内部环境分析（第4章）→ 战略层次（第5章：总体/集团层）→ <mark>业务层战略（第6章）</mark> → 公司层战略（第7章）→ 国际化战略（第8章）→ 战略实施（第10–11章）</strong></p>
+      <p style="margin-top:8px;">第6章回答的核心问题：<strong>企业在一个特定业务领域，如何竞争才能持续获得高于行业平均水平的收益？</strong></p>
+    </div>
+    <div class="block block-ana">
+      <div class="block-label">🍰 生活化类比（零基础也能懂）</div>
+      <p>把市场竞争想象成<strong>赛跑比赛</strong>。公司层战略（第7章）是"决定参加哪些比赛"，而<strong>业务层战略就是"在每一场比赛里如何跑才能赢"</strong>。跑法有很多种：</p>
+      <ul style="margin-top:8px; padding-left:20px;">
+        <li>🏃 <strong>低成本战略</strong>：穿最轻的鞋（成本最低），让其他人跑不过你的耐力</li>
+        <li>🥇 <strong>高差异战略</strong>：用独特跑姿（品牌、品质、服务），让裁判（顾客）只认你</li>
+        <li>🎯 <strong>聚焦战略</strong>：只跑你最擅长的那一段赛道（细分市场）</li>
+        <li>⚡ <strong>动态竞争战略</strong>：时刻盯着对手，打对手的弱点，让对手无法预测你的下一步</li>
+      </ul>
+    </div>
+
+    <!-- 逻辑流程图 -->
+    <div class="flow-wrap">
+      <svg viewBox="0 0 800 130" xmlns="http://www.w3.org/2000/svg" width="100%" height="130">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 Z" fill="#1565c0"/>
+          </marker>
+        </defs>
+        <!-- boxes -->
+        <rect x="10" y="40" width="130" height="50" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+        <text x="75" y="60" text-anchor="middle" font-size="11" fill="#0d47a1" font-weight="700">外部环境分析</text>
+        <text x="75" y="75" text-anchor="middle" font-size="10" fill="#1565c0">机会与威胁</text>
+        <text x="75" y="88" text-anchor="middle" font-size="9" fill="#666">第3章</text>
+
+        <line x1="140" y1="65" x2="168" y2="65" stroke="#1565c0" stroke-width="1.8" marker-end="url(#arr)"/>
+
+        <rect x="170" y="40" width="130" height="50" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="1.5"/>
+        <text x="235" y="60" text-anchor="middle" font-size="11" fill="#1b5e20" font-weight="700">内部环境分析</text>
+        <text x="235" y="75" text-anchor="middle" font-size="10" fill="#388e3c">优势与劣势</text>
+        <text x="235" y="88" text-anchor="middle" font-size="9" fill="#666">第4章</text>
+
+        <line x1="300" y1="65" x2="328" y2="65" stroke="#1565c0" stroke-width="1.8" marker-end="url(#arr)"/>
+
+        <rect x="330" y="30" width="150" height="70" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="2.5"/>
+        <text x="405" y="54" text-anchor="middle" font-size="12" fill="#e65100" font-weight="800">业务层战略</text>
+        <text x="405" y="70" text-anchor="middle" font-size="10" fill="#bf360c">如何在特定业务</text>
+        <text x="405" y="83" text-anchor="middle" font-size="10" fill="#bf360c">中建立竞争优势</text>
+        <text x="405" y="95" text-anchor="middle" font-size="9" fill="#666">第6章 ← 本章</text>
+
+        <line x1="480" y1="65" x2="508" y2="65" stroke="#1565c0" stroke-width="1.8" marker-end="url(#arr)"/>
+
+        <rect x="510" y="40" width="130" height="50" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
+        <text x="575" y="60" text-anchor="middle" font-size="11" fill="#4a148c" font-weight="700">公司层战略</text>
+        <text x="575" y="75" text-anchor="middle" font-size="10" fill="#7b1fa2">业务组合管理</text>
+        <text x="575" y="88" text-anchor="middle" font-size="9" fill="#666">第7章</text>
+
+        <line x1="640" y1="65" x2="668" y2="65" stroke="#1565c0" stroke-width="1.8" marker-end="url(#arr)"/>
+
+        <rect x="670" y="40" width="120" height="50" rx="10" fill="#fce4ec" stroke="#c62828" stroke-width="1.5"/>
+        <text x="730" y="60" text-anchor="middle" font-size="11" fill="#880e4f" font-weight="700">战略实施</text>
+        <text x="730" y="75" text-anchor="middle" font-size="10" fill="#c62828">组织·文化·控制</text>
+        <text x="730" y="88" text-anchor="middle" font-size="9" fill="#666">第10–11章</text>
+      </svg>
+    </div>
+
+    <div class="block block-mem">
+      <div class="block-label">🧠 与前后章的关系</div>
+      <table class="ctable">
+        <tr><th>方向</th><th>章节</th><th>关系说明</th></tr>
+        <tr><td>上接</td><td>第4章 内部环境分析</td><td>内部资源能力分析为业务层战略选择提供依据（我有什么优势？）</td></tr>
+        <tr><td>上接</td><td>第3章 外部环境分析</td><td>行业五力分析为定位战略提供外部基础（市场机会在哪里？）</td></tr>
+        <tr><td>平行</td><td>第5章 战略类型总论</td><td>第5章是总览，第6章是业务层的具体展开</td></tr>
+        <tr><td>下接</td><td>第7章 公司层战略</td><td>业务层战略的选择影响多元化、纵向整合等公司层决策</td></tr>
+        <tr><td>下接</td><td>第11章 战略实施</td><td>定位战略确定后，需要匹配组织结构和文化来实施</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- 思维导图 -->
+<div id="s-mind">
+<div class="sec-head">
+  <div class="sec-num">🧠</div>
+  <h2>章节思维导图</h2>
+</div>
+<div class="mindmap-wrap">
+<svg viewBox="0 0 860 420" xmlns="http://www.w3.org/2000/svg" width="100%" height="420">
+  <!-- 中心节点 -->
+  <ellipse cx="430" cy="210" rx="85" ry="42" fill="#0d47a1" stroke="#1565c0" stroke-width="2"/>
+  <text x="430" y="205" text-anchor="middle" font-size="13" fill="#fff" font-weight="800">第六章</text>
+  <text x="430" y="222" text-anchor="middle" font-size="12" fill="#90caf9">业务层战略</text>
+
+  <!-- 分支1：业务层战略概述 -->
+  <line x1="347" y1="192" x2="220" y2="100" stroke="#1976d2" stroke-width="1.8"/>
+  <rect x="100" y="72" width="130" height="56" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="165" y="96" text-anchor="middle" font-size="11" fill="#0d47a1" font-weight="700">§1 概述</text>
+  <text x="165" y="110" text-anchor="middle" font-size="9" fill="#1565c0">定义·特点</text>
+  <text x="165" y="122" text-anchor="middle" font-size="9" fill="#1565c0">四种战略类型</text>
+
+  <!-- 分支2：基本定位战略 -->
+  <line x1="355" y1="178" x2="220" y2="178" stroke="#388e3c" stroke-width="1.8"/>
+  <rect x="60" y="155" width="165" height="70" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="1.5"/>
+  <text x="142" y="176" text-anchor="middle" font-size="11" fill="#1b5e20" font-weight="700">§2 基本定位战略</text>
+  <text x="142" y="192" text-anchor="middle" font-size="9" fill="#388e3c">低成本定位战略</text>
+  <text x="142" y="205" text-anchor="middle" font-size="9" fill="#388e3c">高差异定位战略</text>
+  <text x="142" y="218" text-anchor="middle" font-size="9" fill="#388e3c">聚焦定位战略</text>
+
+  <!-- 分支3：定位战略新实践 -->
+  <line x1="347" y1="228" x2="220" y2="300" stroke="#e65100" stroke-width="1.8"/>
+  <rect x="75" y="275" width="155" height="56" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="1.5"/>
+  <text x="152" y="298" text-anchor="middle" font-size="11" fill="#bf360c" font-weight="700">§3 新实践</text>
+  <text x="152" y="312" text-anchor="middle" font-size="9" fill="#e65100">独特性定位战略</text>
+  <text x="152" y="324" text-anchor="middle" font-size="9" fill="#e65100">整合战略·伊甸园</text>
+
+  <!-- 分支4：动态竞争战略 -->
+  <line x1="514" y1="192" x2="640" y2="100" stroke="#7b1fa2" stroke-width="1.8"/>
+  <rect x="630" y="68" width="155" height="64" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
+  <text x="707" y="92" text-anchor="middle" font-size="11" fill="#4a148c" font-weight="700">§4 动态竞争战略</text>
+  <text x="707" y="108" text-anchor="middle" font-size="9" fill="#7b1fa2">陈明哲模型</text>
+  <text x="707" y="120" text-anchor="middle" font-size="9" fill="#7b1fa2">进攻与反击</text>
+
+  <!-- 分支5：竞争优势可保持性 -->
+  <line x1="514" y1="210" x2="640" y2="210" stroke="#c62828" stroke-width="1.8"/>
+  <rect x="635" y="185" width="175" height="52" rx="10" fill="#fce4ec" stroke="#c62828" stroke-width="1.5"/>
+  <text x="722" y="206" text-anchor="middle" font-size="11" fill="#880e4f" font-weight="700">§5 竞争优势</text>
+  <text x="722" y="220" text-anchor="middle" font-size="9" fill="#c62828">可保持性判断</text>
+  <text x="722" y="232" text-anchor="middle" font-size="9" fill="#c62828">生命周期发挥战略</text>
+
+  <!-- 分支6：波特模型 -->
+  <line x1="514" y1="228" x2="640" y2="320" stroke="#f57f17" stroke-width="1.8"/>
+  <rect x="630" y="296" width="170" height="56" rx="10" fill="#fffde7" stroke="#f57f17" stroke-width="1.5"/>
+  <text x="715" y="320" text-anchor="middle" font-size="11" fill="#e65100" font-weight="700">波特基本假设</text>
+  <text x="715" y="334" text-anchor="middle" font-size="9" fill="#f57c00">广泛/狭窄市场</text>
+  <text x="715" y="346" text-anchor="middle" font-size="9" fill="#f57c00">成本/差异导向</text>
+
+  <!-- 底部副节点：鲁梅尔特增长模型 -->
+  <line x1="380" y1="250" x2="310" y2="370" stroke="#0097a7" stroke-width="1.5"/>
+  <rect x="215" y="354" width="190" height="44" rx="10" fill="#e0f7fa" stroke="#0097a7" stroke-width="1.5"/>
+  <text x="310" y="374" text-anchor="middle" font-size="10" fill="#006064" font-weight="700">鲁梅尔特增长模型</text>
+  <text x="310" y="390" text-anchor="middle" font-size="9" fill="#0097a7">市场渗透·市场开发·产品开发</text>
+
+  <!-- 底部：蓝海战略 -->
+  <line x1="480" y1="250" x2="550" y2="370" stroke="#00897b" stroke-width="1.5"/>
+  <rect x="470" y="354" width="160" height="44" rx="10" fill="#e0f2f1" stroke="#00897b" stroke-width="1.5"/>
+  <text x="550" y="374" text-anchor="middle" font-size="10" fill="#004d40" font-weight="700">蓝海战略</text>
+  <text x="550" y="390" text-anchor="middle" font-size="9" fill="#00897b">四动作框架·价值曲线</text>
+</svg>
+</div>
+</div>
+
+<!-- ===== §1 业务层战略概述 ===== -->
+<div id="s1">
+<div class="sec-head">
+  <div class="sec-num">§1</div>
+  <h2>业务层战略概述</h2>
+  <span class="sec-page">P160–163</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.1.1</div>
+    <div>
+      <div class="kcard-title">业务层战略的定义与特点</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐⭐</span>
+        <span class="badge b-page">P160–162</span>
+        <span class="badge b-type">名词解释·简答</span>
+        <span class="badge b-hot">高频</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 教材原定义（必背）</div>
+      <p><span class="kw">业务层战略</span>，也称<span class="kw">经营级战略</span>或<span class="kw">竞争战略</span>，是指一个企业为了在<mark>一个特定业务领域</mark>中发挥竞争优势或建立新的竞争优势以为顾客创造最大价值所采取的<mark>一系列决策和行动</mark>。</p>
+      <p style="margin-top:8px; font-size:0.82rem; color:var(--text-muted)">——《企业战略管理》第2版，蓝海林等，P160</p>
+    </div>
+
+    <div class="block block-ana">
+      <div class="block-label">🍰 小学生版（通俗解释）</div>
+      <p>就是说：<strong>我已经知道我要卖什么（产品），也知道卖给谁（市场），现在的问题是——我怎么打败竞争对手、让顾客选我？</strong></p>
+      <p style="margin-top:6px;">比如你和同学都在校门口卖奶茶，你们卖的东西差不多，<strong>业务层战略就是你决定"我要卖更便宜的"（低成本）还是"我要用最好的食材、最好喝的配方让大家只认我"（差异化）</strong>。</p>
+    </div>
+
+    <p style="font-weight:700; margin-bottom:10px;">📋 业务层战略四大特点：</p>
+    <table class="ctable">
+      <tr><th>#</th><th>特点</th><th>核心含义</th><th>案例说明</th></tr>
+      <tr>
+        <td>①</td>
+        <td><span class="kw">特定业务聚焦</span></td>
+        <td>围绕一个具体业务的顾客持续创造最大价值感受</td>
+        <td>世纪金榜聚焦高中教辅图书，不分散</td>
+      </tr>
+      <tr>
+        <td>②</td>
+        <td><span class="kw">顾客导向+竞争指向</span></td>
+        <td>目的是持续获得高于平均水平的收益，必须体现竞争指向</td>
+        <td>低成本/差异化均以满足顾客为前提</td>
+      </tr>
+      <tr>
+        <td>③</td>
+        <td><span class="kw">建立发挥竞争优势</span></td>
+        <td>利润增加→建立新优势；市占率扩大→建立新优势（两者需平衡）</td>
+        <td>单纯追求利润≠好战略；单纯追求市占率也不行</td>
+      </tr>
+      <tr>
+        <td>④</td>
+        <td><span class="kw">决策行动一致性和稳定性</span></td>
+        <td>一系列决策和行动必须相互一致，才能兑现战略承诺</td>
+        <td>战略不断变换会导致竞争优势消耗殆尽</td>
+      </tr>
+    </table>
+
+    <div class="block block-mem">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>「特（定业务）顾（客导向）建（优势）一（致性）」</strong>——特顾建一，业务层战略四大特点</p>
+    </div>
+
+    <details>
+      <summary>📌 复试回答模板（名词解释：业务层战略）</summary>
+      <div class="detail-body">
+        <p><strong>定义→核心→四特点→总结</strong></p>
+        <p style="margin-top:8px; background:var(--bg-table-alt); padding:12px; border-radius:8px; font-size:0.88rem;">
+          "业务层战略，又称经营级战略或竞争战略，是指企业在特定业务领域中，通过建立和发挥竞争优势以为顾客持续创造最大价值的一系列决策和行动。其核心目的是持续获得高于行业平均水平的收益。业务层战略具有四大特点：第一，聚焦于特定业务；第二，具有强烈的顾客导向和竞争指向；第三，围绕建立、强化和发挥竞争优势展开；第四，决策和行动之间必须保持一致性和稳定性。"
+        </p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.1.2</div>
+    <div>
+      <div class="kcard-title">四种业务层战略类型总览</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐⭐</span>
+        <span class="badge b-page">P162–163</span>
+        <span class="badge b-type">简答·论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <p style="margin-bottom:12px;">教材明确提出四种主要业务层战略类型：</p>
+    <table class="ctable">
+      <tr><th>#</th><th>战略类型</th><th>英文</th><th>核心贡献者</th><th>本章节</th></tr>
+      <tr>
+        <td>①</td>
+        <td><span class="kw">基本定位战略（定位战略）</span></td>
+        <td>Generic Business Strategy / Positional Strategy</td>
+        <td>迈克尔·波特</td>
+        <td>§2 重点</td>
+      </tr>
+      <tr>
+        <td>②</td>
+        <td><span class="kw">独特性定位战略</span></td>
+        <td>Unique Positional Strategy</td>
+        <td>波特（延伸）·蓝海战略</td>
+        <td>§3</td>
+      </tr>
+      <tr>
+        <td>③</td>
+        <td><span class="kw">基本定位的整合战略</span></td>
+        <td>Integrational Position Strategy</td>
+        <td>赫尔（Hall）·事业部制</td>
+        <td>§3</td>
+      </tr>
+      <tr>
+        <td>④</td>
+        <td><span class="kw">动态竞争互动战略</span></td>
+        <td>Dynamic Competitive Interaction Strategy</td>
+        <td>陈明哲·达维尼</td>
+        <td>§4</td>
+      </tr>
+    </table>
+    <div class="block block-mem">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>「基（本定位）独（特性）整（合）动（态）」</strong>——基独整动，四种业务层战略类型</p>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">⚠️ 考试注意</div>
+      <p>教材将②③视为①的新实践和发展，④服务于①②③的实施。<strong>考试时论述"业务层战略类型"必须提及全部四种，并说明相互关系。</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.1.3</div>
+    <div>
+      <div class="kcard-title">鲁梅尔特增长战略模型</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐</span>
+        <span class="badge b-page">P161–162</span>
+        <span class="badge b-type">简答·了解</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 鲁梅尔特（Rumelt）增长战略三类型</div>
+      <p>鲁梅尔特认为业务层战略的核心问题是<mark>选择正确的增长战略</mark>，按产品方向和市场方向划分为三种：</p>
+    </div>
+    <table class="ctable">
+      <tr><th>类型</th><th>英文</th><th>含义</th><th>案例</th></tr>
+      <tr><td><span class="kw">市场渗透战略</span></td><td>Penetration</td><td>在现有市场上增加现有产品的销售</td><td>麦当劳用促销活动提高老顾客购买频率</td></tr>
+      <tr><td><span class="kw">市场开发战略</span></td><td>Market Development</td><td>扩大现有产品的销售区域（新市场）</td><td>国内奶茶品牌进军海外市场</td></tr>
+      <tr><td><span class="kw">产品开发战略</span></td><td>Product Development</td><td>在现有市场增加产品系列或类型</td><td>苹果在原有手机用户市场推出iPad</td></tr>
+    </table>
+    <div class="block block-ana">
+      <div class="block-label">🍰 小学生版</div>
+      <p>你在学校卖饼干：<strong>市场渗透</strong>=让老同学买更多饼干；<strong>市场开发</strong>=去隔壁班卖；<strong>产品开发</strong>=在原来的同学里新卖糖果。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §2 基本定位战略 ===== -->
+<div id="s2">
+<div class="sec-head">
+  <div class="sec-num">§2</div>
+  <h2>基本定位战略（波特竞争战略）</h2>
+  <span class="sec-page">P163–173</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.2.0</div>
+    <div>
+      <div class="kcard-title">波特基本定位战略的前提假设</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐⭐</span>
+        <span class="badge b-page">P163</span>
+        <span class="badge b-type">简答·论述</span>
+        <span class="badge b-hot">核心</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 波特五大前提假设（必背）</div>
+      <p>迈克尔·波特的定位战略以下列假设为前提：</p>
+    </div>
+    <table class="ctable">
+      <tr><th>#</th><th>假设内容</th></tr>
+      <tr><td>①</td><td>目标市场被划分为<span class="kw">广泛市场和狭窄市场</span>两种基本类型</td></tr>
+      <tr><td>②</td><td>消费者需求被划分为<span class="kw">成本导向和差异导向</span>两种类型</td></tr>
+      <tr><td>③</td><td>消费者具有足够的理性可在成本和差异之间进行<span class="kw">取舍</span>（价格相同选差异大；差异小选价格低）</td></tr>
+      <tr><td>④</td><td>有效构建竞争优势要求在差异定位和成本定位之间<span class="kw">做出清楚选择</span>，"夹在中间"难以构建竞争优势</td></tr>
+      <tr><td>⑤</td><td>若五种力量均向恶化方向变化，占据成本或差异优势位置的企业<span class="kw">所受影响最少</span></td></tr>
+    </table>
+    <div class="block block-exam">
+      <div class="block-label">🎯 考试重点</div>
+      <p>第④条"夹在中间"是<strong>最高频考点</strong>——波特认为同时追求高差异和低成本会导致企业"夹在中间"（stuck in the middle），两种竞争优势都无法构建。</p>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.2.1</div>
+    <div>
+      <div class="kcard-title">低成本定位战略</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐⭐</span>
+        <span class="badge b-page">P164–168</span>
+        <span class="badge b-type">名词解释·简答·论述</span>
+        <span class="badge b-year">2019·2024 考察</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 定义</div>
+      <p><span class="kw">低成本定位战略</span>（Cost Leadership Strategy）是一种通过建立和发挥各种<mark>成本优势</mark>，力求占据<mark>低成本位置</mark>的战略，可在广泛和狭窄市场上分别使用。</p>
+    </div>
+    <div class="block block-ana">
+      <div class="block-label">🍰 小学生版</div>
+      <p>你开一家奶茶店，目标是做全班最便宜的——用更便宜的材料、更高效的制作方式、更大量的采购，让你的成本比任何同学都低。这样即使价格战来了，你最后活下来的可能性最大。</p>
+    </div>
+
+    <p style="font-weight:700; margin: 12px 0 8px;">📋 低成本定位战略四个维度：</p>
+    <table class="ctable">
+      <tr><th>维度</th><th>内容要点</th></tr>
+      <tr><td><span class="kw">① 顾客诉求选择</span></td><td>目标顾客：对产品性能需求相对大众化/标准化，价格敏感；产品基本能达到行业标准即可，不追求超越顾客期望</td></tr>
+      <tr><td><span class="kw">② 竞争优势构建</span></td><td>在规模经济、生产效率、学习效应、供应链管理等领域建立成本优势</td></tr>
+      <tr><td><span class="kw">③ 价值活动设计</span></td><td>全流程以降本为核心：采购→生产→物流→营销均追求效率最大化</td></tr>
+      <tr><td><span class="kw">④ 可持续性</span></td><td>通过低成本构建进入壁垒；对抗买方议价；应对价格战；替代品威胁时保持竞争力</td></tr>
+    </table>
+
+    <details>
+      <summary>⚠️ 低成本定位战略的五大风险</summary>
+      <div class="detail-body">
+        <ol style="padding-left:20px; line-height:2;">
+          <li>容易忽视顾客需求（成本导向≠顾客导向）</li>
+          <li>技术进步可能导致设施设备过时（后进入者成本更低）</li>
+          <li>容易被竞争对手模仿和学习（低成本战略相对易模仿）</li>
+          <li>竞争规则改变的威胁（如互联网改变价值链）</li>
+          <li>过度降成本导致产品质量下滑，失去顾客信任</li>
+        </ol>
+        <div class="block block-exam" style="margin-top:12px;">
+          <div class="block-label">🛡️ 防御风险的两个关键</div>
+          <p>① 保持<strong>顾客导向</strong>（成本导向以满足顾客需求为前提）</p>
+          <p>② 保持<strong>创新能力</strong>（创新是应对模仿和规则改变的根本）</p>
+        </div>
+      </div>
+    </details>
+
+    <div class="block block-mem">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>「顾（客诉求标准化）优（势规模效率）活（动降本）持（续壁垒）」</strong>——顾优活持，低成本战略四维度</p>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">💡 典型企业案例</div>
+      <p>🛒 <strong>沃尔玛</strong>：大规模采购、高效物流、信息系统降本<br>
+      ✈️ <strong>西南航空</strong>（低成本部分）：统一机型(波音737)、点对点航线、高座位利用率<br>
+      🛵 <strong>万和集团</strong>：在燃气热水器行业以低成本战略挑战万家乐</p>
+    </div>
+
+    <details>
+      <summary>📌 复试延伸问题：成本领先战略与差异化战略能否同时实施？</summary>
+      <div class="detail-body">
+        <p><strong>答：理论上有争议，实践上有条件可以。</strong></p>
+        <p>波特认为：在科技和管理水平较低时，两者"相克"，"夹在中间"有害。但随着技术进步和管理水平提高（如大规模定制、事业部制），部分企业（如丰田、西南航空）通过整合战略同时实现了低成本和差异化，进入了赫尔模型的"伊甸园"。</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.2.2</div>
+    <div>
+      <div class="kcard-title">高差异定位战略</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐⭐</span>
+        <span class="badge b-page">P168–173</span>
+        <span class="badge b-type">名词解释·简答·论述</span>
+        <span class="badge b-year">2016·2019·2024 考察</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 定义</div>
+      <p><span class="kw">高差异定位战略</span>（High Differentiation Strategy）是一种通过建立和发挥<mark>差异优势</mark>，力求在全行业中占据<mark>高差异位置</mark>的战略，目标顾客对价格不敏感，更关注产品的独特价值。</p>
+    </div>
+    <div class="block block-ana">
+      <div class="block-label">🍰 小学生版</div>
+      <p>同学们都卖饼干，你用最好的材料、最好看的包装、最贴心的服务，让大家觉得你的饼干是"限量版"，价格贵但人人都想买。<strong>即使有人卖更便宜的，你的粉丝也不会跑掉，因为他们买的是"感觉"。</strong></p>
+    </div>
+
+    <p style="font-weight:700; margin: 12px 0 8px;">📋 高差异定位战略四个维度：</p>
+    <table class="ctable">
+      <tr><th>维度</th><th>内容要点</th></tr>
+      <tr><td><span class="kw">① 顾客诉求选择</span></td><td>目标顾客：价格不敏感，关注品质·功能·品牌·服务等差异价值；高差异定位目标顾客应有一定购买力</td></tr>
+      <tr><td><span class="kw">② 差异优势构建领域</span></td><td>可在产品创新·品牌·渠道·服务·交货速度·顾客响应等一个或多个领域建立差异</td></tr>
+      <tr><td><span class="kw">③ 价值活动设计</span></td><td>全流程以提升差异价值为核心：R&D加强·品质管控·品牌建设·客户关系管理</td></tr>
+      <tr><td><span class="kw">④ 可持续性</span></td><td>品牌忠诚度构筑进入壁垒；顾客价格不敏感→对买方议价有更强能力；替代品难以撼动品牌价值</td></tr>
+    </table>
+
+    <details>
+      <summary>⚠️ 高差异定位战略的五大风险</summary>
+      <div class="detail-body">
+        <ol style="padding-left:20px; line-height:2;">
+          <li>顾客认为定价太高（价值感知 < 价格）</li>
+          <li>顾客认为企业创造的"差异"不重要或不再重要</li>
+          <li>竞争对手模仿后以更低价格提供同等差异（被学习）</li>
+          <li>在扩大销售规模方面存在困难（高差异≠高销量）</li>
+          <li>中国企业"做大"过程中差异优势逐步弱化的陷阱</li>
+        </ol>
+      </div>
+    </details>
+
+    <div class="block block-mem">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>「顾（不敏感）多（领域差异）活（动提质）持（品牌壁垒）」</strong>——高差异四维度与低成本完全对应，只是方向相反</p>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">💡 典型企业案例</div>
+      <p>👜 <strong>苹果公司</strong>：产品设计·品牌·生态系统差异<br>
+      🍺 <strong>广东风行/燕塘牛奶</strong>：华南区域高差异聚焦战略<br>
+      🚗 <strong>宝马/奔驰</strong>：全球汽车行业高差异定位</p>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.2.3</div>
+    <div>
+      <div class="kcard-title">聚焦定位战略</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐</span>
+        <span class="badge b-page">P171–173</span>
+        <span class="badge b-type">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 定义</div>
+      <p><span class="kw">聚焦战略</span>（Focus Strategy）是指企业在<mark>相对狭窄或细分</mark>的市场上，针对特定目标顾客，实施低成本聚焦或高差异聚焦的战略。主要适用于<mark>资源能力有限的中小企业</mark>。</p>
+    </div>
+    <div class="block block-ana">
+      <div class="block-label">🍰 小学生版</div>
+      <p>全校有3000人，你资源有限，只能服务好一个班——你把这个班的同学研究得透透的，提供最适合他们的产品。这就是聚焦战略：<strong>不贪大，专注于一个小市场做到极致</strong>。</p>
+    </div>
+    <table class="ctable">
+      <tr><th>类型</th><th>含义</th><th>典型案例</th></tr>
+      <tr><td><span class="kw">低成本聚焦</span></td><td>在狭窄市场以最低成本竞争</td><td>廉价短途航空（特定航线）</td></tr>
+      <tr><td><span class="kw">高差异聚焦</span></td><td>在狭窄市场以独特差异价值竞争</td><td>高端手工皮具品牌</td></tr>
+    </table>
+    <div class="block block-risk">
+      <div class="block-label">⚠️ 聚焦战略的三大风险</div>
+      <p>① 更小的竞争对手在更细分市场再次聚焦<br>
+      ② 广泛市场的大企业参与狭窄市场竞争<br>
+      ③ 全球化和需求趋同化导致细分市场萎缩</p>
+    </div>
+    <div class="block block-exam">
+      <div class="block-label">🇨🇳 中国特色：国内市场分割性优势</div>
+      <p>中国国内市场分割性明显（地区收入、消费方式、营销制度差异大），聚焦战略在中国具有特殊优势：<br>
+      • 广东风行/燕塘/珠江啤酒 → 华南高差异聚焦<br>
+      • 多品牌·多市场定位战略 → 分区域低成本聚焦与高差异聚焦并用</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §3 定位战略新实践 ===== -->
+<div id="s3">
+<div class="sec-head">
+  <div class="sec-num">§3</div>
+  <h2>基本定位战略的新实践</h2>
+  <span class="sec-page">P173–182</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.3.1</div>
+    <div>
+      <div class="kcard-title">独特性定位战略</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐⭐</span>
+        <span class="badge b-page">P174–179</span>
+        <span class="badge b-type">名词解释·简答·论述</span>
+        <span class="badge b-hot">高频 · 蓝海战略关联</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 定义</div>
+      <p><span class="kw">独特性定位战略</span>（Unique Positional Strategy）是指企业针对<mark>独特顾客诉求</mark>，打破高差异或低成本产品/服务的价值曲线，按顾客诉求重新设计产品，并构建支撑独特定位的竞争优势和管理模式的战略。</p>
+    </div>
+    <div class="block block-ana">
+      <div class="block-label">🍰 小学生版</div>
+      <p>大家都在卖"普通奶茶"（低成本）或"高端奶茶"（差异化），你发现有一群同学既不要最便宜的也不要最贵的——他们要"健康、无糖但又好喝的"。你专门为这群人设计产品，这就是独特性定位：<strong>不在高差异/低成本之间选，而是发现第三条路</strong>。</p>
+    </div>
+
+    <p style="font-weight:700; margin:12px 0 8px;">📋 独特性定位战略的三大特点：</p>
+    <table class="ctable">
+      <tr><th>#</th><th>特点</th><th>说明</th></tr>
+      <tr><td>①</td><td>选择<span class="kw">独特性顾客诉求</span>作为目标市场</td><td>不按成本导向或差异导向分类顾客，而是发现独特诉求</td></tr>
+      <tr><td>②</td><td>打破<span class="kw">高差异/低成本价值曲线</span></td><td>按顾客独特诉求重新设计产品，形成全新价值曲线</td></tr>
+      <tr><td>③</td><td>打破取舍，构建<span class="kw">独特竞争优势和管理模式</span></td><td>可同时从高差异和低成本两方面获得超额利润</td></tr>
+    </table>
+
+    <div class="block block-def">
+      <div class="block-label">🌊 蓝海战略的关联（重要！）</div>
+      <p>钱·金（W. Chan Kim）的<strong>蓝海战略</strong>虽然宣称超越了波特，但本质上属于独特性定位战略的范畴。核心工具是<span class="kw">四动作框架</span>：</p>
+      <table class="ctable" style="margin-top:8px;">
+        <tr><th>行动</th><th>问题</th><th>逻辑</th></tr>
+        <tr><td><span class="kw">剔除（Eliminate）</span></td><td>哪些被认为理所当然的元素需要剔除？</td><td>降低成本，去掉无用功能</td></tr>
+        <tr><td><span class="kw">减少（Reduce）</span></td><td>哪些元素应该减少到产业标准以下？</td><td>降低成本，精简过度投入</td></tr>
+        <tr><td><span class="kw">增加（Raise）</span></td><td>哪些元素应该增加到产业标准以上？</td><td>提升顾客感知价值</td></tr>
+        <tr><td><span class="kw">创造（Create）</span></td><td>哪些产业从未有过的元素需要创造？</td><td>开创新价值，形成独特诉求</td></tr>
+      </table>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">💡 典型案例</div>
+      <p>🏠 <strong>尚品宅配</strong>：大规模定制家具，既非高端精品也非低端批量<br>
+      ✈️ <strong>西南航空</strong>（整合部分）：低价格+良好服务<br>
+      👗 <strong>爱斯达服饰</strong>：聚焦独特顾客诉求，整合两种竞争优势</p>
+    </div>
+
+    <div class="block block-mem">
+      <div class="block-label">🧠 助记口诀（蓝海四动作）</div>
+      <p><strong>「剔减增创」</strong>——剔减降成本；增创升价值</p>
+    </div>
+
+    <details>
+      <summary>📌 复试延伸：为什么独特性定位战略需要"偏执和坚持"？</summary>
+      <div class="detail-body">
+        <p>教材明确指出：在保持取舍和持续创新过程中，企业战略管理者需要<strong>"刻意的专注和必要的偏执"</strong>。以下四种情况极易导致企业放弃独特性定位：</p>
+        <ol style="padding-left:20px; line-height:1.9; margin-top:8px;">
+          <li>遇到新的市场机会（盲目追高收益）</li>
+          <li>向先进企业学习（盲目模仿行业标杆）</li>
+          <li>接受上市辅导（上市压力迫使战略迎合市场</li>
+          <li>接受咨询公司建议（外部建议使企业偏离原有取舍）</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.3.2</div>
+    <div>
+      <div class="kcard-title">基本定位的整合战略（伊甸园）</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐⭐</span>
+        <span class="badge b-page">P179–182</span>
+        <span class="badge b-type">名词解释·简答·论述</span>
+        <span class="badge b-year">2024 考察</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 定义</div>
+      <p><span class="kw">基本定位的整合战略</span>（Integrational Position Strategy）是指企业通过<mark>事业部制管理模式</mark>，同时实施高差异和低成本两种定位战略，通过"<mark>相克相生</mark>"的管理机制，兼具两种竞争优势并在"<span class="kw">伊甸园</span>"位置获得最高收益的战略。</p>
+    </div>
+    <div class="block block-ana">
+      <div class="block-label">🍰 小学生版</div>
+      <p>如果你既想卖便宜饼干（低成本）又想卖精品饼干（高差异），通常这两件事是矛盾的（"相克"）。但如果你开两个摊位，一个卖普通饼干（价格战部门），一个卖精品饼干（差异化部门），共用一个采购渠道（"相生"），这就是整合战略——<strong>两个事业部分开打，但背后共享资源赚双倍</strong>。</p>
+    </div>
+
+    <div class="block block-def">
+      <div class="block-label">📊 赫尔模型（Hall Model）——五种市场位置</div>
+      <table class="ctable">
+        <tr><th>位置</th><th>特征</th><th>结果</th></tr>
+        <tr><td>🌟 <span class="kw">伊甸园</span></td><td>高差异 + 低成本 双重优势</td><td>最高收益（但最难实现）</td></tr>
+        <tr><td>差异优势地带</td><td>只有高差异优势</td><td>高于平均收益</td></tr>
+        <tr><td>成本优势地带</td><td>只有低成本优势</td><td>高于平均收益</td></tr>
+        <tr><td>竞争地带</td><td>部分兼具两种优势</td><td>接近平均收益</td></tr>
+        <tr><td>⚠️ 危险地带</td><td>"夹在中间"两种劣势</td><td>低于平均收益</td></tr>
+        <tr><td>💀 死亡谷</td><td>两方面均严重劣势</td><td>持续亏损，被淘汰</td></tr>
+      </table>
+    </div>
+
+    <div class="block block-def">
+      <div class="block-label">🔑 整合战略成功的两个关键机制</div>
+      <table class="ctable">
+        <tr><th>机制</th><th>"相克"处理</th><th>"相生"实现</th></tr>
+        <tr><td>组织结构</td><td>两种定位战略的事业部<strong>分立</strong>，分别放权（产品·品质·人力·物流）</td><td>总部<strong>集权</strong>管理战略决策·财务·人力资源·企业文化</td></tr>
+        <tr><td>经济效益</td><td>避免两种定位互相干扰，保持管理模式差异性</td><td>发挥范围经济·规模经济；形成多点竞争优势</td></tr>
+      </table>
+    </div>
+
+    <div class="block block-exam">
+      <div class="block-label">💡 典型成功案例</div>
+      <p>🚗 <strong>丰田汽车</strong>：丰田品牌（低成本聚焦）+ 雷克萨斯（高差异聚焦）整合<br>
+      🏨 <strong>假日酒店集团</strong>：Holiday Inn（经济型）+ 洲际（高端）整合<br>
+      🔌 <strong>新宝电器</strong>：ODM低成本 + 自有品牌高差异整合<br>
+      ✈️ <strong>美国西南航空</strong>：低价格+高顾客满意度的整合典范</p>
+    </div>
+
+    <div class="block block-risk">
+      <div class="block-label">⚠️ 整合战略的风险</div>
+      <p>• 最大难度：既要认识"相克"，又要通过整合实现"相生"<br>
+      • 最大风险：稍有不慎就"夹在中间"或"两头不着边"<br>
+      • 我国企业问题：处于"伊甸园"的企业太少，许多著名企业仍处于左下角（高差异高成本）或右上角（低成本低差异）</p>
+    </div>
+
+    <div class="block block-mem">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>「相克（分权分立）相生（集权共享）伊甸园（双优势）」</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== §4 动态竞争战略 ===== -->
+<div id="s4">
+<div class="sec-head">
+  <div class="sec-num">§4</div>
+  <h2>动态竞争战略</h2>
+  <span class="sec-page">P182–189</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.4.1</div>
+    <div>
+      <div class="kcard-title">动态竞争的定义与特点</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐</span>
+        <span class="badge b-page">P182–184</span>
+        <span class="badge b-type">名词解释·简答</span>
+        <span class="badge b-year">2019面试 考察</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 动态竞争定义（陈明哲·狭义）</div>
+      <p><span class="kw">动态竞争</span>（Dynamic Competition）是指：在特定行业内，某个（某些）企业采取的一系列竞争行动，引起竞争对手的一系列反应，这些反应又会影响到原先行动的企业，形成<mark>动态竞争互动过程</mark>。</p>
+      <p style="margin-top:6px; font-size:0.82rem; color:var(--text-muted)">——希特、爱尔兰和霍斯基森定义（教材P183）</p>
+    </div>
+    <div class="block block-ana">
+      <div class="block-label">🍰 小学生版</div>
+      <p>两个同学都在卖奶茶：甲降价5毛→乙马上降价8毛→甲推出新品→乙跟进推出类似新品……<strong>这种"你出招我接招"的相互博弈过程，就是动态竞争。</strong>速度和创新越来越重要，光"找好位置"不够了。</p>
+    </div>
+
+    <p style="font-weight:700; margin:12px 0 8px;">动态竞争三层次含义：</p>
+    <table class="ctable">
+      <tr><th>层次</th><th>概念</th><th>核心要点</th></tr>
+      <tr><td>广义①</td><td><span class="kw">动态竞争</span></td><td>外部经营环境动态化威胁企业竞争优势可保持性</td></tr>
+      <tr><td>广义②</td><td><span class="kw">竞争互动的动态化</span></td><td>企业之间多点、快速互动博弈、学习、模仿、创新</td></tr>
+      <tr><td>广义③</td><td><span class="kw">竞争动力学</span></td><td>创新和速度正在代替规模成为竞争优势主要来源</td></tr>
+    </table>
+
+    <p style="font-weight:700; margin:12px 0 8px;">动态竞争四大特点：</p>
+    <table class="ctable">
+      <tr><th>#</th><th>特点</th></tr>
+      <tr><td>①</td><td>高强度、高速度竞争：每个对手都在不断建立竞争优势并削弱对手优势</td></tr>
+      <tr><td>②</td><td>战略互动明显加快：竞争互动已成为制定战略的决定因素</td></tr>
+      <tr><td>③</td><td>任何企业的<span class="kw">先动优势都是暂时的</span>，都可能被模仿和创新削弱</td></tr>
+      <tr><td>④</td><td>战略有效性取决于<span class="kw">预测对手反应</span>和改变需求/竞争规则的能力</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.4.2</div>
+    <div>
+      <div class="kcard-title">陈明哲动态竞争进攻与反击模型</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐</span>
+        <span class="badge b-page">P183–188</span>
+        <span class="badge b-type">简答·论述</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="block block-def">
+      <div class="block-label">📖 模型框架</div>
+      <p>陈明哲教授提出的<span class="kw">动态竞争中进攻与反击战略决策模型</span>，要求企业在参与动态竞争互动前，从三方面分析动因：</p>
+    </div>
+    <table class="ctable">
+      <tr><th>分析环节</th><th>核心问题</th><th>内容要点</th></tr>
+      <tr>
+        <td><span class="kw">① 了解竞争态势</span></td>
+        <td>我为什么要参与这场竞争互动？</td>
+        <td>分析宏观·行业·竞争层面的战略意义；了解对手战略意图；分析各战略群的基本战略</td>
+      </tr>
+      <tr>
+        <td><span class="kw">② 预测竞争互动结果</span></td>
+        <td>进攻/反击的结果能否带来期望回报？</td>
+        <td>对各种战略选择、互动过程和互动结果进行预测；评估对竞争/行业/宏观环境的影响</td>
+      </tr>
+      <tr>
+        <td><span class="kw">③ 分析自己的资源和能力</span></td>
+        <td>我有能力打这场仗吗？</td>
+        <td>分析资源能力是否足以支持进攻或反击；判断能否支持与对手长期全面的竞争互动</td>
+      </tr>
+    </table>
+
+    <div class="block block-mem">
+      <div class="block-label">🧠 助记口诀</div>
+      <p><strong>「知（态势）预（结果）析（资源）」</strong>——知预析，动态竞争参与决策三步</p>
+    </div>
+
+    <details>
+      <summary>📌 如何确定竞争对手（动态竞争视角）</summary>
+      <div class="detail-body">
+        <p>教材指出：在动态竞争分析中，确定竞争对手要考虑：</p>
+        <ul style="padding-left:20px; line-height:2;">
+          <li>同一战略群内的企业（直接竞争对手）</li>
+          <li>相邻战略群中可能发动跨群竞争的企业</li>
+          <li>来自替代行业的跨界竞争者</li>
+          <li>新技术催生的潜在颠覆者</li>
+        </ul>
+        <p style="margin-top:8px;"><strong>竞争对手分析要素：</strong>竞争对手的战略 → 竞争对手的资源能力 → 竞争对手的行为特点 → 竞争对手未来战略意图</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== §5 竞争优势可保持性 ===== -->
+<div id="s5">
+<div class="sec-head">
+  <div class="sec-num">§5</div>
+  <h2>竞争优势的可保持性与发挥</h2>
+  <span class="sec-page">P188–190</span>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">6.5.1</div>
+    <div>
+      <div class="kcard-title">竞争优势可保持性的影响因素</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐</span>
+        <span class="badge b-page">P188–189</span>
+        <span class="badge b-type">简答</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>#</th><th>因素</th><th>说明</th></tr>
+      <tr><td>①</td><td><span class="kw">战略性行为 vs 战术性行为</span></td><td>战略性行为产生的竞争优势可保持性更长；战术性行为带来的优势可保持性较短</td></tr>
+      <tr><td>②</td><td><span class="kw">行业领导型企业的学习模仿</span></td><td>若行业领导者学习了自己的行为，所取得的优势可保持性更长（逼迫自己不断创新）</td></tr>
+      <tr><td>③</td><td><span class="kw">行业周期快慢</span></td><td>快周期行业（科技）中竞争优势可保持性低；慢周期行业（资源性）中可保持性高</td></tr>
+    </table>
+
+    <div class="block block-def">
+      <div class="block-label">📖 竞争优势发挥的生命周期策略</div>
+      <table class="ctable">
+        <tr><th>行业/市场生命周期阶段</th><th>发挥竞争优势的主要目的</th></tr>
+        <tr><td><span class="kw">早期增长阶段</span></td><td>迅速扩大生产，增强市场开拓能力，<mark>提高市场占有率</mark></td></tr>
+        <tr><td><span class="kw">成长阶段</span></td><td>提高产品研发能力，<mark>迅速开发和占据主要细分市场</mark></td></tr>
+        <tr><td><span class="kw">成熟阶段</span></td><td><mark>不断巩固市场垄断地位</mark></td></tr>
+      </table>
+    </div>
+
+    <div class="block block-def">
+      <div class="block-label">📖 短期与长期竞争优势的发挥策略</div>
+      <p><strong>短期竞争优势</strong>→ 发挥企业家精神，<mark>快速且大胆</mark>地发挥优势，获得收益后再投入建立新优势（如技术创新快速推广）</p>
+      <p style="margin-top:6px;"><strong>长期竞争优势</strong>→ 采取<mark>巩固发挥</mark>方式，充分利用竞争优势获得和保持特殊市场地位</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 对比表 ===== -->
+<div id="s-compare">
+<div class="sec-head">
+  <div class="sec-num">⚖️</div>
+  <h2>核心对比总结表（易混概念）</h2>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">对比</div>
+    <div>
+      <div class="kcard-title">四种基本定位战略全面对比</div>
+      <div class="kcard-meta"><span class="badge b-star">⭐⭐⭐⭐⭐ 必背</span></div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="compare-wrap">
+    <table class="ctable">
+      <tr>
+        <th>对比维度</th>
+        <th>低成本定位</th>
+        <th>高差异定位</th>
+        <th>聚焦定位</th>
+        <th>整合战略</th>
+      </tr>
+      <tr>
+        <td><strong>目标市场</strong></td>
+        <td>广泛市场</td>
+        <td>广泛市场</td>
+        <td>狭窄/细分市场</td>
+        <td>两个对立市场</td>
+      </tr>
+      <tr>
+        <td><strong>顾客诉求</strong></td>
+        <td>价格敏感，大众化需求</td>
+        <td>价格不敏感，重视独特价值</td>
+        <td>特定细分顾客的具体需求</td>
+        <td>同时满足两种对立诉求</td>
+      </tr>
+      <tr>
+        <td><strong>竞争优势</strong></td>
+        <td>成本最低</td>
+        <td>差异价值最高</td>
+        <td>聚焦低成本或聚焦差异</td>
+        <td>兼具低成本+高差异</td>
+      </tr>
+      <tr>
+        <td><strong>价值活动</strong></td>
+        <td>全流程降本</td>
+        <td>全流程提质</td>
+        <td>集中资源服务细分</td>
+        <td>两套价值活动体系</td>
+      </tr>
+      <tr>
+        <td><strong>组织形式</strong></td>
+        <td>集权·标准化</td>
+        <td>相对灵活·品质导向</td>
+        <td>精简·专注</td>
+        <td>事业部制（分权相克·集权相生）</td>
+      </tr>
+      <tr>
+        <td><strong>主要风险</strong></td>
+        <td>忽视顾客需求；被模仿；技术替代</td>
+        <td>价值感知不足；被模仿；扩规模困难</td>
+        <td>细分市场萎缩；大企业入侵</td>
+        <td>夹在中间；管理复杂度极高</td>
+      </tr>
+      <tr>
+        <td><strong>典型代表</strong></td>
+        <td>沃尔玛·万和集团</td>
+        <td>苹果·奔驰·宝马</td>
+        <td>风行·燕塘·珠江啤酒</td>
+        <td>丰田·西南航空·假日酒店</td>
+      </tr>
+    </table>
+    </div>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">对比</div>
+    <div>
+      <div class="kcard-title">独特性定位战略 vs 整合战略 易混对比</div>
+      <div class="kcard-meta"><span class="badge b-star">⭐⭐⭐⭐⭐ 必背</span></div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>对比维度</th><th>独特性定位战略</th><th>整合战略（两种定位整合）</th></tr>
+      <tr><td>目标顾客</td><td>一个独特的目标市场</td><td>两个对立的目标市场</td></tr>
+      <tr><td>产品/服务</td><td>专门针对一个独特顾客诉求设计</td><td>分别满足两种对立类型的顾客诉求</td></tr>
+      <tr><td>价值体系</td><td>只有一个价值创造活动体系</td><td>同时构建运行两个不同价值创造活动体系</td></tr>
+      <tr><td>管理模式</td><td>只有一个管理模式</td><td>同时构建运行两种不同管理模式</td></tr>
+      <tr><td>蓝海关系</td><td>蓝海战略本质属于此类</td><td>不同，整合的是两种传统定位</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">对比</div>
+    <div>
+      <div class="kcard-title">波特定位战略 vs 动态竞争战略 对比</div>
+      <div class="kcard-meta"><span class="badge b-star">⭐⭐⭐⭐</span></div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>对比维度</th><th>波特基本定位战略</th><th>动态竞争战略</th></tr>
+      <tr><td>分析视角</td><td>产业经济学·静态位置选择</td><td>博弈论·行为互动分析</td></tr>
+      <tr><td>竞争优势来源</td><td>低成本/高差异的稳定位置</td><td>速度和创新的快速更迭</td></tr>
+      <tr><td>优势可保持性</td><td>相对较高（结构性优势）</td><td>相对较低（先动优势是暂时的）</td></tr>
+      <tr><td>战略决策焦点</td><td>在哪个位置竞争？</td><td>如何进攻和反击竞争对手？</td></tr>
+      <tr><td>适用环境</td><td>竞争相对稳定的行业</td><td>竞争高度动态化的行业（科技等）</td></tr>
+      <tr><td>相互关系</td><td colspan="2">两者互补：先用定位战略确定竞争位置，再用动态竞争战略进行竞争互动</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 历年真题 ===== -->
+<div id="s-exam">
+<div class="sec-head">
+  <div class="sec-num">📝</div>
+  <h2>历年真题汇总（2016–2025）</h2>
+</div>
+
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">真题</div>
+    <div>
+      <div class="kcard-title">中南大学企业管理学硕 · 第六章相关历年考题</div>
+      <div class="kcard-meta">
+        <span class="badge b-star">⭐⭐⭐⭐⭐ 必看</span>
+        <span class="badge b-year">2016–2025</span>
+      </div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>年份</th><th>题目</th><th>题型</th><th>对应知识点</th><th>重要度</th></tr>
+      <tr>
+        <td><span class="exam-tag">2016</span></td>
+        <td>简述差异化战略的适用条件与风险</td>
+        <td>简答</td>
+        <td>§2.2 高差异定位战略适用条件+五大风险</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2017</span></td>
+        <td>简述蓝海战略与红海战略区别</td>
+        <td>简答</td>
+        <td>§3.1 独特性定位战略·四动作框架</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2019</span></td>
+        <td>简述成本领先战略实现路径</td>
+        <td>简答</td>
+        <td>§2.1 低成本定位战略·竞争优势构建</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2019</span></td>
+        <td>动态竞争理论（面试）</td>
+        <td>面试</td>
+        <td>§4 动态竞争定义·特点·陈明哲模型</td>
+        <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2021</span></td>
+        <td>简述战略钟模型</td>
+        <td>简答</td>
+        <td>§2 四种定位战略的延伸理解</td>
+        <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2022</span></td>
+        <td>简述蓝海战略的六项原则</td>
+        <td>简答</td>
+        <td>§3.1 独特性定位战略·蓝海战略</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2023</span></td>
+        <td>简述动态能力理论</td>
+        <td>简答</td>
+        <td>§4 动态竞争战略·竞争优势可保持性</td>
+        <td>⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">2024</span></td>
+        <td>简述成本领先与差异化整合战略</td>
+        <td>简答</td>
+        <td>§3.2 整合战略·伊甸园·相克相生</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+      <tr>
+        <td><span class="exam-tag">面试高频</span></td>
+        <td>如何看待核心竞争力（2016面试）</td>
+        <td>面试</td>
+        <td>§2 竞争优势构建·与第4章联系</td>
+        <td>⭐⭐⭐⭐⭐</td>
+      </tr>
+    </table>
+
+    <div class="block block-exam" style="margin-top:16px;">
+      <div class="block-label">📊 命题规律分析（第六章）</div>
+      <ol style="padding-left:20px; line-height:2;">
+        <li><strong>差异化战略</strong>是最高频考点，几乎每隔1-2年必考一次</li>
+        <li><strong>低成本战略</strong>与差异化并列，且2019、2024均重点考察</li>
+        <li><strong>蓝海战略</strong>（独特性定位）在2017、2022均考察，是重点</li>
+        <li><strong>整合战略</strong>（伊甸园）2024年直接命题，预测2026继续考察</li>
+        <li><strong>动态竞争</strong>多以面试口答形式出现，书面考察相对较少</li>
+        <li>题型以<strong>简答为主</strong>，偶有论述；案例分析多结合第11章（战略实施）</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 终极串联 ===== -->
+<div id="s-chain">
+<div class="sec-head">
+  <div class="sec-num">🔗</div>
+  <h2>本章终极串联</h2>
+</div>
+
+<div class="kcard">
+  <div class="kcard-body">
+    <p style="margin-bottom:16px; font-weight:700;">将本章所有知识点贯穿成一条逻辑链：</p>
+    <div class="chain-flow">
+      <div class="chain-step">
+        <div class="step-num">STEP 01</div>
+        <div class="step-title">为何需要业务层战略？</div>
+        <div class="step-body">目的：在特定业务领域持续获得高于行业平均水平的收益<br>本质：顾客导向+竞争指向+一致性行动</div>
+      </div>
+      <div class="chain-arr">›</div>
+      <div class="chain-step">
+        <div class="step-num">STEP 02</div>
+        <div class="step-title">基本路径：波特定位战略</div>
+        <div class="step-body">低成本（标准化·价格战）/ 高差异（独特价值·品牌）/ 聚焦（细分市场）<br>核心：不能"夹在中间"</div>
+      </div>
+      <div class="chain-arr">›</div>
+      <div class="chain-step">
+        <div class="step-num">STEP 03</div>
+        <div class="step-title">新实践1：独特性定位</div>
+        <div class="step-body">发现独特顾客诉求→打破价值曲线→蓝海战略（剔减增创）<br>核心：第三条路，超越成本/差异取舍</div>
+      </div>
+      <div class="chain-arr">›</div>
+      <div class="chain-step">
+        <div class="step-num">STEP 04</div>
+        <div class="step-title">新实践2：整合战略</div>
+        <div class="step-body">事业部制·相克相生→伊甸园（双优势最高收益）<br>失败→夹在中间→死亡谷</div>
+      </div>
+      <div class="chain-arr">›</div>
+      <div class="chain-step">
+        <div class="step-num">STEP 05</div>
+        <div class="step-title">动态层：竞争互动战略</div>
+        <div class="step-body">知态势→预结果→析资源<br>先动优势暂时→速度与创新成关键</div>
+      </div>
+      <div class="chain-arr">›</div>
+      <div class="chain-step">
+        <div class="step-num">STEP 06</div>
+        <div class="step-title">优势的保持与发挥</div>
+        <div class="step-body">战略性行为>战术性行为；慢周期>快周期；生命周期三阶段策略：扩张→细分→垄断</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; padding:16px; background:var(--tag-blue); border-radius:10px; border-left:4px solid var(--accent1);">
+      <strong>一句话总结：</strong>业务层战略的本质是<mark>在特定业务领域中，通过顾客导向的定位选择和一致性的竞争行动，持续建立、强化和发挥竞争优势，从而获得高于行业平均水平的收益</mark>——从波特的静态定位，到独特性定位的第三条路，再到整合战略的伊甸园，最后以动态竞争战略应对高速变化的市场环境。
+    </div>
+  </div>
+</div>
+
+<!-- 逻辑关系图 -->
+<div class="flow-wrap">
+<svg viewBox="0 0 820 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="200">
+  <defs>
+    <marker id="a2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 Z" fill="#0d47a1"/>
+    </marker>
+  </defs>
+  <rect x="10" y="80" width="120" height="44" rx="10" fill="#e3f2fd" stroke="#1976d2" stroke-width="1.5"/>
+  <text x="70" y="98" text-anchor="middle" font-size="11" fill="#0d47a1" font-weight="700">外部环境</text>
+  <text x="70" y="113" text-anchor="middle" font-size="10" fill="#1565c0">五力·机会威胁</text>
+  <line x1="130" y1="102" x2="158" y2="102" stroke="#0d47a1" stroke-width="1.5" marker-end="url(#a2)"/>
+
+  <rect x="160" y="80" width="120" height="44" rx="10" fill="#e8f5e9" stroke="#388e3c" stroke-width="1.5"/>
+  <text x="220" y="98" text-anchor="middle" font-size="11" fill="#1b5e20" font-weight="700">内部资源</text>
+  <text x="220" y="113" text-anchor="middle" font-size="10" fill="#388e3c">优势劣势·核心专长</text>
+  <line x1="280" y1="102" x2="308" y2="102" stroke="#0d47a1" stroke-width="1.5" marker-end="url(#a2)"/>
+
+  <!-- 定位选择 -->
+  <rect x="310" y="60" width="140" height="84" rx="10" fill="#fff3e0" stroke="#e65100" stroke-width="2"/>
+  <text x="380" y="84" text-anchor="middle" font-size="12" fill="#bf360c" font-weight="800">定位战略选择</text>
+  <text x="380" y="100" text-anchor="middle" font-size="9" fill="#e65100">低成本/高差异/聚焦</text>
+  <text x="380" y="114" text-anchor="middle" font-size="9" fill="#e65100">独特性/整合战略</text>
+  <text x="380" y="128" text-anchor="middle" font-size="9" fill="#e65100">不可"夹在中间"</text>
+  <line x1="450" y1="102" x2="478" y2="102" stroke="#0d47a1" stroke-width="1.5" marker-end="url(#a2)"/>
+
+  <rect x="480" y="80" width="130" height="44" rx="10" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
+  <text x="545" y="98" text-anchor="middle" font-size="11" fill="#4a148c" font-weight="700">竞争优势构建</text>
+  <text x="545" y="113" text-anchor="middle" font-size="10" fill="#7b1fa2">价值活动组合设计</text>
+  <line x1="610" y1="102" x2="638" y2="102" stroke="#0d47a1" stroke-width="1.5" marker-end="url(#a2)"/>
+
+  <rect x="640" y="70" width="160" height="64" rx="10" fill="#fce4ec" stroke="#c62828" stroke-width="1.5"/>
+  <text x="720" y="91" text-anchor="middle" font-size="11" fill="#880e4f" font-weight="700">持续高于均值收益</text>
+  <text x="720" y="107" text-anchor="middle" font-size="9" fill="#c62828">动态竞争互动强化</text>
+  <text x="720" y="121" text-anchor="middle" font-size="9" fill="#c62828">优势可保持性管理</text>
+
+  <!-- 动态反馈箭头 -->
+  <path d="M720 134 Q720 175 380 175 Q200 175 70 130" fill="none" stroke="#90a4ae" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#a2)"/>
+  <text x="400" y="190" text-anchor="middle" font-size="9" fill="#78909c">动态反馈：竞争互动→重新分析→调整定位</text>
+</svg>
+</div>
+
+<!-- ===== 30秒复习 ===== -->
+<div id="s-flash">
+<div class="sec-head">
+  <div class="sec-num">⚡</div>
+  <h2>30秒极速复习模块</h2>
+</div>
+<div class="flash-box">
+  <h3>⚡ 第六章 · 业务层战略 · 30秒核心要点</h3>
+  <div class="flash-item"><div class="fi-num">01</div><div>业务层战略 = <mark>竞争战略/经营级战略</mark>，目的：在特定业务领域<mark>持续获得高于行业均值收益</mark></div></div>
+  <div class="flash-item"><div class="fi-num">02</div><div>四大特点：<mark>特定聚焦·顾客导向·建立优势·一致稳定</mark></div></div>
+  <div class="flash-item"><div class="fi-num">03</div><div>鲁梅尔特增长模型三类：<mark>市场渗透·市场开发·产品开发</mark></div></div>
+  <div class="flash-item"><div class="fi-num">04</div><div>波特五大前提假设核心：<mark>广泛/狭窄市场 + 成本/差异导向 + "夹在中间"危险</mark></div></div>
+  <div class="flash-item"><div class="fi-num">05</div><div>低成本战略：标准化顾客·规模效率·降本价值活动·五大风险（最重要：忽视顾客+被模仿）</div></div>
+  <div class="flash-item"><div class="fi-num">06</div><div>高差异战略：价格不敏感顾客·多领域差异·品牌壁垒·五大风险（最重要：差异不被认可+被模仿）</div></div>
+  <div class="flash-item"><div class="fi-num">07</div><div>独特性定位：找到<mark>独特顾客诉求</mark>→打破价值曲线→蓝海四动作：<mark>剔减增创</mark></div></div>
+  <div class="flash-item"><div class="fi-num">08</div><div>整合战略：事业部制·<mark>相克（分权分立）相生（集权共享）</mark>→赫尔模型"<mark>伊甸园</mark>"</div></div>
+  <div class="flash-item"><div class="fi-num">09</div><div>动态竞争：陈明哲模型→<mark>知（竞争态势）预（互动结果）析（自身资源）</mark></div></div>
+  <div class="flash-item"><div class="fi-num">10</div><div>竞争优势发挥：早期增长→<mark>扩占有率</mark>；成长→<mark>占细分</mark>；成熟→<mark>巩固垄断</mark></div></div>
+</div>
+
+<!-- ===== 背诵版总结 ===== -->
+<div id="s-recite">
+<div class="sec-head">
+  <div class="sec-num">🎤</div>
+  <h2>复试口述版背诵总结</h2>
+</div>
+<div class="recite-box">
+  <h3>🎤 第六章 · 复试一分钟串讲（背诵版）</h3>
+  <p>第六章讲的是<strong>业务层战略——企业在特定业务领域如何通过竞争优势持续获得高于行业平均水平的收益</strong>。全章围绕四种战略类型展开。</p>
+  <p><strong>第一，基本定位战略（波特）</strong>。波特认为，在广泛市场上，企业只有两种可持续的竞争优势位置：<em>低成本位置</em>和<em>高差异位置</em>。低成本战略靠规模效率和标准化取胜，高差异战略靠品牌、品质和服务取胜。在细分市场上，还有低成本聚焦和高差异聚焦两种聚焦战略。波特强调"夹在中间"是危险的，企业必须做出清晰选择。</p>
+  <p><strong>第二，独特性定位战略</strong>。随着市场竞争加剧和技术进步，部分企业发现了第三条路——针对独特顾客诉求，打破高差异或低成本的价值曲线。蓝海战略属于这一范畴，核心工具是"剔减增创"四动作框架。</p>
+  <p><strong>第三，整合战略</strong>。通过事业部制管理，企业可以同时实施两种定位战略，处理好"相克"（分权）和"相生"（集权共享）的关系，进入赫尔模型的"伊甸园"位置，获得最高收益。丰田、西南航空是成功案例。</p>
+  <p><strong>第四，动态竞争战略</strong>。以陈明哲的模型为代表，企业在参与竞争互动前须做三步分析：了解竞争态势、预测互动结果、分析自身资源能力。动态竞争的关键是速度和创新，而非静态的定位优势。</p>
+</div>
+
+<!-- ===== 教材重要原句汇总 ===== -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">原句</div>
+    <div>
+      <div class="kcard-title">教材重要原句汇总（必背）</div>
+      <div class="kcard-meta"><span class="badge b-star">⭐⭐⭐⭐⭐</span></div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <div class="quote">①「业务层战略，也称经营级战略或竞争战略，它是指一个企业为了在一个特定业务领域中发挥竞争优势或建立新的竞争优势以为顾客创造最大价值所采取的一系列决策和行动。」——P160</div>
+    <div class="quote">②「业务层战略必须体现出强烈的顾客导向、业务特点和竞争指向，因此又称竞争战略。」——P161</div>
+    <div class="quote">③「有效构建企业竞争优势要求企业在差异定位和成本定位之间做出清楚的选择，因为"夹在中间"将使企业难以构建竞争优势。」——P163</div>
+    <div class="quote">④「企业如果单纯追求利润最大化将会导致其未来利益受损，单纯追求市场占有率最大化则会导致企业没有未来。」——P162</div>
+    <div class="quote">⑤「在保持取舍和持续创新的过程中，企业战略管理者需要一定的偏执和坚持。」——P178</div>
+    <div class="quote">⑥「（动态竞争是）在特定行业内，某个（某些）企业采取的一系列竞争行动，引起竞争对手的一系列反应，这些反应又会影响到原先行动的企业，这是一种动态竞争互动的过程。」——P183</div>
+    <div class="quote">⑦「实施整合战略的最大难度就在于既要充分认识两种定位战略的"相克"，又要通过整合使之"相生"。」——P179</div>
+  </div>
+</div>
+
+<!-- ===== 自我检测 ===== -->
+<div id="s-quiz">
+<div class="sec-head">
+  <div class="sec-num">✅</div>
+  <h2>自我检测（教材题+真题+预测题）</h2>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q·01 名词解释</div>
+  <div class="q-text">什么是业务层战略？与公司层战略有何区别？</div>
+  <div class="q-hint"><span>答题要点：</span>定义（在特定业务领域建立竞争优势）→四大特点→区别：业务层关注"如何在特定业务中竞争"，公司层关注"进入哪些业务/如何管理业务组合"</div>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q·02 名词解释（真题2017·2022）</div>
+  <div class="q-text">简述蓝海战略的核心思想及其与波特定位战略的关系。</div>
+  <div class="q-hint"><span>答题要点：</span>蓝海战略属于独特性定位战略范畴→核心：发现独特顾客诉求，打破价值曲线，用四动作框架（剔减增创）创造新的市场空间→与波特关系：蓝海战略源于波特的独特性定位思想，是其延伸而非超越</div>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q·03 简答（真题2016）</div>
+  <div class="q-text">简述差异化战略（高差异定位战略）的适用条件与主要风险。</div>
+  <div class="q-hint"><span>答题要点：</span>适用：顾客价格不敏感、重视独特价值；企业有品牌/技术/渠道差异能力→五大风险：①定价太高②差异不被认可③被模仿④扩规模困难⑤追求"做大"过程差异弱化</div>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q·04 简答（真题2024）</div>
+  <div class="q-text">简述成本领先与差异化整合战略的内涵、实施机制及成功条件。</div>
+  <div class="q-hint"><span>答题要点：</span>内涵：通过事业部制同时实施两种定位战略→机制：相克（两事业部分立、分权）+相生（总部集权、发挥规模和范围经济）→成功条件：技术进步·事业部制成熟·反复磨合→赫尔模型伊甸园位置→典型案例：丰田·西南航空</div>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q·05 论述</div>
+  <div class="q-text">论述波特基本定位战略的主要内容及其局限性，并说明独特性定位战略如何弥补这些局限性。</div>
+  <div class="q-hint"><span>答题要点：</span>波特：低成本/高差异/聚焦三类→五大前提假设→局限性：①不能反映需求个性化②"夹在中间"判断过于绝对③忽视整合可能性→独特性定位弥补：发现第三类顾客诉求→打破价值曲线→蓝海战略实践</div>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q·06 预测题（2026高概率）</div>
+  <div class="q-text">结合赫尔模型，分析我国企业在业务层战略选择中存在的主要问题，并提出改进建议。</div>
+  <div class="q-hint"><span>答题框架：</span>赫尔模型五种位置→我国企业问题：处于伊甸园的太少；许多在左下角（高差异高成本）或右上角（低成本低差异）→原因：①资金科技实力不足②盲目多元化导致资源分散③有限资源未集中于建立优势→建议：聚焦核心业务·技术创新·品牌建设·学习整合战略</div>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q·07 教材思考题</div>
+  <div class="q-text">导致企业经营环境日益动态化的因素有哪些？环境的动态化对企业竞争优势产生什么样的影响？</div>
+  <div class="q-hint"><span>答题要点：</span>动态化因素：全球化·技术进步·信息化·市场细分加深·竞争集中度提高→影响：先动优势可保持性下降；竞争优势更迭加快；创新和速度取代规模成为关键→对策：动态竞争战略·快速创新·预测对手反应</div>
+</div>
+
+<div class="quiz-item">
+  <div class="q-num">Q·08 预测题（2026可能）</div>
+  <div class="q-text">以某中国企业为例，运用波特基本定位战略框架分析其竞争战略选择，并评价其可持续性。</div>
+  <div class="q-hint"><span>答题框架：</span>建议案例：华为（高差异）/拼多多（低成本）/比亚迪（整合战略演进）→框架：①顾客诉求定位②竞争优势来源③价值活动设计④可保持性分析→结合第3章五力模型评价外部环境对战略的影响</div>
+</div>
+
+<!-- ===== 2026命题预测 ===== -->
+<div class="kcard">
+  <div class="kcard-header">
+    <div class="kcard-num">预测</div>
+    <div>
+      <div class="kcard-title">2026年复试命题预测（第六章）</div>
+      <div class="kcard-meta"><span class="badge b-hot">2026预测</span><span class="badge b-star">⭐⭐⭐⭐⭐</span></div>
+    </div>
+  </div>
+  <div class="kcard-body">
+    <table class="ctable">
+      <tr><th>#</th><th>预测题目</th><th>题型</th><th>对应知识点</th><th>概率</th></tr>
+      <tr><td>1</td><td>简述波特基本定位战略的主要类型及其适用条件</td><td>简答</td><td>§2 全节</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>2</td><td>简述独特性定位战略的内涵及蓝海战略的核心工具</td><td>简答</td><td>§3.1 独特性·四动作框架</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>3</td><td>论述业务层战略类型选择对企业竞争优势的影响</td><td>论述</td><td>§1-§5 综合</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>4</td><td>结合案例分析某企业业务层战略选择的合理性</td><td>案例分析</td><td>§2-§3 定位战略应用</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>5</td><td>简述动态竞争战略的内涵及陈明哲的进攻与反击模型</td><td>简答</td><td>§4 全节</td><td>⭐⭐⭐⭐</td></tr>
+      <tr><td>6</td><td>面试：如何理解企业竞争优势的可持续性？</td><td>面试口述</td><td>§5 可保持性三因素</td><td>⭐⭐⭐⭐⭐</td></tr>
+      <tr><td>7</td><td>面试：以你熟悉的企业为例谈谈其竞争战略</td><td>面试口述</td><td>§2-§3 综合应用</td><td>⭐⭐⭐⭐⭐</td></tr>
+    </table>
+  </div>
+</div>
+
+</div><!-- end s-quiz -->
+</div><!-- end s-recite -->
+</div><!-- end s-flash -->
+</div><!-- end s-chain -->
+</div><!-- end s-compare -->
+</div><!-- end s5 -->
+</div><!-- end s4 -->
+</div><!-- end s3 -->
+</div><!-- end s2 -->
+</div><!-- end s1 -->
+</div><!-- end s0 -->
+
+<!-- 页脚 -->
+<div class="footer">
+  📚 中南大学企业管理学硕复试笔记 · 第六章 业务层战略 · P160–P190<br>
+  基于《企业战略管理》第2版（蓝海林等编著）· 2016–2025历年真题整合版<br>
+  <strong>生成日期：2026-03-15</strong>
+</div>
+
+</div><!-- end main-wrap -->
+
+<!-- ===== JavaScript ===== -->
+<script>
+// ===== 夜间模式 =====
+function toggleDark() {
+  document.body.classList.toggle('dark-mode');
+  const btn = document.querySelector('.nav-btn[onclick="toggleDark()"]');
+  if (document.body.classList.contains('dark-mode')) {
+    btn.textContent = '☀️ 日间';
+    localStorage.setItem('ch6DarkMode', 'on');
+  } else {
+    btn.textContent = '🌙 夜间';
+    localStorage.setItem('ch6DarkMode', 'off');
+  }
+}
+(function(){
+  if (localStorage.getItem('ch6DarkMode') === 'on') {
+    document.body.classList.add('dark-mode');
+    const btn = document.querySelector('.nav-btn[onclick="toggleDark()"]');
+    if (btn) btn.textContent = '☀️ 日间';
+  }
+})();
+
+// ===== 返回顶部 =====
+window.addEventListener('scroll', function() {
+  const bt = document.getElementById('back-top');
+  bt.style.display = window.scrollY > 400 ? 'flex' : 'none';
+});
+
+// ===== 夜间模式持久化 =====
+(function(){
+  if(localStorage.getItem('ch6DarkMode')==='on'){
+    document.body.classList.add('dark-mode');
+  }
+})();
+
+</script>
+<!-- Search Pill v4（移植自第八章）-->
+<script>
+(function(){
+'use strict';
+var pill,trigger,inp,cnt,toast;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  toast=document.getElementById('sp-hidden-toast');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=closeP;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')closeP();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')openP();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();openP();}
+  },true);
+}
+window.openSearchPill=openP;
+function openP(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function closeP(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  if(toast)toast.style.display='none';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(q){
+  clearHL();marks=[];cur=0;
+  q=q.trim();lastQ=q;
+  if(!q){if(cnt)cnt.textContent='';if(toast)toast.style.display='none';return;}
+  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  qa('details').forEach(function(d){d._wasOpen=d.open;d.open=true;});
+  var root=document.querySelector('.main-wrap')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')||p.closest('#sp-hidden-toast')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[],n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment(),last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();
+  if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);
+  if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;
+  goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  var p=marks[cur].parentElement;
+  while(p){if(p.tagName==='DETAILS')p.open=true;p=p.parentElement;}
+  setTimeout(function(){marks[cur].scrollIntoView({behavior:'smooth',block:'center'});},50);
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'  '+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);});
+  qa('details').forEach(function(d){if(typeof d._wasOpen!=='undefined'){d.open=d._wasOpen;delete d._wasOpen;}});
+  try{(document.querySelector('.main-wrap')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();</script>
+</body>
+</html>
