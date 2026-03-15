@@ -425,7 +425,6 @@ body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360p
     <button class="fn a" onclick="setF('all',this)">全部</button>
     <button class="fn" onclick="setF('no',this)">未学习</button>
     <button class="fn" onclick="setF('done',this)">已学习</button>
-    <button class="fn" onclick="setF('star',this)">⭐ 高频考点</button>
   </div>
 
   <div class="st">📘 企业战略管理<span class="bx bs">教材章节</span><span class="ct" id="togs" onclick="toggleSec('gs','togs')">折叠 ▾</span></div>
@@ -872,7 +871,8 @@ function applyFilter(){
     c.classList.toggle('hc',!(mf&&ms&&mr));
   });
 }
-function setF(f,btn){curF=f;document.querySelectorAll('.fn').forEach(b=>b.classList.remove('a'));btn.classList.add('a');applyFilter();}
+function setF(f,btn){curF=f;document.querySelectorAll('.fb .fn').forEach(b=>b.classList.remove('a'));btn.classList.add('a');applyFilter();}
+function doSearch(v){curS=(v||'').toLowerCase().trim();applyFilter();}
 function updateStats(){
   const all=[...STRAT_CHAP,...STRAT_REV,...HR_CHAP,...HR_REV];
   document.getElementById('totalC').textContent=all.length;
