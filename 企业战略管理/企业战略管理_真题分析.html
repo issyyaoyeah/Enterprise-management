@@ -3,556 +3,363 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中南大学企业管理学硕 · 复试真题分析总览</title>
+<title>中南大学企业管理学硕 · 企业战略管理复试真题分析</title>
 <style>
-:root {
-  --bg: #f5f6fa;
-  --card: #ffffff;
-  --border: #e2e6ef;
-  --text: #1a1d2e;
-  --muted: #6b7280;
-  --accent: #2563eb;
-  --accent2: #7c3aed;
-  --accent3: #059669;
-  --accent4: #dc2626;
-  --accent5: #d97706;
-  --nav-bg: #1a1d2e;
-  --tag-bg: #eff6ff;
-  --tag-color: #1d4ed8;
-  font-variant-numeric: tabular-nums;
+:root{
+  --bg:#f5f6fa;--card:#fff;--border:#e2e6ef;--text:#1a1d2e;--muted:#6b7280;
+  --accent:#2563eb;--accent2:#7c3aed;--accent3:#059669;--accent4:#dc2626;--accent5:#d97706;
+  --nav-bg:#1a1d2e;--tag-bg:#eff6ff;--tag-color:#1d4ed8;
+  font-variant-numeric:tabular-nums;
 }
-body.dark {
-  --bg: #0f1117;
-  --card: #1a1d2e;
-  --border: #2d3148;
-  --text: #e8eaf2;
-  --muted: #9ca3af;
-  --tag-bg: #1e2a4a;
-  --tag-color: #93c5fd;
+body.dark{
+  --bg:#0f1117;--card:#1a1d2e;--border:#2d3148;--text:#e8eaf2;--muted:#9ca3af;
+  --tag-bg:#1e2a4a;--tag-color:#93c5fd;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'Microsoft YaHei', '微软雅黑', 'PingFang SC', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 14px;
-  line-height: 1.7;
-  transition: background .3s, color .3s;
-}
-
-/* ── NAV ── */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: var(--nav-bg);
-  display: flex; align-items: center; gap: 6px;
-  padding: 0 20px; height: 48px;
-  box-shadow: 0 2px 10px rgba(0,0,0,.3);
-  flex-wrap: wrap;
-}
-nav .brand { color: #fff; font-weight: 700; font-size: 13px; margin-right: 12px; white-space: nowrap; }
-nav a {
-  color: rgba(255,255,255,.7); text-decoration: none;
-  font-size: 12px; padding: 4px 10px; border-radius: 4px;
-  transition: background .2s, color .2s; white-space: nowrap;
-}
-nav a:hover { background: rgba(255,255,255,.12); color: #fff; }
-nav .spacer { flex: 1; }
-nav button {
-  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
-  color: #fff; font-size: 12px; padding: 4px 12px; border-radius: 4px; cursor: pointer;
-}
-nav button:hover { background: rgba(255,255,255,.2); }
-
-/* ── HERO ── */
-.hero {
-  background: linear-gradient(135deg, #1a1d2e 0%, #2d3a8c 50%, #1a1d2e 100%);
-  color: #fff; text-align: center; padding: 48px 20px 36px;
-}
-.hero h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-.hero p { color: rgba(255,255,255,.7); font-size: 13px; }
-.hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 14px; }
-.hero-tags span {
-  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
-  color: rgba(255,255,255,.9); padding: 3px 12px; border-radius: 20px; font-size: 12px;
-}
-
-/* ── MAIN ── */
-.main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px; }
-
-/* ── SECTION ── */
-.section { margin-bottom: 32px; }
-.section-hd {
-  display: flex; align-items: center; gap: 10px;
-  cursor: pointer; user-select: none;
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 10px 10px 0 0; padding: 14px 18px;
-  transition: background .2s;
-}
-.section-hd:hover { background: var(--tag-bg); }
-.section-hd .ico { font-size: 18px; }
-.section-hd h2 { font-size: 16px; font-weight: 700; flex: 1; }
-.section-hd .badge-count {
-  background: var(--accent); color: #fff;
-  font-size: 11px; padding: 2px 8px; border-radius: 10px;
-}
-.section-hd .toggle { color: var(--muted); font-size: 16px; transition: transform .3s; }
-.section-hd.open .toggle { transform: rotate(180deg); }
-.section-body {
-  background: var(--card); border: 1px solid var(--border);
-  border-top: none; border-radius: 0 0 10px 10px;
-  padding: 20px 18px; display: none;
-}
-.section-body.open { display: block; }
-
-/* ── TABLE ── */
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-th {
-  background: #f0f4ff; color: var(--accent); font-weight: 700;
-  padding: 9px 10px; text-align: left; border-bottom: 2px solid var(--border);
-}
-body.dark th { background: #1e2a4a; }
-td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
-tr:last-child td { border-bottom: none; }
-tr:hover td { background: var(--tag-bg); }
-
-/* ── PROGRESS BAR ── */
-.bar-wrap { display: flex; align-items: center; gap: 8px; min-width: 140px; }
-.bar-bg {
-  flex: 1; height: 7px; background: var(--border); border-radius: 4px; overflow: hidden;
-}
-.bar-fill { height: 100%; border-radius: 4px; transition: width .6s ease; }
-.s5 { background: #dc2626; }
-.s4 { background: #d97706; }
-.s3 { background: #2563eb; }
-.bar-label { font-size: 11px; color: var(--muted); white-space: nowrap; }
-
-/* ── STARS ── */
-.stars { color: #f59e0b; font-size: 13px; }
-
-/* ── TAGS ── */
-.tag {
-  display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px;
-  background: var(--tag-bg); color: var(--tag-color); margin: 2px 2px 2px 0;
-}
-.tag-red { background: #fef2f2; color: #dc2626; }
-.tag-green { background: #f0fdf4; color: #059669; }
-.tag-purple { background: #faf5ff; color: #7c3aed; }
-.tag-orange { background: #fffbeb; color: #d97706; }
-body.dark .tag-red { background: #2d1515; }
-body.dark .tag-green { background: #0d2a1c; }
-body.dark .tag-purple { background: #1e1130; }
-body.dark .tag-orange { background: #2d1f05; }
-
-/* ── RULE CARDS ── */
-.rule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-.rule-card {
-  border: 1px solid var(--border); border-radius: 8px;
-  padding: 14px 16px; background: var(--bg);
-  border-left: 4px solid var(--accent);
-}
-.rule-card:nth-child(2n) { border-left-color: var(--accent2); }
-.rule-card:nth-child(3n) { border-left-color: var(--accent3); }
-.rule-card:nth-child(4n) { border-left-color: var(--accent5); }
-.rule-num { font-size: 11px; font-weight: 700; color: var(--accent); margin-bottom: 5px; }
-.rule-card:nth-child(2n) .rule-num { color: var(--accent2); }
-.rule-card:nth-child(3n) .rule-num { color: var(--accent3); }
-.rule-card:nth-child(4n) .rule-num { color: var(--accent5); }
-.rule-text { font-size: 13px; line-height: 1.6; color: var(--text); }
-.rule-tip { font-size: 12px; color: var(--muted); margin-top: 5px; }
-
-/* ── PREDICT CARDS ── */
-.pred-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
-.pred-card {
-  border: 1px solid var(--border); border-radius: 8px;
-  padding: 14px 16px; background: var(--bg);
-}
-.pred-card-hd { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-.pred-type { font-size: 11px; font-weight: 700; }
-.pred-q { font-size: 13px; font-weight: 600; line-height: 1.5; color: var(--text); }
-.pred-meta { font-size: 12px; color: var(--muted); margin-top: 6px; }
-.prob-high { color: #dc2626; font-weight: 700; }
-.prob-mid { color: #d97706; font-weight: 700; }
-
-/* ── BACK TOP ── */
-#back-top {
-  position: fixed; bottom: 28px; right: 28px;
-  background: var(--accent); color: #fff; border: none;
-  width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
-  font-size: 16px; display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 12px rgba(37,99,235,.4);
-}
-#back-top:hover { background: #1d4ed8; }
-
-/* ── FOOTER ── */
-footer {
-  text-align: center; padding: 20px;
-  color: var(--muted); font-size: 12px;
-  border-top: 1px solid var(--border);
-  margin-top: 40px;
-}
-
-/* ── RANK MEDAL ── */
-.medal { font-size: 15px; }
-
-@media (max-width: 640px) {
-  .hero h1 { font-size: 18px; }
-  nav { height: auto; padding: 8px 14px; }
-  .rule-grid { grid-template-columns: 1fr; }
-  .pred-grid { grid-template-columns: 1fr; }
-}
-</style>
-
-<style>
-/* ═══ 悬浮搜索药丸 v3 ═══ */
-#search-trigger{position:fixed;bottom:80px;right:22px;z-index:9998;width:44px;height:44px;
-  border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;
-  cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;
-  display:flex;align-items:center;justify-content:center;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Microsoft YaHei','微软雅黑','PingFang SC',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;transition:background .3s,color .3s;}
+nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);display:flex;align-items:center;gap:6px;padding:0 20px;height:48px;box-shadow:0 2px 10px rgba(0,0,0,.3);overflow-x:auto;}
+nav .brand{color:#fff;font-weight:700;font-size:13px;margin-right:12px;white-space:nowrap;}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:12px;padding:4px 10px;border-radius:4px;transition:background .2s,color .2s;white-space:nowrap;}
+nav a:hover{background:rgba(255,255,255,.12);color:#fff;}
+nav .spacer{flex:1;min-width:8px;}
+nav button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:12px;padding:4px 12px;border-radius:4px;cursor:pointer;white-space:nowrap;}
+nav button:hover{background:rgba(255,255,255,.2);}
+.hero{background:linear-gradient(135deg,#0f1635 0%,#1e3a8a 50%,#0f1635 100%);color:#fff;text-align:center;padding:48px 20px 36px;}
+.hero h1{font-size:24px;font-weight:700;margin-bottom:8px;}
+.hero p{color:rgba(255,255,255,.7);font-size:13px;}
+.hero-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.hero-tags span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);padding:3px 12px;border-radius:20px;font-size:12px;}
+.notice{margin:16px auto 0;max-width:1100px;padding:0 20px;}
+.notice-inner{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 16px;font-size:12px;color:#92400e;}
+body.dark .notice-inner{background:#2d1f05;border-color:#78350f;color:#fcd34d;}
+.main{max-width:1100px;margin:0 auto;padding:20px 20px 60px;}
+.section{margin-bottom:28px;}
+.section-hd{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;background:var(--card);border:1px solid var(--border);border-radius:10px 10px 0 0;padding:14px 18px;transition:background .2s;}
+.section-hd:hover{background:var(--tag-bg);}
+.section-hd .ico{font-size:18px;}
+.section-hd h2{font-size:16px;font-weight:700;flex:1;}
+.badge-count{background:var(--accent);color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;}
+.toggle{color:var(--muted);font-size:16px;transition:transform .3s;}
+.section-hd.open .toggle{transform:rotate(180deg);}
+.section-body{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px;padding:20px 18px;display:none;}
+.section-body.open{display:block;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{background:#f0f4ff;color:var(--accent);font-weight:700;padding:9px 10px;text-align:left;border-bottom:2px solid var(--border);}
+body.dark th{background:#1e2a4a;}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--tag-bg);}
+.bar-wrap{display:flex;align-items:center;gap:8px;min-width:110px;}
+.bar-bg{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;transition:width .6s ease;}
+.s5{background:#dc2626;}.s4{background:#d97706;}.s3{background:#2563eb;}.s2{background:#059669;}.s1c{background:#94a3b8;}
+.bar-label{font-size:11px;color:var(--muted);white-space:nowrap;}
+.stars{color:#f59e0b;font-size:13px;}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;background:var(--tag-bg);color:var(--tag-color);margin:2px 2px 2px 0;}
+.tag-red{background:#fef2f2;color:#dc2626;}
+.tag-green{background:#f0fdf4;color:#059669;}
+.tag-purple{background:#faf5ff;color:#7c3aed;}
+.tag-orange{background:#fffbeb;color:#d97706;}
+.tag-gray{background:#f1f5f9;color:#475569;}
+body.dark .tag-red{background:#2d1515;color:#f87171;}
+body.dark .tag-green{background:#0d2a1c;color:#6ee7b7;}
+body.dark .tag-purple{background:#1e1130;color:#c4b5fd;}
+body.dark .tag-orange{background:#2d1f05;color:#fcd34d;}
+body.dark .tag-gray{background:#1e2535;color:#94a3b8;}
+.rule-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
+.rule-card{border:1px solid var(--border);border-radius:8px;padding:14px 16px;background:var(--bg);border-left:4px solid var(--accent);}
+.rule-card:nth-child(2n){border-left-color:var(--accent2);}
+.rule-card:nth-child(3n){border-left-color:var(--accent3);}
+.rule-card:nth-child(4n){border-left-color:var(--accent5);}
+.rule-card:nth-child(5n){border-left-color:var(--accent4);}
+.rule-num{font-size:11px;font-weight:700;color:var(--accent);margin-bottom:5px;}
+.rule-card:nth-child(2n) .rule-num{color:var(--accent2);}
+.rule-card:nth-child(3n) .rule-num{color:var(--accent3);}
+.rule-card:nth-child(4n) .rule-num{color:var(--accent5);}
+.rule-card:nth-child(5n) .rule-num{color:var(--accent4);}
+.rule-text{font-size:13px;line-height:1.6;color:var(--text);}
+.rule-tip{font-size:12px;color:var(--muted);margin-top:5px;}
+.rule-advice{margin-top:9px;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:5px;padding:8px 10px;font-size:12px;line-height:1.6;color:var(--text);}
+body.dark .rule-advice{background:rgba(147,197,253,.05);border-color:rgba(147,197,253,.1);}
+.rule-advice strong{color:var(--accent4);}
+.pred-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
+.pred-card{border:1px solid var(--border);border-radius:8px;padding:14px 16px;background:var(--bg);}
+.pred-card-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;}
+.pred-q{font-size:13px;font-weight:600;line-height:1.5;color:var(--text);}
+.pred-meta{font-size:12px;color:var(--muted);margin-top:6px;}
+.prob-high{color:#dc2626;font-weight:700;}
+.prob-mid{color:#d97706;font-weight:700;}
+.core30-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;}
+.c30-card{border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:var(--bg);position:relative;}
+.c30-rank{position:absolute;top:10px;right:12px;font-size:11px;font-weight:700;color:var(--muted);}
+.c30-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;padding-right:30px;}
+.c30-chapter{font-size:11px;color:var(--muted);margin-bottom:6px;}
+.c30-stars{font-size:12px;color:#f59e0b;}
+.lv-badge{display:inline-block;font-size:10px;padding:1px 7px;border-radius:10px;font-weight:700;}
+.lv5{background:#fee2e2;color:#dc2626;}
+.lv4{background:#fef3c7;color:#d97706;}
+.lv3{background:#dbeafe;color:#2563eb;}
+.lv2{background:#d1fae5;color:#059669;}
+#back-top{position:fixed;bottom:88px;right:22px;background:var(--accent);color:#fff;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(37,99,235,.4);transition:opacity .3s;z-index:200;}
+#back-top:hover{background:#1d4ed8;}
+footer{text-align:center;padding:20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);margin-top:40px;}
+/* 搜索药丸 */
+#search-trigger{position:fixed;bottom:28px;right:22px;z-index:9998;width:44px;height:44px;border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;display:flex;align-items:center;justify-content:center;}
 #search-trigger:hover{background:#334155;transform:scale(1.08);}
-#search-pill{position:fixed;bottom:80px;right:18px;z-index:9999;display:flex;align-items:center;
-  gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;
-  padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;
-  font-family:"Microsoft YaHei","PingFang SC",sans-serif;min-width:300px;max-width:420px;}
+#search-pill{position:fixed;bottom:28px;right:18px;z-index:9999;display:none;align-items:center;gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;font-family:'Microsoft YaHei','PingFang SC',sans-serif;min-width:300px;max-width:420px;}
 #sp-icon{font-size:16px;flex-shrink:0;}
-#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;
-  font-size:14px;font-family:inherit;min-width:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;font-size:14px;font-family:inherit;min-width:0;}
 #sp-input::placeholder{color:rgba(248,250,252,.4);}
-#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;
-  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
-#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
-  color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
 #search-pill button:hover{background:rgba(255,255,255,.25);}
 #sp-close{font-size:12px;}
 mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
 mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
-body.dark-mode #search-trigger{background:#0f172a;border-color:#334155;}
-body.dark-mode #search-pill{background:#0f172a;border-color:#334155;}
-/* iframe内缩小以免被遮 */
-body.in-iframe #search-trigger{bottom:20px;right:12px;width:36px;height:36px;font-size:15px;}
-body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360px;font-size:13px;}
+@media(max-width:640px){
+  .hero h1{font-size:18px;}
+  nav{height:auto;padding:8px 14px;flex-wrap:wrap;}
+  .rule-grid,.pred-grid,.core30-grid{grid-template-columns:1fr;}
+  table{font-size:12px;}
+  th,td{padding:6px 7px;}
+}
 </style>
 </head>
 <body id="top">
 
-<!-- NAV -->
 <nav>
-  <span class="brand">📚 中南大学企业管理学硕 · 复试分析</span>
-  <a href="#s1">高频考点</a>
-  <a href="#s2">命题规律</a>
-  <a href="#s3">核心30考点</a>
-  <a href="#s4">2026预测</a>
+  <span class="brand">📚 中南大学企业管理学硕 · 战略真题分析</span>
+  <a href="#s1">🔥 高频考点</a>
+  <a href="#s2">📋 命题规律</a>
+  <a href="#s3">🎯 核心30考点</a>
+  <a href="#s4">🔮 2026预测</a>
   <span class="spacer"></span>
   <button onclick="toggleDark()">🌙 夜间</button>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <h1>📊 复试真题分析总览 · 2016–2025</h1>
-  <p>基于《企业战略管理（第二版·蓝海林）》 · 战略部分 · 中南大学企业管理学硕</p>
+  <h1>📊 企业战略管理 · 复试真题分析总览 · 2016–2025</h1>
+  <p>基于《企业战略管理（第2版·蓝海林等编著）》全11章 · 中南大学企业管理学硕（120202）· 战略管理方向</p>
   <div class="hero-tags">
-    <span>📅 生成日期：2026-03-09</span>
+    <span>📅 生成日期：2026-03-16</span>
     <span>🎯 10年真题</span>
-    <span>✅ 40道笔试题</span>
-    <span>🔮 10题预测</span>
+    <span>📖 全11章覆盖</span>
+    <span>🔮 10题2026预测</span>
+    <span>⚡ 笔试占比50%</span>
   </div>
+</div>
+
+<div class="notice">
+  <div class="notice-inner">⚠️ <strong>说明：</strong>真题来源为回忆版，无官方完整公开版本。章节对应严格基于蓝海林《企业战略管理》第2版目录。战略管理与人力资源管理各占笔试100分（总200分），本页仅分析<strong>战略管理部分</strong>。第十章=战略实施的性质和特点；第十一章=战略实施的管理与控制（已与教材核对）。</div>
 </div>
 
 <div class="main">
 
-<!-- ═══ S1：高频考点 ═══ -->
+<!-- ===== S1 高频考点 ===== -->
 <div class="section" id="s1">
   <div class="section-hd open" onclick="toggle(this)">
     <span class="ico">🔥</span>
-    <h2>模块一 · 高频考点统计（按出现次数排序）</h2>
-    <span class="badge-count">15个考点</span>
+    <h2>模块一 · 高频考点统计（全11章完整排序）</h2>
+    <span class="badge-count">11章全覆盖</span>
     <span class="toggle">▼</span>
   </div>
   <div class="section-body open">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">统计口径：2016–2025年笔试简答/论述/案例题 + 面试高频题，战略管理方向。按出现频率降序，11章全部列出。</p>
     <table>
       <thead>
-        <tr>
-          <th>排名</th>
-          <th>章节</th>
-          <th>核心知识点</th>
-          <th>出现次数</th>
-          <th>重要度</th>
-          <th>出现年份</th>
-          <th>常见题型</th>
-        </tr>
+        <tr><th>排名</th><th>章节</th><th>核心知识点</th><th>出现次数</th><th>重要度</th><th>出现年份</th><th>常见题型</th></tr>
       </thead>
       <tbody>
         <tr>
-          <td><span class="medal">🥇</span> 1</td>
-          <td><span class="tag">第6章</span></td>
-          <td><strong>差异化战略</strong>（含蓝海、整合、战略钟）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s5" style="width:100%"></div></div>
-              <span class="bar-label">6次</span>
-            </div>
-          </td>
+          <td><span style="font-size:15px">🥇</span> 1</td>
+          <td><span class="tag tag-red">第六章 业务层战略</span></td>
+          <td><strong>低成本/差异化/聚焦/整合定位战略·蓝海战略·战略钟模型·独特性定位</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s5" style="width:100%"></div></div><span class="bar-label">8次</span></div></td>
           <td><span class="stars">★★★★★</span></td>
-          <td><span class="tag">2016</span><span class="tag">2017</span><span class="tag">2021</span><span class="tag">2022</span><span class="tag">2023</span><span class="tag">2024</span></td>
-          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">论述</span></td>
-        </tr>
-        <tr>
-          <td><span class="medal">🥇</span> 1</td>
-          <td><span class="tag">第11章</span></td>
-          <td><strong>战略实施</strong>（企业文化·BSC·组织结构·控制）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s5" style="width:100%"></div></div>
-              <span class="bar-label">6次</span>
-            </div>
-          </td>
-          <td><span class="stars">★★★★★</span></td>
-          <td><span class="tag">2016</span><span class="tag">2018</span><span class="tag">2020</span><span class="tag">2022</span><span class="tag">2025×2</span></td>
+          <td><span class="tag">2016</span><span class="tag">2017</span><span class="tag">2019</span><span class="tag">2021</span><span class="tag">2022</span><span class="tag">2023</span><span class="tag">2024×2</span></td>
           <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">论述</span><span class="tag-red tag">案例</span></td>
         </tr>
         <tr>
-          <td><span class="medal">🥈</span> 3</td>
-          <td><span class="tag">第3章</span></td>
-          <td><strong>外部环境分析</strong>（五力模型·PESTEL）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s5" style="width:83%"></div></div>
-              <span class="bar-label">5次</span>
-            </div>
-          </td>
+          <td><span style="font-size:15px">🥇</span> 1</td>
+          <td><span class="tag tag-purple">第十一章 战略实施管理</span></td>
+          <td><strong>平衡计分卡四维度·企业文化五功能·沙因三层次·战略控制四类型·结构追随战略</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s5" style="width:100%"></div></div><span class="bar-label">8次</span></div></td>
           <td><span class="stars">★★★★★</span></td>
-          <td><span class="tag">2016</span><span class="tag">2017</span><span class="tag">2018</span><span class="tag">2019</span><span class="tag">2020</span></td>
+          <td><span class="tag">2016</span><span class="tag">2018</span><span class="tag">2020</span><span class="tag">2022</span><span class="tag">2023</span><span class="tag">2024</span><span class="tag">2025×2</span></td>
+          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">论述</span><span class="tag-red tag">案例</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size:15px">🥈</span> 3</td>
+          <td><span class="tag tag-orange">第三章 外部环境分析</span></td>
+          <td><strong>波特五力模型·PESTEL宏观环境·行业结构分析·环境动态化</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s5" style="width:88%"></div></div><span class="bar-label">7次</span></div></td>
+          <td><span class="stars">★★★★★</span></td>
+          <td><span class="tag">2016</span><span class="tag">2018</span><span class="tag">2019</span><span class="tag">2020</span><span class="tag">2021</span><span class="tag">2023</span><span class="tag">面试</span></td>
           <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">论述</span></td>
         </tr>
         <tr>
-          <td><span class="medal">🥈</span> 3</td>
-          <td><span class="tag">第4章</span></td>
-          <td><strong>内部环境分析</strong>（资源·能力·价值链·核心专长·RBV·动态能力）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s5" style="width:83%"></div></div>
-              <span class="bar-label">5次</span>
-            </div>
-          </td>
+          <td><span style="font-size:15px">🥈</span> 3</td>
+          <td><span class="tag tag-red">第七章 公司层战略</span></td>
+          <td><strong>多元化战略类型·波士顿矩阵四象限·纵向一体化·平台生态战略</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s5" style="width:88%"></div></div><span class="bar-label">7次</span></div></td>
           <td><span class="stars">★★★★★</span></td>
-          <td><span class="tag">2016</span><span class="tag">2020</span><span class="tag">2022</span><span class="tag">2023×2</span></td>
-          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">论述</span></td>
-        </tr>
-        <tr>
-          <td><span class="medal">🥈</span> 3</td>
-          <td><span class="tag">第7章</span></td>
-          <td><strong>多元化战略</strong>（BCG矩阵·纵向一体化·相关/非相关）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s5" style="width:83%"></div></div>
-              <span class="bar-label">5次</span>
-            </div>
-          </td>
-          <td><span class="stars">★★★★</span></td>
-          <td><span class="tag">2016</span><span class="tag">2018</span><span class="tag">2019</span><span class="tag">2021×2</span></td>
+          <td><span class="tag">2016案例</span><span class="tag">2018</span><span class="tag">2019</span><span class="tag">2021</span><span class="tag">2022</span><span class="tag">2024</span><span class="tag">2025</span></td>
           <td><span class="tag-purple tag">简答</span><span class="tag-red tag">案例</span></td>
         </tr>
         <tr>
-          <td>6</td>
-          <td><span class="tag">第6章</span></td>
-          <td><strong>成本领先战略</strong>（实现路径·适用条件·风险）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s4" style="width:50%"></div></div>
-              <span class="bar-label">3次</span>
-            </div>
-          </td>
-          <td><span class="stars">★★★★</span></td>
-          <td><span class="tag">2016</span><span class="tag">2019</span><span class="tag">2024</span></td>
-          <td><span class="tag-purple tag">简答</span></td>
+          <td><span style="font-size:15px">🥉</span> 5</td>
+          <td><span class="tag tag-green">第四章 内部环境分析</span></td>
+          <td><strong>价值链分析·核心专长VRIN四标准·动态能力·资源基础观RBV·企业能力四类型</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s4" style="width:75%"></div></div><span class="bar-label">6次</span></div></td>
+          <td><span class="stars">★★★★★</span></td>
+          <td><span class="tag">2016面</span><span class="tag">2020</span><span class="tag">2022</span><span class="tag">2023</span><span class="tag">2024</span><span class="tag">2025</span></td>
+          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">论述</span><span class="tag-green tag">面试</span></td>
         </tr>
         <tr>
           <td>6</td>
-          <td><span class="tag">第5章</span></td>
-          <td><strong>SWOT综合分析</strong>（步骤·四种组合·局限性）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s4" style="width:50%"></div></div>
-              <span class="bar-label">3次</span>
-            </div>
-          </td>
+          <td><span class="tag tag-purple">第五章 战略问题确认</span></td>
+          <td><strong>SWOT分析矩阵·四组合（SO/ST/WO/WT）·战略问题确认步骤·战略承诺</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s4" style="width:62%"></div></div><span class="bar-label">5次</span></div></td>
           <td><span class="stars">★★★★</span></td>
-          <td><span class="tag">2017</span><span class="tag">2021</span><span class="tag">2023</span></td>
+          <td><span class="tag">2017</span><span class="tag">2019</span><span class="tag">2020</span><span class="tag">2021</span><span class="tag">2023</span></td>
           <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">论述</span></td>
         </tr>
         <tr>
-          <td>6</td>
-          <td><span class="tag">第8章</span></td>
-          <td><strong>国际化战略类型</strong>（全球化/多国化/跨国化）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s4" style="width:50%"></div></div>
-              <span class="bar-label">3次</span>
-            </div>
-          </td>
+          <td>7</td>
+          <td><span class="tag tag-orange">第八章 国际化战略</span></td>
+          <td><strong>国际化战略三类型（全球化/多国化/跨国化）·进入模式·风险管控</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s3" style="width:50%"></div></div><span class="bar-label">4次</span></div></td>
           <td><span class="stars">★★★★</span></td>
-          <td><span class="tag">2020</span><span class="tag">2023</span><span class="tag">2024</span></td>
+          <td><span class="tag">2020</span><span class="tag">2023</span><span class="tag">2024</span><span class="tag">2025案例</span></td>
           <td><span class="tag-purple tag">简答</span><span class="tag-red tag">案例</span></td>
         </tr>
         <tr>
-          <td>9</td>
-          <td><span class="tag">第9章</span></td>
-          <td><strong>战略联盟</strong>（动机·类型·治理机制·风险）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div>
-              <span class="bar-label">2次</span>
-            </div>
-          </td>
+          <td>8</td>
+          <td><span class="tag tag-gray">第九章 战略联盟并购重组</span></td>
+          <td><strong>战略联盟动机·类型·治理机制·并购整合·重组形式</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s3" style="width:38%"></div></div><span class="bar-label">3次</span></div></td>
           <td><span class="stars">★★★</span></td>
-          <td><span class="tag">2018面试</span><span class="tag">2023</span></td>
-          <td><span class="tag-purple tag">简答</span></td>
+          <td><span class="tag">2018面</span><span class="tag">2019面</span><span class="tag">2023</span></td>
+          <td><span class="tag-purple tag">简答</span><span class="tag-green tag">面试</span></td>
         </tr>
         <tr>
           <td>9</td>
-          <td><span class="tag">第1/2章</span></td>
-          <td><strong>战略管理过程</strong>（分析→制定→实施→控制）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div>
-              <span class="bar-label">2次</span>
-            </div>
-          </td>
+          <td><span class="tag tag-gray">第一章 战略管理导论</span></td>
+          <td><strong>战略管理过程四阶段·战略的层次·战略管理的特征</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s2" style="width:28%"></div></div><span class="bar-label">2次</span></div></td>
           <td><span class="stars">★★★</span></td>
-          <td><span class="tag">2025</span><span class="tag">历年面试</span></td>
-          <td><span class="tag-purple tag">简答</span></td>
+          <td><span class="tag">2025</span><span class="tag">历年面</span></td>
+          <td><span class="tag-purple tag">简答</span><span class="tag-green tag">面试</span></td>
         </tr>
         <tr>
-          <td>9</td>
-          <td><span class="tag">第6/7章</span></td>
-          <td><strong>商业模式·平台战略</strong>（画布九大模块·平台生态）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div>
-              <span class="bar-label">2次</span>
-            </div>
-          </td>
-          <td><span class="stars">★★★</span> <span class="tag-red tag" style="font-size:10px">新兴高频</span></td>
-          <td><span class="tag">2024</span><span class="tag">2025</span></td>
-          <td><span class="tag-purple tag">简答</span></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td><span class="tag">第11章</span></td>
-          <td><strong>平衡计分卡（BSC）</strong>（四维度·因果链·优势）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div>
-              <span class="bar-label">2次</span>
-            </div>
-          </td>
-          <td><span class="stars">★★★★★</span></td>
-          <td><span class="tag">2016</span><span class="tag">高频面试</span></td>
-          <td><span class="tag-purple tag">简答</span></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td><span class="tag">第11章</span></td>
-          <td><strong>企业文化</strong>（三层次·五大功能·强弱·变革）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div>
-              <span class="bar-label">2次</span>
-            </div>
-          </td>
-          <td><span class="stars">★★★★★</span></td>
-          <td><span class="tag">2018</span><span class="tag">2021面试</span></td>
-          <td><span class="tag-orange tag">论述</span></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td><span class="tag">第3章</span></td>
-          <td><strong>波特五力模型</strong>（五力内容·应用·局限）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div>
-              <span class="bar-label">2次</span>
-            </div>
-          </td>
-          <td><span class="stars">★★★★★</span></td>
-          <td><span class="tag">2016</span><span class="tag">历年面试</span></td>
-          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">论述</span></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td><span class="tag">第4章</span></td>
-          <td><strong>动态能力理论</strong>（定义·四类能力·战略意义）</td>
-          <td>
-            <div class="bar-wrap">
-              <div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div>
-              <span class="bar-label">2次</span>
-            </div>
-          </td>
+          <td>10</td>
+          <td><span class="tag tag-gray">第二章 企业战略管理者</span></td>
+          <td><strong>战略领导力·TMT高层团队·战略承诺·战略管理者素质</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s2" style="width:28%"></div></div><span class="bar-label">2次</span></div></td>
           <td><span class="stars">★★★</span></td>
-          <td><span class="tag">2019面试</span><span class="tag">2023</span></td>
+          <td><span class="tag">2022</span><span class="tag">2024</span></td>
+          <td><span class="tag-orange tag">论述</span><span class="tag-green tag">面试</span></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><span class="tag tag-gray">第十章 战略实施性质与特点</span></td>
+          <td><strong>战略实施概述·特征·影响因素·制定与实施的区别</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s1c" style="width:18%"></div></div><span class="bar-label">1次</span></div></td>
+          <td><span class="stars">★★</span></td>
+          <td><span class="tag">2025</span></td>
           <td><span class="tag-purple tag">简答</span></td>
         </tr>
       </tbody>
     </table>
-    <p style="margin-top:12px; color:var(--muted); font-size:12px;">⚠️ 统计范围：2016–2025年笔试战略部分（共约40题）；面试题作参考计入</p>
   </div>
 </div>
 
-<!-- ═══ S2：命题规律 ═══ -->
+<!-- ===== S2 命题规律 ===== -->
 <div class="section" id="s2">
   <div class="section-hd open" onclick="toggle(this)">
-    <span class="ico">📐</span>
-    <h2>模块二 · 命题规律总结（10条）</h2>
+    <span class="ico">📋</span>
+    <h2>模块二 · 命题规律总结（含针对性复习建议）</h2>
     <span class="badge-count">10条规律</span>
     <span class="toggle">▼</span>
   </div>
   <div class="section-body open">
     <div class="rule-grid">
+
       <div class="rule-card">
-        <div class="rule-num">规律 01 · 结构固定</div>
-        <div class="rule-text">战略部分固定占笔试50分：<strong>2道简答 + 1道论述 + 1道综合案例</strong>，10年结构几乎不变。</div>
+        <div class="rule-num">规律 01 · 笔试结构固定</div>
+        <div class="rule-text">战略管理占笔试总分50%（100分），每年固定出<strong>2道简答+1道论述+1道案例</strong>，结构极其稳定，难度梯度明显。</div>
+        <div class="rule-tip">涉及：全书 / 历年所有年份</div>
+        <div class="rule-advice"><strong>复习建议：</strong>按题型分开备考。简答需能写出完整要点（150–200字）；论述需有"定义→分析→案例→结论"四段结构；案例需准备"问题诊断→理论框架→具体建议"模板。</div>
       </div>
+
       <div class="rule-card">
-        <div class="rule-num">规律 02 · 第6章第一</div>
-        <div class="rule-text"><strong>第6章（业务层战略）是出题最多章节</strong>，差异化、成本领先、蓝海、战略钟、商业模式，10年间几乎年年涉及。</div>
+        <div class="rule-num">规律 02 · 第六章是绝对核心</div>
+        <div class="rule-text">业务层战略10年累计8次考察，几乎覆盖所有定位战略类型，是出题最高频的单章。成本领先、差异化、蓝海（独特性定位）轮流出现。</div>
+        <div class="rule-tip">涉及：第六章 / 2016–2024连续出现</div>
+        <div class="rule-advice"><strong>复习建议：</strong>必须同时掌握三种通用定位战略+整合战略+蓝海战略共5套内容。每种战略准备"定义+适用条件+实现路径+风险+企业案例"五要素答法。推荐准备华为/小米/格力/沃尔玛案例。</div>
       </div>
+
       <div class="rule-card">
-        <div class="rule-num">规律 03 · 第11章论述核心</div>
-        <div class="rule-text"><strong>第11章（战略实施）是论述题和案例题的最主要来源</strong>，企业文化、BSC、组织结构多次以论述或综合案例考查。</div>
+        <div class="rule-num">规律 03 · 热点驱动论述题</div>
+        <div class="rule-text">每年论述题必须结合当年重大社会经济热点，如疫情（2020）、双碳（2021）、数字化（2017/2022）、双循环（2023）、AI（2024）、文旅（2025）。</div>
+        <div class="rule-tip">涉及：跨章节综合 / 每年必出</div>
+        <div class="rule-advice"><strong>复习建议：</strong>为每个热点准备"教材理论框架+热点案例"模板。2026重点储备：人工智能对战略管理的影响、ESG与可持续竞争战略、新能源国际化、平台生态战略。</div>
       </div>
+
       <div class="rule-card">
-        <div class="rule-num">规律 04 · 论述嵌时代热点</div>
-        <div class="rule-text">论述题每年必嵌入<strong>当年社会热点</strong>：2020疫情→2021ESG→2022数字化→2023双循环→2024AI→2025文旅融合。<br><span class="rule-tip">→ 预测2026：<strong>新质生产力</strong> 或 <strong>AI+产业升级</strong></span></div>
+        <div class="rule-num">规律 04 · 第十一章是第二核心</div>
+        <div class="rule-text">战略实施管理章10年8次考察，BSC（2016）、企业文化（2018）、战略控制、组织结构均被覆盖，且极易与热点结合出论述/案例。</div>
+        <div class="rule-tip">涉及：第十一章 P295–354</div>
+        <div class="rule-advice"><strong>复习建议：</strong>BSC四维度+逻辑因果链必须完整背诵；企业文化五功能+沙因三层次必须能举例；战略控制四类型（前提/监控/预警/实施）必须能区分时机与对象。</div>
       </div>
+
       <div class="rule-card">
-        <div class="rule-num">规律 05 · 案例综合考查</div>
-        <div class="rule-text">案例题从不单考一个知识点，要求<strong>战略分析框架 + 人力资源管理</strong>综合诊断，不可偏科。</div>
+        <div class="rule-num">规律 05 · 内部分析工具轮考</div>
+        <div class="rule-text">第四章的价值链/核心专长/动态能力/RBV四个工具从未同年重复考察，每次考其中一个，形成"轮考"规律。2023已考动态能力，2024考RBV，2025未见。</div>
+        <div class="rule-tip">涉及：第四章 P99–118</div>
+        <div class="rule-advice"><strong>复习建议：</strong>四个工具全部要准备到Level 3（熟练）以上。特别注意动态能力与静态能力的区别，以及核心专长的VRIN四标准。2026最可能考价值链分析与核心专长的综合题。</div>
       </div>
+
       <div class="rule-card">
-        <div class="rule-num">规律 06 · 工具题前高后低</div>
-        <div class="rule-text">PESTEL、波特五力在前5年（2016–2020）高频直考；2021年后转为在案例背景中<strong>隐性体现</strong>，不再单独命题。</div>
+        <div class="rule-num">规律 06 · 案例题联动战略+人力</div>
+        <div class="rule-text">每年1道案例题（估计40–50分），要求同时运用战略管理和人力资源管理的理论框架，需要跨科目综合分析能力。</div>
+        <div class="rule-tip">涉及：跨章节 / 每年固定出现</div>
+        <div class="rule-advice"><strong>复习建议：</strong>建立"战略诊断+人力配套"联动答题思路。例如：企业选择差异化战略，对应的人力策略是招募创新型人才、建立创新激励机制、培训创造力。准备3–4套联动模板。</div>
       </div>
+
       <div class="rule-card">
-        <div class="rule-num">规律 07 · 理论深化趋势</div>
-        <div class="rule-text">内部分析考查从"资源能力"升级为<strong>RBV（2022）→ 动态能力（2023）</strong>，命题向理论深度迁移。</div>
+        <div class="rule-num">规律 07 · 外部分析偏工具性</div>
+        <div class="rule-text">波特五力和PESTEL以简答为主，几乎不单独出论述题，更多作为综合案例分析的支撑框架使用。</div>
+        <div class="rule-tip">涉及：第三章 P40–75</div>
+        <div class="rule-advice"><strong>复习建议：</strong>五力模型侧重记忆五个力的具体来源（非简单名称），PESTEL侧重理解各维度在中国情境下的特殊表现。不必记细节，重点能在案例中灵活运用。</div>
       </div>
+
       <div class="rule-card">
-        <div class="rule-num">规律 08 · 隔年轮换循环</div>
-        <div class="rule-text">差异化与成本领先交替强调；蓝海战略约<strong>每2年一次</strong>（2017、2022）；战略联盟约<strong>每3年一次</strong>（2018面试、2023笔试）。</div>
+        <div class="rule-num">规律 08 · 多元化/国际化轮换</div>
+        <div class="rule-text">第七章（多元化）和第八章（国际化）几乎隔年交替出现，近年随着新能源、一带一路热点，国际化出现频率明显上升（2020/2024/2025）。</div>
+        <div class="rule-tip">涉及：第七、八章</div>
+        <div class="rule-advice"><strong>复习建议：</strong>多元化要能区分相关/非相关/同心/横向四类型，并能分析失败原因（用湘鄂情案例）。国际化三种类型的特征对比表必须背熟，并能说明进入模式选择的依据。</div>
       </div>
+
       <div class="rule-card">
-        <div class="rule-num">规律 09 · 面试题有预告功能</div>
-        <div class="rule-text">新兴理论先在<strong>面试出现，后进入笔试</strong>：平台战略（2021面试→2025笔试）；动态能力（2019面试→2023笔试）。</div>
+        <div class="rule-num">规律 09 · 面试要理论联系热点</div>
+        <div class="rule-text">面试专业题每年追问"如何看待XX"、"结合当前形势分析"，纯背定义不够，需要展现独立思考和当下应用能力。</div>
+        <div class="rule-tip">涉及：全书 / 面试环节</div>
+        <div class="rule-advice"><strong>复习建议：</strong>每个核心概念准备"定义（30秒）→特征（30秒）→企业案例（1分钟）→个人观点（30秒）"的2分钟口答模板。重点储备AI、绿色转型、平台经济方向的观点。</div>
       </div>
+
       <div class="rule-card">
-        <div class="rule-num">规律 10 · 冷章频率上升</div>
-        <div class="rule-text">第9章（战略联盟与并购）、第10章历来较冷，但2023年战略联盟首入笔试，出题范围<strong>正在向冷章延伸</strong>，需防范。</div>
+        <div class="rule-num">规律 10 · SWOT是枢纽框架</div>
+        <div class="rule-text">SWOT分析在简答、论述、面试、案例四种题型中均有出现，且是几乎所有案例分析的底层分析框架，属于必须彻底掌握的工具。</div>
+        <div class="rule-tip">涉及：第五章 P119–135</div>
+        <div class="rule-advice"><strong>复习建议：</strong>不仅要背四组合含义，更要练习用SWOT分析真实企业案例的能力。建议用格力/比亚迪/华为分别做一遍完整SWOT练习，训练"优势/劣势/机会/威胁→战略问题→战略方向"的完整逻辑链。</div>
       </div>
+
     </div>
   </div>
 </div>
 
-<!-- ═══ S3：核心30考点 ═══ -->
+<!-- ===== S3 核心30考点 ===== -->
 <div class="section" id="s3">
   <div class="section-hd open" onclick="toggle(this)">
     <span class="ico">🎯</span>
@@ -561,359 +368,337 @@ body.in-iframe #search-pill{bottom:20px;right:8px;min-width:260px;max-width:360p
     <span class="toggle">▼</span>
   </div>
   <div class="section-body open">
-    <table>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>章节</th>
-          <th>核心考点</th>
-          <th>重要度</th>
-          <th>备考提示</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>01</td><td><span class="tag">第6章</span></td><td><strong>差异化战略</strong>：定义·适用条件·实现路径·风险</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>02</td><td><span class="tag">第6章</span></td><td><strong>成本领先战略</strong>：定义·实现路径·风险</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>03</td><td><span class="tag">第11章</span></td><td><strong>平衡计分卡（BSC）</strong>：四维度·因果链·"平衡"含义</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>04</td><td><span class="tag">第11章</span></td><td><strong>企业文化</strong>：三层次·五大功能·强弱文化·文化变革路径</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>05</td><td><span class="tag">第3章</span></td><td><strong>波特五力模型</strong>：五力内容·分析逻辑·局限性</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>06</td><td><span class="tag">第3章</span></td><td><strong>PESTEL分析框架</strong>：六维度·分析步骤·应用</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>07</td><td><span class="tag">第11章</span></td><td><strong>结构追随战略（钱德勒命题）</strong>：内容·四阶段演变·局限</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>08</td><td><span class="tag">第5章</span></td><td><strong>SWOT分析</strong>：步骤·四种战略组合（SO·WO·ST·WT）·局限性</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>09</td><td><span class="tag">第7章</span></td><td><strong>多元化战略</strong>：类型（相关/非相关）·动机·风险·程度测量</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>10</td><td><span class="tag">第4章</span></td><td><strong>资源基础观（RBV）</strong>：资源分类·VRIN四特性·战略含义</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
-        <tr><td>11</td><td><span class="tag">第6章</span></td><td><strong>蓝海战略</strong>：定义·价值创新·六项原则·与红海区别</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>12</td><td><span class="tag">第4章</span></td><td><strong>价值链分析</strong>：基本活动（5）·支持活动（4）·应用逻辑</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>13</td><td><span class="tag">第4章</span></td><td><strong>核心专长（核心竞争力）</strong>：定义·四标准·建立保持发挥三路径</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>14</td><td><span class="tag">第4章</span></td><td><strong>动态能力理论</strong>：定义·管理·经营·整合·动态四类能力</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>15</td><td><span class="tag">第7章</span></td><td><strong>BCG矩阵（波士顿矩阵）</strong>：四象限含义·战略建议·局限性</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>16</td><td><span class="tag">第7章</span></td><td><strong>纵向一体化战略</strong>：前向/后向·优缺点·适用条件</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>17</td><td><span class="tag">第8章</span></td><td><strong>国际化战略类型</strong>：全球化·多国化·跨国化·国际化的区别</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>18</td><td><span class="tag">第9章</span></td><td><strong>战略联盟</strong>：定义·动机·类型·治理机制·风险防范</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>19</td><td><span class="tag">第11章</span></td><td><strong>战略控制类型</strong>（斯曾德尔·霍弗）：前提·监控·特别预警·实施控制</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>20</td><td><span class="tag">第11章</span></td><td><strong>战略领导力</strong>：六大职责·TMT·战略领导者角色</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
-        <tr><td>21</td><td><span class="tag">第6章</span></td><td><strong>战略钟模型</strong>：八种竞争定位·核心逻辑</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-        <tr><td>22</td><td><span class="tag">第6章</span></td><td><strong>商业模式画布</strong>：九大模块·价值主张为核心</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-        <tr><td>23</td><td><span class="tag">第6章</span></td><td><strong>集中化战略（聚焦战略）</strong>：定义·适用·与差异化区别</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-        <tr><td>24</td><td><span class="tag">第5章</span></td><td><strong>战略方向选择</strong>：防御型·增长型·收缩型·稳定型</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-        <tr><td>25</td><td><span class="tag">第5章</span></td><td><strong>战略承诺</strong>：定义·三要素（业务宗旨·经营理念·价值观）</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-        <tr><td>26</td><td><span class="tag">第1/2章</span></td><td><strong>战略管理过程</strong>：分析→制定→实施→控制的完整框架</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-        <tr><td>27</td><td><span class="tag">第7章</span></td><td><strong>多元化程度评估</strong>：赫芬达尔指数·单业务·主业务·相关·非相关</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-        <tr><td>28</td><td><span class="tag">第8章</span></td><td><strong>国际化动因与风险管控</strong>：CAGE距离·进入模式选择</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-        <tr><td>29</td><td><span class="tag">第9章</span></td><td><strong>企业并购</strong>：类型·动机·PMI整合·文化整合</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-        <tr><td>30</td><td><span class="tag">第11章</span></td><td><strong>五种组织结构</strong>：简单·职能·事业部·矩阵·网络·各自适用战略</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
-      </tbody>
-    </table>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">按重要度排序。掌握等级：<span class="lv-badge lv5">L5 综合</span> <span class="lv-badge lv4">L4 深度</span> <span class="lv-badge lv3">L3 熟练</span> <span class="lv-badge lv2">L2 理解</span></p>
+    <div class="core30-grid">
+
+      <div class="c30-card"><div class="c30-rank">#01</div><div class="c30-title">低成本定位战略（实现路径+适用条件+风险）</div><div class="c30-chapter">第六章 P148–158</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#02</div><div class="c30-title">高差异定位战略（来源+适用条件+风险）</div><div class="c30-chapter">第六章 P158–170</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#03</div><div class="c30-title">平衡计分卡（四维度+逻辑因果链）</div><div class="c30-chapter">第十一章 P335–345</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#04</div><div class="c30-title">企业文化五大功能（导向/凝聚/激励/约束/辐射）</div><div class="c30-chapter">第十一章 P315–330</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#05</div><div class="c30-title">波特五力模型（五力来源+行业吸引力判断）</div><div class="c30-chapter">第三章 P60–75</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#06</div><div class="c30-title">多元化战略类型（相关/非相关+动机+风险）</div><div class="c30-chapter">第七章 P193–210</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#07</div><div class="c30-title">价值链分析（基本活动×5+支持活动×4+关键环节）</div><div class="c30-chapter">第四章 P107–115</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#08</div><div class="c30-title">SWOT分析矩阵（四组合+战略问题确认四步骤）</div><div class="c30-chapter">第五章 P119–128</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#09</div><div class="c30-title">蓝海战略/独特性定位战略（六原则+与红海区别）</div><div class="c30-chapter">第六章 P170–178</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#10</div><div class="c30-title">核心专长/核心竞争力（VRIN四标准+建立路径）</div><div class="c30-chapter">第四章 P115–118</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#11</div><div class="c30-title">PESTEL宏观环境分析（六维度+应用局限）</div><div class="c30-chapter">第三章 P40–55</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#12</div><div class="c30-title">企业文化三层次（沙因：人工制品/价值观/基本假设）</div><div class="c30-chapter">第十一章 P318–325</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#13</div><div class="c30-title">战略控制四类型（前提/战略监控/特别预警/实施控制）</div><div class="c30-chapter">第十一章 P340–354</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#14</div><div class="c30-title">结构追随战略（钱德勒命题+五种组织结构）</div><div class="c30-chapter">第十一章 P295–315</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#15</div><div class="c30-title">动态能力理论（定义+与静态能力区别+战略意义）</div><div class="c30-chapter">第四章 P110–115</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#16</div><div class="c30-title">波士顿矩阵（四象限+战略方向+组合管理逻辑）</div><div class="c30-chapter">第七章 P205–215</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#17</div><div class="c30-title">国际化战略三种类型（全球化/多国化/跨国化对比）</div><div class="c30-chapter">第八章 P220–240</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#18</div><div class="c30-title">资源基础观RBV（三类资源+价值性/稀缺性/难模仿）</div><div class="c30-chapter">第四章 P99–107</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#19</div><div class="c30-title">战略钟模型（八种定位+成功区/失败区/死亡谷）</div><div class="c30-chapter">第六章 P160–170</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#20</div><div class="c30-title">整合战略/独特性定位（伊甸园+整合条件+中国情境）</div><div class="c30-chapter">第六章 P170–178</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#21</div><div class="c30-title">战略联盟动机与类型（互补/市场/风险+治理机制）</div><div class="c30-chapter">第九章 P250–270</div><div class="c30-stars">★★★</div><span class="lv-badge lv2">L2 理解</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#22</div><div class="c30-title">纵向一体化（前向/后向+优缺点+适用条件）</div><div class="c30-chapter">第七章 P193–200</div><div class="c30-stars">★★★</div><span class="lv-badge lv2">L2 理解</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#23</div><div class="c30-title">战略管理过程四阶段（分析→制定→实施→控制）</div><div class="c30-chapter">第一章 P1–25</div><div class="c30-stars">★★★</div><span class="lv-badge lv2">L2 理解</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#24</div><div class="c30-title">战略领导力与TMT（战略领导角色+团队构成+决策）</div><div class="c30-chapter">第十一章 P330–340</div><div class="c30-stars">★★★</div><span class="lv-badge lv2">L2 理解</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#25</div><div class="c30-title">战略承诺（定义+阿里巴巴案例+调整条件）</div><div class="c30-chapter">第五章 P128–135</div><div class="c30-stars">★★★</div><span class="lv-badge lv2">L2 理解</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#26</div><div class="c30-title">平台生态战略（平台逻辑+网络效应+商业模式画布）</div><div class="c30-chapter">第七章 P210–215</div><div class="c30-stars">★★★</div><span class="lv-badge lv2">L2 理解</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#27</div><div class="c30-title">数字化转型战略（AI/数据+战略重构+组织变革）</div><div class="c30-chapter">热点跨章节</div><div class="c30-stars">★★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#28</div><div class="c30-title">ESG可持续战略（绿色转型+差异化+利益相关者）</div><div class="c30-chapter">热点 第三章/六章</div><div class="c30-stars">★★★★</div><span class="lv-badge lv3">L3 熟练</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#29</div><div class="c30-title">战略与人力资源匹配关系（战略类型→HR策略）</div><div class="c30-chapter">综合 第十一章</div><div class="c30-stars">★★★★</div><span class="lv-badge lv4">L4 深度</span></div>
+
+      <div class="c30-card"><div class="c30-rank">#30</div><div class="c30-title">并购整合（整合类型+价值创造+人力文化整合）</div><div class="c30-chapter">第九章 P265–280</div><div class="c30-stars">★★★</div><span class="lv-badge lv2">L2 理解</span></div>
+
+    </div>
   </div>
 </div>
 
-<!-- ═══ S4：2026预测 ═══ -->
+<!-- ===== S4 2026预测 ===== -->
 <div class="section" id="s4">
   <div class="section-hd open" onclick="toggle(this)">
     <span class="ico">🔮</span>
-    <h2>模块四 · 2026年复试命题预测（10题）</h2>
-    <span class="badge-count">10道预测题</span>
+    <h2>模块四 · 2026复试命题预测（10题）</h2>
+    <span class="badge-count">10道预测</span>
     <span class="toggle">▼</span>
   </div>
   <div class="section-body open">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">基于高频考点、命题规律、近三年趋势综合预测，供备考参考，不保证命中。</p>
     <div class="pred-grid">
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-red tag">简答</span>
-          <span class="prob-high">★★★★★ 极高</span>
+          <div>
+            <span class="tag tag-red">简答题</span>
+            <div class="pred-q" style="margin-top:5px;">简述波特通用定位战略的三种类型及各自的适用条件，并说明企业如何实现成本与差异的"整合战略"。</div>
+          </div>
         </div>
-        <div class="pred-q">新质生产力背景下，企业应如何调整战略选择路径？</div>
-        <div class="pred-meta">📌 对应：第5/6章 · 战略方向选择 · 差异化战略<br>💡 依据：论述题每年嵌时代热点，2026年最核心政策热点即"新质生产力"</div>
+        <div class="pred-meta">对应考点：第六章·三种通用定位+整合战略（伊甸园）&nbsp;|&nbsp;命题概率：<span class="prob-high">🔥🔥🔥🔥🔥 极高</span></div>
       </div>
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-orange tag">论述</span>
-          <span class="prob-high">★★★★★ 极高</span>
+          <div>
+            <span class="tag tag-orange">论述题</span>
+            <div class="pred-q" style="margin-top:5px;">论述人工智能时代企业战略管理面临的挑战，结合PEST分析框架，说明企业应如何从战略分析、制定到实施进行系统性应对。</div>
+          </div>
         </div>
-        <div class="pred-q">AI赋能企业战略管理的机遇、挑战与应对策略（结合案例论述）</div>
-        <div class="pred-meta">📌 对应：第3/5/11章综合 · 外部环境·战略实施<br>💡 依据：2024年简答考AI变革；2025面试考数智化；主题延伸+深化规律</div>
+        <div class="pred-meta">对应考点：第三章·PESTEL / 第六章·战略选择 / AI热点&nbsp;|&nbsp;命题概率：<span class="prob-high">🔥🔥🔥🔥🔥 极高</span></div>
       </div>
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-red tag">简答</span>
-          <span class="prob-high">★★★★ 高</span>
+          <div>
+            <span class="tag tag-red">简答题</span>
+            <div class="pred-q" style="margin-top:5px;">简述平衡计分卡（BSC）的四个维度及其逻辑因果关系，结合案例说明其在企业战略实施中的具体应用。</div>
+          </div>
         </div>
-        <div class="pred-q">简述动态能力理论的核心内涵，并说明其对企业战略选择的指导意义</div>
-        <div class="pred-meta">📌 对应：第4章 · 动态能力 · P108–112<br>💡 依据：2023年首考后常有深化延伸；近年命题向理论深度迁移</div>
+        <div class="pred-meta">对应考点：第十一章·BSC四维度（2016年已考，轮回概率高）&nbsp;|&nbsp;命题概率：<span class="prob-high">🔥🔥🔥🔥🔥 极高</span></div>
       </div>
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-red tag">简答</span>
-          <span class="prob-high">★★★★ 高</span>
+          <div>
+            <span class="tag tag-red">案例题</span>
+            <div class="pred-q" style="margin-top:5px;">某中国新能源企业计划拓展东南亚市场。请从国际化战略类型选择、市场进入模式、主要风险及应对策略四个方面进行分析。</div>
+          </div>
         </div>
-        <div class="pred-q">简述平台生态战略的构建逻辑与核心要素</div>
-        <div class="pred-meta">📌 对应：第6/7章 · 平台战略<br>💡 依据：2025年首次入简答；新兴考点首考后次年再考规律</div>
+        <div class="pred-meta">对应考点：第八章·国际化战略三类型+进入模式&nbsp;|&nbsp;命题概率：<span class="prob-high">🔥🔥🔥🔥 高</span></div>
       </div>
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-orange tag">论述</span>
-          <span class="prob-high">★★★★ 高</span>
+          <div>
+            <span class="tag tag-red">简答题</span>
+            <div class="pred-q" style="margin-top:5px;">简述SWOT分析矩阵的四种战略组合，并结合某企业案例分析其应用步骤和局限性。</div>
+          </div>
         </div>
-        <div class="pred-q">差异化战略与成本领先战略能否同时实施？结合具体企业案例论述</div>
-        <div class="pred-meta">📌 对应：第6章 · 整合战略 · P162–172<br>💡 依据：2024年考整合战略简答；是近年命题深化方向；下一步可能升为论述</div>
+        <div class="pred-meta">对应考点：第五章·SWOT四组合+战略问题确认&nbsp;|&nbsp;命题概率：<span class="prob-high">🔥🔥🔥🔥 高</span></div>
       </div>
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-red tag">简答</span>
-          <span class="prob-high">★★★★ 高</span>
+          <div>
+            <span class="tag tag-orange">论述题</span>
+            <div class="pred-q" style="margin-top:5px;">论述企业文化对战略实施的支撑与阻碍双重作用，结合沙因文化三层次模型，分析企业如何推动战略性文化变革。</div>
+          </div>
         </div>
-        <div class="pred-q">简述战略联盟的治理机制，并分析如何防范机会主义风险</div>
-        <div class="pred-meta">📌 对应：第9章 · 战略联盟治理 · P237–255<br>💡 依据：2023年首入笔试；按隔年轮换规律，2025–2026年再考概率高</div>
+        <div class="pred-meta">对应考点：第十一章·企业文化五功能+沙因三层次&nbsp;|&nbsp;命题概率：<span class="prob-high">🔥🔥🔥🔥 高</span></div>
       </div>
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-green tag">案例</span>
-          <span class="prob-high">★★★★ 高</span>
+          <div>
+            <span class="tag tag-red">简答题</span>
+            <div class="pred-q" style="margin-top:5px;">简述动态能力理论的内涵，分析其与静态能力的区别，并说明动态能力在数字化转型背景下对企业竞争优势的战略意义。</div>
+          </div>
         </div>
-        <div class="pred-q">某新能源/科技企业国际化战略分析（动因·模式选择·风险管控）</div>
-        <div class="pred-meta">📌 对应：第8章 · 国际化战略 · P210–235<br>💡 依据：2024年案例考国际化；2026年仍为主流热点话题</div>
+        <div class="pred-meta">对应考点：第四章·动态能力（2023已考，结合AI热点再次出现概率高）&nbsp;|&nbsp;命题概率：<span class="prob-mid">🔥🔥🔥🔥 高</span></div>
       </div>
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-red tag">简答</span>
-          <span class="prob-mid">★★★ 中高</span>
+          <div>
+            <span class="tag tag-red">简答题</span>
+            <div class="pred-q" style="margin-top:5px;">简述多元化战略的主要类型与风险，结合湘鄂情（或你熟悉的企业案例）分析非相关多元化战略失败的根本原因。</div>
+          </div>
         </div>
-        <div class="pred-q">简述企业并购后整合（PMI）的主要内容与核心挑战</div>
-        <div class="pred-meta">📌 对应：第9章 · 企业并购·整合<br>💡 依据：第9章近5年未单独简答考查；存在"欠债"效应</div>
+        <div class="pred-meta">对应考点：第七章·多元化类型+风险（2021已考，2026轮考概率高）&nbsp;|&nbsp;命题概率：<span class="prob-mid">🔥🔥🔥🔥 高</span></div>
       </div>
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-orange tag">论述</span>
-          <span class="prob-mid">★★★ 中高</span>
+          <div>
+            <span class="tag tag-orange">论述题</span>
+            <div class="pred-q" style="margin-top:5px;">论述可持续发展（ESG/绿色转型）背景下，企业如何重构业务层竞争战略，从差异化战略角度获取绿色竞争优势？</div>
+          </div>
         </div>
-        <div class="pred-q">绿色战略/ESG战略与企业可持续竞争优势之间的关系（结合案例）</div>
-        <div class="pred-meta">📌 对应：第5/7章 · 战略方向·可持续发展<br>💡 依据：2021年ESG首考；2022–2025年连续出现于面试；笔试深化可能性大</div>
+        <div class="pred-meta">对应考点：第六章·差异化战略 / ESG热点（持续上升趋势）&nbsp;|&nbsp;命题概率：<span class="prob-mid">🔥🔥🔥 中高</span></div>
       </div>
 
       <div class="pred-card">
         <div class="pred-card-hd">
-          <span class="pred-type tag-red tag">简答</span>
-          <span class="prob-mid">★★★ 中</span>
+          <div>
+            <span class="tag tag-red">简答题</span>
+            <div class="pred-q" style="margin-top:5px;">简述核心专长（Core Competence）的概念与VRIN识别标准，并结合价值链分析说明企业如何找到、建立和强化自身的核心专长。</div>
+          </div>
         </div>
-        <div class="pred-q">运用商业模式画布分析某企业（如新能源/平台型企业）的商业模式</div>
-        <div class="pred-meta">📌 对应：第6章 · 商业模式画布 · P170–178<br>💡 依据：2024年考画布九模块；2026年可能升级为应用分析题</div>
+        <div class="pred-meta">对应考点：第四章·核心专长+价值链（综合内部分析两大工具）&nbsp;|&nbsp;命题概率：<span class="prob-mid">🔥🔥🔥🔥 高</span></div>
       </div>
 
     </div>
-    <p style="margin-top:16px; padding:12px 14px; background:var(--tag-bg); border-radius:6px; font-size:12px; color:var(--muted);">
-      ⚠️ 以上预测基于10年命题规律分析，仅供参考。实际考题以官方公布为准。建议结合30核心考点全面备考，重点关注规律04（论述嵌热点）和规律09（面试有预告功能）。
-    </p>
   </div>
 </div>
 
 </div><!-- end .main -->
 
-<footer>
-  📚 中南大学企业管理学硕复试笔记 · 基于《企业战略管理（第二版·蓝海林）》2016–2025真题分析<br>
-  生成日期：2026-03-09
-</footer>
-
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-<script>
-function toggle(hd) {
-  hd.classList.toggle('open');
-  const body = hd.nextElementSibling;
-  body.classList.toggle('open');
-}
-function toggleDark() {
-  document.body.classList.toggle('dark');
-  const btn = document.querySelector('nav button');
-  btn.textContent = document.body.classList.contains('dark') ? '☀️ 日间' : '🌙 夜间';
-  localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
-}
-if (localStorage.getItem('dark') === '1') {
-  document.body.classList.add('dark');
-  document.querySelector('nav button').textContent = '☀️ 日间';
-}
-// back-to-top
-window.addEventListener('scroll', () => {
-  document.getElementById('back-top').style.opacity = scrollY > 300 ? '1' : '0';
-});
-document.getElementById('back-top').style.opacity = '0';
-document.getElementById('back-top').style.transition = 'opacity .3s';
-</script>
-
-<!-- HL_INJECT -->
-<script>
-/* HL_INJECT v3 – uses search pill instead of own nav */
-(function(){
-  var kw=new URLSearchParams(location.search).get('highlight');
-  if(!kw)return;
-  /* Wait for pill to be ready, then activate it */
-  function activate(){
-    if(typeof window.openSearchPill==='function'){
-      window.openSearchPill();
-      var inp=document.getElementById('sp-input');
-      if(inp){
-        inp.value=kw;
-        inp.dispatchEvent(new Event('input'));
-      }
-    }
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',function(){setTimeout(activate,300);});
-  } else {
-    setTimeout(activate,300);
-  }
-})();
-</script>
+<footer>
+  📚 中南大学企业管理学硕复试真题分析 · 企业战略管理（蓝海林第2版）· 2016–2025真题整合版<br>
+  生成日期：2026-03-16 · 仅供复习参考 · 真题来源为回忆版，章节对应已与教材目录核对
+</footer>
 
 <!-- 搜索触发按钮 -->
+<button id="search-trigger" title="搜索（F3）" onclick="openSearchPill()">🔍</button>
 
-<!-- Search Pill v3 -->
-<div id="search-pill" style="display:none">
+<!-- 搜索药丸 -->
+<div id="search-pill">
   <span id="sp-icon">🔍</span>
-  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <input id="sp-input" type="text" placeholder="输入关键词搜索...">
   <span id="sp-count"></span>
-  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
-  <button id="sp-next" title="下一个 (F3)">↓</button>
-  <button id="sp-close" title="关闭">✕</button>
+  <button onclick="searchNav(-1)" title="上一个 (Shift+F3)">↑</button>
+  <button onclick="searchNav(1)" title="下一个 (F3)">↓</button>
+  <button id="sp-close" onclick="closeSearchPill()" title="关闭">✕</button>
 </div>
-<button id="search-trigger" title="搜索 (Ctrl+F / F3)" onclick="openSearchPill()">🔍</button>
 
 <script>
-/* Search Pill v3 – single authoritative copy */
+// 折叠
+function toggle(hd){
+  var ob=hd.classList.contains('open');
+  hd.classList.toggle('open',!ob);
+  hd.nextElementSibling.classList.toggle('open',!ob);
+}
+// 夜间模式
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  var btn=document.querySelector('nav button');
+  btn.textContent=document.body.classList.contains('dark')?'☀️ 日间':'🌙 夜间';
+  localStorage.setItem('dark-strategy',document.body.classList.contains('dark')?'1':'0');
+}
+if(localStorage.getItem('dark-strategy')==='1'){
+  document.body.classList.add('dark');
+  var nb=document.querySelector('nav button');
+  if(nb)nb.textContent='☀️ 日间';
+}
+// 返回顶部
+window.addEventListener('scroll',function(){
+  var bt=document.getElementById('back-top');
+  if(bt)bt.style.opacity=window.scrollY>300?'1':'0';
+});
+// 搜索药丸
 (function(){
-'use strict';
-/* detect iframe */
-try{ if(window.self!==window.top) document.body.classList.add('in-iframe'); }catch(e){}
-
-var pill,trigger,inp,cnt;
-var marks=[],cur=0,lastQ='';
-var MARK='sp-hl',CUR='sp-cur';
-
-function q(s){return document.querySelector(s);}
-function qa(s){return Array.from(document.querySelectorAll(s));}
-
-function init(){
-  pill=document.getElementById('search-pill');
-  trigger=document.getElementById('search-trigger');
-  inp=document.getElementById('sp-input');
-  cnt=document.getElementById('sp-count');
-  if(!pill||!inp)return;
-  document.getElementById('sp-prev').onclick=function(){nav(-1);};
-  document.getElementById('sp-next').onclick=function(){nav(1);};
-  document.getElementById('sp-close').onclick=close;
-  inp.addEventListener('input',function(){search(this.value);});
-  inp.addEventListener('keydown',function(e){
-    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
-    if(e.key==='Escape')close();
-  });
-  document.addEventListener('keydown',function(e){
-    if(e.key==='F3'){
-      e.preventDefault();e.stopImmediatePropagation();
-      if(!pill||pill.style.display==='none')open();
-      else nav(e.shiftKey?-1:1);
-    }
-    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
-  },true); /* capture phase to override HL_INJECT listener */
-}
-
-window.openSearchPill=open;
-function open(){
-  if(!pill)init();if(!pill)return;
-  pill.style.display='flex';
-  if(trigger)trigger.style.display='none';
-  inp.focus();inp.select();
-}
-function close(){
-  clearHL();
-  if(pill)pill.style.display='none';
-  if(trigger)trigger.style.display='flex';
-  if(inp)inp.value='';
-  marks=[];cur=0;lastQ='';
-  if(cnt)cnt.textContent='';
-}
-
-function search(q){
-  clearHL();marks=[];cur=0;
-  q=q.trim();lastQ=q;
-  if(!q){if(cnt)cnt.textContent='';return;}
-  var esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  var rx=new RegExp(esc,'gi');
-  /* find best root */
-  var root=document.querySelector(
-    '.main-container,.main,.content-area,main,#main,.content,article'
-  )||document.body;
-  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
-    acceptNode:function(n){
-      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
-      var t=p.tagName;
-      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
-      /* skip pill and trigger */
-      if(p.id==='search-pill'||p.id==='search-trigger')return NodeFilter.FILTER_REJECT;
-      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))
-        return NodeFilter.FILTER_REJECT;
-      return NodeFilter.FILTER_ACCEPT;
-    }
-  },false);
-  var nodes=[];var n;
-  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
-  nodes.forEach(function(tn){
-    rx.lastIndex=0;
-    var frag=document.createDocumentFragment();
-    var last=0,m;
-    while((m=rx.exec(tn.nodeValue))!==null){
-      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
-      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
-      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
-    }
-    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
-    tn.parentNode.replaceChild(frag,tn);
-  });
-  updCnt();
-  if(marks.length)goTo(0);
-}
-
-function nav(d){
-  /* always re-read from DOM in case DOM changed */
-  marks=qa('mark.'+MARK);
-  if(!marks.length)return;
-  cur=(cur+d+marks.length)%marks.length;
-  goTo(cur);
-}
-function goTo(idx){
-  marks=qa('mark.'+MARK);
-  marks.forEach(function(m){m.classList.remove(CUR);});
-  cur=idx;
-  if(!marks[cur])return;
-  marks[cur].classList.add(CUR);
-  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
-  updCnt();
-}
-function updCnt(){
-  if(!cnt)return;
-  marks=qa('mark.'+MARK);
-  if(!lastQ){cnt.textContent='';return;}
-  if(!marks.length){cnt.textContent='无结果';return;}
-  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
-  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
-}
-function clearHL(){
-  qa('mark.'+MARK).forEach(function(el){
-    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
-  });
-  try{(document.querySelector('.main-container,.main,main,#main,article,.content')||document.body).normalize();}catch(e){}
-  marks=[];
-}
-
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
-else init();
+  var MARK='sp-hl',CUR='sp-cur';
+  var pill,trigger,inp,cnt,marks=[],cur=0,lastQ='';
+  function qa(s){return Array.from(document.querySelectorAll(s));}
+  function init(){
+    pill=document.getElementById('search-pill');
+    trigger=document.getElementById('search-trigger');
+    inp=document.getElementById('sp-input');
+    cnt=document.getElementById('sp-count');
+    if(!pill||!inp)return;
+    inp.addEventListener('input',function(){search(inp.value);});
+    inp.addEventListener('keydown',function(e){
+      if(e.key==='Enter'){searchNav(e.shiftKey?-1:1);}
+      if(e.key==='Escape'){closeSearchPill();}
+    });
+    document.addEventListener('keydown',function(e){
+      if(e.key==='F3'){
+        e.preventDefault();
+        if(!pill||pill.style.display==='none'||pill.style.display===''){open();return;}
+        searchNav(e.shiftKey?-1:1);
+      }
+    },true);
+  }
+  window.openSearchPill=open;
+  window.closeSearchPill=close;
+  window.searchNav=function(d){nav(d);};
+  function open(){
+    if(!pill)init();if(!pill)return;
+    pill.style.display='flex';
+    if(trigger)trigger.style.display='none';
+    if(inp){inp.focus();inp.select();}
+  }
+  function close(){
+    clearHL();
+    if(pill)pill.style.display='none';
+    if(trigger)trigger.style.display='flex';
+    if(inp)inp.value='';
+    marks=[];cur=0;lastQ='';
+    if(cnt)cnt.textContent='';
+  }
+  function search(kw){
+    clearHL();marks=[];cur=0;
+    kw=kw.trim();lastQ=kw;
+    if(!kw){if(cnt)cnt.textContent='';return;}
+    var esc=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    var rx=new RegExp(esc,'gi');
+    var root=document.querySelector('.main')||document.body;
+    var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+      acceptNode:function(n){
+        var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+        var t=p.tagName;
+        if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+        if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    },false);
+    var nodes=[];var n;
+    while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+    nodes.forEach(function(tn){
+      rx.lastIndex=0;
+      var frag=document.createDocumentFragment();
+      var last=0,m;
+      while((m=rx.exec(tn.nodeValue))!==null){
+        if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+        var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+        frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+      }
+      if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+      tn.parentNode.replaceChild(frag,tn);
+    });
+    updCnt();if(marks.length)goTo(0);
+  }
+  function nav(d){
+    marks=qa('mark.'+MARK);if(!marks.length)return;
+    cur=(cur+d+marks.length)%marks.length;goTo(cur);
+  }
+  function goTo(idx){
+    marks=qa('mark.'+MARK);
+    marks.forEach(function(m){m.classList.remove(CUR);});
+    cur=idx;if(!marks[cur])return;
+    marks[cur].classList.add(CUR);
+    marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+    updCnt();
+  }
+  function updCnt(){
+    if(!cnt)return;
+    marks=qa('mark.'+MARK);
+    if(!lastQ){cnt.textContent='';return;}
+    if(!marks.length){cnt.textContent='无结果';return;}
+    var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+    cnt.textContent=kw+'\u00a0'+(cur+1)+' / '+marks.length;
+  }
+  function clearHL(){
+    qa('mark.'+MARK).forEach(function(el){
+      if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+    });
+    try{(document.querySelector('.main')||document.body).normalize();}catch(e){}
+    marks=[];
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+  else init();
 })();
 </script>
 </body>
