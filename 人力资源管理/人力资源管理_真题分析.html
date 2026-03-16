@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中南大学企业管理学硕 · 人力资源管理复试真题分析</title>
+<style>
+:root {
+  --bg:#f5f6fa; --card:#fff; --border:#e2e6ef; --text:#1a1d2e; --muted:#6b7280;
+  --accent:#2563eb; --accent2:#7c3aed; --accent3:#059669; --accent4:#dc2626; --accent5:#d97706;
+  --nav-bg:#1a1d2e; --tag-bg:#eff6ff; --tag-color:#1d4ed8;
+  font-variant-numeric:tabular-nums;
+}
+body.dark {
+  --bg:#0f1117; --card:#1a1d2e; --border:#2d3148; --text:#e8eaf2; --muted:#9ca3af;
+  --tag-bg:#1e2a4a; --tag-color:#93c5fd;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Microsoft YaHei','微软雅黑','PingFang SC',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.7;transition:background .3s,color .3s;}
+nav{position:sticky;top:0;z-index:100;background:var(--nav-bg);display:flex;align-items:center;gap:6px;padding:0 20px;height:48px;box-shadow:0 2px 10px rgba(0,0,0,.3);}
+nav .brand{color:#fff;font-weight:700;font-size:13px;margin-right:12px;white-space:nowrap;}
+nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:12px;padding:4px 10px;border-radius:4px;transition:background .2s,color .2s;white-space:nowrap;}
+nav a:hover{background:rgba(255,255,255,.12);color:#fff;}
+nav .spacer{flex:1;}
+nav button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:12px;padding:4px 12px;border-radius:4px;cursor:pointer;}
+nav button:hover{background:rgba(255,255,255,.2);}
+.hero{background:linear-gradient(135deg,#1a1d2e 0%,#2d3a8c 50%,#1a1d2e 100%);color:#fff;text-align:center;padding:48px 20px 36px;}
+.hero h1{font-size:24px;font-weight:700;margin-bottom:8px;}
+.hero p{color:rgba(255,255,255,.7);font-size:13px;}
+.hero-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+.hero-tags span{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);padding:3px 12px;border-radius:20px;font-size:12px;}
+.notice{margin:16px auto 0;max-width:1100px;padding:0 20px;}
+.notice-inner{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 16px;font-size:12px;color:#92400e;}
+body.dark .notice-inner{background:#2d1f05;border-color:#78350f;color:#fcd34d;}
+.main{max-width:1100px;margin:0 auto;padding:20px 20px 60px;}
+.section{margin-bottom:28px;}
+.section-hd{display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;background:var(--card);border:1px solid var(--border);border-radius:10px 10px 0 0;padding:14px 18px;transition:background .2s;}
+.section-hd:hover{background:var(--tag-bg);}
+.section-hd .ico{font-size:18px;}
+.section-hd h2{font-size:16px;font-weight:700;flex:1;}
+.badge-count{background:var(--accent);color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;}
+.toggle{color:var(--muted);font-size:16px;transition:transform .3s;}
+.section-hd.open .toggle{transform:rotate(180deg);}
+.section-body{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 10px 10px;padding:20px 18px;display:none;}
+.section-body.open{display:block;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{background:#f0f4ff;color:var(--accent);font-weight:700;padding:9px 10px;text-align:left;border-bottom:2px solid var(--border);}
+body.dark th{background:#1e2a4a;}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:middle;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:var(--tag-bg);}
+.bar-wrap{display:flex;align-items:center;gap:8px;min-width:110px;}
+.bar-bg{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;transition:width .6s ease;}
+.s5{background:#dc2626;}.s4{background:#d97706;}.s3{background:#2563eb;}.s2{background:#059669;}.s1c{background:#94a3b8;}
+.bar-label{font-size:11px;color:var(--muted);white-space:nowrap;}
+.stars{color:#f59e0b;font-size:13px;}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;background:var(--tag-bg);color:var(--tag-color);margin:2px 2px 2px 0;}
+.tag-red{background:#fef2f2;color:#dc2626;}
+.tag-green{background:#f0fdf4;color:#059669;}
+.tag-purple{background:#faf5ff;color:#7c3aed;}
+.tag-orange{background:#fffbeb;color:#d97706;}
+.tag-gray{background:#f1f5f9;color:#475569;}
+body.dark .tag-red{background:#2d1515;color:#f87171;}
+body.dark .tag-green{background:#0d2a1c;color:#6ee7b7;}
+body.dark .tag-purple{background:#1e1130;color:#c4b5fd;}
+body.dark .tag-orange{background:#2d1f05;color:#fcd34d;}
+body.dark .tag-gray{background:#1e2535;color:#94a3b8;}
+.rule-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
+.rule-card{border:1px solid var(--border);border-radius:8px;padding:14px 16px;background:var(--bg);border-left:4px solid var(--accent);}
+.rule-card:nth-child(2n){border-left-color:var(--accent2);}
+.rule-card:nth-child(3n){border-left-color:var(--accent3);}
+.rule-card:nth-child(4n){border-left-color:var(--accent5);}
+.rule-card:nth-child(5n){border-left-color:var(--accent4);}
+.rule-num{font-size:11px;font-weight:700;color:var(--accent);margin-bottom:5px;}
+.rule-card:nth-child(2n) .rule-num{color:var(--accent2);}
+.rule-card:nth-child(3n) .rule-num{color:var(--accent3);}
+.rule-card:nth-child(4n) .rule-num{color:var(--accent5);}
+.rule-card:nth-child(5n) .rule-num{color:var(--accent4);}
+.rule-text{font-size:13px;line-height:1.6;color:var(--text);}
+.rule-tip{font-size:12px;color:var(--muted);margin-top:5px;}
+.rule-advice{margin-top:9px;background:rgba(37,99,235,.06);border:1px solid rgba(37,99,235,.12);border-radius:5px;padding:8px 10px;font-size:12px;line-height:1.6;color:var(--text);}
+body.dark .rule-advice{background:rgba(147,197,253,.05);border-color:rgba(147,197,253,.1);}
+.rule-advice strong{color:var(--accent4);}
+.pred-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
+.pred-card{border:1px solid var(--border);border-radius:8px;padding:14px 16px;background:var(--bg);}
+.pred-card-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:8px;}
+.pred-q{font-size:13px;font-weight:600;line-height:1.5;color:var(--text);}
+.pred-meta{font-size:12px;color:var(--muted);margin-top:6px;}
+.prob-high{color:#dc2626;font-weight:700;}
+.prob-mid{color:#d97706;font-weight:700;}
+#back-top{position:fixed;bottom:88px;right:22px;background:var(--accent);color:#fff;border:none;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(37,99,235,.4);transition:opacity .3s;}
+#back-top:hover{background:#1d4ed8;}
+footer{text-align:center;padding:20px;color:var(--muted);font-size:12px;border-top:1px solid var(--border);margin-top:40px;}
+/* 搜索药丸 */
+#search-trigger{position:fixed;bottom:28px;right:22px;z-index:9998;width:44px;height:44px;border-radius:50%;background:#1e293b;color:#f8fafc;border:2px solid #334155;font-size:18px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.35);transition:background .2s,transform .15s;display:flex;align-items:center;justify-content:center;}
+#search-trigger:hover{background:#334155;transform:scale(1.08);}
+#search-pill{position:fixed;bottom:28px;right:18px;z-index:9999;display:flex;align-items:center;gap:6px;background:#1e293b;color:#f8fafc;border:1.5px solid #475569;border-radius:50px;padding:8px 14px 8px 12px;box-shadow:0 6px 24px rgba(0,0,0,.4);font-size:14px;font-family:'Microsoft YaHei','PingFang SC',sans-serif;min-width:300px;max-width:420px;}
+#sp-icon{font-size:16px;flex-shrink:0;}
+#sp-input{flex:1;background:transparent;border:none;outline:none;color:#f8fafc;font-size:14px;font-family:inherit;min-width:0;}
+#sp-input::placeholder{color:rgba(248,250,252,.4);}
+#sp-count{color:#94a3b8;font-size:12px;white-space:nowrap;flex-shrink:0;font-variant-numeric:tabular-nums;min-width:60px;text-align:center;}
+#search-pill button{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#f8fafc;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+#search-pill button:hover{background:rgba(255,255,255,.25);}
+#sp-close{font-size:12px;}
+mark.sp-hl{background:#fbbf24;color:#000;border-radius:2px;padding:0 1px;}
+mark.sp-hl.sp-cur{background:#f97316;color:#fff;outline:2px solid #fb923c;}
+@media(max-width:640px){
+  .hero h1{font-size:18px;}
+  nav{height:auto;padding:8px 14px;flex-wrap:wrap;}
+  .rule-grid,.pred-grid{grid-template-columns:1fr;}
+  table{font-size:12px;}
+  th,td{padding:6px 7px;}
+}
+</style>
+</head>
+<body id="top">
+
+<nav>
+  <span class="brand">📚 中南大学企业管理学硕 · HR复试分析</span>
+  <a href="#s1">高频考点</a>
+  <a href="#s2">命题规律</a>
+  <a href="#s3">核心30考点</a>
+  <a href="#s4">2026预测</a>
+  <span class="spacer"></span>
+  <button onclick="toggleDark()">🌙 夜间</button>
+</nav>
+
+<div class="hero">
+  <h1>📊 人力资源管理 · 复试真题分析总览 · 2016–2025</h1>
+  <p>基于《人力资源管理（第3版·颜爱民）》全14章 · 中南大学企业管理学硕 · 章节已核正</p>
+  <div class="hero-tags">
+    <span>📅 生成日期：2026-03-16</span>
+    <span>🎯 10年真题</span>
+    <span>📖 全14章覆盖</span>
+    <span>🔮 10题2026预测</span>
+  </div>
+</div>
+
+<div class="notice">
+  <div class="notice-inner">⚠️ <strong>章节修正说明：</strong>颜爱民版章节顺序与通行版本不同 ——第十一章=激励；第十二章=劳动关系；第十三章=战略人力资源管理；第十四章=国际人力资源管理。本页严格按此结构标注，与之前旧版分析的章节错误已全部修正。</div>
+</div>
+
+<div class="main">
+
+<!-- S1 高频考点 -->
+<div class="section" id="s1">
+  <div class="section-hd open" onclick="toggle(this)">
+    <span class="ico">🔥</span>
+    <h2>模块一 · 高频考点统计（全14章完整排序）</h2>
+    <span class="badge-count">14章全覆盖</span>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body open">
+    <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">统计口径：2016–2025年笔试简答/论述/案例题 + 面试高频题，人力资源管理方向。按出现频率从高到低排序，14章全部列出。</p>
+    <table>
+      <thead>
+        <tr><th>排名</th><th>章节</th><th>核心知识点</th><th>出现次数</th><th>重要度</th><th>出现年份</th><th>常见题型</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span style="font-size:15px">🥇</span> 1</td>
+          <td><span class="tag tag-red">第八章 绩效管理</span></td>
+          <td><strong>绩效管理四环节·KPI/OKR/BSC/360度/MBO/BARS·评价误差与改进</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s5" style="width:100%"></div></div><span class="bar-label">6次</span></div></td>
+          <td><span class="stars">★★★★★</span></td>
+          <td><span class="tag">2016</span><span class="tag">2018</span><span class="tag">2019</span><span class="tag">2023</span><span class="tag">2025</span><span class="tag">历年面试</span></td>
+          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">论述</span><span class="tag-red tag">案例</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size:15px">🥇</span> 1</td>
+          <td><span class="tag tag-purple">第十三章 战略HR管理</span></td>
+          <td><strong>战略性HRM内涵·HRBP角色·三支柱模型（COE/HRBP/SSC）·战略匹配</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s5" style="width:100%"></div></div><span class="bar-label">6次</span></div></td>
+          <td><span class="stars">★★★★★</span></td>
+          <td><span class="tag">2016</span><span class="tag">2017</span><span class="tag">2020</span><span class="tag">2022</span><span class="tag">2024</span><span class="tag">2025</span></td>
+          <td><span class="tag-orange tag">论述</span><span class="tag-purple tag">简答</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size:15px">🥈</span> 3</td>
+          <td><span class="tag tag-orange">第九章 薪酬</span></td>
+          <td><strong>薪酬结构三类型·薪酬设计六原则·岗位评估（海氏系统）·长期激励设计</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s5" style="width:83%"></div></div><span class="bar-label">5次</span></div></td>
+          <td><span class="stars">★★★★★</span></td>
+          <td><span class="tag">2017</span><span class="tag">2020</span><span class="tag">2025</span><span class="tag">历年面试</span></td>
+          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">面试</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size:15px">🥈</span> 3</td>
+          <td><span class="tag tag-green">第十章 人力资源开发与培训</span></td>
+          <td><strong>培训需求三层次分析·柯克帕特里克四级评估·职业锚理论·职业发展通道</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s5" style="width:83%"></div></div><span class="bar-label">5次</span></div></td>
+          <td><span class="stars">★★★★★</span></td>
+          <td><span class="tag">2018</span><span class="tag">2019</span><span class="tag">2022</span><span class="tag">2023</span><span class="tag">2024</span></td>
+          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">面试</span></td>
+        </tr>
+        <tr>
+          <td><span style="font-size:15px">🥈</span> 3</td>
+          <td><span class="tag tag-purple">第十一章 激励</span></td>
+          <td><strong>四大激励理论（马斯洛/双因素/期望/公平）·新生代员工激励·EAP员工援助</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s5" style="width:83%"></div></div><span class="bar-label">5次</span></div></td>
+          <td><span class="stars">★★★★★</span></td>
+          <td><span class="tag">2017</span><span class="tag">2020</span><span class="tag">2021</span><span class="tag">2023</span><span class="tag">2025</span></td>
+          <td><span class="tag-orange tag">面试</span><span class="tag-purple tag">简答</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><span class="tag">第七章 员工招聘</span></td>
+          <td><strong>招聘渠道选择与效果评估·评价中心技术·选拔录用方法·无领导小组</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s4" style="width:67%"></div></div><span class="bar-label">4次</span></div></td>
+          <td><span class="stars">★★★★</span></td>
+          <td><span class="tag">2016</span><span class="tag">2017</span><span class="tag">2021</span><span class="tag">历年面试</span></td>
+          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">面试</span></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><span class="tag tag-green">第五章 人力资源规划</span></td>
+          <td><strong>人力资源规划流程·人才盘点九宫格·继任计划设计</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s4" style="width:50%"></div></div><span class="bar-label">3次</span></div></td>
+          <td><span class="stars">★★★★</span></td>
+          <td><span class="tag">2021</span><span class="tag">2024</span><span class="tag">历年面试</span></td>
+          <td><span class="tag-purple tag">简答</span><span class="tag-orange tag">面试</span></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><span class="tag">第六章 工作分析</span></td>
+          <td><strong>胜任力冰山模型/洋葱模型·工作说明书·胜任力模型构建流程</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div><span class="bar-label">2次</span></div></td>
+          <td><span class="stars">★★★★</span></td>
+          <td><span class="tag">2017</span><span class="tag">综合</span></td>
+          <td><span class="tag-purple tag">简答</span></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><span class="tag tag-orange">第四章 文化与人力资源管理</span></td>
+          <td><strong>企业文化三层次·文化变革路径·文化与战略实施的关系</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div><span class="bar-label">2次</span></div></td>
+          <td><span class="stars">★★★</span></td>
+          <td><span class="tag">2018</span><span class="tag">2021面试</span></td>
+          <td><span class="tag-orange tag">论述</span><span class="tag-orange tag">面试</span></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><span class="tag tag-red">第十二章 劳动关系</span></td>
+          <td><strong>劳动合同管理·集体谈判制度·劳动争议处理·离职管理</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s3" style="width:33%"></div></div><span class="bar-label">2次</span></div></td>
+          <td><span class="stars">★★★</span></td>
+          <td><span class="tag">历年面试</span><span class="tag">综合</span></td>
+          <td><span class="tag-orange tag">面试</span></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><span class="tag tag-purple">第十四章 国际人力资源管理</span></td>
+          <td><strong>跨文化管理·外派人员管理周期·国际化HR四种战略取向</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s2" style="width:17%"></div></div><span class="bar-label">1次</span></div></td>
+          <td><span class="stars">★★★</span></td>
+          <td><span class="tag">2024面试</span></td>
+          <td><span class="tag-orange tag">面试</span></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><span class="tag">第三章 组织与人力资源管理</span></td>
+          <td><strong>组织结构类型（扁平化/矩阵式）·组织变革·组织韧性建设</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s2" style="width:17%"></div></div><span class="bar-label">1次</span></div></td>
+          <td><span class="stars">★★★</span></td>
+          <td><span class="tag">2018面试</span><span class="tag">2022面试</span></td>
+          <td><span class="tag-orange tag">面试</span></td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><span class="tag tag-gray">第二章 人力资源相关经济理论</span></td>
+          <td><strong>人力资本理论（舒尔茨）·劳动力市场供求·人力资本投资收益分析</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s1c" style="width:8%"></div></div><span class="bar-label">偶有</span></div></td>
+          <td><span class="stars">★★</span></td>
+          <td><span class="tag">理论背景</span></td>
+          <td><span class="tag-purple tag">名词解释</span></td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><span class="tag tag-gray">第一章 人力资源管理概述</span></td>
+          <td><strong>HRM定义·职能模块体系·战略性HRM的演变历程</strong></td>
+          <td><div class="bar-wrap"><div class="bar-bg"><div class="bar-fill s1c" style="width:8%"></div></div><span class="bar-label">基础</span></div></td>
+          <td><span class="stars">★★</span></td>
+          <td><span class="tag">基础理论</span></td>
+          <td><span class="tag-purple tag">名词解释</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:12px;color:var(--muted);font-size:12px;">⚠️ 第一、二章极少单独命题，但作为其他章节论述的理论依据频繁出现，理解即可，无需精背。</p>
+  </div>
+</div>
+
+<!-- S2 命题规律 -->
+<div class="section" id="s2">
+  <div class="section-hd open" onclick="toggle(this)">
+    <span class="ico">📐</span>
+    <h2>模块二 · 命题规律总结（10条）+ 针对性复习建议</h2>
+    <span class="badge-count">10条规律</span>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body open">
+    <div class="rule-grid">
+
+      <div class="rule-card">
+        <div class="rule-num">规律 01 · 第八章绩效管理是第一高频章节</div>
+        <div class="rule-text">几乎每年必考，题型全覆盖：KPI/OKR/BSC简答、绩效薪酬联动论述、企业绩效改革案例。10年无一年缺席，是笔试最高确定性考点。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>背熟六种评价方法对比表（KPI/OKR/BSC/360度/MBO/BARS各自定义+优缺点+适用场景）。BSC四维度因果链必须能手绘。绩效管理四环节（计划→实施→评价→反馈）每个环节的关键管理者动作要能展开讲。</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">规律 02 · 第十三章是论述题首选来源</div>
+        <div class="rule-text">战略性人力资源管理论述题每年必出，常见句式："在XX背景下，如何通过人力资源战略支撑企业发展？" HRBP于2024年首次进入笔试，三支柱模型尚未单独作为笔试简答题，是重要空白点。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>掌握三支柱模型（COE定策略/HRBP接业务/SSC做共享）分工逻辑，背熟Ulrich四角色（战略伙伴/变革推动者/行政专家/员工倡导者）。论述答题框架：定义→三支柱分工→战略匹配路径→举例→总结。</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">规律 03 · 论述题必嵌时代热点</div>
+        <div class="rule-text">论述题年年结合社会热点：疫情(2020)→ESG(2021)→数字化(2022)→双循环(2023)→AI(2024)→数字化转型失败(2025)，从未例外。热点是加分项，方向判断极其重要。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>准备3套万能热点论述模板：①AI对HR各模块的冲击与应对；②新质生产力背景下的人才战略重构；③ESG/绿色发展与组织能力建设。每套模板：背景定义(2句)→HR四模块应对策略(各2-3句)→总结展望(1句)，练到400字能稳定输出。</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">规律 04 · 案例题固定"诊断+对策"结构</div>
+        <div class="rule-text">案例题结构10年不变：描述某企业管理问题（绩效/薪酬/招聘失败）→分析原因→提出改进方案。不只考单知识点，必须跨模块综合作答，纯背书无法拿高分。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>练习"三步走"答题法：①问题识别（提炼2-3个管理失误，用教材术语命名）→②原因分析（结合教材理论解释机制）→③改进方案（每个问题对应具体建议+可行性说明）。精读教材中隆平种业、北电网络两个案例，感受教材偏好的问题分析逻辑。</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">规律 05 · 第十一章激励是面试必考核心</div>
+        <div class="rule-text">新生代员工激励连续出现（2017/2023面试）；EAP员工援助（2020面试）；员工体验管理（2025面试）。激励章节始终高频，面试导师最喜欢问的方向之一。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>四大激励理论要掌握到"能对比"的程度：马斯洛（需求层次五级）、赫茨伯格（保健因素≠激励因素）、弗鲁姆（期望理论公式：效价×工具性×期望）、亚当斯（公平：横向+纵向比较）。面试答新生代激励时，结合Z世代特征（自主性强/重成长/反权威）+ 3-4种具体激励工具，不超过2分钟。</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">规律 06 · 培训模块约2年一轮命题</div>
+        <div class="rule-text">培训体系设计(2018)→培训需求分析(2022)→职业发展通道(2019/2023)→数字化人才培养(2024面试)，节奏稳定。2026大概率再次考培训评估或职业锚。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>掌握两套框架：①培训需求三层次分析（组织层/任务层/人员层）各层的具体分析内容与方法；②柯克帕特里克四级模型（反应层/学习层/行为层/结果层）各级测量方式。职业锚理论（施恩8种）制成对比表，重点记管理型、技术/职能型、安全/稳定型三类。</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">规律 07 · 薪酬题考设计逻辑不考数字计算</div>
+        <div class="rule-text">薪酬章节始终聚焦"结构设计原则"与"激励机制逻辑"，从未出现计算题。岗位评估（海氏系统）2020年前后升温，2025年再考薪酬激励，薪酬与绩效联动是跨章节热点。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>重点掌握三种薪酬结构类型对比（高弹性=激励强安全感差；高稳定=安全感强激励弱；平衡=兼顾）+ 六大设计原则（公平/竞争/认可/平衡/激励/战略）。海氏系统三维度（技能水平/解决问题能力/职责范围）记概念即可。固定薪酬与可变薪酬的层级比例规律（层级越高可变占比越大）是论述加分点。</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">规律 08 · 招聘题侧重方法论不考流程背诵</div>
+        <div class="rule-text">招聘渠道比较、评价中心技术、选拔方法效度比较是考核重心，不考广告写作。2021年后招聘题频率降低，但面试中仍高频，2026笔试有"回归"可能（依据循环规律）。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>重点掌握评价中心三核心技术（无领导小组/公文筐/角色扮演）的原理与优缺点；内外部招聘优缺点对比表熟练；胜任力模型与工作分析的区别联系（胜任力=冰山水下=更能预测绩效）是高频简答角度。建议配合第六章工作分析一起复习，两章考点高度关联。</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">规律 09 · 面试题具有"命题预告"功能</div>
+        <div class="rule-text">新兴方向先在面试出现，1-2年后进入笔试：数字化HR(2020面试→2022笔试)；HRBP(2021面试→2024笔试)；人才盘点(2021面试→尚未入笔试，2026高概率)。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>2025年面试出现的三个方向——"员工体验管理""数智化战略落地""战略执行保障"，应视为2026笔试简答候选题。现在就准备这三个方向的教材依据（定义+核心内容+举例）各200字框架，面试也能直接用。</div>
+      </div>
+
+      <div class="rule-card">
+        <div class="rule-num">规律 10 · 前三章作理论底色，不单独重押</div>
+        <div class="rule-text">第一章（HRM概述）、第二章（经济理论）、第三章（组织）极少单独命题，但作为其他章节的理论支撑频繁出现在论述引用中（如人力资本理论→培训投资观点；组织扁平化→战略实施论据）。</div>
+        <div class="rule-advice">💡 <strong>复习建议：</strong>前三章只需"选择性精读"：①人力资本理论（舒尔茨核心命题）——论述培训/招聘时引用；②组织结构扁平化与矩阵式优缺点——战略HR论述中作支撑论据。不建议大量投入时间精背，把精力省给第八、十一、十三章。</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- S3 核心30考点 -->
+<div class="section" id="s3">
+  <div class="section-hd open" onclick="toggle(this)">
+    <span class="ico">🎯</span>
+    <h2>模块三 · 核心30考点（覆盖约80%试题）</h2>
+    <span class="badge-count">30个考点</span>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body open">
+    <table>
+      <thead>
+        <tr><th>#</th><th>章节</th><th>核心考点</th><th>重要度</th><th>备考级别</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>01</td><td><span class="tag tag-red">第八章</span></td><td><strong>绩效管理四环节</strong>：计划→实施→评价→反馈，各环节关键管理者动作</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>02</td><td><span class="tag tag-red">第八章</span></td><td><strong>六大绩效评价方法对比</strong>：KPI / OKR / BSC / 360度 / MBO / BARS</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>03</td><td><span class="tag tag-red">第八章</span></td><td><strong>平衡计分卡（BSC）</strong>：四维度·财务/客户/流程/学习·因果链·"平衡"含义</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>04</td><td><span class="tag tag-red">第八章</span></td><td><strong>绩效评价误差类型与改进</strong>：晕轮·近因·宽松/严格·集中趋势·减少方法</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>05</td><td><span class="tag tag-purple">第十三章</span></td><td><strong>战略性人力资源管理</strong>：内涵·与传统HRM区别·Ulrich四角色模型</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>06</td><td><span class="tag tag-purple">第十三章</span></td><td><strong>三支柱模型</strong>：COE（策略中心）/ HRBP（业务伙伴）/ SSC（共享服务）分工</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>07</td><td><span class="tag tag-purple">第十一章</span></td><td><strong>四大激励理论对比</strong>：马斯洛·赫茨伯格·弗鲁姆·亚当斯（各理论核心与区别）</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>08</td><td><span class="tag tag-orange">第九章</span></td><td><strong>薪酬结构三类型</strong>：高弹性 / 高稳定 / 平衡结构（定义·特点·适用情境）</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>09</td><td><span class="tag tag-green">第十章</span></td><td><strong>培训需求三层次分析</strong>：组织层·任务层·人员层（各层分析内容与方法）</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>10</td><td><span class="tag">第六章</span></td><td><strong>胜任力冰山模型</strong>：水上（知识·技能）/ 水下（价值观·特质·动机）·构建流程</td><td><span class="stars">★★★★★</span></td><td><span class="tag-red tag">必背</span></td></tr>
+        <tr><td>11</td><td><span class="tag tag-green">第十章</span></td><td><strong>柯克帕特里克四级评估模型</strong>：反应层·学习层·行为层·结果层（各级测量）</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>12</td><td><span class="tag tag-green">第十章</span></td><td><strong>职业锚理论（施恩）</strong>：8种类型（管理·技术·安全·创业·自主等）·职业规划应用</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>13</td><td><span class="tag tag-green">第十章</span></td><td><strong>职业发展双通道</strong>：管理通道 vs 技术通道·双通道设计逻辑·晋升阶梯</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>14</td><td><span class="tag tag-orange">第九章</span></td><td><strong>薪酬设计六原则</strong>：公平性·竞争性·认可性·平衡性·激励性·战略性</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>15</td><td><span class="tag tag-orange">第九章</span></td><td><strong>长期激励设计</strong>：股票期权·员工持股计划（ESOP）·延期支付·适用岗位特征</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>16</td><td><span class="tag tag-orange">第九章</span></td><td><strong>岗位评估方法</strong>：要素计点法·海氏系统三维度（技能/解决问题/职责）</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>17</td><td><span class="tag">第七章</span></td><td><strong>评价中心技术</strong>：无领导小组讨论·公文筐测验·角色扮演·各自优缺点</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>18</td><td><span class="tag">第七章</span></td><td><strong>内外部招聘渠道比较</strong>：各来源优缺点·网络招聘特点·招聘效果评估指标</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>19</td><td><span class="tag tag-green">第五章</span></td><td><strong>人才盘点九宫格</strong>：绩效×潜力矩阵·四类人才界定（明星/问号/主力/闲置）</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>20</td><td><span class="tag tag-green">第五章</span></td><td><strong>继任计划设计</strong>：关键岗位识别·候选人梯队·加速发展计划</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>21</td><td><span class="tag tag-purple">第十一章</span></td><td><strong>新生代员工激励策略</strong>：Z世代特征·参与式管理·成长型激励·弹性工作</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>22</td><td><span class="tag tag-purple">第十三章</span></td><td><strong>数字化人力资源管理</strong>：HRIS系统·AI辅助招聘·数据驱动决策·数字化转型路径</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>23</td><td><span class="tag tag-red">第八章</span></td><td><strong>绩效结果的四大应用</strong>：绩效薪酬分配·职务调整·培训与开发·职业规划参考</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>24</td><td><span class="tag tag-orange">第四章</span></td><td><strong>企业文化三层次</strong>：物质层（器物）·制度层（行为规范）·精神层（价值观）</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
+        <tr><td>25</td><td><span class="tag tag-red">第十二章</span></td><td><strong>劳动关系核心制度</strong>：劳动合同类型·集体谈判程序·劳动争议处理四途径</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
+        <tr><td>26</td><td><span class="tag tag-purple">第十一章</span></td><td><strong>员工援助计划（EAP）</strong>：定义·六大服务内容·实施流程·与心理健康管理的关系</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
+        <tr><td>27</td><td><span class="tag tag-orange">第九章</span></td><td><strong>三种薪酬模式</strong>：以岗位/能力/绩效为基础（各自定义·优缺点·适用场景）</td><td><span class="stars">★★★★</span></td><td><span class="tag-orange tag">重要</span></td></tr>
+        <tr><td>28</td><td><span class="tag tag-green">第五章</span></td><td><strong>人力资源规划流程</strong>：需求预测·供给预测→缺口分析→行动计划→评估调整</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
+        <tr><td>29</td><td><span class="tag tag-gray">第二章</span></td><td><strong>人力资本理论（舒尔茨）</strong>：核心命题·五类投资·与物质资本区别·HR管理联系</td><td><span class="stars">★★</span></td><td><span class="tag-gray tag">了解</span></td></tr>
+        <tr><td>30</td><td><span class="tag tag-purple">第十四章</span></td><td><strong>国际HR管理四种取向</strong>：民族中心/多中心/地区中心/全球中心·外派人员管理周期</td><td><span class="stars">★★★</span></td><td><span class="tag tag">常考</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- S4 2026预测 -->
+<div class="section" id="s4">
+  <div class="section-hd open" onclick="toggle(this)">
+    <span class="ico">🔮</span>
+    <h2>模块四 · 2026复试命题预测（10题）</h2>
+    <span class="badge-count">10题预测</span>
+    <span class="toggle">▼</span>
+  </div>
+  <div class="section-body open">
+    <div class="pred-grid">
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-purple tag">简答题</span><span class="prob-high">★★★★★ 极高</span></div>
+        <div class="pred-q">简述平衡计分卡（BSC）的四个维度及其因果逻辑关系，并说明其在企业绩效管理中的应用价值</div>
+        <div class="pred-meta">📌 第八章·绩效管理·BSC四维度<br>💡 2016首考；高频面试题；2023考绩效管理整体流程，BSC单独深化概率极大</div>
+      </div>
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-purple tag">简答题</span><span class="prob-high">★★★★★ 极高</span></div>
+        <div class="pred-q">简述胜任力冰山模型的内涵与层次结构，并说明企业构建胜任力模型的基本流程</div>
+        <div class="pred-meta">📌 第六章·工作分析·胜任力模型<br>💡 2017年考胜任力构建；近3年高频面试题；是招聘/绩效/薪酬三章的逻辑起点，综合命题价值高</div>
+      </div>
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-purple tag">简答题</span><span class="prob-high">★★★★★ 极高</span></div>
+        <div class="pred-q">简述人力资源管理三支柱模型（COE/HRBP/SSC）的职能分工，并说明与传统人力资源管理的区别</div>
+        <div class="pred-meta">📌 第十三章·战略HR管理·三支柱<br>💡 HRBP于2024年首入笔试；三支柱是其上位理论；2025面试延续考战略HR，笔试深化概率极大</div>
+      </div>
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-orange tag">论述题</span><span class="prob-high">★★★★★ 极高</span></div>
+        <div class="pred-q">论述新质生产力背景下，企业如何重构人力资源战略以支撑创新驱动和高质量发展（可结合湖南/中部地区企业举例）</div>
+        <div class="pred-meta">📌 第十三章·战略HR + 2026时代热点<br>💡 论述题年年嵌热点（规律03）；新质生产力是2024-2026国家核心政策；结合人才战略/数字化/组织能力三条线作答</div>
+      </div>
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-orange tag">论述题</span><span class="prob-high">★★★★★ 极高</span></div>
+        <div class="pred-q">论述人工智能（AI）对企业人力资源管理各模块（招聘/培训/绩效/薪酬）的影响，以及企业HR部门的应对策略</div>
+        <div class="pred-meta">📌 综合各章·AI热点·数字化HR<br>💡 2024考AI对战略影响；2025案例考数字化转型失败；2026大概率将AI×HR各模块深度融合作为独立论述题</div>
+      </div>
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-red tag">案例分析</span><span class="prob-high">★★★★★ 极高</span></div>
+        <div class="pred-q">案例：某企业推行绩效考核改革后，员工抵触情绪强烈、优秀员工离职率上升。请分析绩效管理失败的根源，并提出系统性改进方案</div>
+        <div class="pred-meta">📌 第八章·绩效管理全流程·评价误差<br>💡 案例题固定"诊断+对策"结构（规律04）；绩效改革案例10年来出现3次；教材隆平种业案例即为此类标准题型</div>
+      </div>
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-purple tag">简答题</span><span class="prob-mid">★★★★ 较高</span></div>
+        <div class="pred-q">简述柯克帕特里克四级培训评估模型的内容，并分析各层级评估的实施方法与局限性</div>
+        <div class="pred-meta">📌 第十章·人力资源开发与培训·培训评估<br>💡 培训约2年一轮（规律06）；2022年考培训需求分析；2026大概率转向培训评估另一端</div>
+      </div>
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-purple tag">简答题</span><span class="prob-mid">★★★★ 较高</span></div>
+        <div class="pred-q">简述绩效评价中常见的评价者误差类型（至少4种），并说明企业减少评价误差的有效方法</div>
+        <div class="pred-meta">📌 第八章·绩效管理·评价误差<br>💡 绩效管理高频；评价误差是独立教材小节；与BSC构成绩效管理两个不同角度，组合考查概率高</div>
+      </div>
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-purple tag">简答题</span><span class="prob-mid">★★★★ 较高</span></div>
+        <div class="pred-q">简述施恩职业锚理论的主要类型，并说明其对企业员工职业发展管理的实践启示</div>
+        <div class="pred-meta">📌 第十章·人力资源开发与培训·职业锚<br>💡 2019年考职业发展通道；2025面试出现员工体验；职业锚是"为何员工不愿晋升管理岗"的理论解释，与新生代管理结合价值高</div>
+      </div>
+      <div class="pred-card">
+        <div class="pred-card-hd"><span class="tag-orange tag">面试题</span><span class="prob-high">★★★★★ 极高</span></div>
+        <div class="pred-q">请结合激励理论，谈谈您认为企业应如何有效激励和留住新生代（Z世代）核心员工？</div>
+        <div class="pred-meta">📌 第十一章·激励·新生代员工管理<br>💡 新生代激励2017/2023面试必考（规律05）；2025面试出现员工体验管理；2026面试大概率以"Z世代+激励+留才"组合深化考查</div>
+      </div>
+    </div>
+    <p style="margin-top:16px;padding:12px 14px;background:var(--tag-bg);border-radius:6px;font-size:12px;color:var(--muted);">
+      ⚠️ 以上预测基于10年命题规律分析，仅供参考，实际考题以官方公布为准。建议结合规律03（嵌热点）和规律09（面试有预告功能）重点关注④⑤⑥题方向，复习价值最高。
+    </p>
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<footer>
+  📚 中南大学企业管理学硕复试笔记 · 基于《人力资源管理（第3版·颜爱民）》全14章 · 2016–2025真题分析<br>
+  生成日期：2026-03-16 &nbsp;|&nbsp; 章节结构已全部校正
+</footer>
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+function toggle(hd){
+  hd.classList.toggle('open');
+  hd.nextElementSibling.classList.toggle('open');
+}
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  const btn=document.querySelector('nav button');
+  btn.textContent=document.body.classList.contains('dark')?'☀️ 日间':'🌙 夜间';
+  localStorage.setItem('dark',document.body.classList.contains('dark')?'1':'0');
+}
+if(localStorage.getItem('dark')==='1'){
+  document.body.classList.add('dark');
+  document.querySelector('nav button').textContent='☀️ 日间';
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('back-top').style.opacity=scrollY>300?'1':'0';
+});
+document.getElementById('back-top').style.opacity='0';
+document.getElementById('back-top').style.transition='opacity .3s';
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.bar-fill').forEach(el=>{
+    const w=el.style.width;el.style.width='0';
+    setTimeout(()=>{el.style.width=w;},300);
+  });
+});
+</script>
+
+<!-- 搜索药丸（与参考文件完全一致的实现） -->
+<div id="search-pill" style="display:none">
+  <span id="sp-icon">🔍</span>
+  <input id="sp-input" type="text" placeholder="搜索关键词…" autocomplete="off"/>
+  <span id="sp-count"></span>
+  <button id="sp-prev" title="上一个 (Shift+F3)">↑</button>
+  <button id="sp-next" title="下一个 (F3)">↓</button>
+  <button id="sp-close" title="关闭">✕</button>
+</div>
+<button id="search-trigger" title="搜索 (F3 / Ctrl+F)" onclick="openSearchPill()">🔍</button>
+
+<script>
+(function(){
+'use strict';
+var pill,trigger,inp,cnt;
+var marks=[],cur=0,lastQ='';
+var MARK='sp-hl',CUR='sp-cur';
+function qa(s){return Array.from(document.querySelectorAll(s));}
+function init(){
+  pill=document.getElementById('search-pill');
+  trigger=document.getElementById('search-trigger');
+  inp=document.getElementById('sp-input');
+  cnt=document.getElementById('sp-count');
+  if(!pill||!inp)return;
+  document.getElementById('sp-prev').onclick=function(){nav(-1);};
+  document.getElementById('sp-next').onclick=function(){nav(1);};
+  document.getElementById('sp-close').onclick=close;
+  inp.addEventListener('input',function(){search(this.value);});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='Enter'){e.preventDefault();nav(e.shiftKey?-1:1);}
+    if(e.key==='Escape')close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='F3'){
+      e.preventDefault();e.stopImmediatePropagation();
+      if(!pill||pill.style.display==='none')open();
+      else nav(e.shiftKey?-1:1);
+    }
+    if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();open();}
+  },true);
+}
+window.openSearchPill=open;
+function open(){
+  if(!pill)init();if(!pill)return;
+  pill.style.display='flex';
+  if(trigger)trigger.style.display='none';
+  inp.focus();inp.select();
+}
+function close(){
+  clearHL();
+  if(pill)pill.style.display='none';
+  if(trigger)trigger.style.display='flex';
+  if(inp)inp.value='';
+  marks=[];cur=0;lastQ='';
+  if(cnt)cnt.textContent='';
+}
+function search(kw){
+  clearHL();marks=[];cur=0;
+  kw=kw.trim();lastQ=kw;
+  if(!kw){if(cnt)cnt.textContent='';return;}
+  var esc=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  var rx=new RegExp(esc,'gi');
+  var root=document.querySelector('.main')||document.body;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(n){
+      var p=n.parentNode;if(!p)return NodeFilter.FILTER_REJECT;
+      var t=p.tagName;
+      if(t==='SCRIPT'||t==='STYLE'||t==='NOSCRIPT')return NodeFilter.FILTER_REJECT;
+      if(p.closest&&(p.closest('#search-pill')||p.closest('#search-trigger')))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  },false);
+  var nodes=[];var n;
+  while((n=walker.nextNode())){rx.lastIndex=0;if(rx.test(n.nodeValue))nodes.push(n);}
+  nodes.forEach(function(tn){
+    rx.lastIndex=0;
+    var frag=document.createDocumentFragment();
+    var last=0,m;
+    while((m=rx.exec(tn.nodeValue))!==null){
+      if(m.index>last)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last,m.index)));
+      var mk=document.createElement('mark');mk.className=MARK;mk.textContent=m[0];
+      frag.appendChild(mk);marks.push(mk);last=m.index+m[0].length;
+    }
+    if(last<tn.nodeValue.length)frag.appendChild(document.createTextNode(tn.nodeValue.slice(last)));
+    tn.parentNode.replaceChild(frag,tn);
+  });
+  updCnt();if(marks.length)goTo(0);
+}
+function nav(d){
+  marks=qa('mark.'+MARK);if(!marks.length)return;
+  cur=(cur+d+marks.length)%marks.length;goTo(cur);
+}
+function goTo(idx){
+  marks=qa('mark.'+MARK);
+  marks.forEach(function(m){m.classList.remove(CUR);});
+  cur=idx;if(!marks[cur])return;
+  marks[cur].classList.add(CUR);
+  marks[cur].scrollIntoView({behavior:'smooth',block:'center'});
+  updCnt();
+}
+function updCnt(){
+  if(!cnt)return;
+  marks=qa('mark.'+MARK);
+  if(!lastQ){cnt.textContent='';return;}
+  if(!marks.length){cnt.textContent='无结果';return;}
+  var kw=lastQ.length>6?lastQ.slice(0,5)+'…':lastQ;
+  cnt.textContent=kw+'\u00a0\u00a0'+(cur+1)+' / '+marks.length;
+}
+function clearHL(){
+  qa('mark.'+MARK).forEach(function(el){
+    if(el.parentNode)el.parentNode.replaceChild(document.createTextNode(el.textContent),el);
+  });
+  try{(document.querySelector('.main')||document.body).normalize();}catch(e){}
+  marks=[];
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);
+else init();
+})();
+</script>
+</body>
+</html>
